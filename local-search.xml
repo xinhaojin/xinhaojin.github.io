@@ -30,5 +30,49 @@
   
   
   
+  <entry>
+    <title>Anaconda国内镜像源3个</title>
+    <link href="/2021/05/20/anaconda%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E6%BA%903%E4%B8%AA/"/>
+    <url>/2021/05/20/anaconda%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E6%BA%903%E4%B8%AA/</url>
+    
+    <content type="html"><![CDATA[<h4 id="北京外国语大学镜像源"><a href="#北京外国语大学镜像源" class="headerlink" title="北京外国语大学镜像源"></a>北京外国语大学镜像源</h4><p>channels:</p><ul><li>defaults<br>show_channel_urls: true<br>channel_alias: <a href="https://mirrors.bfsu.edu.cn/anaconda">https://mirrors.bfsu.edu.cn/anaconda</a><br>default_channels:</li><li><a href="https://mirrors.bfsu.edu.cn/anaconda/pkgs/main">https://mirrors.bfsu.edu.cn/anaconda/pkgs/main</a></li><li><a href="https://mirrors.bfsu.edu.cn/anaconda/pkgs/free">https://mirrors.bfsu.edu.cn/anaconda/pkgs/free</a></li><li><a href="https://mirrors.bfsu.edu.cn/anaconda/pkgs/r">https://mirrors.bfsu.edu.cn/anaconda/pkgs/r</a></li><li><a href="https://mirrors.bfsu.edu.cn/anaconda/pkgs/pro">https://mirrors.bfsu.edu.cn/anaconda/pkgs/pro</a></li><li><a href="https://mirrors.bfsu.edu.cn/anaconda/pkgs/msys2">https://mirrors.bfsu.edu.cn/anaconda/pkgs/msys2</a><br>custom_channels:<br>  conda-forge: <a href="https://mirrors.bfsu.edu.cn/anaconda/cloud">https://mirrors.bfsu.edu.cn/anaconda/cloud</a><br>  msys2: <a href="https://mirrors.bfsu.edu.cn/anaconda/cloud">https://mirrors.bfsu.edu.cn/anaconda/cloud</a><br>  bioconda: <a href="https://mirrors.bfsu.edu.cn/anaconda/cloud">https://mirrors.bfsu.edu.cn/anaconda/cloud</a><br>  menpo: <a href="https://mirrors.bfsu.edu.cn/anaconda/cloud">https://mirrors.bfsu.edu.cn/anaconda/cloud</a><br>  pytorch: <a href="https://mirrors.bfsu.edu.cn/anaconda/cloud">https://mirrors.bfsu.edu.cn/anaconda/cloud</a><br>  simpleitk: <a href="https://mirrors.bfsu.edu.cn/anaconda/cloud">https://mirrors.bfsu.edu.cn/anaconda/cloud</a></li></ul><h4 id="上海交通大学镜像源"><a href="#上海交通大学镜像源" class="headerlink" title="上海交通大学镜像源"></a>上海交通大学镜像源</h4><p>channels:</p><ul><li>defaults<br>show_channel_urls: true<br>channel_alias: <a href="https://anaconda.mirrors.sjtug.sjtu.edu.cn/">https://anaconda.mirrors.sjtug.sjtu.edu.cn/</a><br>default_channels:</li><li><a href="https://anaconda.mirrors.sjtug.sjtu.edu.cn/pkgs/main">https://anaconda.mirrors.sjtug.sjtu.edu.cn/pkgs/main</a></li><li><a href="https://anaconda.mirrors.sjtug.sjtu.edu.cn/pkgs/free">https://anaconda.mirrors.sjtug.sjtu.edu.cn/pkgs/free</a></li><li><a href="https://anaconda.mirrors.sjtug.sjtu.edu.cn/pkgs/mro">https://anaconda.mirrors.sjtug.sjtu.edu.cn/pkgs/mro</a></li><li><a href="https://anaconda.mirrors.sjtug.sjtu.edu.cn/pkgs/msys2">https://anaconda.mirrors.sjtug.sjtu.edu.cn/pkgs/msys2</a></li><li><a href="https://anaconda.mirrors.sjtug.sjtu.edu.cn/pkgs/pro">https://anaconda.mirrors.sjtug.sjtu.edu.cn/pkgs/pro</a></li><li><a href="https://anaconda.mirrors.sjtug.sjtu.edu.cn/pkgs/r">https://anaconda.mirrors.sjtug.sjtu.edu.cn/pkgs/r</a><br>custom_channels:<br>  conda-forge: <a href="https://anaconda.mirrors.sjtug.sjtu.edu.cn/conda-forge">https://anaconda.mirrors.sjtug.sjtu.edu.cn/conda-forge</a><br>  soumith: <a href="https://anaconda.mirrors.sjtug.sjtu.edu.cn/cloud/soumith">https://anaconda.mirrors.sjtug.sjtu.edu.cn/cloud/soumith</a><br>  bioconda: <a href="https://anaconda.mirrors.sjtug.sjtu.edu.cn/cloud/bioconda">https://anaconda.mirrors.sjtug.sjtu.edu.cn/cloud/bioconda</a><br>  menpo: <a href="https://anaconda.mirrors.sjtug.sjtu.edu.cn/cloud/menpo">https://anaconda.mirrors.sjtug.sjtu.edu.cn/cloud/menpo</a><br>  viscid-hub: <a href="https://anaconda.mirrors.sjtug.sjtu.edu.cn/cloud/viscid-hub">https://anaconda.mirrors.sjtug.sjtu.edu.cn/cloud/viscid-hub</a><br>  atztogo: <a href="https://anaconda.mirrors.sjtug.sjtu.edu.cn/cloud/atztogo">https://anaconda.mirrors.sjtug.sjtu.edu.cn/cloud/atztogo</a></li></ul><h4 id="清华大学镜像源"><a href="#清华大学镜像源" class="headerlink" title="清华大学镜像源"></a>清华大学镜像源</h4><p>channels:</p><ul><li>defaults<br>show_channel_urls: true<br>channel_alias: <a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda">https://mirrors.tuna.tsinghua.edu.cn/anaconda</a><br>default_channels:</li><li><a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main">https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main</a></li><li><a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free">https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free</a></li><li><a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r">https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r</a></li><li><a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/pro">https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/pro</a></li><li><a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2">https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2</a><br>custom_channels:<br>  conda-forge: <a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud">https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</a><br>  msys2: <a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud">https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</a><br>  bioconda: <a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud">https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</a><br>  menpo: <a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud">https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</a><br>  pytorch: <a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud">https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</a><br>  simpleitk: <a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud">https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</a></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>读书人</category>
+      
+      <category>软件环境配置</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Anaconda创建新环境</title>
+    <link href="/2021/03/29/anaconda%E5%88%87%E6%8D%A2python%E7%89%88%E6%9C%AC/"/>
+    <url>/2021/03/29/anaconda%E5%88%87%E6%8D%A2python%E7%89%88%E6%9C%AC/</url>
+    
+    <content type="html"><![CDATA[<p>安装了最新版的Anaconda3-2020.11-Windows-x86_64，默认python版本3.8，因为要用tensorflow怕新版本不支持，现修改为3.6</p><h4 id="打开windows命令行，输入"><a href="#打开windows命令行，输入" class="headerlink" title="打开windows命令行，输入"></a>打开windows命令行，输入</h4><p>conda create –n python36 python&#x3D;3.6</p><p>&#x2F;&#x2F;python36是新环境名字</p><p>成功后会自动创建新环境</p><p><img src="http://blog.xinhaojin.top/wp-content/uploads/2021/03/image.png"></p><h4 id="激活新环境"><a href="#激活新环境" class="headerlink" title="激活新环境"></a>激活新环境</h4><p>conda activate python36</p><p><img src="http://blog.xinhaojin.top/wp-content/uploads/2021/03/image-1.png"></p><h4 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h4><p>如果官方源不行，可以换源,修改C盘用户目录下的.condarc文件</p><p>Windows 用户无法直接创建名为 .condarc 的文件，可先执行conda config –set show_channel_urls yes生成该文件之后再修改</p><p>修改内容如下文</p><p><a href="https://blog.xinhaojin.top/2021/05/20/anaconda%e5%9b%bd%e5%86%85%e9%95%9c%e5%83%8f%e6%ba%903%e4%b8%aa/">https://blog.xinhaojin.top/2021/05/20/anaconda%e5%9b%bd%e5%86%85%e9%95%9c%e5%83%8f%e6%ba%903%e4%b8%aa/</a></p><h4 id="Done"><a href="#Done" class="headerlink" title="Done."></a>Done.</h4>]]></content>
+    
+    
+    <categories>
+      
+      <category>Python</category>
+      
+      <category>读书人</category>
+      
+      <category>软件环境配置</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
   
 </search>
