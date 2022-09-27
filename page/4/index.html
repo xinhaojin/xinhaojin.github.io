@@ -27,6 +27,8 @@
 <meta name="twitter:card" content="summary_large_image">
   
   
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
   
   <title>xinhaojin&#39;s blog</title>
 
@@ -168,18 +170,6 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
@@ -253,15 +243,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/06/26/python%E9%A1%B9%E7%9B%AE%E7%94%9F%E6%88%90requirements-txt/" target="_self">
-          python项目生成requirements.txt
+        <a href="/2022/03/31/yolox%E8%AE%AD%E7%BB%83%E4%B8%8D%E5%90%8C%E6%95%B0%E6%8D%AE%E9%9B%86%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" target="_self">
+          yolox训练不同数据集注意事项
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2021/06/26/python%E9%A1%B9%E7%9B%AE%E7%94%9F%E6%88%90requirements-txt/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/03/31/yolox%E8%AE%AD%E7%BB%83%E4%B8%8D%E5%90%8C%E6%95%B0%E6%8D%AE%E9%9B%86%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" target="_self">
         <div>
-          导出当前环境所有依赖pip freeze &gt; requirements.txt  但这些不一定都是当前项目必需的包，更好的方法是下面这种 导出当前目录项目的依赖pip install pipreqs pipreqs . --encoding=utf8 --force
+          问题先后训练两个数据集，都是VOC格式，仅有图片和标签不同，那么怎么对他们进行训练？ 答：直觉就是，配置好一次环境，先训练第一个数据集，然后训练第二个数据集的时候，把数据集文件夹内容替换，其余一律不变。 但这样有一个致命错误：AP始终很小，可能是0.00000XXX。 原因因为两个数据集的标注工作是分别在labelme和labelimg上完成的，还是有一些细微区别，所以首先怀疑数据集本身的问题，于
         </div>
       </a>
 
@@ -269,8 +259,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-06-26 11:26" pubdate>
-              2021-06-26
+            <time datetime="2022-03-31 15:47" pubdate>
+              2022-03-31
             </time>
           </div>
         
@@ -285,129 +275,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/python/" class="category-chain-item">python</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/05/22/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85jupyter-notebook/" target="_self">
-          <img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/05/image-34-1024x332.png" srcset="/img/loading.gif" lazyload alt="linux服务器安装jupyter notebook">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/05/22/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85jupyter-notebook/" target="_self">
-          linux服务器安装jupyter notebook
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2021/05/22/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85jupyter-notebook/" target="_self">
-        <div>
-          用pip安装 sudo pip3 install jupyter  进入python3环境，设置密码，生成秘钥，复制下来 12from notebook.auth import passwdpasswd()  查找配置文件所在路径 jupyter notebook --generate-config  如果提示未找到命令，先找一下jupyter的安装目录  根据路径打开配置文件jupyter_no
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-05-22 12:54" pubdate>
-              2021-05-22
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E8%BD%AF%E4%BB%B6%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件环境配置</a>
-  
-  
-
-      </span>
-    
-  
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/05/20/lda%E6%A8%A1%E5%9E%8B%E4%B8%AD%E6%96%87%E4%B8%BB%E9%A2%98%E6%8F%90%E5%8F%96/" target="_self">
-          <img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/05/image-28-1024x646.png" srcset="/img/loading.gif" lazyload alt="LDA模型(gensim)中文主题提取">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/05/20/lda%E6%A8%A1%E5%9E%8B%E4%B8%AD%E6%96%87%E4%B8%BB%E9%A2%98%E6%8F%90%E5%8F%96/" target="_self">
-          LDA模型(gensim)中文主题提取
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2021/05/20/lda%E6%A8%A1%E5%9E%8B%E4%B8%AD%E6%96%87%E4%B8%BB%E9%A2%98%E6%8F%90%E5%8F%96/" target="_self">
-        <div>
-          安装依赖python版本3.7 pip install gensim pip install jieba  数据集数据很随意，没什么格式要求，像这样的都行  分词把原始数据按行分词，去掉没用的部分  分词代码如下，可以一次转换单个txt或者整个文件夹（文件夹内不能有其他格式文件） #coding&#x3D;utf-8import reimport jieba as jbimport osdef s
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-05-20 15:29" pubdate>
-              2021-05-20
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/" class="category-chain-item">自然语言处理</a>
+  <a href="/categories/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" class="category-chain-item">目标检测</a>
   
   
 
@@ -429,15 +297,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/05/20/anaconda%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E6%BA%903%E4%B8%AA/" target="_self">
-          Anaconda国内镜像源3个
+        <a href="/2022/03/09/%E9%AA%8C%E8%AF%81%E7%A0%81%E6%B1%89%E5%AD%97%E5%9B%BE%E4%BA%8C%E5%80%BC%E5%8C%96%E5%A4%84%E7%90%86/" target="_self">
+          验证码汉字图二值化处理
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2021/05/20/anaconda%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E6%BA%903%E4%B8%AA/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/03/09/%E9%AA%8C%E8%AF%81%E7%A0%81%E6%B1%89%E5%AD%97%E5%9B%BE%E4%BA%8C%E5%80%BC%E5%8C%96%E5%A4%84%E7%90%86/" target="_self">
         <div>
-          北京外国语大学镜像源channels:   - defaults show\_channel\_urls: true channel\_alias: https://mirrors.bfsu.edu.cn/anaconda default\_channels:   - https://mirrors.bfsu.edu.cn/anaconda/pkgs/main   - https://mirror
+          需求把下图中汉字图片标准化处理，与背景分离，白字黑底  转为灰度图emmm,勉强还是看得清的  灰度图直方图如下  直方图均衡化均衡化后的直方图  对应灰度图  二值化 二值化之后遇到一个问题，白字or黑字？需要统一一下 黑字白底的情况下，需要进行反色处理 判别条件：边界像素中，白色像素比黑色像素少 根据条件反色后的灰度图如下  代码12345678910111213141516171819202
         </div>
       </a>
 
@@ -445,304 +313,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-05-20 13:30" pubdate>
-              2021-05-20
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E8%BD%AF%E4%BB%B6%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件环境配置</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/05/19/cudnn%E5%AE%89%E8%A3%85/" target="_self">
-          <img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/05/QQ截图20210519140216.png" srcset="/img/loading.gif" lazyload alt="cudnn安装">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/05/19/cudnn%E5%AE%89%E8%A3%85/" target="_self">
-          cudnn安装
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2021/05/19/cudnn%E5%AE%89%E8%A3%85/" target="_self">
-        <div>
-          上一篇已经介绍了cuda的安装方法 于是我尝试运行一个paddle样例，报错，最前面的提示信息是这样的，好的我看懂了  所以，cudnn是什么？ cuDNN（CUDA Deep Neural Network library）：是NVIDIA打造的针对深度神经网络的加速库，是一个用于深层神经网络的GPU加速库。 如果你要用GPU训练模型，cuDNN不是必须的，但是一般会采用这个加速库。 下载安装下载
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-05-19 14:48" pubdate>
-              2021-05-19
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E8%BD%AF%E4%BB%B6%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件环境配置</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/05/18/cuda%E5%AE%89%E8%A3%85/" target="_self">
-          <img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/05/image-13-1024x490.png" srcset="/img/loading.gif" lazyload alt="cuda安装">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/05/18/cuda%E5%AE%89%E8%A3%85/" target="_self">
-          cuda安装
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2021/05/18/cuda%E5%AE%89%E8%A3%85/" target="_self">
-        <div>
-          确定安装版本首先查看显卡信息，一般都是用的英伟达显卡，打开NVIDIA控制面板-帮助-系统信息-显示，查看驱动程序版本  使用驱动精灵查看可更新的驱动版本（只用于查看，不需要在这更新驱动，cuda安装时会自动更新驱动）  最后对照这张表，查看可以安装的cuda版本，对于我的机器而言，更新驱动后最高能安装cuda10.2版本  下载在这里选择我要安装的版本  点击下载链接  安装打开安装包，默认路径
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-05-18 23:53" pubdate>
-              2021-05-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E8%BD%AF%E4%BB%B6%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件环境配置</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/05/11/cloudflare%E5%9F%9F%E5%90%8D%E9%87%8D%E5%AE%9A%E5%90%91/" target="_self">
-          <img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/05/image-8.png" srcset="/img/loading.gif" lazyload alt="cloudflare域名重定向">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/05/11/cloudflare%E5%9F%9F%E5%90%8D%E9%87%8D%E5%AE%9A%E5%90%91/" target="_self">
-          cloudflare域名重定向
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2021/05/11/cloudflare%E5%9F%9F%E5%90%8D%E9%87%8D%E5%AE%9A%E5%90%91/" target="_self">
-        <div>
-          需求将https://www.xinhaojin.top,https://xinhaojin.top两个域名都重定向到https://main.xinhaojin.top 方法使用cloudflare管理域名 修改DNS的A记录，地址解析到任意DNS解析服务器，如114.114.114,8.8.8.8,223.5.5.5等(建议使用阿里云公共DNS)，代理状态选择代理  选择页面规则，新建规则
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-05-11 16:54" pubdate>
-              2021-05-11
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E8%BD%AF%E4%BB%B6%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件环境配置</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/04/17/cenos7%E4%BF%AE%E6%94%B9ssh%E7%AB%AF%E5%8F%A3%E5%8F%B7/" target="_self">
-          <img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/04/QQ截图20210417012556.png" srcset="/img/loading.gif" lazyload alt="cenos7修改ssh端口号">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/17/cenos7%E4%BF%AE%E6%94%B9ssh%E7%AB%AF%E5%8F%A3%E5%8F%B7/" target="_self">
-          cenos7修改ssh端口号
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2021/04/17/cenos7%E4%BF%AE%E6%94%B9ssh%E7%AB%AF%E5%8F%A3%E5%8F%B7/" target="_self">
-        <div>
-          以前真没想过会有人攻击我的服务器，所以也就没改ssh默认端口，直到我看到这个  我看了下，从4月13号开始，连续攻击了4天，滚犊子玩意儿，nmd，改端口！ 打开ssh配置文件 vim /etc/ssh/sshd\_config  找到port，取消注释，改为自定义端口 重启ssh服务 /etc/init.d/sshd restart  添加防火墙放行规则，如修改ssh端口为xxx,则 iptabl
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-17 10:19" pubdate>
-              2021-04-17
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E8%BD%AF%E4%BB%B6%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件环境配置</a>
-  
-  
-
-      </span>
-    
-  
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/01/pytorch%E5%8A%A0%E8%BD%BDmnist%E6%95%B0%E6%8D%AE%E9%9B%86%E5%9B%BE%E7%89%87error-15-initializing-libiomp5md-dll-but-found-libiomp5md-dll-already-initialized/" target="_self">
-          pytorch加载MNIST数据集图片Error #15: Initializing libiomp5md.dll, but found libiomp5md.dll already initialized.
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2021/04/01/pytorch%E5%8A%A0%E8%BD%BDmnist%E6%95%B0%E6%8D%AE%E9%9B%86%E5%9B%BE%E7%89%87error-15-initializing-libiomp5md-dll-but-found-libiomp5md-dll-already-initialized/" target="_self">
-        <div>
-          添加以下代码 123import osos.environ\[&#x27;KMP\_DUPLICATE\_LIB\_OK&#x27;\]=&#x27;True&#x27;#允许问题描述中dll副本存在
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-01 19:06" pubdate>
-              2021-04-01
+            <time datetime="2022-03-09 17:10" pubdate>
+              2022-03-09
             </time>
           </div>
         
@@ -781,15 +353,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/03/29/jupyter-notebook%E9%BB%98%E8%AE%A4%E7%9B%AE%E5%BD%95%E4%BF%AE%E6%94%B9/" target="_self">
-          Jupyter notebook默认目录修改
+        <a href="/2022/03/08/opencv%E4%B8%AD%E6%96%87%E8%B7%AF%E5%BE%84%E3%80%81%E5%9B%BE%E7%89%87%E5%90%8D%E7%9A%84%E8%AF%BB%E5%86%99/" target="_self">
+          opencv中文路径、图片名的读写
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2021/03/29/jupyter-notebook%E9%BB%98%E8%AE%A4%E7%9B%AE%E5%BD%95%E4%BF%AE%E6%94%B9/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/03/08/opencv%E4%B8%AD%E6%96%87%E8%B7%AF%E5%BE%84%E3%80%81%E5%9B%BE%E7%89%87%E5%90%8D%E7%9A%84%E8%AF%BB%E5%86%99/" target="_self">
         <div>
-          打开环境终端，输入 jupyter notebook --generate-config  生成配置文件  根据提示路径打开配置文件，搜索dir快速定位，修改默认目录，文件夹需自己新建
+          读一般写法 12import cv2img=cv2.imread(&#x27;中文目录/中文名称.jpg&#x27;) 报错  改进写法 123import cv2import numpy as npimg=cv2.imdecode(np.fromfile(&#x27;中文目录/中文名称.jpg&#x27;, dtype=np.uint8), -1) 写一般写法 1cv2.imwrite(&#x2
         </div>
       </a>
 
@@ -797,8 +369,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-03-29 10:59" pubdate>
-              2021-03-29
+            <time datetime="2022-03-08 18:58" pubdate>
+              2022-03-08
             </time>
           </div>
         
@@ -813,7 +385,395 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E8%BD%AF%E4%BB%B6%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件环境配置</a>
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/03/04/ubuntu20-04%E5%85%B3%E9%97%AD%E8%87%AA%E5%8A%A8%E4%BC%91%E7%9C%A0/" target="_self">
+          ubuntu20.04关闭自动休眠
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/03/04/ubuntu20-04%E5%85%B3%E9%97%AD%E8%87%AA%E5%8A%A8%E4%BC%91%E7%9C%A0/" target="_self">
+        <div>
+          sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-03-04 11:53" pubdate>
+              2022-03-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%9D%82/" class="category-chain-item">杂</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/03/01/yolox%E8%AE%AD%E7%BB%83voc%E6%95%B0%E6%8D%AE%E9%9B%86/" target="_self">
+          yolox训练voc数据集
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/03/01/yolox%E8%AE%AD%E7%BB%83voc%E6%95%B0%E6%8D%AE%E9%9B%86/" target="_self">
+        <div>
+          制作数据集请参考上一篇使用labelme打标签并制作voc数据集 labelme标注图片并制作voc数据集 – 张三的流水账 (xinhaojin.top) 上文中最后得到了几个文件夹  但这不能直接用，还需要划分训练集和测试集，可以手动划分，或者写段代码随机划分，最后数据集目录结构如下 VOC2007    Annotations    JPEGImages    ImageSets
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-03-01 18:57" pubdate>
+              2022-03-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" class="category-chain-item">目标检测</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/02/26/labelme%E6%A0%87%E6%B3%A8%E5%9B%BE%E7%89%87%E5%B9%B6%E5%88%B6%E4%BD%9Cvoc%E6%95%B0%E6%8D%AE%E9%9B%86/" target="_self">
+          <img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/02/image-12.png" srcset="/img/loading.gif" lazyload alt="labelme标注图片并制作voc数据集">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/02/26/labelme%E6%A0%87%E6%B3%A8%E5%9B%BE%E7%89%87%E5%B9%B6%E5%88%B6%E4%BD%9Cvoc%E6%95%B0%E6%8D%AE%E9%9B%86/" target="_self">
+          labelme标注图片并制作voc数据集
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/02/26/labelme%E6%A0%87%E6%B3%A8%E5%9B%BE%E7%89%87%E5%B9%B6%E5%88%B6%E4%BD%9Cvoc%E6%95%B0%E6%8D%AE%E9%9B%86/" target="_self">
+        <div>
+          安装labelmewkentaro&#x2F;labelme: Image Polygonal Annotation with Python (polygon, rectangle, circle, line, point and image-level flag annotation). (github.com) pip install labelme  如果安装过，建议升级成新版本 pip i
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-26 19:07" pubdate>
+              2022-02-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" class="category-chain-item">目标检测</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/02/26/%E7%82%B9%E9%80%89%E9%AA%8C%E8%AF%81%E7%A0%81%E8%87%AA%E5%8A%A8%E7%88%AC%E5%8F%96/" target="_self">
+          点选验证码自动爬取(网易易盾）
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/02/26/%E7%82%B9%E9%80%89%E9%AA%8C%E8%AF%81%E7%A0%81%E8%87%AA%E5%8A%A8%E7%88%AC%E5%8F%96/" target="_self">
+        <div>
+          需求汉字点选验证码的批量获取，图片命名为序号加文字，后面用于制作数据集  结果 代码注释很清楚，不再赘述，可参考站内写过的其他selenium内容 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-26 15:40" pubdate>
+              2022-02-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%88%AC%E8%99%AB/" class="category-chain-item">爬虫</a>
+  
+  
+
+      </span>
+    
+  
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/02/25/linux%E9%85%8D%E7%BD%AEgit/" target="_self">
+          linux配置git
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/02/25/linux%E9%85%8D%E7%BD%AEgit/" target="_self">
+        <div>
+          git config --global user.name &quot;yourname&quot; git config --global user.email &quot;youremail&quot; git config --global gui.encoding utf-8 ssh-add ~/.ssh/id\_rsa  找到用户目录下的.ssh文件夹下的id_rsa.pub，复制内容到
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-25 20:51" pubdate>
+              2022-02-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件安装配置</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/02/25/%E5%88%97%E5%87%BA%E5%B1%80%E5%9F%9F%E7%BD%91%E5%86%85%E5%8F%AFping%E9%80%9A%E7%9A%84ip/" target="_self">
+          列出局域网内可Ping通的IP
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/02/25/%E5%88%97%E5%87%BA%E5%B1%80%E5%9F%9F%E7%BD%91%E5%86%85%E5%8F%AFping%E9%80%9A%E7%9A%84ip/" target="_self">
+        <div>
+          123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263# -*- coding: utf-8 -*- import platformimport osimport timeimport threadingimport s
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-25 14:52" pubdate>
+              2022-02-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/02/22/%E6%BB%91%E5%9D%97%E9%AA%8C%E8%AF%81%E7%A0%81%E8%87%AA%E5%8A%A8%E6%8B%96%E6%8B%BD%EF%BC%88seleniumopencv%EF%BC%89/" target="_self">
+          滑块验证码自动拖拽（selenium+opencv）
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/02/22/%E6%BB%91%E5%9D%97%E9%AA%8C%E8%AF%81%E7%A0%81%E8%87%AA%E5%8A%A8%E6%8B%96%E6%8B%BD%EF%BC%88seleniumopencv%EF%BC%89/" target="_self">
+        <div>
+          计算需要移动的像素首先我在github上找到了一个大佬写的项目SlideCrack&#x2F;slide_01 at master · crazyxw&#x2F;SlideCrack (github.com) 输入是本地的两张图：滑块验证码背景和滑块图片 输出是两个缺口的像素距离  1234567891011121314151617181920212223242526272829303132333
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-22 15:04" pubdate>
+              2022-02-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
   
   
 
@@ -835,7 +795,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/3/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><a class="page-number" href="/page/7/#board">7</a><a class="extend next" rel="next" href="/page/5/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/3/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/#board">14</a><a class="extend next" rel="next" href="/page/5/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
@@ -884,10 +844,30 @@
   <footer>
     <div class="footer-inner">
   
-    <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-    </div>
   
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+        次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+        次
+      </span>
+    
+    
+  
+</div>
+
   
   
   
@@ -941,6 +921,8 @@
 
 
   <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 

@@ -27,6 +27,8 @@
 <meta name="twitter:card" content="summary_large_image">
   
   
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
   
   <title>xinhaojin&#39;s blog</title>
 
@@ -168,18 +170,6 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
@@ -250,24 +240,18 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/02/15/linux%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AFpython%E8%84%9A%E6%9C%AC/" target="_self">
-          <img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/01/image-51.png" srcset="/img/loading.gif" lazyload alt="树莓派/centos开机自启python脚本">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
+    <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/02/15/linux%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AFpython%E8%84%9A%E6%9C%AC/" target="_self">
-          树莓派/centos开机自启python脚本
+        <a href="/2022/01/07/ubuntu%E7%BB%88%E7%AB%AFsource-not-found/" target="_self">
+          ubuntu终端source: not found
         </a>
       </h1>
 
       
-      <a class="index-excerpt " href="/2021/02/15/linux%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AFpython%E8%84%9A%E6%9C%AC/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/01/07/ubuntu%E7%BB%88%E7%AB%AFsource-not-found/" target="_self">
         <div>
-          sudo vim /etc/rc.local  在exit 0前面加入一行，如图所示，main.py是python文件名，main.log是运行后将要生成的日志文件  在centos7中，&#x2F;etc&#x2F;rc.d&#x2F;rc.local的权限被降低了，所以需要执行如下命令赋予其可执行权限 chmod +x /etc/rc.d/rc.local
+          错误shell脚本中含有source命令运行时提示 source: not found 运行 ls -l &#x2F;bin&#x2F;sh 后显示&#x2F;bin&#x2F;sh -&gt; dash这说明是用dash来进行解析的。 解决方案命令行执行：（需要root权限） dpkg-reconfigure dash  在界面中选择no再运行ls -l &#x2F;bin&#x2F;sh 后显
         </div>
       </a>
 
@@ -275,8 +259,346 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-02-15 21:25" pubdate>
-              2021-02-15
+            <time datetime="2022-01-07 21:27" pubdate>
+              2022-01-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%9D%82/" class="category-chain-item">杂</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/12/14/nodejs-cheerio%E7%88%AC%E8%99%AB/" target="_self">
+          <img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/12/image-3.png" srcset="/img/loading.gif" lazyload alt="nodejs cheerio爬虫">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/12/14/nodejs-cheerio%E7%88%AC%E8%99%AB/" target="_self">
+          nodejs cheerio爬虫
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2021/12/14/nodejs-cheerio%E7%88%AC%E8%99%AB/" target="_self">
+        <div>
+          需求获取美国各州疫情数据美国疫情（每小时更新） 各州新增新冠确诊案例、疫苗接种率、实时新闻、疫情地图 - 咕噜美国通 (Guruin.com)  本来用的数据来源不是这个网站，但原先的数据源不让跨域爬虫，http和request都没法获取HTML源码，只好换了一个数据源 request获取目标网页源代码12345678910111213var request = require(&#x27;req
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-12-14 19:29" pubdate>
+              2021-12-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%88%AC%E8%99%AB/" class="category-chain-item">爬虫</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/12/10/ubuntu%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEanaconda/" target="_self">
+          ubuntu普通用户安装配置anaconda
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/12/10/ubuntu%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEanaconda/" target="_self">
+        <div>
+          下载anaconda清华源地址 方法一：在服务器上使用wget命令 wget -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-2021.11-Linux-x86\_64.sh  方法二：下载到本地之后通过ftp工具上传到服务器（推荐使用FinalShell） 安装在下载目录执行下载的bash文件 bash Ana
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-12-10 14:48" pubdate>
+              2021-12-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件安装配置</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/25/seleniumbeautifulsoup4%E8%8E%B7%E5%8F%96%E7%BD%91%E9%A1%B5%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E7%9A%84%E6%95%B0%E6%8D%AE/" target="_self">
+          selenium+beautifulsoup4获取网页动态加载的数据
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/25/seleniumbeautifulsoup4%E8%8E%B7%E5%8F%96%E7%BD%91%E9%A1%B5%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E7%9A%84%E6%95%B0%E6%8D%AE/" target="_self">
+        <div>
+          问题想要获取一个网页中的表格数据，但是不提供下载  网页源码中能看到表格信息，但beautiful获取源码结果中没有表格  原因是表格数据从后台动态加载，beautifulsoup无法获取 使用selenium获取源码selenium是浏览器自动化工具，可以模拟人的操作，能够正常获取所有源码 为了程序运行更优雅，设置浏览器在后台静默运行 123456789101112131415161718192
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-25 16:28" pubdate>
+              2021-11-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%88%AC%E8%99%AB/" class="category-chain-item">爬虫</a>
+  
+  
+
+      </span>
+    
+  
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/10/wordcloud%E8%AF%8D%E4%BA%91/" target="_self">
+          wordcloud词云
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/11/10/wordcloud%E8%AF%8D%E4%BA%91/" target="_self">
+        <div>
+          加载停用词stopwords.txt是一个自定义的停用词列表，里面的词都会被过滤 123&quot;&quot;&quot;读取停用词&quot;&quot;&quot;with open(&quot;stopwords.txt&quot;, &quot;r&quot;, encoding=&quot;utf-8&quot;) as fp:    stopwords = set([s.rstrip
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-10 20:55" pubdate>
+              2021-11-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/25/%E7%BA%A2%E7%B1%B3ac2100%E5%9C%A8%E7%BA%BF%E5%88%B7breed%E8%80%81%E6%AF%9B%E5%AD%90%E5%9B%BA%E4%BB%B6/" target="_self">
+          红米AC2100在线刷breed+老毛子固件
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/25/%E7%BA%A2%E7%B1%B3ac2100%E5%9C%A8%E7%BA%BF%E5%88%B7breed%E8%80%81%E6%AF%9B%E5%AD%90%E5%9B%BA%E4%BB%B6/" target="_self">
+        <div>
+          纯记录，不放图了 刷breed登录路由器后台192.168.31.1，复制地址栏的stock  替换掉下面地址中的stock，直接在浏览器里输入并回车，返回一个code:0即成功 http://192.168.31.1/cgi-bin/luci/;stok=dcd5c3196a7d5e620bd382328bf36218/api/misystem/set\_config\_iotdev?bssid
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-25 10:16" pubdate>
+              2021-10-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%9D%82/" class="category-chain-item">杂</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/10/14/jupyter-matplotlib%E7%94%BB%E5%9B%BE%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" target="_self">
+          <img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/10/image-1-1024x416.png" srcset="/img/loading.gif" lazyload alt="jupyter matplotlib画图中文乱码的解决方案">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/14/jupyter-matplotlib%E7%94%BB%E5%9B%BE%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" target="_self">
+          jupyter matplotlib画图中文乱码的解决方案
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2021/10/14/jupyter-matplotlib%E7%94%BB%E5%9B%BE%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" target="_self">
+        <div>
+          在jupyter notebook中使用matplotlib画图时，中文字体显示乱码  看提示是缺少字体 查找matplotlib字体配置文件的目录import matplotlibmatplotlib.matplotlib_fname()  下载字体，放入对应目录中下载地址：https://xinhaojin.lanzoui.com/ibUMJvbo7ib  修改配置文件，启用新字体打开matp
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-14 11:19" pubdate>
+              2021-10-14
             </time>
           </div>
         
@@ -315,15 +637,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/02/14/python3-socket%E8%87%AA%E5%8A%A8%E9%87%8D%E8%BF%9E%E3%80%81%E5%88%A4%E6%96%AD%E8%BF%9E%E6%8E%A5%E6%98%AF%E5%90%A6%E6%96%AD%E5%BC%80/" target="_self">
-          python3 socket自动重连、心跳包
+        <a href="/2021/09/14/python%E4%B8%8Erpa%EF%BC%88%E8%BD%AC%E8%BD%BD%EF%BC%89/" target="_self">
+          python与RPA（转载）
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2021/02/14/python3-socket%E8%87%AA%E5%8A%A8%E9%87%8D%E8%BF%9E%E3%80%81%E5%88%A4%E6%96%AD%E8%BF%9E%E6%8E%A5%E6%98%AF%E5%90%A6%E6%96%AD%E5%BC%80/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/09/14/python%E4%B8%8Erpa%EF%BC%88%E8%BD%AC%E8%BD%BD%EF%BC%89/" target="_self">
         <div>
-          客户端异常处理服务端一般都不会有网络问题，而客户端有可能因为网络不稳定等原因会导致连接断开，因此有时需要设置客户端自动重连 客户端无法直接判断连接是否断开，如果连接断开，则继续操作会产生异常，在异常处理中进行重连即可 12345678910111213141516171819202122232425#!/usr/bin/python3# -*- coding: UTF-8 -*-import sy
+          RPA，是Robotic Process Automation的英文缩写，中文是机器人流程自动化，利用软件将重复性的工作自动化。基本目标是让人从重复性强的繁琐工作中解放出来去做更有意义更具创造性的工作。比如自动爬取网站内容、将十几个Excel中数据合并分析、定时发送邮件等都是简单的RPA应用的例子。 加上如今AI技术的快速发展，能极大地扩展软件自动化的应用范围，可以实现更复杂的功能。比如，可以通过
         </div>
       </a>
 
@@ -331,8 +653,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-02-14 20:20" pubdate>
-              2021-02-14
+            <time datetime="2021-09-14 10:26" pubdate>
+              2021-09-14
             </time>
           </div>
         
@@ -369,15 +691,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/02/03/python3%E7%94%A8subprocess%E8%BF%90%E8%A1%8Cshell%E5%91%BD%E4%BB%A4/" target="_self">
-          python3运行shell命令
+        <a href="/2021/09/02/%E4%BD%BF%E7%94%A8labelme%E5%88%B6%E4%BD%9Ccoco%E6%95%B0%E6%8D%AE%E9%9B%86/" target="_self">
+          使用labelme制作coco数据集
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2021/02/03/python3%E7%94%A8subprocess%E8%BF%90%E8%A1%8Cshell%E5%91%BD%E4%BB%A4/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/09/02/%E4%BD%BF%E7%94%A8labelme%E5%88%B6%E4%BD%9Ccoco%E6%95%B0%E6%8D%AE%E9%9B%86/" target="_self">
         <div>
-          1234567import subprocesssubprocess.run(&quot;xxx&quot;,shell=True)#或者import osos.system(&quot;xxx&quot;)
+          安装labelme直接使用pip安装 pip install labelme  运行命令行执行 labelme  打开后选择打开文件夹，选择自动保存  编辑，画矩形，然后打上标签  在图片目录下会保存json格式的标签信息 应用（以yolox为例）yolox的数据集readme中写明了需要的数据集格式  其中instancesxxx.json是很多json的集合，需要手动生成 现在要做的是，先手动
         </div>
       </a>
 
@@ -385,8 +707,68 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-02-03 17:05" pubdate>
-              2021-02-03
+            <time datetime="2021-09-02 15:07" pubdate>
+              2021-09-02
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" class="category-chain-item">目标检测</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/09/01/flask%E4%BD%BF%E7%94%A8https/" target="_self">
+          <img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/09/image.png" srcset="/img/loading.gif" lazyload alt="flask使用https">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/09/01/flask%E4%BD%BF%E7%94%A8https/" target="_self">
+          flask使用https
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2021/09/01/flask%E4%BD%BF%E7%94%A8https/" target="_self">
+        <div>
+          有一个https页面，需要加载http资源（后台是flask），出于安全原因被浏览器禁止了 既然只能用https，那就干脆把flask的所有请求都改成https 代码方面，只需要在app.run方法中增加ssl_context&#x3D;’adhoc’，意思是使用服务器的本地SSL证书 if __name__&#x3D;&#x3D;”__main__“:    app.run(host&#x3D;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-09-01 14:36" pubdate>
+              2021-09-01
             </time>
           </div>
         
@@ -402,410 +784,6 @@
       <span class="category-chain">
         
   <a href="/categories/python/" class="category-chain-item">python</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/01/18/android%E6%8A%8A%E5%9B%BE%E7%89%87url%E8%BD%AC%E4%B8%BAdrawable/" target="_self">
-          <img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/01/image-38.png" srcset="/img/loading.gif" lazyload alt="android把图片url转为drawable">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/01/18/android%E6%8A%8A%E5%9B%BE%E7%89%87url%E8%BD%AC%E4%B8%BAdrawable/" target="_self">
-          android把图片url转为drawable
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2021/01/18/android%E6%8A%8A%E5%9B%BE%E7%89%87url%E8%BD%AC%E4%B8%BAdrawable/" target="_self">
-        <div>
-          123InputStream in = (InputStream) new URL(&quot;http://xxx.jpg&quot;).openStream();final Drawable d = Drawable.createFromStream(in, &quot;src&quot;);in.close();  以下示例给linearlayout设置网络图片为背景 12345678910
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-18 15:00" pubdate>
-              2021-01-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%AE%89%E5%8D%93/" class="category-chain-item">安卓</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/01/17/android%E5%8E%BB%E6%8E%89actionbar/" target="_self">
-          android去掉ActionBar
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2021/01/17/android%E5%8E%BB%E6%8E%89actionbar/" target="_self">
-        <div>
-          只需要把style.xml中的默认主题修改一下即可 (style.xml在app-res-values目录下) &lt;style name=&quot;AppTheme&quot; parent=&quot;Theme.AppCompat.Light.DarkActionBar&quot;&gt;  修改成 &lt;style name=&quot;AppTheme&quot; parent=&
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-17 22:54" pubdate>
-              2021-01-17
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%AE%89%E5%8D%93/" class="category-chain-item">安卓</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/01/10/linux%E5%85%B3%E9%97%AD%E5%8D%A0%E7%94%A8%E7%AB%AF%E5%8F%A3%E7%9A%84%E8%BF%9B%E7%A8%8B/" target="_self">
-          linux关闭占用端口的进程
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2021/01/10/linux%E5%85%B3%E9%97%AD%E5%8D%A0%E7%94%A8%E7%AB%AF%E5%8F%A3%E7%9A%84%E8%BF%9B%E7%A8%8B/" target="_self">
-        <div>
-          [root@izuf64lmg25t75c8db3hxcz workspace\]# lsof -i:9999 COMMAND   PID USER   FD   TYPE  DEVICE SIZE/OFF NODE NAME python3 11902 root    3u  IPv4 9435173      0t0  TCP *:distinct (LISTEN) python3 11902
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-10 21:22" pubdate>
-              2021-01-10
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/linux/" class="category-chain-item">linux</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/01/08/android%E8%AE%BE%E7%BD%AE%E6%A8%AA%E5%B1%8F/" target="_self">
-          <img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/04/image-24.png" srcset="/img/loading.gif" lazyload alt="Android设置横屏/避免旋转屏幕导致avtivity重载">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/01/08/android%E8%AE%BE%E7%BD%AE%E6%A8%AA%E5%B1%8F/" target="_self">
-          Android设置横屏/避免旋转屏幕导致avtivity重载
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2021/01/08/android%E8%AE%BE%E7%BD%AE%E6%A8%AA%E5%B1%8F/" target="_self">
-        <div>
-          在AndroidManifest.xml的activity标签中添加如下片段： android:screenOrientation&#x3D;”portrait” 横屏改成android:screenOrientation&#x3D;”landscape” 另一个问题，有时把程序切换到后台或旋转屏幕使布局改变时，会重载onCreate方法导致activity重载，避免这种情况的方法是在Androi
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-08 20:13" pubdate>
-              2021-01-08
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%AE%89%E5%8D%93/" class="category-chain-item">安卓</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/01/06/pip%E6%8D%A2%E6%BA%90/" target="_self">
-          pip换源、设置多个源并添加信任
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2021/01/06/pip%E6%8D%A2%E6%BA%90/" target="_self">
-        <div>
-          linuxcd ~ # 进入家目录   mkdir .pip # 新建.pip隐藏文件夹   cd .pip # 进入.pip文件夹   touch pip.conf # 新建pip.conf文件   vim pip.conf # 用vim编辑pip.conf文件  [global] index-url=https://mirror.baidu.com/pypi/simple extra-inde
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-06 23:48" pubdate>
-              2021-01-06
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E8%BD%AF%E4%BB%B6%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件环境配置</a>
-  
-  
-
-      </span>
-    
-  
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/01/06/chrome%E6%8F%92%E4%BB%B6switchyomega%E9%85%8D%E7%BD%AE/" target="_self">
-          <img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/01/image-13-1024x467.png" srcset="/img/loading.gif" lazyload alt="Chrome插件SwitchyOmega配置">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/01/06/chrome%E6%8F%92%E4%BB%B6switchyomega%E9%85%8D%E7%BD%AE/" target="_self">
-          Chrome插件SwitchyOmega配置
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2021/01/06/chrome%E6%8F%92%E4%BB%B6switchyomega%E9%85%8D%E7%BD%AE/" target="_self">
-        <div>
-          到插件选项界面，新建情景模式，选择代理服务器 选择socket5代理，填写正确的代理端口 端口号可以在代理客户端中查看 选择应用选项 配置auto switch,默认选择直连，规则列表规则对应点情景模式为刚新建的那个情景模式，规则列表格式选择AutoProxy,规则列表网址GitHub - gfwlist&#x2F;gfwlist: The one and only one gfwlist her
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-06 13:42" pubdate>
-              2021-01-06
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E8%BD%AF%E4%BB%B6%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件环境配置</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/01/04/cloudflareip%E4%BC%98%E9%80%89cdn%E5%8A%A0%E9%80%9F/" target="_self">
-          <img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/01/image-2.png" srcset="/img/loading.gif" lazyload alt="CloudFlareIP优选CDN加速">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/01/04/cloudflareip%E4%BC%98%E9%80%89cdn%E5%8A%A0%E9%80%9F/" target="_self">
-          CloudFlareIP优选CDN加速
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2021/01/04/cloudflareip%E4%BC%98%E9%80%89cdn%E5%8A%A0%E9%80%9F/" target="_self">
-        <div>
-          cloudflare代理 ping域名结果都是cloudflare节点就说明代理成功了，延迟高速度不一定慢  IP优选下载地址https://github.com/badafans/better-cloudflare-ip,点击右侧release选择版本下载 双击打开  输入期望带宽，建议小一点，否则可能选不到合适的IP  等待结果，第一个IP即是  新的IP优选工具https://github.
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-04 18:48" pubdate>
-              2021-01-04
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E8%BD%AF%E4%BB%B6%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件环境配置</a>
   
   
 
@@ -825,7 +803,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/4/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/#board">6</a><a class="page-number" href="/page/7/#board">7</a><a class="extend next" rel="next" href="/page/6/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/4/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/#board">6</a><a class="page-number" href="/page/7/#board">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/#board">14</a><a class="extend next" rel="next" href="/page/6/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
@@ -874,10 +852,30 @@
   <footer>
     <div class="footer-inner">
   
-    <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-    </div>
   
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+        次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+        次
+      </span>
+    
+    
+  
+</div>
+
   
   
   
@@ -931,6 +929,8 @@
 
 
   <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 

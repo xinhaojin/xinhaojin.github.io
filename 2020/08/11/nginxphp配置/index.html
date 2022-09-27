@@ -26,10 +26,12 @@
 <meta property="og:description" content="在nginx.conf中添加一个serverserver &amp;#123;     listen 999;     server\_name blog.xinhaojin.top;     location ~ \\.php?.\*$ &amp;#123;         root &#x2F;www&#x2F;wwwroot&#x2F;blog.xinhaojin.top;#php文件目录         fastcgi\_pass u">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-08-11T08:58:42.000Z">
-<meta property="article:modified_time" content="2022-09-26T13:47:41.961Z">
+<meta property="article:modified_time" content="2022-09-27T08:26:43.189Z">
 <meta property="article:author" content="xinhaojin">
 <meta name="twitter:card" content="summary_large_image">
   
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
   
   
   <title>Nginx+PHP配置 - xinhaojin&#39;s blog</title>
@@ -169,18 +171,6 @@
               <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                标签
               </a>
             </li>
           
@@ -350,7 +340,7 @@ fastcgi\_pass unix:/tmp/php-fpm.sock;
     
       <span class="category-chain">
         
-  <a href="/categories/%E8%BD%AF%E4%BB%B6%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件环境配置</a>
+  <a href="/categories/%E6%9D%82/" class="category-chain-item">杂</a>
   
   
 
@@ -525,10 +515,30 @@ fastcgi\_pass unix:/tmp/php-fpm.sock;
   <footer>
     <div class="footer-inner">
   
-    <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-    </div>
   
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+        次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+        次
+      </span>
+    
+    
+  
+</div>
+
   
   
   
@@ -675,6 +685,8 @@ fastcgi\_pass unix:/tmp/php-fpm.sock;
   <script>Fluid.plugins.imageCaption();</script>
 
   <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 

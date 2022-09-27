@@ -26,10 +26,12 @@
 <meta property="og:description" content="客户端异常处理服务端一般都不会有网络问题，而客户端有可能因为网络不稳定等原因会导致连接断开，因此有时需要设置客户端自动重连 客户端无法直接判断连接是否断开，如果连接断开，则继续操作会产生异常，在异常处理中进行重连即可 12345678910111213141516171819202122232425#!&#x2F;usr&#x2F;bin&#x2F;python3# -*- coding: UTF-8 -*-import sy">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-02-14T12:20:44.000Z">
-<meta property="article:modified_time" content="2022-09-26T14:00:24.165Z">
+<meta property="article:modified_time" content="2022-09-27T08:34:42.992Z">
 <meta property="article:author" content="xinhaojin">
 <meta name="twitter:card" content="summary_large_image">
   
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
   
   
   <title>python3 socket自动重连、心跳包 - xinhaojin&#39;s blog</title>
@@ -169,18 +171,6 @@
               <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                标签
               </a>
             </li>
           
@@ -405,8 +395,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/02/03/python3%E7%94%A8subprocess%E8%BF%90%E8%A1%8Cshell%E5%91%BD%E4%BB%A4/" title="python3运行shell命令">
-                        <span class="hidden-mobile">python3运行shell命令</span>
+                      <a href="/2021/02/05/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E6%B3%95/" title="树莓派安装中文输入法">
+                        <span class="hidden-mobile">树莓派安装中文输入法</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -505,10 +495,30 @@
   <footer>
     <div class="footer-inner">
   
-    <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-    </div>
   
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+        次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+        次
+      </span>
+    
+    
+  
+</div>
+
   
   
   
@@ -655,6 +665,8 @@
   <script>Fluid.plugins.imageCaption();</script>
 
   <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
