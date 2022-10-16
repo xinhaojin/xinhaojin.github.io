@@ -18,12 +18,12 @@
   <meta name="author" content="xinhaojin">
   <meta name="keywords" content="">
   
-    <meta name="description" content="制作数据集请参考上一篇使用labelme打标签并制作voc数据集 labelme标注图片并制作voc数据集 – 张三的流水账 (xinhaojin.top) 上文中最后得到了几个文件夹  但这不能直接用，还需要划分训练集和测试集，可以手动划分，或者写段代码随机划分，最后数据集目录结构如下 VOC2007    Annotations    JPEGImages    ImageSets">
+    <meta name="description" content="制作数据集请参考上一篇使用labelme打标签并制作voc数据集 labelme标注图片并制作voc数据集 上文中最后得到了几个文件夹  但这不能直接用，还需要划分训练集和测试集，可以手动划分，或者写段代码随机划分，最后数据集目录结构如下 VOC2007    Annotations    JPEGImages    ImageSets        Main            test.tx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="yolox训练voc数据集">
 <meta property="og:url" content="https://xinhaojin.github.io/2022/03/01/yolox%E8%AE%AD%E7%BB%83voc%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
-<meta property="og:description" content="制作数据集请参考上一篇使用labelme打标签并制作voc数据集 labelme标注图片并制作voc数据集 – 张三的流水账 (xinhaojin.top) 上文中最后得到了几个文件夹  但这不能直接用，还需要划分训练集和测试集，可以手动划分，或者写段代码随机划分，最后数据集目录结构如下 VOC2007    Annotations    JPEGImages    ImageSets">
+<meta property="og:description" content="制作数据集请参考上一篇使用labelme打标签并制作voc数据集 labelme标注图片并制作voc数据集 上文中最后得到了几个文件夹  但这不能直接用，还需要划分训练集和测试集，可以手动划分，或者写段代码随机划分，最后数据集目录结构如下 VOC2007    Annotations    JPEGImages    ImageSets        Main            test.tx">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/03/image.png">
 <meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/03/image-1.png">
@@ -40,7 +40,7 @@
 <meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/03/image-15.png">
 <meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/03/00001.png">
 <meta property="article:published_time" content="2022-03-01T10:57:32.000Z">
-<meta property="article:modified_time" content="2022-09-27T06:15:36.703Z">
+<meta property="article:modified_time" content="2022-10-13T01:58:20.543Z">
 <meta property="article:author" content="xinhaojin">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/03/image.png">
@@ -262,7 +262,7 @@
         
         
         
-          22 分钟
+          21 分钟
         
       </span>
     
@@ -306,7 +306,7 @@
               <div class="markdown-body">
                 
                 <h2 id="制作数据集"><a href="#制作数据集" class="headerlink" title="制作数据集"></a>制作数据集</h2><p>请参考上一篇使用labelme打标签并制作voc数据集</p>
-<p><a target="_blank" rel="noopener" href="https://blog.xinhaojin.top/2022/02/26/labelme%e6%a0%87%e6%b3%a8%e5%9b%be%e7%89%87%e5%b9%b6%e5%88%b6%e4%bd%9cvoc%e6%95%b0%e6%8d%ae%e9%9b%86/">labelme标注图片并制作voc数据集 – 张三的流水账 (xinhaojin.top)</a></p>
+<p><a href="https://xinhaojin.github.io/2022/02/26/labelme%e6%a0%87%e6%b3%a8%e5%9b%be%e7%89%87%e5%b9%b6%e5%88%b6%e4%bd%9cvoc%e6%95%b0%e6%8d%ae%e9%9b%86/">labelme标注图片并制作voc数据集</a></p>
 <p>上文中最后得到了几个文件夹</p>
 <p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/03/image.png" srcset="/img/loading.gif" lazyload></p>
 <p>但这不能直接用，还需要划分训练集和测试集，可以手动划分，或者写段代码随机划分，最后数据集目录结构如下</p>
