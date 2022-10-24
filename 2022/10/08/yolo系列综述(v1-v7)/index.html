@@ -56,7 +56,7 @@
 <meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/46.png">
 <meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/45.png">
 <meta property="article:published_time" content="2022-10-08T12:58:00.000Z">
-<meta property="article:modified_time" content="2022-10-16T10:46:37.780Z">
+<meta property="article:modified_time" content="2022-10-21T00:45:41.776Z">
 <meta property="article:author" content="xinhaojin">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/4.png">
@@ -404,9 +404,9 @@
 <p>那么Yolox-Darknet53就没有吗？</p>
 <p>其实并不然，这里只是巧妙地将前面Backbone中，下采样的大小信息引入进来。<br><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/41.png" srcset="/img/loading.gif" lazyload><br>比如上图中，最上面的分支，下采样了5次，2的5次方为32。</p>
 <p>并且Decoupled Head的输出，为20*20*85大小。<br><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/42.png" srcset="/img/loading.gif" lazyload><br>因此如上图所示：</p>
-<p>最后8400个预测框中，其中有400个框(20*20)，所对应锚框的大小，为32*32。</p>
-<p>同样的原理，中间的分支，最后有1600个预测框(40<em>40)，所对应锚框的大小，为16</em>16。</p>
-<p>最下面的分支，最后有6400个预测框(80<em>80)，所对应锚框的大小，为8</em>8。</p>
+<p>最后8400个预测框中，其中有400个框(20*20)，所对应锚框的大小，为32 * 32。</p>
+<p>同样的原理，中间的分支，最后有1600个预测框(40*40)，所对应锚框的大小，为16 * 16。</p>
+<p>最下面的分支，最后有6400个预测框(80*80)，所对应锚框的大小，为8 * 8。</p>
 <p>当有了8400个预测框的信息，每张图片也有标注的目标框的信息。<br>下一步需要做的，就是将8400个锚框，和图片上所有的目标框进行关联，挑选出正样本锚框。</p>
 <h3 id="标签分配"><a href="#标签分配" class="headerlink" title="标签分配"></a>标签分配</h3><p>当有了8400个Anchor锚框后，这里的每一个锚框，都对应85*8400特征向量中的预测框信息。</p>
 <p>不过需要知道，这些预测框只有少部分是正样本，绝大多数是负样本。</p>
@@ -534,6 +534,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2022/10/24/yolox%E6%B7%BB%E5%8A%A0%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/" title="yolox添加注意力机制">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">yolox添加注意力机制</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
