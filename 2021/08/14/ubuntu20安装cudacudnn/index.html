@@ -37,7 +37,7 @@
 <meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/08/2021-08-14-16-56-54%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png">
 <meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/08/2021-08-14-17-01-39%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png">
 <meta property="article:published_time" content="2021-08-14T09:31:02.000Z">
-<meta property="article:modified_time" content="2022-09-27T08:28:00.316Z">
+<meta property="article:modified_time" content="2022-10-25T02:42:48.795Z">
 <meta property="article:author" content="xinhaojin">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/08/2021-08-14-15-39-14%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png">
@@ -248,7 +248,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          1.5k 字
         
       </span>
     
@@ -259,7 +259,7 @@
         
         
         
-          11 分钟
+          13 分钟
         
       </span>
     
@@ -344,7 +344,7 @@ export LD_LIBRARY_PATH=/usr/local/cuda-11.4/lib64$&#123;LD_LIBRARY_PATH:+:$&#123
 <p>至此，cuda安装完成，输入nvcc -V 查看是否成功</p>
 <p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/08/2021-08-14-16-56-54%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="安装cudnn"><a href="#安装cudnn" class="headerlink" title="安装cudnn"></a>安装cudnn</h4><p><a target="_blank" rel="noopener" href="https://developer.nvidia.com/rdp/cudnn-download">https://developer.nvidia.com/rdp/cudnn-download</a></p>
-<p>需要登录</p>
+<p>需要登录(比较麻烦，建议看最后一步的阿里云镜像源)</p>
 <p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/08/2021-08-14-17-01-39%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" srcset="/img/loading.gif" lazyload></p>
 <p>解压后进入解压目录，将cuda&#x2F;include&#x2F;cudnn.h文件复制到usr&#x2F;local&#x2F;cuda&#x2F;include文件夹，将cuda&#x2F;lib64&#x2F;下所有文件复制到&#x2F;usr&#x2F;local&#x2F;cuda&#x2F;lib64文件夹中,再添加读取权限</p>
 <p>可以在解压后的cudnn-11.4…..&#x2F;cuda目录下执行</p>
@@ -354,6 +354,12 @@ sudo chmod a+r /usr/local/cuda/lib64/libcudnn*
 sudo chmod a+r /usr/local/cuda/include/cudnn.h
 </code></pre>
 <p>至此，cudnn安装完成</p>
+<h4 id="阿里云镜像deb安装方法"><a href="#阿里云镜像deb安装方法" class="headerlink" title="阿里云镜像deb安装方法"></a>阿里云镜像deb安装方法</h4><p><a target="_blank" rel="noopener" href="https://mirrors.aliyun.com/nvidia-cuda/">https://mirrors.aliyun.com/nvidia-cuda/</a></p>
+<p>选择对应的操作系统版本，查找cuda版本对应的cudnn，dev和非dev两个版本，都需要下载<br><a target="_blank" rel="noopener" href="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221025/xxx.4tdndxgkm1k0.png"></a><br>安装命令</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">sudo</span> dpkg -i libcudnn8-dev_<span class="hljs-number">8.2.4.15</span>-<span class="hljs-number">1</span>+cuda11.<span class="hljs-number">4</span>_amd64.deb<br><span class="hljs-attribute">sudo</span> dpkg -i libcudnn8_<span class="hljs-number">8.2.4.15</span>-<span class="hljs-number">1</span>+cuda11.<span class="hljs-number">4</span>_amd64.deb<br></code></pre></td></tr></table></figure>
+<p>检查是否安装成功，有以上两个的安装信息即可</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 1c">sudo dpkg -l <span class="hljs-string">| grep cudnn</span><br></code></pre></td></tr></table></figure>
+
 
                 
               </div>
