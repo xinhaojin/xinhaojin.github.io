@@ -241,6 +241,174 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/03/29/jupyter-notebook%E9%BB%98%E8%AE%A4%E7%9B%AE%E5%BD%95%E4%BF%AE%E6%94%B9/" target="_self">
+          Jupyter notebook默认目录修改
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/03/29/jupyter-notebook%E9%BB%98%E8%AE%A4%E7%9B%AE%E5%BD%95%E4%BF%AE%E6%94%B9/" target="_self">
+        <div>
+          打开环境终端，输入 jupyter notebook --generate-config  生成配置文件  根据提示路径打开配置文件，搜索dir快速定位，修改默认目录，文件夹需自己新建
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-03-29 10:59" pubdate>
+              2021-03-29
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/03/05/ssh%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0%E5%85%AC%E7%BD%91%E8%AE%BF%E9%97%AE%E5%86%85%E7%BD%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" target="_self">
+          ssh反向代理实现内网穿透
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/03/05/ssh%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AE%9E%E7%8E%B0%E5%85%AC%E7%BD%91%E8%AE%BF%E9%97%AE%E5%86%85%E7%BD%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" target="_self">
+        <div>
+          环境说明   服务器 IP 用户名 备注    A 192.168.3.241 pi 树莓派4b，Raspbian GNU&#x2F;Linux 10，处于内网，需要被远程访问   B 101.133.xxx.xxx root 阿里云服务器，centos7，有公网IP   配置方法在B上执行 vi /etc/ssh/sshd_config  找到Gatewayports,取消注释，改为yes  保
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-03-05 15:42" pubdate>
+              2021-03-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%9D%82/" class="category-chain-item">杂</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/02/15/linux%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AFpython%E8%84%9A%E6%9C%AC/" target="_self">
+          <img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/01/image-51.png" srcset="/img/loading.gif" lazyload alt="树莓派/centos开机自启python脚本">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/15/linux%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AFpython%E8%84%9A%E6%9C%AC/" target="_self">
+          树莓派/centos开机自启python脚本
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2021/02/15/linux%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AFpython%E8%84%9A%E6%9C%AC/" target="_self">
+        <div>
+          sudo vim /etc/rc.local  在exit 0前面加入一行，如图所示，main.py是python文件名，main.log是运行后将要生成的日志文件  在centos7中，&#x2F;etc&#x2F;rc.d&#x2F;rc.local的权限被降低了，所以需要执行如下命令赋予其可执行权限 chmod +x /etc/rc.d/rc.local
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-15 21:25" pubdate>
+              2021-02-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%9D%82/" class="category-chain-item">杂</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/02/14/python3-socket%E8%87%AA%E5%8A%A8%E9%87%8D%E8%BF%9E%E3%80%81%E5%88%A4%E6%96%AD%E8%BF%9E%E6%8E%A5%E6%98%AF%E5%90%A6%E6%96%AD%E5%BC%80/" target="_self">
           python3 socket自动重连、心跳包
         </a>
@@ -604,174 +772,6 @@
       <span class="category-chain">
         
   <a href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/" class="category-chain-item">树莓派</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/01/11/%E6%A0%91%E8%8E%93%E6%B4%BE4b%E6%8E%A5usb%E6%91%84%E5%83%8F%E5%A4%B4/" target="_self">
-          树莓派4B接USB摄像头发送视频流
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2021/01/11/%E6%A0%91%E8%8E%93%E6%B4%BE4b%E6%8E%A5usb%E6%91%84%E5%83%8F%E5%A4%B4/" target="_self">
-        <div>
-          添加摄像头设备插拔摄像头分别执行一次以下命令 pi@raspberrypi:~ $ lsusb    或者 pi@raspberrypi:~ $ ls /dev  插上USB摄像头有video0即可  不插的情况  安装MJPG-Streamer依次通过以下命令安装 pi@raspberrypi:~ $ sudo apt-get install cmake libjpeg8-dev pi@rasp
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-11 18:46" pubdate>
-              2021-01-11
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/" class="category-chain-item">树莓派</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/01/10/linux%E5%85%B3%E9%97%AD%E5%8D%A0%E7%94%A8%E7%AB%AF%E5%8F%A3%E7%9A%84%E8%BF%9B%E7%A8%8B/" target="_self">
-          linux关闭占用端口的进程
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2021/01/10/linux%E5%85%B3%E9%97%AD%E5%8D%A0%E7%94%A8%E7%AB%AF%E5%8F%A3%E7%9A%84%E8%BF%9B%E7%A8%8B/" target="_self">
-        <div>
-          [root@izuf64lmg25t75c8db3hxcz workspace\]# lsof -i:9999 COMMAND   PID USER   FD   TYPE  DEVICE SIZE/OFF NODE NAME python3 11902 root    3u  IPv4 9435173      0t0  TCP *:distinct (LISTEN) python3 11902
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-10 21:22" pubdate>
-              2021-01-10
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%9D%82/" class="category-chain-item">杂</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/01/08/android%E8%AE%BE%E7%BD%AE%E6%A8%AA%E5%B1%8F/" target="_self">
-          <img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/04/image-24.png" srcset="/img/loading.gif" lazyload alt="Android设置横屏/避免旋转屏幕导致avtivity重载">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/01/08/android%E8%AE%BE%E7%BD%AE%E6%A8%AA%E5%B1%8F/" target="_self">
-          Android设置横屏/避免旋转屏幕导致avtivity重载
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2021/01/08/android%E8%AE%BE%E7%BD%AE%E6%A8%AA%E5%B1%8F/" target="_self">
-        <div>
-          在AndroidManifest.xml的activity标签中添加如下片段： android:screenOrientation&#x3D;”portrait” 横屏改成android:screenOrientation&#x3D;”landscape” 另一个问题，有时把程序切换到后台或旋转屏幕使布局改变时，会重载onCreate方法导致activity重载，避免这种情况的方法是在Androi
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-08 20:13" pubdate>
-              2021-01-08
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%AE%89%E5%8D%93/" class="category-chain-item">安卓</a>
   
   
 
