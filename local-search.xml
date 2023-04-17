@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>vscode SSH无法建立连接问题</title>
+    <link href="/2023/04/14/vscode%20SSH%E6%97%A0%E6%B3%95%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E9%97%AE%E9%A2%98/"/>
+    <url>/2023/04/14/vscode%20SSH%E6%97%A0%E6%B3%95%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E9%97%AE%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>其他SSH工具能连上，vscode的RemoteSSH插件显示无法建立连接</p><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>在<code>C:\Users\yourname\.ssh</code>下有一个known_hosts文件，使用记事本打开，删除你要连接的IP相关的所有内容即可<br><br><br><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20230414/192903.6tmyxirogzs0.webp" alt="192903"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>软件环境配置</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>VOC格式数据集转YOLO格式</title>
     <link href="/2023/04/14/VOC%E6%A0%BC%E5%BC%8F%E6%95%B0%E6%8D%AE%E9%9B%86%E8%BD%ACYOLO%E6%A0%BC%E5%BC%8F/"/>
     <url>/2023/04/14/VOC%E6%A0%BC%E5%BC%8F%E6%95%B0%E6%8D%AE%E9%9B%86%E8%BD%ACYOLO%E6%A0%BC%E5%BC%8F/</url>
