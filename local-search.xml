@@ -1010,11 +1010,11 @@
   
   
   <entry>
-    <title>linux配置git</title>
+    <title>git配置</title>
     <link href="/2022/02/25/linux%E9%85%8D%E7%BD%AEgit/"/>
     <url>/2022/02/25/linux%E9%85%8D%E7%BD%AEgit/</url>
     
-    <content type="html"><![CDATA[<pre><code class="hljs">git config --global user.name &quot;yourname&quot;git config --global user.email &quot;youremail&quot;git config --global gui.encoding utf-8ssh-add ~/.ssh/id\_rsa</code></pre><p>找到用户目录下的.ssh文件夹下的id_rsa.pub，复制内容到github设置中添加sshkey</p><p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/02/image-5-1024x442.png"></p>]]></content>
+    <content type="html"><![CDATA[<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">git config --global user.name &quot;yourname&quot;<br>git config --global user.email &quot;youremail&quot;<br>ssh-keygen -t rsa -C &quot;youremail&quot;<br></code></pre></td></tr></table></figure><p>找到用户目录下的.ssh文件夹下的id_rsa.pub，复制内容到github设置中添加sshkey<br><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/02/image-5-1024x442.png"></p>]]></content>
     
     
     <categories>
