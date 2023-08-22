@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title></title>
+    <link href="/2023/08/22/npm%E6%8D%A2%E6%BA%90/"/>
+    <url>/2023/08/22/npm%E6%8D%A2%E6%BA%90/</url>
+    
+    <content type="html"><![CDATA[<p>title: npm换源<br>tags: []<br>categories:</p><ul><li><ul><li>软件安装配置<br>date: 2023-03-21 14:07:56</li></ul></li></ul><h1 id="npm换源"><a href="#npm换源" class="headerlink" title="npm换源"></a>npm换源</h1><h2 id="查看当前源"><a href="#查看当前源" class="headerlink" title="查看当前源"></a>查看当前源</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">npm config get registry<br></code></pre></td></tr></table></figure><p>默认是指向 <a href="https://registry.npmjs.org/%EF%BC%8C%E4%B9%9F%E5%B0%B1%E6%98%AF%E5%AE%98%E6%96%B9%E6%BA%90%E3%80%82">https://registry.npmjs.org/，也就是官方源。</a></p><h2 id="更换源"><a href="#更换源" class="headerlink" title="更换源"></a>更换源</h2><p>新淘宝源，一些文章还是写着旧的淘宝 NPM 镜像 registry.npm.taobao.org，但它已于 2022 年 05 月 31 日 废弃，读者需要更换为新的 registry.npmmirror.com 源。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">npm config set registry https://registry.npmmirror.com/<br></code></pre></td></tr></table></figure><p>这个配置会持久化保存到 ~&#x2F;.npmrc 文件中，你也可以通过手动改该文件来修改配置。</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>SpringBoot+Redis长链接转短链接+Docker部署</title>
     <link href="/2023/08/21/SpringBoot+Redis%E9%95%BF%E9%93%BE%E6%8E%A5%E8%BD%AC%E7%9F%AD%E9%93%BE%E6%8E%A5+Docker%E9%83%A8%E7%BD%B2%20/"/>
     <url>/2023/08/21/SpringBoot+Redis%E9%95%BF%E9%93%BE%E6%8E%A5%E8%BD%AC%E7%9F%AD%E9%93%BE%E6%8E%A5+Docker%E9%83%A8%E7%BD%B2%20/</url>
