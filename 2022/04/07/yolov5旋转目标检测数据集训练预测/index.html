@@ -25,25 +25,25 @@
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
 <meta property="og:description" content="前言目标检测模型一般都是用无角度的矩形框标注的，但有些时候我们的目标在图像中是有角度的，我们希望框出来的目标矩形框也是有角度的贴合目标的，比如下面这种情况 （虽然训练结果不好，可能是数据集数量少，或者对这种类型的数据集效果不理想之类的，但还是记录一下过程）  yolov5本身是一个轻量级的目标检测模型。不支持旋转目标矩形框。 此次用到的是牛人改写的yolov5-obb hukaixuan19970">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-4.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-5.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-6.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-7.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-8-1024x569.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-9.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-4.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-10.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-11.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-12.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-13-1024x296.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-14.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-15-1024x310.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-17.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/04/image-4.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/04/image-5.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/04/image-6.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/04/image-7.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/04/image-8-1024x569.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/04/image-9.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/04/image-4.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/04/image-10.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/04/image-11.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/04/image-12.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/04/image-13-1024x296.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/04/image-14.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/04/image-15-1024x310.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/04/image-17.png">
 <meta property="article:published_time" content="2022-04-07T16:54:24.000Z">
-<meta property="article:modified_time" content="2023-07-04T10:48:16.642Z">
+<meta property="article:modified_time" content="2024-01-16T08:12:36.559Z">
 <meta property="article:author" content="xinhaojin">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-4.png">
+<meta name="twitter:image" content="https://xinhaojin.github.io/imgs-host/past/2022/04/image-4.png">
   
   
   
@@ -307,18 +307,18 @@
                 
                 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>目标检测模型一般都是用无角度的矩形框标注的，但有些时候我们的目标在图像中是有角度的，我们希望框出来的目标矩形框也是有角度的贴合目标的，比如下面这种情况</p>
 <p>（虽然训练结果不好，可能是数据集数量少，或者对这种类型的数据集效果不理想之类的，但还是记录一下过程）</p>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-4.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/04/image-4.png" srcset="/img/loading.gif" lazyload></p>
 <p>yolov5本身是一个轻量级的目标检测模型。不支持旋转目标矩形框。</p>
 <p>此次用到的是牛人改写的yolov5-obb</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/hukaixuan19970627/yolov5_obb">hukaixuan19970627&#x2F;yolov5_obb: yolov5 + csl_label.(Oriented Object Detection)（Rotation Detection）（Rotated BBox）基于yolov5的旋转目标检测 (github.com)</a></p>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-5.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/04/image-5.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="项目环境准备"><a href="#项目环境准备" class="headerlink" title="项目环境准备"></a>项目环境准备</h2><p>git clone <a target="_blank" rel="noopener" href="https://github.com/hukaixuan19970627/yolov5_obb.git">https://github.com/hukaixuan19970627/yolov5_obb.git</a><br>cd yolov5_obb<br>pip install -r requirements.txt<br>cd utils&#x2F;nms_rotated<br>python setup.py develop  #or “pip install -v -e .”</p>
 <p>其中最后一步可能会出错，属于CUDA环境问题，如果torch.cuda.is_available()&#x3D;&#x3D;True的话，那应该是cuda toolkit的问题，CUDA_HOME环境变量之类的问题</p>
 <h2 id="数据集格式"><a href="#数据集格式" class="headerlink" title="数据集格式"></a>数据集格式</h2><p>看一下dataset&#x2F;datasetdemo下的示例</p>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-6.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-7.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/04/image-6.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/04/image-7.png" srcset="/img/loading.gif" lazyload></p>
 <p>结合介绍看一下</p>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-8-1024x569.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/04/image-8-1024x569.png" srcset="/img/loading.gif" lazyload></p>
 <p>可以看出，图片标签的格式是倾斜矩形框的四个点，类别名，是否difficult</p>
 <h2 id="用rolabelimg给图片打标签"><a href="#用rolabelimg给图片打标签" class="headerlink" title="用rolabelimg给图片打标签"></a>用rolabelimg给图片打标签</h2><p><a href="https://xinhaojin.github.io/2022/04/05/%e6%97%8b%e8%bd%ac%e7%9b%ae%e6%a0%87%e6%a3%80%e6%b5%8b%e6%95%b0%e6%8d%ae%e9%9b%86%e5%88%b6%e4%bd%9c-rolabelimg%e7%9a%84%e5%ae%89%e8%a3%85%e5%92%8c%e4%bd%bf%e7%94%a8/">旋转目标检测数据集制作-rolabelimg的安装和使用 – Xinhao Jin</a></p>
 <p>标注完之后得到的是xml格式的标注文件</p>
@@ -326,7 +326,7 @@
 <p>找了一下好像项目中没有用于数据集转换的代码，可能作者觉得这很简单。。。</p>
 <h2 id="转换数据集格式"><a href="#转换数据集格式" class="headerlink" title="转换数据集格式"></a>转换数据集格式</h2><p>想想应该也不是很难，自己动手，丰衣足食，首先把xml中的robndbox标签内容读出来，这时候才发现，怎么不是四个点的坐标？</p>
 <p>而是中心点坐标，髋，高，旋转角度？？</p>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-9.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/04/image-9.png" srcset="/img/loading.gif" lazyload></p>
 <p>坐标转换函数如下</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">rotate</span>(<span class="hljs-params">cx, cy, w, h, angle</span>):<br>    <span class="hljs-comment"># 用于常规坐标时，angle是顺时针旋转角度</span><br>    <span class="hljs-comment"># 用于图像坐标时，angle是逆时针旋转角度</span><br>    <span class="hljs-comment"># math.cos(angle)这里的angle单位是rad</span><br>    <span class="hljs-comment"># angle = angle/180*math.pi  单位转换</span><br>    angle=-angle<span class="hljs-comment">#这里是图像坐标</span><br>    points = [[cx-w/<span class="hljs-number">2</span>, cy-h/<span class="hljs-number">2</span>], [cx+w/<span class="hljs-number">2</span>, cy-h/<span class="hljs-number">2</span>],<br>              [cx+w/<span class="hljs-number">2</span>, cy+h/<span class="hljs-number">2</span>], [cx-w/<span class="hljs-number">2</span>, cy+h/<span class="hljs-number">2</span>]]<br>    newpoints = []<br>    <span class="hljs-keyword">if</span> angle &lt; <span class="hljs-number">0</span>:  <span class="hljs-comment"># 逆时针</span><br>        angle = -angle<br>        <span class="hljs-keyword">for</span> point <span class="hljs-keyword">in</span> points:<br>            x, y = point<br>            newx = <span class="hljs-built_in">round</span>((x-cx)*math.cos(angle) - (y-cy)*math.sin(angle) + cx,<span class="hljs-number">1</span>)<br>            newy = <span class="hljs-built_in">round</span>((x-cx)*math.sin(angle) + (y-cy)*math.cos(angle) + cy,<span class="hljs-number">1</span>)<br>            newpoints.append([newx, newy])<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">for</span> point <span class="hljs-keyword">in</span> points:<br>            x, y = point<br>            newx = <span class="hljs-built_in">round</span>((x-cx)*math.cos(angle) + (y-cy)*math.sin(angle) + cx,<span class="hljs-number">1</span>)<br>            newy = <span class="hljs-built_in">round</span>((y-cy)*math.cos(angle) - (x-cx)*math.sin(angle) + cy,<span class="hljs-number">1</span>)<br>            newpoints.append([newx, newy])<br>    <span class="hljs-keyword">return</span> newpoints<br></code></pre></td></tr></table></figure>
 <p>从xml到目标txt，完整代码如下：</p>
@@ -335,10 +335,10 @@
 <p>为了检验坐标转换是否正确，加入了一段画图代码</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs py">newpoints=np.array(newpoints)<br>newpoints= newpoints.astype(<span class="hljs-built_in">int</span>)<br>img=cv2.imread(os.path.join(<span class="hljs-string">&#x27;test&#x27;</span>,<span class="hljs-string">&#x27;images&#x27;</span>,f.split(<span class="hljs-string">&#x27;.&#x27;</span>)[<span class="hljs-number">0</span>]+<span class="hljs-string">&#x27;.png&#x27;</span>))<br>img=cv2.polylines(img,[newpoints],isClosed=<span class="hljs-literal">True</span>,color=(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">255</span>))<br>cv2.imshow(<span class="hljs-string">&#x27;pic&#x27;</span>,img)<br>cv2.waitKey()<br></code></pre></td></tr></table></figure>
 <p>效果如下，说明是正确的</p>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-4.png" srcset="/img/loading.gif" lazyload alt="此图片的alt属性为空；文件名为image-4.png"></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/04/image-4.png" srcset="/img/loading.gif" lazyload alt="此图片的alt属性为空；文件名为image-4.png"></p>
 <h2 id="数据集放进项目目录"><a href="#数据集放进项目目录" class="headerlink" title="数据集放进项目目录"></a>数据集放进项目目录</h2><p>然后把图片文件夹改名为images，把txt文件夹改名为labelTxt（不改也行，这样显得规范）</p>
 <p>在dataset目录下新建一个文件夹，存放images和labelTxt</p>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-10.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/04/image-10.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h2><p>首先要下载预训练模型，应该在github上的yolov5项目里，下载yolov5s.pt即可</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/ultralytics/yolov5">ultralytics&#x2F;yolov5: YOLOv5 🚀 in PyTorch &gt; ONNX &gt; CoreML &gt; TFLite (github.com)</a></p>
 <p>如果是linux，直接使用作者提供的脚本</p>
@@ -348,11 +348,11 @@ bash data/scripts/download_weights.sh
 </code></pre>
 <p>会自动下载权重文件到yolov5_obb&#x2F;，为了好看一点还是新建一个weights文件夹来存放</p>
 <h3 id="修改yolov5-obb-x2F-DOTA-devkit-x2F-dota-utils-py"><a href="#修改yolov5-obb-x2F-DOTA-devkit-x2F-dota-utils-py" class="headerlink" title="修改yolov5_obb&#x2F;DOTA_devkit&#x2F;dota_utils.py"></a>修改yolov5_obb&#x2F;DOTA_devkit&#x2F;dota_utils.py</h3><p>classnames改为自己的类别</p>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-11.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/04/image-11.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="修改yolov5-obb-x2F-data-x2F-dotav15-poly-yaml"><a href="#修改yolov5-obb-x2F-data-x2F-dotav15-poly-yaml" class="headerlink" title="修改yolov5_obb&#x2F;data&#x2F;dotav15_poly.yaml"></a>修改yolov5_obb&#x2F;data&#x2F;dotav15_poly.yaml</h3><p>修改数据集的目录</p>
 <p>train,val,test都是与path间的相对路径，我这里图方便设为同一个了</p>
 <p>然后修改nc类别数和names类别名即可</p>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-12.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/04/image-12.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="修改yolov5-obb-x2F-train-py"><a href="#修改yolov5-obb-x2F-train-py" class="headerlink" title="修改yolov5_obb&#x2F;train.py"></a>修改yolov5_obb&#x2F;train.py</h3><p>修改参数</p>
 <pre><code class="hljs">weights:/weights/yolov5s.pt，下载的预训练模型路径  
 data:/data/dotav15_poly.yaml，刚刚修改的配置文件路径  
@@ -362,16 +362,16 @@ imgsz:300，图片大小
 device:0，显卡索引，没有的话写cpu  
 workers:8,线程数，出错的话就不断减小
 </code></pre>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-13-1024x296.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/04/image-13-1024x296.png" srcset="/img/loading.gif" lazyload></p>
 <p>执行python train.py即可训练</p>
 <p>结果保存在runs&#x2F;train&#x2F;exp…&#x2F;</p>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-14.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/04/image-14.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="预测"><a href="#预测" class="headerlink" title="预测"></a>预测</h2><p>修改yolov5_obb&#x2F;detect.py</p>
 <p>weights路径改为上面训练完生成的权重文件</p>
 <p>source是用于预测的图片路径</p>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-15-1024x310.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/04/image-15-1024x310.png" srcset="/img/loading.gif" lazyload></p>
 <p>预测结果保存在runs&#x2F;detect&#x2F;exp..&#x2F;下</p>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-17.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/04/image-17.png" srcset="/img/loading.gif" lazyload></p>
 <p>这是35张图片300次训练的结果，可以扩大数据集并且把训练集验证集分离，应该会有好的效果</p>
 
                 

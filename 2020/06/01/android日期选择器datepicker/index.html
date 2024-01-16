@@ -25,12 +25,12 @@
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
 <meta property="og:description" content="感觉这个窗口形式的日期选择器很实用，特此记录  public void dateSelect()     &amp;#123;         &#x2F;&#x2F;Calendar cal&#x3D;Calendar.getInstance();         &#x2F;&#x2F;获取年月日时分秒信息         &#x2F;&#x2F;int year &#x3D; cal.get(Calendar.YEAR);         &#x2F;&#x2F;int month &#x3D; cal.g">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2020/06/image-5.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2020/06/image-5.png">
 <meta property="article:published_time" content="2020-06-01T12:40:42.000Z">
-<meta property="article:modified_time" content="2023-07-04T10:48:09.986Z">
+<meta property="article:modified_time" content="2024-01-16T08:12:28.474Z">
 <meta property="article:author" content="xinhaojin">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2020/06/image-5.png">
+<meta name="twitter:image" content="https://xinhaojin.github.io/imgs-host/past/2020/06/image-5.png">
   
   
   
@@ -238,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          692 字
+          687 字
         
       </span>
     
@@ -293,17 +293,17 @@
               <div class="markdown-body">
                 
                 <p>感觉这个窗口形式的日期选择器很实用，特此记录</p>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2020/06/image-5.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2020/06/image-5.png" srcset="/img/loading.gif" lazyload></p>
 <pre><code class="hljs">public void dateSelect()
     &#123;
         //Calendar cal=Calendar.getInstance();
         //获取年月日时分秒信息
         //int year = cal.get(Calendar.YEAR);
         //int month = cal.get(Calendar.MONTH)+1;//注意点 ，要加一
-        //int day = cal.get(Calendar.DAY\_OF\_MONTH);
-        //int hour = cal.get(Calendar.HOUR\_OF\_DAY);
+        //int day = cal.get(Calendar.DAY_OF_MONTH);
+        //int hour = cal.get(Calendar.HOUR_OF_DAY);
         //int minute = cal.get(Calendar.MINUTE);
-        Toast.makeText(register.this, &quot;可在顶部选择年份哦~&quot;, Toast.LENGTH\_SHORT).show();
+        Toast.makeText(register.this, &quot;可在顶部选择年份哦~&quot;, Toast.LENGTH_SHORT).show();
         new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() &#123;
             @Override
             public void onDateSet(DatePicker view, int year, int month, int day) &#123;

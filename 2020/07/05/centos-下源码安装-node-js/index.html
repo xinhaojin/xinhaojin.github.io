@@ -18,15 +18,15 @@
   <meta name="author" content="xinhaojin">
   <meta name="keywords" content="">
   
-    <meta name="description" content="第一步 curl --silent --location https:&#x2F;&#x2F;rpm.nodesource.com&#x2F;setup\_10.x  sudo bash   curl --silent --location https:&#x2F;&#x2F;rpm.nodesource.com&#x2F;setup\_10.x  sudo bash   Installing the NodeSource Node.js 10.x rep">
+    <meta name="description" content="第一步 curl --silent --location https:&#x2F;&#x2F;rpm.nodesource.com&#x2F;setup_10.x  sudo bash   curl --silent --location https:&#x2F;&#x2F;rpm.nodesource.com&#x2F;setup_10.x  sudo bash   Installing the NodeSource Node.js 10.x repo…">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CentOS 下源码安装 Node.js">
 <meta property="og:url" content="https://xinhaojin.github.io/2020/07/05/centos-%E4%B8%8B%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85-node-js/index.html">
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
-<meta property="og:description" content="第一步 curl --silent --location https:&#x2F;&#x2F;rpm.nodesource.com&#x2F;setup\_10.x  sudo bash   curl --silent --location https:&#x2F;&#x2F;rpm.nodesource.com&#x2F;setup\_10.x  sudo bash   Installing the NodeSource Node.js 10.x rep">
+<meta property="og:description" content="第一步 curl --silent --location https:&#x2F;&#x2F;rpm.nodesource.com&#x2F;setup_10.x  sudo bash   curl --silent --location https:&#x2F;&#x2F;rpm.nodesource.com&#x2F;setup_10.x  sudo bash   Installing the NodeSource Node.js 10.x repo…">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-07-05T09:25:10.000Z">
-<meta property="article:modified_time" content="2023-07-04T10:48:10.290Z">
+<meta property="article:modified_time" content="2024-01-16T08:12:28.782Z">
 <meta property="article:author" content="xinhaojin">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -290,20 +290,20 @@
             
               <div class="markdown-body">
                 
-                <h4 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h4><pre><code class="hljs"> curl --silent --location https://rpm.nodesource.com/setup\_10.x  sudo bash
+                <h4 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h4><pre><code class="hljs"> curl --silent --location https://rpm.nodesource.com/setup_10.x  sudo bash
 
- curl --silent --location https://rpm.nodesource.com/setup\_10.x  sudo bash 
+ curl --silent --location https://rpm.nodesource.com/setup_10.x  sudo bash 
 </code></pre>
 <h2 id="Installing-the-NodeSource-Node-js-10-x-repo…"><a href="#Installing-the-NodeSource-Node-js-10-x-repo…" class="headerlink" title="Installing the NodeSource Node.js 10.x repo…"></a>Installing the NodeSource Node.js 10.x repo…</h2><h2 id="Inspecting-system…"><a href="#Inspecting-system…" class="headerlink" title="Inspecting system…"></a>Inspecting system…</h2><ul>
 <li>rpm -q –whatprovides redhat-release  rpm -q –whatprovides centos-release  rpm -q –whatprovides cloudlinux-release  rpm -q –whatprovides sl-release</li>
 <li>uname -m</li>
 </ul>
 <h2 id="Confirming-“el6-x86-64”-is-supported…"><a href="#Confirming-“el6-x86-64”-is-supported…" class="headerlink" title="Confirming “el6-x86_64” is supported…"></a>Confirming “el6-x86_64” is supported…</h2><ul>
-<li>curl -sLf -o &#x2F;dev&#x2F;null ‘<a target="_blank" rel="noopener" href="https://rpm.nodesource.com/pub/_10.x/el/6/x86/_64/nodesource-release-el6-1.noarch.rpm&#39;">https://rpm.nodesource.com/pub\_10.x/el/6/x86\_64/nodesource-release-el6-1.noarch.rpm&#39;</a></li>
+<li>curl -sLf -o &#x2F;dev&#x2F;null ‘<a target="_blank" rel="noopener" href="https://rpm.nodesource.com/pub_10.x/el/6/x86_64/nodesource-release-el6-1.noarch.rpm&#39;">https://rpm.nodesource.com/pub_10.x/el/6/x86_64/nodesource-release-el6-1.noarch.rpm&#39;</a></li>
 </ul>
 <h2 id="Downloading-release-setup-RPM…"><a href="#Downloading-release-setup-RPM…" class="headerlink" title="Downloading release setup RPM…"></a>Downloading release setup RPM…</h2><ul>
 <li>mktemp</li>
-<li>curl -sL -o ‘&#x2F;tmp&#x2F;tmp.aoQY5ifb9m’ ‘<a target="_blank" rel="noopener" href="https://rpm.nodesource.com/pub/_10.x/el/6/x86/_64/nodesource-release-el6-1.noarch.rpm&#39;">https://rpm.nodesource.com/pub\_10.x/el/6/x86\_64/nodesource-release-el6-1.noarch.rpm&#39;</a></li>
+<li>curl -sL -o ‘&#x2F;tmp&#x2F;tmp.aoQY5ifb9m’ ‘<a target="_blank" rel="noopener" href="https://rpm.nodesource.com/pub_10.x/el/6/x86_64/nodesource-release-el6-1.noarch.rpm&#39;">https://rpm.nodesource.com/pub_10.x/el/6/x86_64/nodesource-release-el6-1.noarch.rpm&#39;</a></li>
 </ul>
 <h2 id="Installing-release-setup-RPM…"><a href="#Installing-release-setup-RPM…" class="headerlink" title="Installing release setup RPM…"></a>Installing release setup RPM…</h2><ul>
 <li>rpm -i –nosignature –force ‘&#x2F;tmp&#x2F;tmp.aoQY5ifb9m’</li>
@@ -327,7 +327,7 @@
 <pre><code class="hljs"> sudo yum clean all
 </code></pre>
 <p>如果存在多个 nodesoucre，执行以下命令删除，然后重新执行第一第二步：</p>
-<pre><code class="hljs"> sudo rm -fv /etc/yum.repos.d/nodesource\*
+<pre><code class="hljs"> sudo rm -fv /etc/yum.repos.d/nodesource*
 </code></pre>
 
                 

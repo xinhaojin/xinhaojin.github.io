@@ -25,16 +25,16 @@
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
 <meta property="og:description" content="环境说明   服务器 IP 用户名 备注    A 192.168.3.241 pi 树莓派4b，Raspbian GNU&#x2F;Linux 10，处于内网，需要被远程访问   B 101.133.xxx.xxx root 阿里云服务器，centos7，有公网IP   配置方法在B上执行 vi &#x2F;etc&#x2F;ssh&#x2F;sshd_config  找到Gatewayports,取消注释，改为yes  保">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/02/image.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/02/image-1-1024x68.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/02/image-2.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/02/image-3.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/02/image-4.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2021/02/image.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2021/02/image-1-1024x68.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2021/02/image-2.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2021/02/image-3.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2021/02/image-4.png">
 <meta property="article:published_time" content="2021-03-05T15:42:21.000Z">
-<meta property="article:modified_time" content="2023-07-04T10:48:14.566Z">
+<meta property="article:modified_time" content="2024-01-16T08:12:34.675Z">
 <meta property="article:author" content="xinhaojin">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/02/image.png">
+<meta name="twitter:image" content="https://xinhaojin.github.io/imgs-host/past/2021/02/image.png">
   
   
   
@@ -322,7 +322,7 @@
 <pre><code class="hljs">vi /etc/ssh/sshd_config
 </code></pre>
 <p>找到Gatewayports,取消注释，改为yes</p>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/02/image.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/02/image.png" srcset="/img/loading.gif" lazyload></p>
 <p>保存，重启服务器</p>
 <p>建立A到B的反向代理,这里把A的22端口映射到了B的2222端口，记得放行B的端口</p>
 <p>在A上执行</p>
@@ -333,12 +333,12 @@
 <p>在B上查看</p>
 <pre><code class="hljs">netstat -anp  grep 2222
 </code></pre>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/02/image-1-1024x68.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/02/image-1-1024x68.png" srcset="/img/loading.gif" lazyload></p>
 <p>有结果说明已经成功</p>
 <p>此时可以在任意一台能访问公网的电脑上远程访问A</p>
 <pre><code class="hljs">ssh -p 2222 pi@101.133.xxx.xxx
 </code></pre>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/02/image-2.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/02/image-2.png" srcset="/img/loading.gif" lazyload></p>
 <p>要注意的是，此处<strong>用到的是A的用户名和密码，B的IP和端口号</strong></p>
 <p>这种方法的缺点是不稳定，ssh连接容易断开</p>
 <h4 id="改进的方法"><a href="#改进的方法" class="headerlink" title="改进的方法"></a>改进的方法</h4><p>改进的方向是：<strong>开机自启，免密登录，断线重连</strong>。需要用到autossh</p>
@@ -358,14 +358,14 @@ ssh-copy-id root@101.133.xxx.xxx
 <p>要输入一次密码，成功后可直接免密登录B,如下图</p>
 <pre><code class="hljs">ssh root@101.133.xxx.xxx
 </code></pre>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/02/image-3.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/02/image-3.png" srcset="/img/loading.gif" lazyload></p>
 <p>接下来使用autossh就可以免密码了，把autossh命令设置成开启启动</p>
 <pre><code class="hljs">sudo vim /etc/rc.local
 </code></pre>
 <p>在exit0前面增加一行</p>
 <pre><code class="hljs">sudo su pi -c &quot;autossh -M 2223 -fNR 2222:localhost:22 root@101.133.xxx.xxx&quot;
 </code></pre>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/02/image-4.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/02/image-4.png" srcset="/img/loading.gif" lazyload></p>
 <p>这里要注意执行命令的用户，如果直接把上面的autossh写在这里是不行的，因为写在rc.local里的命令是root用户执行的，我们上面免密登录的执行用户是是普通用户pi，所以要用sudo su [用户名] -c “[命令]”</p>
 <p>autossh的参数中添加了f，意思是后台执行</p>
 <p>这样配置之后，只要A开机联网，B正常运行，就可以在任何能访问到B的主机上用ssh远程登录A的pi用户</p>

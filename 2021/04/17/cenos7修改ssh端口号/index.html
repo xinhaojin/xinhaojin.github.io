@@ -18,19 +18,19 @@
   <meta name="author" content="xinhaojin">
   <meta name="keywords" content="">
   
-    <meta name="description" content="以前真没想过会有人攻击我的服务器，所以也就没改ssh默认端口，直到我看到这个  我看了下，从4月13号开始，连续攻击了4天，滚犊子玩意儿，nmd，改端口！ 打开ssh配置文件 vim &#x2F;etc&#x2F;ssh&#x2F;sshd\_config  找到port，取消注释，改为自定义端口 重启ssh服务 &#x2F;etc&#x2F;init.d&#x2F;sshd restart  添加防火墙放行规则，如修改ssh端口为xxx,则 iptabl">
+    <meta name="description" content="以前真没想过会有人攻击我的服务器，所以也就没改ssh默认端口，直到我看到这个  我看了下，从4月13号开始，连续攻击了4天，滚犊子玩意儿，nmd，改端口！ 打开ssh配置文件 vim &#x2F;etc&#x2F;ssh&#x2F;sshd_config  找到port，取消注释，改为自定义端口 重启ssh服务 &#x2F;etc&#x2F;init.d&#x2F;sshd restart  添加防火墙放行规则，如修改ssh端口为xxx,则 iptable">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cenos7修改ssh端口号">
 <meta property="og:url" content="https://xinhaojin.github.io/2021/04/17/cenos7%E4%BF%AE%E6%94%B9ssh%E7%AB%AF%E5%8F%A3%E5%8F%B7/index.html">
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
-<meta property="og:description" content="以前真没想过会有人攻击我的服务器，所以也就没改ssh默认端口，直到我看到这个  我看了下，从4月13号开始，连续攻击了4天，滚犊子玩意儿，nmd，改端口！ 打开ssh配置文件 vim &#x2F;etc&#x2F;ssh&#x2F;sshd\_config  找到port，取消注释，改为自定义端口 重启ssh服务 &#x2F;etc&#x2F;init.d&#x2F;sshd restart  添加防火墙放行规则，如修改ssh端口为xxx,则 iptabl">
+<meta property="og:description" content="以前真没想过会有人攻击我的服务器，所以也就没改ssh默认端口，直到我看到这个  我看了下，从4月13号开始，连续攻击了4天，滚犊子玩意儿，nmd，改端口！ 打开ssh配置文件 vim &#x2F;etc&#x2F;ssh&#x2F;sshd_config  找到port，取消注释，改为自定义端口 重启ssh服务 &#x2F;etc&#x2F;init.d&#x2F;sshd restart  添加防火墙放行规则，如修改ssh端口为xxx,则 iptable">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/04/QQ%E6%88%AA%E5%9B%BE20210417012556.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2021/04/QQ%E6%88%AA%E5%9B%BE20210417012556.png">
 <meta property="article:published_time" content="2021-04-17T10:19:15.000Z">
-<meta property="article:modified_time" content="2023-07-04T10:48:10.058Z">
+<meta property="article:modified_time" content="2024-01-16T08:12:28.602Z">
 <meta property="article:author" content="xinhaojin">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/04/QQ%E6%88%AA%E5%9B%BE20210417012556.png">
+<meta name="twitter:image" content="https://xinhaojin.github.io/imgs-host/past/2021/04/QQ%E6%88%AA%E5%9B%BE20210417012556.png">
   
   
   
@@ -238,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          283 字
+          282 字
         
       </span>
     
@@ -293,10 +293,10 @@
               <div class="markdown-body">
                 
                 <p>以前真没想过会有人攻击我的服务器，所以也就没改ssh默认端口，直到我看到这个</p>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/04/QQ%E6%88%AA%E5%9B%BE20210417012556.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/04/QQ%E6%88%AA%E5%9B%BE20210417012556.png" srcset="/img/loading.gif" lazyload></p>
 <p>我看了下，从4月13号开始，连续攻击了4天，滚犊子玩意儿，nmd，改端口！</p>
 <p>打开ssh配置文件</p>
-<pre><code class="hljs">vim /etc/ssh/sshd\_config
+<pre><code class="hljs">vim /etc/ssh/sshd_config
 </code></pre>
 <p>找到port，取消注释，改为自定义端口</p>
 <p>重启ssh服务</p>

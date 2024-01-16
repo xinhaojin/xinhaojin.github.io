@@ -25,12 +25,12 @@
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
 <meta property="og:description" content="hexo博客迁移背景最开始使用wordpress写博客，方便是方便，但感觉不够干净、不够优雅，所以后来开始写markdown格式的博客，使用hexo部署在github上，但是平时使用的电脑有很多台，GitHub上公开的又只有public文件夹的静态页面，没有把markwodn文件一并提交，因此也不能通过github来同步，所以就想干脆把hexo项目放在云服务器上，要写新文章就写好markdown上">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20230704/image.71u2etwvmq40.webp">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20230704/image.71u2etwvmq40.webp">
 <meta property="article:published_time" content="2023-07-04T19:30:00.000Z">
-<meta property="article:modified_time" content="2023-07-04T11:46:04.355Z">
+<meta property="article:modified_time" content="2024-01-16T08:12:30.118Z">
 <meta property="article:author" content="xinhaojin">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20230704/image.71u2etwvmq40.webp">
+<meta name="twitter:image" content="https://xinhaojin.github.io/imgs-host/20230704/image.71u2etwvmq40.webp">
   
   
   
@@ -294,7 +294,7 @@
                 
                 <h2 id="hexo博客迁移"><a href="#hexo博客迁移" class="headerlink" title="hexo博客迁移"></a>hexo博客迁移</h2><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>最开始使用wordpress写博客，方便是方便，但感觉不够干净、不够优雅，所以后来开始写markdown格式的博客，使用hexo部署在github上，但是平时使用的电脑有很多台，GitHub上公开的又只有public文件夹的静态页面，没有把markwodn文件一并提交，因此也不能通过github来同步，所以就想干脆把hexo项目放在云服务器上，要写新文章就写好markdown上传到云服务器去提交，也省的在各个电脑上配置。本文简要介绍把hexo项目迁移到云服务器上的步骤。</p>
 <h3 id="复制文件夹上传到云服务器"><a href="#复制文件夹上传到云服务器" class="headerlink" title="复制文件夹上传到云服务器"></a>复制文件夹上传到云服务器</h3><p>除了node_modules,其他文件全部上传</p>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20230704/image.71u2etwvmq40.webp" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/20230704/image.71u2etwvmq40.webp" srcset="/img/loading.gif" lazyload></p>
 <h3 id="安装nodejs、Hexo和其他依赖"><a href="#安装nodejs、Hexo和其他依赖" class="headerlink" title="安装nodejs、Hexo和其他依赖"></a>安装nodejs、Hexo和其他依赖</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -<br>sudo apt-get install -y nodejs<br>sudo npm install -g hexo-cli<br>sudo npm install<br></code></pre></td></tr></table></figure>
 
 <h3 id="建立git连接"><a href="#建立git连接" class="headerlink" title="建立git连接"></a>建立git连接</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">git config --global user.name &quot;xinhaojin&quot;<br>git config --global user.email &quot;xinhaojin@qq.com&quot;<br>ssh-keygen -t rsa -b 4096 -C &quot;xinhaojin@qq.com&quot;<br></code></pre></td></tr></table></figure>

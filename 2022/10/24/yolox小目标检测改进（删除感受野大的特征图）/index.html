@@ -25,12 +25,12 @@
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
 <meta property="og:description" content="问题yolox中有3个检测分支，分别预测小、中、大的目标但在我的数据集上，并不需要预测大目标，甚至还要手动去掉错误的大预测框，因此有一个想法是去掉一个最深的检测分支，使网络预测大目标的能力下降，整体感受野变小，对小目标更加敏感。 方法修改yolox&#x2F;models&#x2F;yolo_head.py 123456789101112131415161718class YOLOXHead(nn">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/41.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20221010/41.png">
 <meta property="article:published_time" content="2022-10-24T11:30:00.000Z">
-<meta property="article:modified_time" content="2023-07-04T10:48:17.410Z">
+<meta property="article:modified_time" content="2024-01-16T08:12:36.863Z">
 <meta property="article:author" content="xinhaojin">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/41.png">
+<meta name="twitter:image" content="https://xinhaojin.github.io/imgs-host/20221010/41.png">
   
   
   
@@ -292,7 +292,7 @@
             
               <div class="markdown-body">
                 
-                <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>yolox中有3个检测分支，分别预测小、中、大的目标<br><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/41.png" srcset="/img/loading.gif" lazyload><br>但在我的数据集上，并不需要预测大目标，甚至还要手动去掉错误的大预测框，因此有一个想法是去掉一个最深的检测分支，使网络预测大目标的能力下降，整体感受野变小，对小目标更加敏感。</p>
+                <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>yolox中有3个检测分支，分别预测小、中、大的目标<br><img src="https://xinhaojin.github.io/imgs-host/20221010/41.png" srcset="/img/loading.gif" lazyload><br>但在我的数据集上，并不需要预测大目标，甚至还要手动去掉错误的大预测框，因此有一个想法是去掉一个最深的检测分支，使网络预测大目标的能力下降，整体感受野变小，对小目标更加敏感。</p>
 <h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p><strong>修改yolox&#x2F;models&#x2F;yolo_head.py</strong></p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">class</span> <span class="hljs-title class_">YOLOXHead</span>(nn.Module):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params"></span><br><span class="hljs-params">        self,</span><br><span class="hljs-params">        num_classes,</span><br><span class="hljs-params">        width=<span class="hljs-number">1.0</span>,</span><br><span class="hljs-params">        <span class="hljs-comment"># strides=[8, 16, 32],</span></span><br><span class="hljs-params">        <span class="hljs-comment"># in_channels=[256, 512, 1024],</span></span><br><span class="hljs-params">        strides=[<span class="hljs-number">8</span>, <span class="hljs-number">16</span>],</span><br><span class="hljs-params">        in_channels=[<span class="hljs-number">256</span>, <span class="hljs-number">512</span>],</span><br><span class="hljs-params">        act=<span class="hljs-string">&quot;silu&quot;</span>,</span><br><span class="hljs-params">        depthwise=<span class="hljs-literal">False</span>,</span><br><span class="hljs-params">    </span>):<br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        Args:</span><br><span class="hljs-string">            act (str): activation type of conv. Defalut value: &quot;silu&quot;.</span><br><span class="hljs-string">            depthwise (bool): whether apply depthwise conv in conv branch. Defalut value: False.</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        <span class="hljs-built_in">super</span>().__init__()<br></code></pre></td></tr></table></figure>
 <p><strong>修改yolox&#x2F;models&#x2F;darknet.py</strong></p>

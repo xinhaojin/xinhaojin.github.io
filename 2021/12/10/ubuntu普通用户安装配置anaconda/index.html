@@ -18,21 +18,21 @@
   <meta name="author" content="xinhaojin">
   <meta name="keywords" content="">
   
-    <meta name="description" content="下载anaconda清华源地址 方法一：在服务器上使用wget命令 wget -c https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;anaconda&#x2F;archive&#x2F;Anaconda3-2021.11-Linux-x86\_64.sh  方法二：下载到本地之后通过ftp工具上传到服务器（推荐使用FinalShell） 安装在下载目录执行下载的bash文件 bash Ana">
+    <meta name="description" content="下载anaconda清华源地址 方法一：在服务器上使用wget命令 wget -c https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;anaconda&#x2F;archive&#x2F;Anaconda3-2021.11-Linux-x86_64.sh  方法二：下载到本地之后通过ftp工具上传到服务器（推荐使用FinalShell） 安装在下载目录执行下载的bash文件 bash Anac">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ubuntu普通用户安装配置anaconda">
 <meta property="og:url" content="https://xinhaojin.github.io/2021/12/10/ubuntu%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEanaconda/index.html">
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
-<meta property="og:description" content="下载anaconda清华源地址 方法一：在服务器上使用wget命令 wget -c https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;anaconda&#x2F;archive&#x2F;Anaconda3-2021.11-Linux-x86\_64.sh  方法二：下载到本地之后通过ftp工具上传到服务器（推荐使用FinalShell） 安装在下载目录执行下载的bash文件 bash Ana">
+<meta property="og:description" content="下载anaconda清华源地址 方法一：在服务器上使用wget命令 wget -c https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;anaconda&#x2F;archive&#x2F;Anaconda3-2021.11-Linux-x86_64.sh  方法二：下载到本地之后通过ftp工具上传到服务器（推荐使用FinalShell） 安装在下载目录执行下载的bash文件 bash Anac">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/12/image.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/12/image-1.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/12/image-2.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2021/12/image.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2021/12/image-1.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2021/12/image-2.png">
 <meta property="article:published_time" content="2021-12-10T14:48:25.000Z">
-<meta property="article:modified_time" content="2023-07-04T10:48:14.982Z">
+<meta property="article:modified_time" content="2024-01-16T08:12:34.735Z">
 <meta property="article:author" content="xinhaojin">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/12/image.png">
+<meta name="twitter:image" content="https://xinhaojin.github.io/imgs-host/past/2021/12/image.png">
   
   
   
@@ -240,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          363 字
+          361 字
         
       </span>
     
@@ -296,26 +296,26 @@
                 
                 <h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><p><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/">anaconda清华源地址</a></p>
 <p>方法一：在服务器上使用wget命令</p>
-<pre><code class="hljs">wget -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-2021.11-Linux-x86\_64.sh
+<pre><code class="hljs">wget -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-2021.11-Linux-x86_64.sh
 </code></pre>
 <p>方法二：下载到本地之后通过ftp工具上传到服务器（推荐使用FinalShell）</p>
 <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>在下载目录执行下载的bash文件</p>
-<pre><code class="hljs">bash Anaconda3-2021.11-Linux-x86\_64.sh
+<pre><code class="hljs">bash Anaconda3-2021.11-Linux-x86_64.sh
 </code></pre>
 <p>根据提示一路yes即可</p>
 <h4 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h4><p>安装完之后conda还不能直接使用，需要把conda目录加入到用户变量中</p>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/12/image.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/12/image.png" srcset="/img/loading.gif" lazyload></p>
 <pre><code class="hljs">vi ~/.bashrc 
 </code></pre>
 <p>在最后一行加入</p>
 <pre><code class="hljs">export PATH=/home/username/anaconda3/bin:$PATH 
 </code></pre>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/12/image-1.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/12/image-1.png" srcset="/img/loading.gif" lazyload></p>
 <p>保存退出，再执行</p>
 <pre><code class="hljs">source ~/.bashrc
 </code></pre>
 <p>成功</p>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/12/image-2.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/12/image-2.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>

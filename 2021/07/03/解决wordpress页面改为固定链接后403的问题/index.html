@@ -18,19 +18,19 @@
   <meta name="author" content="xinhaojin">
   <meta name="keywords" content="">
   
-    <meta name="description" content="修改nginx配置文件，在站点目录字段后添加 12345678910if (-f $request\_filename&#x2F;index.html)&amp;#123;    rewrite (.\*) $1&#x2F;index.html break;    &amp;#125;    if (-f $request\_filename&#x2F;index.php)&amp;#123;    rewrite (.\*) $1&#x2F;index.ph">
+    <meta name="description" content="修改nginx配置文件，在站点目录字段后添加 12345678910if (-f $request_filename&#x2F;index.html)&amp;#123;    rewrite (.*) $1&#x2F;index.html break;    &amp;#125;    if (-f $request_filename&#x2F;index.php)&amp;#123;    rewrite (.*) $1&#x2F;index.php;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="解决wordpress页面改为固定链接后403的问题">
 <meta property="og:url" content="https://xinhaojin.github.io/2021/07/03/%E8%A7%A3%E5%86%B3wordpress%E9%A1%B5%E9%9D%A2%E6%94%B9%E4%B8%BA%E5%9B%BA%E5%AE%9A%E9%93%BE%E6%8E%A5%E5%90%8E403%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
-<meta property="og:description" content="修改nginx配置文件，在站点目录字段后添加 12345678910if (-f $request\_filename&#x2F;index.html)&amp;#123;    rewrite (.\*) $1&#x2F;index.html break;    &amp;#125;    if (-f $request\_filename&#x2F;index.php)&amp;#123;    rewrite (.\*) $1&#x2F;index.ph">
+<meta property="og:description" content="修改nginx配置文件，在站点目录字段后添加 12345678910if (-f $request_filename&#x2F;index.html)&amp;#123;    rewrite (.*) $1&#x2F;index.html break;    &amp;#125;    if (-f $request_filename&#x2F;index.php)&amp;#123;    rewrite (.*) $1&#x2F;index.php;">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/07/image.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2021/07/image.png">
 <meta property="article:published_time" content="2021-07-03T21:33:40.000Z">
-<meta property="article:modified_time" content="2023-07-04T10:48:24.778Z">
+<meta property="article:modified_time" content="2024-01-16T08:12:41.143Z">
 <meta property="article:author" content="xinhaojin">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/07/image.png">
+<meta name="twitter:image" content="https://xinhaojin.github.io/imgs-host/past/2021/07/image.png">
   
   
   
@@ -238,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          289 字
+          283 字
         
       </span>
     
@@ -293,8 +293,8 @@
               <div class="markdown-body">
                 
                 <p>修改nginx配置文件，在站点目录字段后添加</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">if</span> (-f <span class="hljs-variable">$request</span>\_filename/index.html)&#123;<br>    <span class="hljs-title function_ invoke__">rewrite</span> (.\*) $<span class="hljs-number">1</span>/index.html <span class="hljs-keyword">break</span>;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (-f <span class="hljs-variable">$request</span>\_filename/index.php)&#123;<br>    <span class="hljs-title function_ invoke__">rewrite</span> (.\*) $<span class="hljs-number">1</span>/index.php;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (!-f <span class="hljs-variable">$request</span>\_filename)&#123;<br>    <span class="hljs-title function_ invoke__">rewrite</span> (.\*) /index.php;<br>    &#125;<br>    rewrite /wp-admin$ <span class="hljs-variable">$scheme</span>:<span class="hljs-comment">//$host$uri/ permanent;</span><br></code></pre></td></tr></table></figure>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/07/image.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">if</span> (-f <span class="hljs-variable">$request_filename</span>/index.html)&#123;<br>    <span class="hljs-title function_ invoke__">rewrite</span> (.*) $<span class="hljs-number">1</span>/index.html <span class="hljs-keyword">break</span>;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (-f <span class="hljs-variable">$request_filename</span>/index.php)&#123;<br>    <span class="hljs-title function_ invoke__">rewrite</span> (.*) $<span class="hljs-number">1</span>/index.php;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (!-f <span class="hljs-variable">$request_filename</span>)&#123;<br>    <span class="hljs-title function_ invoke__">rewrite</span> (.*) /index.php;<br>    &#125;<br>    rewrite /wp-admin$ <span class="hljs-variable">$scheme</span>:<span class="hljs-comment">//$host$uri/ permanent;</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/07/image.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>

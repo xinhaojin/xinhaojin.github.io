@@ -25,12 +25,12 @@
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
 <meta property="og:description" content="问题描述请点击“荔枝茶”。即判断文字位置及顺序。 已知条件：yolox能够预测汉字位置，paddleOCR可以直接识别文字，但有时出错。 现在要做的是矫正验证码图片中的文字倾斜，以提高文字识别准确率。  背景匹配所有可能的背景  用直方图标准差的方法来做背景匹配 图像相似度-直方图标准差 汉字分割为什么要分割？分割后可以根据二值图来画出最小外接矩形，计算倾斜角度，给原图汉字矫正。 怎么分割？遍历像">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/06/image-9.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/06/image-9.png">
 <meta property="article:published_time" content="2022-06-10T15:21:32.000Z">
-<meta property="article:modified_time" content="2023-07-04T10:48:18.354Z">
+<meta property="article:modified_time" content="2024-01-16T08:12:38.803Z">
 <meta property="article:author" content="xinhaojin">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/06/image-9.png">
+<meta name="twitter:image" content="https://xinhaojin.github.io/imgs-host/past/2022/06/image-9.png">
   
   
   
@@ -295,9 +295,9 @@
                 <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>请点击“荔枝茶”。即判断文字位置及顺序。</p>
 <p>已知条件：yolox能够预测汉字位置，paddleOCR可以直接识别文字，但有时出错。</p>
 <p>现在要做的是矫正验证码图片中的文字倾斜，以提高文字识别准确率。</p>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/06/image-6.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/06/image-6.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="背景匹配"><a href="#背景匹配" class="headerlink" title="背景匹配"></a>背景匹配</h2><p>所有可能的背景</p>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/06/image-5.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/06/image-5.png" srcset="/img/loading.gif" lazyload></p>
 <p>用直方图标准差的方法来做背景匹配</p>
 <p><a href="https://xinhaojin.github.io/2022/06/10/%E5%9B%BE%E5%83%8F%E7%9B%B8%E4%BC%BC%E5%BA%A6-%E7%9B%B4%E6%96%B9%E5%9B%BE%E6%A0%87%E5%87%86%E5%B7%AE/">图像相似度-直方图标准差</a></p>
 <h2 id="汉字分割"><a href="#汉字分割" class="headerlink" title="汉字分割"></a>汉字分割</h2><p>为什么要分割？分割后可以根据二值图来画出最小外接矩形，计算倾斜角度，给原图汉字矫正。</p>
@@ -305,7 +305,7 @@
 <p>怎么定义“相差较大大”？可以计算像素间的距离（颜色距离&#x2F;差异）。一种比较接近人眼观察的颜色差异的计算方法是LAB色彩空间的deltaE，（貌似计算速度较慢），但很准确，相比较rgb值方差之类的方法。</p>
 <p>计算方法<a target="_blank" rel="noopener" href="https://python-colormath.readthedocs.io/en/latest/delta_e.html">Delta E Equations — python-colormath 3.0.0 documentation</a></p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> colormath.color_objects <span class="hljs-keyword">import</span> LabColor<br><span class="hljs-keyword">from</span> colormath.color_diff <span class="hljs-keyword">import</span> delta_e_cmc<br><span class="hljs-keyword">import</span> cv2<br>img_lab=cv2.cvtColor(img,cv2.COLOR_BGR2LAB)<br>background_lab=cv2.cvtColor(background,cv2.COLOR_BGR2LAB)<br>......<br>a=img_lab[j,k]<br>b=background_lab[j,k]<br>color1 = LabColor(lab_l=a[<span class="hljs-number">0</span>], lab_a=a[<span class="hljs-number">1</span>], lab_b=a[<span class="hljs-number">2</span>])<br>color2 = LabColor(lab_l=b[<span class="hljs-number">0</span>], lab_a=b[<span class="hljs-number">1</span>], lab_b=b[<span class="hljs-number">2</span>])<br>delta_e = delta_e_cmc(color1, color2)<br></code></pre></td></tr></table></figure>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/06/image-7.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/06/image-7.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="倾斜矫正"><a href="#倾斜矫正" class="headerlink" title="倾斜矫正"></a>倾斜矫正</h2><p>倾斜矫正的基础是上一步的分割，得到二值图像之后，</p>
 <p>先用contours, hierarchy &#x3D; cv2.findContours(img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)画出轮廓</p>
 <p>然后最关键的一步，要把轮廓点汇总，把轮廓改成rect &#x3D; cv2.minAreaRect(contours)接收的输入格式，画出最小外接矩形</p>
@@ -349,8 +349,8 @@
 </tr>
 </tbody></table>
 <p>把矫正后的文字小图放进文字识别模型中识别，如下两图，其中“糖”矫正成了偏转90度的样子，但结果却是正确的，得益于上述排除法。100张测试图片识别准确率从84%提高到99%。</p>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/06/image-8.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/06/image-9.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/06/image-8.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/06/image-9.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>

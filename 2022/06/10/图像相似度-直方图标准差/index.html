@@ -25,13 +25,13 @@
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
 <meta property="og:description" content="问题描述现有一张验证码图片，可能的背景有6种，怎么判断他的背景是哪一种？   方法对于这种大面积相同的图片，一种很快速的方法是计算两张图直方图的标准差。 计算和每一张背景图的标准差，取最小的就行 1234567891011121314from PIL import Imageimport numpy as np#计算直方图的标准差def image_contrast_std(img1, img2)">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/06/image-2.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/06/image-4.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/06/image-2.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/06/image-4.png">
 <meta property="article:published_time" content="2022-06-10T14:36:21.000Z">
-<meta property="article:modified_time" content="2023-07-04T10:48:18.354Z">
+<meta property="article:modified_time" content="2024-01-16T08:12:38.743Z">
 <meta property="article:author" content="xinhaojin">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/06/image-2.png">
+<meta name="twitter:image" content="https://xinhaojin.github.io/imgs-host/past/2022/06/image-2.png">
   
   
   
@@ -294,8 +294,8 @@
               <div class="markdown-body">
                 
                 <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>现有一张验证码图片，可能的背景有6种，怎么判断他的背景是哪一种？</p>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/06/image-2.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/06/image-4.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/06/image-2.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/06/image-4.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>对于这种大面积相同的图片，一种很快速的方法是计算两张图直方图的标准差。</p>
 <p>计算和每一张背景图的标准差，取最小的就行</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> PIL <span class="hljs-keyword">import</span> Image<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-comment">#计算直方图的标准差</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">image_contrast_std</span>(<span class="hljs-params">img1, img2</span>):<br>    image1 = Image.<span class="hljs-built_in">open</span>(img1)<br>    image2 = Image.<span class="hljs-built_in">open</span>(img2)<br><br>    h1 = image1.histogram()<br>    h2 = image2.histogram()<br>    h1 = np.array(h1)<br>    h2 = np.array(h2)<br>    result = np.std(h1-h2)<br>    <span class="hljs-keyword">return</span> result<br></code></pre></td></tr></table></figure>

@@ -25,41 +25,41 @@
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
 <meta property="og:description" content="本文主要介绍目标检测yolo系列主流版本的发展。 目标检测评价指标IOU真实框和预测框之间的交并比。 精确度预测为正例的那些数据里预测正确的比例。 召回率真实为正例的那些数据里预测正确的比例。 AP不同的置信度阈值对应不同的检测结果，对应一组精确度和召回率，计算合成的面积 MAPMAP是不同类别的平均AP。 YOLOv1paper(CVPR2015) You only look once,one-">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/4.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/18.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/7.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/19.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/20.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/17.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/21.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/22.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/23.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/24.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/25.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/26.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/28.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/27.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/29.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/30.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/31.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/32.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/33.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/34.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/35.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/36.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/37.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/38.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/40.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/41.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/42.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/43.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/46.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/45.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20221010/4.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20221010/18.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20221010/7.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20221010/19.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20221010/20.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20221010/17.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20221010/21.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20221010/22.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20221010/23.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20221010/24.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20221010/25.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20221010/26.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20221010/28.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20221010/27.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20221010/29.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20221010/30.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20221010/31.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20221010/32.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20221010/33.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20221010/34.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20221010/35.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20221010/36.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20221010/37.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20221010/38.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20221010/40.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20221010/41.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20221010/42.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20221010/43.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20221010/46.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20221010/45.png">
 <meta property="article:published_time" content="2022-10-08T20:58:00.000Z">
-<meta property="article:modified_time" content="2023-07-04T10:48:16.926Z">
+<meta property="article:modified_time" content="2024-01-16T08:12:37.351Z">
 <meta property="article:author" content="xinhaojin">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/4.png">
+<meta name="twitter:image" content="https://xinhaojin.github.io/imgs-host/20221010/4.png">
   
   
   
@@ -322,39 +322,39 @@
               <div class="markdown-body">
                 
                 <p>本文主要介绍目标检测yolo系列主流版本的发展。</p>
-<h3 id="目标检测评价指标"><a href="#目标检测评价指标" class="headerlink" title="目标检测评价指标"></a>目标检测评价指标</h3><h4 id="IOU"><a href="#IOU" class="headerlink" title="IOU"></a>IOU</h4><p>真实框和预测框之间的交并比。<br><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/4.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="目标检测评价指标"><a href="#目标检测评价指标" class="headerlink" title="目标检测评价指标"></a>目标检测评价指标</h3><h4 id="IOU"><a href="#IOU" class="headerlink" title="IOU"></a>IOU</h4><p>真实框和预测框之间的交并比。<br><img src="https://xinhaojin.github.io/imgs-host/20221010/4.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="精确度"><a href="#精确度" class="headerlink" title="精确度"></a>精确度</h4><p>预测为正例的那些数据里预测正确的比例。</p>
 <h4 id="召回率"><a href="#召回率" class="headerlink" title="召回率"></a>召回率</h4><p>真实为正例的那些数据里预测正确的比例。</p>
-<h4 id="AP"><a href="#AP" class="headerlink" title="AP"></a>AP</h4><p>不同的置信度阈值对应不同的检测结果，对应一组精确度和召回率，计算合成的面积<br><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/18.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="AP"><a href="#AP" class="headerlink" title="AP"></a>AP</h4><p>不同的置信度阈值对应不同的检测结果，对应一组精确度和召回率，计算合成的面积<br><img src="https://xinhaojin.github.io/imgs-host/20221010/18.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="MAP"><a href="#MAP" class="headerlink" title="MAP"></a>MAP</h4><p>MAP是不同类别的平均AP。</p>
 <h2 id="YOLOv1"><a href="#YOLOv1" class="headerlink" title="YOLOv1"></a>YOLOv1</h2><p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1506.02640">paper(CVPR2015)</a></p>
 <p>You only look once,one-stage方法,把目标检测问题直接转化成CNN回归问题（预测数值）。</p>
-<p><strong>思考一个问题：</strong> 怎么表示一个位置框(目标)？<br>x,y,w,h,conf,class<br><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/7.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>思考一个问题：</strong> 怎么表示一个位置框(目标)？<br>x,y,w,h,conf,class<br><img src="https://xinhaojin.github.io/imgs-host/20221010/7.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h3><p>将一幅图像分成7x7个网格(grid cell),如果某个object的中心落在这个网格中，则这个网格就负责预测这个object。<br>每个网格要预测2个bounding box(指定长宽比例的预选框)，每个bounding box除了要预测位置之外，还要附带预测一个confidence值。每个网格还要预测20个类别的概率。</p>
-<h3 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h3><p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/19.png" srcset="/img/loading.gif" lazyload><br>输入：448*448*3<br><br>经过卷积池化卷积池化…全连接<br><br>输出：7*7*30<br><br>7*7：格子<br><br>30&#x3D;20+5*2<br><br>20：类别<br><br>5：x,y,w,h,conf<br><br>2：两个预选框<br><br><strong>疑问:</strong> 神经网络怎么知道每个值代表什么意思?<br>设计合适的损失函数。</p>
-<h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>bounding box损失、confidence损失和classes损失。在计算损失时主要都是用的误差平方和求解。<br><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/20.png" srcset="/img/loading.gif" lazyload><br><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/17.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h3><p><img src="https://xinhaojin.github.io/imgs-host/20221010/19.png" srcset="/img/loading.gif" lazyload><br>输入：448<em>448</em>3<br><br>经过卷积池化卷积池化…全连接<br><br>输出：7<em>7</em>30<br><br>7<em>7：格子<br><br>30&#x3D;20+5</em>2<br><br>20：类别<br><br>5：x,y,w,h,conf<br><br>2：两个预选框<br><br><strong>疑问:</strong> 神经网络怎么知道每个值代表什么意思?<br>设计合适的损失函数。</p>
+<h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>bounding box损失、confidence损失和classes损失。在计算损失时主要都是用的误差平方和求解。<br><img src="https://xinhaojin.github.io/imgs-host/20221010/20.png" srcset="/img/loading.gif" lazyload><br><img src="https://xinhaojin.github.io/imgs-host/20221010/17.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>优点：快速，简单</p>
 <p>缺点：每个cell只能预测一个类别，重叠问题无法解决；<br>小物体检测效果一般；无法应对新尺寸目标；定位不准确</p>
 <h2 id="YOLOv2-x2F-YOLO9000"><a href="#YOLOv2-x2F-YOLO9000" class="headerlink" title="YOLOv2&#x2F;YOLO9000"></a>YOLOv2&#x2F;YOLO9000</h2><p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1612.08242">paper(CVPR2016)</a></p>
 <p>在v1基础上做的改进</p>
 <h3 id="批标准化"><a href="#批标准化" class="headerlink" title="批标准化"></a>批标准化</h3><p>V2版本舍弃Dropout，卷积后全部加入Batch Normalization，网络的每一层的输入都做了归一化，收敛相对更容易，经过Batch Normalization处理后的网络会提升2%的mAP，从现在的角度来看，Batch Normalization已经成网络必备处理。</p>
 <h3 id="更大的输入尺寸"><a href="#更大的输入尺寸" class="headerlink" title="更大的输入尺寸"></a>更大的输入尺寸</h3><p>在YOLOv1中训练分类器时使用的是224×244的输入，而在 YOLOv2中作者采用了448×448的尺寸作为输入，论文总表明，采用更大的分辨率作为输入可以得到MAP值4%的提升。</p>
-<h3 id="引入锚框"><a href="#引入锚框" class="headerlink" title="引入锚框"></a>引入锚框</h3><p>YOLOv1用全连接层预测边界框的中心坐标、宽度和高度，使用这种方式定位效果比较差，所以在YOLOv2中作者采用anchor进行目标框的预测，使得预测的box数量更多。弃用了全连接层，使用5次下采样，得到13*13(实际输入是416*416,416&#x3D;13*2^5)，相比全连接节省了参数，可以使网络更容易学习和收敛。</p>
-<h3 id="聚类得到先验框"><a href="#聚类得到先验框" class="headerlink" title="聚类得到先验框"></a>聚类得到先验框</h3><p>引入anchor后的问题1：怎么确定先验框的尺寸和比例？<br><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/21.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="引入锚框"><a href="#引入锚框" class="headerlink" title="引入锚框"></a>引入锚框</h3><p>YOLOv1用全连接层预测边界框的中心坐标、宽度和高度，使用这种方式定位效果比较差，所以在YOLOv2中作者采用anchor进行目标框的预测，使得预测的box数量更多。弃用了全连接层，使用5次下采样，得到13<em>13(实际输入是416</em>416,416&#x3D;13*2^5)，相比全连接节省了参数，可以使网络更容易学习和收敛。</p>
+<h3 id="聚类得到先验框"><a href="#聚类得到先验框" class="headerlink" title="聚类得到先验框"></a>聚类得到先验框</h3><p>引入anchor后的问题1：怎么确定先验框的尺寸和比例？<br><img src="https://xinhaojin.github.io/imgs-host/20221010/21.png" srcset="/img/loading.gif" lazyload></p>
 <p>把训练集的标注框进行kmeans聚类，k&#x3D;5。距离的定义是D&#x3D;1-IOU。避免了大的框误差就大的情况。</p>
-<h3 id="直接位置预测"><a href="#直接位置预测" class="headerlink" title="直接位置预测"></a>直接位置预测</h3><p>引入anchor后的问题2：直接使用anchor进行预测时发现，在训练模型的时候训练不稳定。通过观察发现训练初始阶段不稳定因素来自中心坐标的预测部分导致，所以yolov2规定了中心点不能乱飘出格子。<br><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/22.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="直接位置预测"><a href="#直接位置预测" class="headerlink" title="直接位置预测"></a>直接位置预测</h3><p>引入anchor后的问题2：直接使用anchor进行预测时发现，在训练模型的时候训练不稳定。通过观察发现训练初始阶段不稳定因素来自中心坐标的预测部分导致，所以yolov2规定了中心点不能乱飘出格子。<br><img src="https://xinhaojin.github.io/imgs-host/20221010/22.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="多尺度训练"><a href="#多尺度训练" class="headerlink" title="多尺度训练"></a>多尺度训练</h3><p>实际图片尺寸多变，不可能都resize成416*416。每训练10批次，就随机改变一次图像尺寸，最小320，最大608。使网络能够适应不同输入尺寸的图片。</p>
-<h3 id="特征图融合"><a href="#特征图融合" class="headerlink" title="特征图融合"></a>特征图融合</h3><p>在网络中，前段256*256的特征图适合预测小目标，后段13*13的特征图适合预测大目标，因为感受野不同。</p>
-<p><strong>感受野</strong>：特征图上的一个点能看到原始图像上多大的区域。<br><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/23.png" srcset="/img/loading.gif" lazyload><br>最后一层的感受野太大了，容易丢失小目标，所以需要融合之前的特征层，reshape后叠加。<br><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/24.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="网络结构-1"><a href="#网络结构-1" class="headerlink" title="网络结构"></a>网络结构</h3><p>采用了Darknet19网络结构，实际的size和图不一样。<br>输入416*416*3,输出13*13*1024<br><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/25.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="特征图融合"><a href="#特征图融合" class="headerlink" title="特征图融合"></a>特征图融合</h3><p>在网络中，前段256<em>256的特征图适合预测小目标，后段13</em>13的特征图适合预测大目标，因为感受野不同。</p>
+<p><strong>感受野</strong>：特征图上的一个点能看到原始图像上多大的区域。<br><img src="https://xinhaojin.github.io/imgs-host/20221010/23.png" srcset="/img/loading.gif" lazyload><br>最后一层的感受野太大了，容易丢失小目标，所以需要融合之前的特征层，reshape后叠加。<br><img src="https://xinhaojin.github.io/imgs-host/20221010/24.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="网络结构-1"><a href="#网络结构-1" class="headerlink" title="网络结构"></a>网络结构</h3><p>采用了Darknet19网络结构，实际的size和图不一样。<br>输入416<em>416</em>3,输出13<em>13</em>1024<br><img src="https://xinhaojin.github.io/imgs-host/20221010/25.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><p>YOLOv2对YOLOv1的缺陷进行优化，大幅度高了检测的性能，但仍存在一定的问题，如无法解决重叠问题的分类等。</p>
 <h2 id="YOLOv3"><a href="#YOLOv3" class="headerlink" title="YOLOv3"></a>YOLOv3</h2><p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1804.02767">paper(CVPR2018)</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/ultralytics/yolov3">code</a><br><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/26.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="网络结构-2"><a href="#网络结构-2" class="headerlink" title="网络结构"></a>网络结构</h3><p>主干网络:全卷积网络DarkNet-53，53层卷积层。<br><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/28.png" srcset="/img/loading.gif" lazyload></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ultralytics/yolov3">code</a><br><img src="https://xinhaojin.github.io/imgs-host/20221010/26.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="网络结构-2"><a href="#网络结构-2" class="headerlink" title="网络结构"></a>网络结构</h3><p>主干网络:全卷积网络DarkNet-53，53层卷积层。<br><img src="https://xinhaojin.github.io/imgs-host/20221010/28.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="残差连接"><a href="#残差连接" class="headerlink" title="残差连接"></a>残差连接</h4><p>Resnet思想：传统的卷积网络或者全连接网络在信息传递的时候或多或少会存在信息丢失，损耗等问题，同时还有导致梯度消失或者梯度爆炸，导致很深的网络无法训练。Resnet在网络中增加了直连通道，允许原始输入信息直接传到后面的层中，看图非常明显，也就是如果后面的层性能不好，可以忽略。</p>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/27.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="多scale特征融合"><a href="#多scale特征融合" class="headerlink" title="多scale特征融合"></a>多scale特征融合</h3><p>随着卷积网络的不断深入，深层卷积得到的特征图语义信息越抽象，从而使小目标的特征信息容易丢失。YOLOv3借鉴特征金字塔网络结构（FPN，feature pyramid networks）实行多尺度检测的方法。将416×416尺寸的图像输入YOLOv3算法中，经过5次下采样后得到13×13、26×26和52×52尺寸的特征图，首先将13×13尺寸的特征图二倍上采样后与26×26尺寸的特征图融合，获得包含浅层特征信息和深层特征信息的特征图，然后将特征图再次二倍上采样与52×52尺寸的特征图融合，最后分别在13×13、26×26和52×52尺寸的特征图上进行目标检测。<br><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/29.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="先验框更丰富"><a href="#先验框更丰富" class="headerlink" title="先验框更丰富"></a>先验框更丰富</h3><p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/30.png" srcset="/img/loading.gif" lazyload><br>训练集真实框做kmeans聚类,k&#x3D;9,按大小再分三类，用不同的特征图预测。<br><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/31.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/20221010/27.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="多scale特征融合"><a href="#多scale特征融合" class="headerlink" title="多scale特征融合"></a>多scale特征融合</h3><p>随着卷积网络的不断深入，深层卷积得到的特征图语义信息越抽象，从而使小目标的特征信息容易丢失。YOLOv3借鉴特征金字塔网络结构（FPN，feature pyramid networks）实行多尺度检测的方法。将416×416尺寸的图像输入YOLOv3算法中，经过5次下采样后得到13×13、26×26和52×52尺寸的特征图，首先将13×13尺寸的特征图二倍上采样后与26×26尺寸的特征图融合，获得包含浅层特征信息和深层特征信息的特征图，然后将特征图再次二倍上采样与52×52尺寸的特征图融合，最后分别在13×13、26×26和52×52尺寸的特征图上进行目标检测。<br><img src="https://xinhaojin.github.io/imgs-host/20221010/29.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="先验框更丰富"><a href="#先验框更丰富" class="headerlink" title="先验框更丰富"></a>先验框更丰富</h3><p><img src="https://xinhaojin.github.io/imgs-host/20221010/30.png" srcset="/img/loading.gif" lazyload><br>训练集真实框做kmeans聚类,k&#x3D;9,按大小再分三类，用不同的特征图预测。<br><img src="https://xinhaojin.github.io/imgs-host/20221010/31.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="预测多标签任务"><a href="#预测多标签任务" class="headerlink" title="预测多标签任务"></a>预测多标签任务</h3><p>一个目标同时属于多个类别，如：动物，狗，哈士奇。在单标签预测的时候，损失函数只和正确类别的概率值有关，而不关心属于其他类别的概率。多标签预测时，相当于将一个多标签问题转化为了在每个标签上的二分类问题,计算一个样本各个标签的损失，然后取平均值，得到最后的损失。</p>
 <h2 id="YOLOv4"><a href="#YOLOv4" class="headerlink" title="YOLOv4"></a>YOLOv4</h2><p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2004.10934">paper(CVPR2020)</a></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/Tianxiaomo/pytorch-YOLOv4">code</a></p>
@@ -364,8 +364,8 @@
 <p>输入-&gt;主干-&gt;脖子-&gt;头-&gt;输出。主干网络提取特征，脖子提取一些更复杂的特征，然后头部计算预测输出</p>
 <h3 id="网络结构-3"><a href="#网络结构-3" class="headerlink" title="网络结构"></a>网络结构</h3><p>通过对比多种方法和技巧，YOLOv4最终选用CSPDarknet53作为backbone，选用SPP+PAN作为Neck，选用YOLOv3-head作为Head。</p>
 <h3 id="Bag-of-freebies"><a href="#Bag-of-freebies" class="headerlink" title="Bag of freebies"></a>Bag of freebies</h3><p>将只改变训练策略或只增加训练成本，而不增加推理成本的方法称为“bag of freebies”(BoF)。BoF中包含的方法有数据增强、正则化函数、标签细化网络、框回归函数等。从BoF中挑选保留的方法有，用于Backbone的CutMix、Mosaic数据增强、DropBlock正则化、Class label smoothing；用于检测器中的CIoU-loss、CmBN、DropBlock正则化、Mosaic数据增强、Self-Adversarial Training、Eliminate grid sensitivity、一个GT使用多个anchors、Cosine annealing scheduler、超参数调优、随机训练图片大小。</p>
-<p>Mosaic数据增强，是一种将4张训练图片混合成一张的新数据增强方法，这样可以丰富图像的上下文信息。这种做法的好处是允许检测上下文之外的目标，增强模型的鲁棒性。<br><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/32.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/33.png" srcset="/img/loading.gif" lazyload></p>
+<p>Mosaic数据增强，是一种将4张训练图片混合成一张的新数据增强方法，这样可以丰富图像的上下文信息。这种做法的好处是允许检测上下文之外的目标，增强模型的鲁棒性。<br><img src="https://xinhaojin.github.io/imgs-host/20221010/32.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/20221010/33.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="Bag-of-specoals"><a href="#Bag-of-specoals" class="headerlink" title="Bag of specoals"></a>Bag of specoals</h3><p>将那些只会少量增加推理成本，但能显著提高目标检测精度的模块和后处理方法，称之为“bag of specoals”(BoS)。BoS中包含的方法有增强感受野、注意力模块、特征集成、激活函数、后处理等。从BoS中挑选保留的方法有，用于Backbone的Mish激活函数、Cross-stage partial connections (CSP)、Multiinput weighted residual connections (MiWRC)；用于检测器的Mish激活函数、SPP-block、SAM-block、PAN path-aggregation block、DIoU-NMS。</p>
 <h3 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h3><p>YOLOv4论文中给出了大量的实验结果来证明了其所选择tricks的有效性。</p>
 <h2 id="YOLOv5"><a href="#YOLOv5" class="headerlink" title="YOLOv5"></a>YOLOv5</h2><p><a target="_blank" rel="noopener" href="https://github.com/ultralytics/yolov5">code</a></p>
@@ -375,15 +375,15 @@
 <h4 id="SPP"><a href="#SPP" class="headerlink" title="SPP"></a>SPP</h4><p>背景：卷积神经网络中经常看到固定输入的设计，但如果我们的输入是不能固定的尺寸怎么办？<br>SPP：空间金字塔池化，能将任意大小的特征图转换成固定大小的特征向量。<br>eg:</p>
 <p>输入层：首先我们现在有一张任意大小的图片，其大小为w * h。</p>
 <p>输出层：21个神经元 – 即我们待会希望提取到21个特征。</p>
-<p>分析如下图所示：分别对1 * 1分块，2 * 2分块和4 * 4子图里分别取每一个框内的max值（即取蓝框框内的最大值），这一步就是作最大池化，这样最后提取出来的特征值（即取出来的最大值）一共有1 * 1 + 2 * 2 + 4 * 4 &#x3D; 21个。得出的特征再concat在一起。<br><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/34.png" srcset="/img/loading.gif" lazyload></p>
-<h4 id="SPPF"><a href="#SPPF" class="headerlink" title="SPPF"></a>SPPF</h4><p>SPPF串联使用了池化层，使得计算效率更高。<br>将两个5×5的池化层进行串联等价于使用一个9×9的最大池化，而使用3个5×5的最大池化又等价于一个13×13的最大池化。<br><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/35.png" srcset="/img/loading.gif" lazyload></p>
+<p>分析如下图所示：分别对1 * 1分块，2 * 2分块和4 * 4子图里分别取每一个框内的max值（即取蓝框框内的最大值），这一步就是作最大池化，这样最后提取出来的特征值（即取出来的最大值）一共有1 * 1 + 2 * 2 + 4 * 4 &#x3D; 21个。得出的特征再concat在一起。<br><img src="https://xinhaojin.github.io/imgs-host/20221010/34.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="SPPF"><a href="#SPPF" class="headerlink" title="SPPF"></a>SPPF</h4><p>SPPF串联使用了池化层，使得计算效率更高。<br>将两个5×5的池化层进行串联等价于使用一个9×9的最大池化，而使用3个5×5的最大池化又等价于一个13×13的最大池化。<br><img src="https://xinhaojin.github.io/imgs-host/20221010/35.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="数据增强策略"><a href="#数据增强策略" class="headerlink" title="数据增强策略"></a>数据增强策略</h3><p>Mosaic（图像拼接）<br><br>Copy paste（将不同图像中的目标进行负值和粘贴）<br><br>Random affine（随机仿射变换：旋转、平移等）<br><br>MixUp（将两张图片按一定透明程度混合成一张图片）<br><br>Albumentations（滤波、直方图均衡化以及改变图片质量等等）<br><br>Augment HSV（调整图像色度、透明度和饱和度）<br><br>Random horizontal flip（水平翻转）</p>
 <h3 id="训练策略"><a href="#训练策略" class="headerlink" title="训练策略"></a>训练策略</h3><p>Multi-scale training(0.5~1.5x)（多尺度训练）<br><br>AutoAnchor(For training custom data)（重新生成anchor）<br><br>Warmup and Cosine LR scheduler（学习率的调整）<br><br>EMA(Exponential Moving Average)Mixed precision（将学习变量添加一个动量）<br><br>Mixed precision（混合精度训练）<br><br>Evolve hyper-parameters</p>
 <h3 id="损失函数-1"><a href="#损失函数-1" class="headerlink" title="损失函数"></a>损失函数</h3><p>Classes loss，分类损失，采用的是BCE loss（二值交叉熵损失），注意只计算正样本的分类损失。<br><br>objectness loss，obj损失，采用的依然是BCE loss，注意这里的obj指的是网络预测的目标边界框与GT<br>Box的CIoU。这里计算的是所有样本的obj损失。<br><br>Location loss，定位损失，采用的是CIoU loss，注意只计算正样本的定位损失。</p>
 <h2 id="YOLOX"><a href="#YOLOX" class="headerlink" title="YOLOX"></a>YOLOX</h2><p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2107.08430">paper(CVPR2021)</a></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/Megvii-BaseDetection/YOLOX">code</a></p>
-<p>与yolov5的对比<br><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/36.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="decoupled-head"><a href="#decoupled-head" class="headerlink" title="decoupled head"></a>decoupled head</h3><p>YOLOX和YOLOv5在网络结构上的主要的差别就在检测头head部分。之前的检测头就是通过一个卷积核大小为1x1的卷积层实现的，即这个卷积层要同时预测类别分数、边界框回归参数以及IOU，这种方式在文章中称之为coupled detection head（耦合的检测头）。作者说采用coupled detection head是对网络有害的，如果将coupled detection head换成decoupled detection head（解耦的检测头）能够大幅提升网络的收敛速度。在论文的图3中展示了YOLO v3分别使用coupled detection head和decoupled detection head的训练收敛情况，明显采用decoupled detection head后收敛速度会更快（在论文的表2中显示采用decoupled detection head能够提升AP约1.1个点）。<br><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/37.png" srcset="/img/loading.gif" lazyload><br>到底什么是解耦的检测头？根据原论文的图2以及源码绘制的decoupled detection head结构如下。在decoupled detection head中对于预测Cls、Reg以及IoU参数分别使用三个不同的分支，这样就将三者进行了解耦。<br><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/38.png" srcset="/img/loading.gif" lazyload></p>
+<p>与yolov5的对比<br><img src="https://xinhaojin.github.io/imgs-host/20221010/36.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="decoupled-head"><a href="#decoupled-head" class="headerlink" title="decoupled head"></a>decoupled head</h3><p>YOLOX和YOLOv5在网络结构上的主要的差别就在检测头head部分。之前的检测头就是通过一个卷积核大小为1x1的卷积层实现的，即这个卷积层要同时预测类别分数、边界框回归参数以及IOU，这种方式在文章中称之为coupled detection head（耦合的检测头）。作者说采用coupled detection head是对网络有害的，如果将coupled detection head换成decoupled detection head（解耦的检测头）能够大幅提升网络的收敛速度。在论文的图3中展示了YOLO v3分别使用coupled detection head和decoupled detection head的训练收敛情况，明显采用decoupled detection head后收敛速度会更快（在论文的表2中显示采用decoupled detection head能够提升AP约1.1个点）。<br><img src="https://xinhaojin.github.io/imgs-host/20221010/37.png" srcset="/img/loading.gif" lazyload><br>到底什么是解耦的检测头？根据原论文的图2以及源码绘制的decoupled detection head结构如下。在decoupled detection head中对于预测Cls、Reg以及IoU参数分别使用三个不同的分支，这样就将三者进行了解耦。<br><img src="https://xinhaojin.github.io/imgs-host/20221010/38.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="anchor-free"><a href="#anchor-free" class="headerlink" title="anchor-free"></a>anchor-free</h3><p>目前行业内，主要有Anchor Based和Anchor Free两种方式。</p>
 <p>在Yolov3、Yolov4、Yolov5中，通常都是采用Anchor Based的方式，来提取目标框，进而和标注的groundtruth进行比对，判断两者的差距。</p>
 <p><strong>缺点</strong></p>
@@ -392,18 +392,18 @@
 <p>3).因为anchor boxes数量特别多，训练阶段需要计算所有anchor boxes和ground-truth boxes的IOU，导致特别大的计算量和内存（显存）占用。<br><strong>Anchor Based方式</strong></p>
 <p>比如输入图像，经过Backbone、Neck层，最终将特征信息，传送到输出的Feature Map中。</p>
 <p>这时，就要设置一些Anchor规则，将预测框和标注框进行关联。从而在训练中，计算两者的差距，即损失函数，再更新网络参数。</p>
-<p>比如在下图的，最后的三个Feature Map上，基于每个单元格，都有三个不同尺寸大小的锚框。当输入为416*416时，网络最后的三个特征图大小分别为13*13，26*26，52*52。<br><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/40.png" srcset="/img/loading.gif" lazyload></p>
+<p>比如在下图的，最后的三个Feature Map上，基于每个单元格，都有三个不同尺寸大小的锚框。当输入为416<em>416时，网络最后的三个特征图大小分别为13</em>13，26<em>26，52</em>52。<br><img src="https://xinhaojin.github.io/imgs-host/20221010/40.png" srcset="/img/loading.gif" lazyload></p>
 <p>我们可以看到，黄色框为小狗的Groundtruth，即标注框（真值）。</p>
 <p>而蓝色的框，为小狗中心点所在的单元格（红框），所对应的锚框，每个单元格都有3个蓝框。</p>
 <p>当采用COCO数据集，即有80个类别时。</p>
 <p>基于每个锚框，都有x、y、w、h、obj（前景背景）、class（80个类别），共85个参数。</p>
-<p>因此会产生3*(13*13+26*26+52*52）*85&#x3D;904995个预测结果。</p>
-<p>如果将输入从416*416，变为640*640，最后的三个特征图大小为20*20,40*40,80*80。</p>
-<p>则会产生3<em>（20*20+40*40+80*80）</em>85&#x3D;2142000个预测结果。</p>
+<p>因此会产生3*(13<em>13+26</em>26+52<em>52）</em>85&#x3D;904995个预测结果。</p>
+<p>如果将输入从416<em>416，变为640</em>640，最后的三个特征图大小为20<em>20,40</em>40,80*80。</p>
+<p>则会产生3<em>（20</em>20+40<em>40+80</em>80）*85&#x3D;2142000个预测结果。</p>
 <p><strong>Anchor Free方式</strong><br>在前面Anchor Based中，每个Feature map的单元格，都有3个大小不一的锚框。</p>
 <p>那么Yolox-Darknet53就没有吗？</p>
-<p>其实并不然，这里只是巧妙地将前面Backbone中，下采样的大小信息引入进来。<br><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/41.png" srcset="/img/loading.gif" lazyload><br>比如上图中，最上面的分支，下采样了5次，2的5次方为32。</p>
-<p>并且Decoupled Head的输出，为20*20*85大小。<br><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/42.png" srcset="/img/loading.gif" lazyload><br>因此如上图所示：</p>
+<p>其实并不然，这里只是巧妙地将前面Backbone中，下采样的大小信息引入进来。<br><img src="https://xinhaojin.github.io/imgs-host/20221010/41.png" srcset="/img/loading.gif" lazyload><br>比如上图中，最上面的分支，下采样了5次，2的5次方为32。</p>
+<p>并且Decoupled Head的输出，为20<em>20</em>85大小。<br><img src="https://xinhaojin.github.io/imgs-host/20221010/42.png" srcset="/img/loading.gif" lazyload><br>因此如上图所示：</p>
 <p>最后8400个预测框中，其中有400个框(20*20)，所对应锚框的大小，为32 * 32。</p>
 <p>同样的原理，中间的分支，最后有1600个预测框(40*40)，所对应锚框的大小，为16 * 16。</p>
 <p>最下面的分支，最后有6400个预测框(80*80)，所对应锚框的大小，为8 * 8。</p>
@@ -418,7 +418,7 @@
 <p>这里就涉及到两个关键点：初步筛选、SimOTA。</p>
 <h4 id="初步筛选"><a href="#初步筛选" class="headerlink" title="初步筛选"></a>初步筛选</h4><p>1.中心点在真实框内的锚框</p>
 <p>2.已真实框中心点为基准，设置边长为5的正方形，挑选在正方形内的所有锚框</p>
-<h4 id="SimOTA"><a href="#SimOTA" class="headerlink" title="SimOTA"></a>SimOTA</h4><p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/43.png" srcset="/img/loading.gif" lazyload><br>SimOTA可以理解为是一种匹配策略的方法，可以看成是一个最优传输的问题。举一个通俗易懂的例子就是，有2个分配基地与6个周围城市，现在需要考虑一个最优的配送方式来确保分配东西到这几个城市的运输成本是最低的。而对于目标检测来说，这个最优传输问题也就是一个最优分配问题，如何实现把这些anchor point分配给groundtruth的代价（cost）是最低的。这个代价就是iou损失，分类损失等内容。<br>(yolox的核心，但没看懂)</p>
+<h4 id="SimOTA"><a href="#SimOTA" class="headerlink" title="SimOTA"></a>SimOTA</h4><p><img src="https://xinhaojin.github.io/imgs-host/20221010/43.png" srcset="/img/loading.gif" lazyload><br>SimOTA可以理解为是一种匹配策略的方法，可以看成是一个最优传输的问题。举一个通俗易懂的例子就是，有2个分配基地与6个周围城市，现在需要考虑一个最优的配送方式来确保分配东西到这几个城市的运输成本是最低的。而对于目标检测来说，这个最优传输问题也就是一个最优分配问题，如何实现把这些anchor point分配给groundtruth的代价（cost）是最低的。这个代价就是iou损失，分类损失等内容。<br>(yolox的核心，但没看懂)</p>
 <h2 id="YOLOv7"><a href="#YOLOv7" class="headerlink" title="YOLOv7"></a>YOLOv7</h2><p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2207.02696">paper(CVPR2022)</a></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/WongKinYiu/yolov7">code</a></p>
 <p>本文的贡献总结如下：</p>
@@ -427,11 +427,11 @@
 <p>3.本文提出了实时目标检测器的extend和compound scaling复合缩放 方法，可以有效地利用参数和计算；</p>
 <p>4.本文提出的方法可以有效地减少目前最优秀的实时目标检测器的大约40%的参数和50%的计算，并且具有更快的推理速度和更高的检测精度。</p>
 <h3 id="模型重参数化方法-GoogLeNet-Snapshot-ensembles"><a href="#模型重参数化方法-GoogLeNet-Snapshot-ensembles" class="headerlink" title="模型重参数化方法(GoogLeNet,Snapshot ensembles)"></a>模型重参数化方法(GoogLeNet,Snapshot ensembles)</h3><p>在推理阶段将多个计算模块合并为一个。模型重参数化技术可以被视为一种集成技术，可以将其分为两类，即模块级集成和模型级集成。有两种用于模型级重参数化以获得最终推理模型的常见用法：一种是用不同的训练数据训练多个相同的模型，然后对多个训练模型的权重进行平均。另一种方法是对不同迭代次数下的模型权重进行加权平均。</p>
-<p>模块级重参数化是最近比较流行的研究问题。这种类型的方法在训练期间将模块拆分为多个相同或不同的模块分支，并在推理期间将多个分支模块集成为完全等效的模块。<br><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/46.png" srcset="/img/loading.gif" lazyload></p>
+<p>模块级重参数化是最近比较流行的研究问题。这种类型的方法在训练期间将模块拆分为多个相同或不同的模块分支，并在推理期间将多个分支模块集成为完全等效的模块。<br><img src="https://xinhaojin.github.io/imgs-host/20221010/46.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>本文提出了一种新的实时目标检测器体系结构 和 相应的模型缩放方法。此外还发现，目标检测方法的发展过程产生了新的研究课题。在研究过程中，发现了 重参数化模块的替换问题和动态标签分配的分配问题。为了解决这个问题，本文提出了一种可训练的bag-of-freebies ，以提高目标检测的准确性。在此基础上，开发了YOLOv7系列目标检测系统 ，该系统获得了最优秀的结果。</p>
 <h2 id="YOLOv6"><a href="#YOLOv6" class="headerlink" title="YOLOv6"></a>YOLOv6</h2><p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2209.02976">paper(CVPR2022)</a></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/meituan/YOLOv6">code</a></p>
-<p>YOLOv6 是美团视觉智能部研发的一款目标检测框架，致力于工业应用。本框架同时专注于检测的精度和推理效率，在工业界常用的尺寸模型中：YOLOv6-nano 在 COCO 上精度可达 35.0% AP，在 T4 上推理速度可达 1242 FPS；YOLOv6-s 在 COCO 上精度可达 43.1% AP，在 T4 上推理速度可达 520 FPS。在部署方面，YOLOv6 支持 GPU（TensorRT）、CPU（OPENVINO）、ARM（MNN、TNN、NCNN）等不同平台的部署，极大地简化工程部署时的适配工作。<br><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/45.png" srcset="/img/loading.gif" lazyload></p>
+<p>YOLOv6 是美团视觉智能部研发的一款目标检测框架，致力于工业应用。本框架同时专注于检测的精度和推理效率，在工业界常用的尺寸模型中：YOLOv6-nano 在 COCO 上精度可达 35.0% AP，在 T4 上推理速度可达 1242 FPS；YOLOv6-s 在 COCO 上精度可达 43.1% AP，在 T4 上推理速度可达 520 FPS。在部署方面，YOLOv6 支持 GPU（TensorRT）、CPU（OPENVINO）、ARM（MNN、TNN、NCNN）等不同平台的部署，极大地简化工程部署时的适配工作。<br><img src="https://xinhaojin.github.io/imgs-host/20221010/45.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="现有YOLO的问题"><a href="#现有YOLO的问题" class="headerlink" title="现有YOLO的问题"></a>现有YOLO的问题</h3><p>根据经验分析以往YOLO系列及最新算法，观察到了几个重要因素，这些因素促使重新完善YOLO框架：</p>
 <p>1.RepVGG的重参数化算法是一种优越的技术，尚未在检测中得到充分利用。而且，RepVGG Block的模型缩放不切实际，本文认为小型和大型网络之间的网络设计保持一致是不必要的。普通单路径架构对于小型网络是更好的选择，但是对于更大的模型，参数的指数增长和单路径架构的计算成本使其不可行；</p>
 <p>2.基于重参数化的检测器的量化也需要细致的处理，否则，由于其在训练和推理期间的不同处理，很难处理性能退化的问题。</p>

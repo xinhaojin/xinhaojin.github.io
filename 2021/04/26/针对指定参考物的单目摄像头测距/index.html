@@ -25,14 +25,14 @@
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
 <meta property="og:description" content="前言测距是智能小车上常备的一项功能，常见方案有超声波测距、红外线测距、激光测距，其中超声波测距非常鸡肋，仅仅对于大平面能起到良好的超声波反射效果，其他情况几乎无法测量距离，红外和激光测距应该是性能较好的，不过目前尚未使用。此外，考虑到我的智能小车上有一个摄像头，我的应用又是目标检测，正好能框出指定物体的轮廓，根据 近 大 远 小 的原理，理论上来讲，通过判断矩形框的大小应该可以推断物体离摄像头的距">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/04/image-28.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/04/image-29.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/04/image-27-1024x805.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2021/04/image-28.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2021/04/image-29.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2021/04/image-27-1024x805.png">
 <meta property="article:published_time" content="2021-04-26T15:34:59.000Z">
-<meta property="article:modified_time" content="2023-07-04T10:48:25.890Z">
+<meta property="article:modified_time" content="2024-01-16T08:12:41.447Z">
 <meta property="article:author" content="xinhaojin">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/04/image-28.png">
+<meta name="twitter:image" content="https://xinhaojin.github.io/imgs-host/past/2021/04/image-28.png">
   
   
   
@@ -298,11 +298,11 @@
 <h4 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h4><p>一句话概括：手动标记多个<strong>点</strong>，进行多项式拟合，得到矩形框参数与距离之间的映射关系。</p>
 <p>已知矩形框的宽度，把它作为自变量x，同时进行实际测量，测量值distance作为因变量。多换几个位置，再进行测量，就得到了多个x-distance，把它看做多个已知点，然后进行多项式拟合。</p>
 <p>这种常用的东西一般都会有免费的在线工具，一搜就有。如<a target="_blank" rel="noopener" href="http://www.qinms.com/webapp/curvefit/cf.aspx">这个</a></p>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/04/image-28.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/04/image-29.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/04/image-28.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/04/image-29.png" srcset="/img/loading.gif" lazyload></p>
 <p>拟合的时候要查看拟合结果是否良好，有些时候拟合的结果对于实数范围内总体良好，但在实际使用场景的范围内不一定好，这时候建议换一下最高次数再次尝试，上面我这个结果就算还不错。</p>
 <p>根据拟合方程式，就得到了x-distance的映射关系，之后就能通过目标检测的矩形框宽度，来推算距离了，实际误差也在3cm以内，可以接受</p>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/04/image-27-1024x805.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/04/image-27-1024x805.png" srcset="/img/loading.gif" lazyload></p>
 <p>Done.</p>
 
                 

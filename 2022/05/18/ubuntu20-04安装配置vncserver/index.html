@@ -25,14 +25,14 @@
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
 <meta property="og:description" content="更新系统sudo apt update sudo apt upgrade  安装软件sudo apt install tigervncserver  打开端口 sudo firewall-cmd --zone&#x3D;public --add-port&#x3D;5900&#x2F;tcp --permanent sudo firewall-cmd --zone&#x3D;public --add-port&#x3D;5901&#x2F;tcp --pe">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/05/image-3-1024x386.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/05/image-4.png">
-<meta property="og:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/05/image-5-1024x237.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/05/image-3-1024x386.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/05/image-4.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/05/image-5-1024x237.png">
 <meta property="article:published_time" content="2022-05-18T21:01:40.000Z">
-<meta property="article:modified_time" content="2023-07-04T10:48:15.150Z">
+<meta property="article:modified_time" content="2024-01-16T08:12:34.979Z">
 <meta property="article:author" content="xinhaojin">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/05/image-3-1024x386.png">
+<meta name="twitter:image" content="https://xinhaojin.github.io/imgs-host/past/2022/05/image-3-1024x386.png">
   
   
   
@@ -306,7 +306,7 @@ sudo firewall-cmd --zone=public --add-port=5901/tcp --permanent
 <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>运行 vncserver 命令，该命令将创建初始配置并设置密码。运行以下命令时不要使用 sudo</p>
 <pre><code class="hljs">vncserver
 </code></pre>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/05/image-3-1024x386.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/05/image-3-1024x386.png" srcset="/img/loading.gif" lazyload></p>
 <p>系统将提示您输入并确认密码，以及是否将其设置为仅查看密码。如果您选择设置仅查看密码，则用户将无法使用鼠标和键盘与 VNC 实例进行交互</p>
 <p>第一次 vncserver 运行命令时，它将创建密码文件并将其存储在 ~&#x2F;.vnc 目录中，如果不存在，将创建该目录。</p>
 <p>注意上面输出中主机名之后的 :1 。这表示运行 vnc 服务器的显示端口号。在我们的例子中，服务器在 TCP 端口 5901 (5900 + 1)上运行。如果您创建第二个实例， vncserver 它将在下一个空闲端口上运行，即 :2 这意味着服务器正在端口 5902 (5900 + 2)上运行。</p>
@@ -316,7 +316,7 @@ sudo firewall-cmd --zone=public --add-port=5901/tcp --permanent
 <p>在继续下一步之前，首先使用带有 -kill 选项和服务器编号作为参数的 vncserver 命令停止 VNC 实例。在我们的例子中，服务器在端口 5901 (:1)中运行，因此我们将使用以下命令停止它：</p>
 <pre><code class="hljs">vncserver -kill :1
 </code></pre>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/05/image-4.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/05/image-4.png" srcset="/img/loading.gif" lazyload></p>
 <p>现在我们已经在服务器上安装了 Xfce 和 TigerVNC ，我们需要配置 TigerVNC 来使用 Xfce 。为此，请创建以下文件 〜&#x2F;.vnc&#x2F;xstartup：</p>
 <pre><code class="hljs">vi ~/.vnc/xstartup
 
@@ -366,7 +366,7 @@ WantedBy=multi-user.target
 <p>执行以下命令启动 VNC 服务：</p>
 <pre><code class="hljs">sudo systemctl start vncserver@1.service
 </code></pre>
-<p><img src="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/05/image-5-1024x237.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/05/image-5-1024x237.png" srcset="/img/loading.gif" lazyload></p>
 <pre><code class="hljs">sudo systemctl start vncserver@1.service#启动
 sudo systemctl enable vncserver@1.service#自启动
 </code></pre>
