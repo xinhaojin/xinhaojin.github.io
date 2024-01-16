@@ -21,7 +21,7 @@ wget是一个轻量级的可配置下载工具
 
 在系统变量Path中添加;%GNU_HOME%\\bin（win7注意前面有分号）
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/05/image-30.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/05/image-30.png)
 
 #### 用法
 

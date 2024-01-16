@@ -16,23 +16,23 @@ date: 2023-05-20 13:30:00
 
 还需要先填名字，这是外国人很奇怪的一点，记不住设置的什么名字就登不上了
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20230704/微信截图_20230704142856.1tmnrvwfijwg.webp)
+![](https://xinhaojin.github.io/imgs-host/20230704/微信截图_20230704142856.1tmnrvwfijwg.webp)
 
 在计算-实例页面选择创建实例
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20230704/image.7is8xyw41fw0.webp)
+![](https://xinhaojin.github.io/imgs-host/20230704/image.7is8xyw41fw0.webp)
 
 映像和配置选择免费的就好
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20230704/image.3dlmlm2nlqm0.webp)
+![](https://xinhaojin.github.io/imgs-host/20230704/image.3dlmlm2nlqm0.webp)
 
 保存密钥对到本地
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20230704/image.2s5dhhh68g60.webp)
+![](https://xinhaojin.github.io/imgs-host/20230704/image.2s5dhhh68g60.webp)
 
 创建成功后在 https://ping.chinaz.com/  ping一下服务器公网IP 本机也ping一下检查是否畅通 本地网络ping畅通的服务器才有意义
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20230704/image.3jbm4dedc500.webp)
+![](https://xinhaojin.github.io/imgs-host/20230704/image.3jbm4dedc500.webp)
 
 ### SSH连接
 

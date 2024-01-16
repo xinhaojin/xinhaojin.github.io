@@ -16,7 +16,7 @@ date: 2022-02-22 15:04:02
 
 输出是两个缺口的像素距离
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/02/image-1-1024x493.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/02/image-1-1024x493.png)
 ```py
 import cv2
 class SlideCrack(object):# https://github.com/crazyxw/SlideCrack/tree/master/slide_01
@@ -106,7 +106,7 @@ x=sc.discern()
 
 针对这个网页，分为三步，打开网址，点击按钮，拖拽滑块
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/02/image-2-1024x634.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/02/image-2-1024x634.png)
 
 ### 操作网页元素
 
@@ -143,7 +143,7 @@ def downloadPic(url,filename):
 tag=driver.find_element_by_css_selector('.yidun_slider')
 ActionChains(driver).drag_and_drop_by_offset(tag,50,0).perform()
 ```
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/02/image-3.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/02/image-3.png)
 
 ## 整合
 

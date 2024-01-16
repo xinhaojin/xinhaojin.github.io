@@ -9,9 +9,9 @@ date: 2020-07-05 09:25:10
 
 #### 第一步
 
-     curl --silent --location https://rpm.nodesource.com/setup\_10.x  sudo bash
+     curl --silent --location https://rpm.nodesource.com/setup_10.x  sudo bash
 
-     curl --silent --location https://rpm.nodesource.com/setup\_10.x  sudo bash 
+     curl --silent --location https://rpm.nodesource.com/setup_10.x  sudo bash 
 
 ## Installing the NodeSource Node.js 10.x repo...
 
@@ -21,14 +21,14 @@ date: 2020-07-05 09:25:10
 + rpm -q --whatprovides redhat-release  rpm -q --whatprovides centos-release  rpm -q --whatprovides cloudlinux-release  rpm -q --whatprovides sl-release
 + uname -m
 
-## Confirming "el6-x86\_64" is supported...
+## Confirming "el6-x86_64" is supported...
 
-+ curl -sLf -o /dev/null 'https://rpm.nodesource.com/pub\_10.x/el/6/x86\_64/nodesource-release-el6-1.noarch.rpm'
++ curl -sLf -o /dev/null 'https://rpm.nodesource.com/pub_10.x/el/6/x86_64/nodesource-release-el6-1.noarch.rpm'
 
 ## Downloading release setup RPM...
 
 + mktemp
-+ curl -sL -o '/tmp/tmp.aoQY5ifb9m' 'https://rpm.nodesource.com/pub\_10.x/el/6/x86\_64/nodesource-release-el6-1.noarch.rpm'
++ curl -sL -o '/tmp/tmp.aoQY5ifb9m' 'https://rpm.nodesource.com/pub_10.x/el/6/x86_64/nodesource-release-el6-1.noarch.rpm'
 
 ## Installing release setup RPM...
 
@@ -61,4 +61,4 @@ date: 2020-07-05 09:25:10
 
 如果存在多个 nodesoucre，执行以下命令删除，然后重新执行第一第二步：
 
-     sudo rm -fv /etc/yum.repos.d/nodesource\*
+     sudo rm -fv /etc/yum.repos.d/nodesource*

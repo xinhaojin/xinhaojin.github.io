@@ -18,4 +18,4 @@ date: 2021-01-17 22:54:16
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
 完成
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/01/image-37.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/01/image-37.png)

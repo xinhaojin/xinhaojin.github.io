@@ -19,6 +19,6 @@ text = re.sub("\\s", "", text)  # 去掉所有空格
 ```
 ## 例：PDF提取表格保存到Excel
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-25.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/04/image-25.png)
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/2297a99239f8bdc75b1b263f6941e40.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/04/2297a99239f8bdc75b1b263f6941e40.png)

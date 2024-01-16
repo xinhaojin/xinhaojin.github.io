@@ -27,7 +27,7 @@ date: 2020-04-03 18:03:08
 
 #### 四、后台运行酷Q容器
 
-    sudo docker run --name=coolq -d -p 8080:9000 -v /coolq-data:/home/user/coolq -e VNC\_PASSWD=12345678 -e COOLQ\_ACCOUNT=2333456789 coolq/wine-coolq
+    sudo docker run --name=coolq -d -p 8080:9000 -v /coolq-data:/home/user/coolq -e VNC_PASSWD=12345678 -e COOLQ_ACCOUNT=2333456789 coolq/wine-coolq
 
 #其中部分参数根据自己的需求替换：
 
@@ -57,9 +57,9 @@ date: 2020-04-03 18:03:08
 
 #-e是设置容器的系统环境
 
-#因为之后要通过vnc连接，所以要指定VNC\_PASSWD
+#因为之后要通过vnc连接，所以要指定VNC_PASSWD
 
-#酷Q要登录的qq小号(充当机器人)也可以通过-e COOLQ\_ACCOUNT 去指定
+#酷Q要登录的qq小号(充当机器人)也可以通过-e COOLQ_ACCOUNT 去指定
 
 #### 五、登录vnc进行酷Q操作
 
@@ -69,7 +69,7 @@ date: 2020-04-03 18:03:08
 
 #输入QQ密码登录
 
-#在登录后，右键点击悬浮窗 -> 你的 QQ 昵称 -> 勾选\[开机启动\]和\[快速登录\]即可保证酷Q能自动登录
+#在登录后，右键点击悬浮窗 -> 你的 QQ 昵称 -> 勾选[开机启动]和[快速登录]即可保证酷Q能自动登录
 
 #### 六、设置docker服务器开机自启动
 

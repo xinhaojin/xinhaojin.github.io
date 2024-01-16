@@ -17,7 +17,7 @@ img=cv2.imread('中文目录/中文名称.jpg')
 ```
 报错
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/03/image-17.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/03/image-17.png)
 
 改进写法
 ```py
@@ -35,5 +35,5 @@ cv2.imwrite('中文目录/中文名称.jpg',img)
 
 改进写法，需要额外再写一遍后缀名
 ```python
-cv2.imencode('.jpg',img)\[1\].tofile('中文目录/中文名称.jpg')
+cv2.imencode('.jpg',img)[1].tofile('中文目录/中文名称.jpg')
 ```

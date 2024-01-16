@@ -14,15 +14,15 @@ date: 2023-07-04 19:30:00
 
 点击一键部署
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20230704/image.6a2gkpr6v3g0.webp)
+![](https://xinhaojin.github.io/imgs-host/20230704/image.6a2gkpr6v3g0.webp)
 
 然后在项目设置中设置自定义域名
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20230704/image.3td9tigs2o80.webp)
+![](https://xinhaojin.github.io/imgs-host/20230704/image.3td9tigs2o80.webp)
 
 按提示给域名添加CNAME记录即可
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20230704/image.61thfdz2zjo.webp)
+![](https://xinhaojin.github.io/imgs-host/20230704/image.61thfdz2zjo.webp)
 
 #### 用法
 
@@ -30,7 +30,7 @@ eg1. <https://proxy.xinhaojin.top/proxy/www.google.com/search?q=xinhaojin.top>
 
 等同于https://www.google.com/search?q=xinhaojin.top
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20230704/image.oh65m4nasu8.png)
+![](https://xinhaojin.github.io/imgs-host/20230704/image.oh65m4nasu8.png)
 
 ### cloudflare
 
@@ -38,7 +38,7 @@ eg1. <https://proxy.xinhaojin.top/proxy/www.google.com/search?q=xinhaojin.top>
 
 在cloudflare创建一个新的worker
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20230704/image.2urpb8qa4xe0.webp)编辑代码，把<https://github.com/gaboolic/cloudflare-reverse-proxy/blob/main/_worker.js>中的内容写进worker.js
+![](https://xinhaojin.github.io/imgs-host/20230704/image.2urpb8qa4xe0.webp)编辑代码，把<https://github.com/gaboolic/cloudflare-reverse-proxy/blob/main/_worker.js>中的内容写进worker.js
 
 ``````js
 addEventListener('fetch', event => {

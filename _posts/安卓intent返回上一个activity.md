@@ -30,7 +30,7 @@ startActivityForResult(intent,1);
 ```
 在activity2中
 ```java
-setResult(RESULT\_OK);//RESULT\_OK表示正确返回
+setResult(RESULT_OK);//RESULT_OK表示正确返回
 finish();//结束当前avtivity，返回上一个activity
 
 当activity2执行finish后，会自动返回到activity1，此时会调用activity1中定义的onActivityResult方法做返回后的操作，如更新activity1
@@ -38,7 +38,7 @@ finish();//结束当前avtivity，返回上一个activity
 @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode==RESULT\_OK){//判断是否返回成功
+        if(resultCode==RESULT_OK){//判断是否返回成功
             if(requestCode==1)//判断是否是哪个avtivity返回,一个avtivity对应一个code,上面定义过为1
             {
                //你的操作

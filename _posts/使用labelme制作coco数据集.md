@@ -21,11 +21,11 @@ date: 2021-09-02 15:07:55
 
 打开后选择打开文件夹，选择自动保存
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/09/image-1.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/09/image-1.png)
 
 编辑，画矩形，然后打上标签
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/09/image-2-1024x626.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/09/image-2-1024x626.png)
 
 在图片目录下会保存json格式的标签信息
 
@@ -33,7 +33,7 @@ date: 2021-09-02 15:07:55
 
 yolox的数据集readme中写明了需要的数据集格式
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/09/image-3.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/09/image-3.png)
 
 其中instancesxxx.json是很多json的集合，需要手动生成
 

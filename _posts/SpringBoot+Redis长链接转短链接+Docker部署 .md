@@ -22,7 +22,7 @@ date: 2023-08-21 14:07:56
 <head>
     <title>短链接生成器</title>
     <meta charset="UTF-8">
-    <link rel="icon" href="https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20230821/tutu.7cfpopzisy40.webp" sizes="16*16">
+    <link rel="icon" href="https://xinhaojin.github.io/imgs-host/20230821/tutu.7cfpopzisy40.webp" sizes="16*16">
     <style>
         body {
             font-family: Arial, sans-serif;

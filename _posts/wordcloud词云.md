@@ -16,7 +16,7 @@ stopwords.txt是一个自定义的停用词列表，里面的词都会被过滤
 with open("stopwords.txt", "r", encoding="utf-8") as fp:
     stopwords = set([s.rstrip() for s in fp.readlines()])
 ```
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/11/image.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/11/image.png)
 
 #### 读取文本内容，过滤停用词
 ```py
@@ -62,25 +62,25 @@ wc = WordCloud(font_path='C:\\Windows\\Fonts\\STZHONGS.TTF',  # 字体
 
 有时候找的背景图不是白色或者不够白，可以在画图工具中打开图片，画笔-填充-颜色默认-白色-点击背景色
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/11/image-1-1024x792.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/11/image-1-1024x792.png)
 
 colormap就是指定的颜色集合，参数填的是string类型，可选的值有下面这些，左侧列表都可作为参数值，对应的颜色是右边这些
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/11/colormaps_reference_00.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/11/colormaps_reference_00.png)
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/11/colormaps_reference_01.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/11/colormaps_reference_01.png)
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/11/colormaps_reference_02.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/11/colormaps_reference_02.png)
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/11/colormaps_reference_03.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/11/colormaps_reference_03.png)
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/11/colormaps_reference_04.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/11/colormaps_reference_04.png)
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/11/colormaps_reference_05.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/11/colormaps_reference_05.png)
 
 #### 结果
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/11/output.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/11/output.png)
 
 #### 代码
 ```py

@@ -1,6 +1,6 @@
 ---
 title: Android设置横屏/避免旋转屏幕导致avtivity重载
-index_img: https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/04/image-24.png
+index_img: https://xinhaojin.github.io/imgs-host/past/2021/04/image-24.png
 tags: []
 id: '1320'
 categories:
@@ -18,4 +18,4 @@ android:screenOrientation="portrait"
 
 android:configChanges="orientationkeyboardHiddenscreenSize"
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/04/image-24.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/04/image-24.png)

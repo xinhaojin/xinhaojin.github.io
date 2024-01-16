@@ -15,7 +15,7 @@ date: 2022-05-09 22:03:09
 
 在末尾添加代理服务器设置
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/05/image.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/05/image.png)
 
 ## 验证
 
@@ -25,4 +25,4 @@ date: 2022-05-09 22:03:09
 
     proxychains4 curl www.httpbin.org/ip
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/05/image-1-1024x339.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/05/image-1-1024x339.png)

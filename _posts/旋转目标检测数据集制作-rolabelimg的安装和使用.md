@@ -32,6 +32,6 @@ git clone https://github.com/cgvict/roLabelImg
 
 画矩形框，使用z,x or c,v进行旋转调节，其余用法和普通labelImg相同
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/20191211101740462.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/04/20191211101740462.png)
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-2.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/04/image-2.png)

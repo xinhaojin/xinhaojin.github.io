@@ -13,9 +13,9 @@ date: 2021-01-11 18:46:03
 
     pi@raspberrypi:~ $ lsusb
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/01/image-31.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/01/image-31.png)
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/01/image-32.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/01/image-32.png)
 
 或者
 
@@ -23,11 +23,11 @@ date: 2021-01-11 18:46:03
 
 插上USB摄像头有video0即可
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/01/image-30.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/01/image-30.png)
 
 不插的情况
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/01/image-33.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/01/image-33.png)
 
 #### 安装MJPG-Streamer
 
@@ -35,8 +35,8 @@ date: 2021-01-11 18:46:03
 
     pi@raspberrypi:~ $ sudo apt-get install cmake libjpeg8-dev
     pi@raspberrypi:~ $ git clone https://e.coding.net/fivecc/mjpg-streamer/mjpg-streamer.git
-    pi@raspberrypi:~ $ cd mjpg-\*
-    pi@raspberrypi:~/mjpg-streamer-master $ cd mjpg-\*
+    pi@raspberrypi:~ $ cd mjpg-*
+    pi@raspberrypi:~/mjpg-streamer-master $ cd mjpg-*
     pi@raspberrypi:~/mjpg-streamer-master/mjpg-streamer-experimental $ make
     pi@raspberrypi:~/mjpg-streamer-master/mjpg-streamer-experimental $ sudo make install 
     pi@raspberrypi:~/mjpg-streamer-master/mjpg-streamer-experimental $ cd 
@@ -44,31 +44,31 @@ date: 2021-01-11 18:46:03
 
 #### 启动 MJPG-Streamer
 
-    pi@raspberrypi: ~ $ /usr/local/bin/mjpg\_streamer -i "/usr/local/lib/mjpg-streamer/input\_uvc.so -n -f 30 -r 1280x720" -o "/usr/local/lib/mjpg-streamer/output\_http.so -p 8080 -w /usr/local/share/mjpg-streamer/www"
+    pi@raspberrypi: ~ $ /usr/local/bin/mjpg_streamer -i "/usr/local/lib/mjpg-streamer/input_uvc.so -n -f 30 -r 1280x720" -o "/usr/local/lib/mjpg-streamer/output_http.so -p 8080 -w /usr/local/share/mjpg-streamer/www"
 
 正常的结果
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/01/image-34.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/01/image-34.png)
 
 #### 参数说明
 
-   -i "/usr/local/lib/mjpg-streamer/input\_uvc.so -n -f 30 -r 1280x720"
+   -i "/usr/local/lib/mjpg-streamer/input_uvc.so -n -f 30 -r 1280x720"
 
   \-i 输入
 
-         input\_uvc.so：UVC输入组件
+         input_uvc.so：UVC输入组件
 
        -f  30             ：表示30帧
 
-       -r 1280\*720     ：分辨率
+       -r 1280*720     ：分辨率
 
        -y                   ：YUV格式输入（有卡顿），不加表示MJPG输入（需要摄像头支持）
 
-    -o "/usr/local/lib/mjpg-streamer/output\_http.so -p 8080 -w /usr/local/share/mjpg-streamer/www"
+    -o "/usr/local/lib/mjpg-streamer/output_http.so -p 8080 -w /usr/local/share/mjpg-streamer/www"
 
           -o 输出
 
-            output\_http.so          ：网页输出组件
+            output_http.so          ：网页输出组件
 
             -w www                                  : 网页输出
 

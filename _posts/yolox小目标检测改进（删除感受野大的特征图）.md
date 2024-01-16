@@ -7,7 +7,7 @@ date: 2022-10-24 11:30:00
 ---
 ## 问题
 yolox中有3个检测分支，分别预测小、中、大的目标
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221010/41.png)
+![](https://xinhaojin.github.io/imgs-host/20221010/41.png)
 但在我的数据集上，并不需要预测大目标，甚至还要手动去掉错误的大预测框，因此有一个想法是去掉一个最深的检测分支，使网络预测大目标的能力下降，整体感受野变小，对小目标更加敏感。
 ## 方法
 **修改yolox/models/yolo_head.py**

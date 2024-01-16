@@ -11,7 +11,7 @@ date: 2022-04-03 15:19:28
 
 采用不同的优化算法，网络模型收敛的效果是不同的
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/3-6-2.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/04/3-6-2.png)
 
 ## 比较优化器采用不同优化算法的效果
 ```py

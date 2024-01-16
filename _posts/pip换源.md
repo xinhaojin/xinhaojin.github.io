@@ -29,7 +29,7 @@ date: 2021-01-06 23:48:32
 
 在这个目录下
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/08/image-2.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/08/image-2.png)
 
 找到pip文件夹，没有pip文件夹就新建一个
 

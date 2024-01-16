@@ -11,11 +11,11 @@ date: 2021-06-30 17:47:55
 
 #### 开启QQ邮箱的SMTP服务
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/06/image-8.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/06/image-8.png)
 
 #### 获取授权码
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/06/image-9.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/06/image-9.png)
 
 #### 代码如下
 
@@ -30,7 +30,7 @@ from email.header import Header
 # 第三方 SMTP 服务
 mail_host="smtp.qq.com"  #设置服务器，这里是QQ的smtp服务器地址
 mail_user="xinhaojin@qq.com"    #用户名
-mail_pass="tj\*\*\*\*\*\*\*\*\*\*\*j"   #口令 ，即授权码
+mail_pass="tj***********j"   #口令 ，即授权码
  
  
 sender = 'xinhaojin@qq.com'#发送者
@@ -54,4 +54,4 @@ except smtplib.SMTPException as e:
     print(e)
     print ("Error: 无法发送邮件")
 ```
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/06/image-10.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/06/image-10.png)

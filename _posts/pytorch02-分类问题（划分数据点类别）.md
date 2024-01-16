@@ -9,7 +9,7 @@ date: 2022-04-03 14:26:35
 
 原文[区分类型 (分类) - PyTorch 莫烦Python (mofanpy.com)](https://mofanpy.com/tutorials/machine-learning/torch/classification/)
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/1-1-3.gif)
+![](https://xinhaojin.github.io/imgs-host/past/2022/04/1-1-3.gif)
 
 ## 定义数据集
 ```py
@@ -48,7 +48,7 @@ net = Net(n_feature=2, n_hidden=10, n_output=2)
 ```
 把一堆数据点分为两类
 
-输入是一个点的坐标\[x,y\]，输出是一个预测的类别概率\[属于第一类的概率,属于第二类的概率\]，所以输入输出维度都是2
+输入是一个点的坐标[x,y]，输出是一个预测的类别概率[属于第一类的概率,属于第二类的概率]，所以输入输出维度都是2
 
 ## 定义优化器和损失函数
 ```py
@@ -114,7 +114,7 @@ loss_func = torch.nn.CrossEntropyLoss()#softmax概率，用于标签误差计算
 plt.ion()#实时打印
 
 for t in range(100):
-    out = net(x)#输出是类别概率\[0.3,0.7\]
+    out = net(x)#输出是类别概率[0.3,0.7]
     loss = loss_func(out, y)#先写预测值，后写真实值
 
     optimizer.zero_grad()

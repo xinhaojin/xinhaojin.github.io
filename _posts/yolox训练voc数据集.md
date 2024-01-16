@@ -15,7 +15,7 @@ date: 2022-03-01 18:57:32
 
 上文中最后得到了几个文件夹
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/03/image.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/03/image.png)
 
 但这不能直接用，还需要划分训练集和测试集，可以手动划分，或者写段代码随机划分，最后数据集目录结构如下
 
@@ -33,7 +33,7 @@ JPEGImages是图片文件夹
 
 ImageSets/Main中包含了训练集和测试集的图片名列表，不包含后缀名
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/03/image-1.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/03/image-1.png)
 
 在VOC2007同级目录执行下面这段代码即可自动划分
 ```py
@@ -87,21 +87,21 @@ python setup.py develop
 
 首先把数据集放到datasets目录下，严格按照以下目录结构，会更方便一些
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/03/image-2.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/03/image-2.png)
 
 ### 修改exps/example/yolox_voc/yolox_voc_s.py
 
 num_classes改为标签数目，我这里只有一个标签类别
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/03/image-3.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/03/image-3.png)
 
 去掉2012相关的内容
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/03/image-4.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/03/image-4.png)
 
 ### 修改tools/train.py
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/03/image-5.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/03/image-5.png)
 
 \-b 一次训练所抓取的数据样本数量，取决于内存大小，提示memory相关错误优先考虑这个问题，2,4,8,16...
 
@@ -111,23 +111,23 @@ num_classes改为标签数目，我这里只有一个标签类别
 
 \-c 模型权重文件，使用预训练模型，从官网下载
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/03/image-6.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/03/image-6.png)
 
 ### 修改yolox/data/datasets/voc.py
 
 注释difficult，意思是打标签时对应标签的识别难度，我的标签里没有这一项，不修改会报错，需要把difficult设置为False
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/03/image-7.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/03/image-7.png)
 
 删去花括号里原有的:s，否则无法正确读取
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/03/image-8.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/03/image-8.png)
 
 ### 修改yolox/data/datasets/voc_classes.pycoco_classes.py(记得改下coco类名，因为后面import类别的时候默认是coco)
 
 注释原有类别，改为自己的，这里只有单类
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/03/image-9.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/03/image-9.png)
 
 ### 修改yolox/evaluators/voc_eval.py
 
@@ -135,11 +135,11 @@ num_classes改为标签数目，我这里只有一个标签类别
 
 还有一处是类型转换，添加了float类型转换，否则报错
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/03/image-11.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/03/image-11.png)
 
-x\["difficult"\]改为0
+x["difficult"]改为0
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/03/image-12.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/03/image-12.png)
 
 ### 修改yolox/exp/yolox_base.py
 修改训练轮次，默认300
@@ -151,7 +151,7 @@ python tools/train.py
 
 每10轮会有一次统计，只要下面两个数字不是0就好了，越接近1效果越好
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/03/image-15.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/03/image-15.png)
 
 ## 验证
 
@@ -163,7 +163,7 @@ python tools/demo.py image -f exps/example/yolox_voc/yolox_voc_s.py -c YOLOX_out
 
 然后在YOLOX_outputs/yolox_voc_s/vis_res下的时间文件夹里就能找到识别结果，如下
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/03/00001.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/03/00001.png)
 
 ## 另
 

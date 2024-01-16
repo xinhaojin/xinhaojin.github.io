@@ -13,6 +13,6 @@ date: 2021-04-01 19:06:09
 添加以下代码
 ```py
 import os
-os.environ\['KMP\_DUPLICATE\_LIB\_OK'\]='True'
+os.environ['KMP_DUPLICATE_LIB_OK']='True'
 #允许问题描述中dll副本存在
 ```

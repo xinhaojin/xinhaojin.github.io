@@ -63,6 +63,6 @@ except KeyboardInterrupt:
     pass
 GPIO.cleanup()
 ```
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/01/image-40.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/01/image-40.png)
 
 发现这个传感器不是很灵敏，角度不能偏，遮挡物面需要够大且尽可能光滑，不太满意

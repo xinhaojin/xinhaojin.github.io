@@ -15,7 +15,7 @@ date: 2023-07-04 19:30:00
 
 除了node_modules,其他文件全部上传
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20230704/image.71u2etwvmq40.webp)
+![](https://xinhaojin.github.io/imgs-host/20230704/image.71u2etwvmq40.webp)
 
 ### 安装nodejs、Hexo和其他依赖
 

@@ -15,7 +15,7 @@ wget -O install.sh https://download.bt.cn/install/install-ubuntu_6.0.sh && sudo 
 
 复制保存初始化用户密码
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20230704/image.5xjeaa9urio0.webp)
+![](https://xinhaojin.github.io/imgs-host/20230704/image.5xjeaa9urio0.webp)
 
 放行端口
 
@@ -33,7 +33,7 @@ systemctl daemon-reload
 systemctl restart bt
 ``````
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20230704/image.7jei1ok5yo40.webp)
+![](https://xinhaojin.github.io/imgs-host/20230704/image.7jei1ok5yo40.webp)
 
 使用初始化用户密码登录进去之后，在面板设置中修改用户名和密码
 

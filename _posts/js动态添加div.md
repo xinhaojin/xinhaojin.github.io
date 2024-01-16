@@ -1,6 +1,6 @@
 ---
 title: JS动态添加div
-index_img: https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2020/08/image.png
+index_img: https://xinhaojin.github.io/imgs-host/past/2020/08/image.png
 tags: []
 id: '804'
 categories:
@@ -47,4 +47,4 @@ function submit()
 ```
 #### 效果
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2020/08/image.png)
+![](https://xinhaojin.github.io/imgs-host/past/2020/08/image.png)

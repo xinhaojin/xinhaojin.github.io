@@ -13,23 +13,23 @@ date: 2020-09-18 22:16:52
 
 然后安装这个插件 CodeLLDB
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2020/09/image-10.png)
+![](https://xinhaojin.github.io/imgs-host/past/2020/09/image-10.png)
 
 打开空文件夹，新建cpp文件，可以先设置好断点
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2020/09/image-13.png)
+![](https://xinhaojin.github.io/imgs-host/past/2020/09/image-13.png)
 
 点击创建launch.json文件，选择C++（GDB/LLDB）
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2020/09/image-14-1024x330.png)
+![](https://xinhaojin.github.io/imgs-host/past/2020/09/image-14-1024x330.png)
 
 选择配置 g++即可
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2020/09/image-15.png)
+![](https://xinhaojin.github.io/imgs-host/past/2020/09/image-15.png)
 
 直接进入断点调试
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2020/09/image-16-1024x457.png)
+![](https://xinhaojin.github.io/imgs-host/past/2020/09/image-16-1024x457.png)
 
 在.vscode文件夹中自动生成了launch.json和task.json
 

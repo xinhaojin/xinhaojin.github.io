@@ -21,7 +21,7 @@ for i in range(50):
     ax.legend()#标注图例
     plt.pause(0.1)#暂停0.1s
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/07/20180611135854497.gif)
+![](https://xinhaojin.github.io/imgs-host/past/2021/07/20180611135854497.gif)
 ```
 方法二
 ```python
@@ -42,7 +42,7 @@ for i in range(100):
     plt.plot(xs, ys)
     plt.pause(0.1)#暂停0.1s
 ```
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/07/20180611135923916.gif)
+![](https://xinhaojin.github.io/imgs-host/past/2021/07/20180611135923916.gif)
 
 原文https://blog.csdn.net/xyisv/article/details/80651334
 

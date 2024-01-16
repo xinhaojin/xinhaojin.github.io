@@ -1,6 +1,6 @@
 ---
 title: php发送SMTP邮件
-index_img: https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/07/image-2.png
+index_img: https://xinhaojin.github.io/imgs-host/past/2021/07/image-2.png
 tags: []
 id: '1807'
 categories:
@@ -27,7 +27,7 @@ function sendEmail($content){
         $mail->Host = 'smtp.qq.com';                // SMTP服务器
         $mail->SMTPAuth = true;                      // 允许 SMTP 认证
         $mail->Username = 'xinhaojin@qq.com';                // SMTP 用户名  即邮箱的用户名
-        $mail->Password = 'tjhv\*\*\*\*\*\*\*\*\*xdjaj';             // SMTP 密码  部分邮箱是授权码(例如163邮箱)
+        $mail->Password = 'tjhv*********xdjaj';             // SMTP 密码  部分邮箱是授权码(例如163邮箱)
         $mail->SMTPSecure = 'ssl';                    // 允许 TLS 或者ssl协议
         $mail->Port = 465;                            // 服务器端口 25 或者465 具体要看邮箱服务器支持
 
@@ -58,10 +58,10 @@ sendEmail('快来看看吧');
 ```
 还需要一个src文件夹，内容如下
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/07/image-1.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/07/image-1.png)
 
 可以在GitHub下载https://github.com/PHPMailer/PHPMailer，下载后解压，只需要用到src文件夹
 
 蓝奏云下载链接https://xinhaojin.lanzoui.com/izMoEqz9fyj
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/07/image-2.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/07/image-2.png)

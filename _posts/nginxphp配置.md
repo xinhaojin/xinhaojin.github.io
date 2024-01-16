@@ -11,12 +11,12 @@ date: 2020-08-11 16:58:42
 
     server {
         listen 999;
-        server\_name blog.xinhaojin.top;
-        location ~ \\.php?.\*$ {
+        server_name blog.xinhaojin.top;
+        location ~ \\.php?.*$ {
             root /www/wwwroot/blog.xinhaojin.top;#php文件目录
-            fastcgi\_pass unix:/tmp/php-cgi-70.sock;#.sock的形式
-            fastcgi\_param SCRIPT\_FILENAME $document\_root$fastcgi\_script\_name;
-            include fastcgi\_params;
+            fastcgi_pass unix:/tmp/php-cgi-70.sock;#.sock的形式
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            include fastcgi_params;
         }
     }
 
@@ -30,7 +30,7 @@ date: 2020-08-11 16:58:42
 
     nginx.conf:  
 
-    fastcgi\_pass 127.0.0.1:9000;
+    fastcgi_pass 127.0.0.1:9000;
 
   
 方式2，统一成.sock的形式:
@@ -41,7 +41,7 @@ date: 2020-08-11 16:58:42
 
     nginx.conf: 
 
-    fastcgi\_pass unix:/tmp/php-fpm.sock;
+    fastcgi_pass unix:/tmp/php-fpm.sock;
 
 然后http://xx.xx.xx.xx/test.php就可以正常运行了
 

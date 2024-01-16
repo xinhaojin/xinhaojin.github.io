@@ -27,7 +27,7 @@ date: 2022-05-18 21:01:40
 
     vncserver
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/05/image-3-1024x386.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/05/image-3-1024x386.png)
 
 系统将提示您输入并确认密码，以及是否将其设置为仅查看密码。如果您选择设置仅查看密码，则用户将无法使用鼠标和键盘与 VNC 实例进行交互
 
@@ -45,7 +45,7 @@ date: 2022-05-18 21:01:40
 
     vncserver -kill :1
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/05/image-4.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/05/image-4.png)
 
 现在我们已经在服务器上安装了 Xfce 和 TigerVNC ，我们需要配置 TigerVNC 来使用 Xfce 。为此，请创建以下文件 〜/.vnc/xstartup：
 
@@ -111,7 +111,7 @@ date: 2022-05-18 21:01:40
 
     sudo systemctl start vncserver@1.service
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/05/image-5-1024x237.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/05/image-5-1024x237.png)
 
     sudo systemctl start vncserver@1.service#启动
     sudo systemctl enable vncserver@1.service#自启动

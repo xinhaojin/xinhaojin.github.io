@@ -9,7 +9,7 @@ date: 2022-04-04 21:22:42
 
 原文:[CNN 卷积神经网络 - PyTorch 莫烦Python (mofanpy.com)](https://mofanpy.com/tutorials/machine-learning/torch/CNN/)
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/4-1-2.gif)
+![](https://xinhaojin.github.io/imgs-host/past/2022/04/4-1-2.gif)
 
 ## 下载数据集
 ```py
@@ -37,7 +37,7 @@ train_data = torchvision.datasets.MNIST(
     download=DOWNLOAD_MNIST,          # 没下载就下载, 下载了就不用再下了
 )
 ```
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/4-1-1.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/04/4-1-1.png)
 
 测试数据
 ```py

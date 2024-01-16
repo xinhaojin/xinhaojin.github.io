@@ -17,13 +17,13 @@ date: 2021-05-22 15:46:39
 
 [https://github.com/PowerShell/Win32-OpenSSH/releases](https://github.com/PowerShell/Win32-OpenSSH/releases)
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/05/image-35.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/05/image-35.png)
 
 #### 安装
 
 解压到c:\\Program Files\\
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/05/image-36.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/05/image-36.png)
 
 在OpenSSH-Win64文件夹中打开cmd
 
@@ -31,7 +31,7 @@ date: 2021-05-22 15:46:39
     sc config sshd start= auto
     net start sshd
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/05/image-37.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/05/image-37.png)
 
 添加环境变量
 

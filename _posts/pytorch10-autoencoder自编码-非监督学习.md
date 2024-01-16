@@ -11,11 +11,11 @@ date: 2022-04-04 21:57:27
 
 ## 编码器
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/auto4.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/04/auto4.png)
 
 这部分也叫作 encoder 编码器. 编码器能得到原数据的精髓, 然后我们只需要再创建一个小的神经网络学习这个精髓的数据,不仅减少了神经网络的负担, 而且同样能达到很好的效果.
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/auto5.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/04/auto5.png)
 
 这是一个通过自编码整理出来的数据, 他能从原数据中总结出每种类型数据的特征, 如果把这些特征类型都放在一张二维的图片上, 每种类型都已经被很好的用原数据的精髓区分开来. 如果你了解 PCA 主成分分析, 再提取主要特征时, 自编码和它一样,甚至超越了 PCA. 换句话说, 自编码 可以像 PCA 一样 给特征属性降维
 
@@ -25,7 +25,7 @@ date: 2022-04-04 21:57:27
 
 有一个例子就是让它能模仿并生成手写数字.
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/auto6.jpg)
+![](https://xinhaojin.github.io/imgs-host/past/2022/04/auto6.jpg)
 
 ## 非监督学习
 
@@ -33,11 +33,11 @@ date: 2022-04-04 21:57:27
 
 这次我们还用 MNIST 手写数字数据来压缩再解压图片
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/4-4-1.gif)
+![](https://xinhaojin.github.io/imgs-host/past/2022/04/4-4-1.gif)
 
 然后用压缩的特征进行非监督分类
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/4-4-2.gif)
+![](https://xinhaojin.github.io/imgs-host/past/2022/04/4-4-2.gif)
 
 ## 数据集
 
@@ -142,4 +142,4 @@ ax.set_ylim(Y.min(), Y.max())
 ax.set_zlim(Z.min(), Z.max())
 plt.show()
 ```
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/4-4-5.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/04/4-4-5.png)

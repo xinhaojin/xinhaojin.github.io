@@ -72,4 +72,4 @@ if __name__ == "__main__":
     print('本次扫描共检测到本网络存在%s台设备' % live_ip)
  ```
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/02/image-4.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/02/image-4.png)

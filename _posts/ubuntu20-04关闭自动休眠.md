@@ -9,4 +9,4 @@ date: 2022-03-04 11:53:32
 
     sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/03/image-16-1024x274.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/03/image-16-1024x274.png)

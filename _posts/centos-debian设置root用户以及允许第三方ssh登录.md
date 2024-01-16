@@ -19,7 +19,7 @@ date: 2020-07-03 17:54:36
 
 #### 开启SSH权限
 
-    vim /etc/ssh/sshd\_config #打开 ssh 配置文件
+    vim /etc/ssh/sshd_config #打开 ssh 配置文件
     PermitRootLogin yes #默认为no，需要开启root用户访问改为yes
     PasswordAuthentication yes    #默认为no，改为yes开启密码登陆
 

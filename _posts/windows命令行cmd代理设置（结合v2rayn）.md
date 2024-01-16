@@ -26,7 +26,7 @@ date: 2022-09-22 12:03:28
 
 ### 打开前后的对比
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/09/image-7.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/09/image-7.png)
 
 ### 测试代理
 
@@ -34,4 +34,4 @@ date: 2022-09-22 12:03:28
 
 ### 控制代理开关，清除系统代理：关，自动配置系统代理：开。
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/09/image-6.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/09/image-6.png)

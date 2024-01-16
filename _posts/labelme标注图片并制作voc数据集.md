@@ -1,6 +1,6 @@
 ---
 title: labelme标注图片并制作voc数据集
-index_img: https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/02/image-12.png
+index_img: https://xinhaojin.github.io/imgs-host/past/2022/02/image-12.png
 tags: []
 id: '2146'
 categories:
@@ -24,7 +24,7 @@ date: 2022-02-26 19:07:27
 
 在图形界面中选择打开图片所在文件夹
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/02/image-11.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/02/image-11.png)
 
 然后在file中修改3条设置
 
@@ -38,23 +38,23 @@ date: 2022-02-26 19:07:27
 
 **纠正：最好勾选保存图像数据**，否则如果想转换其他数据集格式如coco好像不行
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/02/image-13.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/02/image-13.png)
 
 然后ctrl+r快捷键标矩形框就行，点一下放开，再点一下，然后输入标签点击OK即可
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/02/image-12.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/02/image-12.png)
 
 ### 转换为voc数据集
 
 下载labelme2voc.py
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/02/image-14.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/02/image-14.png)
 
 新建labels.txt存放标签
 
-\_\_ignore\_\_和\_background\_是必须的，其他标签为自定义，比如我只需要检测验证码图片中文字的位置，那么只有一个标签就是word
+__ignore__和_background_是必须的，其他标签为自定义，比如我只需要检测验证码图片中文字的位置，那么只有一个标签就是word
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/02/image-16.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/02/image-16.png)
 
 此时有一个文件夹,比如images，里面包含了所有图片和所有标注后的json文件
 
@@ -66,7 +66,7 @@ images是输入文件夹名，即标注后保存的json所在文件夹
 
 voc是输出文件夹名，不能是已存在的文件夹
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/02/image-15.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/02/image-15.png)
 
 然后就在当前目录下生成了一个voc文件夹，4个内容，分别是
 
@@ -78,4 +78,4 @@ xml格式的标注文件夹
 
 存有标签名的文本
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/02/image-19.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/02/image-19.png)

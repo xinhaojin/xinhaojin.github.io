@@ -1,6 +1,6 @@
 ---
 title: android把图片url转为drawable
-index_img: https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/01/image-38.png
+index_img: https://xinhaojin.github.io/imgs-host/past/2021/01/image-38.png
 tags: []
 id: '1346'
 categories:
@@ -41,4 +41,4 @@ android9.0以上版本中允许http请求需要在AndroidManifest.xml中的appli
 
 android:usesCleartextTraffic="true"
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/01/image-38.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/01/image-38.png)

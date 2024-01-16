@@ -68,7 +68,7 @@ date: 2022-07-12 15:59:00
 
 使得针对每场图片，输出预测矩形框及对应的类别
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/07/image.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/07/image.png)
 
 ## 生成xml文件
 
@@ -108,11 +108,11 @@ def box2xml(bboxes, class[_names, save[_path):
 
 具体问题具体分析
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/07/00001.jpg)
+![](https://xinhaojin.github.io/imgs-host/past/2022/07/00001.jpg)
 
 针对我的场景，正确标注应该是3个框，已有权重有时会只检测出两个框，因此我的筛选条件就是，预测框个数<3的，把文件名汇总起来最后输出，我自己再修改即可。
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/07/image-1-1024x108.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/07/image-1-1024x108.png)
 
 这样工作量就从标注500多张图片锐减到30多张。
 

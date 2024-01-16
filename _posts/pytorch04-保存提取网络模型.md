@@ -86,7 +86,7 @@ def restore_params():#搭建网络，加载参数
 ```
 完全一致
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-1024x340.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/04/image-1024x340.png)
 
 ## 源代码
 ```py

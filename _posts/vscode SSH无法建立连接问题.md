@@ -10,4 +10,4 @@ categories:
 ## 解决方法
 在`C:\Users\yourname\.ssh`下有一个known_hosts文件，使用记事本打开，删除你要连接的IP相关的所有内容即可
 <br>
-![192903](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20230414/192903.6tmyxirogzs0.webp)
+![192903](https://xinhaojin.github.io/imgs-host/20230414/192903.6tmyxirogzs0.webp)

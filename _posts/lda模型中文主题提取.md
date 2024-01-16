@@ -1,6 +1,6 @@
 ---
 title: LDA模型(gensim)中文主题提取
-index_img: https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/05/image-28-1024x646.png
+index_img: https://xinhaojin.github.io/imgs-host/past/2021/05/image-28-1024x646.png
 tags: []
 id: '1708'
 categories:
@@ -19,13 +19,13 @@ python版本3.7
 
 数据很随意，没什么格式要求，像这样的都行
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/05/image-25-1024x596.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/05/image-25-1024x596.png)
 
 #### 分词
 
 把原始数据按行分词，去掉没用的部分
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/05/image-26-1024x388.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/05/image-26-1024x388.png)
 
 分词代码如下，可以一次转换单个txt或者整个文件夹（文件夹内不能有其他格式文件）
 
@@ -34,56 +34,56 @@ import re
 import jieba as jb
 import os
 def stopwordslist(filepath):
-    stopwords = \[line.strip() for line in open(filepath, 'r', encoding='utf-8').readlines()\]
+    stopwords = [line.strip() for line in open(filepath, 'r', encoding='utf-8').readlines()]
     return stopwords
 
 # 对句子进行分词
 ```python
-def seg\_sentence(sentence):
-    sentence = re.sub(u'\[0-9\\.\]+', u'', sentence)
-    '''jb.add\_word('光线摄影学院')# 这里是加入用户自定义的词来补充jieba词典。
-    jb.add\_word('曾兰老师')# 同样，如果你想删除哪个特定的未登录词，就先把它加上然后放进停用词表里。
-    jb.add\_word('网页链接')
-    jb.add\_word('微博视频')'''
-    sentence\_seged = jb.cut(sentence.strip())
+def seg_sentence(sentence):
+    sentence = re.sub(u'[0-9\\.]+', u'', sentence)
+    '''jb.add_word('光线摄影学院')# 这里是加入用户自定义的词来补充jieba词典。
+    jb.add_word('曾兰老师')# 同样，如果你想删除哪个特定的未登录词，就先把它加上然后放进停用词表里。
+    jb.add_word('网页链接')
+    jb.add_word('微博视频')'''
+    sentence_seged = jb.cut(sentence.strip())
     stopwords = stopwordslist('stopwords.txt')  # 这里加载停用词的路径
     outstr = ''
-    for word in sentence\_seged:
-        if word not in stopwords and word.\_\_len\_\_()>1:
+    for word in sentence_seged:
+        if word not in stopwords and word.__len__()>1:
             if word != '\\t':
                 outstr += word
                 outstr += " "
     return outstr
 
-def seg\_file(input\_file,output\_file):#单个txt
-    inputs = open(input\_file, 'r', encoding='utf-8')
-    outputs = open(output\_file, 'w',encoding='utf-8')
+def seg_file(input_file,output_file):#单个txt
+    inputs = open(input_file, 'r', encoding='utf-8')
+    outputs = open(output_file, 'w',encoding='utf-8')
     for line in inputs:
-        line\_seg = seg\_sentence(line)  # 这里的返回值是字符串
-        outputs.write(line\_seg + '\\n')
+        line_seg = seg_sentence(line)  # 这里的返回值是字符串
+        outputs.write(line_seg + '\\n')
     outputs.close()
     inputs.close()
 
-def seg\_dir(input\_dir,output\_dir):#整个文件夹
-    filelist=os.listdir(input\_dir)
+def seg_dir(input_dir,output_dir):#整个文件夹
+    filelist=os.listdir(input_dir)
     for files in filelist:
-        inputs = open(input\_dir+'/'+files, 'r', encoding='utf-8')
-        outputs = open(output\_dir+'/'+files, 'w',encoding='utf-8')
+        inputs = open(input_dir+'/'+files, 'r', encoding='utf-8')
+        outputs = open(output_dir+'/'+files, 'w',encoding='utf-8')
         for line in inputs:
-            line\_seg = seg\_sentence(line)  # 这里的返回值是字符串
-            outputs.write(line\_seg + '\\n')
+            line_seg = seg_sentence(line)  # 这里的返回值是字符串
+            outputs.write(line_seg + '\\n')
         outputs.close()
         inputs.close()
 
 
-seg\_dir("original\_input","processed\_input")
-#seg\_file("original\_input/绍兴.txt","processed\_input/绍兴.txt")
+seg_dir("original_input","processed_input")
+#seg_file("original_input/绍兴.txt","processed_input/绍兴.txt")
 ```
 #### 聚类
 
 相关性强的词聚为一类
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/05/image-27.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/05/image-27.png)
 
 聚类代码如下
 ```python
@@ -95,33 +95,33 @@ from gensim.models import LdaModel
 from gensim.corpora import Dictionary
 
 def classify(file):
-    train = \[\]
-    fp = codecs.open('processed\_input/'+file,'r',encoding='utf8')
+    train = []
+    fp = codecs.open('processed_input/'+file,'r',encoding='utf8')
     for line in fp:
         if line != '':
             line = line.split()
-            train.append(\[w for w in line\])
+            train.append([w for w in line])
 
     dictionary = corpora.Dictionary(train)
 
-    corpus = \[dictionary.doc2bow(text) for text in train\]
+    corpus = [dictionary.doc2bow(text) for text in train]
 
-    lda = LdaModel(corpus=corpus, id2word=dictionary, num\_topics=5, passes=100)
-    # num\_topics：主题数目
+    lda = LdaModel(corpus=corpus, id2word=dictionary, num_topics=5, passes=100)
+    # num_topics：主题数目
     # passes：训练伦次
-    # num\_words：每个主题下输出的term的数目
+    # num_words：每个主题下输出的term的数目
 
-    if os.path.exists('txt\_output/'+file):
-        os.remove('txt\_output/'+file)
-    f=open('txt\_output/'+file,'w',encoding='utf-8')
-    for topic in lda.print\_topics(num\_words = 10):
-        termNumber = topic\[0\]
-        print(topic\[0\], ':', sep='')
-        f.write(str(topic\[0\])+':\\n')#输出保存到文件
-        listOfTerms = topic\[1\].split('+')
+    if os.path.exists('txt_output/'+file):
+        os.remove('txt_output/'+file)
+    f=open('txt_output/'+file,'w',encoding='utf-8')
+    for topic in lda.print_topics(num_words = 10):
+        termNumber = topic[0]
+        print(topic[0], ':', sep='')
+        f.write(str(topic[0])+':\\n')#输出保存到文件
+        listOfTerms = topic[1].split('+')
         for term in listOfTerms:
-            listItems = term.split('\*')
-            result='  '+listItems\[1\]+'('+str(listItems\[0\])+')'
+            listItems = term.split('*')
+            result='  '+listItems[1]+'('+str(listItems[0])+')'
             print(result)
             f.write(result+'\\n')#输出保存到文件
     f.close()
@@ -141,52 +141,52 @@ import os
 
 import gensim
 import OpenSSL.crypto
-import pyLDAvis.gensim\_models
+import pyLDAvis.gensim_models
 from gensim import corpora, models
 from gensim.corpora import Dictionary
 from gensim.models import LdaModel
 
 
 def visualize(file):
-    train = \[\]
-    fp = codecs.open('processed\_input/'+file,'r',encoding='utf8')
+    train = []
+    fp = codecs.open('processed_input/'+file,'r',encoding='utf8')
     for line in fp:
         if line != '':
             line = line.split()
-            train.append(\[w for w in line\])
+            train.append([w for w in line])
 
     dictionary = corpora.Dictionary(train)
 
-    corpus = \[dictionary.doc2bow(text) for text in train\]
+    corpus = [dictionary.doc2bow(text) for text in train]
 
-    lda = LdaModel(corpus=corpus, id2word=dictionary, num\_topics=5, passes=100)
-    # num\_topics：主题数目
+    lda = LdaModel(corpus=corpus, id2word=dictionary, num_topics=5, passes=100)
+    # num_topics：主题数目
     # passes：训练伦次
-    # num\_words：每个主题下输出的term的数目
+    # num_words：每个主题下输出的term的数目
 
-    if os.path.exists('txt\_output/'+file):
-        os.remove('txt\_output/'+file)
-    f=open('txt\_output/'+file,'w',encoding='utf-8')
-    for topic in lda.print\_topics(num\_words = 10):
-        termNumber = topic\[0\]
-        print(topic\[0\], ':', sep='')
-        f.write(str(topic\[0\])+':\\n')#输出保存到文件
-        listOfTerms = topic\[1\].split('+')
+    if os.path.exists('txt_output/'+file):
+        os.remove('txt_output/'+file)
+    f=open('txt_output/'+file,'w',encoding='utf-8')
+    for topic in lda.print_topics(num_words = 10):
+        termNumber = topic[0]
+        print(topic[0], ':', sep='')
+        f.write(str(topic[0])+':\\n')#输出保存到文件
+        listOfTerms = topic[1].split('+')
         for term in listOfTerms:
-            listItems = term.split('\*')
-            result='  '+listItems\[1\]+'('+str(listItems\[0\])+')'
+            listItems = term.split('*')
+            result='  '+listItems[1]+'('+str(listItems[0])+')'
             print(result)
             f.write(result+'\\n')#输出保存到文件
     f.close()
     #dictionary = gensim.corpora.Dictionary.load('lda.dict')
     #corpus = gensim.corpora.MmCorpus('lda.mm')
     #lda = models.ldamodel.LdaModel.load('lda.lda')
-    vis = pyLDAvis.gensim\_models.prepare(lda, corpus, dictionary)
-    pyLDAvis.save\_html(vis, 'html\_output/'+file\[:-4\]+'.html')
+    vis = pyLDAvis.gensim_models.prepare(lda, corpus, dictionary)
+    pyLDAvis.save_html(vis, 'html_output/'+file[:-4]+'.html')
 
 visualize("绍兴.txt")
 ```
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/05/image-28-1024x646.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/05/image-28-1024x646.png)
 
 #### 可视化结果的含义
 
@@ -200,4 +200,4 @@ visualize("绍兴.txt")
 
 目录格式如下
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/05/image-29.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/05/image-29.png)

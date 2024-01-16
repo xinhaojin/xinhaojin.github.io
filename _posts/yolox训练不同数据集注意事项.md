@@ -23,9 +23,9 @@ date: 2022-03-31 15:47:54
 
 但是我这次只做了10张图片的数据集，编号1-10，根本没有名为22的图片，这说明，虽然我在用新的数据集，但程序用的还是上一个数据集的某些东西。应该是类似‘缓存’的东西没有清理。
 
-然后我就在各个配置群文件中找，在YOLOX/yolox/evaluators/voc\_eval.py中找到这样一段代码：
+然后我就在各个配置群文件中找，在YOLOX/yolox/evaluators/voc_eval.py中找到这样一段代码：
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/03/image-20.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/03/image-20.png)
 
 显然这是一段关于缓存文件夹的东西，'annots.pkl'貌似代表着由标签文件生成的某种东西。
 
@@ -35,10 +35,10 @@ date: 2022-03-31 15:47:54
 
 再仔细一看缓存文件夹下还有子文件夹，命名为test，猜测是train.py里某个自定义的属性值，但奇怪的是没找到哪里设置了test，可能这是默认的名字，懒得深究了
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/03/image-21.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/03/image-21.png)
 
 ## 总结
 
-切换数据集训练前，删除数据及文件夹同目录下的annotations\_cache文件夹！
+切换数据集训练前，删除数据及文件夹同目录下的annotations_cache文件夹！
 
 然后python setup.py install一下，这可能是根据配置文件重建一下yolox的什么什么。。？瞎搞一下吧

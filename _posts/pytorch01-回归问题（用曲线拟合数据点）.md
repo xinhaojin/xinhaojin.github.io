@@ -9,7 +9,7 @@ date: 2022-04-03 14:07:20
 
 原文[关系拟合 (回归) - PyTorch 莫烦Python (mofanpy.com)](https://mofanpy.com/tutorials/machine-learning/torch/regression/)
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/1-1-2.gif)
+![](https://xinhaojin.github.io/imgs-host/past/2022/04/1-1-2.gif)
 
 ## 定义数据点集
 ```py

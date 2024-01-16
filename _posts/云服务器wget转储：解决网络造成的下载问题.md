@@ -13,14 +13,14 @@ date: 2021-05-21 15:37:06
 
 下面举个例子，我特意找了一个之前下载列表里失败的一个条目，再次尝试下载，果然还是失败的，正好来拿测试
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/05/QQ截图20210521151432.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/05/QQ截图20210521151432.png)
 
 复制下载链接，登上服务器，使用wget命令下载，畅通无阻，由于带宽限制不算特别快，但至少解决了完全无法下载的问题
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/05/image-31.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/05/image-31.png)
 
 接下来就是从自己的服务器下载资源到本地了，例如我使用finalshell,直接选择下载即可
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/05/image-32-1024x678.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/05/image-32-1024x678.png)
 
 以后碰到下载方面的疑难杂症，优先考虑此方法，特此记录。

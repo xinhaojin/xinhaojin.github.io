@@ -29,7 +29,7 @@ CentOS7默认已经安装了Python2.7，现安装3.7和它并存
 
     yum install -y libffi-devel zlib1g-dev
 
-    yum install zlib\* -y
+    yum install zlib* -y
 
 #### 二、下载解压
 

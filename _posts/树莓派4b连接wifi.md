@@ -27,14 +27,14 @@ ssid为WiFi名称，psk为密码，保留引号，priority为连接优先级
 
 重命名为wpa_supplicant.conf，复制文件到boot目录下
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2020/12/image-22-1024x516.png)
+![](https://xinhaojin.github.io/imgs-host/past/2020/12/image-22-1024x516.png)
 
 拔掉网线重新启动，查看路由器，发现没有连上网，折腾了很久，发现好像需要手动打开WiFi开关
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2020/12/image-23.png)
+![](https://xinhaojin.github.io/imgs-host/past/2020/12/image-23.png)
 
 重启，上线！
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2020/12/image-24-1024x493.png)
+![](https://xinhaojin.github.io/imgs-host/past/2020/12/image-24-1024x493.png)
 
 这时候有一个变化，就是IP改了，远程连接时需要进行修改。

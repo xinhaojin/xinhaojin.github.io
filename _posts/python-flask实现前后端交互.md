@@ -1,6 +1,6 @@
 ---
 title: python flask实现前后端交互
-index_img: https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/07/image-6.png
+index_img: https://xinhaojin.github.io/imgs-host/past/2021/07/image-6.png
 tags: []
 id: '1827'
 categories:
@@ -13,7 +13,7 @@ date: 2021-07-09 00:55:31
 import flask
 app=flask.Flask(__name__)
 
-from flask_cors import \*
+from flask_cors import *
 CORS(app, supports_credentials=True)#接收跨域请求
 
 @app.route("/path")
@@ -73,12 +73,12 @@ function submit()
 ```
 #### 直接测试url
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/07/image-4.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/07/image-4.png)
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/07/image-3.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/07/image-3.png)
 
 #### HTML测试GET
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/07/image-5.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/07/image-5.png)
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/07/image-6.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/07/image-6.png)

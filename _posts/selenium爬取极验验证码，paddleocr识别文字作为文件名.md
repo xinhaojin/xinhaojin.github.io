@@ -1,6 +1,6 @@
 ---
 title: selenium爬取极验验证码，PaddleOCR识别文字作为文件名
-index_img: https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/05/image-2.png
+index_img: https://xinhaojin.github.io/imgs-host/past/2022/05/image-2.png
 tags: []
 id: '2361'
 categories:
@@ -13,7 +13,7 @@ date: 2022-05-15 20:09:35
 
 自动爬取验证码图片，图片文件名需要包含右上角的标题文字（在网页上是图片类型，不是文本）
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/05/image-2.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/05/image-2.png)
 
 ## Edge driver初始化
 

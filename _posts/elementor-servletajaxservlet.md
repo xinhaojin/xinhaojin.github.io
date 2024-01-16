@@ -1,6 +1,6 @@
 ---
 title: Servlet允许跨域访问（Ajax请求Servlet数据）
-index_img: https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2020/09/image-31.png
+index_img: https://xinhaojin.github.io/imgs-host/past/2020/09/image-31.png
 tags: []
 id: '1108'
 categories:
@@ -12,22 +12,22 @@ date: 2020-09-21 20:26:30
 
 于是在Java代码HttpServletResponse处添加如下代码，使用 CORS协议允许 `Response` 跨域。
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2020/09/image-31.png)
+![](https://xinhaojin.github.io/imgs-host/past/2020/09/image-31.png)
 ```javascript
-/\* 允许跨域的主机地址 \*/
-response.setHeader("Access-Control-Allow-Origin", "\*");  
-/\* 允许跨域的请求方法GET, POST, HEAD 等 \*/
-response.setHeader("Access-Control-Allow-Methods", "\*");  
-/\* 重新预检验跨域的缓存时间 (s) \*/
+/* 允许跨域的主机地址 */
+response.setHeader("Access-Control-Allow-Origin", "*");  
+/* 允许跨域的请求方法GET, POST, HEAD 等 */
+response.setHeader("Access-Control-Allow-Methods", "*");  
+/* 重新预检验跨域的缓存时间 (s) */
 response.setHeader("Access-Control-Max-Age", "3600");  
-/\* 允许跨域的请求头 \*/
-response.setHeader("Access-Control-Allow-Headers", "\*");  
-/\* 是否携带cookie \*/
+/* 允许跨域的请求头 */
+response.setHeader("Access-Control-Allow-Headers", "*");  
+/* 是否携带cookie */
 response.setHeader("Access-Control-Allow-Credentials", "true");  
 ```
 再次尝试Ajax请求，就可以拿到servlet的数据啦
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2020/09/image-32-1024x225.png)
+![](https://xinhaojin.github.io/imgs-host/past/2020/09/image-32-1024x225.png)
 ```html
 <!DOCTYPE html>
 <html>

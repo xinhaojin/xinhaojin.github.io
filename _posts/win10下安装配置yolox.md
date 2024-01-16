@@ -36,11 +36,11 @@ https://xinhaojin.github.io/2021/05/19/cudnn安装/
 
 参考https://pytorch.org/get-started/locally/
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/08/image-4.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/08/image-4.png)
 
 ## 模型文件
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/08/image-5.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/08/image-5.png)
 
 把下载的模型文件放到yolox/yolox/models下
 
@@ -48,7 +48,7 @@ https://xinhaojin.github.io/2021/05/19/cudnn安装/
 
     python tools/demo.py image -n yolox-s -c yolox/models/yolox_s.pth --path assets/dog.jpg --conf 0.25 --nms 0.45 --tsize 640 --save_result --device [cpu/gpu]
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/08/image-7.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/08/image-7.png)
 
 图片识别成功
 

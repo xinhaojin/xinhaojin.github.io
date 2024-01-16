@@ -71,7 +71,7 @@ date: 2022-04-14 13:58:34
 
     ssh username@xxx.xxx.xxx.xxx -p 6000
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-24.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/04/image-24.png)
 
 用内网服务器的用户名和密码
 

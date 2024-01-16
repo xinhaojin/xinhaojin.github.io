@@ -11,7 +11,7 @@ date: 2021-08-14 17:31:02
 
 在软件和更新-附加驱动里，选择显卡驱动
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/08/2021-08-14-15-39-14屏幕截图.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/08/2021-08-14-15-39-14屏幕截图.png)
 
 禁用自带显卡驱动
 
@@ -27,7 +27,7 @@ date: 2021-08-14 17:31:02
 
     nvidia-smi
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/08/2021-08-14-16-18-59屏幕截图.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/08/2021-08-14-16-18-59屏幕截图.png)
 
 所以我可以安装的是cuda11.4版本
 
@@ -37,11 +37,11 @@ date: 2021-08-14 17:31:02
 
 选择正确的版本
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/08/2021-08-14-16-23-17屏幕截图.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/08/2021-08-14-16-23-17屏幕截图.png)
 
 选择操作系统、架构等，依次执行下面生成的命令
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/08/2021-08-14-16-24-23屏幕截图-1024x545.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/08/2021-08-14-16-24-23屏幕截图-1024x545.png)
 
 我这里就是这样
 
@@ -50,19 +50,19 @@ date: 2021-08-14 17:31:02
 
 bash命令执行要等一会儿，出现这个界面后选择continue
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/08/2021-08-14-16-47-50屏幕截图.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/08/2021-08-14-16-47-50屏幕截图.png)
 
 下个界面输入accept
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/08/2021-08-14-16-49-42屏幕截图.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/08/2021-08-14-16-49-42屏幕截图.png)
 
 再下个界面先按空格，取消安装驱动，因为上面我们已经安装好了，然后选择install
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/08/2021-08-14-16-50-48屏幕截图.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/08/2021-08-14-16-50-48屏幕截图.png)
 
 等待安装完成后是这个界面
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/08/2021-08-14-16-52-43屏幕截图.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/08/2021-08-14-16-52-43屏幕截图.png)
 
 #### 配置环境变量
 
@@ -71,7 +71,7 @@ bash命令执行要等一会儿，出现这个界面后选择continue
     export PATH=/usr/local/cuda-11.4/bin${PATH:+:${PATH}}
     export LD_LIBRARY_PATH=/usr/local/cuda-11.4/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/08/2021-08-14-16-54-30屏幕截图.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/08/2021-08-14-16-54-30屏幕截图.png)
 
 更新环境变量配置
 
@@ -79,7 +79,7 @@ bash命令执行要等一会儿，出现这个界面后选择continue
 
 至此，cuda安装完成，输入nvcc -V 查看是否成功
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/08/2021-08-14-16-56-54屏幕截图.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/08/2021-08-14-16-56-54屏幕截图.png)
 
 #### 安装cudnn
 
@@ -87,7 +87,7 @@ bash命令执行要等一会儿，出现这个界面后选择continue
 
 需要登录(比较麻烦，建议看最后一步的阿里云镜像源)
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/08/2021-08-14-17-01-39屏幕截图.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/08/2021-08-14-17-01-39屏幕截图.png)
 
 解压后进入解压目录，将cuda/include/cudnn.h文件复制到usr/local/cuda/include文件夹，将cuda/lib64/下所有文件复制到/usr/local/cuda/lib64文件夹中,再添加读取权限
 
@@ -103,7 +103,7 @@ bash命令执行要等一会儿，出现这个界面后选择continue
 https://mirrors.aliyun.com/nvidia-cuda/
 
 选择对应的操作系统版本，查找cuda版本对应的cudnn，dev和非dev两个版本，都需要下载
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/20221025/xxx.4tdndxgkm1k0.png)
+![](https://xinhaojin.github.io/imgs-host/20221025/xxx.4tdndxgkm1k0.png)
 安装命令
 ```
 sudo dpkg -i libcudnn8-dev_8.2.4.15-1+cuda11.4_amd64.deb

@@ -7,7 +7,7 @@ categories:
 date: 2021-04-12 21:28:16
 ---
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/04/image-7.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/04/image-7.png)
 
 #### 下载源码
 
@@ -65,18 +65,18 @@ pip install -r requirements.txt
 
 其中pt文件是权重文件，源码中没有自带，需要自行下载
 
-在weights文件夹中，有一个download\_weights.sh文件，内容如下，写明了权重文件的下载方式，默认是会自动下载，但往往也因为网络问题很难一次下载成功
+在weights文件夹中，有一个download_weights.sh文件，内容如下，写明了权重文件的下载方式，默认是会自动下载，但往往也因为网络问题很难一次下载成功
 
     #!/bin/bash
     # Download latest models from https://github.com/ultralytics/yolov5/releases
     # Usage:
-    #    $ bash weights/download\_weights.sh
+    #    $ bash weights/download_weights.sh
 
     python - <<EOF
-    from utils.google\_utils import attempt\_download
+    from utils.google_utils import attempt_download
 
-    for x in \['s', 'm', 'l', 'x'\]:
-        attempt\_download(f'yolov5{x}.pt')
+    for x in ['s', 'm', 'l', 'x']:
+        attempt_download(f'yolov5{x}.pt')
 
     EOF
 

@@ -54,39 +54,39 @@ date: 2020-04-22 02:04:04
 
 为了方便验证结果的正确性，测试时采用了4组课件中提到的例题，结果对比如下：
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2020/04/3.1-1024x614.png)
+![](https://xinhaojin.github.io/imgs-host/past/2020/04/3.1-1024x614.png)
 
 图3-1例题1
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2020/04/3.2-1024x739.png)
+![](https://xinhaojin.github.io/imgs-host/past/2020/04/3.2-1024x739.png)
 
 图3-2例题1
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2020/04/3.3.png)
+![](https://xinhaojin.github.io/imgs-host/past/2020/04/3.3.png)
 
 图3-3例题2
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2020/04/3.4-1024x853.png)
+![](https://xinhaojin.github.io/imgs-host/past/2020/04/3.4-1024x853.png)
 
 图3-4例题2
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2020/04/3.5-1024x668.png)
+![](https://xinhaojin.github.io/imgs-host/past/2020/04/3.5-1024x668.png)
 
 图3-5例题3
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2020/04/3.6-1024x853.png)
+![](https://xinhaojin.github.io/imgs-host/past/2020/04/3.6-1024x853.png)
 
 图3-6例题3
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2020/04/3.7-1024x709.png)
+![](https://xinhaojin.github.io/imgs-host/past/2020/04/3.7-1024x709.png)
 
 图3-7例题4
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2020/04/3.8-1024x263.png)
+![](https://xinhaojin.github.io/imgs-host/past/2020/04/3.8-1024x263.png)
 
 图3-8例题4
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2020/04/3.9-1024x925.png)
+![](https://xinhaojin.github.io/imgs-host/past/2020/04/3.9-1024x925.png)
 
 图3-9例题4
 
@@ -113,8 +113,8 @@ public:
     vector<item> CA;                              //产生式condition_action
     vector<string> T;                             //终结符
     vector<string> N;                             //非终结符
-    vector<item> FIRST_SET;                       //非终结符FIRST(A)={tA->\*tv}
-    vector<item> FOLLOW_SET;                      //哪些终结符会跟在非终结符后面FOLLOW(A)={tB->\*wAtv}
+    vector<item> FIRST_SET;                       //非终结符FIRST(A)={tA->*tv}
+    vector<item> FOLLOW_SET;                      //哪些终结符会跟在非终结符后面FOLLOW(A)={tB->*wAtv}
     int PARSE_TABLE[100][100];                    //分析表
     void init();                                  //输入及初始化
     void display_state();                         //输出初始化后的状态
@@ -639,4 +639,4 @@ int main()
 ```
 #### 实验总结
 
-本次实验相比较于之前的实验难度较大，用到的算法较多，情况判别也有些复杂，其中有3处要使用递归思想计算（First集和Follow集，以非终结符为单位进行计算；Parse_table，以最短产生式为单位进行计算），否则比较难处理。实验耗时较长，但好在完成度比较高，也达到了预期效果，能够实现对几若干条字符流形式的产生式进行自动分析计算：转为token流、列出等价最短产生式、自动归类终结符和非终结符、列出每个非终结符的First集和Follow集、列出准确的预测分析表，且有令人舒适的输出格式。不足之处：多次递归使用了较大的堆栈空间、预测分析表用了100\*100的静态表存储…总的来讲本次实验让我对LL(1)算法有了深刻理解，帮助很大。
+本次实验相比较于之前的实验难度较大，用到的算法较多，情况判别也有些复杂，其中有3处要使用递归思想计算（First集和Follow集，以非终结符为单位进行计算；Parse_table，以最短产生式为单位进行计算），否则比较难处理。实验耗时较长，但好在完成度比较高，也达到了预期效果，能够实现对几若干条字符流形式的产生式进行自动分析计算：转为token流、列出等价最短产生式、自动归类终结符和非终结符、列出每个非终结符的First集和Follow集、列出准确的预测分析表，且有令人舒适的输出格式。不足之处：多次递归使用了较大的堆栈空间、预测分析表用了100*100的静态表存储…总的来讲本次实验让我对LL(1)算法有了深刻理解，帮助很大。

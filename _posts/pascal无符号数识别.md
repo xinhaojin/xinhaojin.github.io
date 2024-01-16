@@ -18,12 +18,12 @@ date: 2020-03-29 20:46:59
     
     由正规式推出自动机，如图2.1和图2.2：
     
-    ![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2020/03/032920_1246_Pascal1.png)
+    ![](https://xinhaojin.github.io/imgs-host/past/2020/03/032920_1246_Pascal1.png)
     
     图2.1 无符号数识别-正规式
     
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2020/03/032920_1246_Pascal2.png)
+![](https://xinhaojin.github.io/imgs-host/past/2020/03/032920_1246_Pascal2.png)
 
 图2.2 无符号数识别-自动机
 
@@ -33,7 +33,7 @@ date: 2020-03-29 20:46:59
     
 ```c++
 
-// pascal\_unsigned\_number\_judge.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+// pascal_unsigned_number_judge.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
 
 //
 
@@ -59,7 +59,7 @@ bool judge(string str)
 
         {
 
-            if (str\[i\] >= '0' && str\[i\] <= '9')
+            if (str[i] >= '0' && str[i] <= '9')
 
             {
 
@@ -78,21 +78,21 @@ bool judge(string str)
 
         {
 
-            if (str\[i\] >= '0' && str\[i\] <= '9')
+            if (str[i] >= '0' && str[i] <= '9')
 
             {
 
                 state = 13;
             }
 
-            else if (str\[i\] == 'E')
+            else if (str[i] == 'E')
 
             {
 
                 state = 16;
             }
 
-            else if (str\[i\] == '.')
+            else if (str[i] == '.')
 
             {
 
@@ -111,7 +111,7 @@ bool judge(string str)
 
         {
 
-            if (str\[i\] >= '0' && str\[i\] <= '9')
+            if (str[i] >= '0' && str[i] <= '9')
 
             {
 
@@ -130,14 +130,14 @@ bool judge(string str)
 
         {
 
-            if (str\[i\] >= '0' && str\[i\] <= '9')
+            if (str[i] >= '0' && str[i] <= '9')
 
             {
 
                 state = 15;
             }
 
-            else if (str\[i\] == 'E')
+            else if (str[i] == 'E')
 
             {
 
@@ -156,14 +156,14 @@ bool judge(string str)
 
         {
 
-            if (str\[i\] >= '0' && str\[i\] <= '9')
+            if (str[i] >= '0' && str[i] <= '9')
 
             {
 
                 state = 18;
             }
 
-            else if (str\[i\] == '+' str\[i\] == '-')
+            else if (str[i] == '+' str[i] == '-')
 
             {
 
@@ -182,7 +182,7 @@ bool judge(string str)
 
         {
 
-            if (str\[i\] >= '0' && str\[i\] <= '9')
+            if (str[i] >= '0' && str[i] <= '9')
 
             {
 
@@ -201,7 +201,7 @@ bool judge(string str)
 
         {
 
-            if (str\[i\] >= '0' && str\[i\] <= '9')
+            if (str[i] >= '0' && str[i] <= '9')
 
             {
 
@@ -255,7 +255,7 @@ int main()
 
 测试结果如图4.1所示：
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2020/03/032920_1246_Pascal3.png)
+![](https://xinhaojin.github.io/imgs-host/past/2020/03/032920_1246_Pascal3.png)
 
 图4.1 测试结果
 

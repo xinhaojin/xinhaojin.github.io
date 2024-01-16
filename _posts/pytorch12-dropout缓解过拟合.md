@@ -17,7 +17,7 @@ date: 2022-04-05 13:27:41
 
 ## 定义数据集
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/5-3-2.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/04/5-3-2.png)
 ```py
 import torch
 import matplotlib.pyplot as plt
@@ -88,7 +88,7 @@ for t in range(500):
 
 在这个 `for` 循环里, 我们加上画测试图的部分. 注意在测试时, 要将网络改成 `eval()` 形式, 特别是 `net_dropped`, `net_overfitting` 改不改其实无所谓. 画好图再改回 `train()` 模式
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/5-3-1.gif)
+![](https://xinhaojin.github.io/imgs-host/past/2022/04/5-3-1.gif)
 ```py
 optimizer_ofit.step()
 optimizer_drop.step()

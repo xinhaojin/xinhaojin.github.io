@@ -1,6 +1,6 @@
 ---
 title: Android日期选择器DatePicker
-index_img: https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2020/06/image-5.png
+index_img: https://xinhaojin.github.io/imgs-host/past/2020/06/image-5.png
 tags: []
 id: '616'
 categories:
@@ -10,7 +10,7 @@ date: 2020-06-01 12:40:42
 
 感觉这个窗口形式的日期选择器很实用，特此记录
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2020/06/image-5.png)
+![](https://xinhaojin.github.io/imgs-host/past/2020/06/image-5.png)
 
     public void dateSelect()
         {
@@ -18,10 +18,10 @@ date: 2020-06-01 12:40:42
             //获取年月日时分秒信息
             //int year = cal.get(Calendar.YEAR);
             //int month = cal.get(Calendar.MONTH)+1;//注意点 ，要加一
-            //int day = cal.get(Calendar.DAY\_OF\_MONTH);
-            //int hour = cal.get(Calendar.HOUR\_OF\_DAY);
+            //int day = cal.get(Calendar.DAY_OF_MONTH);
+            //int hour = cal.get(Calendar.HOUR_OF_DAY);
             //int minute = cal.get(Calendar.MINUTE);
-            Toast.makeText(register.this, "可在顶部选择年份哦~", Toast.LENGTH\_SHORT).show();
+            Toast.makeText(register.this, "可在顶部选择年份哦~", Toast.LENGTH_SHORT).show();
             new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int month, int day) {

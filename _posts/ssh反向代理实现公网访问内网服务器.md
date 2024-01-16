@@ -22,7 +22,7 @@ date: 2021-03-05 15:42:21
 
 找到Gatewayports,取消注释，改为yes
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/02/image.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/02/image.png)
 
 保存，重启服务器
 
@@ -40,7 +40,7 @@ date: 2021-03-05 15:42:21
 
     netstat -anp  grep 2222
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/02/image-1-1024x68.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/02/image-1-1024x68.png)
 
 有结果说明已经成功
 
@@ -48,7 +48,7 @@ date: 2021-03-05 15:42:21
 
     ssh -p 2222 pi@101.133.xxx.xxx
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/02/image-2.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/02/image-2.png)
 
 要注意的是，此处**用到的是A的用户名和密码，B的IP和端口号**
 
@@ -79,7 +79,7 @@ date: 2021-03-05 15:42:21
 
     ssh root@101.133.xxx.xxx
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/02/image-3.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/02/image-3.png)
 
 接下来使用autossh就可以免密码了，把autossh命令设置成开启启动
 
@@ -89,7 +89,7 @@ date: 2021-03-05 15:42:21
 
     sudo su pi -c "autossh -M 2223 -fNR 2222:localhost:22 root@101.133.xxx.xxx"
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2021/02/image-4.png)
+![](https://xinhaojin.github.io/imgs-host/past/2021/02/image-4.png)
 
 这里要注意执行命令的用户，如果直接把上面的autossh写在这里是不行的，因为写在rc.local里的命令是root用户执行的，我们上面免密登录的执行用户是是普通用户pi，所以要用sudo su [用户名] -c "[命令]"
 

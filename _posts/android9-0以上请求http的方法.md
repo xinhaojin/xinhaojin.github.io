@@ -1,6 +1,6 @@
 ---
 title: Android9.0以上请求HTTP的方法
-index_img: https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2020/06/image-3.png
+index_img: https://xinhaojin.github.io/imgs-host/past/2020/06/image-3.png
 tags: []
 id: '610'
 categories:
@@ -14,7 +14,7 @@ date: 2020-06-01 12:32:56
 
 先放一张版本图
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2020/06/image-1.png)
+![](https://xinhaojin.github.io/imgs-host/past/2020/06/image-1.png)
 
 在Android9.0以上的设备上，如果应用使用的是非加密的明文流量的HTTP网络请求，则会导致该应用无法进行网络请求，HTTPS则不会受影响，如果应用嵌套了webview，webview也只能使用HTTPS请求。
 
@@ -28,7 +28,7 @@ date: 2020-06-01 12:32:56
 
 **android****:usesCleartextTraffic=****"true"**
 
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2020/06/image-3.png)
+![](https://xinhaojin.github.io/imgs-host/past/2020/06/image-3.png)
 
 到此，HTTP网络问题应该已经解决。
 
@@ -36,6 +36,6 @@ date: 2020-06-01 12:32:56
 
 在Manifest里面加上这权限
 
-<uses-permission android:name="android.permission.FOREGROUND\_SERVICE" />
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
 然后就解决啦

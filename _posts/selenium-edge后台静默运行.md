@@ -26,4 +26,4 @@ r = driver.get('https://www.baidu.com')
 print(driver.title)
 driver.quit()
 ```
-![](https://cdn.staticaly.com/gh/xinhaojin/imgs-host@master/past/2022/04/image-3.png)
+![](https://xinhaojin.github.io/imgs-host/past/2022/04/image-3.png)
