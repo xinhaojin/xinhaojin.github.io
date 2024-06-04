@@ -18,26 +18,21 @@
   <meta name="author" content="xinhaojin">
   <meta name="keywords" content="">
   
-    <meta name="description" content="安装华为电脑管家网卡要求：英特尔AX200系列确认没问题，其余网卡可能无法安装华为电脑管家。 手机必须是华为手机，鸿蒙2.0以上，处理器在麒麟990以上。 具体可参考B站博主空降猫咪的教程安装：https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV19H4y1G7Dg 相关文件在作者视频简介中有网盘链接 需要注意的一点是SN码设置(后续会用到)，SN码选择自定义，设置为16位长的字母数">
+    <meta name="description" content="前言之前想过很多次做一个局域网文件传输工具，但是始终停留在需求阶段哈哈哈哈哈，毕竟啥也不会。 网上有很多软件可以用，但基本都是要安装各平台的软件才行，作为偶尔用一下的工具，必不可能有被安装在设备上的资格。 之前用过一个很好用的工具Snapdrop，以网页形式存在，https:&#x2F;&#x2F;Snapdrop.net&#x2F; ，完全满足了我的需求，但后面有段时间无法访问，我以为他凉了。 因此我又重新想做一个类似的东西">
 <meta property="og:type" content="article">
-<meta property="og:title" content="非华为电脑制作NFC贴片实现一碰传多屏协同">
-<meta property="og:url" content="https://xinhaojin.github.io/2024/05/25/%E9%9D%9E%E5%8D%8E%E4%B8%BA%E7%94%B5%E8%84%91%E5%88%B6%E4%BD%9CNFC%E8%B4%B4%E7%89%87%E5%AE%9E%E7%8E%B0%E4%B8%80%E7%A2%B0%E4%BC%A0%E5%A4%9A%E5%B1%8F%E5%8D%8F%E5%90%8C/index.html">
+<meta property="og:title" content="私有化部署局域网文件传输工具Snapdrop">
+<meta property="og:url" content="https://xinhaojin.github.io/2024/06/04/%E7%A7%81%E6%9C%89%E5%8C%96%E9%83%A8%E7%BD%B2%E5%B1%80%E5%9F%9F%E7%BD%91%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%B7%A5%E5%85%B7Snapdrop/index.html">
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
-<meta property="og:description" content="安装华为电脑管家网卡要求：英特尔AX200系列确认没问题，其余网卡可能无法安装华为电脑管家。 手机必须是华为手机，鸿蒙2.0以上，处理器在麒麟990以上。 具体可参考B站博主空降猫咪的教程安装：https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV19H4y1G7Dg 相关文件在作者视频简介中有网盘链接 需要注意的一点是SN码设置(后续会用到)，SN码选择自定义，设置为16位长的字母数">
+<meta property="og:description" content="前言之前想过很多次做一个局域网文件传输工具，但是始终停留在需求阶段哈哈哈哈哈，毕竟啥也不会。 网上有很多软件可以用，但基本都是要安装各平台的软件才行，作为偶尔用一下的工具，必不可能有被安装在设备上的资格。 之前用过一个很好用的工具Snapdrop，以网页形式存在，https:&#x2F;&#x2F;Snapdrop.net&#x2F; ，完全满足了我的需求，但后面有段时间无法访问，我以为他凉了。 因此我又重新想做一个类似的东西">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20240525/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240525220224.5c0t6wg2x3.jpg">
-<meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20240525/image.7ljtqefn2j.jpg">
-<meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20240525/9bd0d3780c47789217054243dbd5bc9.9gwej12key.jpg">
-<meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20240525/dc35512f61d64ca61f7c60932cee80e.7p4hn63a1.jpg">
-<meta property="article:published_time" content="2024-05-25T21:40:12.000Z">
-<meta property="article:modified_time" content="2024-05-25T14:35:51.272Z">
+<meta property="article:published_time" content="2024-06-04T22:55:56.000Z">
+<meta property="article:modified_time" content="2024-06-04T15:27:54.895Z">
 <meta property="article:author" content="xinhaojin">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://xinhaojin.github.io/picx-images-hosting/20240525/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240525220224.5c0t6wg2x3.jpg">
   
   
   
-  <title>非华为电脑制作NFC贴片实现一碰传多屏协同 - xinhaojin&#39;s blog</title>
+  <title>私有化部署局域网文件传输工具Snapdrop - xinhaojin&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -218,7 +213,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="非华为电脑制作NFC贴片实现一碰传多屏协同"></span>
+            <span id="subtitle" data-typed-text="私有化部署局域网文件传输工具Snapdrop"></span>
           
         </div>
 
@@ -229,8 +224,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-05-25 21:40" pubdate>
-          2024年5月25日 晚上
+        <time datetime="2024-06-04 22:55" pubdate>
+          2024年6月4日 晚上
         </time>
       </span>
     
@@ -241,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          634 字
+          1.5k 字
         
       </span>
     
@@ -252,7 +247,7 @@
         
         
         
-          6 分钟
+          13 分钟
         
       </span>
     
@@ -290,19 +285,25 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">非华为电脑制作NFC贴片实现一碰传多屏协同</h1>
+            <h1 style="display: none">私有化部署局域网文件传输工具Snapdrop</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="安装华为电脑管家"><a href="#安装华为电脑管家" class="headerlink" title="安装华为电脑管家"></a>安装华为电脑管家</h2><p>网卡要求：英特尔AX200系列确认没问题，其余网卡可能无法安装华为电脑管家。</p>
-<p>手机必须是华为手机，鸿蒙2.0以上，处理器在麒麟990以上。</p>
-<p>具体可参考B站博主空降猫咪的教程安装：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV19H4y1G7Dg">https://www.bilibili.com/video/BV19H4y1G7Dg</a></p>
-<p>相关文件在作者视频简介中有网盘链接</p>
-<p>需要注意的一点是SN码设置(后续会用到)，SN码选择自定义，设置为16位长的字母数字组合，然后再选择安装包安装。</p>
-<p><img src="https://xinhaojin.github.io/picx-images-hosting/20240525/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240525220224.5c0t6wg2x3.jpg" srcset="/img/loading.gif" lazyload></p>
-<h2 id="给NFC贴纸写入数据，并激活"><a href="#给NFC贴纸写入数据，并激活" class="headerlink" title="给NFC贴纸写入数据，并激活"></a>给NFC贴纸写入数据，并激活</h2><h3 id="生成二维码"><a href="#生成二维码" class="headerlink" title="生成二维码"></a>生成二维码</h3><p>使用PCManagerInstaller生成二维码。(就是上一步骤中的安装器):<a target="_blank" rel="noopener" href="https://xinhaojin.lanzouj.com/iYXPD1zqz68h">https://xinhaojin.lanzouj.com/iYXPD1zqz68h</a><br><img src="https://xinhaojin.github.io/picx-images-hosting/20240525/image.7ljtqefn2j.jpg" srcset="/img/loading.gif" lazyload><br>然后使用微信或者浏览器先扫描二维码内容，查看数据格式是否形如“SN&#x3D;HUAWEILAPTOP2020|MAC&#x3D;BC8385DC117F|MODELID&#x3D;00000506”其中SN是上一步自己设置的。</p>
-<h3 id="使用一碰传助手扫码激活"><a href="#使用一碰传助手扫码激活" class="headerlink" title="使用一碰传助手扫码激活"></a>使用一碰传助手扫码激活</h3><p>安装华为一碰传助手：<a target="_blank" rel="noopener" href="https://xinhaojin.lanzouj.com/iHSYu1zqz6dc%EF%BC%8C%E5%A6%82%E6%9E%9C%E6%89%93%E5%BC%80%E5%90%8E%E4%B8%8D%E8%83%BD%E7%94%A8%E8%AF%B7%E5%9C%A8%E8%AE%BE%E7%BD%AE%E9%87%8C%E6%8E%88%E4%BA%88%E7%9B%B8%E6%9C%BA%E6%9D%83%E9%99%90%EF%BC%8C%E6%89%AB%E8%BF%99%E4%B8%AA%E7%94%9F%E6%88%90%E7%9A%84%E4%BA%8C%E7%BB%B4%E7%A0%81">https://xinhaojin.lanzouj.com/iHSYu1zqz6dc，如果打开后不能用请在设置里授予相机权限，扫这个生成的二维码</a><br><img src="https://xinhaojin.github.io/picx-images-hosting/20240525/9bd0d3780c47789217054243dbd5bc9.9gwej12key.jpg" srcset="/img/loading.gif" lazyload><br>然后把NFC贴纸放在感应区两秒，提示激活成功即可。<br><img src="https://xinhaojin.github.io/picx-images-hosting/20240525/dc35512f61d64ca61f7c60932cee80e.7p4hn63a1.jpg" srcset="/img/loading.gif" lazyload><br>NFC tools(用于NFC写卡错误时删除标签数据，华为手机似乎无法直接使用，其他安卓机可用):<a target="_blank" rel="noopener" href="https://xinhaojin.lanzouj.com/itbaa1zqz6ih">https://xinhaojin.lanzouj.com/itbaa1zqz6ih</a></p>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前想过很多次做一个局域网文件传输工具，但是始终停留在需求阶段哈哈哈哈哈，毕竟啥也不会。</p>
+<p>网上有很多软件可以用，但基本都是要安装各平台的软件才行，作为偶尔用一下的工具，必不可能有被安装在设备上的资格。</p>
+<p>之前用过一个很好用的工具Snapdrop，以网页形式存在，<a target="_blank" rel="noopener" href="https://snapdrop.net/">https://Snapdrop.net/</a> ，完全满足了我的需求，但后面有段时间无法访问，我以为他凉了。</p>
+<p>因此我又重新想做一个类似的东西，结果发现这个网页现在又可以用了，关于页指向GitHub <a target="_blank" rel="noopener" href="https://github.com/RobinLinus/snapdrop">https://github.com/RobinLinus/snapdrop</a> ，竟然是开源的，大喜过望，于是有了本篇。</p>
+<h2 id="前置环境"><a href="#前置环境" class="headerlink" title="前置环境"></a>前置环境</h2><p>docker，nginx，域名</p>
+<h2 id="docker配置"><a href="#docker配置" class="headerlink" title="docker配置"></a>docker配置</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker pull linuxserver/snapdrop<br>docker run -d --restart=always --name snapdrop -p 8088:80 linuxserver/snapdrop #8088是自定义端口<br></code></pre></td></tr></table></figure>
+<p>然后就可以在客户端双方访问<a href="http://ip:8088来使用，若要绑定域名，进行nginx设置">http://ip:8088来使用，若要绑定域名，进行nginx设置</a></p>
+<h2 id="申请SSL证书"><a href="#申请SSL证书" class="headerlink" title="申请SSL证书"></a>申请SSL证书</h2><p>先解析一个二级域名如file.xinhaojin.top到主机上,然后申请证书</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stylus">sudo apt install certbot python3-certbot-nginx<br>sudo certbot <span class="hljs-attr">--nginx</span> -d file<span class="hljs-selector-class">.xinhaojin</span>.<span class="hljs-attribute">top</span><br></code></pre></td></tr></table></figure>
+<h2 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h2><p>在http标签中添加两个server</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs json"> server <span class="hljs-punctuation">&#123;</span><br>    listen <span class="hljs-number">80</span>;<br>    server_name file.xinhaojin.top;<br>    return <span class="hljs-number">301</span> https<span class="hljs-punctuation">:</span><span class="hljs-comment">//$host$request_uri;</span><br><span class="hljs-punctuation">&#125;</span><br><br>server <span class="hljs-punctuation">&#123;</span><br>    listen <span class="hljs-number">443</span> ssl;<br>    server_name file.xinhaojin.top;<br><br>    ssl_certificate /etc/letsencrypt/live/file.xinhaojin.top/fullchain.pem;<br>    ssl_certificate_key /etc/letsencrypt/live/file.xinhaojin.top/privkey.pem;<br>    ssl_protocols TLSv1<span class="hljs-number">.2</span> TLSv1<span class="hljs-number">.3</span>;<br>    ssl_prefer_server_ciphers off;<br>    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256<span class="hljs-punctuation">:</span>ECDHE-RSA-AES256-GCM-SHA384;<br><br>    location / <span class="hljs-punctuation">&#123;</span><br>        proxy_pass http<span class="hljs-punctuation">:</span><span class="hljs-comment">//127.0.0.1:8088;  # Change to your Spring Boot app&#x27;s IP and port</span><br>        proxy_connect_timeout <span class="hljs-number">300</span>;<br>        proxy_set_header Connection <span class="hljs-string">&quot;upgrade&quot;</span>;<br>        proxy_set_header Upgrade $http_upgrade;<br>        proxy_set_header X-Forwarded-for $remote_addr;<br><span class="hljs-punctuation">&#125;</span><br><br>location ~ /.well-known <span class="hljs-punctuation">&#123;</span><br>    allow all;<br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+<p>重启nginx</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs https://file.xinhaojin.top">sudo nginx -s reload<br>sudo systemctl restart nginx<br></code></pre></td></tr></table></figure>
+<h2 id="Done"><a href="#Done" class="headerlink" title="Done"></a>Done</h2><p>现在就拥有了一个私有化的局域网文件传输工具，<a target="_blank" rel="noopener" href="https://file.xinhaojin.top/">https://file.xinhaojin.top</a></p>
 
                 
               </div>
@@ -341,8 +342,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>非华为电脑制作NFC贴片实现一碰传多屏协同</div>
-      <div>https://xinhaojin.github.io/2024/05/25/非华为电脑制作NFC贴片实现一碰传多屏协同/</div>
+      <div>私有化部署局域网文件传输工具Snapdrop</div>
+      <div>https://xinhaojin.github.io/2024/06/04/私有化部署局域网文件传输工具Snapdrop/</div>
     </div>
     <div class="license-meta">
       
@@ -354,7 +355,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年5月25日</div>
+          <div>2024年6月4日</div>
         </div>
       
       
@@ -386,18 +387,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/06/04/%E7%A7%81%E6%9C%89%E5%8C%96%E9%83%A8%E7%BD%B2%E5%B1%80%E5%9F%9F%E7%BD%91%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%B7%A5%E5%85%B7Snapdrop/" title="私有化部署局域网文件传输工具Snapdrop">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">私有化部署局域网文件传输工具Snapdrop</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/17/%E4%BD%BF%E7%94%A8PandoraNext%E9%A1%B9%E7%9B%AEDocker%E9%83%A8%E7%BD%B2ChatGPT%E5%AE%98%E7%BD%91%E9%95%9C%E5%83%8F%E7%AB%99(%E6%94%AF%E6%8C%81Token%E7%99%BB%E5%BD%95)%EF%BC%8C%E5%90%8C%E6%97%B6%E4%B8%BAChatgpt-web%E9%A1%B9%E7%9B%AE%E6%8F%90%E4%BE%9B%E7%A8%B3%E5%AE%9A%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1/" title="使用PandoraNext项目Docker部署ChatGPT官网镜像站(支持Token登录)，同时为Chatgpt-web项目提供稳定代理服务">
-                        <span class="hidden-mobile">使用PandoraNext项目Docker部署ChatGPT官网镜像站(支持Token登录)，同时为Chatgpt-web项目提供稳定代理服务</span>
+                      <a href="/2024/05/25/%E9%9D%9E%E5%8D%8E%E4%B8%BA%E7%94%B5%E8%84%91%E5%88%B6%E4%BD%9CNFC%E8%B4%B4%E7%89%87%E5%AE%9E%E7%8E%B0%E4%B8%80%E7%A2%B0%E4%BC%A0%E5%A4%9A%E5%B1%8F%E5%8D%8F%E5%90%8C/" title="非华为电脑制作NFC贴片实现一碰传多屏协同">
+                        <span class="hidden-mobile">非华为电脑制作NFC贴片实现一碰传多屏协同</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
