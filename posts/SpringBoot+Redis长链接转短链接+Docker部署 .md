@@ -371,7 +371,7 @@ docker build -t short-url:v1.0 .
 ### 运行docker镜像
 ```bash
 # docker run -d -p 7777:7777 your-image-name:tag
-docker run -d -p 7777:7777 short-url:v1.0
+docker run --restart=always --name shorturl -d -p 7777:7777 short-url:v1.0
 ```
 ### 检查运行情况
 ```bash
