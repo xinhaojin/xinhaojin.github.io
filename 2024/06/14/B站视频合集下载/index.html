@@ -18,14 +18,14 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="xinhaojin">
   <meta name="keywords" content="">
   
     <meta name="description" content="思路在拥有视频链接的情况下，可以使用you-get直接下载视频，如 you-get https:&#x2F;&#x2F;www.bilibili.com&#x2F;xxxxxxxx非常方便。因此只要获取到视频合集中的所有视频链接即可 分析网页源代码观察发现B站的视频唯一ID是这一串字符串，后面的可以删去，猜测可能是用户相关的信息，分享视频时用于标记分享用户之类的（所以分享B站视频时建议删去后面一长串，不然应该可以跟踪到分享者的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="B站视频合集下载">
-<meta property="og:url" content="http://example.com/2024/06/14/B%E7%AB%99%E8%A7%86%E9%A2%91%E5%90%88%E9%9B%86%E4%B8%8B%E8%BD%BD/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:url" content="https://xinhaojin.github.io/2024/06/14/B%E7%AB%99%E8%A7%86%E9%A2%91%E5%90%88%E9%9B%86%E4%B8%8B%E8%BD%BD/index.html">
+<meta property="og:site_name" content="xinhaojin&#39;s blog">
 <meta property="og:description" content="思路在拥有视频链接的情况下，可以使用you-get直接下载视频，如 you-get https:&#x2F;&#x2F;www.bilibili.com&#x2F;xxxxxxxx非常方便。因此只要获取到视频合集中的所有视频链接即可 分析网页源代码观察发现B站的视频唯一ID是这一串字符串，后面的可以删去，猜测可能是用户相关的信息，分享视频时用于标记分享用户之类的（所以分享B站视频时建议删去后面一长串，不然应该可以跟踪到分享者的">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20240613/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240613234826.ibz20r8fm.jpg">
@@ -34,7 +34,7 @@
 <meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20240613/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240613223912.lxdfga0l.jpg">
 <meta property="article:published_time" content="2024-06-14T00:29:35.000Z">
 <meta property="article:modified_time" content="2024-10-01T14:33:44.273Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:author" content="xinhaojin">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://xinhaojin.github.io/picx-images-hosting/20240613/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240613234826.ibz20r8fm.jpg">
   
@@ -42,7 +42,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>B站视频合集下载 - Hexo</title>
+  <title>B站视频合集下载 - xinhaojin&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -80,7 +80,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"xinhaojin.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -365,13 +365,13 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>B站视频合集下载</div>
-      <div>http://example.com/2024/06/14/B站视频合集下载/</div>
+      <div>https://xinhaojin.github.io/2024/06/14/B站视频合集下载/</div>
     </div>
     <div class="license-meta">
       
         <div class="license-meta-item">
           <div>作者</div>
-          <div>John Doe</div>
+          <div>xinhaojin</div>
         </div>
       
       

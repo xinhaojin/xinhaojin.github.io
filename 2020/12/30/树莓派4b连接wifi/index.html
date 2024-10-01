@@ -18,14 +18,14 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="xinhaojin">
   <meta name="keywords" content="">
   
     <meta name="description" content="新建TXT文件，格式如： country&#x3D;CN ctrl_interface&#x3D;DIR&#x3D;&#x2F;var&#x2F;run&#x2F;wpa_supplicant GROUP&#x3D;netdev update_config&#x3D;1 network&#x3D;&#123;     ssid&#x3D;&quot;目标Wi-Fi名称&quot;     psk&#x3D;&quot;目标Wi-Fi密码&quot;     priority&#x3D;3 &#125; networ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="树莓派4B连接WiFi">
-<meta property="og:url" content="http://example.com/2020/12/30/%E6%A0%91%E8%8E%93%E6%B4%BE4b%E8%BF%9E%E6%8E%A5wifi/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:url" content="https://xinhaojin.github.io/2020/12/30/%E6%A0%91%E8%8E%93%E6%B4%BE4b%E8%BF%9E%E6%8E%A5wifi/index.html">
+<meta property="og:site_name" content="xinhaojin&#39;s blog">
 <meta property="og:description" content="新建TXT文件，格式如： country&#x3D;CN ctrl_interface&#x3D;DIR&#x3D;&#x2F;var&#x2F;run&#x2F;wpa_supplicant GROUP&#x3D;netdev update_config&#x3D;1 network&#x3D;&#123;     ssid&#x3D;&quot;目标Wi-Fi名称&quot;     psk&#x3D;&quot;目标Wi-Fi密码&quot;     priority&#x3D;3 &#125; networ">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2020/12/image-22-1024x516.png">
@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2020/12/image-24-1024x493.png">
 <meta property="article:published_time" content="2020-12-30T00:33:50.000Z">
 <meta property="article:modified_time" content="2024-10-01T14:34:00.278Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:author" content="xinhaojin">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://xinhaojin.github.io/imgs-host/past/2020/12/image-22-1024x516.png">
   
@@ -41,7 +41,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>树莓派4B连接WiFi - Hexo</title>
+  <title>树莓派4B连接WiFi - xinhaojin&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -79,7 +79,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"xinhaojin.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -366,13 +366,13 @@ network=&#123;
   <div class="license-box my-3">
     <div class="license-title">
       <div>树莓派4B连接WiFi</div>
-      <div>http://example.com/2020/12/30/树莓派4b连接wifi/</div>
+      <div>https://xinhaojin.github.io/2020/12/30/树莓派4b连接wifi/</div>
     </div>
     <div class="license-meta">
       
         <div class="license-meta-item">
           <div>作者</div>
-          <div>John Doe</div>
+          <div>xinhaojin</div>
         </div>
       
       
