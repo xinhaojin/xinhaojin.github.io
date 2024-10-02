@@ -29,8 +29,12 @@
 <meta property="og:description" content="前言假设现在拥有：  flask后端代码：由flask_app.py作为启动程序 vue前端代码,且已经打包成dist文件夹  什么是GunicornGunicorn（“Green Unicorn”的缩写）是一个Python WSGI HTTP服务器，用于生产环境。它是一个预分叉的服务器，可以与多个工作进程一起运行，以处理并发请求。Gunicorn旨在解决Python web应用在生产环境中运行时">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-09-30T14:55:00.000Z">
-<meta property="article:modified_time" content="2024-10-01T14:33:46.060Z">
+<meta property="article:modified_time" content="2024-10-02T02:44:56.763Z">
 <meta property="article:author" content="xinhaojin">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="nginx">
+<meta property="article:tag" content="flask">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -324,8 +328,10 @@
 <h2 id="guncorn配置"><a href="#guncorn配置" class="headerlink" title="guncorn配置"></a>guncorn配置</h2><p>新建guncorn_config.py</p>
 <p>设置监听端口为54322</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> gevent <span class="hljs-keyword">import</span> monkey<br>monkey.patch_all()<br><span class="hljs-comment"># 必须加上这两行，否则，由于某些模块在Gunicorn尝试monkey patch SSL之前已经被导入</span><br><span class="hljs-comment"># 会产生警告，这可能导致错误。为了避免这些问题，需要在导入其他依赖库之前先进行monkey patching，可以在本文件中写，也可以在主函数开头写</span><br><span class="hljs-comment"># gevent的猴子补丁会替换掉Python标准库中的一些函数和方法，使得原本阻塞的操作变得非阻塞</span><br><span class="hljs-comment"># 这意味着Gunicorn使用了协程来提高并发能力。</span><br><span class="hljs-comment"># 这种模式下，理论上单个工作进程就能处理大量的并发连接，因为每个连接并不需要消耗一个完整的操作系统线程。</span><br><span class="hljs-comment"># 如果请求的处理主要是CPU密集型的，增加更多的工作进程和线程可能并不会显著提升性能，反而可能因为上下文切换而造成性能下降</span><br><span class="hljs-comment"># Gunicorn配置文件</span><br><span class="hljs-comment"># bind - 绑定的IP地址和端口</span><br>bind = <span class="hljs-string">&#x27;0.0.0.0:54322&#x27;</span><br><span class="hljs-comment"># workers - 启动的工作进程数量</span><br>workers = <span class="hljs-number">4</span><br><span class="hljs-comment"># threads = 4</span><br><span class="hljs-comment"># worker_class - 工作进程类型，&#x27;sync&#x27;代表同步模式，还有其他异步模式如gevent和eventlet</span><br><span class="hljs-comment"># worker_class = &#x27;sync&#x27;</span><br>worker_class = <span class="hljs-string">&#x27;gevent&#x27;</span><br><span class="hljs-comment"># timeout - 工作进程的超时时间，单位为秒</span><br>timeout = <span class="hljs-number">30</span><br><span class="hljs-comment"># preload_app - 是否在每个工作进程中预加载应用</span><br>preload_app = <span class="hljs-literal">True</span><br><span class="hljs-comment"># loglevel - 日志级别，可选值有&#x27;debug&#x27;, &#x27;info&#x27;, &#x27;warning&#x27;, &#x27;error&#x27;, &#x27;critical&#x27;</span><br>loglevel = <span class="hljs-string">&#x27;info&#x27;</span><br><span class="hljs-comment"># accesslog - 访问日志的输出位置，&#x27;-&#x27;表示输出到标准输出</span><br>accesslog = <span class="hljs-string">&#x27;-&#x27;</span><br><span class="hljs-comment"># errorlog - 错误日志的输出位置，&#x27;-&#x27;表示输出到标准输出</span><br>errorlog = <span class="hljs-string">&#x27;-&#x27;</span><br><span class="hljs-comment"># capture_output - 是否捕获标准输出和标准错误流到日志中</span><br>capture_output = <span class="hljs-literal">True</span><br></code></pre></td></tr></table></figure>
+
 <p>由gunicorn托管flask</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">gunicorn -c gunicorn_config.py flask_app:app &amp;<br><span class="hljs-meta prompt_"># </span><span class="language-bash">关闭服务</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">lsof -ti :54322 | xargs <span class="hljs-built_in">kill</span> -9</span><br></code></pre></td></tr></table></figure>
+
 <h2 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h2><p>&#x2F;etc&#x2F;nginx&#x2F;nginx.conf</p>
 <p>在HTTP中添加以下两个Server</p>
 <ul>
@@ -333,6 +339,7 @@
 <li>第二个Server的作用是监听54321端口，反向代理前端对54321端口的请求，转发给54322端口的gunicorn程序</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs conf">server &#123;<br>    listen 8080;<br>    server_name _; # 替换为您的域名或IP地址<br>    root /usr/share/nginx/html/dist;<br>    location /static/ &#123;<br>        autoindex on;<br>        alias /usr/share/nginx/html/dist/static/; # 指定静态资源目录<br>    &#125;<br>&#125;<br>server &#123;<br>    listen 54321;<br>    server_name _; # 替换为您的域名或IP地址<br>    location / &#123;<br>        # add_header Access-Control-Allow-Origin *;<br>        try_files $uri $uri/  /index.html =404;<br>        index index.html index.htm;<br>        proxy_pass http://127.0.0.1:54322; # Gunicorn监听的地址和端口<br>        proxy_set_header Host $host;<br>        proxy_set_header X-Real-IP $remote_addr;<br>        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
                 
               </div>
             
@@ -368,6 +375,19 @@
 
     </div>
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/python/" class="print-no-link">#python</a>
+      
+        <a href="/tags/linux/" class="print-no-link">#linux</a>
+      
+        <a href="/tags/nginx/" class="print-no-link">#nginx</a>
+      
+        <a href="/tags/flask/" class="print-no-link">#flask</a>
+      
+    </div>
   
 </div>
 

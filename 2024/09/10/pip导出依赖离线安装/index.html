@@ -21,16 +21,17 @@
   <meta name="author" content="xinhaojin">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言为了方便离线机器环境部署，可以在有网的机器上导出requirements.txt文件，然后下载依赖文件，这样就可以在没有网络的机器上安装依赖 安装pipreqs1pip install pipreqs 生成requirements.txt文件123在项目根目录下执行&#96;&#96;&#96;shellpipreqs .  会导出requirements.txt文件，里面包含了项目所需要的依赖，可能某些依赖没有涵盖">
+    <meta name="description" content="前言为了方便离线机器环境部署，可以在有网的机器上导出requirements.txt文件，然后下载依赖文件，这样就可以在没有网络的机器上安装依赖 安装pipreqs1pip install pipreqs  生成requirements.txt文件123在项目根目录下执行&#96;&#96;&#96;shellpipreqs .   会导出requirements.txt文件，里面包含了项目所需要的依赖，可能某些依赖没有">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pip导出依赖离线安装">
 <meta property="og:url" content="https://xinhaojin.github.io/2024/09/10/pip%E5%AF%BC%E5%87%BA%E4%BE%9D%E8%B5%96%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85/index.html">
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
-<meta property="og:description" content="前言为了方便离线机器环境部署，可以在有网的机器上导出requirements.txt文件，然后下载依赖文件，这样就可以在没有网络的机器上安装依赖 安装pipreqs1pip install pipreqs 生成requirements.txt文件123在项目根目录下执行&#96;&#96;&#96;shellpipreqs .  会导出requirements.txt文件，里面包含了项目所需要的依赖，可能某些依赖没有涵盖">
+<meta property="og:description" content="前言为了方便离线机器环境部署，可以在有网的机器上导出requirements.txt文件，然后下载依赖文件，这样就可以在没有网络的机器上安装依赖 安装pipreqs1pip install pipreqs  生成requirements.txt文件123在项目根目录下执行&#96;&#96;&#96;shellpipreqs .   会导出requirements.txt文件，里面包含了项目所需要的依赖，可能某些依赖没有">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-09-10T11:13:00.000Z">
-<meta property="article:modified_time" content="2024-10-01T14:33:49.568Z">
+<meta property="article:modified_time" content="2024-10-02T02:52:43.300Z">
 <meta property="article:author" content="xinhaojin">
+<meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -314,14 +315,14 @@
                 
                 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>为了方便离线机器环境部署，可以在有网的机器上导出requirements.txt文件，然后下载依赖文件，这样就可以在没有网络的机器上安装依赖</p>
 <h3 id="安装pipreqs"><a href="#安装pipreqs" class="headerlink" title="安装pipreqs"></a>安装pipreqs</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pip install pipreqs<br></code></pre></td></tr></table></figure>
+
 <h3 id="生成requirements-txt文件"><a href="#生成requirements-txt文件" class="headerlink" title="生成requirements.txt文件"></a>生成requirements.txt文件</h3><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey">在项目根目录下执行<br>```shell<br>pipreqs . <br></code></pre></td></tr></table></figure>
+
 <p>会导出requirements.txt文件，里面包含了项目所需要的依赖，可能某些依赖没有涵盖，需要手动添加</p>
 <h3 id="下载依赖文件"><a href="#下载依赖文件" class="headerlink" title="下载依赖文件"></a>下载依赖文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">mkdir packages<br>pip download -r requirements.txt -d packages<br></code></pre></td></tr></table></figure>
+
 <p>会在当前目录下生成packages文件夹，里面包含了所有依赖文件，可以把这个文件夹拷贝到没有网络的机器上，然后在没有网络的机器上执行</p>
 <h3 id="离线安装依赖"><a href="#离线安装依赖" class="headerlink" title="离线安装依赖"></a>离线安装依赖</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">pip install -r requirements.txt -f /path/to/packages<br><span class="hljs-meta prompt_"># </span><span class="language-bash">或者</span><br>pip install -r requirements.txt --no-index --find-links=file:///path/to/packages<br></code></pre></td></tr></table></figure>
-
-
-
 
                 
               </div>
@@ -351,6 +352,13 @@
 
     </div>
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/python/" class="print-no-link">#python</a>
+      
+    </div>
   
 </div>
 

@@ -59,8 +59,9 @@
 <meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20221010/46.png">
 <meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20221010/45.png">
 <meta property="article:published_time" content="2022-10-08T20:58:00.000Z">
-<meta property="article:modified_time" content="2024-10-01T14:33:55.834Z">
+<meta property="article:modified_time" content="2024-10-02T03:01:32.744Z">
 <meta property="article:author" content="xinhaojin">
+<meta property="article:tag" content="目标检测">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://xinhaojin.github.io/imgs-host/20221010/4.png">
   
@@ -281,7 +282,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.7k 字
+          5.8k 字
         
       </span>
     
@@ -292,7 +293,7 @@
         
         
         
-          48 分钟
+          49 分钟
         
       </span>
     
@@ -353,7 +354,7 @@
 <p>You only look once,one-stage方法,把目标检测问题直接转化成CNN回归问题（预测数值）。</p>
 <p><strong>思考一个问题：</strong> 怎么表示一个位置框(目标)？<br>x,y,w,h,conf,class<br><img src="https://xinhaojin.github.io/imgs-host/20221010/7.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h3><p>将一幅图像分成7x7个网格(grid cell),如果某个object的中心落在这个网格中，则这个网格就负责预测这个object。<br>每个网格要预测2个bounding box(指定长宽比例的预选框)，每个bounding box除了要预测位置之外，还要附带预测一个confidence值。每个网格还要预测20个类别的概率。</p>
-<h3 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h3><p><img src="https://xinhaojin.github.io/imgs-host/20221010/19.png" srcset="/img/loading.gif" lazyload><br>输入：448<em>448</em>3<br><br>经过卷积池化卷积池化…全连接<br><br>输出：7<em>7</em>30<br><br>7<em>7：格子<br><br>30&#x3D;20+5</em>2<br><br>20：类别<br><br>5：x,y,w,h,conf<br><br>2：两个预选框<br><br><strong>疑问:</strong> 神经网络怎么知道每个值代表什么意思?<br>设计合适的损失函数。</p>
+<h3 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h3><p><img src="https://xinhaojin.github.io/imgs-host/20221010/19.png" srcset="/img/loading.gif" lazyload><br>输入：448<em>448</em>3<code>&lt;br&gt;</code><br>经过卷积池化卷积池化…全连接<code>&lt;br&gt;</code><br>输出：7<em>7</em>30<code>&lt;br&gt;</code><br>7<em>7：格子<code>&lt;br&gt;</code><br>30&#x3D;20+5</em>2<code>&lt;br&gt;</code><br>20：类别<code>&lt;br&gt;</code><br>5：x,y,w,h,conf<code>&lt;br&gt;</code><br>2：两个预选框<code>&lt;br&gt;</code><br><strong>疑问:</strong> 神经网络怎么知道每个值代表什么意思?<br>设计合适的损失函数。</p>
 <h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>bounding box损失、confidence损失和classes损失。在计算损失时主要都是用的误差平方和求解。<br><img src="https://xinhaojin.github.io/imgs-host/20221010/20.png" srcset="/img/loading.gif" lazyload><br><img src="https://xinhaojin.github.io/imgs-host/20221010/17.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>优点：快速，简单</p>
 <p>缺点：每个cell只能预测一个类别，重叠问题无法解决；<br>小物体检测效果一般；无法应对新尺寸目标；定位不准确</p>
@@ -399,9 +400,9 @@
 <p>输出层：21个神经元 – 即我们待会希望提取到21个特征。</p>
 <p>分析如下图所示：分别对1 * 1分块，2 * 2分块和4 * 4子图里分别取每一个框内的max值（即取蓝框框内的最大值），这一步就是作最大池化，这样最后提取出来的特征值（即取出来的最大值）一共有1 * 1 + 2 * 2 + 4 * 4 &#x3D; 21个。得出的特征再concat在一起。<br><img src="https://xinhaojin.github.io/imgs-host/20221010/34.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="SPPF"><a href="#SPPF" class="headerlink" title="SPPF"></a>SPPF</h4><p>SPPF串联使用了池化层，使得计算效率更高。<br>将两个5×5的池化层进行串联等价于使用一个9×9的最大池化，而使用3个5×5的最大池化又等价于一个13×13的最大池化。<br><img src="https://xinhaojin.github.io/imgs-host/20221010/35.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="数据增强策略"><a href="#数据增强策略" class="headerlink" title="数据增强策略"></a>数据增强策略</h3><p>Mosaic（图像拼接）<br><br>Copy paste（将不同图像中的目标进行负值和粘贴）<br><br>Random affine（随机仿射变换：旋转、平移等）<br><br>MixUp（将两张图片按一定透明程度混合成一张图片）<br><br>Albumentations（滤波、直方图均衡化以及改变图片质量等等）<br><br>Augment HSV（调整图像色度、透明度和饱和度）<br><br>Random horizontal flip（水平翻转）</p>
-<h3 id="训练策略"><a href="#训练策略" class="headerlink" title="训练策略"></a>训练策略</h3><p>Multi-scale training(0.5~1.5x)（多尺度训练）<br><br>AutoAnchor(For training custom data)（重新生成anchor）<br><br>Warmup and Cosine LR scheduler（学习率的调整）<br><br>EMA(Exponential Moving Average)Mixed precision（将学习变量添加一个动量）<br><br>Mixed precision（混合精度训练）<br><br>Evolve hyper-parameters</p>
-<h3 id="损失函数-1"><a href="#损失函数-1" class="headerlink" title="损失函数"></a>损失函数</h3><p>Classes loss，分类损失，采用的是BCE loss（二值交叉熵损失），注意只计算正样本的分类损失。<br><br>objectness loss，obj损失，采用的依然是BCE loss，注意这里的obj指的是网络预测的目标边界框与GT<br>Box的CIoU。这里计算的是所有样本的obj损失。<br><br>Location loss，定位损失，采用的是CIoU loss，注意只计算正样本的定位损失。</p>
+<h3 id="数据增强策略"><a href="#数据增强策略" class="headerlink" title="数据增强策略"></a>数据增强策略</h3><p>Mosaic（图像拼接）<br><code>&lt;br&gt;</code>Copy paste（将不同图像中的目标进行负值和粘贴）<br><code>&lt;br&gt;</code>Random affine（随机仿射变换：旋转、平移等）<br><code>&lt;br&gt;</code>MixUp（将两张图片按一定透明程度混合成一张图片）<br><code>&lt;br&gt;</code>Albumentations（滤波、直方图均衡化以及改变图片质量等等）<br><code>&lt;br&gt;</code>Augment HSV（调整图像色度、透明度和饱和度）<br><code>&lt;br&gt;</code>Random horizontal flip（水平翻转）</p>
+<h3 id="训练策略"><a href="#训练策略" class="headerlink" title="训练策略"></a>训练策略</h3><p>Multi-scale training(0.5~1.5x)（多尺度训练）<br><code>&lt;br&gt;</code>AutoAnchor(For training custom data)（重新生成anchor）<br><code>&lt;br&gt;</code>Warmup and Cosine LR scheduler（学习率的调整）<br><code>&lt;br&gt;</code>EMA(Exponential Moving Average)Mixed precision（将学习变量添加一个动量）<br><code>&lt;br&gt;</code>Mixed precision（混合精度训练）<br><code>&lt;br&gt;</code>Evolve hyper-parameters</p>
+<h3 id="损失函数-1"><a href="#损失函数-1" class="headerlink" title="损失函数"></a>损失函数</h3><p>Classes loss，分类损失，采用的是BCE loss（二值交叉熵损失），注意只计算正样本的分类损失。<br><code>&lt;br&gt;</code>objectness loss，obj损失，采用的依然是BCE loss，注意这里的obj指的是网络预测的目标边界框与GT<br>Box的CIoU。这里计算的是所有样本的obj损失。<br><code>&lt;br&gt;</code>Location loss，定位损失，采用的是CIoU loss，注意只计算正样本的定位损失。</p>
 <h2 id="YOLOX"><a href="#YOLOX" class="headerlink" title="YOLOX"></a>YOLOX</h2><p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2107.08430">paper(CVPR2021)</a></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/Megvii-BaseDetection/YOLOX">code</a></p>
 <p>与yolov5的对比<br><img src="https://xinhaojin.github.io/imgs-host/20221010/36.png" srcset="/img/loading.gif" lazyload></p>
@@ -503,6 +504,13 @@
 
     </div>
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" class="print-no-link">#目标检测</a>
+      
+    </div>
   
 </div>
 

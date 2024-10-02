@@ -30,8 +30,11 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/04/image-3.png">
 <meta property="article:published_time" content="2022-04-05T20:16:27.000Z">
-<meta property="article:modified_time" content="2024-10-01T14:33:51.996Z">
+<meta property="article:modified_time" content="2024-10-02T02:55:55.663Z">
 <meta property="article:author" content="xinhaojin">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="爬虫">
+<meta property="article:tag" content="selenium">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://xinhaojin.github.io/imgs-host/past/2022/04/image-3.png">
   
@@ -318,6 +321,7 @@
 <p>pip install msedge-selenium-tools</p>
 <p>然后就可以了</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver<br><span class="hljs-keyword">from</span> msedge.selenium_tools <span class="hljs-keyword">import</span> EdgeOptions<br><span class="hljs-keyword">from</span> msedge.selenium_tools <span class="hljs-keyword">import</span> Edge<br><br>edge_options = EdgeOptions()<br>edge_options.use_chromium = <span class="hljs-literal">True</span><br><span class="hljs-comment"># 设置无界面模式，也可以添加其它设置</span><br>edge_options.add_argument(<span class="hljs-string">&#x27;headless&#x27;</span>)<br>driver = Edge(options=edge_options)<br>r = driver.get(<span class="hljs-string">&#x27;https://www.baidu.com&#x27;</span>)<br><span class="hljs-built_in">print</span>(driver.title)<br>driver.quit()<br></code></pre></td></tr></table></figure>
+
 <p><img src="https://xinhaojin.github.io/imgs-host/past/2022/04/image-3.png" srcset="/img/loading.gif" lazyload></p>
 
                 
@@ -348,6 +352,17 @@
 
     </div>
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/python/" class="print-no-link">#python</a>
+      
+        <a href="/tags/%E7%88%AC%E8%99%AB/" class="print-no-link">#爬虫</a>
+      
+        <a href="/tags/selenium/" class="print-no-link">#selenium</a>
+      
+    </div>
   
 </div>
 

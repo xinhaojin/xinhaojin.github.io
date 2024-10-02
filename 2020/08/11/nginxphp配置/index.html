@@ -21,16 +21,18 @@
   <meta name="author" content="xinhaojin">
   <meta name="keywords" content="">
   
-    <meta name="description" content="在nginx.conf中添加一个serverserver &#123;     listen 999;     server_name blog.xinhaojin.top;     location ~ \\.php?.*$ &#123;         root &#x2F;www&#x2F;wwwroot&#x2F;blog.xinhaojin.top;#php文件目录         fastcgi_pass unix">
+    <meta name="description" content="在nginx.conf中添加一个serverserver &#123;     listen 999;     server_name blog.xinhaojin.top;     location ~\\.php?.*$ &#123;         root &#x2F;www&#x2F;wwwroot&#x2F;blog.xinhaojin.top;#php文件目录         fastcgi_pass unix:">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nginx+PHP配置">
 <meta property="og:url" content="https://xinhaojin.github.io/2020/08/11/nginxphp%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
-<meta property="og:description" content="在nginx.conf中添加一个serverserver &#123;     listen 999;     server_name blog.xinhaojin.top;     location ~ \\.php?.*$ &#123;         root &#x2F;www&#x2F;wwwroot&#x2F;blog.xinhaojin.top;#php文件目录         fastcgi_pass unix">
+<meta property="og:description" content="在nginx.conf中添加一个serverserver &#123;     listen 999;     server_name blog.xinhaojin.top;     location ~\\.php?.*$ &#123;         root &#x2F;www&#x2F;wwwroot&#x2F;blog.xinhaojin.top;#php文件目录         fastcgi_pass unix:">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-08-11T16:58:42.000Z">
-<meta property="article:modified_time" content="2024-10-01T14:33:48.783Z">
+<meta property="article:modified_time" content="2024-10-02T02:50:50.929Z">
 <meta property="article:author" content="xinhaojin">
+<meta property="article:tag" content="nginx">
+<meta property="article:tag" content="php">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -315,7 +317,7 @@
                 <h4 id="在nginx-conf中添加一个server"><a href="#在nginx-conf中添加一个server" class="headerlink" title="在nginx.conf中添加一个server"></a>在nginx.conf中添加一个server</h4><pre><code class="hljs">server &#123;
     listen 999;
     server_name blog.xinhaojin.top;
-    location ~ \\.php?.*$ &#123;
+    location ~\\.php?.*$ &#123;
         root /www/wwwroot/blog.xinhaojin.top;#php文件目录
         fastcgi_pass unix:/tmp/php-cgi-70.sock;#.sock的形式
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
@@ -324,20 +326,20 @@
 &#125;
 </code></pre>
 <h4 id="需要注意的是php-fpm-conf与nginx-conf的监听方式是否相同"><a href="#需要注意的是php-fpm-conf与nginx-conf的监听方式是否相同" class="headerlink" title="需要注意的是php-fpm.conf与nginx.conf的监听方式是否相同"></a>需要注意的是php-fpm.conf与nginx.conf的监听方式是否相同</h4><p>方式1，统一成ip+port的形式:</p>
-<pre><code class="hljs">php-fpm.conf: 
+<pre><code class="hljs">php-fpm.conf:
 
- listen = 127.0.0.1:9000 
+listen = 127.0.0.1:9000
 
-nginx.conf:  
+nginx.conf:
 
 fastcgi_pass 127.0.0.1:9000;
 </code></pre>
 <p>方式2，统一成.sock的形式:</p>
-<pre><code class="hljs">php-fpm.conf:  
+<pre><code class="hljs">php-fpm.conf:
 
-listen = /tmp/php-fpm.sock 
+listen = /tmp/php-fpm.sock
 
-nginx.conf: 
+nginx.conf:
 
 fastcgi_pass unix:/tmp/php-fpm.sock;
 </code></pre>
@@ -371,6 +373,15 @@ fastcgi_pass unix:/tmp/php-fpm.sock;
 
     </div>
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/nginx/" class="print-no-link">#nginx</a>
+      
+        <a href="/tags/php/" class="print-no-link">#php</a>
+      
+    </div>
   
 </div>
 

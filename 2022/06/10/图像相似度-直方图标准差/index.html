@@ -31,8 +31,10 @@
 <meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/06/image-2.png">
 <meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/06/image-4.png">
 <meta property="article:published_time" content="2022-06-10T14:36:21.000Z">
-<meta property="article:modified_time" content="2024-10-01T14:34:01.058Z">
+<meta property="article:modified_time" content="2024-10-02T02:35:59.019Z">
 <meta property="article:author" content="xinhaojin">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="图像处理">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://xinhaojin.github.io/imgs-host/past/2022/06/image-2.png">
   
@@ -321,6 +323,7 @@
 <h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>对于这种大面积相同的图片，一种很快速的方法是计算两张图直方图的标准差。</p>
 <p>计算和每一张背景图的标准差，取最小的就行</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> PIL <span class="hljs-keyword">import</span> Image<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-comment">#计算直方图的标准差</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">image_contrast_std</span>(<span class="hljs-params">img1, img2</span>):<br>    image1 = Image.<span class="hljs-built_in">open</span>(img1)<br>    image2 = Image.<span class="hljs-built_in">open</span>(img2)<br><br>    h1 = image1.histogram()<br>    h2 = image2.histogram()<br>    h1 = np.array(h1)<br>    h2 = np.array(h2)<br>    result = np.std(h1-h2)<br>    <span class="hljs-keyword">return</span> result<br></code></pre></td></tr></table></figure>
+
                 
               </div>
             
@@ -359,6 +362,15 @@
 
     </div>
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/python/" class="print-no-link">#python</a>
+      
+        <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" class="print-no-link">#图像处理</a>
+      
+    </div>
   
 </div>
 

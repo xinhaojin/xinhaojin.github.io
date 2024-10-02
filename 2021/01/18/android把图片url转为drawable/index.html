@@ -30,8 +30,9 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2021/01/image-38.png">
 <meta property="article:published_time" content="2021-01-18T15:00:50.000Z">
-<meta property="article:modified_time" content="2024-10-01T14:33:43.528Z">
+<meta property="article:modified_time" content="2024-10-02T02:40:12.726Z">
 <meta property="article:author" content="xinhaojin">
+<meta property="article:tag" content="安卓">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://xinhaojin.github.io/imgs-host/past/2021/01/image-38.png">
   
@@ -318,6 +319,7 @@
 
 <p>以下示例给linearlayout设置网络图片为背景</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java">linear=(LinearLayout)findViewById(R.id.linear);<br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Runnable</span>() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>                <span class="hljs-keyword">try</span> &#123;<br>                    <span class="hljs-type">InputStream</span> <span class="hljs-variable">in</span> <span class="hljs-operator">=</span> (InputStream) <span class="hljs-keyword">new</span> <span class="hljs-title class_">URL</span>(<span class="hljs-string">&quot;http://xxx.jpg&quot;</span>).openStream();<br>                    <span class="hljs-keyword">final</span> <span class="hljs-type">Drawable</span> <span class="hljs-variable">d</span> <span class="hljs-operator">=</span> Drawable.createFromStream(in, <span class="hljs-string">&quot;src&quot;</span>);<br>                    in.close();<br>                    runOnUiThread(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Runnable</span>() &#123;<br>                        <span class="hljs-meta">@Override</span><br>                        <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>                            linear.setBackground(d);<br>                        &#125;<br>                    &#125;);<br>                &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>                    e.printStackTrace();<br>                &#125;<br>            &#125;<br>        &#125;).start();<br></code></pre></td></tr></table></figure>
+
 <p>注意，http请求需要在子线程中完成，UI更新需要在主线程中完成</p>
 <p>android9.0以上版本中允许http请求需要在AndroidManifest.xml中的application标签中添加</p>
 <p>android:usesCleartextTraffic&#x3D;”true”</p>
@@ -351,6 +353,13 @@
 
     </div>
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%AE%89%E5%8D%93/" class="print-no-link">#安卓</a>
+      
+    </div>
   
 </div>
 

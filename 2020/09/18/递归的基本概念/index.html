@@ -29,8 +29,9 @@
 <meta property="og:description" content="什么是递归？递归就是自己调用自己，引用一个经典故事理解： 从前有座山，山里有座庙，庙里有个老和尚，正在给小和尚讲故事呢！故事是什么呢？“从前有座山，山里有座庙，庙里有个老和尚，正在给小和尚讲故事呢！故事是什么呢？‘从前有座山，山里有座庙，庙里有个老和尚，正在给小和尚讲故事呢！故事是什么呢？……’” 故事调用故事本身，层次越来越深…… 使用递归的条件1.问题本身可以分解为子问题，并且与原问题有相同的">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-09-18T14:45:33.000Z">
-<meta property="article:modified_time" content="2024-10-01T14:33:56.432Z">
+<meta property="article:modified_time" content="2024-10-02T02:16:00.058Z">
 <meta property="article:author" content="xinhaojin">
+<meta property="article:tag" content="递归">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -321,6 +322,7 @@
 <h4 id="编写递归函数的技巧"><a href="#编写递归函数的技巧" class="headerlink" title="编写递归函数的技巧"></a>编写递归函数的技巧</h4><p>假设子问题已经解决！类似用数学归纳法解决数列问题时的a(n)与a(n+1)之间的关系，假设a(n)已知，计算a(n+1),然后追溯到a(0)已知，求a(1)……</p>
 <p>例如：求n!</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">function</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>(n==<span class="hljs-number">0</span>)<span class="hljs-comment">//0!=1</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">else</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">function</span>(n<span class="hljs-number">-1</span>)*n;<span class="hljs-comment">//n!=(n-1)!*n</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
 <p>总结一下也就是分成两部分</p>
 <p>1.假设子问题已经解决，写出当前问题与子问题的递归关系；</p>
 <p>2.写出边界条件的处理步骤(如:解决到最小问题时，即无法再递进时直接给出结果）。</p>
@@ -363,6 +365,13 @@
 
     </div>
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%80%92%E5%BD%92/" class="print-no-link">#递归</a>
+      
+    </div>
   
 </div>
 

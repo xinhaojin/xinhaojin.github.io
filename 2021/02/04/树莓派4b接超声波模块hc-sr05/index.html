@@ -30,8 +30,10 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2021/01/image-40.png">
 <meta property="article:published_time" content="2021-02-04T00:54:56.000Z">
-<meta property="article:modified_time" content="2024-10-01T14:34:00.144Z">
+<meta property="article:modified_time" content="2024-10-02T02:33:33.562Z">
 <meta property="article:author" content="xinhaojin">
+<meta property="article:tag" content="树莓派">
+<meta property="article:tag" content="超声波">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://xinhaojin.github.io/imgs-host/past/2021/01/image-40.png">
   
@@ -320,6 +322,7 @@
 <p>GND：接地</p>
 <p>Trig和Echo接任意两个GPIO口</p>
 <h4 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">#-*- coding:UTF-8 -*-</span><br><span class="hljs-keyword">import</span> RPi.GPIO <span class="hljs-keyword">as</span> GPIO<br><span class="hljs-keyword">import</span> time<br><br><span class="hljs-comment">#超声波引脚定义</span><br>EchoPin = <span class="hljs-number">16</span>   <span class="hljs-comment">#GPIO16</span><br>TrigPin = <span class="hljs-number">12</span>   <span class="hljs-comment">#GPIO12</span><br><br><span class="hljs-comment">#设置GPIO口为BCM编码方式</span><br>GPIO.setmode(GPIO.BCM)<br><br><span class="hljs-comment">#忽略警告信息</span><br>GPIO.setwarnings(<span class="hljs-literal">False</span>)<br><br><span class="hljs-comment">#超声波引脚初始化</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">init</span>():<br>    GPIO.setup(EchoPin,GPIO.IN)<br>    GPIO.setup(TrigPin,GPIO.OUT)<br><br><span class="hljs-comment">#超声波函数</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">getDistance</span>():<br>    GPIO.output(TrigPin,GPIO.HIGH)<br>    time.sleep(<span class="hljs-number">0.000015</span>)<br>    GPIO.output(TrigPin,GPIO.LOW)<br>    <span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> GPIO.<span class="hljs-built_in">input</span>(EchoPin):<br>        <span class="hljs-keyword">pass</span><br>    t1 = time.time()<br>    <span class="hljs-keyword">while</span> GPIO.<span class="hljs-built_in">input</span>(EchoPin):<br>        <span class="hljs-keyword">pass</span><br>    t2 = time.time()<br>    time.sleep(<span class="hljs-number">0.01</span>)<br>    <span class="hljs-keyword">return</span> ((t2 - t1)* <span class="hljs-number">340</span> / <span class="hljs-number">2</span>) * <span class="hljs-number">100</span><br><br><span class="hljs-keyword">try</span>:<br>    init()<br>    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;distance is %d cm&quot;</span> % getDistance())<br>        time.sleep(<span class="hljs-number">0.3</span>)<br><span class="hljs-keyword">except</span> KeyboardInterrupt:<br>    <span class="hljs-keyword">pass</span><br>GPIO.cleanup()<br></code></pre></td></tr></table></figure>
+
 <p><img src="https://xinhaojin.github.io/imgs-host/past/2021/01/image-40.png" srcset="/img/loading.gif" lazyload></p>
 <p>发现这个传感器不是很灵敏，角度不能偏，遮挡物面需要够大且尽可能光滑，不太满意</p>
 
@@ -351,6 +354,15 @@
 
     </div>
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" class="print-no-link">#树莓派</a>
+      
+        <a href="/tags/%E8%B6%85%E5%A3%B0%E6%B3%A2/" class="print-no-link">#超声波</a>
+      
+    </div>
   
 </div>
 

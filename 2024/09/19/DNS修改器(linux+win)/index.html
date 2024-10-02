@@ -29,8 +29,11 @@
 <meta property="og:description" content="前言有需求：修改DNS服务器，主备两个，要求无脑配置 linux下修改DNS(无需root权限)常规shell命令方法都需要linux的root权限才能执行，但我发现普通用户在图形界面改DNS也能生效，也就是说通常普通用户也是拥有修改网络配置的权限的，只是不能通过修改系统配置文件来实现，但是有其他方法，如nmcli命令 查看活动的网络连接名称 1nmcli -t -f NAME con show">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-09-19T10:56:38.000Z">
-<meta property="article:modified_time" content="2024-10-01T14:33:45.879Z">
+<meta property="article:modified_time" content="2024-10-02T02:44:01.303Z">
 <meta property="article:author" content="xinhaojin">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="DNS">
+<meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -316,15 +319,21 @@
 <h2 id="linux下修改DNS-无需root权限"><a href="#linux下修改DNS-无需root权限" class="headerlink" title="linux下修改DNS(无需root权限)"></a>linux下修改DNS(无需root权限)</h2><p>常规shell命令方法都需要linux的root权限才能执行，但我发现普通用户在图形界面改DNS也能生效，也就是说通常普通用户也是拥有修改网络配置的权限的，只是不能通过修改系统配置文件来实现，但是有其他方法，如nmcli命令</p>
 <p>查看活动的网络连接名称</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nmcli -t -f NAME con show --active<br></code></pre></td></tr></table></figure>
+
 <p>修改DNS</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nmcli con mod &lt;connection_name&gt; ipv4.dns &lt;dns_primary&gt;,&lt;dns_secondary&gt;<br></code></pre></td></tr></table></figure>
+
 <p>刷新DNS缓存</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">systemd-resolve --flush-caches<br></code></pre></td></tr></table></figure>
+
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs shell">import subprocess<br>import time<br><br>def set_dns(dns_primary, dns_secondary):<br>    try:<br>        connection_name = subprocess.check_output([&#x27;nmcli&#x27;, &#x27;-t&#x27;, &#x27;-f&#x27;, &#x27;NAME&#x27;, &#x27;con&#x27;, &#x27;show&#x27;,&#x27;--active&#x27;]).decode().strip()<br>        subprocess.run([&#x27;nmcli&#x27;, &#x27;con&#x27;, &#x27;mod&#x27;, connection_name, &#x27;ipv4.dns&#x27;, f&#x27;&#123;dns_primary&#125;,&#123;dns_secondary&#125;&#x27;])<br>        subprocess.run([&#x27;nmcli&#x27;, &#x27;con&#x27;, &#x27;down&#x27;, connection_name])<br>        subprocess.run([&#x27;nmcli&#x27;, &#x27;con&#x27;, &#x27;up&#x27;, connection_name])<br>        subprocess.run([&#x27;systemd-resolve&#x27;, &#x27;--flush&#x27;, &#x27;caches&#x27;])<br>        time.sleep(10)<br>        try:<br>            dns_info = subprocess.check_output([&#x27;nmcli&#x27;], text=True)<br>            if dns_primary in dns_info and dns_secondary in dns_info:<br>                print(&quot;设置DNS配置成功&quot;)<br>        except subprocess.CalledProcessError as e:<br>            print(f&quot;设置DNS配置失败: &#123;e&#125;&quot;)<br>            return False<br>    except subprocess.CalledProcessError as e:<br>        print(f&quot;设置DNS配置失败: &#123;e&#125;&quot;)<br>        return False<br><br>if __name__ == &quot;__main__&quot;:<br>    dns_primary = &quot;114.114.114.114&quot;<br>    dns_secondary = &quot;8.8.8.8&quot;<br>    set_dns(dns_primary, dns_secondary)<br>    input(&quot;按任意键退出...&quot;)<br>    # pyinstaller --onefile -c --uac-admin --noconfirm setDNS.py<br></code></pre></td></tr></table></figure>
+
 <p>可以用pyinstaller直接打包成linux下的可执行文件</p>
 <h2 id="windows下修改DNS-默认使用管理员权限打开"><a href="#windows下修改DNS-默认使用管理员权限打开" class="headerlink" title="windows下修改DNS(默认使用管理员权限打开)"></a>windows下修改DNS(默认使用管理员权限打开)</h2><p>遍历所有网卡，如果IP是以192开头的，则修改其DNS配置</p>
 <h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> wmi<br><span class="hljs-keyword">import</span> re<br><span class="hljs-keyword">import</span> os<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">set_dns_configuration</span>():<br>    <span class="hljs-keyword">try</span>:<br>        wmiService = wmi.WMI()<br>        colNicConfigs = wmiService.Win32_NetworkAdapterConfiguration(IPEnabled=<span class="hljs-literal">True</span>)<br>        <span class="hljs-keyword">for</span> colNicConfig <span class="hljs-keyword">in</span> colNicConfigs:<br>            <span class="hljs-keyword">for</span> ip <span class="hljs-keyword">in</span> colNicConfig.ipaddress:<br>                <span class="hljs-keyword">if</span> re.<span class="hljs-keyword">match</span>(<span class="hljs-string">r&#x27;192\.&#x27;</span>, ip) <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:<br>                    arrDNSServers = [<span class="hljs-string">&#x27;114.114.114.114&#x27;</span>, <span class="hljs-string">&#x27;8.8.8.8&#x27;</span>]<br>                    returnValue = colNicConfig.SetDNSServerSearchOrder(DNSServerSearchOrder=arrDNSServers)<br>                    <span class="hljs-keyword">if</span> returnValue[<span class="hljs-number">0</span>] == <span class="hljs-number">0</span>:<br>                        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;DNS修改成功&quot;</span>)<br>                        <span class="hljs-keyword">break</span><br>                    <span class="hljs-keyword">else</span>:<br>                        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;DNS修改失败&quot;</span>)<br>        flushDNS = <span class="hljs-string">&quot;ipconfig /flushdns&quot;</span><br>        os.system(flushDNS)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;DNS配置成功&quot;</span>)<br>    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;程序运行错误，原因：<span class="hljs-subst">&#123;<span class="hljs-built_in">str</span>(e)&#125;</span>&#x27;</span>)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    set_dns_configuration()<br>    <span class="hljs-built_in">input</span>(<span class="hljs-string">&#x27;按下任意键退出&#x27;</span>)<br>    <span class="hljs-comment"># pyinstaller --onefile -c --uac-admin --noconfirm set_DNS_win.py</span><br></code></pre></td></tr></table></figure>
+
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pyinstaller --onefile -c --uac-admin --noconfirm set_DNS_win.py<br></code></pre></td></tr></table></figure>
+
 <p><code>--uac-admin</code>参数表示默认以管理员权限运行</p>
 
                 
@@ -365,6 +374,17 @@
 
     </div>
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/python/" class="print-no-link">#python</a>
+      
+        <a href="/tags/DNS/" class="print-no-link">#DNS</a>
+      
+        <a href="/tags/linux/" class="print-no-link">#linux</a>
+      
+    </div>
   
 </div>
 

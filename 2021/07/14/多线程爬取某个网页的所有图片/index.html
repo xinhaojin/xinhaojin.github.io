@@ -29,8 +29,10 @@
 <meta property="og:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556#coding&#x3D;utf-8import importlibimport sysimport urllib.requestfrom bs4 import BeautifulSoup, Unicod">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-07-14T19:59:17.000Z">
-<meta property="article:modified_time" content="2024-10-01T14:33:56.805Z">
+<meta property="article:modified_time" content="2024-10-02T02:17:22.355Z">
 <meta property="article:author" content="xinhaojin">
+<meta property="article:tag" content="爬虫">
+<meta property="article:tag" content="多线程">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -313,6 +315,7 @@
               <div class="markdown-body">
                 
                 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment">#coding=utf-8</span><br><span class="hljs-keyword">import</span> importlib<br><span class="hljs-keyword">import</span> sys<br><span class="hljs-keyword">import</span> urllib.request<br><br><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup, UnicodeDammit<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">imageSpider</span>(<span class="hljs-params">start_url</span>):<br>    <span class="hljs-keyword">try</span>:<br>        urls = []<br>        req = urllib.request.Request(start_url,headers=headers)<br>        data = urllib.request.urlopen(req)<br>        data = data.read()<br>        dammit = UnicodeDammit(data, [<span class="hljs-string">&quot;utf-8&quot;</span>, <span class="hljs-string">&quot;gbk&quot;</span>])<br>        data = dammit.unicode_markup<br>        soup = BeautifulSoup(data, <span class="hljs-string">&quot;lxml&quot;</span>)<br>        images = soup.select(<span class="hljs-string">&quot;img&quot;</span>)<br>        <span class="hljs-keyword">for</span> image <span class="hljs-keyword">in</span> images:<br>            <span class="hljs-keyword">try</span>:<br>                src = image[<span class="hljs-string">&quot;src&quot;</span>]<br>                url = urllib.request.urljoin(start_url, src)<br>                <span class="hljs-keyword">if</span> url <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> urls:<br>                    urls.append(url)<br>                <span class="hljs-built_in">print</span>(url)<br>                download(url)<br>            <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> err:<br>                <span class="hljs-built_in">print</span>(err)<br>    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> err:<br>        <span class="hljs-built_in">print</span>(err)<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">download</span>(<span class="hljs-params">url</span>):<br>    <span class="hljs-keyword">global</span> count<br>    <span class="hljs-keyword">try</span>:<br>        count = count+<span class="hljs-number">1</span><br>        <span class="hljs-keyword">if</span>(url[<span class="hljs-built_in">len</span>(url)-<span class="hljs-number">4</span>] == <span class="hljs-string">&quot;.&quot;</span>):<br>            ext = url[<span class="hljs-built_in">len</span>(url)-<span class="hljs-number">4</span>:] <br>        <span class="hljs-keyword">else</span>:<br>            ext = <span class="hljs-string">&quot;&quot;</span><br>        req = urllib.request.Request(url, headers=headers)<br>        data = urllib.request.urlopen(req, timeout=<span class="hljs-number">100</span>)<br>        data = data.read()<br>        fobj = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;images&quot;</span>+<span class="hljs-built_in">str</span>(count)+ext, <span class="hljs-string">&quot;wb&quot;</span>)<br>        fobj.write(data)<br>        fobj.close()<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;downloaded &quot;</span>+<span class="hljs-built_in">str</span>(count)+ext)<br>    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> err:<br>        <span class="hljs-built_in">print</span>(err)<br><br><br>start_url = <span class="hljs-string">&quot;https://blog.xinhaojin.top&quot;</span><br>headers=&#123;<span class="hljs-string">&quot;User-Agent&quot;</span>:<span class="hljs-string">&quot;Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36&quot;</span>&#125;<br>count = <span class="hljs-number">0</span><br>importlib.reload(sys)<br>imageSpider(start_url)<br></code></pre></td></tr></table></figure>
+
 <p>在程序根目录下新建images文件夹即可</p>
 
                 
@@ -353,6 +356,15 @@
 
     </div>
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%88%AC%E8%99%AB/" class="print-no-link">#爬虫</a>
+      
+        <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" class="print-no-link">#多线程</a>
+      
+    </div>
   
 </div>
 

@@ -29,8 +29,9 @@
 <meta property="og:description" content="简介我们往往把一个算法的复杂度分为时间复杂度和空间复杂度，时间复杂度对应算法执行所需要的时间，空间复杂度对应所需要的内存，相对来讲空间代价肯定是比时间代价更小，所以算法的时间复杂度成为评价算法优劣的最重要的指标之一。 引用百度百科的介绍：“一般情况下，算法中基本操作重复执行的次数是问题规模n的某个函数，用T(n)表示，若有某个辅助函数f(n),使得当n趋近于无穷大时，T（n)&#x2F;f (n)">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-08-20T13:05:46.000Z">
-<meta property="article:modified_time" content="2024-10-01T14:33:59.370Z">
+<meta property="article:modified_time" content="2024-10-02T02:32:24.160Z">
 <meta property="article:author" content="xinhaojin">
+<meta property="article:tag" content="数据结构">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -317,7 +318,9 @@
 <h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>如果输入规模为n，那么算法的时间基本上可以用一个关于n的函数f(n)表示，时间复杂度T(n)&#x3D;O(f(n)),f(n)仅保留最高次项，且舍去系数。</p>
 <p>如算法执行所需时间f(n)&#x3D;6n^3+2n+3,T(n)&#x3D;O(f(n))&#x3D;O(n^3)</p>
 <h4 id="例"><a href="#例" class="headerlink" title="例"></a>例</h4><h5 id="线性查找：f-n-n，T-n-O-f-n-O-n"><a href="#线性查找：f-n-n，T-n-O-f-n-O-n" class="headerlink" title="线性查找：f(n)&#x3D;n，T(n)&#x3D;O(f(n))&#x3D;O(n)"></a>线性查找：f(n)&#x3D;n，T(n)&#x3D;O(f(n))&#x3D;O(n)</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">function</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt; vec,<span class="hljs-type">int</span> tag)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> n=vec.<span class="hljs-built_in">size</span>();<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)<br>    &#123;<br>        <span class="hljs-keyword">if</span>(vec[i]==tag)<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <h5 id="折半查找：f-n-log-2-n，T-n-O-f-n-O-logn"><a href="#折半查找：f-n-log-2-n，T-n-O-f-n-O-logn" class="headerlink" title="折半查找：f(n)&#x3D;log(2)n，T(n)&#x3D;O(f(n))&#x3D;O(logn)"></a>折半查找：f(n)&#x3D;log(2)n，T(n)&#x3D;O(f(n))&#x3D;O(logn)</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">function</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt; vec,<span class="hljs-type">int</span> tag)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">//vec是升序向量</span><br>    <span class="hljs-type">int</span> first=<span class="hljs-number">0</span>,last=vec.<span class="hljs-built_in">size</span>()<span class="hljs-number">-1</span>;<br>    <span class="hljs-type">int</span> index=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span>(first&lt;=last)<br>    &#123;<br>        index=(first+last)/<span class="hljs-number">2</span>;<br>        <span class="hljs-keyword">if</span>(vec[index]&gt;tag)<br>            last=index<span class="hljs-number">-1</span>;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(vec[index]&gt;tag)<br>            first=index<span class="hljs-number">+1</span>;<br>        <span class="hljs-keyword">else</span><br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
                 
               </div>
             
@@ -346,6 +349,13 @@
 
     </div>
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="print-no-link">#数据结构</a>
+      
+    </div>
   
 </div>
 

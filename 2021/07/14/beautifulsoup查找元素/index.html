@@ -29,8 +29,10 @@
 <meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243from bs4 import BeautifulSoup#获取网页html代码import urllib.requestimport urllib.parseurl&#x3D;&#x27;https:&#x2F;&#x2F;blog.xinhaojin.top&#x27;r">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-07-14T19:56:59.000Z">
-<meta property="article:modified_time" content="2024-10-01T14:33:44.179Z">
+<meta property="article:modified_time" content="2024-10-02T02:41:05.121Z">
 <meta property="article:author" content="xinhaojin">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="爬虫">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -313,6 +315,7 @@
               <div class="markdown-body">
                 
                 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup<br><span class="hljs-comment">#获取网页html代码</span><br><span class="hljs-keyword">import</span> urllib.request<br><span class="hljs-keyword">import</span> urllib.parse<br>url=<span class="hljs-string">&#x27;https://blog.xinhaojin.top&#x27;</span><br>resp=urllib.request.urlopen(url)<br>data=resp.read()<br>html=data.decode()<br><span class="hljs-comment">#print(html)</span><br><br>soup=BeautifulSoup(html,<span class="hljs-string">&#x27;lxml&#x27;</span>)<br><br><span class="hljs-comment">#查找第一个title元素</span><br>tag=soup.find(<span class="hljs-string">&#x27;title&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(tag),tag)<br><br><span class="hljs-comment">#查找所有超链接</span><br>tags=soup.find_all(<span class="hljs-string">&#x27;a&#x27;</span>)<br><span class="hljs-keyword">for</span> tag <span class="hljs-keyword">in</span> tags:<br>    <span class="hljs-built_in">print</span>(tag)<br><br><span class="hljs-comment">#查找class=xxx的div元素</span><br>tags=soup.find_all(<span class="hljs-string">&#x27;div&#x27;</span>,attrs=&#123;<span class="hljs-string">&#x27;class&#x27;</span>:<span class="hljs-string">&quot;entry excerpt entry-summary&quot;</span>&#125;)<br><span class="hljs-keyword">for</span> tag <span class="hljs-keyword">in</span> tags:<br>    <span class="hljs-built_in">print</span>(tag)<br><br><span class="hljs-comment">#查找符合条件的所有类型元素</span><br>tags=soup.find_all(name=<span class="hljs-literal">None</span>,attrs=&#123;<span class="hljs-string">&#x27;class&#x27;</span>:<span class="hljs-string">&quot;entry excerpt entry-summary&quot;</span>&#125;)<br><span class="hljs-keyword">for</span> tag <span class="hljs-keyword">in</span> tags:<br>    <span class="hljs-built_in">print</span>(tag)<br><span class="hljs-comment">#获取tag属性值</span><br>    <span class="hljs-built_in">print</span>(tag[<span class="hljs-string">&#x27;class&#x27;</span>])<br><span class="hljs-comment">#获取元素包含的文本值</span><br>    <span class="hljs-built_in">print</span>(tag.text)<br><br><span class="hljs-comment">#自定义高级查找</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">myFilter</span>(<span class="hljs-params">tag</span>):<br>    <span class="hljs-comment">#print(tag.name)</span><br>    <span class="hljs-comment">#利用class属性查找时,应注意:class为列表,而非字符串</span><br>    <span class="hljs-keyword">return</span> (tag.name==<span class="hljs-string">&#x27;a&#x27;</span> <span class="hljs-keyword">and</span> tag.has_attr(<span class="hljs-string">&quot;href&quot;</span>) <span class="hljs-keyword">and</span> tag[<span class="hljs-string">&#x27;href&#x27;</span>]==<span class="hljs-string">&quot;https://blog.xinhaojin.top/2020/08/&quot;</span>)<br><br>tag=soup.find_all(myFilter)<br><span class="hljs-built_in">print</span>(tag)<br></code></pre></td></tr></table></figure>
+
                 
               </div>
             
@@ -351,6 +354,15 @@
 
     </div>
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/python/" class="print-no-link">#python</a>
+      
+        <a href="/tags/%E7%88%AC%E8%99%AB/" class="print-no-link">#爬虫</a>
+      
+    </div>
   
 </div>
 
