@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20241001/image.5tqzzhajc8.png">
 <meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20241001/image.70ab83e0zu.jpg">
 <meta property="article:published_time" content="2024-10-01T08:58:04.000Z">
-<meta property="article:modified_time" content="2024-10-04T09:28:10.014Z">
+<meta property="article:modified_time" content="2024-10-04T16:19:57.263Z">
 <meta property="article:author" content="xinhaojin">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="wol">
@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          313 字
+          425 字
         
       </span>
     
@@ -267,7 +267,7 @@
         
         
         
-          3 分钟
+          4 分钟
         
       </span>
     
@@ -338,15 +338,16 @@
 
 <h3 id="获取MAC地址"><a href="#获取MAC地址" class="headerlink" title="获取MAC地址"></a>获取MAC地址</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ip link show enp3s0<br></code></pre></td></tr></table></figure>
 
-<h2 id="局域网客户端唤醒"><a href="#局域网客户端唤醒" class="headerlink" title="局域网客户端唤醒"></a>局域网客户端唤醒</h2><h3 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h3><p>eg.Windows下，安装wolcmd(<a target="_blank" rel="noopener" href="https://www.depicus.com/downloads/wolcmd.zip">https://www.depicus.com/downloads/wolcmd.zip</a>)</p>
+<h2 id="客户端网络唤醒"><a href="#客户端网络唤醒" class="headerlink" title="客户端网络唤醒"></a>客户端网络唤醒</h2><h3 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h3><p>eg.Windows下，安装wolcmd(<a target="_blank" rel="noopener" href="https://www.depicus.com/downloads/wolcmd.zip">https://www.depicus.com/downloads/wolcmd.zip</a>)</p>
 <p>唤醒命令格式</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">wolcmd MAC IP/Domain subnetmask<br></code></pre></td></tr></table></figure>
 
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">wolcmd 68:1d:xx:xx:55:9a 192.168.31.31 255.255.255.0<br></code></pre></td></tr></table></figure>
 
 <p>唤醒速度特别快，我键盘回车键按下还没弹起来，机器电源指示灯就已经亮了<br><img src="https://xinhaojin.github.io/picx-images-hosting/20241001/image.70ab83e0zu.jpg" srcset="/img/loading.gif" lazyload alt="image"></p>
-<h3 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo apt-get install wakeonlan<br>wakeonlan -i pan.xinhaojin.top 68:1d:ef:40:55:9a<br></code></pre></td></tr></table></figure>
-<p>经测试，公网远程唤醒也是没问题的</p>
+<h3 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo apt-get install wakeonlan<br>wakeonlan -i 192.168.31.31 68:1d:xx:xx:55:9a<br></code></pre></td></tr></table></figure>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>测试发现公网通过域名方式没法唤醒，理论上应该是可行的，但实际这个魔法包传输过程中很有可能受到防火墙或其他安全策略的阻碍</p>
+<p>此外，关机方式不同也会有区别，我尝试使用<code>shutdown now</code>,<code>halt</code>,<code>poweroff</code>来关机，然后分别尝试唤醒，发现通过<code>halt</code>方式关机后不支持唤醒,虽然这个方式反而是留下电源指示灯通电的。</p>
 
                 
               </div>
