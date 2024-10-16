@@ -33,17 +33,8 @@
 <meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20241002/image.39l5op1q1h.jpg">
 <meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20241002/image.1hs6tshze0.jpg">
 <meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20241002/image.361jqz93ox.jpg">
-<meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20241002/image.51e4jlllza.jpg">
-<meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20241003/image.5mns6mf8b9.jpg">
-<meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20241003/image.9gwjpjjdxv.jpg">
-<meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20241003/image.4xuimm2dgw.jpg">
-<meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20241003/image.67xfsvp2cw.jpg">
-<meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20241003/image.3d4rn3cjac.jpg">
-<meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20241003/image.3yef9f8qqi.jpg">
-<meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20241003/image.7w6sq3qvs6.jpg">
-<meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20241003/image.361jrq0t62.jpg">
 <meta property="article:published_time" content="2024-10-02T14:55:04.000Z">
-<meta property="article:modified_time" content="2024-10-15T15:51:19.741Z">
+<meta property="article:modified_time" content="2024-10-16T14:40:46.022Z">
 <meta property="article:author" content="xinhaojin">
 <meta property="article:tag" content="云盘">
 <meta name="twitter:card" content="summary_large_image">
@@ -266,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.6k 字
+          681 字
         
       </span>
     
@@ -277,7 +268,7 @@
         
         
         
-          9 分钟
+          4 分钟
         
       </span>
     
@@ -343,75 +334,8 @@
 <h3 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h3><p>访问服务器IP:5244,用admin和上面设置的密码登录，点击网页底部的管理，点击左侧栏存储，点击添加，驱动选夸克，WebDAV 策略选本地代理，挂载路径随便取个名字，由于我不打算挂载其他网盘，所以填了根目录&#x2F;，然后粘贴cookie，完成</p>
 <p>回到Alist首页IP:5244,可以看到夸克网盘已经被挂载</p>
 <h2 id="挂载Alist到可道云"><a href="#挂载Alist到可道云" class="headerlink" title="挂载Alist到可道云"></a>挂载Alist到可道云</h2><p>点击网络挂载，新增网络挂载，webdav url是http[s]:&#x2F;&#x2F;domain:port&#x2F;dav&#x2F;，即在Alist服务地址后面加&#x2F;dav,填入Alist的用户名和密码，保存即可<br><img src="https://xinhaojin.github.io/picx-images-hosting/20241002/image.9rjdhz92fp.jpg" srcset="/img/loading.gif" lazyload alt="image"><br>可以把webdav的文件夹发送一个快捷方式到桌面，然后重命名快捷方式<br><img src="https://xinhaojin.github.io/picx-images-hosting/20241002/image.39l5op1q1h.jpg" srcset="/img/loading.gif" lazyload alt="image"><br>这样就可以在可道云桌面打开夸克网盘的内容<br><img src="https://xinhaojin.github.io/picx-images-hosting/20241002/image.1hs6tshze0.jpg" srcset="/img/loading.gif" lazyload alt="image"><br>如果上面的两次挂载路径都写成&#x2F;，那么打开这个快捷方式就是夸克网盘的根目录</p>
-<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>测试了一下下载速度，10MB&#x2F;s左右，上传居然有40MB&#x2F;s?????!!!!,这不就是我之前测试可道云的上传速度吗？<br><img src="https://xinhaojin.github.io/picx-images-hosting/20241002/image.361jqz93ox.jpg" srcset="/img/loading.gif" lazyload alt="image"><br>上传成功后我打开夸克网盘，对应文件夹里确实是有这个文件</p>
-<p>然后，同一个文件，我尝试通过夸克网盘客户端来上传，速度只有5MB&#x2F;s！<br><img src="https://xinhaojin.github.io/picx-images-hosting/20241002/image.51e4jlllza.jpg" srcset="/img/loading.gif" lazyload alt="image"><br>想不明白是怎么回事，只觉得牛逼。按理说我家里的1000M宽带测出来的上传带宽是不到100M，确实是夸克网盘客户端这种速度比较合理，我跟可道云服务器之间虽然是局域网，但我是用域名解析成公网IP访问的，应该是公网访问速度，40MB&#x2F;s的上传速度实在是不科学，不是很确定，就算我和可道云服务器之间是局域网速度吧，可是这边上传完成后夸克云里确确实实马上就有了文件啊，不管怎么说我对夸克云的上传速度就是达到了40MB&#x2F;s!只能说逆天。。。</p>
-<ul>
-<li>2024.10.3更新<br>为了搞明白为什么有这么快的速度，我在查资料的时候发现同一宽带的ipv4和ipv6上传速度可能是不一样的，运营商可能没有对ipv6上传带宽限速。正常来讲1000M宽带的上行带宽基本不会超过100M，如果说对ipv6没有限制，那么上行也可能达到1000M，就能够解释40MB&#x2F;s的上传速度。</li>
-</ul>
-<p>到这里为止，我以为已经结束了，但是没有很好的方法来测试ipv4和ipv6的上传速度，我用中科大的测速网站测出的ipv6结果是下行900M+，上行只有50M左右（但这个网站测试我的ipv4速度只有500M+,跟我用其他测速网站测出的不同，所以我感觉也不太准确，可能测不出我真实的ipv6上行带宽）<br><img src="https://xinhaojin.github.io/picx-images-hosting/20241003/image.5mns6mf8b9.jpg" srcset="/img/loading.gif" lazyload alt="image"></p>
-<p>然后我就想分别用局域网IP，ipv4，ipv6地址来访问我的网盘，测试同一个文件的上传下载速度，这样就能看到局域网和公网ipv4ipv6速度的差异，我用了一个3.8G的视频来测试，得到的速度分别如下</p>
-<ul>
-<li>上传：<ul>
-<li>域名:40MB&#x2F;s<br><img src="https://xinhaojin.github.io/picx-images-hosting/20241003/image.9gwjpjjdxv.jpg" srcset="/img/loading.gif" lazyload alt="image"></li>
-<li>局域网IP:局域网上传不显示速度，而是显示秒传，扫描中。。。，我估算了下时间，大概10秒钟，400MB&#x2F;s<br><img src="https://xinhaojin.github.io/picx-images-hosting/20241003/image.4xuimm2dgw.jpg" srcset="/img/loading.gif" lazyload alt="image"></li>
-<li>公网ipv4:100MB&#x2F;s<br><img src="https://xinhaojin.github.io/picx-images-hosting/20241003/image.67xfsvp2cw.jpg" srcset="/img/loading.gif" lazyload alt="image"></li>
-<li>公网ipv6:400MB&#x2F;s！！！！！<br><img src="https://xinhaojin.github.io/picx-images-hosting/20241003/image.3d4rn3cjac.jpg" srcset="/img/loading.gif" lazyload alt="image"></li>
-<li>需要注意的是：我上传的目标文件夹是我挂载的夸克云盘！！我对夸克云的上传速度达到了400MB&#x2F;s!</li>
-</ul>
-</li>
-<li>下载：<ul>
-<li>如果从挂载的夸克云盘里的文件夹下载，速度限制在20MB&#x2F;s以内，并且多个下载并行的话是共享这一带宽的，不会再快<br><img src="https://xinhaojin.github.io/picx-images-hosting/20241003/image.3yef9f8qqi.jpg" srcset="/img/loading.gif" lazyload alt="image"></li>
-<li>如果是从可道云自己的文件夹里下载文件：<ul>
-<li>公网ipv4:110+MB&#x2F;s，基本就是我的千兆带宽<br><img src="https://xinhaojin.github.io/picx-images-hosting/20241003/image.7w6sq3qvs6.jpg" srcset="/img/loading.gif" lazyload alt="image"></li>
-<li>公网ipv6，我windows上的下载工具暂时不支持，所以我又屏蔽了下载插件，采用浏览器下载，重新对比，ipv6的下载速度是25MB&#x2F;s，其他地址方式的下载速度是100MB&#x2F;s左右，包括局域网IP、域名和公网ipv4<br><img src="https://xinhaojin.github.io/picx-images-hosting/20241003/image.361jrq0t62.jpg" srcset="/img/loading.gif" lazyload alt="image"></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>最终总结</strong><ul>
-<li>最终下载速度测试结果如下,可以说是非常炸裂，我原以为上传40MB&#x2F;s已经天下无敌了，没想到ipv6访问的上传速度竟然达到了恐怖的400MB&#x2F;s，也就是说我的上行带宽达到了3200+M,简直是匪夷所思，仍然是未解之谜，欲知后事如何，请等下回分解…<table>
-<thead>
-<tr>
-<th>访问地址类型</th>
-<th>上传（可道云）</th>
-<th>上传（夸克云）</th>
-<th>下载（可道云）</th>
-<th>下载（夸克云）</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>局域网IP</td>
-<td>400 MB&#x2F;s</td>
-<td>400 MB&#x2F;s</td>
-<td>100+ MB&#x2F;s</td>
-<td>20- MB&#x2F;s</td>
-</tr>
-<tr>
-<td>域名</td>
-<td>40 MB&#x2F;s</td>
-<td>40 MB&#x2F;s</td>
-<td>100+ MB&#x2F;s</td>
-<td>20- MB&#x2F;s</td>
-</tr>
-<tr>
-<td>公网IPv4</td>
-<td>100 MB&#x2F;s</td>
-<td>100 MB&#x2F;s</td>
-<td>100+ MB&#x2F;s</td>
-<td>20- MB&#x2F;s</td>
-</tr>
-<tr>
-<td>公网IPv6</td>
-<td>400 MB&#x2F;s</td>
-<td>400 MB&#x2F;s</td>
-<td>25 MB&#x2F;s</td>
-<td>20- MB&#x2F;s</td>
-</tr>
-</tbody></table>
-</li>
-</ul>
-</li>
-</ul>
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>从可道云入口进入夸克网盘，下载速度被限制在20MB&#x2F;s左右，上传有40MB&#x2F;s</p>
+<p>可道云本地文件夹上传下载均可以跑慢带宽<br><img src="https://xinhaojin.github.io/picx-images-hosting/20241002/image.361jqz93ox.jpg" srcset="/img/loading.gif" lazyload alt="image"></p>
 
                 
               </div>
