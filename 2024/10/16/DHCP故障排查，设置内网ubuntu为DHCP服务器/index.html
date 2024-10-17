@@ -29,7 +29,7 @@
 <meta property="og:description" content="前言家里小米路由器局域网网段是192.168.31.0&#x2F;24，但很多设备经常会获取到192.168.1.0&#x2F;24网段的IP，导致上不了网，让人非常恼火。经常之前有段时间我误以为是光猫DHCP服务没有彻底关闭导致的，但我最近仔细琢磨了一下才想起来我的光猫其实设置的网段是192.168.10.0&#x2F;24网段，所以不是光猫的问题，而是DHCP服务故障。 家里连接的设备大概在2">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-10-16T13:40:04.000Z">
-<meta property="article:modified_time" content="2024-10-17T14:06:46.380Z">
+<meta property="article:modified_time" content="2024-10-17T14:27:15.973Z">
 <meta property="article:author" content="xinhaojin">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="DHCP">
@@ -341,9 +341,10 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs shell">Interface: enp3s0, type: EN10MB, MAC: 68:1d:ef:40:55:9a, IPv4: 192.168.31.31<br>Starting arp-scan 1.10.0 with 256 hosts (https://github.com/royhills/arp-scan)<br>192.168.31.1    24:cf:24:5d:64:da       Beijing Xiaomi Mobile Software Co., Ltd<br>192.168.31.2    b0:59:47:8e:f7:21       Shenzhen Qihu Intelligent Technology Company Limited<br>192.168.31.32   80:fa:5b:4e:ba:96       CLEVO CO.<br>192.168.31.5    c2:02:42:75:22:f5       (Unknown: locally administered)<br>192.168.31.6    d4:35:38:14:4f:4f       Beijing Xiaomi Mobile Software Co., Ltd<br>192.168.31.3    68:ab:bc:ed:68:aa       Beijing Xiaomi Mobile Software Co., Ltd<br>192.168.31.72   d4:bb:e6:64:60:29       Huawei Device Co., Ltd.<br>192.168.31.34   b8:ab:62:ae:a5:a3       Hui Zhou Gaoshengda Technology Co.,LTD<br>192.168.31.100  58:11:22:4a:95:91       ASUSTek COMPUTER INC.<br>192.168.31.166  50:88:11:d7:66:b9       (Unknown)<br>192.168.31.194  44:e6:4a:53:48:ac       (Unknown)<br>192.168.31.80   4c:11:ae:01:22:29       Espressif Inc.<br>192.168.31.130  50:2c:c6:09:f2:08       GREE ELECTRIC APPLIANCES, INC. OF ZHUHAI<br><br>14 packets received by filter, 0 packets dropped by kernel<br>Ending arp-scan 1.10.0: 256 hosts scanned in 1.940 seconds (131.96 hosts/sec). 13 responded<br></code></pre></td></tr></table></figure>
 <p>没有192.168.1.1那个MAC地址的IP，我都不知道他是怎么上网的。</p>
 <p>神奇的是有一个MAC为<code>b0:59:47:8e:f7:21</code>的设备，同时拥有两个网段的IP：192.168.31.2和192.168.1.217 ，生产厂商是Shenzhen Qihu Intelligent Technology Company Limited，qihu奇虎应该是360的东西，应该是我的无线摄像头，点开摄像头app一看IP果然是,小小摄像头获取了两个IP，设计的还比较聪明，有两个DHCP服务器就配置两个IP，这样能上网的概率高得多，其他设备要是有这么聪明就好了，不愧是360。</p>
-<p>接下来我手机登录到内网机器宝塔面板的终端，一根根拔网线排查，每拔一次就输入<code>arp-scan 192.168.1.0/24</code>看一下192.168.1.1那个设备还在不在。果然，两三下就被我找到了罪魁祸首。目前还没有获取权限做配置。</p>
-<p>真求求这种SB路由器厂商了，能不能别TM把默认网段设置成192.168.1.1，电信光猫默认就是这个地址，很容易起冲突。</p>
-<p>这个水星路由器更是逆天了，以下犯上反倒给我上级网络分配起IP来了，什么玩意儿，啥也不是！</p>
+<p>接下来我手机登录到内网机器宝塔面板的终端，一根根拔网线排查，每拔一次就输入<code>arp-scan 192.168.1.0/24</code>看一下192.168.1.1那个设备还在不在。果然，两三下就被我找到了罪魁祸首。</p>
+<p>一看果然是水星路由器，登上去管理地址之后发现上网方式是宽带上网…，还改不了设置，看了下网口，网线插在了LAN口…，我都无语了，怪不得会以下犯上，他以为我是他的下级呢。</p>
+<p>网线插了WAN口之后可以设置自动获取IP，这时候就正常了。</p>
+<p>这也意味着我的路由器DHCP可以重新开启，内网ubuntu的DHCP可以关闭。但是不改了，先用着，总比路由器的DHCP服务能力强。</p>
 
                 
               </div>
