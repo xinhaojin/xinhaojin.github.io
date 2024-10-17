@@ -258,12 +258,82 @@
       <h2 class="index-header">
         
         <a href="/2024/10/16/%E5%85%B3%E9%97%AD%E8%B7%AF%E7%94%B1%E5%99%A8%E5%9E%83%E5%9C%BEDHCP%E6%9C%8D%E5%8A%A1%EF%BC%8C%E8%AE%BE%E7%BD%AE%E5%86%85%E7%BD%91ubuntu%E4%B8%BADHCP%E6%9C%8D%E5%8A%A1%E5%99%A8/" target="_self">
-          关闭路由器垃圾DHCP服务，设置内网ubuntu为DHCP服务器
+          DHCP故障排查，设置内网ubuntu为DHCP服务器
         </a>
       </h2>
 
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/10/16/%E5%85%B3%E9%97%AD%E8%B7%AF%E7%94%B1%E5%99%A8%E5%9E%83%E5%9C%BEDHCP%E6%9C%8D%E5%8A%A1%EF%BC%8C%E8%AE%BE%E7%BD%AE%E5%86%85%E7%BD%91ubuntu%E4%B8%BADHCP%E6%9C%8D%E5%8A%A1%E5%99%A8/" target="_self">
+        <div>
+          前言家里小米路由器局域网网段是192.168.31.0&#x2F;24，但很多设备经常会获取到192.168.1.0&#x2F;24网段的IP，导致上不了网，让人非常恼火。经常之前有段时间我误以为是光猫DHCP服务没有彻底关闭导致的，但我最近仔细琢磨了一下才想起来我的光猫其实设置的网段是192.168.10.0&#x2F;24网段，所以不是光猫的问题，而是DHCP服务故障。 家里连接的设备大概在2
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-10-16 21:40" pubdate>
+              2024-10-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件安装配置</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/linux/" class="category-chain-item">linux</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/linux/">#linux</a>
+            
+              <a href="/tags/DHCP/">#DHCP</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/10/16/DHCP%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5,%E8%AE%BE%E7%BD%AE%E5%86%85%E7%BD%91ubuntu%E4%B8%BADHCP%E6%9C%8D%E5%8A%A1%E5%99%A8/" target="_self">
+          DHCP故障排查，设置内网ubuntu为DHCP服务器
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/16/DHCP%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5,%E8%AE%BE%E7%BD%AE%E5%86%85%E7%BD%91ubuntu%E4%B8%BADHCP%E6%9C%8D%E5%8A%A1%E5%99%A8/" target="_self">
         <div>
           前言家里网络设备经常获取不到正确IP，导致上不了网，经常会获取到默认192.168.1.0&#x2F;24网段的IP，之前有段时间我误以为是光猫DHCP服务没有彻底关闭导致的，但我最近才发现我的光猫其实设置的网段是192.168.10.0&#x2F;24网段，所以不是光猫的问题，而是路由器DHCP服务故障。 家里连接的设备大概在20个左右，之前装宽带的师傅就跟我说不要在光猫lan口直接接交换机，应
         </div>
@@ -842,72 +912,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/09/10/pip%E5%AF%BC%E5%87%BA%E4%BE%9D%E8%B5%96%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85/" target="_self">
-          pip导出依赖离线安装
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/10/pip%E5%AF%BC%E5%87%BA%E4%BE%9D%E8%B5%96%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85/" target="_self">
-        <div>
-          前言为了方便离线机器环境部署，可以在有网的机器上导出requirements.txt文件，然后下载依赖文件，这样就可以在没有网络的机器上安装依赖 安装pipreqs1pip install pipreqs  生成requirements.txt文件123在项目根目录下执行```shellpipreqs .   会导出requirements.txt文件，里面包含了项目所需要的依赖，可能某些依赖没有
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-09-10 19:13" pubdate>
-              2024-09-10
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/python/" class="category-chain-item">python</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/python/">#python</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/#board">18</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/#board">19</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
