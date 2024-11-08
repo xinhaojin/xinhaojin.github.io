@@ -254,18 +254,24 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/09/01/flask%E4%BD%BF%E7%94%A8https/" target="_self">
+          <img src="https://xinhaojin.github.io/imgs-host/past/2021/09/image.png" srcset="/img/loading.gif" lazyload alt="flask使用https">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/09/03/IPsec%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/" target="_self">
-          IPsec概念及工作原理
+        <a href="/2021/09/01/flask%E4%BD%BF%E7%94%A8https/" target="_self">
+          flask使用https
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/03/IPsec%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/" target="_self">
+      <a class="index-excerpt " href="/2021/09/01/flask%E4%BD%BF%E7%94%A8https/" target="_self">
         <div>
-          什么是IPsec？IPsec（Internet Protocol Security）是一种网络层安全协议，用于保护网络通信的完整性、机密性和真实性。它是一套由多个协议和算法组成的框架，可以在IP层上对数据包进行加密和认证，是构建VPN的一种核心技术。  IPsec工作模式传输模式（Transport Mode） 加密范围：只加密数据包的有效载荷部分。 IP头：保留原始的IP头，不加密。 适用场景：
+          有一个https页面，需要加载http资源（后台是flask），出于安全原因被浏览器禁止了 既然只能用https，那就干脆把flask的所有请求都改成https 代码方面，只需要在app.run方法中增加ssl_context&#x3D;’adhoc’，意思是使用服务器的本地SSL证书 if name&#x3D;&#x3D;”main“:    app.run(host&#x3D;”0.0.0.0
         </div>
       </a>
 
@@ -273,8 +279,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-09-03 19:40" pubdate>
-              2024-09-03
+            <time datetime="2021-09-01 14:36" pubdate>
+              2021-09-01
             </time>
           </div>
         
@@ -289,7 +295,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%BD%91%E5%B7%A5/" class="category-chain-item">网工</a>
+  <a href="/categories/python/" class="category-chain-item">python</a>
   
   
 
@@ -304,7 +310,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/IPsec/">#IPsec</a>
+              <a href="/tags/python/">#python</a>
+            
+              <a href="/tags/flask/">#flask</a>
             
           </div>
         
@@ -318,15 +326,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/08/28/%E6%B7%BB%E5%8A%A0%E7%BD%91%E5%8D%A1%E7%AC%AC%E4%BA%8CIP/" target="_self">
-          添加网卡第二IP
+        <a href="/2021/07/14/beautifulsoup%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0/" target="_self">
+          BeautifulSoup查找元素
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/28/%E6%B7%BB%E5%8A%A0%E7%BD%91%E5%8D%A1%E7%AC%AC%E4%BA%8CIP/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/07/14/beautifulsoup%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0/" target="_self">
         <div>
-          前言当需要同时ping通两个网段的IP时，如果没有第二张可用网卡，那么也可以添加网卡的第二个IP地址。 方法添加第二个IP的命令是 12netsh interface ip add address &quot;&#123;interface_name&#125;&quot; &#123;ip_address&#125; &#123;subnet_mask&#125;  如 1netsh inter
+          12345678910111213141516171819202122232425262728293031323334353637383940414243from bs4 import BeautifulSoup#获取网页html代码import urllib.requestimport urllib.parseurl=&#x27;https://blog.xinhaojin.top&#x27;r
         </div>
       </a>
 
@@ -334,8 +342,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-28 17:10" pubdate>
-              2024-08-28
+            <time datetime="2021-07-14 19:56" pubdate>
+              2021-07-14
             </time>
           </div>
         
@@ -369,9 +377,63 @@
             
               <a href="/tags/python/">#python</a>
             
-              <a href="/tags/IP/">#IP</a>
+              <a href="/tags/%E7%88%AC%E8%99%AB/">#爬虫</a>
             
           </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2021/05/20/anaconda%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E6%BA%903%E4%B8%AA/" target="_self">
+          Anaconda国内镜像源3个
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/05/20/anaconda%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E6%BA%903%E4%B8%AA/" target="_self">
+        <div>
+          北京外国语大学镜像源channels:   - defaults show_channel_urls: true channel_alias: https://mirrors.bfsu.edu.cn/anaconda default_channels:   - https://mirrors.bfsu.edu.cn/anaconda/pkgs/main   - https://mirrors.bf
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-05-20 13:30" pubdate>
+              2021-05-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件安装配置</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
         
       </div>
     </article>
@@ -381,23 +443,23 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2024/08/27/IP%E5%9C%B0%E5%9D%80%E4%BF%AE%E6%94%B9%E5%99%A8/" target="_self">
-          <img src="https://xinhaojin.github.io/imgs-host/20240827/1724732053037.jpg" srcset="/img/loading.gif" lazyload alt="IP地址修改器">
+        <a href="/2021/05/19/cudnn%E5%AE%89%E8%A3%85/" target="_self">
+          <img src="https://xinhaojin.github.io/imgs-host/past/2021/05/QQ截图20210519140216.png" srcset="/img/loading.gif" lazyload alt="cudnn安装">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/08/27/IP%E5%9C%B0%E5%9D%80%E4%BF%AE%E6%94%B9%E5%99%A8/" target="_self">
-          IP地址修改器
+        <a href="/2021/05/19/cudnn%E5%AE%89%E8%A3%85/" target="_self">
+          cudnn安装
         </a>
       </h2>
 
       
-      <a class="index-excerpt " href="/2024/08/27/IP%E5%9C%B0%E5%9D%80%E4%BF%AE%E6%94%B9%E5%99%A8/" target="_self">
+      <a class="index-excerpt " href="/2021/05/19/cudnn%E5%AE%89%E8%A3%85/" target="_self">
         <div>
-          在需要频繁换IP地址的情况下，打开网络设置去修改比较慢，因此设计一个IP地址修改器，可以快速修改IP 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455import osimport reclass IpManage:    def __ini
+          上一篇已经介绍了cuda的安装方法 于是我尝试运行一个paddle样例，报错，最前面的提示信息是这样的，好的我看懂了  所以，cudnn是什么？ cuDNN（CUDA Deep Neural Network library）：是NVIDIA打造的针对深度神经网络的加速库，是一个用于深层神经网络的GPU加速库。 如果你要用GPU训练模型，cuDNN不是必须的，但是一般会采用这个加速库。 下载安装下载
         </div>
       </a>
 
@@ -405,269 +467,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-27 20:02" pubdate>
-              2024-08-27
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/python/" class="category-chain-item">python</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/python/%E6%9D%82/" class="category-chain-item">杂</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/python/">#python</a>
-            
-              <a href="/tags/IP/">#IP</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/02/%E5%A4%84%E7%90%86%E9%9D%9E%E6%A0%87%E5%87%86http%E5%93%8D%E5%BA%94/" target="_self">
-          处理非标准http响应
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/02/%E5%A4%84%E7%90%86%E9%9D%9E%E6%A0%87%E5%87%86http%E5%93%8D%E5%BA%94/" target="_self">
-        <div>
-          问题手上有一台温湿度传感器，网线连接，内部有http服务，浏览器直接访问完全没问题，但是使用python的http，request库都报错，使用apipost发现也是错误 12345import requests# 发送GET请求response = requests.get(&#x27;http://192.168.31.188&#x27;)# 打印原始响应内容print(response.co
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-02 01:18" pubdate>
-              2024-08-02
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%9D%82/" class="category-chain-item">杂</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/HTTP/">#HTTP</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/06/14/B%E7%AB%99%E8%A7%86%E9%A2%91%E5%90%88%E9%9B%86%E4%B8%8B%E8%BD%BD/" target="_self">
-          B站视频合集下载
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/14/B%E7%AB%99%E8%A7%86%E9%A2%91%E5%90%88%E9%9B%86%E4%B8%8B%E8%BD%BD/" target="_self">
-        <div>
-          思路在拥有视频链接的情况下，可以使用you-get直接下载视频，如 you-get https://www.bilibili.com/xxxxxxxx非常方便。因此只要获取到视频合集中的所有视频链接即可 分析网页源代码观察发现B站的视频唯一ID是这一串字符串，后面的可以删去，猜测可能是用户相关的信息，分享视频时用于标记分享用户之类的（所以分享B站视频时建议删去后面一长串，不然应该可以跟踪到分享者的
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-06-14 08:29" pubdate>
-              2024-06-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%9D%82/" class="category-chain-item">杂</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD/">#视频下载</a>
-            
-              <a href="/tags/python/">#python</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/06/05/%E7%A7%81%E6%9C%89%E5%8C%96%E9%83%A8%E7%BD%B2%E5%B1%80%E5%9F%9F%E7%BD%91%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%B7%A5%E5%85%B7Snapdrop/" target="_self">
-          私有化部署局域网文件传输工具Snapdrop
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/06/05/%E7%A7%81%E6%9C%89%E5%8C%96%E9%83%A8%E7%BD%B2%E5%B1%80%E5%9F%9F%E7%BD%91%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%B7%A5%E5%85%B7Snapdrop/" target="_self">
-        <div>
-          前言之前想过很多次做一个局域网文件传输工具，但是始终停留在需求阶段哈哈哈哈哈，毕竟啥也不会。 网上有很多软件可以用，但基本都是要安装各平台的软件才行，作为偶尔用一下的工具，必不可能有被安装在设备上的资格。 之前用过一个很好用的工具Snapdrop，以网页形式存在，https://Snapdrop.net/ ，完全满足了我的需求，但后面有段时间无法访问，我以为他凉了。 因此我又重新想做一个类似的东西
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-06-05 06:55" pubdate>
-              2024-06-05
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%9D%82/" class="category-chain-item">杂</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/">#局域网</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2024/05/26/%E9%9D%9E%E5%8D%8E%E4%B8%BA%E7%94%B5%E8%84%91%E5%88%B6%E4%BD%9CNFC%E8%B4%B4%E7%89%87%E5%AE%9E%E7%8E%B0%E4%B8%80%E7%A2%B0%E4%BC%A0%E5%A4%9A%E5%B1%8F%E5%8D%8F%E5%90%8C/" target="_self">
-          <img src="https://xinhaojin.github.io/picx-images-hosting/20240525/微信截图_20240525220224.5c0t6wg2x3.jpg" srcset="/img/loading.gif" lazyload alt="非华为电脑制作NFC贴片实现一碰传多屏协同">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/05/26/%E9%9D%9E%E5%8D%8E%E4%B8%BA%E7%94%B5%E8%84%91%E5%88%B6%E4%BD%9CNFC%E8%B4%B4%E7%89%87%E5%AE%9E%E7%8E%B0%E4%B8%80%E7%A2%B0%E4%BC%A0%E5%A4%9A%E5%B1%8F%E5%8D%8F%E5%90%8C/" target="_self">
-          非华为电脑制作NFC贴片实现一碰传多屏协同
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt " href="/2024/05/26/%E9%9D%9E%E5%8D%8E%E4%B8%BA%E7%94%B5%E8%84%91%E5%88%B6%E4%BD%9CNFC%E8%B4%B4%E7%89%87%E5%AE%9E%E7%8E%B0%E4%B8%80%E7%A2%B0%E4%BC%A0%E5%A4%9A%E5%B1%8F%E5%8D%8F%E5%90%8C/" target="_self">
-        <div>
-          安装华为电脑管家网卡要求：英特尔AX200系列确认没问题，其余网卡可能无法安装华为电脑管家。 手机必须是华为手机，鸿蒙2.0以上，处理器在麒麟990以上。 具体可参考B站博主空降猫咪的教程安装：https://www.bilibili.com/video/BV19H4y1G7Dg 相关文件在作者视频简介中有网盘链接 需要注意的一点是SN码设置(后续会用到)，SN码选择自定义，设置为16位长的字母数
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-05-26 05:40" pubdate>
-              2024-05-26
+            <time datetime="2021-05-19 14:48" pubdate>
+              2021-05-19
             </time>
           </div>
         
@@ -697,9 +498,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/NFC/">#NFC</a>
-            
-              <a href="/tags/%E5%A4%9A%E5%B1%8F%E5%8D%8F%E5%90%8C/">#多屏协同</a>
+              <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">#软件安装配置</a>
             
           </div>
         
@@ -710,18 +509,24 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/05/18/cuda%E5%AE%89%E8%A3%85/" target="_self">
+          <img src="https://xinhaojin.github.io/imgs-host/past/2021/05/image-13-1024x490.png" srcset="/img/loading.gif" lazyload alt="cuda安装">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/01/17/%E4%BD%BF%E7%94%A8PandoraNext%E9%A1%B9%E7%9B%AEDocker%E9%83%A8%E7%BD%B2ChatGPT%E5%AE%98%E7%BD%91%E9%95%9C%E5%83%8F%E7%AB%99(%E6%94%AF%E6%8C%81Token%E7%99%BB%E5%BD%95)%EF%BC%8C%E5%90%8C%E6%97%B6%E4%B8%BAChatgpt-web%E9%A1%B9%E7%9B%AE%E6%8F%90%E4%BE%9B%E7%A8%B3%E5%AE%9A%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1/" target="_self">
-          使用PandoraNext项目Docker部署ChatGPT官网镜像站(支持Token登录)，同时为Chatgpt-web项目提供稳定代理服务
+        <a href="/2021/05/18/cuda%E5%AE%89%E8%A3%85/" target="_self">
+          cuda安装
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/17/%E4%BD%BF%E7%94%A8PandoraNext%E9%A1%B9%E7%9B%AEDocker%E9%83%A8%E7%BD%B2ChatGPT%E5%AE%98%E7%BD%91%E9%95%9C%E5%83%8F%E7%AB%99(%E6%94%AF%E6%8C%81Token%E7%99%BB%E5%BD%95)%EF%BC%8C%E5%90%8C%E6%97%B6%E4%B8%BAChatgpt-web%E9%A1%B9%E7%9B%AE%E6%8F%90%E4%BE%9B%E7%A8%B3%E5%AE%9A%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1/" target="_self">
+      <a class="index-excerpt " href="/2021/05/18/cuda%E5%AE%89%E8%A3%85/" target="_self">
         <div>
-          背景chatgpt-web项目https://github.com/Chanzhaoyu/chatgpt-web稳定性太差，经常出现代理失效的问题，在issues中看到pandoranext项目https://github.com/pandora-next/deploy可以自建代理为chatgpt-web提供服务，同时本身可作为chatgpt官网镜像站，支持accesstoken登录，无需付费ap
+          确定安装版本首先查看显卡信息，一般都是用的英伟达显卡，打开NVIDIA控制面板-帮助-系统信息-显示，查看驱动程序版本  使用驱动精灵查看可更新的驱动版本（只用于查看，不需要在这更新驱动，cuda安装时会自动更新驱动）  最后对照这张表，查看可以安装的cuda版本，对于我的机器而言，更新驱动后最高能安装cuda10.2版本  下载在这里选择我要安装的版本  点击下载链接  安装打开安装包，默认路径
         </div>
       </a>
 
@@ -729,8 +534,75 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-17 22:23" pubdate>
-              2024-01-17
+            <time datetime="2021-05-18 23:53" pubdate>
+              2021-05-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件安装配置</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">#软件安装配置</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/05/11/cloudflare%E5%9F%9F%E5%90%8D%E9%87%8D%E5%AE%9A%E5%90%91/" target="_self">
+          <img src="https://xinhaojin.github.io/imgs-host/past/2021/05/image-8.png" srcset="/img/loading.gif" lazyload alt="cloudflare域名重定向">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2021/05/11/cloudflare%E5%9F%9F%E5%90%8D%E9%87%8D%E5%AE%9A%E5%90%91/" target="_self">
+          cloudflare域名重定向
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/2021/05/11/cloudflare%E5%9F%9F%E5%90%8D%E9%87%8D%E5%AE%9A%E5%90%91/" target="_self">
+        <div>
+          需求将https://www.xinhaojin.top,https://xinhaojin.top两个域名都重定向到https://main.xinhaojin.top 方法使用cloudflare管理域名 修改DNS的A记录，地址解析到任意DNS解析服务器，如114.114.114,8.8.8.8,223.5.5.5等(建议使用阿里云公共DNS)，代理状态选择代理  选择页面规则，新建规则
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-05-11 16:54" pubdate>
+              2021-05-11
             </time>
           </div>
         
@@ -760,9 +632,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/docker/">#docker</a>
+              <a href="/tags/cloudflare/">#cloudflare</a>
             
-              <a href="/tags/chatgpt/">#chatgpt</a>
+              <a href="/tags/%E5%9F%9F%E5%90%8D/">#域名</a>
             
           </div>
         
@@ -773,18 +645,24 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/04/17/cenos7%E4%BF%AE%E6%94%B9ssh%E7%AB%AF%E5%8F%A3%E5%8F%B7/" target="_self">
+          <img src="https://xinhaojin.github.io/imgs-host/past/2021/04/QQ截图20210417012556.png" srcset="/img/loading.gif" lazyload alt="cenos7修改ssh端口号">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2023/12/15/ssh%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95/" target="_self">
-          ssh免密登录
+        <a href="/2021/04/17/cenos7%E4%BF%AE%E6%94%B9ssh%E7%AB%AF%E5%8F%A3%E5%8F%B7/" target="_self">
+          cenos7修改ssh端口号
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/15/ssh%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95/" target="_self">
+      <a class="index-excerpt " href="/2021/04/17/cenos7%E4%BF%AE%E6%94%B9ssh%E7%AB%AF%E5%8F%A3%E5%8F%B7/" target="_self">
         <div>
-          本地生成公钥私钥1ssh-keygen  把本地的.ssh&#x2F;id_rsa.pub内文本内容粘贴到远程主机的.ssh&#x2F;authorized_keys中新建一行
+          以前真没想过会有人攻击我的服务器，所以也就没改ssh默认端口，直到我看到这个  我看了下，从4月13号开始，连续攻击了4天，滚犊子玩意儿，nmd，改端口！ 打开ssh配置文件 vim /etc/ssh/sshd_config  找到port，取消注释，改为自定义端口 重启ssh服务 /etc/init.d/sshd restart  添加防火墙放行规则，如修改ssh端口为xxx,则 iptable
         </div>
       </a>
 
@@ -792,8 +670,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-12-15 00:29" pubdate>
-              2023-12-15
+            <time datetime="2021-04-17 10:19" pubdate>
+              2021-04-17
             </time>
           </div>
         
@@ -808,7 +686,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件安装配置</a>
+  <a href="/categories/%E6%9D%82/" class="category-chain-item">杂</a>
   
   
 
@@ -822,6 +700,8 @@
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/linux/">#linux</a>
             
               <a href="/tags/ssh/">#ssh</a>
             
@@ -834,18 +714,24 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/01/18/android%E6%8A%8A%E5%9B%BE%E7%89%87url%E8%BD%AC%E4%B8%BAdrawable/" target="_self">
+          <img src="https://xinhaojin.github.io/imgs-host/past/2021/01/image-38.png" srcset="/img/loading.gif" lazyload alt="android把图片url转为drawable">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2023/08/21/SpringBoot+Redis%E9%95%BF%E9%93%BE%E6%8E%A5%E8%BD%AC%E7%9F%AD%E9%93%BE%E6%8E%A5+Docker%E9%83%A8%E7%BD%B2%20/" target="_self">
-          SpringBoot+Redis长链接转短链接+Docker部署
+        <a href="/2021/01/18/android%E6%8A%8A%E5%9B%BE%E7%89%87url%E8%BD%AC%E4%B8%BAdrawable/" target="_self">
+          android把图片url转为drawable
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/08/21/SpringBoot+Redis%E9%95%BF%E9%93%BE%E6%8E%A5%E8%BD%AC%E7%9F%AD%E9%93%BE%E6%8E%A5+Docker%E9%83%A8%E7%BD%B2%20/" target="_self">
+      <a class="index-excerpt " href="/2021/01/18/android%E6%8A%8A%E5%9B%BE%E7%89%87url%E8%BD%AC%E4%B8%BAdrawable/" target="_self">
         <div>
-          介绍这是一个长链接转短链接的SpringBoot项目，利用Redis存储长短链接的键值关系 github地址：https://github.com/xinhaojin/short-url 演示站点：https://s.xinhaojin.top 实现创建项目用Spring Initializr创建一个空项目，使用Java8、SpringBoot2版本，勾选spring web 前端页面在resou
+          123InputStream in = (InputStream) new URL(&quot;http://xxx.jpg&quot;).openStream();final Drawable d = Drawable.createFromStream(in, &quot;src&quot;);in.close();  以下示例给linearlayout设置网络图片为背景 12345678910
         </div>
       </a>
 
@@ -853,8 +739,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-08-21 22:07" pubdate>
-              2023-08-21
+            <time datetime="2021-01-18 15:00" pubdate>
+              2021-01-18
             </time>
           </div>
         
@@ -869,7 +755,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Java/" class="category-chain-item">Java</a>
+  <a href="/categories/%E5%AE%89%E5%8D%93/" class="category-chain-item">安卓</a>
   
   
 
@@ -884,13 +770,135 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/java/">#java</a>
+              <a href="/tags/%E5%AE%89%E5%8D%93/">#安卓</a>
             
-              <a href="/tags/springboot/">#springboot</a>
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2021/01/17/android%E5%8E%BB%E6%8E%89actionbar/" target="_self">
+          android去掉ActionBar
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/01/17/android%E5%8E%BB%E6%8E%89actionbar/" target="_self">
+        <div>
+          只需要把style.xml中的默认主题修改一下即可 (style.xml在app-res-values目录下) `&lt;style name=&quot;AppTheme&quot; parent=&quot;Theme.AppCompat.Light.DarkActionBar&quot;&gt;`  修改成 `&lt;style name=&quot;AppTheme&quot; paren
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-17 22:54" pubdate>
+              2021-01-17
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
             
-              <a href="/tags/redis/">#redis</a>
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AE%89%E5%8D%93/" class="category-chain-item">安卓</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/docker/">#docker</a>
+              <a href="/tags/%E5%AE%89%E5%8D%93/">#安卓</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/01/08/android%E8%AE%BE%E7%BD%AE%E6%A8%AA%E5%B1%8F/" target="_self">
+          <img src="https://xinhaojin.github.io/imgs-host/past/2021/04/image-24.png" srcset="/img/loading.gif" lazyload alt="Android设置横屏/避免旋转屏幕导致avtivity重载">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2021/01/08/android%E8%AE%BE%E7%BD%AE%E6%A8%AA%E5%B1%8F/" target="_self">
+          Android设置横屏/避免旋转屏幕导致avtivity重载
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/2021/01/08/android%E8%AE%BE%E7%BD%AE%E6%A8%AA%E5%B1%8F/" target="_self">
+        <div>
+          在AndroidManifest.xml的activity标签中添加如下片段： android:screenOrientation&#x3D;”portrait” 横屏改成android:screenOrientation&#x3D;”landscape” 另一个问题，有时把程序切换到后台或旋转屏幕使布局改变时，会重载onCreate方法导致activity重载，避免这种情况的方法是在Androi
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-08 20:13" pubdate>
+              2021-01-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AE%89%E5%8D%93/" class="category-chain-item">安卓</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%AE%89%E5%8D%93/">#安卓</a>
             
           </div>
         
@@ -902,7 +910,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/#board">18</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

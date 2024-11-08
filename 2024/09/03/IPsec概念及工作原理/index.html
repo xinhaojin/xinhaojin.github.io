@@ -34,8 +34,8 @@
 <meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/1725332232301.54xpb5mrdk.jpg">
 <meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/1725332902352.7w6rj89cup.jpg">
 <meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/1725332909549.99tan9ku0w.jpg">
-<meta property="article:published_time" content="2024-09-03T11:40:01.000Z">
-<meta property="article:modified_time" content="2024-10-02T02:46:04.533Z">
+<meta property="article:published_time" content="2024-09-03T03:40:01.000Z">
+<meta property="article:modified_time" content="2024-11-08T01:30:11.620Z">
 <meta property="article:author" content="xinhaojin">
 <meta property="article:tag" content="IPsec">
 <meta name="twitter:card" content="summary_large_image">
@@ -246,8 +246,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-09-03 19:40" pubdate>
-          2024年9月3日 晚上
+        <time datetime="2024-09-03 11:40" pubdate>
+          2024年9月3日 中午
         </time>
       </span>
     
@@ -308,6 +308,58 @@
   <div class="row nomargin-x">
     <div class="side-col d-none d-lg-block col-lg-2">
       
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="网工"
+        id="heading-0ce1b0a829417863cd54e3a37e55229d" role="tab" data-toggle="collapse" href="#collapse-0ce1b0a829417863cd54e3a37e55229d"
+        aria-expanded="true"
+      >
+        网工
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-0ce1b0a829417863cd54e3a37e55229d"
+           role="tabpanel" aria-labelledby="heading-0ce1b0a829417863cd54e3a37e55229d">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2024/09/03/IPsec%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/" title="IPsec概念及工作原理"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">IPsec概念及工作原理</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
 
     </div>
 
@@ -549,9 +601,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/09/10/pip%E5%AF%BC%E5%87%BA%E4%BE%9D%E8%B5%96%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85/" title="pip导出依赖离线安装">
+                      <a href="/2024/09/19/DNS%E4%BF%AE%E6%94%B9%E5%99%A8(linux+win)/" title="DNS修改器(linux+win)">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">pip导出依赖离线安装</span>
+                        <span class="hidden-mobile">DNS修改器(linux+win)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -559,8 +611,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/08/28/%E6%B7%BB%E5%8A%A0%E7%BD%91%E5%8D%A1%E7%AC%AC%E4%BA%8CIP/" title="添加网卡第二IP">
-                        <span class="hidden-mobile">添加网卡第二IP</span>
+                      <a href="/2024/08/27/IP%E5%9C%B0%E5%9D%80%E4%BF%AE%E6%94%B9%E5%99%A8/" title="IP地址修改器">
+                        <span class="hidden-mobile">IP地址修改器</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -644,6 +696,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -858,6 +916,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
