@@ -21,28 +21,24 @@
   <meta name="author" content="xinhaojin">
   <meta name="keywords" content="">
   
-    <meta name="description" content="单臂路由路由器单个接口配置多个子接口，打上vlan标签，模拟三层交换机的vlanif接口功能    描述 思科 华为    创建 VLAN vlan 10  vlan 20 vlan batch 10 20   设置 Access 接口并指定 VLAN int f0&#x2F;1  no shutdown  switchport mode access  switchport access vla">
+    <meta name="description" content="协议 思科（Cisco） 华为（Huawei）    RIP router rip version 2 network &lt;network&gt; no auto-summary rip 1 version 2 network &lt;network&gt; undo auto-summary   OSPF router ospf &lt;process-id&gt; network &amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vlan间通信(单臂路由、多臂路由、三层交换)配置命令(思科+华为)">
-<meta property="og:url" content="https://xinhaojin.github.io/2024/11/20/vlan%E9%97%B4%E9%80%9A%E4%BF%A1(%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1%E3%80%81%E5%A4%9A%E8%87%82%E8%B7%AF%E7%94%B1%E3%80%81%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2)%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4(%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA)/index.html">
+<meta property="og:title" content="RIP+OSPF+BGP配置(思科+华为)">
+<meta property="og:url" content="https://xinhaojin.github.io/2024/11/22/RIP+OSPF+BGP%E9%85%8D%E7%BD%AE(%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA)/index.html">
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
-<meta property="og:description" content="单臂路由路由器单个接口配置多个子接口，打上vlan标签，模拟三层交换机的vlanif接口功能    描述 思科 华为    创建 VLAN vlan 10  vlan 20 vlan batch 10 20   设置 Access 接口并指定 VLAN int f0&#x2F;1  no shutdown  switchport mode access  switchport access vla">
+<meta property="og:description" content="协议 思科（Cisco） 华为（Huawei）    RIP router rip version 2 network &lt;network&gt; no auto-summary rip 1 version 2 network &lt;network&gt; undo auto-summary   OSPF router ospf &lt;process-id&gt; network &amp;">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20241119/image.361lo71l31.webp">
-<meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20241119/image.1vyohv7k8o.webp">
-<meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20241119/image.99tdqmsj9i.webp">
-<meta property="article:published_time" content="2024-11-20T02:20:00.000Z">
-<meta property="article:modified_time" content="2024-11-20T02:21:08.942Z">
+<meta property="article:published_time" content="2024-11-22T07:50:00.000Z">
+<meta property="article:modified_time" content="2024-11-22T07:46:50.490Z">
 <meta property="article:author" content="xinhaojin">
 <meta property="article:tag" content="网工">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://xinhaojin.github.io/picx-images-hosting/20241119/image.361lo71l31.webp">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>vlan间通信(单臂路由、多臂路由、三层交换)配置命令(思科+华为) - xinhaojin&#39;s blog</title>
+  <title>RIP+OSPF+BGP配置(思科+华为) - xinhaojin&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,7 +228,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="vlan间通信(单臂路由、多臂路由、三层交换)配置命令(思科+华为)"></span>
+            <span id="subtitle" data-typed-text="RIP+OSPF+BGP配置(思科+华为)"></span>
           
         </div>
 
@@ -243,8 +239,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-11-20 10:20" pubdate>
-          2024年11月20日 上午
+        <time datetime="2024-11-22 15:50" pubdate>
+          2024年11月22日 下午
         </time>
       </span>
     
@@ -255,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          354 字
+          306 字
         
       </span>
     
@@ -312,101 +308,55 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">vlan间通信(单臂路由、多臂路由、三层交换)配置命令(思科+华为)</h1>
+            <h1 id="seo-header">RIP+OSPF+BGP配置(思科+华为)</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="单臂路由"><a href="#单臂路由" class="headerlink" title="单臂路由"></a>单臂路由</h2><p>路由器单个接口配置多个子接口，打上vlan标签，模拟三层交换机的vlanif接口功能<br><img src="https://xinhaojin.github.io/picx-images-hosting/20241119/image.361lo71l31.webp" srcset="/img/loading.gif" lazyload alt="image"></p>
-<table>
+                <table>
 <thead>
 <tr>
-<th><strong>描述</strong></th>
-<th><strong>思科</strong></th>
-<th><strong>华为</strong></th>
+<th><strong>协议</strong></th>
+<th><strong>思科（Cisco）</strong></th>
+<th><strong>华为（Huawei）</strong></th>
 </tr>
 </thead>
 <tbody><tr>
-<td><strong>创建 VLAN</strong></td>
-<td>vlan 10 <br> vlan 20</td>
-<td>vlan batch 10 20</td>
+<td><strong>RIP</strong></td>
+<td><code>router rip</code><br> <code>version 2</code><br> <code>network &lt;network&gt;</code><br> <code>no auto-summary</code></td>
+<td><code>rip 1</code><br> <code>version 2</code><br> <code>network &lt;network&gt;</code><br> <code>undo auto-summary</code></td>
 </tr>
 <tr>
-<td><strong>设置 Access 接口并指定 VLAN</strong></td>
-<td>int f0&#x2F;1 <br> no shutdown <br> switchport mode access <br> switchport access vlan 10 <br> int f0&#x2F;2 <br> no shutdown <br> switchport mode access <br> switchport access vlan 20</td>
-<td>int e0&#x2F;1 <br> port link-type access <br> port default vlan 10 <br> int e0&#x2F;2 <br> port link-type access <br> port default vlan 20</td>
+<td><strong>OSPF</strong></td>
+<td><code>router ospf &lt;process-id&gt;</code><br> <code>network &lt;network&gt; &lt;wildcard-mask&gt; area &lt;area-id&gt;</code><br> <code>router-id &lt;router-id&gt;</code></td>
+<td><code>ospf &lt;process-id&gt;</code><br> <code>network &lt;network&gt; &lt;wildcard-mask&gt;</code><br> <code>router-id &lt;router-id&gt;</code><br> <code>area &lt;area-id&gt;</code></td>
 </tr>
 <tr>
-<td><strong>设置 Trunk 接口并允许 VLAN 数据通过</strong></td>
-<td>int f0&#x2F;3 <br> no shutdown <br> switchport mode trunk <br> switchport trunk allow vlan all</td>
-<td>int e0&#x2F;3 <br> port link-type trunk <br> port trunk allow-pass vlan all</td>
-</tr>
-<tr>
-<td><strong>路由器设置子接口</strong></td>
-<td>int g0&#x2F;0&#x2F;0 <br> no shutdown <br> int g0&#x2F;0&#x2F;0.1 <br> encapsulation dot1Q 10 <br> ip add 192.168.10.254 255.255.255.0 <br> encapsulation dot1Q 20 <br> ip add 192.168.20.254 255.255.255.0 <br> ip routing</td>
-<td>int g0&#x2F;0&#x2F;0.10 <br> dot1q termination vid 10 <br> arp broadcast enable <br> ip address 192.168.10.254 24 <br> int g0&#x2F;0&#x2F;0.20 <br> dot1q termination vid 20 <br> arp broadcast enable <br> ip address 192.168.20.254 24</td>
+<td><strong>BGP</strong></td>
+<td><code>router bgp &lt;asn&gt;</code><br> <code>network &lt;network&gt; mask &lt;subnet-mask&gt;</code><br> <code>neighbor &lt;ip-address&gt; remote-as &lt;asn&gt;</code></td>
+<td><code>bgp &lt;asn&gt;</code><br> <code>network &lt;network&gt; &lt;subnet-mask&gt;</code><br> <code>peer &lt;ip-address&gt; as-number &lt;asn&gt;</code></td>
 </tr>
 </tbody></table>
-<h2 id="多臂路由"><a href="#多臂路由" class="headerlink" title="多臂路由"></a>多臂路由</h2><p>路由器多个接口连接交换机，配置作为vlan网关地址，利用路由功能实现不同vlan间通信<br><img src="https://xinhaojin.github.io/picx-images-hosting/20241119/image.1vyohv7k8o.webp" srcset="/img/loading.gif" lazyload alt="image"></p>
-<table>
-<thead>
-<tr>
-<th><strong>描述</strong></th>
-<th><strong>思科</strong></th>
-<th><strong>华为</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>创建 VLAN</strong></td>
-<td>vlan 10 <br> vlan 20</td>
-<td>vlan batch 10 20</td>
-</tr>
-<tr>
-<td><strong>设置 Access 接口并指定 VLAN</strong></td>
-<td>int f0&#x2F;1 <br> no shutdown <br> switchport mode access <br> switchport access vlan 10 <br> int f0&#x2F;2 <br> no shutdown <br> switchport mode access <br> switchport access vlan 20 <br> int f0&#x2F;3 <br> no shutdown <br> switchport mode access <br> switchport access vlan 10 <br> int f0&#x2F;4 <br> no shutdown <br> switchport mode access <br> switchport access vlan 20</td>
-<td>int e0&#x2F;1 <br> port link-type access <br> port default vlan 10 <br> int e0&#x2F;2 <br> port link-type access <br> port default vlan 20 <br> int e0&#x2F;3 <br> port link-type access <br> port default vlan 10 <br> int e0&#x2F;4 <br> port link-type access <br> port default vlan 20</td>
-</tr>
-<tr>
-<td><strong>设置路由器接口 IP</strong></td>
-<td>int g0&#x2F;0&#x2F;0 <br> no shutdown <br> ip add 192.168.10.254 255.255.255.0 <br> int g0&#x2F;0&#x2F;1 <br> no shutdown <br> ip add 192.168.20.254 255.255.255.0</td>
-<td>int g0&#x2F;0&#x2F;0 <br> ip add 192.168.10.254 24 <br> int g0&#x2F;0&#x2F;1 <br> ip add 192.168.20.254 24</td>
-</tr>
-</tbody></table>
-<h2 id="三层交换机"><a href="#三层交换机" class="headerlink" title="三层交换机"></a>三层交换机</h2><p>创建vlan接口，配置接口楼地址为vlan网关地址，实现不同vlan间通信<br><img src="https://xinhaojin.github.io/picx-images-hosting/20241119/image.99tdqmsj9i.webp" srcset="/img/loading.gif" lazyload alt="image"></p>
-<table>
-<thead>
-<tr>
-<th><strong>描述</strong></th>
-<th><strong>思科</strong></th>
-<th><strong>华为</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>创建 VLAN</strong></td>
-<td>vlan 10 <br> vlan 20</td>
-<td>vlan batch 10 20</td>
-</tr>
-<tr>
-<td><strong>设置 Access 接口并指定 VLAN</strong></td>
-<td>int f0&#x2F;1 <br> no shutdown <br> switchport mode access <br> switchport access vlan 10 <br> int f0&#x2F;2 <br> no shutdown <br> switchport mode access <br> switchport access vlan 20 <br> int f0&#x2F;3 <br> no shutdown <br> switchport mode access <br> switchport access vlan 10 <br> int f0&#x2F;4 <br> no shutdown <br> switchport mode access <br> switchport access vlan 20</td>
-<td>int e0&#x2F;1 <br> port link-type access <br> port default vlan 10 <br> int e0&#x2F;2 <br> port link-type access <br> port default vlan 20 <br> int e0&#x2F;3 <br> port link-type access <br> port default vlan 10 <br> int e0&#x2F;4 <br> port link-type access <br> port default vlan 20</td>
-</tr>
-<tr>
-<td><strong>设置 Trunk 接口并允许 VLAN 数据通过</strong></td>
-<td>int f0&#x2F;3 <br> no shutdown <br> switchport mode trunk <br> switchport trunk allow vlan all</td>
-<td>int e0&#x2F;3 <br> port link-type trunk <br> port trunk allow-pass vlan all</td>
-</tr>
-<tr>
-<td><strong>设置三层交换机 VLAN 接口</strong></td>
-<td>vlan 10 <br> vlan 20 <br> int vlan 10 <br> ip add 192.168.10.254 255.255.255.0 <br> int vlan 20 <br> ip add 192.168.20.254 255.255.255.0</td>
-<td>vlan batch 10 20 <br> int vlanif 10 <br> ip add 192.168.10.254 24 <br> int vlanif 20 <br> ip add 192.168.20.254 24</td>
-</tr>
-<tr>
-<td><strong>启用 IP 路由</strong></td>
-<td>int f0&#x2F;1 <br> no shutdown <br> ip routing</td>
-<td>&#x2F;</td>
-</tr>
-</tbody></table>
+<h3 id="说明："><a href="#说明：" class="headerlink" title="说明："></a><strong>说明：</strong></h3><ol>
+<li><p><strong>RIP（Routing Information Protocol）</strong></p>
+<ul>
+<li><strong>思科</strong>：通过 <code>router rip</code> 启用 RIP，并配置 RIP 版本和网络，通常需要禁用 <code>auto-summary</code>。</li>
+<li><strong>华为</strong>：通过 <code>rip &lt;instance-id&gt;</code> 启用 RIP，配置类似于思科，但命令稍有不同，使用 <code>undo auto-summary</code> 来禁用自动汇总功能。</li>
+</ul>
+</li>
+<li><p><strong>OSPF（Open Shortest Path First）</strong></p>
+<ul>
+<li><strong>思科</strong>：需要通过 <code>router ospf &lt;process-id&gt;</code> 启动 OSPF 路由进程，配置网络并指定所属区域。<code>router-id</code> 可选，通常用于避免自动选取路由器 ID。</li>
+<li><strong>华为</strong>：配置 <code>ospf &lt;process-id&gt;</code> 启动 OSPF，指定网络和区域，<code>router-id</code> 配置也可选。</li>
+</ul>
+</li>
+<li><p><strong>BGP（Border Gateway Protocol）</strong></p>
+<ul>
+<li><strong>思科</strong>：使用 <code>router bgp &lt;asn&gt;</code> 启用 BGP，配置网络、邻居关系以及AS号等。</li>
+<li><strong>华为</strong>：在 <code>bgp &lt;asn&gt;</code> 配置下启用 BGP，使用 <code>network</code> 配置网络，<code>peer</code> 配置邻居 IP 和 AS 号。</li>
+</ul>
+</li>
+</ol>
 
                 
               </div>
@@ -452,8 +402,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>vlan间通信(单臂路由、多臂路由、三层交换)配置命令(思科+华为)</div>
-      <div>https://xinhaojin.github.io/2024/11/20/vlan间通信(单臂路由、多臂路由、三层交换)配置命令(思科+华为)/</div>
+      <div>RIP+OSPF+BGP配置(思科+华为)</div>
+      <div>https://xinhaojin.github.io/2024/11/22/RIP+OSPF+BGP配置(思科+华为)/</div>
     </div>
     <div class="license-meta">
       
@@ -465,7 +415,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年11月20日</div>
+          <div>2024年11月22日</div>
         </div>
       
       
@@ -497,9 +447,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/11/21/%E6%80%9D%E7%A7%91%E9%94%90%E6%8D%B7%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%91%BD%E4%BB%A4/" title="思科锐捷网络设备配置命令">
+                      <a href="/2024/11/22/ACL%E5%86%99%E6%B3%95(%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA)/" title="ACL写法(思科+华为)">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">思科锐捷网络设备配置命令</span>
+                        <span class="hidden-mobile">ACL写法(思科+华为)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -507,8 +457,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/10/16/DHCP%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%EF%BC%8C%E5%8F%A6%E8%B5%B7%E4%B8%80%E4%B8%AADHCP%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%BF%98%E4%B8%8D%E8%A1%8C%EF%BC%8C%E5%8E%9F%E5%9B%A0%E7%AB%9F%E6%98%AF%E4%B8%8B%E7%BA%A7%E8%B7%AF%E7%94%B1%E5%99%A8%E4%BB%A5%E4%B8%8B%E7%8A%AF%E4%B8%8A/" title="DHCP故障排查，另起一个DHCP服务器竟然还不行，原因竟是下级路由器以下犯上">
-                        <span class="hidden-mobile">DHCP故障排查，另起一个DHCP服务器竟然还不行，原因竟是下级路由器以下犯上</span>
+                      <a href="/2024/11/22/NAT%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2%E9%85%8D%E7%BD%AE%EF%BC%88%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA%EF%BC%89/" title="NAT地址转换配置（思科+华为）">
+                        <span class="hidden-mobile">NAT地址转换配置（思科+华为）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -531,7 +481,7 @@
         var options = Object.assign(
           {"clientID":"Ov23lifvhsymyganMHro","clientSecret":"cdd38ac0c65a95027749446001ebdff7ca7d4ec2","repo":"xinhaojin.github.io","owner":"xinhaojin","admin":"xinhaojin","language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
           {
-            id: '5a68680b27f1f7e4550cc0147974d6ef'
+            id: 'f10effffbd51e935720e06e5858b2f6c'
           }
         )
         var gitalk = new Gitalk(options);
