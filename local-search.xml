@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>NAT地址转换配置（思科+华为）</title>
+    <link href="/2024/11/22/NAT%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2%E9%85%8D%E7%BD%AE%EF%BC%88%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA%EF%BC%89/"/>
+    <url>/2024/11/22/NAT%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2%E9%85%8D%E7%BD%AE%EF%BC%88%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA%EF%BC%89/</url>
+    
+    <content type="html"><![CDATA[<h2 id="思科"><a href="#思科" class="headerlink" title="思科"></a>思科</h2><p><img src="https://xinhaojin.github.io/picx-images-hosting/20241122/wechat_2024-11-22_150031_298.1e8mwfyk77.webp"></p><h3 id="路由器配置"><a href="#路由器配置" class="headerlink" title="路由器配置"></a>路由器配置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs shell">int g0/0.10<br>encap dot1q 10<br>ip add 192.168.10.254 255.255.255.0<br>ip nat inside<br>int g0/1.20<br>encap dot1q 20<br>ip add 192.168.20.254 255.255.255.0<br>ip nat inside<br>int s0/1/0<br>no shutdown<br>ip add 11.11.11.1 255.255.255.0<br>ip nat outside<br>clock rate 96000<br>exit<br>ip nat pool ppp 11.11.11.2 11.11.11.4 netmask 255.255.255.0<br>access-list 100 permit ip 192.168.10.0 0.0.0.255 any<br>access-list 100 permit ip 192.168.20.0 0.0.0.255 any<br>ip nat inside source list 100 pool ppp overload <br>ip route 22.22.22.0 255.255.255.0 11.11.11.10<br></code></pre></td></tr></table></figure><h2 id="华为"><a href="#华为" class="headerlink" title="华为"></a>华为</h2><p><img src="https://xinhaojin.github.io/picx-images-hosting/20241122/%E5%9B%BE%E7%89%871.6t75evdqq1.webp"></p><h3 id="路由器配置-1"><a href="#路由器配置-1" class="headerlink" title="路由器配置"></a>路由器配置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs shell">int g0/0/0.10<br>dot1q termination vid 10<br>arp broadcast enable<br>ip add 192.168.10.254 24<br>int g0/0/1.20<br>dot1q termination vid 20<br>arp broadcast enable<br>ip add 192.168.20.254 24<br>int g0/0/2<br>ip add 11.11.11.1 24<br>quit<br>nat address-group 1 11.11.11.2 11.11.11.4<br>acl 2000<br>rule permit source 192.168.10.0 0.0.0.255<br>rule permit source 192.168.20.0 0.0.0.255<br>int g0/0/2<br>nat outbound 2000 address-group 1<br>quit<br>ip route-static 22.22.22.0 24 11.11.11.10<br></code></pre></td></tr></table></figure><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><table><thead><tr><th><strong>配置项</strong></th><th><strong>思科路由器 NAT 配置</strong></th><th><strong>华为路由器 NAT 配置</strong></th></tr></thead><tbody><tr><td><strong>接口配置</strong><br>路由器本身不处理VLAN，VLAN是在交换机层面上实现的，必须使用子接口实现</td><td>创建子接口，通过 <code>encap dot1q</code> 设置 VLAN ID，配置 IP 地址，并标记为 <code>ip nat inside</code>。</td><td>创建子接口，通过 <code>dot1q termination vid</code> 设置 VLAN，配置 IP 地址，并启用 ARP 广播。</td></tr><tr><td><strong>外网接口配置</strong></td><td>配置外部接口 IP 地址，并标记为 <code>ip nat outside</code>。启用该接口并设置时钟频率（如适用）。</td><td>配置外部接口的 IP 地址。</td></tr><tr><td><strong>NAT 地址池</strong></td><td>通过 <code>ip nat pool</code> 定义公共 IP 地址池供内网访问外网时使用。</td><td>通过 <code>nat address-group</code> 创建公共 IP 地址池。</td></tr><tr><td><strong>访问控制列表 (ACL)</strong></td><td>创建 ACL，定义哪些内部 IP 地址可以进行 NAT 地址转换。</td><td>使用 <code>acl</code> 配置访问控制列表，定义允许进行 NAT 转换的源地址。</td></tr><tr><td><strong>配置源 NAT</strong></td><td>使用 <code>ip nat inside source list</code> 配置 ACL 中定义的地址范围，将流量映射到外部地址池。</td><td>通过 <code>nat outbound</code> 命令将流量映射到外部地址池，实现源地址转换。</td></tr></tbody></table>]]></content>
+    
+    
+    <categories>
+      
+      <category>网工</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>网工</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>思科锐捷网络设备配置命令</title>
     <link href="/2024/11/21/%E6%80%9D%E7%A7%91%E9%94%90%E6%8D%B7%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%91%BD%E4%BB%A4/"/>
     <url>/2024/11/21/%E6%80%9D%E7%A7%91%E9%94%90%E6%8D%B7%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%91%BD%E4%BB%A4/</url>
