@@ -21,15 +21,15 @@
   <meta name="author" content="xinhaojin">
   <meta name="keywords" content="">
   
-    <meta name="description" content="说明 思科(命名ACL) 思科(编号ACL) 华为    创建标准ACL，允许源IP为192.168.1.1的流量 ip access-list standard ACL_1permit 192.168.1.1deny any access-list 1 permit 192.168.1.1access-list 1 deny any acl number 2001rule permit i">
+    <meta name="description" content="说明 思科&#x2F;锐捷 华为    允许10.1.1.0&#x2F;24网段访问192.168.1.0&#x2F;24网段的所有服务（基于IP协议） ip access-list extended 10110 permit ip 10.1.1.0 0.0.0.255 192.168.1.0 0.0.0.255 acl number 3001rule 10 permit ip source">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ACL写法(思科+华为)">
 <meta property="og:url" content="https://xinhaojin.github.io/2024/11/22/ACL%E5%86%99%E6%B3%95(%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA)/index.html">
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
-<meta property="og:description" content="说明 思科(命名ACL) 思科(编号ACL) 华为    创建标准ACL，允许源IP为192.168.1.1的流量 ip access-list standard ACL_1permit 192.168.1.1deny any access-list 1 permit 192.168.1.1access-list 1 deny any acl number 2001rule permit i">
+<meta property="og:description" content="说明 思科&#x2F;锐捷 华为    允许10.1.1.0&#x2F;24网段访问192.168.1.0&#x2F;24网段的所有服务（基于IP协议） ip access-list extended 10110 permit ip 10.1.1.0 0.0.0.255 192.168.1.0 0.0.0.255 acl number 3001rule 10 permit ip source">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-11-22T07:56:00.000Z">
-<meta property="article:modified_time" content="2024-11-22T07:56:43.437Z">
+<meta property="article:modified_time" content="2024-11-29T04:01:43.684Z">
 <meta property="article:author" content="xinhaojin">
 <meta property="article:tag" content="网工">
 <meta name="twitter:card" content="summary_large_image">
@@ -251,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          251 字
+          239 字
         
       </span>
     
@@ -316,47 +316,35 @@
                 <table>
 <thead>
 <tr>
-<th><strong>说明</strong></th>
-<th><strong>思科(命名ACL)</strong></th>
-<th><strong>思科(编号ACL)</strong></th>
-<th><strong>华为</strong></th>
+<th>说明</th>
+<th>思科&#x2F;锐捷</th>
+<th>华为</th>
 </tr>
 </thead>
 <tbody><tr>
-<td><strong>创建标准ACL，允许源IP为<code>192.168.1.1</code>的流量</strong></td>
-<td><code>ip access-list standard ACL_1</code><br><code>permit 192.168.1.1</code><br><code>deny any</code></td>
-<td><code>access-list 1 permit 192.168.1.1</code><br><code>access-list 1 deny any</code></td>
-<td><code>acl number 2001</code><br><code>rule permit ip source 192.168.1.1 0.0.0.0</code><br><code>rule deny ip</code></td>
+<td>允许10.1.1.0&#x2F;24网段访问192.168.1.0&#x2F;24网段的所有服务（基于IP协议）</td>
+<td><code>ip access-list extended 101</code><br><code>10 permit ip 10.1.1.0 0.0.0.255 192.168.1.0 0.0.0.255</code></td>
+<td><code>acl number 3001</code><br><code>rule 10 permit ip source 10.1.1.0 0.0.0.255 destination 192.168.1.0 0.0.0.255</code></td>
 </tr>
 <tr>
-<td><strong>创建扩展ACL，允许源IP <code>192.168.1.2</code> 访问目标IP <code>10.0.0.1</code> 的 HTTP 服务（端口80）</strong></td>
-<td><code>ip access-list extended ACL_100</code><br><code>permit tcp 192.168.1.2 0.0.0.0 10.0.0.1 0.0.0.0 eq 80</code><br><code>deny ip any any</code></td>
-<td><code>access-list 100 permit tcp 192.168.1.2 0.0.0.0 10.0.0.1 0.0.0.0 eq 80</code><br><code>access-list 100 deny ip any any</code></td>
-<td><code>acl number 3001</code><br><code>rule permit tcp source 192.168.1.2 0.0.0.0 destination 10.0.0.1 0.0.0.0 destination-port eq 80</code><br><code>rule deny ip</code></td>
+<td>禁止172.16.2.0&#x2F;24网段访问10.0.0.0&#x2F;8网段的所有服务（基于IP协议）</td>
+<td><code>ip access-list extended 102</code><br><code>10 deny ip 172.16.2.0 0.0.0.255 10.0.0.0 0.255.255.255</code></td>
+<td><code>acl number 3002</code><br><code>rule 10 deny ip source 172.16.2.0 0.0.0.255 destination 10.0.0.0 0.255.255.255</code></td>
 </tr>
 <tr>
-<td><strong>创建扩展ACL，允许源IP <code>192.168.1.3</code> 访问目标IP <code>10.0.0.2</code> 的 FTP 服务（端口21）</strong></td>
-<td><code>ip access-list extended ACL_101</code><br><code>permit tcp 192.168.1.3 0.0.0.0 10.0.0.2 0.0.0.0 eq 21</code><br><code>deny ip any any</code></td>
-<td><code>access-list 101 permit tcp 192.168.1.3 0.0.0.0 10.0.0.2 0.0.0.0 eq 21</code><br><code>access-list 101 deny ip any any</code></td>
-<td><code>acl number 3002</code><br><code>rule permit tcp source 192.168.1.3 0.0.0.0 destination 10.0.0.2 0.0.0.0 destination-port eq 21</code><br><code>rule deny ip</code></td>
+<td>允许192.168.5.0&#x2F;24网段使用HTTP协议（端口80）访问20.20.20.0&#x2F;24网段的Web服务器</td>
+<td><code>ip access-list extended 103</code><br><code>10 permit tcp 192.168.5.0 0.0.0.255 20.20.20.0 0.0.0.255 eq 80</code></td>
+<td><code>acl number 3003</code><br><code>rule 10 permit tcp source 192.168.5.0 0.0.0.255 destination 20.20.20.0 0.0.0.255 destination-port eq 80</code></td>
 </tr>
 <tr>
-<td><strong>将ACL应用到接口 <code>GigabitEthernet0/1</code> 的入方向</strong></td>
-<td><code>interface GigabitEthernet0/1</code><br><code>ip access-group 100 in</code></td>
-<td><code>interface GigabitEthernet0/1</code><br><code>ip access-group 100 in</code></td>
-<td><code>interface GigabitEthernet0/1</code><br><code>traffic-filter inbound acl 3001</code></td>
+<td>禁止11.11.11.0&#x2F;24网段使用FTP协议（端口21）访问172.31.1.0&#x2F;24网段的FTP服务器</td>
+<td><code>ip access-list extended 104</code><br><code>10 deny tcp 11.11.11.0 0.0.0.255 172.31.1.0 0.0.0.255 eq 21</code></td>
+<td><code>acl number 3004</code><br><code>rule 10 deny tcp source 11.11.11.0 0.0.0.255 destination 172.31.1.0 0.0.0.255 destination-port eq 21</code></td>
 </tr>
 <tr>
-<td><strong>拒绝特定的IP地址段（例如拒绝 <code>192.168.2.0/24</code>）</strong></td>
-<td><code>ip access-list extended ACL_102</code><br><code>deny ip 192.168.2.0 0.0.0.255 any</code><br><code>permit ip any any</code></td>
-<td><code>access-list 102 deny ip 192.168.2.0 0.0.0.255 any</code><br><code>access-list 102 permit ip any any</code></td>
-<td><code>acl number 3003</code><br><code>rule deny ip source 192.168.2.0 0.0.0.255</code><br><code>rule permit ip</code></td>
-</tr>
-<tr>
-<td><strong>基于IP协议类型过滤（例如只允许ICMP协议）</strong></td>
-<td><code>ip access-list extended ACL_103</code><br><code>permit icmp any any</code><br><code>deny ip any any</code></td>
-<td><code>access-list 103 permit icmp any any</code><br><code>access-list 103 deny ip any any</code></td>
-<td><code>acl number 3004</code><br><code>rule permit icmp</code><br><code>rule deny ip</code></td>
+<td>应用ACL</td>
+<td><code>int g0/1</code><br><code>ip access-group 101 in/out</code></td>
+<td><code>int e0/0/1</code><br><code>traffic-filter inbound/outbound acl 3001</code></td>
 </tr>
 </tbody></table>
 
