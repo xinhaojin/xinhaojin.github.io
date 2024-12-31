@@ -21,15 +21,15 @@
   <meta name="author" content="xinhaojin">
   <meta name="keywords" content="">
   
-    <meta name="description" content="创建vue应用和插值表达式 以script方式引入vue.js1&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;unpkg.com&#x2F;vue@3&quot;&gt;&lt;&#x2F;script&gt; 创建Vue应用123&lt;script&gt;    Vue.createApp(&#123;data()&#123;&#125;, methods:&#123;&#125;, template">
+    <meta name="description" content="前言最近想系统性学习一下vue,在B站看到了技术蛋老师的教学视频https:&#x2F;&#x2F;github.com&#x2F;eggtoopain&#x2F;vue-router-4-tutorial，受益匪浅，蛋老师提供了各个章节源码，但是没有归纳笔记，因此本人按照视频目录粗略归纳了一下内容,以便快速回顾。 创建vue应用和插值表达式 以script方式引入vue.js1&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue3核心笔记">
 <meta property="og:url" content="https://xinhaojin.github.io/2024/12/31/vue3%E6%A0%B8%E5%BF%83%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
-<meta property="og:description" content="创建vue应用和插值表达式 以script方式引入vue.js1&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;unpkg.com&#x2F;vue@3&quot;&gt;&lt;&#x2F;script&gt; 创建Vue应用123&lt;script&gt;    Vue.createApp(&#123;data()&#123;&#125;, methods:&#123;&#125;, template">
+<meta property="og:description" content="前言最近想系统性学习一下vue,在B站看到了技术蛋老师的教学视频https:&#x2F;&#x2F;github.com&#x2F;eggtoopain&#x2F;vue-router-4-tutorial，受益匪浅，蛋老师提供了各个章节源码，但是没有归纳笔记，因此本人按照视频目录粗略归纳了一下内容,以便快速回顾。 创建vue应用和插值表达式 以script方式引入vue.js1&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-12-31T12:10:30.000Z">
-<meta property="article:modified_time" content="2024-12-31T12:16:05.613Z">
+<meta property="article:modified_time" content="2024-12-31T14:16:01.160Z">
 <meta property="article:author" content="xinhaojin">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -250,7 +250,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.3k 字
+          5.4k 字
         
       </span>
     
@@ -261,7 +261,7 @@
         
         
         
-          27 分钟
+          28 分钟
         
       </span>
     
@@ -312,7 +312,8 @@
             
               <div class="markdown-body">
                 
-                <h2 id="创建vue应用和插值表达式"><a href="#创建vue应用和插值表达式" class="headerlink" title="创建vue应用和插值表达式"></a>创建vue应用和插值表达式</h2><ul>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近想系统性学习一下vue,在B站看到了<code>技术蛋老师</code>的教学视频<code>https://github.com/eggtoopain/vue-router-4-tutorial</code>，受益匪浅，蛋老师提供了各个章节源码，但是没有归纳笔记，因此本人按照视频目录粗略归纳了一下内容,以便快速回顾。</p>
+<h2 id="创建vue应用和插值表达式"><a href="#创建vue应用和插值表达式" class="headerlink" title="创建vue应用和插值表达式"></a>创建vue应用和插值表达式</h2><ul>
 <li>以script方式引入vue.js<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://unpkg.com/vue@3&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure></li>
 <li>创建Vue应用<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">createApp</span>(&#123;<span class="hljs-title function_">data</span>(<span class="hljs-params"></span>)&#123;&#125;, <span class="hljs-attr">methods</span>:&#123;&#125;, <span class="hljs-attr">template</span>:<span class="hljs-string">&#x27;&#x27;</span>&#125;).<span class="hljs-title function_">mount</span>(<span class="hljs-string">&#x27;#app&#x27;</span>)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure></li>
 <li>代码<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>vue3核心笔记<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://unpkg.com/vue@3&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>&#123;&#123; title &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">        <span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">createApp</span>(&#123;</span><br><span class="language-javascript">            <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;</span><br><span class="language-javascript">                <span class="hljs-keyword">return</span> &#123;</span><br><span class="language-javascript">                    <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;零食清单&#x27;</span></span><br><span class="language-javascript">                &#125;</span><br><span class="language-javascript">            &#125;</span><br><span class="language-javascript">        &#125;).<span class="hljs-title function_">mount</span>(<span class="hljs-string">&#x27;#app&#x27;</span>);</span><br><span class="language-javascript">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure></li>
