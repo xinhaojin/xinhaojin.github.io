@@ -3566,35 +3566,6 @@
   
   
   <entry>
-    <title>pytorch加载MNIST数据集图片Error #15: Initializing libiomp5md.dll, but found libiomp5md.dll already initialized.</title>
-    <link href="/2021/04/01/pytorch%E5%8A%A0%E8%BD%BDmnist%E6%95%B0%E6%8D%AE%E9%9B%86%E5%9B%BE%E7%89%87error-15-initializing-libiomp5md-dll-but-found-libiomp5md-dll-already-initialized/"/>
-    <url>/2021/04/01/pytorch%E5%8A%A0%E8%BD%BDmnist%E6%95%B0%E6%8D%AE%E9%9B%86%E5%9B%BE%E7%89%87error-15-initializing-libiomp5md-dll-but-found-libiomp5md-dll-already-initialized/</url>
-    
-    <content type="html"><![CDATA[<p>添加以下代码</p><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> os<br>os.environ[<span class="hljs-string">&#x27;KMP_DUPLICATE_LIB_OK&#x27;</span>]=<span class="hljs-string">&#x27;True&#x27;</span><br><span class="hljs-comment">#允许问题描述中dll副本存在</span><br></code></pre></td></tr></table></figure>]]></content>
-    
-    
-    <categories>
-      
-      <category>python</category>
-      
-      <category>pytorch</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>数据集</tag>
-      
-      <tag>pytorch</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>Jupyter notebook默认目录修改</title>
     <link href="/2021/03/29/jupyter-notebook%E9%BB%98%E8%AE%A4%E7%9B%AE%E5%BD%95%E4%BF%AE%E6%94%B9/"/>
     <url>/2021/03/29/jupyter-notebook%E9%BB%98%E8%AE%A4%E7%9B%AE%E5%BD%95%E4%BF%AE%E6%94%B9/</url>
