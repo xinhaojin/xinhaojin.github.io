@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>EVENG懒人版5.1+SecureCRT9.6绿色版安装配置</title>
+    <link href="/2025/01/17/EVENG%E6%87%92%E4%BA%BA%E7%89%885.1+SecureCRT9.6%E7%BB%BF%E8%89%B2%E7%89%88%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/"/>
+    <url>/2025/01/17/EVENG%E6%87%92%E4%BA%BA%E7%89%885.1+SecureCRT9.6%E7%BB%BF%E8%89%B2%E7%89%88%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</url>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>想找一个能同时模拟多个厂商网络设备的仿真软件，折腾了一通终于成功安装了EVENG，特此记录</p><h2 id="安装VMware-Workstation"><a href="#安装VMware-Workstation" class="headerlink" title="安装VMware Workstation"></a>安装VMware Workstation</h2><p>目前已经免费了，安装比较容易，略过</p><p>Windows功能中关闭：Virtual Machine Platform,Hyper-V,Window虚拟机监控程序平台</p><h2 id="安装EVENG懒人版"><a href="#安装EVENG懒人版" class="headerlink" title="安装EVENG懒人版"></a>安装EVENG懒人版</h2><p>论坛链接在此：<a href="https://www.emulatedlab.com/thread-489-1-1.html">https://www.emulatedlab.com/thread-489-1-1.html</a><br>「EVE-NG社区懒人版5.1-Small.ova」下载链接：<a href="https://pan.quark.cn/s/0819d692cc71">https://pan.quark.cn/s/0819d692cc71</a><br>包含以下设备：</p><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">Arista vEOS<br>Cisco IOL<br>Cisco vIOS Router<br>Cisco vIOS <span class="hljs-keyword">Switch</span><br><span class="hljs-keyword"></span>H3C vAC1000<br>H3C vSR1000<br>Huawei AR1000v<br>Huawei <span class="hljs-keyword">CloudEngine </span><span class="hljs-number">12800</span><br>iKuai<br><span class="hljs-keyword">Juniper </span>vMX VCP<br><span class="hljs-keyword">Juniper </span>vMX VFP<br>MikroTik RouterOS<br>OpenWRT<br>Ruijie vRoute<br>Ruijie vSwitch<br>Slax Mini VM<br>Virtual PC (VPCS)<br></code></pre></td></tr></table></figure><p>下载完后使用VMware打开，网络设置为桥接，启动虚拟机后会显示IP，root密码eve<br><img src="https://xinhaojin.github.io/picx-images-hosting/20250117/image.3k83q92n1c.webp" alt="image"><br>在浏览器输入IP登录，用户admin密码eve，add an object - node即可添加设备</p><h2 id="安装SecureCRT并设置为telnet默认应用"><a href="#安装SecureCRT并设置为telnet默认应用" class="headerlink" title="安装SecureCRT并设置为telnet默认应用"></a>安装SecureCRT并设置为telnet默认应用</h2><p>「SecureCRT.9.6.0.CN.Portable OSSSR.COM.7z」下载链接：<a href="https://pan.quark.cn/s/0654db0bc802">https://pan.quark.cn/s/0654db0bc802</a></p><h3 id="设置为telnet默认应用"><a href="#设置为telnet默认应用" class="headerlink" title="设置为telnet默认应用"></a>设置为telnet默认应用</h3><p>在选项-全局选项-浏览器中点击”将SecureCRT设为默认应用”，然后打开Windows设置-默认应用，搜索telnet，检查是否已经设置成功。</p><p>回到浏览器中双击添加的网络设备，即可跳转到SecureCRT</p><h3 id="设置在同一窗口打开多个标签"><a href="#设置在同一窗口打开多个标签" class="headerlink" title="设置在同一窗口打开多个标签"></a>设置在同一窗口打开多个标签</h3><p>在SecureCRT\Data\Config\Global.ini文件中搜索”single”,修改</p><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-string">&quot;Single Instance&quot;</span><span class="hljs-operator">=</span><span class="hljs-number">00000001</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>软件安装配置</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>ubuntu下配置v2raya</title>
     <link href="/2025/01/01/ubuntu%E4%B8%8B%E9%85%8D%E7%BD%AEv2raya/"/>
     <url>/2025/01/01/ubuntu%E4%B8%8B%E9%85%8D%E7%BD%AEv2raya/</url>
