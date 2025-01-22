@@ -330,7 +330,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/09/19/pyinstaller%E6%89%93%E5%8C%8532%E4%BD%8Dexe%E6%96%87%E4%BB%B6/" target="_self">
         <div>
-          前言有些程序需要在win7 32位系统上运行，pyinstaller默认打包的是64位exe文件，无法运行在32位系统上。 解决方法前置环境：conda 切换conda至32位开发环境12set CONDA_FORCE_32BIT=1conda info  可以看到输出信息中显示 platform : win-32 不要关闭这个窗口，后续操作也在这个环境下进行 新建 conda 环境win7 32
+          前言有些程序需要在win7 32位系统上运行，pyinstaller默认打包的是64位exe文件，无法运行在32位系统上。 解决方法前置环境：conda 切换conda至32位开发环境12conda config --env --set subdir win-32conda info 这意味着在进行包的安装、更新等操作时，conda 会优先考虑为 win-32 平台设计的包（注意，这里是全局con
         </div>
       </a>
 

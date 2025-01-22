@@ -387,7 +387,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/11/20/vlan%E9%97%B4%E9%80%9A%E4%BF%A1(%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1%E3%80%81%E5%A4%9A%E8%87%82%E8%B7%AF%E7%94%B1%E3%80%81%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2)%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4(%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA)/" target="_self">
         <div>
-          单臂路由路由器单个接口配置多个子接口，打上vlan标签，模拟三层交换机的vlanif接口功能    描述 思科 华为    创建 VLAN vlan 10  vlan 20 vlan batch 10 20   设置 Access 接口并指定 VLAN int f0&#x2F;1  no shutdown  switchport mode access  switchport access vla
+          单臂路由路由器单个接口配置多个子接口，打上vlan标签，模拟三层交换机的vlanif接口功能 注意：路由器不具备vlan划分和处理能力，一个物理接口默认只处理一个vlan网络，因此需要为每个vlan配置一个物理子接口作为vlan网关地址，而不是直接配置vlan接口（某些路由器接口不支持配置子接口）    描述 思科 华为    创建 VLAN vlan 10  vlan 20 vlan batch
         </div>
       </a>
 

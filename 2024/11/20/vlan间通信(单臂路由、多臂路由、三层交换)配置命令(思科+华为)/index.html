@@ -21,18 +21,18 @@
   <meta name="author" content="xinhaojin">
   <meta name="keywords" content="">
   
-    <meta name="description" content="单臂路由路由器单个接口配置多个子接口，打上vlan标签，模拟三层交换机的vlanif接口功能    描述 思科 华为    创建 VLAN vlan 10  vlan 20 vlan batch 10 20   设置 Access 接口并指定 VLAN int f0&#x2F;1  no shutdown  switchport mode access  switchport access vla">
+    <meta name="description" content="单臂路由路由器单个接口配置多个子接口，打上vlan标签，模拟三层交换机的vlanif接口功能 注意：路由器不具备vlan划分和处理能力，一个物理接口默认只处理一个vlan网络，因此需要为每个vlan配置一个物理子接口作为vlan网关地址，而不是直接配置vlan接口（某些路由器接口不支持配置子接口）    描述 思科 华为    创建 VLAN vlan 10  vlan 20 vlan batch">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vlan间通信(单臂路由、多臂路由、三层交换)配置命令(思科+华为)">
 <meta property="og:url" content="https://xinhaojin.github.io/2024/11/20/vlan%E9%97%B4%E9%80%9A%E4%BF%A1(%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1%E3%80%81%E5%A4%9A%E8%87%82%E8%B7%AF%E7%94%B1%E3%80%81%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2)%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4(%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA)/index.html">
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
-<meta property="og:description" content="单臂路由路由器单个接口配置多个子接口，打上vlan标签，模拟三层交换机的vlanif接口功能    描述 思科 华为    创建 VLAN vlan 10  vlan 20 vlan batch 10 20   设置 Access 接口并指定 VLAN int f0&#x2F;1  no shutdown  switchport mode access  switchport access vla">
+<meta property="og:description" content="单臂路由路由器单个接口配置多个子接口，打上vlan标签，模拟三层交换机的vlanif接口功能 注意：路由器不具备vlan划分和处理能力，一个物理接口默认只处理一个vlan网络，因此需要为每个vlan配置一个物理子接口作为vlan网关地址，而不是直接配置vlan接口（某些路由器接口不支持配置子接口）    描述 思科 华为    创建 VLAN vlan 10  vlan 20 vlan batch">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20241119/image.361lo71l31.webp">
 <meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20241119/image.1vyohv7k8o.webp">
 <meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20241119/image.99tdqmsj9i.webp">
 <meta property="article:published_time" content="2024-11-20T02:20:00.000Z">
-<meta property="article:modified_time" content="2024-11-20T02:21:08.942Z">
+<meta property="article:modified_time" content="2025-01-22T08:59:11.815Z">
 <meta property="article:author" content="xinhaojin">
 <meta property="article:tag" content="网工">
 <meta name="twitter:card" content="summary_large_image">
@@ -260,7 +260,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          354 字
+          452 字
         
       </span>
     
@@ -271,7 +271,7 @@
         
         
         
-          2 分钟
+          3 分钟
         
       </span>
     
@@ -322,7 +322,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年11月20日 上午
+                    本文最后更新于 2025年1月22日 下午
                   
                 
               </p>
@@ -330,7 +330,8 @@
             
               <div class="markdown-body">
                 
-                <h2 id="单臂路由"><a href="#单臂路由" class="headerlink" title="单臂路由"></a>单臂路由</h2><p>路由器单个接口配置多个子接口，打上vlan标签，模拟三层交换机的vlanif接口功能<br><img src="https://xinhaojin.github.io/picx-images-hosting/20241119/image.361lo71l31.webp" srcset="/img/loading.gif" lazyload alt="image"></p>
+                <h2 id="单臂路由"><a href="#单臂路由" class="headerlink" title="单臂路由"></a>单臂路由</h2><p>路由器单个接口配置多个子接口，打上vlan标签，模拟三层交换机的vlanif接口功能</p>
+<p>注意：路由器不具备vlan划分和处理能力，一个物理接口默认只处理一个vlan网络，因此需要为每个vlan配置一个物理子接口作为vlan网关地址，而不是直接配置vlan接口（某些路由器接口不支持配置子接口）<br><img src="https://xinhaojin.github.io/picx-images-hosting/20241119/image.361lo71l31.webp" srcset="/img/loading.gif" lazyload alt="image"></p>
 <table>
 <thead>
 <tr>
@@ -385,7 +386,8 @@
 <td>int g0&#x2F;0&#x2F;0 <br> ip add 192.168.10.254 24 <br> int g0&#x2F;0&#x2F;1 <br> ip add 192.168.20.254 24</td>
 </tr>
 </tbody></table>
-<h2 id="三层交换机"><a href="#三层交换机" class="headerlink" title="三层交换机"></a>三层交换机</h2><p>创建vlan接口，配置接口楼地址为vlan网关地址，实现不同vlan间通信<br><img src="https://xinhaojin.github.io/picx-images-hosting/20241119/image.99tdqmsj9i.webp" srcset="/img/loading.gif" lazyload alt="image"></p>
+<h2 id="三层交换机"><a href="#三层交换机" class="headerlink" title="三层交换机"></a>三层交换机</h2><p>创建vlan接口，配置接口楼地址为vlan网关地址，实现不同vlan间通信</p>
+<p>注意：思科三层交换机要开启路由功能<br><img src="https://xinhaojin.github.io/picx-images-hosting/20241119/image.99tdqmsj9i.webp" srcset="/img/loading.gif" lazyload alt="image"></p>
 <table>
 <thead>
 <tr>
@@ -484,7 +486,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年11月20日</div>
+          <div>2025年1月22日</div>
         </div>
       
       
