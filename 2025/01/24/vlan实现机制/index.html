@@ -21,25 +21,29 @@
   <meta name="author" content="xinhaojin">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言想找一个能同时模拟多个厂商网络设备的仿真软件，折腾了一通终于成功安装了EVENG，特此记录 安装VMware Workstation目前已经免费了，安装比较容易，略过 Windows功能中关闭：Virtual Machine Platform,Hyper-V,Window虚拟机监控程序平台 安装EVENG懒人版论坛链接在此：https:&#x2F;&#x2F;www.emulatedlab.com&#x2F;thread-">
+    <meta name="description" content="VLAN标识符VID VLAN标记的最后12比特称为VLAN标识符VID，唯一标志以太网帧属于哪一个VLAN。 VID取值范围是0 ~ 4095 (0 ~ 2^12 - 1)。 0和4095不用来表示VLAN，有效取值范围是1 ~ 4094。  802.1Q帧 在以太网帧基础上，用于实现虚拟局域网（VLAN）功能的一种数据帧格式 结构特点：在普通以太网帧中插入4字节VLAN标记，其最后12比特是V">
 <meta property="og:type" content="article">
-<meta property="og:title" content="EVENG懒人版5.1+SecureCRT9.6绿色版安装配置">
-<meta property="og:url" content="https://xinhaojin.github.io/2025/01/17/EVENG%E6%87%92%E4%BA%BA%E7%89%885.1+SecureCRT9.6%E7%BB%BF%E8%89%B2%E7%89%88%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:title" content="vlan实现机制">
+<meta property="og:url" content="https://xinhaojin.github.io/2025/01/24/vlan%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6/index.html">
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
-<meta property="og:description" content="前言想找一个能同时模拟多个厂商网络设备的仿真软件，折腾了一通终于成功安装了EVENG，特此记录 安装VMware Workstation目前已经免费了，安装比较容易，略过 Windows功能中关闭：Virtual Machine Platform,Hyper-V,Window虚拟机监控程序平台 安装EVENG懒人版论坛链接在此：https:&#x2F;&#x2F;www.emulatedlab.com&#x2F;thread-">
+<meta property="og:description" content="VLAN标识符VID VLAN标记的最后12比特称为VLAN标识符VID，唯一标志以太网帧属于哪一个VLAN。 VID取值范围是0 ~ 4095 (0 ~ 2^12 - 1)。 0和4095不用来表示VLAN，有效取值范围是1 ~ 4094。  802.1Q帧 在以太网帧基础上，用于实现虚拟局域网（VLAN）功能的一种数据帧格式 结构特点：在普通以太网帧中插入4字节VLAN标记，其最后12比特是V">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20250117/image.3k83q92n1c.webp">
-<meta property="article:published_time" content="2025-01-17T07:48:30.000Z">
-<meta property="article:modified_time" content="2025-01-17T07:46:12.559Z">
+<meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20250124/PixPin_2025-01-24_10-13-51.9dd298giwy.webp">
+<meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20250124/image.sz1rv7ixl.webp">
+<meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20250124/image.1lbx9n7m6f.webp">
+<meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20250124/image.13lvl1k0i5.webp">
+<meta property="article:published_time" content="2025-01-24T03:03:00.000Z">
+<meta property="article:modified_time" content="2025-01-24T03:05:48.488Z">
 <meta property="article:author" content="xinhaojin">
+<meta property="article:tag" content="网工">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://xinhaojin.github.io/picx-images-hosting/20250117/image.3k83q92n1c.webp">
+<meta name="twitter:image" content="https://xinhaojin.github.io/picx-images-hosting/20250124/PixPin_2025-01-24_10-13-51.9dd298giwy.webp">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>EVENG懒人版5.1+SecureCRT9.6绿色版安装配置 - xinhaojin&#39;s blog</title>
+  <title>vlan实现机制 - xinhaojin&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -229,7 +233,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="EVENG懒人版5.1+SecureCRT9.6绿色版安装配置"></span>
+            <span id="subtitle" data-typed-text="vlan实现机制"></span>
           
         </div>
 
@@ -245,8 +249,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-17 15:48" pubdate>
-          2025年1月17日 下午
+        <time datetime="2025-01-24 11:03" pubdate>
+          2025年1月24日 上午
         </time>
       </span>
     
@@ -257,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          308 字
+          952 字
         
       </span>
     
@@ -268,7 +272,7 @@
         
         
         
-          2 分钟
+          5 分钟
         
       </span>
     
@@ -314,12 +318,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">EVENG懒人版5.1+SecureCRT9.6绿色版安装配置</h1>
+            <h1 id="seo-header">vlan实现机制</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年1月17日 下午
+                    本文最后更新于 2025年1月24日 上午
                   
                 
               </p>
@@ -327,19 +331,66 @@
             
               <div class="markdown-body">
                 
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>想找一个能同时模拟多个厂商网络设备的仿真软件，折腾了一通终于成功安装了EVENG，特此记录</p>
-<h2 id="安装VMware-Workstation"><a href="#安装VMware-Workstation" class="headerlink" title="安装VMware Workstation"></a>安装VMware Workstation</h2><p>目前已经免费了，安装比较容易，略过</p>
-<p>Windows功能中关闭：Virtual Machine Platform,Hyper-V,Window虚拟机监控程序平台</p>
-<h2 id="安装EVENG懒人版"><a href="#安装EVENG懒人版" class="headerlink" title="安装EVENG懒人版"></a>安装EVENG懒人版</h2><p>论坛链接在此：<a target="_blank" rel="noopener" href="https://www.emulatedlab.com/thread-489-1-1.html">https://www.emulatedlab.com/thread-489-1-1.html</a><br>「EVE-NG社区懒人版5.1-Small.ova」下载链接：<a target="_blank" rel="noopener" href="https://pan.quark.cn/s/0819d692cc71">https://pan.quark.cn/s/0819d692cc71</a><br>包含以下设备：</p>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">Arista vEOS<br>Cisco IOL<br>Cisco vIOS Router<br>Cisco vIOS <span class="hljs-keyword">Switch</span><br><span class="hljs-keyword"></span>H3C vAC1000<br>H3C vSR1000<br>Huawei AR1000v<br>Huawei <span class="hljs-keyword">CloudEngine </span><span class="hljs-number">12800</span><br>iKuai<br><span class="hljs-keyword">Juniper </span>vMX VCP<br><span class="hljs-keyword">Juniper </span>vMX VFP<br>MikroTik RouterOS<br>OpenWRT<br>Ruijie vRoute<br>Ruijie vSwitch<br>Slax Mini VM<br>Virtual PC (VPCS)<br></code></pre></td></tr></table></figure>
-<p>下载完后使用VMware打开，网络设置为桥接，启动虚拟机后会显示IP，root密码eve<br><img src="https://xinhaojin.github.io/picx-images-hosting/20250117/image.3k83q92n1c.webp" srcset="/img/loading.gif" lazyload alt="image"><br>在浏览器输入IP登录，用户admin密码eve，add an object - node即可添加设备</p>
-<h2 id="安装SecureCRT并设置为telnet默认应用"><a href="#安装SecureCRT并设置为telnet默认应用" class="headerlink" title="安装SecureCRT并设置为telnet默认应用"></a>安装SecureCRT并设置为telnet默认应用</h2><p>「SecureCRT.9.6.0.CN.Portable OSSSR.COM.7z」下载链接：<a target="_blank" rel="noopener" href="https://pan.quark.cn/s/0654db0bc802">https://pan.quark.cn/s/0654db0bc802</a></p>
-<h3 id="设置为telnet默认应用"><a href="#设置为telnet默认应用" class="headerlink" title="设置为telnet默认应用"></a>设置为telnet默认应用</h3><p>在选项-全局选项-浏览器中点击”将SecureCRT设为默认应用”，然后打开Windows设置-默认应用，搜索telnet，检查是否已经设置成功。</p>
-<p>回到浏览器中双击添加的网络设备，即可跳转到SecureCRT</p>
-<h3 id="设置在同一窗口打开多个标签"><a href="#设置在同一窗口打开多个标签" class="headerlink" title="设置在同一窗口打开多个标签"></a>设置在同一窗口打开多个标签</h3><p>在SecureCRT\Data\Config\Global.ini文件中搜索”single”,修改</p>
-<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-string">&quot;Single Instance&quot;</span><span class="hljs-operator">=</span><span class="hljs-number">00000001</span><br></code></pre></td></tr></table></figure>
-
-
+                <h2 id="VLAN标识符VID"><a href="#VLAN标识符VID" class="headerlink" title="VLAN标识符VID"></a>VLAN标识符VID</h2><ul>
+<li>VLAN标记的最后12比特称为VLAN标识符VID，唯一标志以太网帧属于哪一个VLAN。</li>
+<li>VID取值范围是0 ~ 4095 (0 ~ 2^12 - 1)。</li>
+<li>0和4095不用来表示VLAN，有效取值范围是1 ~ 4094。</li>
+</ul>
+<h2 id="802-1Q帧"><a href="#802-1Q帧" class="headerlink" title="802.1Q帧"></a>802.1Q帧</h2><ul>
+<li>在以太网帧基础上，用于实现虚拟局域网（VLAN）功能的一种数据帧格式</li>
+<li>结构特点：在普通以太网帧中插入4字节VLAN标记，其最后12比特是VID（有效取值范围1 - 4094）。</li>
+<li>处理方式：由交换机处理。收到普通以太网帧时“打标签”转变为802.1Q帧；转发时可能“去标签”变回普通以太网帧。</li>
+<li>作用：实现VLAN间通信隔离与管理，将物理局域网划分为多个逻辑独立的虚拟局域网，提高网络安全性、灵活性和管理效率，如企业按部门划分VLAN提升安全性。</li>
+</ul>
+<h2 id="交换机端口类型"><a href="#交换机端口类型" class="headerlink" title="交换机端口类型"></a>交换机端口类型</h2><h4 id="Access端口"><a href="#Access端口" class="headerlink" title="Access端口"></a>Access端口</h4><ul>
+<li>用途：一般用于连接用户计算机。</li>
+<li>VLAN属性：只能属于一个VLAN。</li>
+<li>PVID：PVID值与端口所属VLAN的ID相同（默认为1）。</li>
+<li>接收处理方法：一般只接受“未打标签”的普通以太网MAC帧，根据接收帧的端口的PVID给帧“打标签”，即插入4字节VLAN标记字段，字段中的VID取值与端口的PVID取值相等。</li>
+<li>发送处理方法：若帧中的VID与端口的PVID相等，则“去标签”并转发该帧；否则不转发。</li>
+</ul>
+<h4 id="Trunk端口"><a href="#Trunk端口" class="headerlink" title="Trunk端口"></a>Trunk端口</h4><ul>
+<li>用途：一般用于交换机之间或交换机与路由器之间的互连。</li>
+<li>VLAN属性：可以属于多个VLAN。</li>
+<li>PVID：用户可以设置Trunk端口的PVID值，默认情况下，PVID值为1。</li>
+<li>接收处理方法：接收“未打标签”的帧，根据接收帧的端口的PVID给帧“打标签”，即插入4字节VLAN标记字段，字段中的VID取值与端口的PVID取值相等；接收“已打标签的帧”。</li>
+<li>发送处理方法：对VID等于PVID的帧，“去标签”再转发。</li>
+</ul>
+<h4 id="Hybrid端口-华为"><a href="#Hybrid端口-华为" class="headerlink" title="Hybrid端口(华为)"></a>Hybrid端口(华为)</h4><ul>
+<li>用途：既可用于交换机之间或交换机与路由器之间的互连（同Trunk端口），也可用于交换机与用户计算机之间的互连（同Access端口）。</li>
+<li>VLAN属性：可以属于多个VLAN（同Trunk端口）。</li>
+<li>PVID：用户可以设置Hybrid端口的PVID值，默认情况下，PVID值为1（同Trunk端口）。</li>
+<li>接收处理方法：接收“未打标签”的帧，根据接收帧的端口的PVID给帧“打标签”，即插入4字节VLAN标记字段，字段中的VID取值与端口的PVID取值相等；接收“已打标签的帧”。</li>
+<li>发送处理方法：查看帧的VID是否在端口的“去标签”列表(即允许通过的vlan列表)中：若存在，则“去标签”后再转发；若不存在，则直接转发。</li>
+</ul>
+<h4 id="端口转发总结"><a href="#端口转发总结" class="headerlink" title="端口转发总结"></a>端口转发总结</h4><table>
+<thead>
+<tr>
+<th>端口类型</th>
+<th>接收处理方法</th>
+<th>发送处理方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Access</td>
+<td>一般只接收未打标签的普通以太网帧，并给其打标签</td>
+<td>若帧中的VID等于端口PVID，则去掉标签并转发；否则丢弃</td>
+</tr>
+<tr>
+<td>Trunk</td>
+<td>接收已打标签的帧；接收未打标签的帧，根据端口的PVID值给帧打标签</td>
+<td>帧中VID等于端口PVID，去掉标签再转发；帧中VID不等于端口PVID，直接转发</td>
+</tr>
+<tr>
+<td>Hybrid(华为)</td>
+<td>接收已打标签的帧；接收未打标签的帧，根据端口的PVID值给帧打标签</td>
+<td>查看数据帧中的VID是否在端口的“去标签”列表中：如果存在，则去掉标签再转发；如果不存在，则直接转发</td>
+</tr>
+</tbody></table>
+<p><img src="https://xinhaojin.github.io/picx-images-hosting/20250124/PixPin_2025-01-24_10-13-51.9dd298giwy.webp" srcset="/img/loading.gif" lazyload><br><img src="https://xinhaojin.github.io/picx-images-hosting/20250124/image.sz1rv7ixl.webp" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>互连的Trunk端口的PVID值不等，可能会造成转发错误。因为发送端口可能会先去标签，接收端口按照自己的PVID打标签。<br><img src="https://xinhaojin.github.io/picx-images-hosting/20250124/image.1lbx9n7m6f.webp" srcset="/img/loading.gif" lazyload><br><img src="https://xinhaojin.github.io/picx-images-hosting/20250124/image.13lvl1k0i5.webp" srcset="/img/loading.gif" lazyload></li>
+</ul>
 
                 
               </div>
@@ -358,7 +409,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件安装配置</a>
+  <a href="/categories/%E7%BD%91%E5%B7%A5/" class="category-chain-item">网工</a>
   
   
 
@@ -370,6 +421,13 @@
     </div>
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%BD%91%E5%B7%A5/" class="print-no-link">#网工</a>
+      
+    </div>
+  
 </div>
 
 
@@ -378,8 +436,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>EVENG懒人版5.1+SecureCRT9.6绿色版安装配置</div>
-      <div>https://xinhaojin.github.io/2025/01/17/EVENG懒人版5.1+SecureCRT9.6绿色版安装配置/</div>
+      <div>vlan实现机制</div>
+      <div>https://xinhaojin.github.io/2025/01/24/vlan实现机制/</div>
     </div>
     <div class="license-meta">
       
@@ -391,13 +449,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年1月17日</div>
+          <div>2025年1月24日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年1月17日</div>
+          <div>2025年1月24日</div>
         </div>
       
       
@@ -428,18 +486,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/01/24/vlan%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6/" title="vlan实现机制">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">vlan实现机制</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/01/01/ubuntu%E4%B8%8B%E9%85%8D%E7%BD%AEv2raya/" title="ubuntu下配置v2raya">
-                        <span class="hidden-mobile">ubuntu下配置v2raya</span>
+                      <a href="/2025/01/17/EVENG%E6%87%92%E4%BA%BA%E7%89%885.1+SecureCRT9.6%E7%BB%BF%E8%89%B2%E7%89%88%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" title="EVENG懒人版5.1+SecureCRT9.6绿色版安装配置">
+                        <span class="hidden-mobile">EVENG懒人版5.1+SecureCRT9.6绿色版安装配置</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -462,7 +514,7 @@
         var options = Object.assign(
           {"clientID":"Ov23lifvhsymyganMHro","clientSecret":"cdd38ac0c65a95027749446001ebdff7ca7d4ec2","repo":"xinhaojin.github.io","owner":"xinhaojin","admin":"xinhaojin","language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
           {
-            id: '1c5d05fbda0598e1b926f290863e3a20'
+            id: '25c1c40ff5e6949cf7c54c370a089ea0'
           }
         )
         var gitalk = new Gitalk(options);
