@@ -265,7 +265,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2025/01/26/%E4%BD%BF%E7%94%A8polkit%E5%AE%9E%E7%8E%B0%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86systemctl%E6%9C%8D%E5%8A%A1/" target="_self">
         <div>
-          以下是使用 polkit 实现普通用户管理 systemctl 某个服务（以 nginx 为例）的步骤总结，以 Markdown 格式呈现：  使用 polkit 实现普通用户管理 systemctl 服务1. 背景默认情况下，普通用户无法直接使用 systemctl 管理系统服务（如 nginx），因为需要管理员权限（root 或 sudo）。通过 polkit，可以为普通用户授权管理特定服务。
+          1. 背景默认情况下，普通用户无法直接使用 systemctl 管理系统服务（如 nginx），因为需要管理员权限（root 或 sudo）。通过 polkit，可以为普通用户授权管理特定服务。  2. 实现步骤2.1 创建 polkit 规则文件 进入 polkit 规则目录： 1cd /etc/polkit-1/rules.d/  创建一个新的规则文件（例如 10-nginx.rules）：
         </div>
       </a>
 

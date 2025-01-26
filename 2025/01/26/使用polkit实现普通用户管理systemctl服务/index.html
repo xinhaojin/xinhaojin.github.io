@@ -21,15 +21,15 @@
   <meta name="author" content="xinhaojin">
   <meta name="keywords" content="">
   
-    <meta name="description" content="以下是使用 polkit 实现普通用户管理 systemctl 某个服务（以 nginx 为例）的步骤总结，以 Markdown 格式呈现：  使用 polkit 实现普通用户管理 systemctl 服务1. 背景默认情况下，普通用户无法直接使用 systemctl 管理系统服务（如 nginx），因为需要管理员权限（root 或 sudo）。通过 polkit，可以为普通用户授权管理特定服务。">
+    <meta name="description" content="1. 背景默认情况下，普通用户无法直接使用 systemctl 管理系统服务（如 nginx），因为需要管理员权限（root 或 sudo）。通过 polkit，可以为普通用户授权管理特定服务。  2. 实现步骤2.1 创建 polkit 规则文件 进入 polkit 规则目录： 1cd &#x2F;etc&#x2F;polkit-1&#x2F;rules.d&#x2F;  创建一个新的规则文件（例如 10-nginx.rules）：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用polkit实现普通用户管理systemctl服务">
 <meta property="og:url" content="https://xinhaojin.github.io/2025/01/26/%E4%BD%BF%E7%94%A8polkit%E5%AE%9E%E7%8E%B0%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86systemctl%E6%9C%8D%E5%8A%A1/index.html">
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
-<meta property="og:description" content="以下是使用 polkit 实现普通用户管理 systemctl 某个服务（以 nginx 为例）的步骤总结，以 Markdown 格式呈现：  使用 polkit 实现普通用户管理 systemctl 服务1. 背景默认情况下，普通用户无法直接使用 systemctl 管理系统服务（如 nginx），因为需要管理员权限（root 或 sudo）。通过 polkit，可以为普通用户授权管理特定服务。">
+<meta property="og:description" content="1. 背景默认情况下，普通用户无法直接使用 systemctl 管理系统服务（如 nginx），因为需要管理员权限（root 或 sudo）。通过 polkit，可以为普通用户授权管理特定服务。  2. 实现步骤2.1 创建 polkit 规则文件 进入 polkit 规则目录： 1cd &#x2F;etc&#x2F;polkit-1&#x2F;rules.d&#x2F;  创建一个新的规则文件（例如 10-nginx.rules）：">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-01-26T02:23:00.000Z">
-<meta property="article:modified_time" content="2025-01-26T02:25:03.350Z">
+<meta property="article:modified_time" content="2025-01-26T02:33:45.723Z">
 <meta property="article:author" content="xinhaojin">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary_large_image">
@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          716 字
+          671 字
         
       </span>
     
@@ -326,9 +326,7 @@
             
               <div class="markdown-body">
                 
-                <p>以下是使用 <code>polkit</code> 实现普通用户管理 <code>systemctl</code> 某个服务（以 <code>nginx</code> 为例）的步骤总结，以 Markdown 格式呈现：</p>
-<hr>
-<h1 id="使用-polkit-实现普通用户管理-systemctl-服务"><a href="#使用-polkit-实现普通用户管理-systemctl-服务" class="headerlink" title="使用 polkit 实现普通用户管理 systemctl 服务"></a>使用 <code>polkit</code> 实现普通用户管理 <code>systemctl</code> 服务</h1><h2 id="1-背景"><a href="#1-背景" class="headerlink" title="1. 背景"></a>1. 背景</h2><p>默认情况下，普通用户无法直接使用 <code>systemctl</code> 管理系统服务（如 <code>nginx</code>），因为需要管理员权限（<code>root</code> 或 <code>sudo</code>）。通过 <code>polkit</code>，可以为普通用户授权管理特定服务。</p>
+                <h2 id="1-背景"><a href="#1-背景" class="headerlink" title="1. 背景"></a>1. 背景</h2><p>默认情况下，普通用户无法直接使用 <code>systemctl</code> 管理系统服务（如 <code>nginx</code>），因为需要管理员权限（<code>root</code> 或 <code>sudo</code>）。通过 <code>polkit</code>，可以为普通用户授权管理特定服务。</p>
 <hr>
 <h2 id="2-实现步骤"><a href="#2-实现步骤" class="headerlink" title="2. 实现步骤"></a>2. 实现步骤</h2><h3 id="2-1-创建-polkit-规则文件"><a href="#2-1-创建-polkit-规则文件" class="headerlink" title="2.1 创建 polkit 规则文件"></a>2.1 创建 <code>polkit</code> 规则文件</h3><ol>
 <li><p>进入 <code>polkit</code> 规则目录：</p>
