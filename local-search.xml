@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>DBeaver连接MySQL和IoTDB数据库步骤</title>
+    <link href="/2025/02/06/DBeaver%E8%BF%9E%E6%8E%A5MySQL%E5%92%8CIoTDB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%AD%A5%E9%AA%A4/"/>
+    <url>/2025/02/06/DBeaver%E8%BF%9E%E6%8E%A5MySQL%E5%92%8CIoTDB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%AD%A5%E9%AA%A4/</url>
+    
+    <content type="html"><![CDATA[<h1 id="DBeaver连接MySQL和IoTDB数据库步骤"><a href="#DBeaver连接MySQL和IoTDB数据库步骤" class="headerlink" title="DBeaver连接MySQL和IoTDB数据库步骤"></a>DBeaver连接MySQL和IoTDB数据库步骤</h1><h2 id="一、DBeaver-连接-MySQL-数据库步骤"><a href="#一、DBeaver-连接-MySQL-数据库步骤" class="headerlink" title="一、DBeaver 连接 MySQL 数据库步骤"></a>一、DBeaver 连接 MySQL 数据库步骤</h2><ol><li><p><strong>新建数据库连接</strong>  </p><ul><li>打开 DBeaver，选择新建数据库连接。</li><li>在数据库类型中选择 MySQL。</li></ul></li><li><p><strong>编辑驱动设置</strong>  </p><ul><li>进入驱动设置页面，选择库选项。</li></ul></li><li><p><strong>添加驱动文件</strong>  </p><ul><li>添加 MySQL 驱动文件，例如 <code>mysql-connector-java-8.0.17.jar</code>。</li><li><code>https://gitee.com/liwei125/dbeaver-driver-all/blob/master/drivers/mysql/mysql8/mysql-connector-java-8.0.17.jar</code></li></ul></li><li><p><strong>设置驱动类</strong>  </p><ul><li>找到驱动类为 <code>com.mysql.cj.jdbc.Driver</code>，点击确定完成设置。</li></ul></li></ol><h2 id="二、DBeaver-连接-IoTDB-数据库步骤"><a href="#二、DBeaver-连接-IoTDB-数据库步骤" class="headerlink" title="二、DBeaver 连接 IoTDB 数据库步骤"></a>二、DBeaver 连接 IoTDB 数据库步骤</h2><h3 id="（一）下载-IoTDB-JDBC-驱动"><a href="#（一）下载-IoTDB-JDBC-驱动" class="headerlink" title="（一）下载 IoTDB JDBC 驱动"></a>（一）下载 IoTDB JDBC 驱动</h3><ul><li>从IoTDB官网<code>https://iotdb.apache.org/zh/UserGuide/latest/Ecosystem-Integration/DBeaver.html</code>下载与您 IoTDB 版本适配的 JDBC 驱动。</li></ul><h3 id="（二）安装-JDBC-驱动"><a href="#（二）安装-JDBC-驱动" class="headerlink" title="（二）安装 JDBC 驱动"></a>（二）安装 JDBC 驱动</h3><ol><li>打开 DBeaver，点击菜单栏中的 “数据库”。</li><li>选择 “驱动管理器”，点击 “新建”。</li><li>在弹出窗口中，填写以下信息：<ul><li><strong>类名</strong>：<code>org.apache.iotdb.jdbc.IoTDBDriver</code></li><li><strong>URL 模板</strong>：<code>jdbc:iotdb://127.0.0.1:6667/</code></li><li><strong>默认端口</strong>：<code>6667</code></li><li><strong>默认用户</strong>：<code>root</code></li></ul></li><li>点击 “添加文件”，选择之前下载的 JDBC 驱动 jar 文件，然后点击 “确定”。</li></ol><h3 id="（三）连接-IoTDB-数据库"><a href="#（三）连接-IoTDB-数据库" class="headerlink" title="（三）连接 IoTDB 数据库"></a>（三）连接 IoTDB 数据库</h3><ol><li>在 DBeaver 中，点击 “新建连接”，搜索 “IoTDB”。</li><li>输入数据库的连接信息，包含 IP 地址、端口号、用户名和密码。</li><li>点击 “测试连接”，确保连接成功。</li><li>若测试通过，点击 “确定” 完成连接设置。</li></ol><hr><p>通过上述步骤，即可在 DBeaver 中成功连接 MySQL 和 IoTDB 数据库，进而执行 SQL 查询和管理数据库。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>软件安装配置</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>使用polkit实现普通用户管理systemctl服务</title>
     <link href="/2025/01/26/%E4%BD%BF%E7%94%A8polkit%E5%AE%9E%E7%8E%B0%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86systemctl%E6%9C%8D%E5%8A%A1/"/>
     <url>/2025/01/26/%E4%BD%BF%E7%94%A8polkit%E5%AE%9E%E7%8E%B0%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86systemctl%E6%9C%8D%E5%8A%A1/</url>
