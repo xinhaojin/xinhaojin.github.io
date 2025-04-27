@@ -1,1808 +1,1006 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  <link rel="icon" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
   
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xinhaojin">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="xinhaojin&#39;s blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="xinhaojin&#39;s blog">
 <meta property="og:url" content="http://example.com/page/2/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
+<meta property="og:site_name" content="xinhaojin&#39;s blog">
+<meta property="og:description" content="xinhaojin&#39;s blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="xinhaojin">
+<meta name="twitter:card" content="summary_large_image">
   
   
+    <meta name="referrer" content="no-referrer-when-downgrade">
   
-<link rel="stylesheet" href="/css/style.css">
+  
+  <title>xinhaojin&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
 
   
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?596b73bb5b70c262b123e997b6686f49";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
 
   
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
 
+  
+
+  
+
+  
+
+
+
+  
 <meta name="generator" content="Hexo 7.3.0"></head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xinhaojin&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-          <a class="main-nav-link" href="/">Home</a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
         
-      </nav>
-      <nav id="sub-nav">
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
         
         
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-华为防火墙安全策略基础" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/12/16/%E5%8D%8E%E4%B8%BA%E9%98%B2%E7%81%AB%E5%A2%99%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5%E5%9F%BA%E7%A1%80/" class="article-date">
-  <time class="dt-published" datetime="2024-12-16T08:50:00.000Z" itemprop="datePublished">2024-12-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%BD%91%E5%B7%A5/">网工</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/12/16/%E5%8D%8E%E4%B8%BA%E9%98%B2%E7%81%AB%E5%A2%99%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5%E5%9F%BA%E7%A1%80/">华为防火墙安全策略基础</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="安全策略基础"><a href="#安全策略基础" class="headerlink" title="安全策略基础"></a>安全策略基础</h1><h2 id="安全策略的组成"><a href="#安全策略的组成" class="headerlink" title="安全策略的组成"></a>安全策略的组成</h2><p>每一条安全策略都是由匹配条件和动作组成的规则。防火墙接收到报文以后，将报文的属性与安全策略的匹配条件进行匹配。如果所有条件都匹配，则此报文成功匹配安全策略，防火墙按照该安全策略的动作处理这个报文及其后续双向流量。因此，安全策略的核心元素是匹配条件和动作。</p>
-<h3 id="匹配条件"><a href="#匹配条件" class="headerlink" title="匹配条件"></a>匹配条件</h3><ul>
-<li>谁</li>
-<li>从哪里来到哪里去</li>
-<li>干什么</li>
-<li>什么时候</li>
-</ul>
-<p>用户、终端设备、时间段、地址、地区、服务、应用、URL分类等匹配条件可以帮助防火墙精准地识别和过滤恶意流量。</p>
-<h3 id="动作"><a href="#动作" class="headerlink" title="动作"></a>动作</h3><ul>
-<li><p><strong>允许</strong></p>
-<ul>
-<li>流量通过</li>
-<li>可以执行内容安全检查</li>
-</ul>
-</li>
-<li><p><strong>禁止</strong></p>
-<ul>
-<li>流量不通过</li>
-<li>可以选择发送反馈报文，快速结束会话</li>
-</ul>
-</li>
-</ul>
-<h3 id="策略标识"><a href="#策略标识" class="headerlink" title="策略标识"></a>策略标识</h3><ul>
-<li><p><strong>名称</strong></p>
-<ul>
-<li>唯一标识安全策略</li>
-</ul>
-</li>
-<li><p><strong>描述</strong></p>
-<ul>
-<li>记录安全策略的相关信息</li>
-</ul>
-</li>
-<li><p><strong>策略组</strong></p>
-<ul>
-<li>简化管理相同目的的安全策略</li>
-</ul>
-</li>
-<li><p><strong>标签</strong></p>
-<ul>
-<li>标识安全策略</li>
-<li>筛选具有相同特征的策略</li>
-<li>建议使用固定前缀和颜色区分不同动作</li>
-</ul>
-</li>
-</ul>
-<h2 id="安全策略的命令行配置方式"><a href="#安全策略的命令行配置方式" class="headerlink" title="安全策略的命令行配置方式"></a>安全策略的命令行配置方式</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;sysname&gt; system-view</span><br><span class="line">[sysname] security-policy</span><br><span class="line">[sysname-policy-security] rule name &quot;Allow access to the Internet&quot;</span><br><span class="line">[sysname-policy-security-rule-Allow access to the Internet] source-zone trust</span><br><span class="line">[sysname-policy-security-rule-Allow access to the Internet] destination-zone untrust</span><br><span class="line">[sysname-policy-security-rule-Allow access to the Internet] source-address 192.168.1.0 mask 24</span><br><span class="line">[sysname-policy-security-rule-Allow access to the Internet] source-address 192.168.2.0 mask 24</span><br><span class="line">[sysname-policy-security-rule-Allow access to the Internet] service http https</span><br><span class="line">[sysname-policy-security-rule-Allow access to the Internet] action permit</span><br><span class="line">[sysname-policy-security-rule-Allow access to the Internet] quit</span><br></pre></td></tr></table></figure>
-<h2 id="缺省策略和匹配规则"><a href="#缺省策略和匹配规则" class="headerlink" title="缺省策略和匹配规则"></a>缺省策略和匹配规则</h2><h4 id="缺省策略"><a href="#缺省策略" class="headerlink" title="缺省策略"></a>缺省策略</h4><ul>
-<li>出厂设置：存在一条显式的缺省策略<code>default</code>，默认禁止所有域间流量。</li>
-<li>位置：永远位于策略列表的最底端，不可删除。</li>
-</ul>
-<h3 id="安全策略匹配流程"><a href="#安全策略匹配流程" class="headerlink" title="安全策略匹配流程"></a>安全策略匹配流程</h3><ul>
-<li>用户创建的安全策略按创建顺序排列，新策略默认位于策略列表底部，缺省策略之前。</li>
-<li>流量处理：防火墙接收到流量后，从上至下依次匹配安全策略。</li>
-<li>匹配成功：一旦某条安全策略匹配成功，停止匹配，按该策略指定的动作处理流量。</li>
-<li>未匹配：如果所有手工创建的安全策略都未匹配，则按缺省策略处理。</li>
-</ul>
-<h3 id="建议"><a href="#建议" class="headerlink" title="建议"></a>建议</h3><ul>
-<li><strong>保持缺省策略</strong><ul>
-<li>建议保持缺省策略的动作为禁止，不要修改。</li>
-<li>缺省策略的目的是保证所有未明确允许的流量都被禁止，这是防火墙的基本设计理念。</li>
-</ul>
-</li>
-<li><strong>策略顺序</strong><ul>
-<li>安全策略的顺序至关重要。</li>
-<li>创建安全策略后，需根据业务需要手动调整策略顺序，以确保策略匹配结果符合预期。</li>
-</ul>
-</li>
-</ul>
-<h2 id="本地安全策略和接口访问控制"><a href="#本地安全策略和接口访问控制" class="headerlink" title="本地安全策略和接口访问控制"></a>本地安全策略和接口访问控制</h2><p>针对从防火墙发出的流量、访问防火墙的流量的安全策略，叫做本地安全策略。<br>eg：ping防火墙接口，不需要专门写策略，允许指定协议即可</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">interface GigabitEthernet 0/0/1</span><br><span class="line">ip address 10.1.1.1 255.255.255.0</span><br><span class="line">service-manage enable //开启接口的访问控制功能。</span><br><span class="line">service-manage ping permit //允许通过Ping访问此接口。</span><br></pre></td></tr></table></figure>
-<p>缺省情况下：</p>
-<ul>
-<li>防火墙带外管理口MGMT接口已经启用接口访问控制功能，并且允许通过HTTP、HTTPS、Ping、SSH、Telnet、NETCONF和SNMP访问防火墙</li>
-<li>其他接口也启用了接口访问控制功能，但是未允许任何协议。</li>
-</ul>
-<p><strong>另外注意</strong>：如果想要从管理终端Ping防火墙的GE0&#x2F;0&#x2F;2接口，也需要开启GE0&#x2F;0&#x2F;1的接口访问控制功能，因为流量是从GE0&#x2F;0&#x2F;1进入防火墙的。</p>
-<h2 id="哪些业务需要开放安全策略"><a href="#哪些业务需要开放安全策略" class="headerlink" title="哪些业务需要开放安全策略"></a>哪些业务需要开放安全策略</h2><p><strong>安全策略仅控制单播报文</strong>，你需要为所有合法的单播报文开放安全策略。缺省情况下，组播报文和广播报文不受防火墙的安全策略控制。防火墙直接转发组播报文和广播报文，不需要开放安全策略。</p>
-<p>特别值得提醒的是：以上规则同样适用于网络互连互通的基础协议（包括BGP、BFD、DHCP、DHCPv6、LDP、OSPF），你需要为它们的单播报文配置安全策略。这是防火墙与路由器和交换机最大的不同。如果想要快速接入网络，你也可以使用命令undo firewall packet-filter basic-protocol enable取消这个控制。取消以后，上述协议的单播报文不受安全策略控制。</p>
-<ul>
-<li><p>华为防火墙作为状态检测防火墙，只需为报文发起方配置安全策略。</p>
-<ul>
-<li>收到发起方的首包报文后，执行安全策略检查并记录会话表。后续报文和回程报文只需命中会话表即可通过，不再检查安全策略。</li>
-<li>如果通信双方都可能发起连接，需要为双向报文分别配置安全策略。</li>
-</ul>
-</li>
-<li><p>源和目的在同一个安全区域内的域内流量，默认不需要配置安全策略。</p>
-</li>
-</ul>
-<h1 id="引用对象"><a href="#引用对象" class="headerlink" title="引用对象"></a>引用对象</h1><h2 id="什么是对象"><a href="#什么是对象" class="headerlink" title="什么是对象"></a>什么是对象</h2><p>对象是通用元素（如IP地址、服务、应用等）的集合。创建了集合形式的对象，你就可以在各种业务策略中直接引用该对象，而不需要一次次重复输入或选择。当需要修改多个业务策略的适用范围时，只需要修改其引用的对象，就可以快速完成多个策略的调整。使用对象，可以显著降低管理成本，提高维护效率。<br><strong>地址对象</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ip address-set Research_Dept type object //object表示地址对象</span><br><span class="line">address 10 range 192.168.1.1 192.168.1.120 //指定IPv4地址段的起止地址</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ip address-set Research_Dept type object </span><br><span class="line">address 11 192.168.1.1 0.0.0.255 //使用通配符指定地址范围</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ip address-set Research_Dept type object </span><br><span class="line">address 11 192.168.1.1 mask 255.255.255.0 //使用掩码指定地址范围</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ip address-set Research_Dept type object </span><br><span class="line">address 11 192.168.1.1 mask 24 //使用掩码长度指定地址范围</span><br></pre></td></tr></table></figure>
-<p><strong>地址组</strong></p>
-<ul>
-<li>地址组可以添加地址、地址对象或地址组，可以方便地管理复杂的地址范围。</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ip address-set R&amp;D_Dept type group //group表示地址组</span><br><span class="line">address address-set Research_Dept //将地址对象Research_Dept加入地址组R&amp;D_Dept</span><br><span class="line">address address-set Test_Dept</span><br><span class="line">ip address-set Product type group</span><br><span class="line">address address-set R&amp;D_Dept //将地址组R&amp;D_Dept加入地址组Product</span><br></pre></td></tr></table></figure>
-<h2 id="在安全策略中引用地址对象和地址组"><a href="#在安全策略中引用地址对象和地址组" class="headerlink" title="在安全策略中引用地址对象和地址组"></a>在安全策略中引用地址对象和地址组</h2><p>eg:禁止地址组R&amp;D_Dept访问DMZ区域的HR服务</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">security-policy </span><br><span class="line"> rule name &quot;Deny R&amp;D_Dept to HR&quot; </span><br><span class="line"> source-zone trust</span><br><span class="line"> destination-zone dmz </span><br><span class="line"> source-address address-set R&amp;D_Dept //以地址组方式指定源地址</span><br><span class="line"> service HRService //自定义的HR服务</span><br><span class="line"> action deny</span><br></pre></td></tr></table></figure>
-<p>在此基础上排除某个地址</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">security-policy </span><br><span class="line"> rule name &quot;Deny R&amp;D_Dept to HR&quot; </span><br><span class="line"> source-zone trust</span><br><span class="line"> destination-zone dmz </span><br><span class="line"> source-address address-set R&amp;D_Dept //以地址集方式指定源地址（192.168.1.1/24）</span><br><span class="line"> source-address-exclude 192.168.1.66 32 //排除此地址</span><br><span class="line"> service HRService //自定义的HR服务</span><br><span class="line"> action deny</span><br></pre></td></tr></table></figure>
-<h2 id="在安全策略中引用服务和服务组"><a href="#在安全策略中引用服务和服务组" class="headerlink" title="在安全策略中引用服务和服务组"></a>在安全策略中引用服务和服务组</h2><ul>
-<li><strong>服务</strong>是一个或多个应用协议的集合，<strong>由协议类型、源端口、目的端口等信息来指定</strong>。</li>
-<li><strong>服务组</strong>是服务的集合，服务组的成员可以是服务，也可以是服务组。</li>
-</ul>
-<p>防火墙默认提供了常见的知名服务，即预定义服务，例如HTTP、FTP、Telnet、DNS等。在现实网络中，如果协议使用端口与预定义服务的端口不同时，需要创建自定义服务。例如，预定义服务ILS的端口号为1002，但是某些旧版软件可能使用389端口来接收ILS报文。此时，你需要自定义一个端口号为389的服务，并在安全策略中引用。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">system-view</span><br><span class="line"> ip service-set new_ils type object //object表示自定义服务</span><br><span class="line"> service protocol tcp destination-port 389 //以目的端口指定ILS服务</span><br></pre></td></tr></table></figure>
-<h3 id="自定义ICMP服务提高安全性"><a href="#自定义ICMP服务提高安全性" class="headerlink" title="自定义ICMP服务提高安全性"></a>自定义ICMP服务提高安全性</h3><p>对于TCP、UDP和SCTP服务，可以通过源端口和目的端口来定义，通常只定义目的端口即可。<br>对于ICMP和ICMPv6服务，需要使用类型号和消息码来定义。ICMP服务常用于Ping和Tracert，一般直接使用预定义的ICMP服务即可。但是，ICMP服务也经常被攻击者用来窥测网络或建立隐蔽通道。因此，如果你对安全性有更高的要求，可以自定义服务，仅开放特定类型的ICMP报文。<br>以Ping为例，Ping需要使用两种类型的ICMP报文：Echo Request（Type 8）和Echo Reply（Type 0）。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">system-view</span><br><span class="line"> ip service-set ICMP_Echo_Request type object</span><br><span class="line"> service protocol icmp icmp-type 8 //自定义ICMP type 8</span><br></pre></td></tr></table></figure>
-<p>eg:Trust区域的PC要Ping Untrust区域的交换机，安全策略配置如下</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">security-policy</span><br><span class="line"> rule name &quot;Allow Ping&quot; </span><br><span class="line"> source-zone trust </span><br><span class="line"> destination-zone untrust </span><br><span class="line"> source-address 10.1.1.10 24</span><br><span class="line"> destination-address 10.1.2.10 24</span><br><span class="line"> service ICMP_Echo_Request</span><br><span class="line"> action permit</span><br></pre></td></tr></table></figure>
-<h2 id="在安全策略中引用应用"><a href="#在安全策略中引用应用" class="headerlink" title="在安全策略中引用应用"></a>在安全策略中引用应用</h2><p>防火墙可以根据服务和服务组识别常用的应用协议。不过，识别服务依赖端口识别技术，其主要依据的是端口号，因此只能用于识别FTP、HTTP等基础协议。然而，大量应用承载在HTTP协议之上，仅识别出服务已经不能解决应用管控的问题了。</p>
-<p>报文五元组：源IP地址、源端口、目的IP地址、目的端口、协议类型</p>
-<p>业务感知技术：流量特征分析</p>
-<h2 id="其他引用类型"><a href="#其他引用类型" class="headerlink" title="其他引用类型"></a>其他引用类型</h2><p>地区组、域名组、URL分类等</p>
-<h1 id="管理配置原则"><a href="#管理配置原则" class="headerlink" title="管理配置原则"></a>管理配置原则</h1><h2 id="使用安全区域划分网络"><a href="#使用安全区域划分网络" class="headerlink" title="使用安全区域划分网络"></a>使用安全区域划分网络</h2><p>防火墙默认提供Untrust、Trust、DMZ，通常分别用于连接外网、内网和具有中间状态的DMZ区。缺省情况下，同一个安全区域内的设备可以互相访问，不同安全区域内的设备互访需要开放安全策略。这种设计在性能和安全性之间取得了良好的平衡。如果网络被入侵，攻击者只能访问同一个安全区域内的资源，这就把损失控制在一个比较小的范围内。攻击者必须突破安全区域和安全策略的控制，才能访问其他资源。</p>
-<ul>
-<li>对于彼此之间没有交互的系统，不要将它们置于同一子网中。否则，攻击者只要突破外围防御措施，就可以更轻松地访问所有内容。</li>
-<li>把具有相同安全级别的设备和业务资源部署在同一个安全区域中。</li>
-<li>对于需要交互的不同安全等级的系统，请部署在不同安全区域，并开放严格的安全策略。例如，所有对外提供服务的服务器（如Web服务器、邮件服务器）应该部署在一个专用区域（通常为DMZ），不应该被外网直接访问的服务器（如数据库）必须部署在内部服务器区。</li>
-</ul>
-<h2 id="遵循最小授权原则"><a href="#遵循最小授权原则" class="headerlink" title="遵循最小授权原则"></a>遵循最小授权原则</h2><h3 id="1-精确匹配条件"><a href="#1-精确匹配条件" class="headerlink" title="1. 精确匹配条件"></a>1. 精确匹配条件</h3><ul>
-<li>避免使用”Any”作为匹配条件，以减少安全风险。<ul>
-<li>限制到具体的源&#x2F;目的IP地址和服务。</li>
-<li>设置尽可能多的匹配条件，如用户、应用等。</li>
-</ul>
-</li>
-</ul>
-<h3 id="2-对外开放服务"><a href="#2-对外开放服务" class="headerlink" title="2. 对外开放服务"></a>2. 对外开放服务</h3><ul>
-<li>如果需要对Internet开放服务：<ul>
-<li>源IP可设置为”Any”，目的IP必须明确指定。</li>
-<li>避免开放所有服务或端口，以防止字典攻击和暴力破解。</li>
-</ul>
-</li>
-<li>对于非公开服务：<ul>
-<li>必须限定源IP地址范围。</li>
-<li>不允许任意源IP访问敏感业务。</li>
-</ul>
-</li>
-</ul>
-<h3 id="3-应用识别"><a href="#3-应用识别" class="headerlink" title="3. 应用识别"></a>3. 应用识别</h3><ul>
-<li>利用防火墙的应用识别能力，实现精细化管控。<ul>
-<li>根据应用类型或标签设置安全策略，如允许带有“企业应用”标签的应用。</li>
-</ul>
-</li>
-</ul>
-<h3 id="4-临时安全策略"><a href="#4-临时安全策略" class="headerlink" title="4. 临时安全策略"></a>4. 临时安全策略</h3><ul>
-<li>为临时安全策略设置明确的生效时间，合作结束后自动失效。<ul>
-<li>确保系统时间准确，推荐使用NTP同步时间。</li>
-</ul>
-</li>
-</ul>
-<h3 id="5-安全策略方向"><a href="#5-安全策略方向" class="headerlink" title="5. 安全策略方向"></a>5. 安全策略方向</h3><ul>
-<li>华为防火墙作为状态检测防火墙：<ul>
-<li>只需允许业务的主动发起方建立连接。</li>
-</ul>
-</li>
-<li>仅在通信双方都需要主动发起连接的情况下，配置双向安全策略。</li>
-<li>服务器的系统和软件更新：<ul>
-<li>应通过统一的中央服务器获取。</li>
-<li>在安全策略中限制到具体的域名或应用。</li>
-</ul>
-</li>
-</ul>
-<h2 id="顺序很重要，先精确后宽泛，先常用后少用"><a href="#顺序很重要，先精确后宽泛，先常用后少用" class="headerlink" title="顺序很重要，先精确后宽泛，先常用后少用"></a>顺序很重要，先精确后宽泛，先常用后少用</h2><ul>
-<li>始终将更精确的安全策略放在前面，将更宽泛的安全策略放在后面。<ul>
-<li>对于这些宽泛的安全策略，要持续分析，逐渐精确化，或者停用</li>
-</ul>
-</li>
-<li>将频繁命中的安全策略放在更前面。<ul>
-<li>命中次数越多，说明匹配此策略的流量越多。</li>
-<li>让主要流量快速完成安全策略匹配，显著提高性能，这在高负载环境中尤为明显。</li>
-</ul>
-</li>
-</ul>
-<h1 id="部署安全策略"><a href="#部署安全策略" class="headerlink" title="部署安全策略"></a>部署安全策略</h1><h2 id="策略顺序"><a href="#策略顺序" class="headerlink" title="策略顺序"></a>策略顺序</h2><ol>
-<li><strong>白名单（允许列表）</strong>：<ul>
-<li>最优先级的策略是白名单，这些策略定义了哪些特定的流量是被明确允许的。这些策略应该尽可能具体，以确保只有合法的流量被允许通过。</li>
-</ul>
-</li>
-<li><strong>业务相关的安全策略</strong>：<ul>
-<li>接下来是与业务相关的安全策略，这些策略基于业务需求和安全政策来允许或拒绝特定的流量。</li>
-</ul>
-</li>
-<li><strong>黑名单（拒绝列表）</strong>：<ul>
-<li>黑名单策略通常位于白名单和业务相关策略之后。这些策略定义了哪些特定的流量是被明确拒绝的，例如已知的恶意IP地址、非法应用等。</li>
-</ul>
-</li>
-<li><strong>临时安全策略</strong>：<ul>
-<li>临时安全策略通常位于策略列表的底部，作为最后的手段。这种策略允许所有流量通过，用于在配置初期或在分析阶段确保业务不受影响，同时收集流量数据以便于后续策略的精确配置。</li>
-</ul>
-</li>
-<li><strong>默认策略（缺省策略）</strong>：<ul>
-<li>最后是默认策略，如果没有匹配到任何上述策略，流量将按照默认策略处理，通常是拒绝所有未明确允许的流量。<br>因此，黑名单策略通常位于临时安全策略之前，而临时安全策略位于默认策略之前。这种顺序确保了只有在白名单和业务策略中明确允许的流量才能通过，而所有未明确允许的流量都将被默认策略拒绝。通过这种方式，可以在不影响业务运行的情况下，逐步构建和优化安全策略。</li>
-</ul>
-</li>
-</ol>
-<h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><p> <strong>1.粗略确定白名单和黑名单</strong><br> <strong>2.写入临时安全策略允许所有流量</strong><br> <strong>3.迅速写入黑名单策略</strong><br> <strong>4.写入白名单策略</strong><br> <strong>5.精细化业务相关的安全策略以逐渐替代临时安全策略</strong></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/16/%E5%8D%8E%E4%B8%BA%E9%98%B2%E7%81%AB%E5%A2%99%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5%E5%9F%BA%E7%A1%80/" data-id="cm9zmq8zq00dusqhl0spt5d1f" data-title="华为防火墙安全策略基础" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-systemctl管理服务" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/12/11/systemctl%E7%AE%A1%E7%90%86%E6%9C%8D%E5%8A%A1/" class="article-date">
-  <time class="dt-published" datetime="2024-12-11T02:56:38.000Z" itemprop="datePublished">2024-12-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/12/11/systemctl%E7%AE%A1%E7%90%86%E6%9C%8D%E5%8A%A1/">systemctl管理服务</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>eg.netmon 用户，在名为‘py12’的 conda 虚拟环境中，在&#x2F;home&#x2F;netmon&#x2F;projects&#x2F;iotdev&#x2F;iotdev_flask 目录下，运行 flask 程序 flask_app.py</p>
-<h2 id="创建服务"><a href="#创建服务" class="headerlink" title="创建服务"></a>创建服务</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/systemd/system/iot_flask.service</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Gunicorn instance to serve Flask App</span><br><span class="line">After=network.target </span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">User=netmon</span><br><span class="line">Group=netmon</span><br><span class="line">WorkingDirectory=/home/netmon/projects/iotdev/iotdev_flask</span><br><span class="line">Environment=&quot;PATH=/home/netmon/.conda/envs/py12/bin&quot;</span><br><span class="line">ExecStart=/home/netmon/.conda/envs/py12/bin/python flask_app.py</span><br><span class="line">Restart=always</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-
-<p>下面是每部分的意义：</p>
-<ul>
-<li><p>​<code>[Unit]</code>​: 这个部分包含了服务的基本描述和依赖关系。</p>
-<ul>
-<li>​<code>Description</code>​: 定义了服务的简短描述，这里是“Gunicorn instance to serve Flask App”，表示这是一个用来运行 Flask 应用的 Gunicorn 服务实例。</li>
-<li>​<code>After</code>​: 指定了服务的启动顺序，即在这个服务启动之前，网络服务必须已经启动和就绪。在这里，服务将在网络目标之后启动，这意味着只有当基本的网络连接已经建立后，Gunicorn 服务才会被启动。</li>
-</ul>
-</li>
-<li><p>​<code>[Service]</code>​: 这个部分包含了服务的具体运行细节。</p>
-<ul>
-<li>​<code>User</code>​ 和 <code>Group</code>​: 指定服务将以哪个用户和用户组的身份运行。在这里，服务将以用户”netmon”和同名的用户组”netmon”的身份运行。</li>
-<li>​<code>WorkingDirectory</code>​: 设置了服务的工作目录，也就是 Gunicorn 将从哪里开始执行。这里是”&#x2F;home&#x2F;netmon&#x2F;projects&#x2F;iotdev&#x2F;iotdev_flask”。</li>
-<li>​<code>Environment</code>​: 设置了环境变量，这对于确保 Gunicorn 能够找到正确的 Python 解释器和 conda 环境至关重要。这里的路径应指向您 Conda 环境下的 bin 目录。</li>
-<li>​<code>ExecStart</code>​: 指定了服务启动时要执行的命令。这里启动 Gunicorn，并指定了配置文件以及 Flask 应用的位置。</li>
-<li>​<code>Restart</code>​: 设定了服务的重启策略。在这里，如果服务意外终止，systemd 将总是尝试重新启动它。</li>
-</ul>
-</li>
-<li><p>​<code>[Install]</code>​: 这个部分定义了服务安装的相关设置。</p>
-<ul>
-<li>​<code>WantedBy</code>​: 指明了服务应该被哪些 target 所引用，以此来决定服务何时启动。在这里，服务被标记为在 multi-user.target 时启动，意味着在多用户界面（通常是在登录前）启动该服务。</li>
-</ul>
-</li>
-</ul>
-<h2 id="加载服务"><a href="#加载服务" class="headerlink" title="加载服务"></a>加载服务</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br></pre></td></tr></table></figure>
-<h2 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start iot_flask.service</span><br></pre></td></tr></table></figure>
-
-<h2 id="设置开机自启动"><a href="#设置开机自启动" class="headerlink" title="设置开机自启动"></a>设置开机自启动</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable iot_flask.service</span><br></pre></td></tr></table></figure>
-
-<h2 id="查看运行状态"><a href="#查看运行状态" class="headerlink" title="查看运行状态"></a>查看运行状态</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl status iot_flask.service</span><br></pre></td></tr></table></figure>
-
-<h2 id="关闭服务"><a href="#关闭服务" class="headerlink" title="关闭服务"></a>关闭服务</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl stop iot_flask.service</span><br></pre></td></tr></table></figure>
-
-<p>如果要使用普通用户来管理服务，可以在 <code>~/.config/systemd/user</code> ​下面注册服务，注意不可以在配置文件中指定 user 和 group，管理命令是 <code>systemctl --user xxx</code>​</p>
-<p>相对于使用 rc.local 来实现开机自启动，systemctl 有以下几个优势：</p>
-<ol>
-<li><strong>依赖关系管理</strong>：systemd 能够自动管理服务之间的依赖关系，确保服务按照正确的顺序启动。而 rc.local 则是在所有其他初始化脚本之后运行，无法保证服务间的依赖性。</li>
-<li><strong>更好的资源控制</strong>：systemd 允许对服务的资源使用进行限制，例如 CPU 时间和内存使用量，这对于系统管理和安全性至关重要。rc.local 中的脚本则没有这样的功能。</li>
-<li><strong>状态跟踪</strong>：systemd 能够记录服务的状态，这在故障排查时非常有用。rc.local 的脚本执行情况很难追踪。</li>
-<li><strong>更快的启动速度</strong>：systemd 支持并行启动服务，因此能显著加快系统的启动速度。相比之下，rc.local 只能串行执行脚本，影响启动速度。</li>
-<li><strong>统一性</strong>：systemd 提供了一种统一的方式来启动、停止、重启服务以及查看服务状态，使管理更加一致和简单。rc.local 是一种较旧的方法，可能不适用于所有的服务类型。</li>
-<li><strong>定时任务</strong>：systemd 提供了 timer 单元来执行定时任务，而 rc.local 仅适用于开机一次性执行的任务。</li>
-<li><strong>更丰富的命令行选项</strong>：systemctl 命令提供了丰富的选项来管理服务和单元文件，使得操作更加灵活。</li>
-<li><strong>按需启动</strong>：systemd 只有在需要时才启动服务，有助于节省资源和提高系统效率。rc.local 中的脚本则是每次开机都执行，不考虑是否需要。</li>
-<li><strong>集成日志管理</strong>：systemd 集成了日志管理系统，使得查看服务的日志变得更加方便，而 rc.local 执行的结果可能难以记录和追踪。</li>
-</ol>
-<p>综上所述，systemd 提供了更强大、更灵活的服务管理方式，相较于 rc.local，它在系统管理方面提供了更多的便利性和可靠性。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/11/systemctl%E7%AE%A1%E7%90%86%E6%9C%8D%E5%8A%A1/" data-id="cm9zmq8yo008usqhl0aslf4su" data-title="systemctl管理服务" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-ubuntu使用rclone挂载Alist到本地" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/11/22/ubuntu%E4%BD%BF%E7%94%A8rclone%E6%8C%82%E8%BD%BDAlist%E5%88%B0%E6%9C%AC%E5%9C%B0/" class="article-date">
-  <time class="dt-published" datetime="2024-11-22T12:37:00.000Z" itemprop="datePublished">2024-11-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">软件安装配置</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/11/22/ubuntu%E4%BD%BF%E7%94%A8rclone%E6%8C%82%E8%BD%BDAlist%E5%88%B0%E6%9C%AC%E5%9C%B0/">ubuntu使用rclone挂载Alist到本地</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="安装rclone"><a href="#安装rclone" class="headerlink" title="安装rclone"></a>安装rclone</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install rclone</span><br></pre></td></tr></table></figure>
-<h2 id="配置rclone"><a href="#配置rclone" class="headerlink" title="配置rclone"></a>配置rclone</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rclone config</span><br></pre></td></tr></table></figure>
-<p>选择新存储</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">No configurations found - make a new one.</span><br><span class="line">n) New remote</span><br><span class="line">e) Edit existing remote</span><br><span class="line">d) Delete existing remote</span><br><span class="line">q) Quit config</span><br><span class="line">n/e/d/q&gt; n</span><br></pre></td></tr></table></figure>
-<p>输入名称</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name&gt; alist</span><br></pre></td></tr></table></figure>
-<p>选择类型</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Type of storage to configure.</span><br><span class="line">Enter a string value. Press Enter for the default (&quot;&quot;).</span><br><span class="line">Choose a number from below, or type in your own value</span><br><span class="line">[snip]</span><br><span class="line">42 / WebDAV</span><br><span class="line">type&gt; 42</span><br></pre></td></tr></table></figure>
-<p>输入网址</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://0.0.0.0:5244/dav</span><br></pre></td></tr></table></figure>
-<p>输入用户名和密码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">User name&gt;</span><br><span class="line">Password&gt;</span><br></pre></td></tr></table></figure>
-<p>测试连接</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rclone ls alist:</span><br></pre></td></tr></table></figure>
-<p>如果连接成功，会显示目录下的文件列表</p>
-<h2 id="挂载Alist到本地"><a href="#挂载Alist到本地" class="headerlink" title="挂载Alist到本地"></a>挂载Alist到本地</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /home/remote</span><br><span class="line">rclone mount alist:/ /home/remote  --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000 --use-mmap --vfs-cache-mode full --daemon</span><br></pre></td></tr></table></figure>
-<h2 id="卸载Alist"><a href="#卸载Alist" class="headerlink" title="卸载Alist"></a>卸载Alist</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fusermount f -qzu /home/remote</span><br></pre></td></tr></table></figure>
-<h2 id="设置开启自动挂载"><a href="#设置开启自动挂载" class="headerlink" title="设置开启自动挂载"></a>设置开启自动挂载</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/lib/systemd/system/rclone.service</span><br></pre></td></tr></table></figure>
-<p>注意两处：<br>1.延时30s挂载，防止某些依赖服务尚未启动：ExecStartPre&#x3D;&#x2F;bin&#x2F;sleep 30<br>2.去除–daemon守护进程模式，systemd 本身会将服务作为守护进程运行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[Unit] </span><br><span class="line">Description=rclone挂载到/home/remote</span><br><span class="line"></span><br><span class="line">[Service] </span><br><span class="line">User=root </span><br><span class="line">ExecStartPre=/bin/sleep 30</span><br><span class="line">ExecStart=/usr/bin/rclone mount alist:/ /home/remote  --copy-links --no-gzip-encoding --no-check-certificate --allow-other --allow-non-empty --umask 000 --use-mmap --vfs-cache-mode full</span><br><span class="line"></span><br><span class="line">[Install] </span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># reload守护进程</span><br><span class="line">systemctl daemon-reload</span><br><span class="line"></span><br><span class="line"># 设置service文件自启</span><br><span class="line">systemctl enable rclone.service</span><br><span class="line"></span><br><span class="line"># 启动service文件</span><br><span class="line">systemctl start rclone.service</span><br></pre></td></tr></table></figure>
-<h2 id="挂载完成后就有很多事可以做了，比如定期自动备份到云盘"><a href="#挂载完成后就有很多事可以做了，比如定期自动备份到云盘" class="headerlink" title="挂载完成后就有很多事可以做了，比如定期自动备份到云盘"></a>挂载完成后就有很多事可以做了，比如定期自动备份到云盘</h2><p>以博客文章备份举例：每周日0点备份</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 0 * * 0 cp -r /home/jxh/blog/source/_posts /home/remote/blog/md_$(date +\%Y\%m\%d)</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/11/22/ubuntu%E4%BD%BF%E7%94%A8rclone%E6%8C%82%E8%BD%BDAlist%E5%88%B0%E6%9C%AC%E5%9C%B0/" data-id="cm9zmq8yu009gsqhlglxy0k8r" data-title="ubuntu使用rclone挂载Alist到本地" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-ACL写法(思科+华为)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/11/22/ACL%E5%86%99%E6%B3%95(%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA)/" class="article-date">
-  <time class="dt-published" datetime="2024-11-22T07:56:00.000Z" itemprop="datePublished">2024-11-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%BD%91%E5%B7%A5/">网工</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/11/22/ACL%E5%86%99%E6%B3%95(%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA)/">ACL写法(思科+华为)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <table>
-<thead>
-<tr>
-<th>说明</th>
-<th>思科&#x2F;锐捷</th>
-<th>华为</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>允许10.1.1.0&#x2F;24网段访问192.168.1.0&#x2F;24网段的所有服务（基于IP协议）</td>
-<td><code>ip access-list extended 101</code><br><code>10 permit ip 10.1.1.0 0.0.0.255 192.168.1.0 0.0.0.255</code></td>
-<td><code>acl number 3001</code><br><code>rule 10 permit ip source 10.1.1.0 0.0.0.255 destination 192.168.1.0 0.0.0.255</code></td>
-</tr>
-<tr>
-<td>禁止172.16.2.0&#x2F;24网段访问10.0.0.0&#x2F;8网段的所有服务（基于IP协议）</td>
-<td><code>ip access-list extended 102</code><br><code>10 deny ip 172.16.2.0 0.0.0.255 10.0.0.0 0.255.255.255</code></td>
-<td><code>acl number 3002</code><br><code>rule 10 deny ip source 172.16.2.0 0.0.0.255 destination 10.0.0.0 0.255.255.255</code></td>
-</tr>
-<tr>
-<td>允许192.168.5.0&#x2F;24网段使用HTTP协议（端口80）访问20.20.20.0&#x2F;24网段的Web服务器</td>
-<td><code>ip access-list extended 103</code><br><code>10 permit tcp 192.168.5.0 0.0.0.255 20.20.20.0 0.0.0.255 eq 80</code></td>
-<td><code>acl number 3003</code><br><code>rule 10 permit tcp source 192.168.5.0 0.0.0.255 destination 20.20.20.0 0.0.0.255 destination-port eq 80</code></td>
-</tr>
-<tr>
-<td>禁止11.11.11.0&#x2F;24网段使用FTP协议（端口21）访问172.31.1.0&#x2F;24网段的FTP服务器</td>
-<td><code>ip access-list extended 104</code><br><code>10 deny tcp 11.11.11.0 0.0.0.255 172.31.1.0 0.0.0.255 eq 21</code></td>
-<td><code>acl number 3004</code><br><code>rule 10 deny tcp source 11.11.11.0 0.0.0.255 destination 172.31.1.0 0.0.0.255 destination-port eq 21</code></td>
-</tr>
-<tr>
-<td>应用ACL</td>
-<td><code>int g0/1</code><br><code>ip access-group 101 in/out</code></td>
-<td><code>int e0/0/1</code><br><code>traffic-filter inbound/outbound acl 3001</code></td>
-</tr>
-</tbody></table>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/11/22/ACL%E5%86%99%E6%B3%95(%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA)/" data-id="cm9zmq8wh0001sqhlbpbt60c1" data-title="ACL写法(思科+华为)" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E5%B7%A5/" rel="tag">网工</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-RIP+OSPF+BGP配置(思科+华为)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/11/22/RIP+OSPF+BGP%E9%85%8D%E7%BD%AE(%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA)/" class="article-date">
-  <time class="dt-published" datetime="2024-11-22T07:50:00.000Z" itemprop="datePublished">2024-11-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%BD%91%E5%B7%A5/">网工</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/11/22/RIP+OSPF+BGP%E9%85%8D%E7%BD%AE(%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA)/">RIP+OSPF+BGP配置(思科+华为)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <table>
-<thead>
-<tr>
-<th><strong>协议</strong></th>
-<th><strong>思科（Cisco）</strong></th>
-<th><strong>华为（Huawei）</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>RIP</strong></td>
-<td><code>router rip</code><br> <code>version 2</code><br> <code>network &lt;network&gt;</code><br> <code>no auto-summary</code></td>
-<td><code>rip 1</code><br> <code>version 2</code><br> <code>network &lt;network&gt;</code><br> <code>undo auto-summary</code></td>
-</tr>
-<tr>
-<td><strong>OSPF</strong></td>
-<td><code>router ospf &lt;process-id&gt;</code><br> <code>network &lt;network&gt; &lt;wildcard-mask&gt; area &lt;area-id&gt;</code><br> <code>router-id &lt;router-id&gt;</code></td>
-<td><code>ospf &lt;process-id&gt;</code><br> <code>network &lt;network&gt; &lt;wildcard-mask&gt;</code><br> <code>router-id &lt;router-id&gt;</code><br> <code>area &lt;area-id&gt;</code></td>
-</tr>
-<tr>
-<td><strong>BGP</strong></td>
-<td><code>router bgp &lt;asn&gt;</code><br> <code>network &lt;network&gt; mask &lt;subnet-mask&gt;</code><br> <code>neighbor &lt;ip-address&gt; remote-as &lt;asn&gt;</code></td>
-<td><code>bgp &lt;asn&gt;</code><br> <code>network &lt;network&gt; &lt;subnet-mask&gt;</code><br> <code>peer &lt;ip-address&gt; as-number &lt;asn&gt;</code></td>
-</tr>
-</tbody></table>
-<h3 id="说明："><a href="#说明：" class="headerlink" title="说明："></a><strong>说明：</strong></h3><ol>
-<li><p><strong>RIP（Routing Information Protocol）</strong></p>
-<ul>
-<li><strong>思科</strong>：通过 <code>router rip</code> 启用 RIP，并配置 RIP 版本和网络，通常需要禁用 <code>auto-summary</code>。</li>
-<li><strong>华为</strong>：通过 <code>rip &lt;instance-id&gt;</code> 启用 RIP，配置类似于思科，但命令稍有不同，使用 <code>undo auto-summary</code> 来禁用自动汇总功能。</li>
-</ul>
-</li>
-<li><p><strong>OSPF（Open Shortest Path First）</strong></p>
-<ul>
-<li><strong>思科</strong>：需要通过 <code>router ospf &lt;process-id&gt;</code> 启动 OSPF 路由进程，配置网络并指定所属区域。<code>router-id</code> 可选，通常用于避免自动选取路由器 ID。</li>
-<li><strong>华为</strong>：配置 <code>ospf &lt;process-id&gt;</code> 启动 OSPF，指定网络和区域，<code>router-id</code> 配置也可选。</li>
-</ul>
-</li>
-<li><p><strong>BGP（Border Gateway Protocol）</strong></p>
-<ul>
-<li><strong>思科</strong>：使用 <code>router bgp &lt;asn&gt;</code> 启用 BGP，配置网络、邻居关系以及AS号等。</li>
-<li><strong>华为</strong>：在 <code>bgp &lt;asn&gt;</code> 配置下启用 BGP，使用 <code>network</code> 配置网络，<code>peer</code> 配置邻居 IP 和 AS 号。</li>
-</ul>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/11/22/RIP+OSPF+BGP%E9%85%8D%E7%BD%AE(%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA)/" data-id="cm9zmq8x0000wsqhl90tj1b99" data-title="RIP+OSPF+BGP配置(思科+华为)" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E5%B7%A5/" rel="tag">网工</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-NAT地址转换配置（思科+华为）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/11/22/NAT%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2%E9%85%8D%E7%BD%AE%EF%BC%88%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA%EF%BC%89/" class="article-date">
-  <time class="dt-published" datetime="2024-11-22T07:10:00.000Z" itemprop="datePublished">2024-11-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%BD%91%E5%B7%A5/">网工</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/11/22/NAT%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2%E9%85%8D%E7%BD%AE%EF%BC%88%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA%EF%BC%89/">NAT地址转换配置（思科+华为）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="思科"><a href="#思科" class="headerlink" title="思科"></a>思科</h2><p><img src="https://xinhaojin.github.io/picx-images-hosting/20241122/wechat_2024-11-22_150031_298.1e8mwfyk77.webp"></p>
-<h3 id="路由器配置"><a href="#路由器配置" class="headerlink" title="路由器配置"></a>路由器配置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">int g0/0.10</span><br><span class="line">encap dot1q 10</span><br><span class="line">ip add 192.168.10.254 255.255.255.0</span><br><span class="line">ip nat inside</span><br><span class="line">int g0/1.20</span><br><span class="line">encap dot1q 20</span><br><span class="line">ip add 192.168.20.254 255.255.255.0</span><br><span class="line">ip nat inside</span><br><span class="line">int s0/1/0</span><br><span class="line">no shutdown</span><br><span class="line">ip add 11.11.11.1 255.255.255.0</span><br><span class="line">ip nat outside</span><br><span class="line">clock rate 96000</span><br><span class="line">exit</span><br><span class="line">ip nat pool ppp 11.11.11.2 11.11.11.4 netmask 255.255.255.0</span><br><span class="line">access-list 100 permit ip 192.168.10.0 0.0.0.255 any</span><br><span class="line">access-list 100 permit ip 192.168.20.0 0.0.0.255 any</span><br><span class="line">ip nat inside source list 100 pool ppp overload </span><br><span class="line">ip route 22.22.22.0 255.255.255.0 11.11.11.10</span><br></pre></td></tr></table></figure>
-<h2 id="华为"><a href="#华为" class="headerlink" title="华为"></a>华为</h2><p><img src="https://xinhaojin.github.io/picx-images-hosting/20241122/%E5%9B%BE%E7%89%871.6t75evdqq1.webp"></p>
-<h3 id="路由器配置-1"><a href="#路由器配置-1" class="headerlink" title="路由器配置"></a>路由器配置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">int g0/0/0.10</span><br><span class="line">dot1q termination vid 10</span><br><span class="line">arp broadcast enable</span><br><span class="line">ip add 192.168.10.254 24</span><br><span class="line">int g0/0/1.20</span><br><span class="line">dot1q termination vid 20</span><br><span class="line">arp broadcast enable</span><br><span class="line">ip add 192.168.20.254 24</span><br><span class="line">int g0/0/2</span><br><span class="line">ip add 11.11.11.1 24</span><br><span class="line">quit</span><br><span class="line">nat address-group 1 11.11.11.2 11.11.11.4</span><br><span class="line">acl 2000</span><br><span class="line">rule permit source 192.168.10.0 0.0.0.255</span><br><span class="line">rule permit source 192.168.20.0 0.0.0.255</span><br><span class="line">int g0/0/2</span><br><span class="line">nat outbound 2000 address-group 1</span><br><span class="line">quit</span><br><span class="line">ip route-static 22.22.22.0 24 11.11.11.10</span><br></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><table>
-<thead>
-<tr>
-<th><strong>配置项</strong></th>
-<th><strong>思科路由器 NAT 配置</strong></th>
-<th><strong>华为路由器 NAT 配置</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>接口配置</strong><br>路由器本身不处理VLAN，VLAN是在交换机层面上实现的，必须使用子接口实现</td>
-<td>创建子接口，通过 <code>encap dot1q</code> 设置 VLAN ID，配置 IP 地址，并标记为 <code>ip nat inside</code>。</td>
-<td>创建子接口，通过 <code>dot1q termination vid</code> 设置 VLAN，配置 IP 地址，并启用 ARP 广播。</td>
-</tr>
-<tr>
-<td><strong>外网接口配置</strong></td>
-<td>配置外部接口 IP 地址，并标记为 <code>ip nat outside</code>。启用该接口并设置时钟频率（如适用）。</td>
-<td>配置外部接口的 IP 地址。</td>
-</tr>
-<tr>
-<td><strong>NAT 地址池</strong></td>
-<td>通过 <code>ip nat pool</code> 定义公共 IP 地址池供内网访问外网时使用。</td>
-<td>通过 <code>nat address-group</code> 创建公共 IP 地址池。</td>
-</tr>
-<tr>
-<td><strong>访问控制列表 (ACL)</strong></td>
-<td>创建 ACL，定义哪些内部 IP 地址可以进行 NAT 地址转换。</td>
-<td>使用 <code>acl</code> 配置访问控制列表，定义允许进行 NAT 转换的源地址。</td>
-</tr>
-<tr>
-<td><strong>配置源 NAT</strong></td>
-<td>使用 <code>ip nat inside source list</code> 配置 ACL 中定义的地址范围，将流量映射到外部地址池。</td>
-<td>通过 <code>nat outbound</code> 命令将流量映射到外部地址池，实现源地址转换。</td>
-</tr>
-</tbody></table>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/11/22/NAT%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2%E9%85%8D%E7%BD%AE%EF%BC%88%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA%EF%BC%89/" data-id="cm9zmq8wz000usqhl4mo3e97c" data-title="NAT地址转换配置（思科+华为）" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E5%B7%A5/" rel="tag">网工</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-思科核心交换机双机热备份" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/11/21/%E6%80%9D%E7%A7%91%E6%A0%B8%E5%BF%83%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87%E4%BB%BD/" class="article-date">
-  <time class="dt-published" datetime="2024-11-21T02:21:00.000Z" itemprop="datePublished">2024-11-21</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%BD%91%E5%B7%A5/">网工</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/11/21/%E6%80%9D%E7%A7%91%E6%A0%B8%E5%BF%83%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87%E4%BB%BD/">思科核心交换机双机热备份</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><img src="https://xinhaojin.github.io/picx-images-hosting/20241119/image.969rucnjap.webp" alt="image"></p>
-<table>
-<thead>
-<tr>
-<th><strong>描述</strong></th>
-<th><strong>交换机A</strong></th>
-<th><strong>交换机B</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>配置vlan接口地址</strong></td>
-<td><code>int vlan 10</code><br> <code>ip add 192.168.10.254 255.255.255.0</code><br> <code>int vlan 20</code><br> <code>ip add 192.168.20.254 255.255.255.0</code></td>
-<td><code>int vlan 10</code><br> <code>ip add 192.168.10.253 255.255.255.0</code><br> <code>int vlan 20</code><br> <code>ip add 192.168.20.253 255.255.255.0</code></td>
-</tr>
-<tr>
-<td><strong>配置虚拟地址优先级<br>抢占<br>监控上行接口（中断时切换）<br>（standby编号可以指定其他，但为了方便一般与vlan号相同）</strong></td>
-<td><code>int vlan 10</code><br> <code>standby 10 ip 192.168.10.252</code><br> <code>standby 10 priority 101</code><br> <code>standby 10 preempt</code><br> <code>standby 10 track f0/1</code><br> <code>standby 10 track f0/2</code> <br><code>int vlan 20</code><br> <code>standby 20 ip 192.168.20.252</code><br> <code>standby 20 priority 100(default)</code><br> <code>standby 20 track f0/1</code><br> <code>standby 20 track f0/2</code></td>
-<td><code>int vlan 10</code><br> <code>standby 10 ip 192.168.10.252</code><br> <code>standby 10 priority 100(default)</code><br> <code>standby 10 track f0/1</code><br> <code>standby 10 track f0/2</code><br><code>int vlan 20</code><br> <code>standby 20 ip 192.168.20.252</code><br> <code>standby 20 priority 101</code><br> <code>standby 10 preempt</code><br> <code>standby 20 track f0/1</code><br> <code>standby 20 track f0/2</code></td>
-</tr>
-<tr>
-<td><strong>配置生成树，分配vlan，负载均衡</strong></td>
-<td><code>spanning-tree mode pvst</code><br> <code>spanning-tree vlan 10 root primary</code><br> <code>spanning-tree vlan 20 root secondary</code></td>
-<td><code>spanning-tree mode pvst</code><br> <code>spanning-tree vlan 20 root primary</code><br> <code>spanning-tree vlan 10 root secondary</code></td>
-</tr>
-<tr>
-<td><strong>配置上行接口为路由接口，关闭二层交换功能</strong></td>
-<td><code>int f0/1</code><br> <code>no switchport</code><br> <code>ip add 192.168.11.13 255.255.255.252</code><br><code>int f0/2</code><br> <code>no switchport</code><br> <code>ip add 192.168.11.9 255.255.255.252</code></td>
-<td><code>int f0/1</code><br> <code>no switchport</code><br> <code>ip add 192.168.11.1 255.255.255.252</code><br><code>int f0/2</code><br> <code>no switchport</code><br> <code>ip add 192.168.11.5 255.255.255.252</code></td>
-</tr>
-<tr>
-<td><strong>捆绑链路聚合接口</strong></td>
-<td><code>int f0/3</code><br> <code>switchport trunk encapsulation dot1q</code><br> <code>switchport mode trunk</code><br> <code>channel-group 1 mode on</code> <br><code>int f0/4</code><br> <code>switchport trunk encapsulation dot1q</code><br> <code>switchport mode trunk</code><br> <code>channel-group 1 mode on</code></td>
-<td><code>int f0/3</code><br> <code>switchport trunk encapsulation dot1q</code><br> <code>switchport mode trunk</code><br> <code>channel-group 1 mode on</code><br><code>int f0/4</code><br> <code>switchport trunk encapsulation dot1q</code><br> <code>switchport mode trunk</code><br> <code>channel-group 1 mode on</code></td>
-</tr>
-<tr>
-<td><strong>其余端口配置为trunk</strong></td>
-<td><code>int range f0/5-7</code><br> <code>switchport trunk encapsulation dot1q</code><br> <code>switchport mode trunk</code><br> <code>switchport trunk allowed vlan all(default)</code></td>
-<td><code>int range f0/5-7</code><br> <code>switchport trunk encapsulation dot1q</code><br> <code>switchport mode trunk</code><br> <code>switchport trunk allowed vlan all(default)</code></td>
-</tr>
-</tbody></table>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/11/21/%E6%80%9D%E7%A7%91%E6%A0%B8%E5%BF%83%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87%E4%BB%BD/" data-id="cm9zmq90000f7sqhlbtog4z3a" data-title="思科核心交换机双机热备份" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E5%B7%A5/" rel="tag">网工</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-思科锐捷网络设备命令" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/11/21/%E6%80%9D%E7%A7%91%E9%94%90%E6%8D%B7%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%91%BD%E4%BB%A4/" class="article-date">
-  <time class="dt-published" datetime="2024-11-21T02:12:00.000Z" itemprop="datePublished">2024-11-21</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%BD%91%E5%B7%A5/">网工</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/11/21/%E6%80%9D%E7%A7%91%E9%94%90%E6%8D%B7%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%91%BD%E4%BB%A4/">思科锐捷网络设备配置命令</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <table>
-<thead>
-<tr>
-<th>类别</th>
-<th>命令</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>基础命令</strong></td>
-<td><code>enable</code></td>
-<td>进入特权模式</td>
-</tr>
-<tr>
-<td></td>
-<td><code>configure terminal</code></td>
-<td>进入全局配置模式</td>
-</tr>
-<tr>
-<td></td>
-<td><code>show running-config</code></td>
-<td>查看当前运行的配置</td>
-</tr>
-<tr>
-<td></td>
-<td><code>show startup-config</code></td>
-<td>查看启动时的配置</td>
-</tr>
-<tr>
-<td></td>
-<td><code>copy running-config startup-config</code></td>
-<td>保存当前配置到启动配置文件</td>
-</tr>
-<tr>
-<td></td>
-<td><code>reload</code></td>
-<td>重新启动交换机</td>
-</tr>
-<tr>
-<td><strong>接口配置</strong></td>
-<td><code>interface &lt;接口号&gt;</code></td>
-<td>进入指定接口配置模式</td>
-</tr>
-<tr>
-<td></td>
-<td><code>interface range &lt;接口范围&gt;</code></td>
-<td>配置多个接口（例如 <code>interface range fastEthernet 0/1 - 24</code>）</td>
-</tr>
-<tr>
-<td></td>
-<td><code>ip address &lt;ip地址&gt; &lt;子网掩码&gt;</code></td>
-<td>配置接口的IP地址和子网掩码</td>
-</tr>
-<tr>
-<td></td>
-<td><code>no shutdown</code></td>
-<td>启动接口（默认接口关闭时需要启用）</td>
-</tr>
-<tr>
-<td></td>
-<td><code>shutdown</code></td>
-<td>关闭接口</td>
-</tr>
-<tr>
-<td></td>
-<td><code>description &lt;接口描述&gt;</code></td>
-<td>设置接口描述</td>
-</tr>
-<tr>
-<td></td>
-<td><code>speed &lt;速度&gt;</code></td>
-<td>设置接口速率（例如 <code>speed 100</code>）</td>
-</tr>
-<tr>
-<td></td>
-<td><code>duplex &lt;双工模式&gt;</code></td>
-<td>设置接口双工模式（<code>full</code> 或 <code>half</code>）</td>
-</tr>
-<tr>
-<td></td>
-<td><code>switchport mode access</code></td>
-<td>设置端口为访问模式</td>
-</tr>
-<tr>
-<td></td>
-<td><code>switchport mode trunk</code></td>
-<td>设置端口为干线模式</td>
-</tr>
-<tr>
-<td></td>
-<td><code>switchport trunk encapsulation dot1q</code></td>
-<td>设置干线端口的封装方式为IEEE 802.1Q</td>
-</tr>
-<tr>
-<td></td>
-<td><code>switchport trunk allowed vlan &lt;vlan列表&gt;</code></td>
-<td>配置允许通过的VLAN列表</td>
-</tr>
-<tr>
-<td></td>
-<td><code>switchport trunk native vlan &lt;vlan编号&gt;</code></td>
-<td>设置干线端口的原生VLAN（通常是VLAN 1）</td>
-</tr>
-<tr>
-<td></td>
-<td><code>switchport access vlan &lt;vlan编号&gt;</code></td>
-<td>将端口分配给指定VLAN</td>
-</tr>
-<tr>
-<td></td>
-<td><code>switchport nonegotiate</code></td>
-<td>禁用干线端口的协商</td>
-</tr>
-<tr>
-<td></td>
-<td><code>switchport mode dynamic auto</code></td>
-<td>设置接口为动态自动模式，允许接口协商是否为访问端口或干线端口</td>
-</tr>
-<tr>
-<td></td>
-<td><code>switchport mode dynamic desirable</code></td>
-<td>设置接口为动态协商模式，要求端口以干线端口身份进行协商</td>
-</tr>
-<tr>
-<td></td>
-<td><code>int g0/0/0.1</code></td>
-<td>添加子接口，适合单臂路由实现vlan间通信</td>
-</tr>
-<tr>
-<td></td>
-<td><code>encapsulation dot1Q 10</code></td>
-<td>给子接口打上vlan标签</td>
-</tr>
-<tr>
-<td></td>
-<td><code>ip address 192.168.10.254 255.255.255.0</code></td>
-<td>配置子接口IP地址和子网掩码</td>
-</tr>
-<tr>
-<td><strong>VLAN配置</strong></td>
-<td><code>vlan &lt;vlan编号&gt;</code></td>
-<td>创建VLAN或进入现有VLAN配置模式</td>
-</tr>
-<tr>
-<td></td>
-<td><code>name &lt;vlan名称&gt;</code></td>
-<td>设置VLAN名称</td>
-</tr>
-<tr>
-<td></td>
-<td><code>show vlan brief</code></td>
-<td>显示VLAN的基本信息</td>
-</tr>
-<tr>
-<td></td>
-<td><code>show vlan</code></td>
-<td>显示所有VLAN的信息</td>
-</tr>
-<tr>
-<td></td>
-<td><code>vlan database</code></td>
-<td>进入VLAN数据库模式</td>
-</tr>
-<tr>
-<td></td>
-<td><code>exit</code></td>
-<td>退出VLAN数据库模式</td>
-</tr>
-<tr>
-<td><strong>STP配置</strong></td>
-<td><code>spanning-tree vlan &lt;vlan编号&gt; root primary</code></td>
-<td>设置VLAN根桥为主设备</td>
-</tr>
-<tr>
-<td></td>
-<td><code>spanning-tree vlan &lt;vlan编号&gt; priority &lt;优先级值&gt;</code></td>
-<td>设置VLAN根桥的优先级</td>
-</tr>
-<tr>
-<td></td>
-<td><code>spanning-tree mode &lt;pvst| rapid-pvst</code></td>
-<td>设置STP模式</td>
-</tr>
-<tr>
-<td></td>
-<td><code>spanning-tree vlan &lt;vlan编号&gt; cost &lt;路径成本&gt;</code></td>
-<td>设置VLAN的STP路径成本</td>
-</tr>
-<tr>
-<td></td>
-<td><code>spanning-tree portfast</code></td>
-<td>启用端口快速收敛（用于接入层端口）</td>
-</tr>
-<tr>
-<td></td>
-<td><code>spanning-tree bpduguard enable</code></td>
-<td>启用BPDU Guard（防止非法根桥）</td>
-</tr>
-<tr>
-<td></td>
-<td><code>show spanning-tree</code></td>
-<td>显示STP状态</td>
-</tr>
-<tr>
-<td><strong>静态路由</strong></td>
-<td><code>ip route &lt;目标网络地址&gt; &lt;子网掩码&gt; &lt;下一跳地址&gt;</code></td>
-<td>添加一条静态路由。指定目标网络地址、子网掩码和下一跳路由器的 IP 地址。</td>
-</tr>
-<tr>
-<td></td>
-<td><code>ip route 0.0.0.0 0.0.0.0 &lt;下一跳地址&gt;</code></td>
-<td>添加默认路由，通常用于指向出口路由器的下一跳地址。</td>
-</tr>
-<tr>
-<td></td>
-<td><code>ip route &lt;目标网络地址&gt; &lt;子网掩码&gt; &lt;出口接口&gt;</code></td>
-<td>添加静态路由并指定出接口，而非下一跳地址。适用于直接连接的网络。</td>
-</tr>
-<tr>
-<td></td>
-<td><code>no ip route &lt;目标网络地址&gt; &lt;子网掩码&gt; &lt;下一跳地址&gt;</code></td>
-<td>删除已配置的静态路由。</td>
-</tr>
-<tr>
-<td></td>
-<td><code>show ip route</code></td>
-<td>查看当前设备的路由表，显示静态路由、动态路由等所有路由信息。</td>
-</tr>
-<tr>
-<td><strong>路由协议</strong></td>
-<td><code>router rip</code></td>
-<td>启用RIP路由协议</td>
-</tr>
-<tr>
-<td></td>
-<td><code>network &lt;网络地址&gt;</code></td>
-<td>指定RIP路由协议的网络</td>
-</tr>
-<tr>
-<td></td>
-<td><code>version 2</code></td>
-<td>RIP版本2，支持CIDR地址</td>
-</tr>
-<tr>
-<td></td>
-<td><code>router ospf &lt;进程ID&gt;</code></td>
-<td>启用OSPF路由协议</td>
-</tr>
-<tr>
-<td></td>
-<td><code>network &lt;网络地址&gt; &lt;反向掩码&gt; area &lt;区域号&gt;</code></td>
-<td>配置OSPF的网络和区域</td>
-</tr>
-<tr>
-<td></td>
-<td><code>router bgp &lt;AS号&gt;</code></td>
-<td>启用BGP路由协议</td>
-</tr>
-<tr>
-<td></td>
-<td><code>neighbor &lt;邻居IP地址&gt; remote-as &lt;AS号&gt;</code></td>
-<td>配置BGP邻居及其AS号</td>
-</tr>
-<tr>
-<td></td>
-<td><code>network &lt;网络地址&gt; mask &lt;子网掩码&gt;</code></td>
-<td>配置BGP的网络公告</td>
-</tr>
-<tr>
-<td></td>
-<td><code>redistribute ospf</code></td>
-<td>将OSPF路由重新分发到其他路由协议</td>
-</tr>
-<tr>
-<td><strong>NAT配置</strong></td>
-<td><code>ip nat inside source list &lt;访问控制列表编号&gt; interface &lt;接口号&gt; overload</code></td>
-<td>配置动态NAT，使用访问控制列表（ACL）来控制哪些地址可以进行NAT，指定外部接口并启用超载模式（overload）</td>
-</tr>
-<tr>
-<td></td>
-<td><code>ip nat inside</code></td>
-<td>配置接口为内部网络接口（NAT Inside）。通常是本地私有地址的接口。</td>
-</tr>
-<tr>
-<td></td>
-<td><code>ip nat outside</code></td>
-<td>配置接口为外部网络接口（NAT Outside）。通常是连接到公共Internet的接口。</td>
-</tr>
-<tr>
-<td></td>
-<td><code>ip nat inside source static &lt;内部IP地址&gt; &lt;外部IP地址&gt;</code></td>
-<td>配置静态NAT，将一个内部IP地址映射到一个固定的外部IP地址（1:1映射）。</td>
-</tr>
-<tr>
-<td></td>
-<td><code>ip nat inside source static &lt;内部IP地址&gt; &lt;外部IP地址&gt; extendable</code></td>
-<td>配置扩展的静态NAT，允许在NAT映射的IP地址用尽时动态扩展静态NAT映射。</td>
-</tr>
-<tr>
-<td></td>
-<td><code>ip nat inside source list &lt;ACL编号&gt; pool &lt;池名称&gt; overload</code></td>
-<td>配置基于ACL的动态NAT并使用NAT池（例如，当有多个外部IP地址时）。启用超载功能允许多个内部IP共享一个外部IP。</td>
-</tr>
-<tr>
-<td></td>
-<td><code>ip nat pool &lt;池名称&gt; &lt;起始IP地址&gt; &lt;结束IP地址&gt; netmask &lt;子网掩码&gt;</code></td>
-<td>创建一个NAT池，指定池的起始和结束IP地址及子网掩码，用于动态分配外部IP地址给内部IP。</td>
-</tr>
-<tr>
-<td></td>
-<td><code>ip nat inside source list &lt;ACL编号&gt; interface &lt;接口号&gt; overload</code></td>
-<td>配置基于ACL的动态NAT，指定外部接口并启用超载模式，允许多个内部地址共享一个外部IP地址。</td>
-</tr>
-<tr>
-<td></td>
-<td><code>ip nat translation tcp-timeout &lt;秒数&gt;</code></td>
-<td>设置TCP连接的NAT超时时间，默认为24小时（86400秒）。</td>
-</tr>
-<tr>
-<td></td>
-<td><code>ip nat translation udp-timeout &lt;秒数&gt;</code></td>
-<td>设置UDP连接的NAT超时时间。默认为5分钟（300秒）。</td>
-</tr>
-<tr>
-<td></td>
-<td><code>ip nat translation udp-timeout &lt;秒数&gt;</code></td>
-<td>设置UDP连接的NAT超时时间。默认为5分钟（300秒）。</td>
-</tr>
-<tr>
-<td></td>
-<td><code>ip nat translation no-fragment</code></td>
-<td>禁用NAT转换时的IP分片（Fragmentation）。</td>
-</tr>
-<tr>
-<td></td>
-<td><code>show ip nat translations</code></td>
-<td>查看当前NAT转换表，显示所有活动的NAT条目。</td>
-</tr>
-<tr>
-<td></td>
-<td><code>clear ip nat translations *</code></td>
-<td>清除所有NAT转换条目。</td>
-</tr>
-<tr>
-<td></td>
-<td><code>show ip nat statistics</code></td>
-<td>查看NAT统计信息，如NAT池使用情况、命中次数、转换次数等。</td>
-</tr>
-<tr>
-<td></td>
-<td><code>clear ip nat statistics</code></td>
-<td>清除NAT的统计数据。</td>
-</tr>
-<tr>
-<td></td>
-<td><code>ip nat enable</code></td>
-<td>在接口上启用NAT功能，通常在接口配置模式下使用。</td>
-</tr>
-<tr>
-<td></td>
-<td><code>ip route &lt;目标网络&gt; &lt;子网掩码&gt; &lt;NAT接口&gt;</code></td>
-<td>配置NAT接口的静态路由。确保NAT流量能够正确路由到外部网络。</td>
-</tr>
-<tr>
-<td><strong>ACL配置</strong></td>
-<td><code>ip access-lists extended &lt;编号&gt;</code></td>
-<td>创建&#x2F;进入扩展ACL</td>
-</tr>
-<tr>
-<td></td>
-<td><code>&lt;编号&gt; permit ip permit ip &lt;源地址&gt; &lt;反掩码&gt; &lt;目标地址&gt; &lt;反掩码&gt;</code></td>
-<td>添加rule</td>
-</tr>
-<tr>
-<td></td>
-<td><code>ip access-group &lt;ACL编号&gt; in/out</code></td>
-<td>应用ACL到接口的流量方向（in&#x2F;out）</td>
-</tr>
-<tr>
-<td></td>
-<td><code>show access-lists &lt;编号&gt;</code></td>
-<td>查看ACL配置及规则</td>
-</tr>
-<tr>
-<td><strong>端口安全</strong></td>
-<td><code>switchport port-security</code></td>
-<td>启用端口安全</td>
-</tr>
-<tr>
-<td></td>
-<td><code>switchport port-security maximum &lt;最大数量&gt;</code></td>
-<td>设置端口允许的最大MAC地址数量</td>
-</tr>
-<tr>
-<td></td>
-<td><code>switchport port-security violation &lt;protect/restrict/shutdown&gt;</code></td>
-<td>配置端口安全违规处理方式</td>
-</tr>
-<tr>
-<td></td>
-<td><code>show port-security</code></td>
-<td>查看端口安全的配置信息</td>
-</tr>
-<tr>
-<td><strong>SNMP配置</strong></td>
-<td><code>snmp-server community &lt;community_string&gt; RO</code></td>
-<td>配置SNMP社区字符串并设置只读权限</td>
-</tr>
-<tr>
-<td></td>
-<td><code>snmp-server enable traps</code></td>
-<td>启用SNMP陷阱</td>
-</tr>
-<tr>
-<td><strong>日志配置</strong></td>
-<td><code>logging buffered &lt;大小&gt;</code></td>
-<td>设置日志缓冲区大小</td>
-</tr>
-<tr>
-<td></td>
-<td><code>logging console</code></td>
-<td>启用控制台日志输出</td>
-</tr>
-<tr>
-<td><strong>NTP配置</strong></td>
-<td><code>ntp server &lt;NTP服务器地址&gt;</code></td>
-<td>配置NTP服务器</td>
-</tr>
-<tr>
-<td><strong>SSH配置</strong></td>
-<td><code>ip domain-name &lt;域名&gt;</code></td>
-<td>配置域名（用于SSH）</td>
-</tr>
-<tr>
-<td></td>
-<td><code>crypto key generate rsa</code></td>
-<td>生成RSA密钥对（用于SSH）</td>
-</tr>
-<tr>
-<td></td>
-<td><code>ip ssh version 2</code></td>
-<td>启用SSH版本2</td>
-</tr>
-<tr>
-<td></td>
-<td><code>line vty 0 4</code></td>
-<td>进入VTY线路配置模式（配置远程访问）</td>
-</tr>
-<tr>
-<td></td>
-<td><code>login local</code></td>
-<td>使用本地用户名和密码进行登录</td>
-</tr>
-<tr>
-<td></td>
-<td><code>transport input ssh</code></td>
-<td>仅允许SSH远程访问</td>
-</tr>
-<tr>
-<td><strong>EtherChannel</strong></td>
-<td><code>interface range &lt;接口范围&gt;</code></td>
-<td>进入多个接口配置模式（例如 <code>interface range gig 0/1 - 2</code>）</td>
-</tr>
-<tr>
-<td></td>
-<td><code>channel-group &lt;编号&gt; mode on</code></td>
-<td>配置EtherChannel，开启通道组</td>
-</tr>
-<tr>
-<td></td>
-<td><code>channel-group &lt;编号&gt; mode passive</code></td>
-<td>设置EtherChannel为被动模式（等待对端聚合）</td>
-</tr>
-<tr>
-<td></td>
-<td><code>channel-group &lt;编号&gt; mode active</code></td>
-<td>设置EtherChannel为主动模式</td>
-</tr>
-<tr>
-<td></td>
-<td><code>show etherchannel summary</code></td>
-<td>查看EtherChannel状态</td>
-</tr>
-<tr>
-<td><strong>VTP配置</strong></td>
-<td><code>vtp mode &lt;模式&gt;</code></td>
-<td>设置VTP模式（<code>server</code>, <code>client</code>, <code>transparent</code>）</td>
-</tr>
-<tr>
-<td></td>
-<td><code>vtp domain &lt;域名&gt;</code></td>
-<td>设置VTP域名</td>
-</tr>
-<tr>
-<td></td>
-<td><code>vtp password &lt;密码&gt;</code></td>
-<td>设置VTP密码</td>
-</tr>
-<tr>
-<td><strong>DHCP配置</strong></td>
-<td><code>ip dhcp pool &lt;池名称&gt;</code></td>
-<td>创建一个DHCP地址池</td>
-</tr>
-<tr>
-<td></td>
-<td><code>network &lt;网络地址&gt; &lt;子网掩码&gt;</code></td>
-<td>配置DHCP池的网络地址和子网掩码</td>
-</tr>
-<tr>
-<td></td>
-<td><code>default-router &lt;默认网关地址&gt;</code></td>
-<td>配置DHCP客户端的默认网关</td>
-</tr>
-<tr>
-<td></td>
-<td><code>dns-server &lt;DNS服务器地址&gt;</code></td>
-<td>配置DHCP客户端的DNS服务器地址</td>
-</tr>
-<tr>
-<td></td>
-<td><code>domain-name &lt;域名&gt;</code></td>
-<td>配置DHCP客户端的域名</td>
-</tr>
-<tr>
-<td></td>
-<td><code>lease &lt;租期&gt;</code></td>
-<td>设置DHCP租期（单位：天、小时、分钟）</td>
-</tr>
-<tr>
-<td></td>
-<td><code>excluded-address &lt;地址范围&gt;</code></td>
-<td>配置DHCP池中排除的地址范围，不会分配给DHCP客户端</td>
-</tr>
-<tr>
-<td></td>
-<td><code>address &lt;地址&gt; &lt;子网掩码&gt;</code></td>
-<td>配置DHCP池的特定IP地址和子网掩码</td>
-</tr>
-<tr>
-<td></td>
-<td><code>ip dhcp excluded-address &lt;起始地址&gt; &lt;结束地址&gt;</code></td>
-<td>配置排除的DHCP地址范围，确保这些地址不会被分配给客户端</td>
-</tr>
-<tr>
-<td></td>
-<td><code>show ip dhcp pool</code></td>
-<td>查看DHCP池的状态和分配的地址信息</td>
-</tr>
-<tr>
-<td></td>
-<td><code>show ip dhcp binding</code></td>
-<td>查看DHCP客户端的IP地址绑定信息</td>
-</tr>
-<tr>
-<td></td>
-<td><code>clear ip dhcp binding &lt;IP地址&gt;</code></td>
-<td>清除指定DHCP客户端的IP地址绑定</td>
-</tr>
-<tr>
-<td></td>
-<td><code>ip helper-address &lt;服务器地址&gt;</code></td>
-<td>配置DHCP中继代理，指向DHCP服务器的IP地址</td>
-</tr>
-<tr>
-<td><strong>系统管理</strong></td>
-<td><code>show version</code></td>
-<td>查看系统版本信息</td>
-</tr>
-<tr>
-<td></td>
-<td><code>show ip interface brief</code></td>
-<td>查看接口状态摘要</td>
-</tr>
-<tr>
-<td></td>
-<td><code>show interfaces</code></td>
-<td>查看接口详细信息</td>
-</tr>
-<tr>
-<td></td>
-<td><code>show running-config</code></td>
-<td>查看当前运行配置</td>
-</tr>
-<tr>
-<td></td>
-<td><code>show startup-config</code></td>
-<td>查看启动配置</td>
-</tr>
-<tr>
-<td></td>
-<td><code>show logging</code></td>
-<td>查看日志信息</td>
-</tr>
-<tr>
-<td></td>
-<td><code>clear logging</code></td>
-<td>清除日志信息</td>
-</tr>
-<tr>
-<td><strong>工程配置3招</strong></td>
-<td><code>no ip domain lookup</code></td>
-<td>关闭域名解析（防止敲错命令查询）</td>
-</tr>
-<tr>
-<td></td>
-<td><code>line console 0</code></td>
-<td>进入控制台线路0的配置模式</td>
-</tr>
-<tr>
-<td></td>
-<td><code>logging synchronous</code></td>
-<td>log当前显示信息同步，不会打断控制台的输入</td>
-</tr>
-<tr>
-<td></td>
-<td><code>no exec - timeout</code></td>
-<td>关闭会话超时，防止一段时间不操作自动退出</td>
-</tr>
-</tbody></table>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/11/21/%E6%80%9D%E7%A7%91%E9%94%90%E6%8D%B7%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%91%BD%E4%BB%A4/" data-id="cm9zmq90100fasqhlbnho4cxl" data-title="思科锐捷网络设备配置命令" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E5%B7%A5/" rel="tag">网工</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-vlan间通信(单臂路由、多臂路由、三层交换)配置命令(思科+华为)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/11/20/vlan%E9%97%B4%E9%80%9A%E4%BF%A1(%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1%E3%80%81%E5%A4%9A%E8%87%82%E8%B7%AF%E7%94%B1%E3%80%81%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2)%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4(%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA)/" class="article-date">
-  <time class="dt-published" datetime="2024-11-20T02:20:00.000Z" itemprop="datePublished">2024-11-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%BD%91%E5%B7%A5/">网工</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/11/20/vlan%E9%97%B4%E9%80%9A%E4%BF%A1(%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1%E3%80%81%E5%A4%9A%E8%87%82%E8%B7%AF%E7%94%B1%E3%80%81%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2)%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4(%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA)/">vlan间通信(单臂路由、多臂路由、三层交换)配置命令(思科+华为)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="单臂路由"><a href="#单臂路由" class="headerlink" title="单臂路由"></a>单臂路由</h2><p>路由器单个接口配置多个子接口，打上vlan标签，模拟三层交换机的vlanif接口功能</p>
-<p>注意：路由器不具备vlan划分和处理能力，一个物理接口默认只处理一个vlan网络，因此需要为每个vlan配置一个物理子接口作为vlan网关地址，而不是直接配置vlan接口（某些路由器接口不支持配置子接口）<br><img src="https://xinhaojin.github.io/picx-images-hosting/20241119/image.361lo71l31.webp" alt="image"></p>
-<table>
-<thead>
-<tr>
-<th><strong>描述</strong></th>
-<th><strong>思科</strong></th>
-<th><strong>华为</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>创建 VLAN</strong></td>
-<td>vlan 10 <br> vlan 20</td>
-<td>vlan batch 10 20</td>
-</tr>
-<tr>
-<td><strong>设置 Access 接口并指定 VLAN</strong></td>
-<td>int f0&#x2F;1 <br> no shutdown <br> switchport mode access <br> switchport access vlan 10 <br> int f0&#x2F;2 <br> no shutdown <br> switchport mode access <br> switchport access vlan 20</td>
-<td>int e0&#x2F;1 <br> port link-type access <br> port default vlan 10 <br> int e0&#x2F;2 <br> port link-type access <br> port default vlan 20</td>
-</tr>
-<tr>
-<td><strong>设置 Trunk 接口并允许 VLAN 数据通过</strong></td>
-<td>int f0&#x2F;3 <br> no shutdown <br> switchport mode trunk <br> switchport trunk allow vlan all</td>
-<td>int e0&#x2F;3 <br> port link-type trunk <br> port trunk allow-pass vlan all</td>
-</tr>
-<tr>
-<td><strong>路由器设置子接口</strong></td>
-<td>int g0&#x2F;0&#x2F;0 <br> no shutdown <br> int g0&#x2F;0&#x2F;0.1 <br> encapsulation dot1Q 10 <br> ip add 192.168.10.254 255.255.255.0 <br> encapsulation dot1Q 20 <br> ip add 192.168.20.254 255.255.255.0 <br> ip routing</td>
-<td>int g0&#x2F;0&#x2F;0.10 <br> dot1q termination vid 10 <br> arp broadcast enable <br> ip address 192.168.10.254 24 <br> int g0&#x2F;0&#x2F;0.20 <br> dot1q termination vid 20 <br> arp broadcast enable <br> ip address 192.168.20.254 24</td>
-</tr>
-</tbody></table>
-<h2 id="多臂路由"><a href="#多臂路由" class="headerlink" title="多臂路由"></a>多臂路由</h2><p>路由器多个接口连接交换机，配置作为vlan网关地址，利用路由功能实现不同vlan间通信<br><img src="https://xinhaojin.github.io/picx-images-hosting/20241119/image.1vyohv7k8o.webp" alt="image"></p>
-<table>
-<thead>
-<tr>
-<th><strong>描述</strong></th>
-<th><strong>思科</strong></th>
-<th><strong>华为</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>创建 VLAN</strong></td>
-<td>vlan 10 <br> vlan 20</td>
-<td>vlan batch 10 20</td>
-</tr>
-<tr>
-<td><strong>设置 Access 接口并指定 VLAN</strong></td>
-<td>int f0&#x2F;1 <br> no shutdown <br> switchport mode access <br> switchport access vlan 10 <br> int f0&#x2F;2 <br> no shutdown <br> switchport mode access <br> switchport access vlan 20 <br> int f0&#x2F;3 <br> no shutdown <br> switchport mode access <br> switchport access vlan 10 <br> int f0&#x2F;4 <br> no shutdown <br> switchport mode access <br> switchport access vlan 20</td>
-<td>int e0&#x2F;1 <br> port link-type access <br> port default vlan 10 <br> int e0&#x2F;2 <br> port link-type access <br> port default vlan 20 <br> int e0&#x2F;3 <br> port link-type access <br> port default vlan 10 <br> int e0&#x2F;4 <br> port link-type access <br> port default vlan 20</td>
-</tr>
-<tr>
-<td><strong>设置路由器接口 IP</strong></td>
-<td>int g0&#x2F;0&#x2F;0 <br> no shutdown <br> ip add 192.168.10.254 255.255.255.0 <br> int g0&#x2F;0&#x2F;1 <br> no shutdown <br> ip add 192.168.20.254 255.255.255.0</td>
-<td>int g0&#x2F;0&#x2F;0 <br> ip add 192.168.10.254 24 <br> int g0&#x2F;0&#x2F;1 <br> ip add 192.168.20.254 24</td>
-</tr>
-</tbody></table>
-<h2 id="三层交换机"><a href="#三层交换机" class="headerlink" title="三层交换机"></a>三层交换机</h2><p>创建vlan接口，配置接口楼地址为vlan网关地址，实现不同vlan间通信</p>
-<p>注意：思科三层交换机要开启路由功能<br><img src="https://xinhaojin.github.io/picx-images-hosting/20241119/image.99tdqmsj9i.webp" alt="image"></p>
-<table>
-<thead>
-<tr>
-<th><strong>描述</strong></th>
-<th><strong>思科</strong></th>
-<th><strong>华为</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>创建 VLAN</strong></td>
-<td>vlan 10 <br> vlan 20</td>
-<td>vlan batch 10 20</td>
-</tr>
-<tr>
-<td><strong>设置 Access 接口并指定 VLAN</strong></td>
-<td>int f0&#x2F;1 <br> no shutdown <br> switchport mode access <br> switchport access vlan 10 <br> int f0&#x2F;2 <br> no shutdown <br> switchport mode access <br> switchport access vlan 20 <br> int f0&#x2F;3 <br> no shutdown <br> switchport mode access <br> switchport access vlan 10 <br> int f0&#x2F;4 <br> no shutdown <br> switchport mode access <br> switchport access vlan 20</td>
-<td>int e0&#x2F;1 <br> port link-type access <br> port default vlan 10 <br> int e0&#x2F;2 <br> port link-type access <br> port default vlan 20 <br> int e0&#x2F;3 <br> port link-type access <br> port default vlan 10 <br> int e0&#x2F;4 <br> port link-type access <br> port default vlan 20</td>
-</tr>
-<tr>
-<td><strong>设置 Trunk 接口并允许 VLAN 数据通过</strong></td>
-<td>int f0&#x2F;3 <br> no shutdown <br> switchport mode trunk <br> switchport trunk allow vlan all</td>
-<td>int e0&#x2F;3 <br> port link-type trunk <br> port trunk allow-pass vlan all</td>
-</tr>
-<tr>
-<td><strong>设置三层交换机 VLAN 接口</strong></td>
-<td>vlan 10 <br> vlan 20 <br> int vlan 10 <br> ip add 192.168.10.254 255.255.255.0 <br> int vlan 20 <br> ip add 192.168.20.254 255.255.255.0</td>
-<td>vlan batch 10 20 <br> int vlanif 10 <br> ip add 192.168.10.254 24 <br> int vlanif 20 <br> ip add 192.168.20.254 24</td>
-</tr>
-<tr>
-<td><strong>启用 IP 路由</strong></td>
-<td>int f0&#x2F;1 <br> no shutdown <br> ip routing</td>
-<td>&#x2F;</td>
-</tr>
-</tbody></table>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/11/20/vlan%E9%97%B4%E9%80%9A%E4%BF%A1(%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1%E3%80%81%E5%A4%9A%E8%87%82%E8%B7%AF%E7%94%B1%E3%80%81%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2)%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4(%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA)/" data-id="cm9zmq8yx009usqhlerzoh59d" data-title="vlan间通信(单臂路由、多臂路由、三层交换)配置命令(思科+华为)" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E5%B7%A5/" rel="tag">网工</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-DHCP故障排查，另起一个DHCP服务器竟然还不行，原因竟是下级路由器以下犯上" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/10/16/DHCP%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%EF%BC%8C%E5%8F%A6%E8%B5%B7%E4%B8%80%E4%B8%AADHCP%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%BF%98%E4%B8%8D%E8%A1%8C%EF%BC%8C%E5%8E%9F%E5%9B%A0%E7%AB%9F%E6%98%AF%E4%B8%8B%E7%BA%A7%E8%B7%AF%E7%94%B1%E5%99%A8%E4%BB%A5%E4%B8%8B%E7%8A%AF%E4%B8%8A/" class="article-date">
-  <time class="dt-published" datetime="2024-10-16T13:40:04.000Z" itemprop="datePublished">2024-10-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">软件安装配置</a>►<a class="article-category-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/10/16/DHCP%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%EF%BC%8C%E5%8F%A6%E8%B5%B7%E4%B8%80%E4%B8%AADHCP%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%BF%98%E4%B8%8D%E8%A1%8C%EF%BC%8C%E5%8E%9F%E5%9B%A0%E7%AB%9F%E6%98%AF%E4%B8%8B%E7%BA%A7%E8%B7%AF%E7%94%B1%E5%99%A8%E4%BB%A5%E4%B8%8B%E7%8A%AF%E4%B8%8A/">DHCP故障排查，另起一个DHCP服务器竟然还不行，原因竟是下级路由器以下犯上</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>家里小米路由器局域网网段是192.168.31.0&#x2F;24，但很多设备经常会获取到192.168.1.0&#x2F;24网段的IP，导致上不了网，让人非常恼火。<br>经常之前有段时间我误以为是光猫DHCP服务没有彻底关闭导致的，但我最近仔细琢磨了一下才想起来我的光猫其实设置的网段是192.168.10.0&#x2F;24网段，所以不是光猫的问题，而是DHCP服务故障。</p>
-<p>家里连接的设备大概在20个左右，之前装宽带的师傅就跟我说不要在光猫lan口直接接交换机，应该买个性能好一点的路由器来做DHCP服务器，我想我的红米AX6000主路由应该足够强了，但还是莫名其妙的出现获取不到IP的情况，搞得人非常火大，于是决定另起一个DHCP服务。</p>
-<h2 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a>安装配置</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install isc-dhcp-server</span><br></pre></td></tr></table></figure>
-<p>修改<code>/etc/dhcp/dhcpd.conf</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 定义全局选项</span><br><span class="line">option domain-name-servers 223.5.5.5,223.6.6.6; # 使用阿里DNS服务器</span><br><span class="line"></span><br><span class="line"># 定义子网</span><br><span class="line">subnet 192.168.31.0 netmask 255.255.255.0 &#123;</span><br><span class="line">    range 192.168.31.2 192.168.31.220; # 指定IP地址分配范围</span><br><span class="line">    option routers 192.168.31.1; # 指定网关</span><br><span class="line">    option subnet-mask 255.255.255.0; # 指定子网掩码</span><br><span class="line">    option domain-name-servers 223.5.5.5,223.6.6.6; # 指定DNS服务器</span><br><span class="line">    authoritative;</span><br><span class="line">&#125;</span><br><span class="line"># 日志</span><br><span class="line"># grep dhcp /var/log/syslog</span><br></pre></td></tr></table></figure>
-<p>修改<code>/etc/default/isc-dhcp-server</code>,指定配置文件路径和网络接口名称</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DHCPDv4_CONF=/etc/dhcp/dhcpd.conf</span><br><span class="line">INTERFACESv4=&quot;enp3s0&quot;</span><br><span class="line">INTERFACESv6=&quot;enp3s0&quot;</span><br></pre></td></tr></table></figure>
-<p>设置为开机自启动</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start isc-dhcp-server</span><br><span class="line">sudo systemctl enable isc-dhcp-server</span><br></pre></td></tr></table></figure>
-<p>然后关闭路由器的DHCP服务</p>
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>手机忘记此网络，重新连接，给我气笑了，获取到了192.168.1.100的IP，根本不是我的网段</p>
-<p>查看日志</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep dhcp /var/log/syslog</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">2024-10-17T21:26:57.401204+08:00 firebat-server dhcpd[2087508]: DHCPDISCOVER from c2:02:42:75:22:f5 (CET-AL00) via enp3s0</span><br><span class="line">2024-10-17T21:26:57.467998+08:00 firebat-server dhcpd[2087508]: DHCPREQUEST for 192.168.1.100 (192.168.1.1) from c2:02:42:75:22:f5 via enp3s0: wrong network.</span><br><span class="line">2024-10-17T21:26:57.468319+08:00 firebat-server dhcpd[2087508]: DHCPNAK on 192.168.1.100 to c2:02:42:75:22:f5 via enp3s0</span><br><span class="line">2024-10-17T21:26:57.596163+08:00 firebat-server dhcpd[2087508]: DHCPREQUEST for 192.168.1.100 (192.168.1.1) from c2:02:42:75:22:f5 via enp3s0: wrong network.</span><br><span class="line">2024-10-17T21:26:57.596290+08:00 firebat-server dhcpd[2087508]: DHCPNAK on 192.168.1.100 to c2:02:42:75:22:f5 via enp3s0</span><br><span class="line">2024-10-17T21:26:58.402446+08:00 firebat-server dhcpd[2087508]: DHCPOFFER on 192.168.31.5 to c2:02:42:75:22:f5 (CET-AL00) via enp3s0</span><br><span class="line">2024-10-17T21:27:05.243708+08:00 firebat-server dhcpd[2087508]: DHCPREQUEST for 192.168.1.119 from 24:27:30:4d:30:38 via enp3s0: wrong network.</span><br><span class="line">2024-10-17T21:27:05.244090+08:00 firebat-server dhcpd[2087508]: DHCPNAK on 192.168.1.119 to 24:27:30:4d:30:38 via enp3s0</span><br><span class="line">2024-10-17T21:27:05.276043+08:00 firebat-server dhcpd[2087508]: DHCPDISCOVER from 24:27:30:4d:30:38 via enp3s0</span><br><span class="line">2024-10-17T21:27:05.297040+08:00 firebat-server dhcpd[2087508]: DHCPREQUEST for 192.168.1.119 (192.168.1.1) from 24:27:30:4d:30:38 via enp3s0: wrong network.</span><br><span class="line">2024-10-17T21:27:05.297336+08:00 firebat-server dhcpd[2087508]: DHCPNAK on 192.168.1.119 to 24:27:30:4d:30:38 via enp3s0</span><br><span class="line">2024-10-17T21:27:06.278249+08:00 firebat-server dhcpd[2087508]: DHCPOFFER on 192.168.31.195 to 24:27:30:4d:30:38 via enp3s0</span><br></pre></td></tr></table></figure>
-<p>日志显示有个192.168.1.1的狗东西TMD在积极地给我分配错误的IP，导致我的手机优先获取到了192.168.1.1这个DHCP服务器分配的IP。在我家的网络中，这只有可能是我192.168.31.1主路由的下级路由器。</p>
-<h2 id="排障"><a href="#排障" class="headerlink" title="排障"></a>排障</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping 192.168.1.1</span><br></pre></td></tr></table></figure>
-<p>可以ping通</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">正在 Ping 192.168.1.1 具有 32 字节的数据:</span><br><span class="line">来自 192.168.1.1 的回复: 字节=32 时间=3ms TTL=251</span><br><span class="line">来自 192.168.1.1 的回复: 字节=32 时间=3ms TTL=251</span><br><span class="line"></span><br><span class="line">192.168.1.1 的 Ping 统计信息:</span><br><span class="line">    数据包: 已发送 = 2，已接收 = 2，丢失 = 0 (0% 丢失)，</span><br><span class="line">往返行程的估计时间(以毫秒为单位):</span><br><span class="line">    最短 = 3ms，最长 = 3ms，平均 = 3ms</span><br></pre></td></tr></table></figure>
-<p>安装局域网扫描工具</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install arp-scan</span><br><span class="line">arp-scan 192.168.1.0/24</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Interface: enp3s0, type: EN10MB, MAC: 68:1d:ef:40:55:9a, IPv4: 192.168.31.31</span><br><span class="line">Starting arp-scan 1.10.0 with 256 hosts (https://github.com/royhills/arp-scan)</span><br><span class="line">192.168.1.1     00:5c:c2:45:87:4f       SHENZHEN MERCURY COMMUNICATION TECHNOLOGIES CO.,LTD.</span><br><span class="line">192.168.1.108   c8:bf:4c:31:5b:16       Beijing Xiaomi Mobile Software Co., Ltd</span><br><span class="line">192.168.1.113   a4:39:b3:ca:23:42       Beijing Xiaomi Mobile Software Co., Ltd</span><br><span class="line">192.168.1.217   b0:59:47:8e:f7:21       Shenzhen Qihu Intelligent Technology Company Limited</span><br><span class="line">192.168.1.119   24:27:30:4d:30:38       (Unknown)</span><br><span class="line"></span><br><span class="line">5 packets received by filter, 0 packets dropped by kernel</span><br><span class="line">Ending arp-scan 1.10.0: 256 hosts scanned in 1.929 seconds (132.71 hosts/sec). 5 responded</span><br></pre></td></tr></table></figure>
-<p>明显是个水星路由器</p>
-<p>再扫一下我的31网段</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arp-scan 192.168.31.0/24</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Interface: enp3s0, type: EN10MB, MAC: 68:1d:ef:40:55:9a, IPv4: 192.168.31.31</span><br><span class="line">Starting arp-scan 1.10.0 with 256 hosts (https://github.com/royhills/arp-scan)</span><br><span class="line">192.168.31.1    24:cf:24:5d:64:da       Beijing Xiaomi Mobile Software Co., Ltd</span><br><span class="line">192.168.31.2    b0:59:47:8e:f7:21       Shenzhen Qihu Intelligent Technology Company Limited</span><br><span class="line">192.168.31.32   80:fa:5b:4e:ba:96       CLEVO CO.</span><br><span class="line">192.168.31.5    c2:02:42:75:22:f5       (Unknown: locally administered)</span><br><span class="line">192.168.31.6    d4:35:38:14:4f:4f       Beijing Xiaomi Mobile Software Co., Ltd</span><br><span class="line">192.168.31.3    68:ab:bc:ed:68:aa       Beijing Xiaomi Mobile Software Co., Ltd</span><br><span class="line">192.168.31.72   d4:bb:e6:64:60:29       Huawei Device Co., Ltd.</span><br><span class="line">192.168.31.34   b8:ab:62:ae:a5:a3       Hui Zhou Gaoshengda Technology Co.,LTD</span><br><span class="line">192.168.31.100  58:11:22:4a:95:91       ASUSTek COMPUTER INC.</span><br><span class="line">192.168.31.166  50:88:11:d7:66:b9       (Unknown)</span><br><span class="line">192.168.31.194  44:e6:4a:53:48:ac       (Unknown)</span><br><span class="line">192.168.31.80   4c:11:ae:01:22:29       Espressif Inc.</span><br><span class="line">192.168.31.130  50:2c:c6:09:f2:08       GREE ELECTRIC APPLIANCES, INC. OF ZHUHAI</span><br><span class="line"></span><br><span class="line">14 packets received by filter, 0 packets dropped by kernel</span><br><span class="line">Ending arp-scan 1.10.0: 256 hosts scanned in 1.940 seconds (131.96 hosts/sec). 13 responded</span><br></pre></td></tr></table></figure>
-<p>没有192.168.1.1那个MAC地址的IP，我都不知道他是怎么上网的。</p>
-<p>神奇的是有一个MAC为<code>b0:59:47:8e:f7:21</code>的设备，同时拥有两个网段的IP：192.168.31.2和192.168.1.217 ，生产厂商是Shenzhen Qihu Intelligent Technology Company Limited，qihu奇虎应该是360的东西，应该是我的无线摄像头，点开摄像头app一看IP果然是,小小摄像头获取了两个IP，设计的还比较聪明，有两个DHCP服务器就配置两个IP，这样能上网的概率高得多，其他设备要是有这么聪明就好了，不愧是360。</p>
-<p>接下来我手机登录到内网机器宝塔面板的终端，一根根拔网线排查，每拔一次就输入<code>arp-scan 192.168.1.0/24</code>看一下192.168.1.1那个设备还在不在。果然，两三下就被我找到了罪魁祸首。</p>
-<p>一看果然是水星路由器，登上去管理地址之后发现上网方式是宽带上网…，还改不了设置，看了下网口，网线插在了LAN口…，我都无语了，怪不得会以下犯上，他以为我是他的下级呢。</p>
-<p>网线插了WAN口之后可以设置自动获取IP，这时候就正常了。</p>
-<p>这也意味着我的路由器DHCP可以重新开启，内网ubuntu的DHCP可以关闭。但是不改了，先用着，总比路由器的DHCP服务能力强。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/10/16/DHCP%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%EF%BC%8C%E5%8F%A6%E8%B5%B7%E4%B8%80%E4%B8%AADHCP%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%BF%98%E4%B8%8D%E8%A1%8C%EF%BC%8C%E5%8E%9F%E5%9B%A0%E7%AB%9F%E6%98%AF%E4%B8%8B%E7%BA%A7%E8%B7%AF%E7%94%B1%E5%99%A8%E4%BB%A5%E4%B8%8B%E7%8A%AF%E4%B8%8A/" data-id="cm9zmq8wo0005sqhlb2t22y4w" data-title="DHCP故障排查，另起一个DHCP服务器竟然还不行，原因竟是下级路由器以下犯上" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DHCP/" rel="tag">DHCP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
-  </nav>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/LeetCode/">LeetCode</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/%E6%9D%82/">杂</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/%E6%9D%82/">杂</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/pytorch/">pytorch</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">图像处理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%8D%93/">安卓</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82/">杂</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%88%AC%E8%99%AB/">爬虫</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/">目标检测</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E5%B7%A5/">网工</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">软件安装配置</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/linux/">linux</a></li></ul></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/" rel="tag">CDN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DDNS/" rel="tag">DDNS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DHCP/" rel="tag">DHCP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNS/" rel="tag">DNS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IP/" rel="tag">IP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IPsec/" rel="tag">IPsec</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDA/" rel="tag">LDA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NFC/" rel="tag">NFC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDF/" rel="tag">PDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SMTP/" rel="tag">SMTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chatgpt/" rel="tag">chatgpt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloudflare/" rel="tag">cloudflare</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/" rel="tag">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ocr/" rel="tag">ocr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyinstaller/" rel="tag">pyinstaller</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pytorch/" rel="tag">pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rpa/" rel="tag">rpa</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/selenium/" rel="tag">selenium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/" rel="tag">socket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssl/" rel="tag">ssl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wget/" rel="tag">wget</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wol/" rel="tag">wol</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/" rel="tag">wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/worldcloud/" rel="tag">worldcloud</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%91%E7%9B%98/" rel="tag">云盘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B/" rel="tag">人脸检测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%90%86/" rel="tag">代理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%80%8D%E9%80%9F%E6%92%AD%E6%94%BE/" rel="tag">倍速播放</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" rel="tag">内网穿透</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E7%9B%AE%E6%91%84%E5%83%8F%E5%A4%B4%E6%B5%8B%E8%B7%9D/" rel="tag">单目摄像头测距</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%93%88%E5%A4%AB%E6%9B%BC/" rel="tag">哈夫曼</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" rel="tag">哈希表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%9F%E5%90%8D/" rel="tag">域名</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A0%86/" rel="tag">堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E5%B1%8F%E5%8D%8F%E5%90%8C/" rel="tag">多屏协同</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%AA%E7%94%9F%E7%BD%91%E7%BB%9C/" rel="tag">孪生网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E5%8D%93/" rel="tag">安卓</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/" rel="tag">局域网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/" rel="tag">数据集</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%BB%84/" rel="tag">数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" rel="tag">树莓派</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BF%80%E5%85%89%E6%B5%8B%E8%B7%9D/" rel="tag">激光测距</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%82%B9%E9%80%89%E9%AA%8C%E8%AF%81%E7%A0%81/" rel="tag">点选验证码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" rel="tag">目标检测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" rel="tag">端口转发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" rel="tag">编译原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E5%B7%A5/" rel="tag">网工</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%80%81%E6%AF%9B%E5%AD%90%E5%9B%BA%E4%BB%B6/" rel="tag">老毛子固件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" rel="tag">虚拟机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD/" rel="tag">视频下载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E6%B5%81/" rel="tag">视频流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%AD%E9%9F%B3%E8%BD%AC%E6%96%87%E5%AD%97/" rel="tag">语音转文字</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B6%85%E5%83%8F%E7%B4%A0/" rel="tag">超像素</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B6%85%E5%A3%B0%E6%B3%A2/" rel="tag">超声波</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8%E5%88%B7%E6%9C%BA/" rel="tag">路由器刷机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" rel="tag">软件安装配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E7%94%BB%E5%90%8C%E6%AD%A5/" rel="tag">音画同步</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/" rel="tag">验证码</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/CDN/" style="font-size: 10px;">CDN</a> <a href="/tags/DDNS/" style="font-size: 10px;">DDNS</a> <a href="/tags/DHCP/" style="font-size: 10px;">DHCP</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/IP/" style="font-size: 10.67px;">IP</a> <a href="/tags/IPsec/" style="font-size: 10px;">IPsec</a> <a href="/tags/LDA/" style="font-size: 10px;">LDA</a> <a href="/tags/NFC/" style="font-size: 10px;">NFC</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/SMTP/" style="font-size: 10px;">SMTP</a> <a href="/tags/blog/" style="font-size: 11.33px;">blog</a> <a href="/tags/c/" style="font-size: 16px;">c++</a> <a href="/tags/chatgpt/" style="font-size: 10.67px;">chatgpt</a> <a href="/tags/cloudflare/" style="font-size: 11.33px;">cloudflare</a> <a href="/tags/docker/" style="font-size: 12.67px;">docker</a> <a href="/tags/flask/" style="font-size: 11.33px;">flask</a> <a href="/tags/java/" style="font-size: 13.33px;">java</a> <a href="/tags/js/" style="font-size: 11.33px;">js</a> <a href="/tags/linux/" style="font-size: 19.33px;">linux</a> <a href="/tags/nginx/" style="font-size: 12.67px;">nginx</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/ocr/" style="font-size: 10px;">ocr</a> <a href="/tags/php/" style="font-size: 10.67px;">php</a> <a href="/tags/pyinstaller/" style="font-size: 10px;">pyinstaller</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/pytorch/" style="font-size: 16.67px;">pytorch</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/rpa/" style="font-size: 10px;">rpa</a> <a href="/tags/selenium/" style="font-size: 11.33px;">selenium</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/socket/" style="font-size: 10px;">socket</a> <a href="/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/tags/ssh/" style="font-size: 13.33px;">ssh</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/wget/" style="font-size: 10px;">wget</a> <a href="/tags/wol/" style="font-size: 10px;">wol</a> <a href="/tags/wordpress/" style="font-size: 10.67px;">wordpress</a> <a href="/tags/worldcloud/" style="font-size: 10px;">worldcloud</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 12.67px;">二叉树</a> <a href="/tags/%E4%BA%91%E7%9B%98/" style="font-size: 10px;">云盘</a> <a href="/tags/%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B/" style="font-size: 10px;">人脸检测</a> <a href="/tags/%E4%BB%A3%E7%90%86/" style="font-size: 13.33px;">代理</a> <a href="/tags/%E5%80%8D%E9%80%9F%E6%92%AD%E6%94%BE/" style="font-size: 10px;">倍速播放</a> <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" style="font-size: 11.33px;">内网穿透</a> <a href="/tags/%E5%8D%95%E7%9B%AE%E6%91%84%E5%83%8F%E5%A4%B4%E6%B5%8B%E8%B7%9D/" style="font-size: 10px;">单目摄像头测距</a> <a href="/tags/%E5%93%88%E5%A4%AB%E6%9B%BC/" style="font-size: 10px;">哈夫曼</a> <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" style="font-size: 10.67px;">哈希表</a> <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" style="font-size: 14px;">图像处理</a> <a href="/tags/%E5%9F%9F%E5%90%8D/" style="font-size: 10px;">域名</a> <a href="/tags/%E5%A0%86/" style="font-size: 10px;">堆</a> <a href="/tags/%E5%A4%9A%E5%B1%8F%E5%8D%8F%E5%90%8C/" style="font-size: 10px;">多屏协同</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a> <a href="/tags/%E5%AD%AA%E7%94%9F%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">孪生网络</a> <a href="/tags/%E5%AE%89%E5%8D%93/" style="font-size: 13.33px;">安卓</a> <a href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/" style="font-size: 12px;">局域网</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 18.67px;">数据结构</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/" style="font-size: 15.33px;">数据集</a> <a href="/tags/%E6%95%B0%E7%BB%84/" style="font-size: 10px;">数组</a> <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" style="font-size: 14.67px;">树莓派</a> <a href="/tags/%E6%BF%80%E5%85%89%E6%B5%8B%E8%B7%9D/" style="font-size: 10px;">激光测距</a> <a href="/tags/%E7%82%B9%E9%80%89%E9%AA%8C%E8%AF%81%E7%A0%81/" style="font-size: 10px;">点选验证码</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 13.33px;">爬虫</a> <a href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" style="font-size: 18px;">目标检测</a> <a href="/tags/%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" style="font-size: 10px;">端口转发</a> <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" style="font-size: 11.33px;">编译原理</a> <a href="/tags/%E7%BD%91%E5%B7%A5/" style="font-size: 14px;">网工</a> <a href="/tags/%E8%80%81%E6%AF%9B%E5%AD%90%E5%9B%BA%E4%BB%B6/" style="font-size: 10px;">老毛子固件</a> <a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" style="font-size: 10px;">虚拟机</a> <a href="/tags/%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD/" style="font-size: 10.67px;">视频下载</a> <a href="/tags/%E8%A7%86%E9%A2%91%E6%B5%81/" style="font-size: 10px;">视频流</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.67px;">计算机网络</a> <a href="/tags/%E8%AF%AD%E9%9F%B3%E8%BD%AC%E6%96%87%E5%AD%97/" style="font-size: 10px;">语音转文字</a> <a href="/tags/%E8%B6%85%E5%83%8F%E7%B4%A0/" style="font-size: 10px;">超像素</a> <a href="/tags/%E8%B6%85%E5%A3%B0%E6%B3%A2/" style="font-size: 10px;">超声波</a> <a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8%E5%88%B7%E6%9C%BA/" style="font-size: 10px;">路由器刷机</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" style="font-size: 17.33px;">软件安装配置</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 10.67px;">递归</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 11.33px;">链表</a> <a href="/tags/%E9%9F%B3%E7%94%BB%E5%90%8C%E6%AD%A5/" style="font-size: 10px;">音画同步</a> <a href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/" style="font-size: 12.67px;">验证码</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2025/04/27/hello-world/">Hello World</a>
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
           </li>
+          
         
-          <li>
-            <a href="/2025/04/25/ubuntu24%E9%87%8D%E8%A3%85%E8%AE%B0%E5%BD%95/">ubuntu24重装记录</a>
-          </li>
         
-          <li>
-            <a href="/2025/04/01/win11%E6%B7%BB%E5%8A%A0%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0%E7%BD%91%E5%8D%A1%E5%BC%82%E5%B8%B8%E8%87%AA%E5%8A%A8%E9%87%8D%E5%90%AF/">win11添加开机自启动脚本实现网卡异常自动重启</a>
-          </li>
-        
-          <li>
-            <a href="/2025/02/06/DBeaver%E8%BF%9E%E6%8E%A5MySQL%E5%92%8CIoTDB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%AD%A5%E9%AA%A4/">DBeaver连接MySQL和IoTDB数据库步骤</a>
-          </li>
-        
-          <li>
-            <a href="/2025/01/26/%E4%BD%BF%E7%94%A8polkit%E5%AE%9E%E7%8E%B0%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86systemctl%E6%9C%8D%E5%8A%A1/">使用polkit实现普通用户管理systemctl服务</a>
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
           </li>
         
       </ul>
     </div>
   </div>
+</nav>
 
   
-</aside>
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Make the world a little bit better."></span>
+          
+        </div>
+
         
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
+
       
-      &copy; 2025 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
     </div>
   </div>
-</footer>
+</div>
 
-    </div>
-    <nav id="mobile-nav">
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/12/16/%E5%8D%8E%E4%B8%BA%E9%98%B2%E7%81%AB%E5%A2%99%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5%E5%9F%BA%E7%A1%80/" target="_self">
+          华为防火墙安全策略基础
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/12/16/%E5%8D%8E%E4%B8%BA%E9%98%B2%E7%81%AB%E5%A2%99%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5%E5%9F%BA%E7%A1%80/" target="_self">
+        <div>
+          安全策略基础安全策略的组成每一条安全策略都是由匹配条件和动作组成的规则。防火墙接收到报文以后，将报文的属性与安全策略的匹配条件进行匹配。如果所有条件都匹配，则此报文成功匹配安全策略，防火墙按照该安全策略的动作处理这个报文及其后续双向流量。因此，安全策略的核心元素是匹配条件和动作。 匹配条件 谁 从哪里来到哪里去 干什么 什么时候  用户、终端设备、时间段、地址、地区、服务、应用、URL分类等匹配条
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-12-16 16:50" pubdate>
+              2024-12-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
   
-    <a href="/" class="mobile-nav-link">Home</a>
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E5%B7%A5/" class="category-chain-item">网工</a>
   
-</nav>
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/12/11/systemctl%E7%AE%A1%E7%90%86%E6%9C%8D%E5%8A%A1/" target="_self">
+          systemctl管理服务
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/12/11/systemctl%E7%AE%A1%E7%90%86%E6%9C%8D%E5%8A%A1/" target="_self">
+        <div>
+          需求eg.netmon 用户，在名为‘py12’的 conda 虚拟环境中，在&#x2F;home&#x2F;netmon&#x2F;projects&#x2F;iotdev&#x2F;iotdev_flask 目录下，运行 flask 程序 flask_app.py 创建服务1sudo vi /etc/systemd/system/iot_flask.service  1234567891011
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-12-11 10:56" pubdate>
+              2024-12-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/linux/" class="category-chain-item">linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/11/22/ubuntu%E4%BD%BF%E7%94%A8rclone%E6%8C%82%E8%BD%BDAlist%E5%88%B0%E6%9C%AC%E5%9C%B0/" target="_self">
+          ubuntu使用rclone挂载Alist到本地
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/11/22/ubuntu%E4%BD%BF%E7%94%A8rclone%E6%8C%82%E8%BD%BDAlist%E5%88%B0%E6%9C%AC%E5%9C%B0/" target="_self">
+        <div>
+          安装rclone12sudo apt-get updatesudo apt-get install rclone 配置rclone1rclone config 选择新存储 123456No configurations found - make a new one.n) New remotee) Edit existing remoted) Delete existing remoteq) Qui
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-11-22 20:37" pubdate>
+              2024-11-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件安装配置</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/linux/">#linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/11/22/ACL%E5%86%99%E6%B3%95(%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA)/" target="_self">
+          ACL写法(思科+华为)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/11/22/ACL%E5%86%99%E6%B3%95(%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA)/" target="_self">
+        <div>
+          说明 思科&#x2F;锐捷 华为    允许10.1.1.0&#x2F;24网段访问192.168.1.0&#x2F;24网段的所有服务（基于IP协议） ip access-list extended 10110 permit ip 10.1.1.0 0.0.0.255 192.168.1.0 0.0.0.255 acl number 3001rule 10 permit ip source
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-11-22 15:56" pubdate>
+              2024-11-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E5%B7%A5/" class="category-chain-item">网工</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%BD%91%E5%B7%A5/">#网工</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/11/22/RIP+OSPF+BGP%E9%85%8D%E7%BD%AE(%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA)/" target="_self">
+          RIP+OSPF+BGP配置(思科+华为)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/11/22/RIP+OSPF+BGP%E9%85%8D%E7%BD%AE(%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA)/" target="_self">
+        <div>
+          协议 思科（Cisco） 华为（Huawei）    RIP router rip version 2 network &lt;network&gt; no auto-summary rip 1 version 2 network &lt;network&gt; undo auto-summary   OSPF router ospf &lt;process-id&gt; network &
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-11-22 15:50" pubdate>
+              2024-11-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E5%B7%A5/" class="category-chain-item">网工</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%BD%91%E5%B7%A5/">#网工</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/11/22/NAT%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2%E9%85%8D%E7%BD%AE%EF%BC%88%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA%EF%BC%89/" target="_self">
+          NAT地址转换配置（思科+华为）
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/11/22/NAT%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2%E9%85%8D%E7%BD%AE%EF%BC%88%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA%EF%BC%89/" target="_self">
+        <div>
+          思科 路由器配置12345678910111213141516171819int g0/0.10encap dot1q 10ip add 192.168.10.254 255.255.255.0ip nat insideint g0/1.20encap dot1q 20ip add 192.168.20.254 255.255.255.0ip nat insideint s0/1/0no shut
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-11-22 15:10" pubdate>
+              2024-11-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E5%B7%A5/" class="category-chain-item">网工</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%BD%91%E5%B7%A5/">#网工</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/11/21/%E6%80%9D%E7%A7%91%E6%A0%B8%E5%BF%83%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87%E4%BB%BD/" target="_self">
+          思科核心交换机双机热备份
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/11/21/%E6%80%9D%E7%A7%91%E6%A0%B8%E5%BF%83%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87%E4%BB%BD/" target="_self">
+        <div>
+          描述 交换机A 交换机B    配置vlan接口地址 int vlan 10 ip add 192.168.10.254 255.255.255.0 int vlan 20 ip add 192.168.20.254 255.255.255.0 int vlan 10 ip add 192.168.10.253 255.255.255.0 int vlan 20 ip add 192.16
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-11-21 10:21" pubdate>
+              2024-11-21
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E5%B7%A5/" class="category-chain-item">网工</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%BD%91%E5%B7%A5/">#网工</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/11/21/%E6%80%9D%E7%A7%91%E9%94%90%E6%8D%B7%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%91%BD%E4%BB%A4/" target="_self">
+          思科锐捷网络设备配置命令
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/11/21/%E6%80%9D%E7%A7%91%E9%94%90%E6%8D%B7%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%91%BD%E4%BB%A4/" target="_self">
+        <div>
+          类别 命令 说明    基础命令 enable 进入特权模式    configure terminal 进入全局配置模式    show running-config 查看当前运行的配置    show startup-config 查看启动时的配置    copy running-config startup-config 保存当前配置到启动配置文件    reload 重新启动交换机
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-11-21 10:12" pubdate>
+              2024-11-21
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E5%B7%A5/" class="category-chain-item">网工</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%BD%91%E5%B7%A5/">#网工</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/11/20/vlan%E9%97%B4%E9%80%9A%E4%BF%A1(%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1%E3%80%81%E5%A4%9A%E8%87%82%E8%B7%AF%E7%94%B1%E3%80%81%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2)%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4(%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA)/" target="_self">
+          vlan间通信(单臂路由、多臂路由、三层交换)配置命令(思科+华为)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/11/20/vlan%E9%97%B4%E9%80%9A%E4%BF%A1(%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1%E3%80%81%E5%A4%9A%E8%87%82%E8%B7%AF%E7%94%B1%E3%80%81%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2)%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4(%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA)/" target="_self">
+        <div>
+          单臂路由路由器单个接口配置多个子接口，打上vlan标签，模拟三层交换机的vlanif接口功能 注意：路由器不具备vlan划分和处理能力，一个物理接口默认只处理一个vlan网络，因此需要为每个vlan配置一个物理子接口作为vlan网关地址，而不是直接配置vlan接口（某些路由器接口不支持配置子接口）    描述 思科 华为    创建 VLAN vlan 10  vlan 20 vlan batch
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-11-20 10:20" pubdate>
+              2024-11-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E5%B7%A5/" class="category-chain-item">网工</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%BD%91%E5%B7%A5/">#网工</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/10/16/DHCP%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%EF%BC%8C%E5%8F%A6%E8%B5%B7%E4%B8%80%E4%B8%AADHCP%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%BF%98%E4%B8%8D%E8%A1%8C%EF%BC%8C%E5%8E%9F%E5%9B%A0%E7%AB%9F%E6%98%AF%E4%B8%8B%E7%BA%A7%E8%B7%AF%E7%94%B1%E5%99%A8%E4%BB%A5%E4%B8%8B%E7%8A%AF%E4%B8%8A/" target="_self">
+          DHCP故障排查，另起一个DHCP服务器竟然还不行，原因竟是下级路由器以下犯上
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/16/DHCP%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%EF%BC%8C%E5%8F%A6%E8%B5%B7%E4%B8%80%E4%B8%AADHCP%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%BF%98%E4%B8%8D%E8%A1%8C%EF%BC%8C%E5%8E%9F%E5%9B%A0%E7%AB%9F%E6%98%AF%E4%B8%8B%E7%BA%A7%E8%B7%AF%E7%94%B1%E5%99%A8%E4%BB%A5%E4%B8%8B%E7%8A%AF%E4%B8%8A/" target="_self">
+        <div>
+          前言家里小米路由器局域网网段是192.168.31.0&#x2F;24，但很多设备经常会获取到192.168.1.0&#x2F;24网段的IP，导致上不了网，让人非常恼火。经常之前有段时间我误以为是光猫DHCP服务没有彻底关闭导致的，但我最近仔细琢磨了一下才想起来我的光猫其实设置的网段是192.168.10.0&#x2F;24网段，所以不是光猫的问题，而是DHCP服务故障。 家里连接的设备大概在2
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-10-16 21:40" pubdate>
+              2024-10-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件安装配置</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/linux/" class="category-chain-item">linux</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/DHCP/">#DHCP</a>
+            
+              <a href="/tags/linux/">#linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/#board">20</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     
 
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-<script src="/js/jquery-3.6.4.min.js"></script>
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+        次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+        次
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
 
-<script src="/js/script.js"></script>
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
 
 
-  </div>
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>

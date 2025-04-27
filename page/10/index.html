@@ -1,813 +1,1039 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  <link rel="icon" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
   
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xinhaojin">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="xinhaojin&#39;s blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="xinhaojin&#39;s blog">
 <meta property="og:url" content="http://example.com/page/10/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
+<meta property="og:site_name" content="xinhaojin&#39;s blog">
+<meta property="og:description" content="xinhaojin&#39;s blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="xinhaojin">
+<meta name="twitter:card" content="summary_large_image">
   
   
+    <meta name="referrer" content="no-referrer-when-downgrade">
   
-<link rel="stylesheet" href="/css/style.css">
+  
+  <title>xinhaojin&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
 
   
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?596b73bb5b70c262b123e997b6686f49";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
 
   
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
 
+  
+
+  
+
+  
+
+
+
+  
 <meta name="generator" content="Hexo 7.3.0"></head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xinhaojin&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-          <a class="main-nav-link" href="/">Home</a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
         
-      </nav>
-      <nav id="sub-nav">
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
         
         
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-验证码汉字图二值化处理" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/03/09/%E9%AA%8C%E8%AF%81%E7%A0%81%E6%B1%89%E5%AD%97%E5%9B%BE%E4%BA%8C%E5%80%BC%E5%8C%96%E5%A4%84%E7%90%86/" class="article-date">
-  <time class="dt-published" datetime="2022-03-09T09:10:03.000Z" itemprop="datePublished">2022-03-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python/">python</a>►<a class="article-category-link" href="/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">图像处理</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/03/09/%E9%AA%8C%E8%AF%81%E7%A0%81%E6%B1%89%E5%AD%97%E5%9B%BE%E4%BA%8C%E5%80%BC%E5%8C%96%E5%A4%84%E7%90%86/">验证码汉字图二值化处理</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>把下图中汉字图片标准化处理，与背景分离，白字黑底</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/03/%E5%8E%9F%E5%9B%BE-1024x768.jpg"></p>
-<h2 id="转为灰度图"><a href="#转为灰度图" class="headerlink" title="转为灰度图"></a>转为灰度图</h2><p>emmm,勉强还是看得清的</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/03/%E7%81%B0%E5%BA%A6%E5%9B%BE-1024x768.jpg"></p>
-<p>灰度图直方图如下</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/03/%E7%81%B0%E5%BA%A6%E5%9B%BE_%E7%9B%B4%E6%96%B9%E5%9B%BE-1024x768.jpg"></p>
-<h2 id="直方图均衡化"><a href="#直方图均衡化" class="headerlink" title="直方图均衡化"></a>直方图均衡化</h2><p>均衡化后的直方图</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/03/%E5%9D%87%E8%A1%A1%E5%8C%96_%E7%9B%B4%E6%96%B9%E5%9B%BE-1024x768.jpg"></p>
-<p>对应灰度图</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/03/%E5%9D%87%E8%A1%A1%E5%8C%96_%E7%81%B0%E5%BA%A6%E5%9B%BE-1024x768.jpg"></p>
-<h2 id="二值化"><a href="#二值化" class="headerlink" title="二值化"></a>二值化</h2><p><img src="https://xinhaojin.github.io/imgs-host/past/2022/03/%E5%9D%87%E8%A1%A1%E5%8C%96%E4%BA%8C%E5%80%BC%E5%8C%96_%E7%81%B0%E5%BA%A6%E5%9B%BE-1024x768.jpg"></p>
-<p>二值化之后遇到一个问题，白字or黑字？需要统一一下</p>
-<p>黑字白底的情况下，需要进行反色处理</p>
-<p><strong>判别条件：边界像素中，白色像素比黑色像素少</strong></p>
-<p>根据条件反色后的灰度图如下</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/03/%E5%9D%87%E8%A1%A1%E5%8C%96%E4%BA%8C%E5%80%BC%E5%8C%96%E7%99%BD%E5%AD%97_%E7%81%B0%E5%BA%A6%E5%9B%BE-1024x768.jpg"></p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">invert</span>(<span class="params">img</span>):</span><br><span class="line">    y,x=img.shape</span><br><span class="line">    left=[[[]</span><br><span class="line">    right=[[[]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(y):</span><br><span class="line">        left.append(img[[i,<span class="number">0</span>[])</span><br><span class="line">        right.append(img[[i,x-<span class="number">1</span>[])</span><br><span class="line">    blackPoints=<span class="built_in">list</span>(img[[<span class="number">0</span>[]).count(<span class="number">0</span>)+<span class="built_in">list</span>(img[[y-<span class="number">1</span>[]).count(<span class="number">0</span>)+left.count(<span class="number">0</span>)+right.count(<span class="number">0</span>)</span><br><span class="line">    blackRate=<span class="built_in">float</span>(blackPoints/(x[*<span class="number">2</span>+y[*<span class="number">2</span>-<span class="number">4</span>))</span><br><span class="line">    <span class="keyword">if</span> blackRate&lt;<span class="number">0.5</span>:<span class="comment">#边界黑像素比例</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(y):<span class="comment">#反色</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(x):</span><br><span class="line">                img[[i,j[] = <span class="number">255</span> - img[[i,j[]</span><br><span class="line">    <span class="keyword">return</span> img</span><br><span class="line"></span><br><span class="line">path=<span class="string">&#x27;D:[[[[Desktop[[[[2022[_03[_08[_15[_04[_37[[[[&#x27;</span></span><br><span class="line">files=os.listdir(path)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">40</span>):</span><br><span class="line">    img=cv2.imdecode(np.fromfile(path+files[[i[], dtype=np.uint8),-<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># B,G,R = cv2.split(img) #get single 8-bits channel</span></span><br><span class="line">    <span class="comment"># EB=cv2.equalizeHist(B)</span></span><br><span class="line">    <span class="comment"># EG=cv2.equalizeHist(G)</span></span><br><span class="line">    <span class="comment"># ER=cv2.equalizeHist(R)</span></span><br><span class="line">    <span class="comment"># img=cv2.merge([[EB,EG,ER[])  #merge it back</span></span><br><span class="line"></span><br><span class="line">    img=cv2.cvtColor(img,cv2.COLOR[_BGR2GRAY)<span class="comment">#灰度图</span></span><br><span class="line">    <span class="comment">#img=cv2.GaussianBlur(img,(3,3),0,)#高斯平滑</span></span><br><span class="line">    img=cv2.equalizeHist(img)<span class="comment">#直方图均衡化</span></span><br><span class="line">    r,img=cv2.threshold(img,<span class="number">127</span>,<span class="number">255</span>,cv2.THRESH[_BINARY)<span class="comment">#二值化</span></span><br><span class="line">    img=invert(img)<span class="comment">#如果字体是黑的，反色处理</span></span><br><span class="line">    plt.subplot(<span class="number">5</span>,<span class="number">8</span>,i+<span class="number">1</span>)</span><br><span class="line">    plt.imshow(img,cmap=<span class="string">&#x27;gray&#x27;</span>)</span><br><span class="line">    plt.axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">plt.savefig(<span class="string">&#x27;均衡化+二值化+白字[_灰度图.jpg&#x27;</span>,dpi=<span class="number">800</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>1.基本达到要求，但部分图片肉眼可见无法识别</p>
-<p>2.在彩色图像上比较好区分，但第一步就转为了灰度图，丢失了很多信息，这里应该还有很大的提升空间</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/03/09/%E9%AA%8C%E8%AF%81%E7%A0%81%E6%B1%89%E5%AD%97%E5%9B%BE%E4%BA%8C%E5%80%BC%E5%8C%96%E5%A4%84%E7%90%86/" data-id="cm9zmq90t00iwsqhle8tx6xqs" data-title="验证码汉字图二值化处理" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/" rel="tag">验证码</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-opencv中文路径、图片名的读写" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/03/08/opencv%E4%B8%AD%E6%96%87%E8%B7%AF%E5%BE%84%E3%80%81%E5%9B%BE%E7%89%87%E5%90%8D%E7%9A%84%E8%AF%BB%E5%86%99/" class="article-date">
-  <time class="dt-published" datetime="2022-03-08T10:58:47.000Z" itemprop="datePublished">2022-03-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python/">python</a>►<a class="article-category-link" href="/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">图像处理</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/03/08/opencv%E4%B8%AD%E6%96%87%E8%B7%AF%E5%BE%84%E3%80%81%E5%9B%BE%E7%89%87%E5%90%8D%E7%9A%84%E8%AF%BB%E5%86%99/">opencv中文路径、图片名的读写</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="读"><a href="#读" class="headerlink" title="读"></a>读</h2><p>一般写法</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line">img=cv2.imread(<span class="string">&#x27;中文目录/中文名称.jpg&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>报错</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/03/image-17.png"></p>
-<p>改进写法</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">img=cv2.imdecode(np.fromfile(<span class="string">&#x27;中文目录/中文名称.jpg&#x27;</span>, dtype=np.uint8), -<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="写"><a href="#写" class="headerlink" title="写"></a>写</h2><p>一般写法</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv2.imwrite(<span class="string">&#x27;中文目录/中文名称.jpg&#x27;</span>,img)</span><br></pre></td></tr></table></figure>
-
-<p>不报错，但没用</p>
-<p>改进写法，需要额外再写一遍后缀名</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv2.imencode(<span class="string">&#x27;.jpg&#x27;</span>,img)[<span class="number">1</span>].tofile(<span class="string">&#x27;中文目录/中文名称.jpg&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/03/08/opencv%E4%B8%AD%E6%96%87%E8%B7%AF%E5%BE%84%E3%80%81%E5%9B%BE%E7%89%87%E5%90%8D%E7%9A%84%E8%AF%BB%E5%86%99/" data-id="cm9zmq8xz005nsqhl8rxjh0he" data-title="opencv中文路径、图片名的读写" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-ubuntu20-04关闭自动休眠" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/03/04/ubuntu20-04%E5%85%B3%E9%97%AD%E8%87%AA%E5%8A%A8%E4%BC%91%E7%9C%A0/" class="article-date">
-  <time class="dt-published" datetime="2022-03-04T03:53:32.000Z" itemprop="datePublished">2022-03-04</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%9D%82/">杂</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/03/04/ubuntu20-04%E5%85%B3%E9%97%AD%E8%87%AA%E5%8A%A8%E4%BC%91%E7%9C%A0/">ubuntu20.04关闭自动休眠</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <pre><code>sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
-</code></pre>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/03/image-16-1024x274.png"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/03/04/ubuntu20-04%E5%85%B3%E9%97%AD%E8%87%AA%E5%8A%A8%E4%BC%91%E7%9C%A0/" data-id="cm9zmq8yo008xsqhl8yl33cle" data-title="ubuntu20.04关闭自动休眠" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-yolox训练voc数据集" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/03/01/yolox%E8%AE%AD%E7%BB%83voc%E6%95%B0%E6%8D%AE%E9%9B%86/" class="article-date">
-  <time class="dt-published" datetime="2022-03-01T10:57:32.000Z" itemprop="datePublished">2022-03-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/">目标检测</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/03/01/yolox%E8%AE%AD%E7%BB%83voc%E6%95%B0%E6%8D%AE%E9%9B%86/">yolox训练voc数据集</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="制作数据集"><a href="#制作数据集" class="headerlink" title="制作数据集"></a>制作数据集</h2><p>请参考上一篇使用labelme打标签并制作voc数据集</p>
-<p><a target="_blank" rel="noopener" href="https://xinhaojin.github.io/2022/02/26/labelme%e6%a0%87%e6%b3%a8%e5%9b%be%e7%89%87%e5%b9%b6%e5%88%b6%e4%bd%9cvoc%e6%95%b0%e6%8d%ae%e9%9b%86/">labelme标注图片并制作voc数据集</a></p>
-<p>上文中最后得到了几个文件夹</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/03/image.png"></p>
-<p>但这不能直接用，还需要划分训练集和测试集，可以手动划分，或者写段代码随机划分，最后数据集目录结构如下</p>
-<p>VOC2007<br>—-Annotations<br>—-JPEGImages<br>—-ImageSets<br>——–Main<br>————test.txt<br>————trainval.txt</p>
-<p>Annotations是VOC格式的标注文件</p>
-<p>JPEGImages是图片文件夹</p>
-<p>ImageSets&#x2F;Main中包含了训练集和测试集的图片名列表，不包含后缀名</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/03/image-1.png"></p>
-<p>在VOC2007同级目录执行下面这段代码即可自动划分</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">train_rate=<span class="number">0.75</span><span class="comment">#训练集比例</span></span><br><span class="line">xmls=os.listdir(<span class="string">&#x27;./VOC2007/Annotations&#x27;</span>)</span><br><span class="line">nums=<span class="built_in">len</span>(xmls)</span><br><span class="line">train_nums=<span class="built_in">int</span>(train_rate*nums)</span><br><span class="line">train_index=random.sample(<span class="built_in">range</span>(nums),train_nums)</span><br><span class="line"><span class="built_in">print</span>(train_index)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(<span class="string">&#x27;./VOC2007/ImageSets&#x27;</span>):</span><br><span class="line">    os.mkdir(<span class="string">&#x27;./VOC2007/ImageSets&#x27;</span>)</span><br><span class="line">    os.mkdir(<span class="string">&#x27;./VOC2007/ImageSets/Main&#x27;</span>)</span><br><span class="line">trainval=<span class="built_in">open</span>(<span class="string">&#x27;./VOC2007/ImageSets/Main/trainval.txt&#x27;</span>,<span class="string">&#x27;w&#x27;</span>)</span><br><span class="line">test=<span class="built_in">open</span>(<span class="string">&#x27;./VOC2007/ImageSets/Main/test.txt&#x27;</span>,<span class="string">&#x27;w&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(nums):</span><br><span class="line">    name=xmls[i].split(<span class="string">&#x27;.&#x27;</span>)[<span class="number">0</span>]+<span class="string">&#x27;\n&#x27;</span></span><br><span class="line">    <span class="keyword">if</span> i <span class="keyword">in</span> train_index:</span><br><span class="line">        trainval.write(name)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        test.write(name)</span><br><span class="line"></span><br><span class="line">trainval.close()</span><br><span class="line">test.close()</span><br></pre></td></tr></table></figure>
-
-<h2 id="安装YOLOX"><a href="#安装YOLOX" class="headerlink" title="安装YOLOX"></a>安装YOLOX</h2><p>从github下载即可</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/Megvii-BaseDetection/YOLOX">Megvii-BaseDetection&#x2F;YOLOX: YOLOX is a high-performance anchor-free YOLO, exceeding yolov3~v5 with MegEngine, ONNX, TensorRT, ncnn, and OpenVINO supported. Documentation: https://yolox.readthedocs.io/ (github.com)</a></p>
-<p>建议新建一个conda环境来安装</p>
-<p>参考之前写过的文章</p>
-<p><a target="_blank" rel="noopener" href="https://xinhaojin.github.io/2021/08/05/win10%e4%b8%8b%e5%ae%89%e8%a3%85%e9%85%8d%e7%bd%aeyolox/">win10下安装配置yolox</a></p>
-<p>因为和现在的版本稍有不同，以github项目官方安装指引为准</p>
-<p>总结来讲就是在项目根目录成功执行下面两行命令</p>
-<p>pip install -r requirement.txt<br>python setup.py develop</p>
-<p>如果安装GPU版本torch，再安装cudnn和cuda即可</p>
-<h2 id="修改训练相关配置文件"><a href="#修改训练相关配置文件" class="headerlink" title="修改训练相关配置文件"></a>修改训练相关配置文件</h2><p>首先把数据集放到datasets目录下，严格按照以下目录结构，会更方便一些</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/03/image-2.png"></p>
-<h3 id="修改exps-example-yolox-voc-yolox-voc-s-py"><a href="#修改exps-example-yolox-voc-yolox-voc-s-py" class="headerlink" title="修改exps&#x2F;example&#x2F;yolox_voc&#x2F;yolox_voc_s.py"></a>修改exps&#x2F;example&#x2F;yolox_voc&#x2F;yolox_voc_s.py</h3><p>num_classes改为标签数目，我这里只有一个标签类别</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/03/image-3.png"></p>
-<p>去掉2012相关的内容</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/03/image-4.png"></p>
-<h3 id="修改tools-train-py"><a href="#修改tools-train-py" class="headerlink" title="修改tools&#x2F;train.py"></a>修改tools&#x2F;train.py</h3><p><img src="https://xinhaojin.github.io/imgs-host/past/2022/03/image-5.png"></p>
-<p>-b 一次训练所抓取的数据样本数量，取决于内存大小，提示memory相关错误优先考虑这个问题，2,4,8,16…</p>
-<p>-d GPU索引，只有一个GPU的话，写0或1是一样的</p>
-<p>-f 试验描述文件路径，也就是上面修改的配置文件</p>
-<p>-c 模型权重文件，使用预训练模型，从官网下载</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/03/image-6.png"></p>
-<h3 id="修改yolox-data-datasets-voc-py"><a href="#修改yolox-data-datasets-voc-py" class="headerlink" title="修改yolox&#x2F;data&#x2F;datasets&#x2F;voc.py"></a>修改yolox&#x2F;data&#x2F;datasets&#x2F;voc.py</h3><p>注释difficult，意思是打标签时对应标签的识别难度，我的标签里没有这一项，不修改会报错，需要把difficult设置为False</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/03/image-7.png"></p>
-<p>删去花括号里原有的:s，否则无法正确读取</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/03/image-8.png"></p>
-<h3 id="修改yolox-data-datasets-voc-classes-pycoco-classes-py-记得改下coco类名，因为后面import类别的时候默认是coco"><a href="#修改yolox-data-datasets-voc-classes-pycoco-classes-py-记得改下coco类名，因为后面import类别的时候默认是coco" class="headerlink" title="修改yolox&#x2F;data&#x2F;datasets&#x2F;voc_classes.pycoco_classes.py(记得改下coco类名，因为后面import类别的时候默认是coco)"></a>修改yolox&#x2F;data&#x2F;datasets&#x2F;voc_classes.pycoco_classes.py(记得改下coco类名，因为后面import类别的时候默认是coco)</h3><p>注释原有类别，改为自己的，这里只有单类</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/03/image-9.png"></p>
-<h3 id="修改yolox-evaluators-voc-eval-py"><a href="#修改yolox-evaluators-voc-eval-py" class="headerlink" title="修改yolox&#x2F;evaluators&#x2F;voc_eval.py"></a>修改yolox&#x2F;evaluators&#x2F;voc_eval.py</h3><p>因为没有truncated和difficult标签，所以这里也要修改为0</p>
-<p>还有一处是类型转换，添加了float类型转换，否则报错</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/03/image-11.png"></p>
-<p>x[“difficult”]改为0</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/03/image-12.png"></p>
-<h3 id="修改yolox-exp-yolox-base-py"><a href="#修改yolox-exp-yolox-base-py" class="headerlink" title="修改yolox&#x2F;exp&#x2F;yolox_base.py"></a>修改yolox&#x2F;exp&#x2F;yolox_base.py</h3><p>修改训练轮次，默认300<br>self.max_epoch &#x3D; 150</p>
-<h2 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h2><p>python tools&#x2F;train.py</p>
-<p>每10轮会有一次统计，只要下面两个数字不是0就好了，越接近1效果越好</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/03/image-15.png"></p>
-<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><p>训练完后的模型权重文件保存在YOLOX_outputs&#x2F;yolox_voc_s下，最好的权重是best_ckpt.pth</p>
-<p>使用这个权重来验证一下</p>
-<p>python tools&#x2F;demo.py image -f exps&#x2F;example&#x2F;yolox_voc&#x2F;yolox_voc_s.py -c YOLOX_outputs&#x2F;yolox_voc_s&#x2F;best_ckpt.pth –path datasets&#x2F;coco&#x2F;val2017&#x2F;00001.png –save_result –device gpu</p>
-<p>然后在YOLOX_outputs&#x2F;yolox_voc_s&#x2F;vis_res下的时间文件夹里就能找到识别结果，如下</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/03/00001.png"></p>
-<h2 id="另"><a href="#另" class="headerlink" title="另"></a>另</h2><p>如果要训练多个数据集，建议看下注意事项：</p>
-<p><a target="_blank" rel="noopener" href="https://xinhaojin.github.io/2022/03/31/yolox%e8%ae%ad%e7%bb%83%e4%b8%8d%e5%90%8c%e6%95%b0%e6%8d%ae%e9%9b%86%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9/">yolox训练不同数据集注意事项</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/03/01/yolox%E8%AE%AD%E7%BB%83voc%E6%95%B0%E6%8D%AE%E9%9B%86/" data-id="cm9zmq8ze00c4sqhl43jddg72" data-title="yolox训练voc数据集" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/" rel="tag">数据集</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" rel="tag">目标检测</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-labelme标注图片并制作voc数据集" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/02/26/labelme%E6%A0%87%E6%B3%A8%E5%9B%BE%E7%89%87%E5%B9%B6%E5%88%B6%E4%BD%9Cvoc%E6%95%B0%E6%8D%AE%E9%9B%86/" class="article-date">
-  <time class="dt-published" datetime="2022-02-26T11:07:27.000Z" itemprop="datePublished">2022-02-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/">目标检测</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/02/26/labelme%E6%A0%87%E6%B3%A8%E5%9B%BE%E7%89%87%E5%B9%B6%E5%88%B6%E4%BD%9Cvoc%E6%95%B0%E6%8D%AE%E9%9B%86/">labelme标注图片并制作voc数据集</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="安装labelme"><a href="#安装labelme" class="headerlink" title="安装labelme"></a>安装labelme</h3><p><a target="_blank" rel="noopener" href="https://github.com/wkentaro/labelme">wkentaro&#x2F;labelme: Image Polygonal Annotation with Python (polygon, rectangle, circle, line, point and image-level flag annotation). (github.com)</a></p>
-<pre><code>pip install labelme
-</code></pre>
-<p>如果安装过，建议升级成新版本</p>
-<pre><code>pip install -U labelme
-</code></pre>
-<h3 id="使用labelme"><a href="#使用labelme" class="headerlink" title="使用labelme"></a>使用labelme</h3><p>打开命令行，输入labelme回车即可，不要关闭命令行</p>
-<p>在图形界面中选择打开图片所在文件夹</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/02/image-11.png"></p>
-<p>然后在file中修改3条设置</p>
-<p>勾选自动保存（图标有蓝色阴影就是选上了）</p>
-<p>修改输出文件夹，一般不要和图片放在同一个文件夹里，选择另一个文件夹</p>
-<p><strong>纠正：不建议修改</strong></p>
-<p>取消勾选保存图像数据，否则json很大，没有必要</p>
-<p><strong>纠正：最好勾选保存图像数据</strong>，否则如果想转换其他数据集格式如coco好像不行</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/02/image-13.png"></p>
-<p>然后ctrl+r快捷键标矩形框就行，点一下放开，再点一下，然后输入标签点击OK即可</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/02/image-12.png"></p>
-<h3 id="转换为voc数据集"><a href="#转换为voc数据集" class="headerlink" title="转换为voc数据集"></a>转换为voc数据集</h3><p>下载labelme2voc.py</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/02/image-14.png"></p>
-<p>新建labels.txt存放标签</p>
-<p>__ignore__和_background_是必须的，其他标签为自定义，比如我只需要检测验证码图片中文字的位置，那么只有一个标签就是word</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/02/image-16.png"></p>
-<p>此时有一个文件夹,比如images，里面包含了所有图片和所有标注后的json文件</p>
-<p>把labelme2voc.py和labels.txt放到和images同级目录下，执行</p>
-<p>python labelme2voc.py images voc –labels labels.txt</p>
-<p>images是输入文件夹名，即标注后保存的json所在文件夹</p>
-<p>voc是输出文件夹名，不能是已存在的文件夹</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/02/image-15.png"></p>
-<p>然后就在当前目录下生成了一个voc文件夹，4个内容，分别是</p>
-<p>xml格式的标注文件夹</p>
-<p>带标注的图片文件夹</p>
-<p>原图片文件夹</p>
-<p>存有标签名的文本</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/02/image-19.png"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/02/26/labelme%E6%A0%87%E6%B3%A8%E5%9B%BE%E7%89%87%E5%B9%B6%E5%88%B6%E4%BD%9Cvoc%E6%95%B0%E6%8D%AE%E9%9B%86/" data-id="cm9zmq8xp0044sqhl2yg6g5x2" data-title="labelme标注图片并制作voc数据集" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/" rel="tag">数据集</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" rel="tag">目标检测</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-点选验证码自动爬取" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/02/26/%E7%82%B9%E9%80%89%E9%AA%8C%E8%AF%81%E7%A0%81%E8%87%AA%E5%8A%A8%E7%88%AC%E5%8F%96/" class="article-date">
-  <time class="dt-published" datetime="2022-02-26T07:40:26.000Z" itemprop="datePublished">2022-02-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python/">python</a>►<a class="article-category-link" href="/categories/%E7%88%AC%E8%99%AB/">爬虫</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/02/26/%E7%82%B9%E9%80%89%E9%AA%8C%E8%AF%81%E7%A0%81%E8%87%AA%E5%8A%A8%E7%88%AC%E5%8F%96/">点选验证码自动爬取(网易易盾）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>汉字点选验证码的批量获取，图片命名为序号加文字，后面用于制作数据集</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/02/image-6.png"></p>
-<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p><img src="https://xinhaojin.github.io/imgs-host/past/2022/02/image-7.png"></p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>注释很清楚，不再赘述，可参考站内写过的其他selenium内容</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -_*- coding: utf-8 -_*-</span></span><br><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line"><span class="comment">#下载图片</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">downloadPic</span>(<span class="params">url,filename</span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="comment">#下载图片，并保存到文件夹中</span></span><br><span class="line">        urllib.request.urlretrieve(url=url,filename=filename)</span><br><span class="line">    <span class="keyword">except</span> IOError <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;IOError&quot;</span>)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Exception&quot;</span>)</span><br><span class="line"><span class="comment">#序号前加0</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">transfer</span>(<span class="params">num</span>):</span><br><span class="line">    temp=num</span><br><span class="line">    count=<span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        temp=<span class="built_in">int</span>(temp/<span class="number">10</span>)</span><br><span class="line">        <span class="keyword">if</span> temp&gt;<span class="number">0</span>:</span><br><span class="line">            count=count+<span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;0&#x27;</span>_*(<span class="number">4</span>-count)+<span class="built_in">str</span>(num)</span><br><span class="line"><span class="keyword">if</span> ____name____ == <span class="string">&#x27;____main____&#x27;</span>:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        options=webdriver.ChromeOptions()</span><br><span class="line">        <span class="comment">#后台静默运行</span></span><br><span class="line">        options.add__argument(<span class="string">&#x27;--headless&#x27;</span>)</span><br><span class="line">        <span class="comment">#忽略无用的报错</span></span><br><span class="line">        options.add__experimental__option(<span class="string">&#x27;excludeSwitches&#x27;</span>,_[<span class="string">&#x27;enable-automation&#x27;</span>,<span class="string">&#x27;enable-logging&#x27;</span>_])</span><br><span class="line">        driver=webdriver.Chrome(chrome__options=options,executable__path=<span class="string">&#x27;./chromedriver.exe&#x27;</span>)</span><br><span class="line">        <span class="comment">#http://npm.taobao.org/mirrors/chromedriver/</span></span><br><span class="line">        driver.maximize__window()</span><br><span class="line">        driver.get(<span class="string">&#x27;https://dun.163.com/trial/picture-click&#x27;</span>)</span><br><span class="line">        driver.implicitly__wait(<span class="number">10</span>)<span class="comment">#最多等待时间</span></span><br><span class="line">        driver.find__element__by__css__selector(<span class="string">&#x27;_[captcha-mode=embed_]&#x27;</span>).click()</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(<span class="string">&#x27;./datasets&#x27;</span>):</span><br><span class="line">            os.mkdir(<span class="string">&#x27;./datasets&#x27;</span>)</span><br><span class="line">        files=os.listdir(<span class="string">&#x27;./datasets&#x27;</span>)<span class="comment">#获取文件数目</span></span><br><span class="line">        num=<span class="built_in">len</span>(files)+<span class="number">1</span><span class="comment">#起始序号</span></span><br><span class="line">        index=<span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> index&lt;<span class="number">100</span>:<span class="comment">#需要获取的验证码数量</span></span><br><span class="line">            time.sleep(<span class="number">0.2</span>)</span><br><span class="line">            img__src=driver.find__element__by__css__selector(<span class="string">&#x27;.yidun__bg-img&#x27;</span>).get__attribute(<span class="string">&#x27;src&#x27;</span>)<span class="comment">#图片url</span></span><br><span class="line">            img__text=driver.find__element__by__css__selector(<span class="string">&#x27;.yidun__tips____point&#x27;</span>).text<span class="comment">#正确文本</span></span><br><span class="line">            <span class="keyword">if</span> img__text==<span class="string">&#x27;&#x27;</span> <span class="keyword">or</span> img__text==<span class="string">&#x27;&#x27;</span>:</span><br><span class="line">                time.sleep(<span class="number">2</span>)</span><br><span class="line">                img__src=<span class="string">&#x27;&#x27;</span></span><br><span class="line">                img__text=<span class="string">&#x27;&#x27;</span></span><br><span class="line">                driver.find__element__by__css__selector(<span class="string">&#x27;.yidun__refresh&#x27;</span>).click()<span class="comment">#刷新按钮</span></span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            img__text=img__text.replace(<span class="string">&#x27;&quot;&#x27;</span>,<span class="string">&#x27;&#x27;</span>)<span class="comment">#去掉引号和空格</span></span><br><span class="line">            img__text=img__text.replace(<span class="string">&#x27; &#x27;</span>,<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">            filename=transfer(num+index)+<span class="string">&#x27;__&#x27;</span>+img__text+<span class="string">&#x27;.png&#x27;</span></span><br><span class="line">            downloadPic(img__src,<span class="string">&#x27;./datasets/&#x27;</span>+filename)</span><br><span class="line">            time.sleep(<span class="number">0.2</span>)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;序号：&#x27;</span>+<span class="built_in">str</span>(index))</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;文件名：&#x27;</span>+filename)</span><br><span class="line">            index+=<span class="number">1</span></span><br><span class="line">            driver.find__element__by__css__selector(<span class="string">&#x27;.yidun__refresh&#x27;</span>).click()<span class="comment">#刷新按钮</span></span><br><span class="line">        driver.quit()</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(e)</span><br><span class="line">        driver.quit()</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/02/26/%E7%82%B9%E9%80%89%E9%AA%8C%E8%AF%81%E7%A0%81%E8%87%AA%E5%8A%A8%E7%88%AC%E5%8F%96/" data-id="cm9zmq90g00h5sqhl20cg5bab" data-title="点选验证码自动爬取(网易易盾）" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%82%B9%E9%80%89%E9%AA%8C%E8%AF%81%E7%A0%81/" rel="tag">点选验证码</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-linux配置git" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/02/25/linux%E9%85%8D%E7%BD%AEgit/" class="article-date">
-  <time class="dt-published" datetime="2022-02-25T12:51:38.000Z" itemprop="datePublished">2022-02-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">软件安装配置</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/02/25/linux%E9%85%8D%E7%BD%AEgit/">git配置</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;yourname&quot;</span><br><span class="line">git config --global user.email &quot;youremail&quot;</span><br><span class="line">ssh-keygen -t rsa -C &quot;youremail&quot;</span><br></pre></td></tr></table></figure>
-
-<p>找到用户目录下的.ssh文件夹下的id_rsa.pub，复制内容到github设置中添加sshkey<br><img src="https://xinhaojin.github.io/imgs-host/past/2022/02/image-5-1024x442.png"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/02/25/linux%E9%85%8D%E7%BD%AEgit/" data-id="cm9zmq8xu004vsqhl89az7gil" data-title="git配置" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" rel="tag">软件安装配置</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-列出局域网内可ping通的ip" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/02/25/%E5%88%97%E5%87%BA%E5%B1%80%E5%9F%9F%E7%BD%91%E5%86%85%E5%8F%AFping%E9%80%9A%E7%9A%84ip/" class="article-date">
-  <time class="dt-published" datetime="2022-02-25T06:52:48.000Z" itemprop="datePublished">2022-02-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python/">python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/02/25/%E5%88%97%E5%87%BA%E5%B1%80%E5%9F%9F%E7%BD%91%E5%86%85%E5%8F%AFping%E9%80%9A%E7%9A%84ip/">列出局域网内可Ping通的IP</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> platform</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"> </span><br><span class="line">live_ip = <span class="number">0</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_os</span>():</span><br><span class="line">    os = platform.system()</span><br><span class="line">    <span class="keyword">if</span> os == <span class="string">&quot;Windows&quot;</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;n&quot;</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;c&quot;</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">ping_ip</span>(<span class="params">ip_str</span>):</span><br><span class="line">    cmd = [<span class="string">&quot;ping&quot;</span>, <span class="string">&quot;-&#123;op&#125;&quot;</span>.<span class="built_in">format</span>(op=get_os()),</span><br><span class="line">           <span class="string">&quot;1&quot;</span>, ip_str]</span><br><span class="line">    output = os.popen(<span class="string">&quot; &quot;</span>.join(cmd)).readlines()</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> output:</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">str</span>(line).upper().find(<span class="string">&quot;TTL&quot;</span>) &gt;= <span class="number">0</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;ip: %s 在线&quot;</span> % ip_str)</span><br><span class="line">            <span class="keyword">global</span> live_ip</span><br><span class="line">            live_ip += <span class="number">1</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">find_ip</span>(<span class="params">ip_prefix</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    给出当前的ip地址段 ，然后扫描整个段所有地址</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    threads = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">256</span>):</span><br><span class="line">        ip = <span class="string">&#x27;%s.%s&#x27;</span> % (ip_prefix, i)</span><br><span class="line">        threads.append(threading.Thread(target=ping_ip, args=&#123;ip, &#125;))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> threads:</span><br><span class="line">        i.start()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> threads:</span><br><span class="line">        i.join()</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">find_local_ip</span>():</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    获取本机当前ip地址</span></span><br><span class="line"><span class="string">    :return: 返回本机ip地址</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    myname = socket.getfqdn(socket.gethostname())</span><br><span class="line">    myaddr = socket.gethostbyname(myname)</span><br><span class="line">    <span class="keyword">return</span> myaddr</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;开始扫描时间: %s&quot;</span> % time.ctime())</span><br><span class="line">    addr = find_local_ip()</span><br><span class="line">    args = <span class="string">&quot;&quot;</span>.join(addr)</span><br><span class="line">    ip_pre = <span class="string">&#x27;.&#x27;</span>.join(args.split(<span class="string">&#x27;.&#x27;</span>)[:-<span class="number">1</span>])</span><br><span class="line">    find_ip(ip_pre)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;扫描结束时间 %s&quot;</span> % time.ctime())</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;本次扫描共检测到本网络存在%s台设备&#x27;</span> % live_ip)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/02/image-4.png"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/02/25/%E5%88%97%E5%87%BA%E5%B1%80%E5%9F%9F%E7%BD%91%E5%86%85%E5%8F%AFping%E9%80%9A%E7%9A%84ip/" data-id="cm9zmq8zp00drsqhl5dp36wfg" data-title="列出局域网内可Ping通的IP" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/" rel="tag">局域网</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-滑块验证码自动拖拽（seleniumopencv）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/02/22/%E6%BB%91%E5%9D%97%E9%AA%8C%E8%AF%81%E7%A0%81%E8%87%AA%E5%8A%A8%E6%8B%96%E6%8B%BD%EF%BC%88seleniumopencv%EF%BC%89/" class="article-date">
-  <time class="dt-published" datetime="2022-02-22T07:04:02.000Z" itemprop="datePublished">2022-02-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python/">python</a>►<a class="article-category-link" href="/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">图像处理</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/02/22/%E6%BB%91%E5%9D%97%E9%AA%8C%E8%AF%81%E7%A0%81%E8%87%AA%E5%8A%A8%E6%8B%96%E6%8B%BD%EF%BC%88seleniumopencv%EF%BC%89/">滑块验证码自动拖拽（selenium+opencv）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="计算需要移动的像素"><a href="#计算需要移动的像素" class="headerlink" title="计算需要移动的像素"></a>计算需要移动的像素</h2><p>首先我在github上找到了一个大佬写的项目<a target="_blank" rel="noopener" href="https://github.com/crazyxw/SlideCrack/tree/master/slide_01">SlideCrack&#x2F;slide_01 at master · crazyxw&#x2F;SlideCrack (github.com)</a></p>
-<p>输入是本地的两张图：滑块验证码背景和滑块图片</p>
-<p>输出是两个缺口的像素距离</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/02/image-1-1024x493.png"></p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SlideCrack</span>(<span class="title class_ inherited__">object</span>):<span class="comment"># https://github.com/crazyxw/SlideCrack/tree/master/slide_01</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, gap, bg, out</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        init code</span></span><br><span class="line"><span class="string">        :param gap: 缺口图片</span></span><br><span class="line"><span class="string">        :param bg: 背景图片</span></span><br><span class="line"><span class="string">        :param out: 输出图片</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="variable language_">self</span>.gap = gap</span><br><span class="line">        <span class="variable language_">self</span>.bg = bg</span><br><span class="line">        <span class="variable language_">self</span>.out = out</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">clear_white</span>(<span class="params">img</span>):</span><br><span class="line">        <span class="comment"># 清除图片的空白区域，这里主要清除滑块的空白</span></span><br><span class="line">        img = cv2.imread(img)</span><br><span class="line">        rows, cols, channel = img.shape</span><br><span class="line">        min_x = <span class="number">255</span></span><br><span class="line">        min_y = <span class="number">255</span></span><br><span class="line">        max_x = <span class="number">0</span></span><br><span class="line">        max_y = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, rows):</span><br><span class="line">            <span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, cols):</span><br><span class="line">                t = <span class="built_in">set</span>(img[x, y])</span><br><span class="line">                <span class="keyword">if</span> <span class="built_in">len</span>(t) &gt;= <span class="number">2</span>:</span><br><span class="line">                    <span class="keyword">if</span> x &lt;= min_x:</span><br><span class="line">                        min_x = x</span><br><span class="line">                    <span class="keyword">elif</span> x &gt;= max_x:</span><br><span class="line">                        max_x = x</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">if</span> y &lt;= min_y:</span><br><span class="line">                        min_y = y</span><br><span class="line">                    <span class="keyword">elif</span> y &gt;= max_y:</span><br><span class="line">                        max_y = y</span><br><span class="line">        img1 = img[min_x:max_x, min_y: max_y]</span><br><span class="line">        <span class="keyword">return</span> img1</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">template_match</span>(<span class="params">self, tpl, target</span>):</span><br><span class="line">        th, tw = tpl.shape[:<span class="number">2</span>]</span><br><span class="line">        result = cv2.matchTemplate(target, tpl, cv2.TM_CCOEFF_NORMED)</span><br><span class="line">        <span class="comment"># 寻找矩阵(一维数组当作向量,用Mat定义) 中最小值和最大值的位置</span></span><br><span class="line">        min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)</span><br><span class="line">        tl = max_loc</span><br><span class="line">        br = (tl[<span class="number">0</span>] + tw, tl[<span class="number">1</span>] + th)</span><br><span class="line">        <span class="comment"># 绘制矩形边框，将匹配区域标注出来</span></span><br><span class="line">        <span class="comment"># target：目标图像</span></span><br><span class="line">        <span class="comment"># tl：矩形定点</span></span><br><span class="line">        <span class="comment"># br：矩形的宽高</span></span><br><span class="line">        <span class="comment"># (0,0,255)：矩形边框颜色</span></span><br><span class="line">        <span class="comment"># 1：矩形边框大小</span></span><br><span class="line">        cv2.rectangle(target, tl, br, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>)</span><br><span class="line">        cv2.imwrite(<span class="variable language_">self</span>.out, target)</span><br><span class="line">        <span class="keyword">return</span> tl[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">image_edge_detection</span>(<span class="params">img</span>):</span><br><span class="line">        edges = cv2.Canny(img, <span class="number">100</span>, <span class="number">200</span>)</span><br><span class="line">        <span class="keyword">return</span> edges</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">discern</span>(<span class="params">self</span>):</span><br><span class="line">        img1 = <span class="variable language_">self</span>.clear_white(<span class="variable language_">self</span>.gap)</span><br><span class="line">        img1 = cv2.cvtColor(img1, cv2.COLOR_RGB2GRAY)</span><br><span class="line">        slide = <span class="variable language_">self</span>.image_edge_detection(img1)</span><br><span class="line"></span><br><span class="line">        back = cv2.imread(<span class="variable language_">self</span>.bg, <span class="number">0</span>)</span><br><span class="line">        back = <span class="variable language_">self</span>.image_edge_detection(back)</span><br><span class="line"></span><br><span class="line">        slide_pic = cv2.cvtColor(slide, cv2.COLOR_GRAY2RGB)</span><br><span class="line">        back_pic = cv2.cvtColor(back, cv2.COLOR_GRAY2RGB)</span><br><span class="line">        x = <span class="variable language_">self</span>.template_match(slide_pic, back_pic)</span><br><span class="line">        <span class="comment"># 输出横坐标, 即 滑块在图片上的位置</span></span><br><span class="line">        <span class="built_in">print</span>(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line"><span class="comment"># 滑块图片</span></span><br><span class="line">img1 = <span class="string">&quot;1.png&quot;</span></span><br><span class="line"><span class="comment"># 背景图片</span></span><br><span class="line">img2 = <span class="string">&quot;2.jpg&quot;</span></span><br><span class="line"><span class="comment"># 处理结果图片,用红线标注</span></span><br><span class="line">img3 = <span class="string">&quot;3.png&quot;</span></span><br><span class="line">sc = SlideCrack(img1, img2, img3)</span><br><span class="line">x=sc.discern()</span><br></pre></td></tr></table></figure>
-
-<h2 id="浏览器自动控制"><a href="#浏览器自动控制" class="headerlink" title="浏览器自动控制"></a>浏览器自动控制</h2><p>针对这个网页，分为三步，打开网址，点击按钮，拖拽滑块</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/02/image-2-1024x634.png"></p>
-<h3 id="操作网页元素"><a href="#操作网页元素" class="headerlink" title="操作网页元素"></a>操作网页元素</h3><p>可以用css选择器来获取网页元素对象</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">driver.find_element_by_css_selector(<span class="string">&#x27;.yidun_slider&#x27;</span>)</span><br><span class="line">driver.find_element_by_css_selector(<span class="string">&#x27;[captcha-mode=embed]&#x27;</span>).click()</span><br><span class="line">driver.find_element_by_css_selector(<span class="string">&#x27;.yidun_jigsaw&#x27;</span>).get_attribute(<span class="string">&#x27;src&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>用这个方法就可以得到图片的src属性，也就是url地址</p>
-<p>下一步就是把图片下载下来</p>
-<h3 id="下载图片"><a href="#下载图片" class="headerlink" title="下载图片"></a>下载图片</h3><p>使用urllib.request即可</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">downloadPic</span>(<span class="params">url,filename</span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="comment">#下载图片，并保存到文件夹中</span></span><br><span class="line">        urllib.request.urlretrieve(url=url,filename=filename)</span><br><span class="line">    <span class="keyword">except</span> IOError <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;IOError&quot;</span>)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Exception&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<h3 id="模拟拖拽"><a href="#模拟拖拽" class="headerlink" title="模拟拖拽"></a>模拟拖拽</h3><p>使用ActionChains(driver).drag_and_drop_by_offset(source,xoffset,yoffset).perform()</p>
-<p>三个参数分别是元素对象，横向偏移，纵向盘偏移，比如下面这段代码，意思就是找到类名为yidun_slider的元素，向右拖动50像素</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tag=driver.find_element_by_css_selector(<span class="string">&#x27;.yidun_slider&#x27;</span>)</span><br><span class="line">ActionChains(driver).drag_and_drop_by_offset(tag,<span class="number">50</span>,<span class="number">0</span>).perform()</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/02/image-3.png"></p>
-<h2 id="整合"><a href="#整合" class="headerlink" title="整合"></a>整合</h2><p>然后就可以用别人写好的代码了，实际操作时发现计算出的距离偏小一点点，拖拽参数里手动加一点点就行</p>
-<p>但是！</p>
-<p>这个网站好像识别出来是selenium在控制浏览器，就算拖拽的位置非常准确，也不会通过</p>
-<p>我以为是检测到拖拽太准太快了，然后我就手动拖拽，居然也不行</p>
-<p>初步得出的结论是只要是用selenium打开的这个网页，打开后即使手动操作也不可能成功</p>
-<p>其他网站可能没有这种限制，没有测试</p>
-<p>关于selenium怎么不被网站检测到，值得研究。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">downloadPic</span>(<span class="params">url,filename</span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="comment">#下载图片，并保存到文件夹中</span></span><br><span class="line">        urllib.request.urlretrieve(url=url,filename=filename)</span><br><span class="line">    <span class="keyword">except</span> IOError <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;IOError&quot;</span>)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Exception&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SlideCrack</span>(<span class="title class_ inherited__">object</span>):<span class="comment"># https://github.com/crazyxw/SlideCrack/tree/master/slide_01</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, gap, bg, out</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        init code</span></span><br><span class="line"><span class="string">        :param gap: 缺口图片</span></span><br><span class="line"><span class="string">        :param bg: 背景图片</span></span><br><span class="line"><span class="string">        :param out: 输出图片</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="variable language_">self</span>.gap = gap</span><br><span class="line">        <span class="variable language_">self</span>.bg = bg</span><br><span class="line">        <span class="variable language_">self</span>.out = out</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">clear_white</span>(<span class="params">img</span>):</span><br><span class="line">        <span class="comment"># 清除图片的空白区域，这里主要清除滑块的空白</span></span><br><span class="line">        img = cv2.imread(img)</span><br><span class="line">        rows, cols, channel = img.shape</span><br><span class="line">        min_x = <span class="number">255</span></span><br><span class="line">        min_y = <span class="number">255</span></span><br><span class="line">        max_x = <span class="number">0</span></span><br><span class="line">        max_y = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, rows):</span><br><span class="line">            <span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, cols):</span><br><span class="line">                t = <span class="built_in">set</span>(img[x, y])</span><br><span class="line">                <span class="keyword">if</span> <span class="built_in">len</span>(t) &gt;= <span class="number">2</span>:</span><br><span class="line">                    <span class="keyword">if</span> x &lt;= min_x:</span><br><span class="line">                        min_x = x</span><br><span class="line">                    <span class="keyword">elif</span> x &gt;= max_x:</span><br><span class="line">                        max_x = x</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">if</span> y &lt;= min_y:</span><br><span class="line">                        min_y = y</span><br><span class="line">                    <span class="keyword">elif</span> y &gt;= max_y:</span><br><span class="line">                        max_y = y</span><br><span class="line">        img1 = img[min_x:max_x, min_y: max_y]</span><br><span class="line">        <span class="keyword">return</span> img1</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">template_match</span>(<span class="params">self, tpl, target</span>):</span><br><span class="line">        th, tw = tpl.shape[:<span class="number">2</span>]</span><br><span class="line">        result = cv2.matchTemplate(target, tpl, cv2.TM_CCOEFF_NORMED)</span><br><span class="line">        <span class="comment"># 寻找矩阵(一维数组当作向量,用Mat定义) 中最小值和最大值的位置</span></span><br><span class="line">        min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)</span><br><span class="line">        tl = max_loc</span><br><span class="line">        br = (tl[<span class="number">0</span>] + tw, tl[<span class="number">1</span>] + th)</span><br><span class="line">        <span class="comment"># 绘制矩形边框，将匹配区域标注出来</span></span><br><span class="line">        <span class="comment"># target：目标图像</span></span><br><span class="line">        <span class="comment"># tl：矩形定点</span></span><br><span class="line">        <span class="comment"># br：矩形的宽高</span></span><br><span class="line">        <span class="comment"># (0,0,255)：矩形边框颜色</span></span><br><span class="line">        <span class="comment"># 1：矩形边框大小</span></span><br><span class="line">        cv2.rectangle(target, tl, br, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>)</span><br><span class="line">        cv2.imwrite(<span class="variable language_">self</span>.out, target)</span><br><span class="line">        <span class="keyword">return</span> tl[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">image_edge_detection</span>(<span class="params">img</span>):</span><br><span class="line">        edges = cv2.Canny(img, <span class="number">100</span>, <span class="number">200</span>)</span><br><span class="line">        <span class="keyword">return</span> edges</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">discern</span>(<span class="params">self</span>):</span><br><span class="line">        img1 = <span class="variable language_">self</span>.clear_white(<span class="variable language_">self</span>.gap)</span><br><span class="line">        img1 = cv2.cvtColor(img1, cv2.COLOR_RGB2GRAY)</span><br><span class="line">        slide = <span class="variable language_">self</span>.image_edge_detection(img1)</span><br><span class="line"></span><br><span class="line">        back = cv2.imread(<span class="variable language_">self</span>.bg, <span class="number">0</span>)</span><br><span class="line">        back = <span class="variable language_">self</span>.image_edge_detection(back)</span><br><span class="line"></span><br><span class="line">        slide_pic = cv2.cvtColor(slide, cv2.COLOR_GRAY2RGB)</span><br><span class="line">        back_pic = cv2.cvtColor(back, cv2.COLOR_GRAY2RGB)</span><br><span class="line">        x = <span class="variable language_">self</span>.template_match(slide_pic, back_pic)</span><br><span class="line">        <span class="comment"># 输出横坐标, 即 滑块在图片上的位置</span></span><br><span class="line">        <span class="built_in">print</span>(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.action_chains <span class="keyword">import</span> ActionChains</span><br><span class="line">driver=webdriver.Chrome(executable_path=<span class="string">&#x27;chromedriver.exe&#x27;</span>)</span><br><span class="line"><span class="comment">#http://npm.taobao.org/mirrors/chromedriver/</span></span><br><span class="line">driver.maximize_window()</span><br><span class="line">driver.get(<span class="string">&#x27;https://dun.163.com/trial/jigsaw&#x27;</span>)</span><br><span class="line">driver.implicitly_wait(<span class="number">10</span>)<span class="comment">#最多等待时间</span></span><br><span class="line">driver.find_element_by_css_selector(<span class="string">&#x27;[captcha-mode=embed]&#x27;</span>).click()</span><br><span class="line">time.sleep(<span class="number">1</span>)</span><br><span class="line">tag=driver.find_element_by_css_selector(<span class="string">&#x27;.yidun_slider&#x27;</span>)</span><br><span class="line">driver.find_element_by_css_selector(<span class="string">&#x27;[captcha-mode=embed]&#x27;</span>).click()</span><br><span class="line">img1_src=driver.find_element_by_css_selector(<span class="string">&#x27;.yidun_jigsaw&#x27;</span>).get_attribute(<span class="string">&#x27;src&#x27;</span>)</span><br><span class="line">img2_src=driver.find_element_by_css_selector(<span class="string">&#x27;.yidun_bg-img&#x27;</span>).get_attribute(<span class="string">&#x27;src&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(img1_src)</span><br><span class="line"><span class="built_in">print</span>(img2_src)</span><br><span class="line">downloadPic(img1_src,<span class="string">&#x27;1.png&#x27;</span>)</span><br><span class="line">downloadPic(img2_src,<span class="string">&#x27;2.jpg&#x27;</span>)</span><br><span class="line">time.sleep(<span class="number">3</span>)</span><br><span class="line"><span class="comment"># 滑块图片</span></span><br><span class="line">img1 = <span class="string">&quot;1.png&quot;</span></span><br><span class="line"><span class="comment"># 背景图片</span></span><br><span class="line">img2 = <span class="string">&quot;2.jpg&quot;</span></span><br><span class="line"><span class="comment"># 处理结果图片,用红线标注</span></span><br><span class="line">img3 = <span class="string">&quot;3.png&quot;</span></span><br><span class="line">sc = SlideCrack(img1, img2, img3)</span><br><span class="line">x=sc.discern()</span><br><span class="line">ActionChains(driver).drag_and_drop_by_offset(tag,x,<span class="number">0</span>).perform()</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/02/22/%E6%BB%91%E5%9D%97%E9%AA%8C%E8%AF%81%E7%A0%81%E8%87%AA%E5%8A%A8%E6%8B%96%E6%8B%BD%EF%BC%88seleniumopencv%EF%BC%89/" data-id="cm9zmq90d00gusqhl5ptpgt2b" data-title="滑块验证码自动拖拽（selenium+opencv）" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/" rel="tag">验证码</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-ubuntu终端source-not-found" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/01/07/ubuntu%E7%BB%88%E7%AB%AFsource-not-found/" class="article-date">
-  <time class="dt-published" datetime="2022-01-07T13:27:12.000Z" itemprop="datePublished">2022-01-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%9D%82/">杂</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/01/07/ubuntu%E7%BB%88%E7%AB%AFsource-not-found/">ubuntu终端source: not found</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h2><p>shell脚本中含有source命令运行时提示 source: not found</p>
-<p>运行 ls -l &#x2F;bin&#x2F;sh 后显示&#x2F;bin&#x2F;sh -&gt; dash<br>这说明是用dash来进行解析的。</p>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>命令行执行：（需要root权限）</p>
-<pre><code>dpkg-reconfigure dash
-</code></pre>
-<p>在界面中选择no<br>再运行ls -l &#x2F;bin&#x2F;sh 后显示&#x2F;bin&#x2F;sh -&gt; bash</p>
-<p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/buynow123/article/details/51774018">https://blog.csdn.net/buynow123/article/details/51774018</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/01/07/ubuntu%E7%BB%88%E7%AB%AFsource-not-found/" data-id="cm9zmq8yw009nsqhl6tbl69gp" data-title="ubuntu终端source: not found" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/page/9/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/11/">Next &raquo;</a>
-  </nav>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/LeetCode/">LeetCode</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/%E6%9D%82/">杂</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/%E6%9D%82/">杂</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/pytorch/">pytorch</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">图像处理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%8D%93/">安卓</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82/">杂</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%88%AC%E8%99%AB/">爬虫</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/">目标检测</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E5%B7%A5/">网工</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">软件安装配置</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/linux/">linux</a></li></ul></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/" rel="tag">CDN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DDNS/" rel="tag">DDNS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DHCP/" rel="tag">DHCP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNS/" rel="tag">DNS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IP/" rel="tag">IP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IPsec/" rel="tag">IPsec</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDA/" rel="tag">LDA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NFC/" rel="tag">NFC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDF/" rel="tag">PDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SMTP/" rel="tag">SMTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chatgpt/" rel="tag">chatgpt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloudflare/" rel="tag">cloudflare</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/" rel="tag">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ocr/" rel="tag">ocr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyinstaller/" rel="tag">pyinstaller</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pytorch/" rel="tag">pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rpa/" rel="tag">rpa</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/selenium/" rel="tag">selenium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/" rel="tag">socket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssl/" rel="tag">ssl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wget/" rel="tag">wget</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wol/" rel="tag">wol</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/" rel="tag">wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/worldcloud/" rel="tag">worldcloud</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%91%E7%9B%98/" rel="tag">云盘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B/" rel="tag">人脸检测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%90%86/" rel="tag">代理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%80%8D%E9%80%9F%E6%92%AD%E6%94%BE/" rel="tag">倍速播放</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" rel="tag">内网穿透</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E7%9B%AE%E6%91%84%E5%83%8F%E5%A4%B4%E6%B5%8B%E8%B7%9D/" rel="tag">单目摄像头测距</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%93%88%E5%A4%AB%E6%9B%BC/" rel="tag">哈夫曼</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" rel="tag">哈希表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%9F%E5%90%8D/" rel="tag">域名</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A0%86/" rel="tag">堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E5%B1%8F%E5%8D%8F%E5%90%8C/" rel="tag">多屏协同</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%AA%E7%94%9F%E7%BD%91%E7%BB%9C/" rel="tag">孪生网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E5%8D%93/" rel="tag">安卓</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/" rel="tag">局域网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/" rel="tag">数据集</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%BB%84/" rel="tag">数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" rel="tag">树莓派</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BF%80%E5%85%89%E6%B5%8B%E8%B7%9D/" rel="tag">激光测距</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%82%B9%E9%80%89%E9%AA%8C%E8%AF%81%E7%A0%81/" rel="tag">点选验证码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" rel="tag">目标检测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" rel="tag">端口转发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" rel="tag">编译原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E5%B7%A5/" rel="tag">网工</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%80%81%E6%AF%9B%E5%AD%90%E5%9B%BA%E4%BB%B6/" rel="tag">老毛子固件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" rel="tag">虚拟机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD/" rel="tag">视频下载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E6%B5%81/" rel="tag">视频流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%AD%E9%9F%B3%E8%BD%AC%E6%96%87%E5%AD%97/" rel="tag">语音转文字</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B6%85%E5%83%8F%E7%B4%A0/" rel="tag">超像素</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B6%85%E5%A3%B0%E6%B3%A2/" rel="tag">超声波</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8%E5%88%B7%E6%9C%BA/" rel="tag">路由器刷机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" rel="tag">软件安装配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E7%94%BB%E5%90%8C%E6%AD%A5/" rel="tag">音画同步</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/" rel="tag">验证码</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/CDN/" style="font-size: 10px;">CDN</a> <a href="/tags/DDNS/" style="font-size: 10px;">DDNS</a> <a href="/tags/DHCP/" style="font-size: 10px;">DHCP</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/IP/" style="font-size: 10.67px;">IP</a> <a href="/tags/IPsec/" style="font-size: 10px;">IPsec</a> <a href="/tags/LDA/" style="font-size: 10px;">LDA</a> <a href="/tags/NFC/" style="font-size: 10px;">NFC</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/SMTP/" style="font-size: 10px;">SMTP</a> <a href="/tags/blog/" style="font-size: 11.33px;">blog</a> <a href="/tags/c/" style="font-size: 16px;">c++</a> <a href="/tags/chatgpt/" style="font-size: 10.67px;">chatgpt</a> <a href="/tags/cloudflare/" style="font-size: 11.33px;">cloudflare</a> <a href="/tags/docker/" style="font-size: 12.67px;">docker</a> <a href="/tags/flask/" style="font-size: 11.33px;">flask</a> <a href="/tags/java/" style="font-size: 13.33px;">java</a> <a href="/tags/js/" style="font-size: 11.33px;">js</a> <a href="/tags/linux/" style="font-size: 19.33px;">linux</a> <a href="/tags/nginx/" style="font-size: 12.67px;">nginx</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/ocr/" style="font-size: 10px;">ocr</a> <a href="/tags/php/" style="font-size: 10.67px;">php</a> <a href="/tags/pyinstaller/" style="font-size: 10px;">pyinstaller</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/pytorch/" style="font-size: 16.67px;">pytorch</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/rpa/" style="font-size: 10px;">rpa</a> <a href="/tags/selenium/" style="font-size: 11.33px;">selenium</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/socket/" style="font-size: 10px;">socket</a> <a href="/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/tags/ssh/" style="font-size: 13.33px;">ssh</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/wget/" style="font-size: 10px;">wget</a> <a href="/tags/wol/" style="font-size: 10px;">wol</a> <a href="/tags/wordpress/" style="font-size: 10.67px;">wordpress</a> <a href="/tags/worldcloud/" style="font-size: 10px;">worldcloud</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 12.67px;">二叉树</a> <a href="/tags/%E4%BA%91%E7%9B%98/" style="font-size: 10px;">云盘</a> <a href="/tags/%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B/" style="font-size: 10px;">人脸检测</a> <a href="/tags/%E4%BB%A3%E7%90%86/" style="font-size: 13.33px;">代理</a> <a href="/tags/%E5%80%8D%E9%80%9F%E6%92%AD%E6%94%BE/" style="font-size: 10px;">倍速播放</a> <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" style="font-size: 11.33px;">内网穿透</a> <a href="/tags/%E5%8D%95%E7%9B%AE%E6%91%84%E5%83%8F%E5%A4%B4%E6%B5%8B%E8%B7%9D/" style="font-size: 10px;">单目摄像头测距</a> <a href="/tags/%E5%93%88%E5%A4%AB%E6%9B%BC/" style="font-size: 10px;">哈夫曼</a> <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" style="font-size: 10.67px;">哈希表</a> <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" style="font-size: 14px;">图像处理</a> <a href="/tags/%E5%9F%9F%E5%90%8D/" style="font-size: 10px;">域名</a> <a href="/tags/%E5%A0%86/" style="font-size: 10px;">堆</a> <a href="/tags/%E5%A4%9A%E5%B1%8F%E5%8D%8F%E5%90%8C/" style="font-size: 10px;">多屏协同</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a> <a href="/tags/%E5%AD%AA%E7%94%9F%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">孪生网络</a> <a href="/tags/%E5%AE%89%E5%8D%93/" style="font-size: 13.33px;">安卓</a> <a href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/" style="font-size: 12px;">局域网</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 18.67px;">数据结构</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/" style="font-size: 15.33px;">数据集</a> <a href="/tags/%E6%95%B0%E7%BB%84/" style="font-size: 10px;">数组</a> <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" style="font-size: 14.67px;">树莓派</a> <a href="/tags/%E6%BF%80%E5%85%89%E6%B5%8B%E8%B7%9D/" style="font-size: 10px;">激光测距</a> <a href="/tags/%E7%82%B9%E9%80%89%E9%AA%8C%E8%AF%81%E7%A0%81/" style="font-size: 10px;">点选验证码</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 13.33px;">爬虫</a> <a href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" style="font-size: 18px;">目标检测</a> <a href="/tags/%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" style="font-size: 10px;">端口转发</a> <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" style="font-size: 11.33px;">编译原理</a> <a href="/tags/%E7%BD%91%E5%B7%A5/" style="font-size: 14px;">网工</a> <a href="/tags/%E8%80%81%E6%AF%9B%E5%AD%90%E5%9B%BA%E4%BB%B6/" style="font-size: 10px;">老毛子固件</a> <a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" style="font-size: 10px;">虚拟机</a> <a href="/tags/%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD/" style="font-size: 10.67px;">视频下载</a> <a href="/tags/%E8%A7%86%E9%A2%91%E6%B5%81/" style="font-size: 10px;">视频流</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.67px;">计算机网络</a> <a href="/tags/%E8%AF%AD%E9%9F%B3%E8%BD%AC%E6%96%87%E5%AD%97/" style="font-size: 10px;">语音转文字</a> <a href="/tags/%E8%B6%85%E5%83%8F%E7%B4%A0/" style="font-size: 10px;">超像素</a> <a href="/tags/%E8%B6%85%E5%A3%B0%E6%B3%A2/" style="font-size: 10px;">超声波</a> <a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8%E5%88%B7%E6%9C%BA/" style="font-size: 10px;">路由器刷机</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" style="font-size: 17.33px;">软件安装配置</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 10.67px;">递归</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 11.33px;">链表</a> <a href="/tags/%E9%9F%B3%E7%94%BB%E5%90%8C%E6%AD%A5/" style="font-size: 10px;">音画同步</a> <a href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/" style="font-size: 12.67px;">验证码</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2025/04/27/hello-world/">Hello World</a>
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
           </li>
+          
         
-          <li>
-            <a href="/2025/04/25/ubuntu24%E9%87%8D%E8%A3%85%E8%AE%B0%E5%BD%95/">ubuntu24重装记录</a>
-          </li>
         
-          <li>
-            <a href="/2025/04/01/win11%E6%B7%BB%E5%8A%A0%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0%E7%BD%91%E5%8D%A1%E5%BC%82%E5%B8%B8%E8%87%AA%E5%8A%A8%E9%87%8D%E5%90%AF/">win11添加开机自启动脚本实现网卡异常自动重启</a>
-          </li>
-        
-          <li>
-            <a href="/2025/02/06/DBeaver%E8%BF%9E%E6%8E%A5MySQL%E5%92%8CIoTDB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%AD%A5%E9%AA%A4/">DBeaver连接MySQL和IoTDB数据库步骤</a>
-          </li>
-        
-          <li>
-            <a href="/2025/01/26/%E4%BD%BF%E7%94%A8polkit%E5%AE%9E%E7%8E%B0%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86systemctl%E6%9C%8D%E5%8A%A1/">使用polkit实现普通用户管理systemctl服务</a>
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
           </li>
         
       </ul>
     </div>
   </div>
+</nav>
 
   
-</aside>
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Make the world a little bit better."></span>
+          
+        </div>
+
         
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
+
       
-      &copy; 2025 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
     </div>
   </div>
-</footer>
+</div>
 
-    </div>
-    <nav id="mobile-nav">
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/03/09/%E9%AA%8C%E8%AF%81%E7%A0%81%E6%B1%89%E5%AD%97%E5%9B%BE%E4%BA%8C%E5%80%BC%E5%8C%96%E5%A4%84%E7%90%86/" target="_self">
+          验证码汉字图二值化处理
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/03/09/%E9%AA%8C%E8%AF%81%E7%A0%81%E6%B1%89%E5%AD%97%E5%9B%BE%E4%BA%8C%E5%80%BC%E5%8C%96%E5%A4%84%E7%90%86/" target="_self">
+        <div>
+          需求把下图中汉字图片标准化处理，与背景分离，白字黑底  转为灰度图emmm,勉强还是看得清的  灰度图直方图如下  直方图均衡化均衡化后的直方图  对应灰度图  二值化 二值化之后遇到一个问题，白字or黑字？需要统一一下 黑字白底的情况下，需要进行反色处理 判别条件：边界像素中，白色像素比黑色像素少 根据条件反色后的灰度图如下  代码12345678910111213141516171819202
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-03-09 17:10" pubdate>
+              2022-03-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
   
-    <a href="/" class="mobile-nav-link">Home</a>
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
   
-</nav>
+  
+
+      </span>
+    
+  
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">#python</a>
+            
+              <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">#图像处理</a>
+            
+              <a href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/">#验证码</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/03/08/opencv%E4%B8%AD%E6%96%87%E8%B7%AF%E5%BE%84%E3%80%81%E5%9B%BE%E7%89%87%E5%90%8D%E7%9A%84%E8%AF%BB%E5%86%99/" target="_self">
+          opencv中文路径、图片名的读写
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/03/08/opencv%E4%B8%AD%E6%96%87%E8%B7%AF%E5%BE%84%E3%80%81%E5%9B%BE%E7%89%87%E5%90%8D%E7%9A%84%E8%AF%BB%E5%86%99/" target="_self">
+        <div>
+          读一般写法 12import cv2img=cv2.imread(&#x27;中文目录/中文名称.jpg&#x27;)  报错  改进写法 123import cv2import numpy as npimg=cv2.imdecode(np.fromfile(&#x27;中文目录/中文名称.jpg&#x27;, dtype=np.uint8), -1)  写一般写法 1cv2.imwrite(&#
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-03-08 18:58" pubdate>
+              2022-03-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">#python</a>
+            
+              <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">#图像处理</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/03/04/ubuntu20-04%E5%85%B3%E9%97%AD%E8%87%AA%E5%8A%A8%E4%BC%91%E7%9C%A0/" target="_self">
+          ubuntu20.04关闭自动休眠
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/03/04/ubuntu20-04%E5%85%B3%E9%97%AD%E8%87%AA%E5%8A%A8%E4%BC%91%E7%9C%A0/" target="_self">
+        <div>
+          sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-03-04 11:53" pubdate>
+              2022-03-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%9D%82/" class="category-chain-item">杂</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/linux/">#linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/03/01/yolox%E8%AE%AD%E7%BB%83voc%E6%95%B0%E6%8D%AE%E9%9B%86/" target="_self">
+          yolox训练voc数据集
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/03/01/yolox%E8%AE%AD%E7%BB%83voc%E6%95%B0%E6%8D%AE%E9%9B%86/" target="_self">
+        <div>
+          制作数据集请参考上一篇使用labelme打标签并制作voc数据集 labelme标注图片并制作voc数据集 上文中最后得到了几个文件夹  但这不能直接用，还需要划分训练集和测试集，可以手动划分，或者写段代码随机划分，最后数据集目录结构如下 VOC2007—-Annotations—-JPEGImages—-ImageSets——–Main————test.txt————trainval.txt A
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-03-01 18:57" pubdate>
+              2022-03-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" class="category-chain-item">目标检测</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/">#数据集</a>
+            
+              <a href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/">#目标检测</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/02/26/labelme%E6%A0%87%E6%B3%A8%E5%9B%BE%E7%89%87%E5%B9%B6%E5%88%B6%E4%BD%9Cvoc%E6%95%B0%E6%8D%AE%E9%9B%86/" target="_self">
+          <img src="https://xinhaojin.github.io/imgs-host/past/2022/02/image-12.png" srcset="/img/loading.gif" lazyload alt="labelme标注图片并制作voc数据集">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/02/26/labelme%E6%A0%87%E6%B3%A8%E5%9B%BE%E7%89%87%E5%B9%B6%E5%88%B6%E4%BD%9Cvoc%E6%95%B0%E6%8D%AE%E9%9B%86/" target="_self">
+          labelme标注图片并制作voc数据集
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/2022/02/26/labelme%E6%A0%87%E6%B3%A8%E5%9B%BE%E7%89%87%E5%B9%B6%E5%88%B6%E4%BD%9Cvoc%E6%95%B0%E6%8D%AE%E9%9B%86/" target="_self">
+        <div>
+          安装labelmewkentaro&#x2F;labelme: Image Polygonal Annotation with Python (polygon, rectangle, circle, line, point and image-level flag annotation). (github.com) pip install labelme  如果安装过，建议升级成新版本 pip i
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-26 19:07" pubdate>
+              2022-02-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" class="category-chain-item">目标检测</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/">#数据集</a>
+            
+              <a href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/">#目标检测</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/02/26/%E7%82%B9%E9%80%89%E9%AA%8C%E8%AF%81%E7%A0%81%E8%87%AA%E5%8A%A8%E7%88%AC%E5%8F%96/" target="_self">
+          点选验证码自动爬取(网易易盾）
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/02/26/%E7%82%B9%E9%80%89%E9%AA%8C%E8%AF%81%E7%A0%81%E8%87%AA%E5%8A%A8%E7%88%AC%E5%8F%96/" target="_self">
+        <div>
+          需求汉字点选验证码的批量获取，图片命名为序号加文字，后面用于制作数据集  结果 代码注释很清楚，不再赘述，可参考站内写过的其他selenium内容 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-26 15:40" pubdate>
+              2022-02-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%88%AC%E8%99%AB/">#爬虫</a>
+            
+              <a href="/tags/%E7%82%B9%E9%80%89%E9%AA%8C%E8%AF%81%E7%A0%81/">#点选验证码</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/02/25/linux%E9%85%8D%E7%BD%AEgit/" target="_self">
+          git配置
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/02/25/linux%E9%85%8D%E7%BD%AEgit/" target="_self">
+        <div>
+          123git config --global user.name &quot;yourname&quot;git config --global user.email &quot;youremail&quot;ssh-keygen -t rsa -C &quot;youremail&quot;  找到用户目录下的.ssh文件夹下的id_rsa.pub，复制内容到github设置中添加sshkey
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-25 20:51" pubdate>
+              2022-02-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件安装配置</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">#软件安装配置</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/02/25/%E5%88%97%E5%87%BA%E5%B1%80%E5%9F%9F%E7%BD%91%E5%86%85%E5%8F%AFping%E9%80%9A%E7%9A%84ip/" target="_self">
+          列出局域网内可Ping通的IP
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/02/25/%E5%88%97%E5%87%BA%E5%B1%80%E5%9F%9F%E7%BD%91%E5%86%85%E5%8F%AFping%E9%80%9A%E7%9A%84ip/" target="_self">
+        <div>
+          123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263# -*- coding: utf-8 -*- import platformimport osimport timeimport threadingimport s
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-25 14:52" pubdate>
+              2022-02-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">#python</a>
+            
+              <a href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/">#局域网</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/02/22/%E6%BB%91%E5%9D%97%E9%AA%8C%E8%AF%81%E7%A0%81%E8%87%AA%E5%8A%A8%E6%8B%96%E6%8B%BD%EF%BC%88seleniumopencv%EF%BC%89/" target="_self">
+          滑块验证码自动拖拽（selenium+opencv）
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/02/22/%E6%BB%91%E5%9D%97%E9%AA%8C%E8%AF%81%E7%A0%81%E8%87%AA%E5%8A%A8%E6%8B%96%E6%8B%BD%EF%BC%88seleniumopencv%EF%BC%89/" target="_self">
+        <div>
+          计算需要移动的像素首先我在github上找到了一个大佬写的项目SlideCrack&#x2F;slide_01 at master · crazyxw&#x2F;SlideCrack (github.com) 输入是本地的两张图：滑块验证码背景和滑块图片 输出是两个缺口的像素距离  1234567891011121314151617181920212223242526272829303132333
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-22 15:04" pubdate>
+              2022-02-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/">#验证码</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/01/07/ubuntu%E7%BB%88%E7%AB%AFsource-not-found/" target="_self">
+          ubuntu终端source: not found
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/01/07/ubuntu%E7%BB%88%E7%AB%AFsource-not-found/" target="_self">
+        <div>
+          错误shell脚本中含有source命令运行时提示 source: not found 运行 ls -l &#x2F;bin&#x2F;sh 后显示&#x2F;bin&#x2F;sh -&gt; dash这说明是用dash来进行解析的。 解决方案命令行执行：（需要root权限） dpkg-reconfigure dash  在界面中选择no再运行ls -l &#x2F;bin&#x2F;sh 后显
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-01-07 21:27" pubdate>
+              2022-01-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%9D%82/" class="category-chain-item">杂</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/linux/">#linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/9/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/#board">8</a><a class="page-number" href="/page/9/#board">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/#board">11</a><a class="page-number" href="/page/12/#board">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/#board">20</a><a class="extend next" rel="next" href="/page/11/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     
 
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-<script src="/js/jquery-3.6.4.min.js"></script>
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+        次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+        次
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
 
-<script src="/js/script.js"></script>
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
 
 
-  </div>
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>

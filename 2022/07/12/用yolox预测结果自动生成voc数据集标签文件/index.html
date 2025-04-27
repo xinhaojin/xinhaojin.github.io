@@ -1,279 +1,756 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  <link rel="icon" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
   
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <title>用yolox预测结果自动生成voc数据集标签文件 | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="问题已有少量（100张）数据集由手工标注，训练结果也不算差，但希望能够进一步提高准确率，需要扩充数据集样本，手工标注太累，因此利用已有训练权重进行预测，用预测结果自动生成xml格式的标注文件，当然也会存在预测错误的情况，自定义条件筛选正确，其余手工标注即可。 voc数据集的xml文件格式12345678910111213141516171819202122232425262728293031323">
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xinhaojin">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="问题已有少量（100张）数据集由手工标注，训练结果也不算差，但希望能够进一步提高准确率，需要扩充数据集样本，手工标注太累，因此利用已有训练权重进行预测，用预测结果自动生成xml格式的标注文件，当然也会存在预测错误的情况，自定义条件筛选正确，其余手工标注即可。 voc数据集的xml文件格式12345678910111213141516171819202122232425262728293031323">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用yolox预测结果自动生成voc数据集标签文件">
 <meta property="og:url" content="http://example.com/2022/07/12/%E7%94%A8yolox%E9%A2%84%E6%B5%8B%E7%BB%93%E6%9E%9C%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90voc%E6%95%B0%E6%8D%AE%E9%9B%86%E6%A0%87%E7%AD%BE%E6%96%87%E4%BB%B6/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="xinhaojin&#39;s blog">
 <meta property="og:description" content="问题已有少量（100张）数据集由手工标注，训练结果也不算差，但希望能够进一步提高准确率，需要扩充数据集样本，手工标注太累，因此利用已有训练权重进行预测，用预测结果自动生成xml格式的标注文件，当然也会存在预测错误的情况，自定义条件筛选正确，其余手工标注即可。 voc数据集的xml文件格式12345678910111213141516171819202122232425262728293031323">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/07/image.png">
 <meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/07/00001.jpg">
 <meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/07/image-1-1024x108.png">
 <meta property="article:published_time" content="2022-07-12T07:59:00.000Z">
 <meta property="article:modified_time" content="2025-04-27T12:29:45.679Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:author" content="xinhaojin">
 <meta property="article:tag" content="数据集">
 <meta property="article:tag" content="目标检测">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://xinhaojin.github.io/imgs-host/past/2022/07/image.png">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-    <link rel="shortcut icon" href="/favicon.png">
+  <title>用yolox预测结果自动生成voc数据集标签文件 - xinhaojin&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
   
-<link rel="stylesheet" href="/css/style.css">
 
   
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?596b73bb5b70c262b123e997b6686f49";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
 
   
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
 
+  
+
+  
+
+  
+
+
+
+  
 <meta name="generator" content="Hexo 7.3.0"></head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xinhaojin&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="用yolox预测结果自动生成voc数据集标签文件"></span>
+          
+        </div>
+
         
-          <a class="main-nav-link" href="/">Home</a>
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-07-12 15:59" pubdate>
+          2022年7月12日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          2.6k 字
         
-      </nav>
-      <nav id="sub-nav">
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
         
         
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
         
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+          13 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
       </div>
+
+      
     </div>
   </div>
-</header>
+</div>
 
-      <div class="outer">
-        <section id="main"><article id="post-用yolox预测结果自动生成voc数据集标签文件" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/07/12/%E7%94%A8yolox%E9%A2%84%E6%B5%8B%E7%BB%93%E6%9E%9C%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90voc%E6%95%B0%E6%8D%AE%E9%9B%86%E6%A0%87%E7%AD%BE%E6%96%87%E4%BB%B6/" class="article-date">
-  <time class="dt-published" datetime="2022-07-12T07:59:00.000Z" itemprop="datePublished">2022-07-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/">目标检测</a>
-  </div>
+</div>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      用yolox预测结果自动生成voc数据集标签文件
-    </h1>
-  
+  </header>
 
-      </header>
+  <main>
     
-    <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>已有少量（100张）数据集由手工标注，训练结果也不算差，但希望能够进一步提高准确率，需要扩充数据集样本，手工标注太累，因此利用已有训练权重进行预测，用预测结果自动生成xml格式的标注文件，当然也会存在预测错误的情况，自定义条件筛选正确，其余手工标注即可。</p>
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">用yolox预测结果自动生成voc数据集标签文件</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2025年4月27日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>已有少量（100张）数据集由手工标注，训练结果也不算差，但希望能够进一步提高准确率，需要扩充数据集样本，手工标注太累，因此利用已有训练权重进行预测，用预测结果自动生成xml格式的标注文件，当然也会存在预测错误的情况，自定义条件筛选正确，其余手工标注即可。</p>
 <h2 id="voc数据集的xml文件格式"><a href="#voc数据集的xml文件格式" class="headerlink" title="voc数据集的xml文件格式"></a>voc数据集的xml文件格式</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">annotation</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">folder</span>&gt;</span>jiyan[_new<span class="tag">&lt;/<span class="name">folder</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">filename</span>&gt;</span>00002.png<span class="tag">&lt;/<span class="name">filename</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">path</span>&gt;</span>E:[[Y1[[验证码[[数据集[[jiyan[_new[[00002.png<span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">source</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">database</span>&gt;</span>Unknown<span class="tag">&lt;/<span class="name">database</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">source</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">size</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">width</span>&gt;</span>300<span class="tag">&lt;/<span class="name">width</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">height</span>&gt;</span>200<span class="tag">&lt;/<span class="name">height</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">depth</span>&gt;</span>3<span class="tag">&lt;/<span class="name">depth</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">size</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">segmented</span>&gt;</span>0<span class="tag">&lt;/<span class="name">segmented</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">object</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span>word<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">pose</span>&gt;</span>Unspecified<span class="tag">&lt;/<span class="name">pose</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">truncated</span>&gt;</span>0<span class="tag">&lt;/<span class="name">truncated</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">difficult</span>&gt;</span>0<span class="tag">&lt;/<span class="name">difficult</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bndbox</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">xmin</span>&gt;</span>123<span class="tag">&lt;/<span class="name">xmin</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ymin</span>&gt;</span>52<span class="tag">&lt;/<span class="name">ymin</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">xmax</span>&gt;</span>177<span class="tag">&lt;/<span class="name">xmax</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ymax</span>&gt;</span>106<span class="tag">&lt;/<span class="name">ymax</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bndbox</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">object</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">object</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span>word<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">pose</span>&gt;</span>Unspecified<span class="tag">&lt;/<span class="name">pose</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">truncated</span>&gt;</span>0<span class="tag">&lt;/<span class="name">truncated</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">difficult</span>&gt;</span>0<span class="tag">&lt;/<span class="name">difficult</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bndbox</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">xmin</span>&gt;</span>206<span class="tag">&lt;/<span class="name">xmin</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ymin</span>&gt;</span>16<span class="tag">&lt;/<span class="name">ymin</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">xmax</span>&gt;</span>260<span class="tag">&lt;/<span class="name">xmax</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ymax</span>&gt;</span>70<span class="tag">&lt;/<span class="name">ymax</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bndbox</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">object</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">object</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span>word<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">pose</span>&gt;</span>Unspecified<span class="tag">&lt;/<span class="name">pose</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">truncated</span>&gt;</span>0<span class="tag">&lt;/<span class="name">truncated</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">difficult</span>&gt;</span>0<span class="tag">&lt;/<span class="name">difficult</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bndbox</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">xmin</span>&gt;</span>194<span class="tag">&lt;/<span class="name">xmin</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ymin</span>&gt;</span>90<span class="tag">&lt;/<span class="name">ymin</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">xmax</span>&gt;</span>247<span class="tag">&lt;/<span class="name">xmax</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ymax</span>&gt;</span>142<span class="tag">&lt;/<span class="name">ymax</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bndbox</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">object</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">annotation</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="修改预测代码"><a href="#修改预测代码" class="headerlink" title="修改预测代码"></a>修改预测代码</h2><p>使得针对每场图片，输出预测矩形框及对应的类别</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/07/image.png"></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/07/image.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="生成xml文件"><a href="#生成xml文件" class="headerlink" title="生成xml文件"></a>生成xml文件</h2><p>拿到矩形框和类别名，就可以写xml文件了，按照上面的格式写就行，有些标签是次要的，并不会用到，可以省略。</p>
 <p>这个函数是copilot插件自动生成的，我只写了个函数名，连参数都没写，就给我自动补全了，你敢信？属实牛逼！</p>
 <p>我只改动了两三行，再加个import，就能用了</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> xml.etree.ElementTree <span class="keyword">as</span> et</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">box2xml</span>(<span class="params">bboxes, <span class="keyword">class</span>[_names, save[_path</span>):</span><br><span class="line">    root = et.Element(<span class="string">&#x27;annotation&#x27;</span>)</span><br><span class="line">    et.SubElement(root, <span class="string">&#x27;folder&#x27;</span>).text = <span class="string">&#x27;VOC2007&#x27;</span></span><br><span class="line">    <span class="comment">#et.SubElement(root, &#x27;filename&#x27;).text = os.path.basename(save[_path)</span></span><br><span class="line">    et.SubElement(root, <span class="string">&#x27;source&#x27;</span>).text = <span class="string">&#x27; &#x27;</span>.join([[<span class="string">&#x27;VOC2007&#x27;</span>, <span class="string">&#x27;createed by YOLOX&#x27;</span>[])</span><br><span class="line">    <span class="comment">#et.SubElement(root, &#x27;segmented&#x27;).text = &#x27;0&#x27;</span></span><br><span class="line">    size = et.SubElement(root, <span class="string">&#x27;size&#x27;</span>)</span><br><span class="line">    et.SubElement(size, <span class="string">&#x27;width&#x27;</span>).text = <span class="string">&#x27;300&#x27;</span></span><br><span class="line">    et.SubElement(size, <span class="string">&#x27;height&#x27;</span>).text = <span class="string">&#x27;200&#x27;</span></span><br><span class="line">    et.SubElement(size, <span class="string">&#x27;depth&#x27;</span>).text = <span class="string">&#x27;3&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(bboxes.shape[[<span class="number">0</span>[]):</span><br><span class="line">        obj = et.SubElement(root, <span class="string">&#x27;object&#x27;</span>)</span><br><span class="line">        et.SubElement(obj, <span class="string">&#x27;name&#x27;</span>).text = <span class="keyword">class</span>[_names[[i[]</span><br><span class="line">        et.SubElement(obj, <span class="string">&#x27;pose&#x27;</span>).text = <span class="string">&#x27;Unspecified&#x27;</span></span><br><span class="line">        et.SubElement(obj, <span class="string">&#x27;truncated&#x27;</span>).text = <span class="string">&#x27;0&#x27;</span></span><br><span class="line">        et.SubElement(obj, <span class="string">&#x27;difficult&#x27;</span>).text = <span class="string">&#x27;0&#x27;</span></span><br><span class="line">        bbox = et.SubElement(obj, <span class="string">&#x27;bndbox&#x27;</span>)</span><br><span class="line">        et.SubElement(bbox, <span class="string">&#x27;xmin&#x27;</span>).text = <span class="built_in">str</span>(bboxes[[i, <span class="number">0</span>[])</span><br><span class="line">        et.SubElement(bbox, <span class="string">&#x27;ymin&#x27;</span>).text = <span class="built_in">str</span>(bboxes[[i, <span class="number">1</span>[])</span><br><span class="line">        et.SubElement(bbox, <span class="string">&#x27;xmax&#x27;</span>).text = <span class="built_in">str</span>(bboxes[[i, <span class="number">2</span>[])</span><br><span class="line">        et.SubElement(bbox, <span class="string">&#x27;ymax&#x27;</span>).text = <span class="built_in">str</span>(bboxes[[i, <span class="number">3</span>[])</span><br><span class="line">    tree = et.ElementTree(root)</span><br><span class="line">    tree.write(save[_path)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;save xml file to &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(save[_path))</span><br></pre></td></tr></table></figure>
 
 <h2 id="怎么确定标注的正确性？"><a href="#怎么确定标注的正确性？" class="headerlink" title="怎么确定标注的正确性？"></a>怎么确定标注的正确性？</h2><p>具体问题具体分析</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/07/00001.jpg"></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/07/00001.jpg" srcset="/img/loading.gif" lazyload></p>
 <p>针对我的场景，正确标注应该是3个框，已有权重有时会只检测出两个框，因此我的筛选条件就是，预测框个数&lt;3的，把文件名汇总起来最后输出，我自己再修改即可。</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/07/image-1-1024x108.png"></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/07/image-1-1024x108.png" srcset="/img/loading.gif" lazyload></p>
 <p>这样工作量就从标注500多张图片锐减到30多张。</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>由tools&#x2F;demo.py修改</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -[*- coding:utf-8 -[*-</span></span><br><span class="line"><span class="comment"># Copyright (c) Megvii, Inc. and its affiliates.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> loguru <span class="keyword">import</span> logger</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> yolox.data.data[_augment <span class="keyword">import</span> ValTransform</span><br><span class="line"><span class="keyword">from</span> yolox.data.datasets <span class="keyword">import</span> COCO[_CLASSES</span><br><span class="line"><span class="keyword">from</span> yolox.exp <span class="keyword">import</span> get[_exp</span><br><span class="line"><span class="keyword">from</span> yolox.utils <span class="keyword">import</span> fuse[_model, get[_model[_info, postprocess, vis</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> xml.etree.ElementTree <span class="keyword">as</span> et</span><br><span class="line"></span><br><span class="line">IMAGE[_EXT = [[<span class="string">&quot;.jpg&quot;</span>, <span class="string">&quot;.jpeg&quot;</span>, <span class="string">&quot;.webp&quot;</span>, <span class="string">&quot;.bmp&quot;</span>, <span class="string">&quot;.png&quot;</span>[]</span><br><span class="line"><span class="comment">#python tools/predict2xml.py image -n yolox-s -c weights/90jiyan.pth --path /home/jxh/work/YOLOX/datasets/VOCdevkit/VOC2007/JPEGImages --conf 0.6 --nms 0.6 --save[_result --device [[cpu/gpu[]</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">make</span>[_parser():</span><br><span class="line">    parser = argparse.ArgumentParser(<span class="string">&quot;YOLOX Demo!&quot;</span>)</span><br><span class="line">    parser.add[_argument(</span><br><span class="line">        <span class="string">&quot;demo&quot;</span>, default=<span class="string">&quot;image&quot;</span>, <span class="built_in">help</span>=<span class="string">&quot;demo type, eg. image, video and webcam&quot;</span></span><br><span class="line">    )</span><br><span class="line">    parser.add[_argument(<span class="string">&quot;-expn&quot;</span>, <span class="string">&quot;--experiment-name&quot;</span>, <span class="built_in">type</span>=<span class="built_in">str</span>, default=<span class="string">&#x27;test&#x27;</span>)</span><br><span class="line">    parser.add[_argument(<span class="string">&quot;-n&quot;</span>, <span class="string">&quot;--name&quot;</span>, <span class="built_in">type</span>=<span class="built_in">str</span>, default=<span class="string">&#x27;yolox-s&#x27;</span>, <span class="built_in">help</span>=<span class="string">&quot;model name&quot;</span>)</span><br><span class="line"></span><br><span class="line">    parser.add[_argument(</span><br><span class="line">        <span class="string">&quot;--path&quot;</span>, default=<span class="string">&quot;./assets/test&quot;</span>, <span class="built_in">help</span>=<span class="string">&quot;path to images or video&quot;</span></span><br><span class="line">    )</span><br><span class="line">    parser.add[_argument(<span class="string">&quot;--camid&quot;</span>, <span class="built_in">type</span>=<span class="built_in">int</span>, default=<span class="number">0</span>, <span class="built_in">help</span>=<span class="string">&quot;webcam demo camera id&quot;</span>)</span><br><span class="line">    parser.add[_argument(</span><br><span class="line">        <span class="string">&quot;--save[_result&quot;</span>,</span><br><span class="line">        action=<span class="string">&quot;store[_true&quot;</span>,</span><br><span class="line">        <span class="built_in">help</span>=<span class="string">&quot;whether to save the inference result of image/video&quot;</span>,</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    <span class="comment"># exp file</span></span><br><span class="line">    parser.add[_argument(</span><br><span class="line">        <span class="string">&quot;-f&quot;</span>,</span><br><span class="line">        <span class="string">&quot;--exp[_file&quot;</span>,</span><br><span class="line">        default=<span class="string">&#x27;exps/example/yolox[_voc/yolox[_voc[_s.py&#x27;</span>,</span><br><span class="line">        <span class="built_in">type</span>=<span class="built_in">str</span>,</span><br><span class="line">        <span class="built_in">help</span>=<span class="string">&quot;pls input your experiment description file&quot;</span>,</span><br><span class="line">    )</span><br><span class="line">    parser.add[_argument(<span class="string">&quot;-c&quot;</span>, <span class="string">&quot;--ckpt&quot;</span>, default=<span class="string">&#x27;YOLOX[_outputs/yolox[_voc[_s/90jiyan[_new.pth&#x27;</span>, <span class="built_in">type</span>=<span class="built_in">str</span>, <span class="built_in">help</span>=<span class="string">&quot;ckpt for eval&quot;</span>)</span><br><span class="line">    parser.add[_argument(</span><br><span class="line">        <span class="string">&quot;--device&quot;</span>,</span><br><span class="line">        default=<span class="string">&quot;cpu&quot;</span>,</span><br><span class="line">        <span class="built_in">type</span>=<span class="built_in">str</span>,</span><br><span class="line">        <span class="built_in">help</span>=<span class="string">&quot;device to run our model, can either be cpu or gpu&quot;</span>,</span><br><span class="line">    )</span><br><span class="line">    parser.add[_argument(<span class="string">&quot;--conf&quot;</span>, default=<span class="number">0.5</span>, <span class="built_in">type</span>=<span class="built_in">float</span>, <span class="built_in">help</span>=<span class="string">&quot;test conf&quot;</span>)</span><br><span class="line">    parser.add[_argument(<span class="string">&quot;--nms&quot;</span>, default=<span class="number">0.5</span>, <span class="built_in">type</span>=<span class="built_in">float</span>, <span class="built_in">help</span>=<span class="string">&quot;test nms threshold&quot;</span>)</span><br><span class="line">    parser.add[_argument(<span class="string">&quot;--tsize&quot;</span>, default=<span class="literal">None</span>, <span class="built_in">type</span>=<span class="built_in">int</span>, <span class="built_in">help</span>=<span class="string">&quot;test img size&quot;</span>)</span><br><span class="line">    parser.add[_argument(</span><br><span class="line">        <span class="string">&quot;--fp16&quot;</span>,</span><br><span class="line">        dest=<span class="string">&quot;fp16&quot;</span>,</span><br><span class="line">        default=<span class="literal">False</span>,</span><br><span class="line">        action=<span class="string">&quot;store[_true&quot;</span>,</span><br><span class="line">        <span class="built_in">help</span>=<span class="string">&quot;Adopting mix precision evaluating.&quot;</span>,</span><br><span class="line">    )</span><br><span class="line">    parser.add[_argument(</span><br><span class="line">        <span class="string">&quot;--legacy&quot;</span>,</span><br><span class="line">        dest=<span class="string">&quot;legacy&quot;</span>,</span><br><span class="line">        default=<span class="literal">False</span>,</span><br><span class="line">        action=<span class="string">&quot;store[_true&quot;</span>,</span><br><span class="line">        <span class="built_in">help</span>=<span class="string">&quot;To be compatible with older versions&quot;</span>,</span><br><span class="line">    )</span><br><span class="line">    parser.add[_argument(</span><br><span class="line">        <span class="string">&quot;--fuse&quot;</span>,</span><br><span class="line">        dest=<span class="string">&quot;fuse&quot;</span>,</span><br><span class="line">        default=<span class="literal">False</span>,</span><br><span class="line">        action=<span class="string">&quot;store[_true&quot;</span>,</span><br><span class="line">        <span class="built_in">help</span>=<span class="string">&quot;Fuse conv and bn for testing.&quot;</span>,</span><br><span class="line">    )</span><br><span class="line">    parser.add[_argument(</span><br><span class="line">        <span class="string">&quot;--trt&quot;</span>,</span><br><span class="line">        dest=<span class="string">&quot;trt&quot;</span>,</span><br><span class="line">        default=<span class="literal">False</span>,</span><br><span class="line">        action=<span class="string">&quot;store[_true&quot;</span>,</span><br><span class="line">        <span class="built_in">help</span>=<span class="string">&quot;Using TensorRT model for testing.&quot;</span>,</span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> parser</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get</span>[_image[_<span class="built_in">list</span>(path):</span><br><span class="line">    image[_names = [[[]</span><br><span class="line">    <span class="keyword">for</span> maindir, subdir, file[_name[_<span class="built_in">list</span> <span class="keyword">in</span> os.walk(path):</span><br><span class="line">        <span class="keyword">for</span> filename <span class="keyword">in</span> file[_name[_<span class="built_in">list</span>:</span><br><span class="line">            apath = os.path.join(maindir, filename)</span><br><span class="line">            ext = os.path.splitext(apath)[[<span class="number">1</span>[]</span><br><span class="line">            <span class="keyword">if</span> ext <span class="keyword">in</span> IMAGE[_EXT:</span><br><span class="line">                image[_names.append(apath)</span><br><span class="line">    <span class="keyword">return</span> image[_names</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">box2xml</span>(<span class="params">bboxes, <span class="keyword">class</span>[_names, save[_path</span>):</span><br><span class="line">    root = et.Element(<span class="string">&#x27;annotation&#x27;</span>)</span><br><span class="line">    et.SubElement(root, <span class="string">&#x27;folder&#x27;</span>).text = <span class="string">&#x27;VOC2007&#x27;</span></span><br><span class="line">    <span class="comment">#et.SubElement(root, &#x27;filename&#x27;).text = os.path.basename(save[_path)</span></span><br><span class="line">    et.SubElement(root, <span class="string">&#x27;source&#x27;</span>).text = <span class="string">&#x27; &#x27;</span>.join([[<span class="string">&#x27;VOC2007&#x27;</span>, <span class="string">&#x27;createed by YOLOX&#x27;</span>[])</span><br><span class="line">    <span class="comment">#et.SubElement(root, &#x27;segmented&#x27;).text = &#x27;0&#x27;</span></span><br><span class="line">    size = et.SubElement(root, <span class="string">&#x27;size&#x27;</span>)</span><br><span class="line">    et.SubElement(size, <span class="string">&#x27;width&#x27;</span>).text = <span class="string">&#x27;300&#x27;</span></span><br><span class="line">    et.SubElement(size, <span class="string">&#x27;height&#x27;</span>).text = <span class="string">&#x27;200&#x27;</span></span><br><span class="line">    et.SubElement(size, <span class="string">&#x27;depth&#x27;</span>).text = <span class="string">&#x27;3&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(bboxes.shape[[<span class="number">0</span>[]):</span><br><span class="line">        obj = et.SubElement(root, <span class="string">&#x27;object&#x27;</span>)</span><br><span class="line">        et.SubElement(obj, <span class="string">&#x27;name&#x27;</span>).text = <span class="keyword">class</span>[_names[[i[]</span><br><span class="line">        et.SubElement(obj, <span class="string">&#x27;pose&#x27;</span>).text = <span class="string">&#x27;Unspecified&#x27;</span></span><br><span class="line">        et.SubElement(obj, <span class="string">&#x27;truncated&#x27;</span>).text = <span class="string">&#x27;0&#x27;</span></span><br><span class="line">        et.SubElement(obj, <span class="string">&#x27;difficult&#x27;</span>).text = <span class="string">&#x27;0&#x27;</span></span><br><span class="line">        bbox = et.SubElement(obj, <span class="string">&#x27;bndbox&#x27;</span>)</span><br><span class="line">        et.SubElement(bbox, <span class="string">&#x27;xmin&#x27;</span>).text = <span class="built_in">str</span>(bboxes[[i, <span class="number">0</span>[])</span><br><span class="line">        et.SubElement(bbox, <span class="string">&#x27;ymin&#x27;</span>).text = <span class="built_in">str</span>(bboxes[[i, <span class="number">1</span>[])</span><br><span class="line">        et.SubElement(bbox, <span class="string">&#x27;xmax&#x27;</span>).text = <span class="built_in">str</span>(bboxes[[i, <span class="number">2</span>[])</span><br><span class="line">        et.SubElement(bbox, <span class="string">&#x27;ymax&#x27;</span>).text = <span class="built_in">str</span>(bboxes[[i, <span class="number">3</span>[])</span><br><span class="line">    tree = et.ElementTree(root)</span><br><span class="line">    tree.write(save[_path)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;save xml file to &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(save[_path))</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Predictor</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> [_[_init[_[_(</span><br><span class="line">        <span class="variable language_">self</span>,</span><br><span class="line">        model,</span><br><span class="line">        exp,</span><br><span class="line">        cls[_names=COCO[_CLASSES,</span><br><span class="line">        trt[_file=<span class="literal">None</span>,</span><br><span class="line">        decoder=<span class="literal">None</span>,</span><br><span class="line">        device=<span class="string">&quot;cpu&quot;</span>,</span><br><span class="line">        fp16=<span class="literal">False</span>,</span><br><span class="line">        legacy=<span class="literal">False</span>,</span><br><span class="line">    ):</span><br><span class="line">        <span class="variable language_">self</span>.model = model</span><br><span class="line">        <span class="variable language_">self</span>.cls[_names = cls[_names</span><br><span class="line">        <span class="variable language_">self</span>.decoder = decoder</span><br><span class="line">        <span class="variable language_">self</span>.num[_classes = exp.num[_classes</span><br><span class="line">        <span class="variable language_">self</span>.confthre = exp.test[_conf</span><br><span class="line">        <span class="variable language_">self</span>.nmsthre = exp.nmsthre</span><br><span class="line">        <span class="variable language_">self</span>.test[_size = exp.test[_size</span><br><span class="line">        <span class="variable language_">self</span>.device = device</span><br><span class="line">        <span class="variable language_">self</span>.fp16 = fp16</span><br><span class="line">        <span class="variable language_">self</span>.preproc = ValTransform(legacy=legacy)</span><br><span class="line">        <span class="keyword">if</span> trt[_file <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">from</span> torch2trt <span class="keyword">import</span> TRTModule</span><br><span class="line"></span><br><span class="line">            model[_trt = TRTModule()</span><br><span class="line">            model[_trt.load[_state[_<span class="built_in">dict</span>(torch.load(trt[_file))</span><br><span class="line"></span><br><span class="line">            x = torch.ones(<span class="number">1</span>, <span class="number">3</span>, exp.test[_size[[<span class="number">0</span>[], exp.test[_size[[<span class="number">1</span>[]).cuda()</span><br><span class="line">            <span class="variable language_">self</span>.model(x)</span><br><span class="line">            <span class="variable language_">self</span>.model = model[_trt</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">inference</span>(<span class="params">self, img</span>):</span><br><span class="line">        img[_info = &#123;<span class="string">&quot;id&quot;</span>: <span class="number">0</span>&#125;</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(img, <span class="built_in">str</span>):</span><br><span class="line">            img[_info[[<span class="string">&quot;file[_name&quot;</span>[] = os.path.basename(img)</span><br><span class="line">            img = cv2.imread(img)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            img[_info[[<span class="string">&quot;file[_name&quot;</span>[] = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">        height, width = img.shape[[:<span class="number">2</span>[]</span><br><span class="line">        img[_info[[<span class="string">&quot;height&quot;</span>[] = height</span><br><span class="line">        img[_info[[<span class="string">&quot;width&quot;</span>[] = width</span><br><span class="line">        img[_info[[<span class="string">&quot;raw[_img&quot;</span>[] = img</span><br><span class="line"></span><br><span class="line">        ratio = <span class="built_in">min</span>(<span class="variable language_">self</span>.test[_size[[<span class="number">0</span>[] / img.shape[[<span class="number">0</span>[], <span class="variable language_">self</span>.test[_size[[<span class="number">1</span>[] / img.shape[[<span class="number">1</span>[])</span><br><span class="line">        img[_info[[<span class="string">&quot;ratio&quot;</span>[] = ratio</span><br><span class="line"></span><br><span class="line">        img, [_ = <span class="variable language_">self</span>.preproc(img, <span class="literal">None</span>, <span class="variable language_">self</span>.test[_size)</span><br><span class="line">        img = torch.<span class="keyword">from</span>[_numpy(img).unsqueeze(<span class="number">0</span>)</span><br><span class="line">        img = img.<span class="built_in">float</span>()</span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.device == <span class="string">&quot;gpu&quot;</span>:</span><br><span class="line">            img = img.cuda()</span><br><span class="line">            <span class="keyword">if</span> <span class="variable language_">self</span>.fp16:</span><br><span class="line">                img = img.half()  <span class="comment"># to FP16</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">with</span> torch.no[_grad():</span><br><span class="line">            t0 = time.time()</span><br><span class="line">            outputs = <span class="variable language_">self</span>.model(img)</span><br><span class="line">            <span class="keyword">if</span> <span class="variable language_">self</span>.decoder <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">                outputs = <span class="variable language_">self</span>.decoder(outputs, dtype=outputs.<span class="built_in">type</span>())</span><br><span class="line">            outputs = postprocess(</span><br><span class="line">                outputs, <span class="variable language_">self</span>.num[_classes, <span class="variable language_">self</span>.confthre,</span><br><span class="line">                <span class="variable language_">self</span>.nmsthre, <span class="keyword">class</span>[_agnostic=<span class="literal">True</span></span><br><span class="line">            )</span><br><span class="line">            logger.info(<span class="string">&quot;Infer time: &#123;:.4f&#125;s&quot;</span>.<span class="built_in">format</span>(time.time() - t0))</span><br><span class="line">        <span class="keyword">return</span> outputs, img[_info</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">visual</span>(<span class="params">self, output, img[_info, cls[_conf=<span class="number">0.5</span></span>):</span><br><span class="line">        <span class="comment">#print(img[_info)</span></span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">        &#123;&#x27;id&#x27;: 0, &#x27;file[_name&#x27;: &#x27;00032团圆汤.png&#x27;, &#x27;height&#x27;: 200, &#x27;width&#x27;: 300,&#x27;&#x27;&#x27;</span></span><br><span class="line">        ratio = img[_info[[<span class="string">&quot;ratio&quot;</span>[]</span><br><span class="line">        img = img[_info[[<span class="string">&quot;raw[_img&quot;</span>[]</span><br><span class="line">        <span class="keyword">if</span> output <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> img</span><br><span class="line">        output = output.cpu()</span><br><span class="line"></span><br><span class="line">        bboxes = output[[:, <span class="number">0</span>:<span class="number">4</span>[]</span><br><span class="line">        <span class="comment"># preprocessing: resize</span></span><br><span class="line">        bboxes /= ratio</span><br><span class="line">        boxes=bboxes.numpy()</span><br><span class="line">        boxes = boxes.astype(<span class="built_in">int</span>)</span><br><span class="line">        <span class="built_in">print</span>(boxes)</span><br><span class="line">        cls = output[[:, <span class="number">6</span>[]</span><br><span class="line">        clses= cls.numpy()</span><br><span class="line">        <span class="comment">#转为list</span></span><br><span class="line">        clses = clses.tolist()</span><br><span class="line">        classnames = [[<span class="variable language_">self</span>.cls[_names[[<span class="built_in">int</span>(i)[] <span class="keyword">for</span> i <span class="keyword">in</span> clses[]</span><br><span class="line">        <span class="built_in">print</span>(classnames)</span><br><span class="line">        box2xml(boxes, classnames, <span class="string">&#x27;xml[_output/&#x27;</span>+img[_info[[<span class="string">&#x27;file[_name&#x27;</span>[].split(<span class="string">&#x27;.&#x27;</span>)[[<span class="number">0</span>[]+<span class="string">&#x27;.xml&#x27;</span>)</span><br><span class="line">        scores = output[[:, <span class="number">4</span>[] [* output[[:, <span class="number">5</span>[]</span><br><span class="line"></span><br><span class="line">        vis[_res = vis(img, bboxes, scores, cls, cls[_conf, <span class="variable language_">self</span>.cls[_names)</span><br><span class="line">        <span class="keyword">return</span> vis[_res,bboxes</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">image</span>[_demo(predictor, vis[_folder, path, current[_time, save[_result):</span><br><span class="line">    <span class="keyword">if</span> os.path.isdir(path):</span><br><span class="line">        files = get[_image[_<span class="built_in">list</span>(path)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        files = [[path[]</span><br><span class="line">    files.sort()</span><br><span class="line">    error=[[[]</span><br><span class="line">    <span class="keyword">for</span> image[_name <span class="keyword">in</span> files:</span><br><span class="line">        outputs, img[_info = predictor.inference(image[_name)</span><br><span class="line">        result[_image,bboxes = predictor.visual(outputs[[<span class="number">0</span>[], img[_info, predictor.confthre)</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(bboxes)&lt;<span class="number">3</span>:</span><br><span class="line">            error.append(image[_name)</span><br><span class="line">        <span class="keyword">if</span> save[_result:</span><br><span class="line">            save[_folder = os.path.join(</span><br><span class="line">                vis[_folder, time.strftime(<span class="string">&quot;%Y[_%m[_%d[_%H[_%M[_%S&quot;</span>, current[_time)</span><br><span class="line">            )</span><br><span class="line">            os.makedirs(save[_folder, exist[_ok=<span class="literal">True</span>)</span><br><span class="line">            save[_file[_name = os.path.join(save[_folder, os.path.basename(image[_name))</span><br><span class="line">            logger.info(<span class="string">&quot;Saving detection result in &#123;&#125;&quot;</span>.<span class="built_in">format</span>(save[_file[_name))</span><br><span class="line">            <span class="comment">####################################</span></span><br><span class="line">            bboxes=bboxes.numpy()</span><br><span class="line">            bboxes = bboxes.astype(<span class="built_in">int</span>)</span><br><span class="line">            log[_file = <span class="built_in">open</span>(<span class="string">&#x27;log.txt&#x27;</span>,<span class="string">&#x27;a+&#x27;</span>)</span><br><span class="line">            log[_file.write(save[_file[_name+<span class="string">&quot;[[n&quot;</span>)</span><br><span class="line">            log[_file.write(<span class="built_in">str</span>(bboxes)+<span class="string">&quot;[[n&quot;</span>)</span><br><span class="line">            log[_file.close()</span><br><span class="line">            <span class="comment">###################################</span></span><br><span class="line">            <span class="comment"># result[_image=koutu(result[_image,bboxes)</span></span><br><span class="line">            cv2.imwrite(save[_file[_name, result[_image)</span><br><span class="line">        ch = cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">if</span> ch == <span class="number">27</span> <span class="keyword">or</span> ch == <span class="built_in">ord</span>(<span class="string">&quot;q&quot;</span>) <span class="keyword">or</span> ch == <span class="built_in">ord</span>(<span class="string">&quot;Q&quot;</span>):</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;错误标注文件:&#x27;</span>,error)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">imageflow</span>[_demo(predictor, vis[_folder, current[_time, args):</span><br><span class="line">    cap = cv2.VideoCapture(args.path <span class="keyword">if</span> args.demo == <span class="string">&quot;video&quot;</span> <span class="keyword">else</span> args.camid)</span><br><span class="line">    width = cap.get(cv2.CAP[_PROP[_FRAME[_WIDTH)  <span class="comment"># float</span></span><br><span class="line">    height = cap.get(cv2.CAP[_PROP[_FRAME[_HEIGHT)  <span class="comment"># float</span></span><br><span class="line">    fps = cap.get(cv2.CAP[_PROP[_FPS)</span><br><span class="line">    <span class="keyword">if</span> args.save[_result:</span><br><span class="line">        save[_folder = os.path.join(</span><br><span class="line">            vis[_folder, time.strftime(<span class="string">&quot;%Y[_%m[_%d[_%H[_%M[_%S&quot;</span>, current[_time)</span><br><span class="line">        )</span><br><span class="line">        os.makedirs(save[_folder, exist[_ok=<span class="literal">True</span>)</span><br><span class="line">        <span class="keyword">if</span> args.demo == <span class="string">&quot;video&quot;</span>:</span><br><span class="line">            save[_path = os.path.join(save[_folder, os.path.basename(args.path))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            save[_path = os.path.join(save[_folder, <span class="string">&quot;camera.mp4&quot;</span>)</span><br><span class="line">        logger.info(<span class="string">f&quot;video save[_path is <span class="subst">&#123;save[_path&#125;</span>&quot;</span>)</span><br><span class="line">        vid[_writer = cv2.VideoWriter(</span><br><span class="line">            save[_path, cv2.VideoWriter[_fourcc([*<span class="string">&quot;mp4v&quot;</span>), fps, (<span class="built_in">int</span>(width), <span class="built_in">int</span>(height))</span><br><span class="line">        )</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        ret[_val, frame = cap.read()</span><br><span class="line">        <span class="keyword">if</span> ret[_val:</span><br><span class="line">            outputs, img[_info = predictor.inference(frame)</span><br><span class="line">            result[_frame = predictor.visual(outputs[[<span class="number">0</span>[], img[_info, predictor.confthre)</span><br><span class="line">            <span class="keyword">if</span> args.save[_result:</span><br><span class="line">                vid[_writer.write(result[_frame)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                cv2.namedWindow(<span class="string">&quot;yolox&quot;</span>, cv2.WINDOW[_NORMAL)</span><br><span class="line">                cv2.imshow(<span class="string">&quot;yolox&quot;</span>, result[_frame)</span><br><span class="line">            ch = cv2.waitKey(<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">if</span> ch == <span class="number">27</span> <span class="keyword">or</span> ch == <span class="built_in">ord</span>(<span class="string">&quot;q&quot;</span>) <span class="keyword">or</span> ch == <span class="built_in">ord</span>(<span class="string">&quot;Q&quot;</span>):</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>(<span class="params">exp, args</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> args.experiment[_name:</span><br><span class="line">        args.experiment[_name = exp.exp[_name</span><br><span class="line"></span><br><span class="line">    file[_name = os.path.join(exp.output[_<span class="built_in">dir</span>, args.experiment[_name)</span><br><span class="line">    os.makedirs(file[_name, exist[_ok=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">    vis[_folder = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">if</span> args.save[_result:</span><br><span class="line">        vis[_folder = os.path.join(file[_name, <span class="string">&quot;vis[_res&quot;</span>)</span><br><span class="line">        os.makedirs(vis[_folder, exist[_ok=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> args.trt:</span><br><span class="line">        args.device = <span class="string">&quot;gpu&quot;</span></span><br><span class="line"></span><br><span class="line">    logger.info(<span class="string">&quot;Args: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(args))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> args.conf <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        exp.test[_conf = args.conf</span><br><span class="line">    <span class="keyword">if</span> args.nms <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        exp.nmsthre = args.nms</span><br><span class="line">    <span class="keyword">if</span> args.tsize <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        exp.test[_size = (args.tsize, args.tsize)</span><br><span class="line"></span><br><span class="line">    model = exp.get[_model()</span><br><span class="line">    logger.info(<span class="string">&quot;Model Summary: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(get[_model[_info(model, exp.test[_size)))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> args.device == <span class="string">&quot;gpu&quot;</span>:</span><br><span class="line">        model.cuda()</span><br><span class="line">        <span class="keyword">if</span> args.fp16:</span><br><span class="line">            model.half()  <span class="comment"># to FP16</span></span><br><span class="line">    model.<span class="built_in">eval</span>()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> args.trt:</span><br><span class="line">        <span class="keyword">if</span> args.ckpt <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            ckpt[_file = os.path.join(file[_name, <span class="string">&quot;best[_ckpt.pth&quot;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            ckpt[_file = args.ckpt</span><br><span class="line">        logger.info(<span class="string">&quot;loading checkpoint&quot;</span>)</span><br><span class="line">        ckpt = torch.load(ckpt[_file, <span class="built_in">map</span>[_location=<span class="string">&quot;cpu&quot;</span>)</span><br><span class="line">        <span class="comment"># load the model state dict</span></span><br><span class="line">        model.load[_state[_<span class="built_in">dict</span>(ckpt[[<span class="string">&quot;model&quot;</span>[])</span><br><span class="line">        logger.info(<span class="string">&quot;loaded checkpoint done.&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> args.fuse:</span><br><span class="line">        logger.info(<span class="string">&quot;[[tFusing model...&quot;</span>)</span><br><span class="line">        model = fuse[_model(model)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> args.trt:</span><br><span class="line">        <span class="keyword">assert</span> <span class="keyword">not</span> args.fuse, <span class="string">&quot;TensorRT model is not support model fusing!&quot;</span></span><br><span class="line">        trt[_file = os.path.join(file[_name, <span class="string">&quot;model[_trt.pth&quot;</span>)</span><br><span class="line">        <span class="keyword">assert</span> os.path.exists(</span><br><span class="line">            trt[_file</span><br><span class="line">        ), <span class="string">&quot;TensorRT model is not found![[n Run python3 tools/trt.py first!&quot;</span></span><br><span class="line">        model.head.decode[_<span class="keyword">in</span>[_inference = <span class="literal">False</span></span><br><span class="line">        decoder = model.head.decode[_outputs</span><br><span class="line">        logger.info(<span class="string">&quot;Using TensorRT to inference&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        trt[_file = <span class="literal">None</span></span><br><span class="line">        decoder = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    predictor = Predictor(</span><br><span class="line">        model, exp, COCO[_CLASSES, trt[_file, decoder,</span><br><span class="line">        args.device, args.fp16, args.legacy,</span><br><span class="line">    )</span><br><span class="line">    current[_time = time.localtime()</span><br><span class="line">    <span class="keyword">if</span> args.demo == <span class="string">&quot;image&quot;</span>:</span><br><span class="line">        image[_demo(predictor, vis[_folder, args.path, current[_time, args.save[_result)</span><br><span class="line">    <span class="keyword">elif</span> args.demo == <span class="string">&quot;video&quot;</span> <span class="keyword">or</span> args.demo == <span class="string">&quot;webcam&quot;</span>:</span><br><span class="line">        imageflow[_demo(predictor, vis[_folder, current[_time, args)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [_[_name[_[_ == <span class="string">&quot;[_[_main[_[_&quot;</span>:</span><br><span class="line">    args = make[_parser().parse[_args()</span><br><span class="line">    exp = get[_exp(args.exp[_file, args.name)</span><br><span class="line"></span><br><span class="line">    main(exp, args)</span><br></pre></td></tr></table></figure>
 
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/07/12/%E7%94%A8yolox%E9%A2%84%E6%B5%8B%E7%BB%93%E6%9E%9C%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90voc%E6%95%B0%E6%8D%AE%E9%9B%86%E6%A0%87%E7%AD%BE%E6%96%87%E4%BB%B6/" data-id="cm9zmq90f00h1sqhlbtyyeqoe" data-title="用yolox预测结果自动生成voc数据集标签文件" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/" rel="tag">数据集</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" rel="tag">目标检测</a></li></ul>
 
-    </footer>
-  </div>
+<span class="category-chains">
+  
   
     
-<nav id="article-nav">
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" class="category-chain-item">目标检测</a>
   
-    <a href="/2022/08/17/paddleocr%E8%BD%ACpytorch%E6%8E%A8%E7%90%86/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          paddleocr转pytorch推理
-        
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#数据集</a>
+      
+        <a href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" class="print-no-link">#目标检测</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>用yolox预测结果自动生成voc数据集标签文件</div>
+      <div>http://example.com/2022/07/12/用yolox预测结果自动生成voc数据集标签文件/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>xinhaojin</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年7月12日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/08/17/paddleocr%E8%BD%ACpytorch%E6%8E%A8%E7%90%86/" title="paddleocr转pytorch推理">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">paddleocr转pytorch推理</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/10/%E5%9F%BA%E4%BA%8E%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%88%86%E6%9E%90%E7%9A%84%E8%87%AA%E9%80%82%E5%BA%94%E9%98%88%E5%80%BC%E5%88%86%E5%89%B2/" title="基于直方图分析的自适应阈值分割">
+                        <span class="hidden-mobile">基于直方图分析的自适应阈值分割</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/gitalk/1.8.0/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"Ov23lifvhsymyganMHro","clientSecret":"cdd38ac0c65a95027749446001ebdff7ca7d4ec2","repo":"xinhaojin.github.io","owner":"xinhaojin","admin":"xinhaojin","language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
+          {
+            id: '7425bbe2c390bfb994b910534c124c92'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
       </div>
-    </a>
-  
-  
-    <a href="/2022/06/10/%E5%9F%BA%E4%BA%8E%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%88%86%E6%9E%90%E7%9A%84%E8%87%AA%E9%80%82%E5%BA%94%E9%98%88%E5%80%BC%E5%88%86%E5%89%B2/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">基于直方图分析的自适应阈值分割</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/LeetCode/">LeetCode</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/%E6%9D%82/">杂</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/%E6%9D%82/">杂</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/pytorch/">pytorch</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">图像处理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%8D%93/">安卓</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82/">杂</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%88%AC%E8%99%AB/">爬虫</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/">目标检测</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E5%B7%A5/">网工</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">软件安装配置</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/linux/">linux</a></li></ul></li></ul>
     </div>
-  </div>
 
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/" rel="tag">CDN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DDNS/" rel="tag">DDNS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DHCP/" rel="tag">DHCP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNS/" rel="tag">DNS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IP/" rel="tag">IP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IPsec/" rel="tag">IPsec</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDA/" rel="tag">LDA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NFC/" rel="tag">NFC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDF/" rel="tag">PDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SMTP/" rel="tag">SMTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chatgpt/" rel="tag">chatgpt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloudflare/" rel="tag">cloudflare</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/" rel="tag">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ocr/" rel="tag">ocr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyinstaller/" rel="tag">pyinstaller</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pytorch/" rel="tag">pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rpa/" rel="tag">rpa</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/selenium/" rel="tag">selenium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/" rel="tag">socket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssl/" rel="tag">ssl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wget/" rel="tag">wget</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wol/" rel="tag">wol</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/" rel="tag">wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/worldcloud/" rel="tag">worldcloud</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%91%E7%9B%98/" rel="tag">云盘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B/" rel="tag">人脸检测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%90%86/" rel="tag">代理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%80%8D%E9%80%9F%E6%92%AD%E6%94%BE/" rel="tag">倍速播放</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" rel="tag">内网穿透</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E7%9B%AE%E6%91%84%E5%83%8F%E5%A4%B4%E6%B5%8B%E8%B7%9D/" rel="tag">单目摄像头测距</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%93%88%E5%A4%AB%E6%9B%BC/" rel="tag">哈夫曼</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" rel="tag">哈希表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%9F%E5%90%8D/" rel="tag">域名</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A0%86/" rel="tag">堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E5%B1%8F%E5%8D%8F%E5%90%8C/" rel="tag">多屏协同</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%AA%E7%94%9F%E7%BD%91%E7%BB%9C/" rel="tag">孪生网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E5%8D%93/" rel="tag">安卓</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/" rel="tag">局域网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/" rel="tag">数据集</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%BB%84/" rel="tag">数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" rel="tag">树莓派</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BF%80%E5%85%89%E6%B5%8B%E8%B7%9D/" rel="tag">激光测距</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%82%B9%E9%80%89%E9%AA%8C%E8%AF%81%E7%A0%81/" rel="tag">点选验证码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" rel="tag">目标检测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" rel="tag">端口转发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" rel="tag">编译原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E5%B7%A5/" rel="tag">网工</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%80%81%E6%AF%9B%E5%AD%90%E5%9B%BA%E4%BB%B6/" rel="tag">老毛子固件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" rel="tag">虚拟机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD/" rel="tag">视频下载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E6%B5%81/" rel="tag">视频流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%AD%E9%9F%B3%E8%BD%AC%E6%96%87%E5%AD%97/" rel="tag">语音转文字</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B6%85%E5%83%8F%E7%B4%A0/" rel="tag">超像素</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B6%85%E5%A3%B0%E6%B3%A2/" rel="tag">超声波</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8%E5%88%B7%E6%9C%BA/" rel="tag">路由器刷机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" rel="tag">软件安装配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E7%94%BB%E5%90%8C%E6%AD%A5/" rel="tag">音画同步</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/" rel="tag">验证码</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/CDN/" style="font-size: 10px;">CDN</a> <a href="/tags/DDNS/" style="font-size: 10px;">DDNS</a> <a href="/tags/DHCP/" style="font-size: 10px;">DHCP</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/IP/" style="font-size: 10.67px;">IP</a> <a href="/tags/IPsec/" style="font-size: 10px;">IPsec</a> <a href="/tags/LDA/" style="font-size: 10px;">LDA</a> <a href="/tags/NFC/" style="font-size: 10px;">NFC</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/SMTP/" style="font-size: 10px;">SMTP</a> <a href="/tags/blog/" style="font-size: 11.33px;">blog</a> <a href="/tags/c/" style="font-size: 16px;">c++</a> <a href="/tags/chatgpt/" style="font-size: 10.67px;">chatgpt</a> <a href="/tags/cloudflare/" style="font-size: 11.33px;">cloudflare</a> <a href="/tags/docker/" style="font-size: 12.67px;">docker</a> <a href="/tags/flask/" style="font-size: 11.33px;">flask</a> <a href="/tags/java/" style="font-size: 13.33px;">java</a> <a href="/tags/js/" style="font-size: 11.33px;">js</a> <a href="/tags/linux/" style="font-size: 19.33px;">linux</a> <a href="/tags/nginx/" style="font-size: 12.67px;">nginx</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/ocr/" style="font-size: 10px;">ocr</a> <a href="/tags/php/" style="font-size: 10.67px;">php</a> <a href="/tags/pyinstaller/" style="font-size: 10px;">pyinstaller</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/pytorch/" style="font-size: 16.67px;">pytorch</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/rpa/" style="font-size: 10px;">rpa</a> <a href="/tags/selenium/" style="font-size: 11.33px;">selenium</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/socket/" style="font-size: 10px;">socket</a> <a href="/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/tags/ssh/" style="font-size: 13.33px;">ssh</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/wget/" style="font-size: 10px;">wget</a> <a href="/tags/wol/" style="font-size: 10px;">wol</a> <a href="/tags/wordpress/" style="font-size: 10.67px;">wordpress</a> <a href="/tags/worldcloud/" style="font-size: 10px;">worldcloud</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 12.67px;">二叉树</a> <a href="/tags/%E4%BA%91%E7%9B%98/" style="font-size: 10px;">云盘</a> <a href="/tags/%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B/" style="font-size: 10px;">人脸检测</a> <a href="/tags/%E4%BB%A3%E7%90%86/" style="font-size: 13.33px;">代理</a> <a href="/tags/%E5%80%8D%E9%80%9F%E6%92%AD%E6%94%BE/" style="font-size: 10px;">倍速播放</a> <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" style="font-size: 11.33px;">内网穿透</a> <a href="/tags/%E5%8D%95%E7%9B%AE%E6%91%84%E5%83%8F%E5%A4%B4%E6%B5%8B%E8%B7%9D/" style="font-size: 10px;">单目摄像头测距</a> <a href="/tags/%E5%93%88%E5%A4%AB%E6%9B%BC/" style="font-size: 10px;">哈夫曼</a> <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" style="font-size: 10.67px;">哈希表</a> <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" style="font-size: 14px;">图像处理</a> <a href="/tags/%E5%9F%9F%E5%90%8D/" style="font-size: 10px;">域名</a> <a href="/tags/%E5%A0%86/" style="font-size: 10px;">堆</a> <a href="/tags/%E5%A4%9A%E5%B1%8F%E5%8D%8F%E5%90%8C/" style="font-size: 10px;">多屏协同</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a> <a href="/tags/%E5%AD%AA%E7%94%9F%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">孪生网络</a> <a href="/tags/%E5%AE%89%E5%8D%93/" style="font-size: 13.33px;">安卓</a> <a href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/" style="font-size: 12px;">局域网</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 18.67px;">数据结构</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/" style="font-size: 15.33px;">数据集</a> <a href="/tags/%E6%95%B0%E7%BB%84/" style="font-size: 10px;">数组</a> <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" style="font-size: 14.67px;">树莓派</a> <a href="/tags/%E6%BF%80%E5%85%89%E6%B5%8B%E8%B7%9D/" style="font-size: 10px;">激光测距</a> <a href="/tags/%E7%82%B9%E9%80%89%E9%AA%8C%E8%AF%81%E7%A0%81/" style="font-size: 10px;">点选验证码</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 13.33px;">爬虫</a> <a href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" style="font-size: 18px;">目标检测</a> <a href="/tags/%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" style="font-size: 10px;">端口转发</a> <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" style="font-size: 11.33px;">编译原理</a> <a href="/tags/%E7%BD%91%E5%B7%A5/" style="font-size: 14px;">网工</a> <a href="/tags/%E8%80%81%E6%AF%9B%E5%AD%90%E5%9B%BA%E4%BB%B6/" style="font-size: 10px;">老毛子固件</a> <a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" style="font-size: 10px;">虚拟机</a> <a href="/tags/%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD/" style="font-size: 10.67px;">视频下载</a> <a href="/tags/%E8%A7%86%E9%A2%91%E6%B5%81/" style="font-size: 10px;">视频流</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.67px;">计算机网络</a> <a href="/tags/%E8%AF%AD%E9%9F%B3%E8%BD%AC%E6%96%87%E5%AD%97/" style="font-size: 10px;">语音转文字</a> <a href="/tags/%E8%B6%85%E5%83%8F%E7%B4%A0/" style="font-size: 10px;">超像素</a> <a href="/tags/%E8%B6%85%E5%A3%B0%E6%B3%A2/" style="font-size: 10px;">超声波</a> <a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8%E5%88%B7%E6%9C%BA/" style="font-size: 10px;">路由器刷机</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" style="font-size: 17.33px;">软件安装配置</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 10.67px;">递归</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 11.33px;">链表</a> <a href="/tags/%E9%9F%B3%E7%94%BB%E5%90%8C%E6%AD%A5/" style="font-size: 10px;">音画同步</a> <a href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/" style="font-size: 12.67px;">验证码</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2025/04/27/hello-world/">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/2025/04/25/ubuntu24%E9%87%8D%E8%A3%85%E8%AE%B0%E5%BD%95/">ubuntu24重装记录</a>
-          </li>
-        
-          <li>
-            <a href="/2025/04/01/win11%E6%B7%BB%E5%8A%A0%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0%E7%BD%91%E5%8D%A1%E5%BC%82%E5%B8%B8%E8%87%AA%E5%8A%A8%E9%87%8D%E5%90%AF/">win11添加开机自启动脚本实现网卡异常自动重启</a>
-          </li>
-        
-          <li>
-            <a href="/2025/02/06/DBeaver%E8%BF%9E%E6%8E%A5MySQL%E5%92%8CIoTDB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%AD%A5%E9%AA%A4/">DBeaver连接MySQL和IoTDB数据库步骤</a>
-          </li>
-        
-          <li>
-            <a href="/2025/01/26/%E4%BD%BF%E7%94%A8polkit%E5%AE%9E%E7%8E%B0%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86systemctl%E6%9C%8D%E5%8A%A1/">使用polkit实现普通用户管理systemctl服务</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
+    <div class="side-col d-none d-lg-block col-lg-2">
       
-      &copy; 2025 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
 
     </div>
-    <nav id="mobile-nav">
+  </div>
+</div>
+
+
+
+
+
   
-    <a href="/" class="mobile-nav-link">Home</a>
+
+
+
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+
+
+
   
-</nav>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
     
 
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-<script src="/js/jquery-3.6.4.min.js"></script>
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+        次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+        次
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
 
-<script src="/js/script.js"></script>
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
 
 
-  </div>
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>

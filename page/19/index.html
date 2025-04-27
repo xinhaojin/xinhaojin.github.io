@@ -1,825 +1,1031 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  <link rel="icon" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
   
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xinhaojin">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="xinhaojin&#39;s blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="xinhaojin&#39;s blog">
 <meta property="og:url" content="http://example.com/page/19/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
+<meta property="og:site_name" content="xinhaojin&#39;s blog">
+<meta property="og:description" content="xinhaojin&#39;s blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="xinhaojin">
+<meta name="twitter:card" content="summary_large_image">
   
   
+    <meta name="referrer" content="no-referrer-when-downgrade">
   
-<link rel="stylesheet" href="/css/style.css">
+  
+  <title>xinhaojin&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
 
   
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?596b73bb5b70c262b123e997b6686f49";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
 
   
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
 
+  
+
+  
+
+  
+
+
+
+  
 <meta name="generator" content="Hexo 7.3.0"></head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xinhaojin&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-          <a class="main-nav-link" href="/">Home</a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
         
-      </nav>
-      <nav id="sub-nav">
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
         
         
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-时间复杂度" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/08/20/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" class="article-date">
-  <time class="dt-published" datetime="2020-08-20T05:05:46.000Z" itemprop="datePublished">2020-08-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2020/08/20/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/">时间复杂度</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>我们往往把一个算法的复杂度分为<strong>时间复杂度</strong>和<strong>空间复杂度</strong>，时间复杂度对应算法执行所需要的时间，空间复杂度对应所需要的内存，相对来讲空间代价肯定是比时间代价更小，所以算法的时间复杂度成为评价算法优劣的最重要的指标之一。</p>
-<p>引用百度百科的介绍：“一般情况下，算法中基本操作重复执行的次数是问题规模n的某个函数，用T(n)表示，若有某个辅助函数f(n),使得当n趋近于无穷大时，T（n)&#x2F;f (n)的极限值为不等于零的常数，则称f(n)是T(n)的同数量级函数。记作T(n)&#x3D;O(f(n)),称O(f(n)) 为算法的渐进时间复杂度，简称时间复杂度。”</p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>如果输入规模为n，那么算法的时间基本上可以用一个关于n的函数f(n)表示，时间复杂度T(n)&#x3D;O(f(n)),f(n)仅保留最高次项，且舍去系数。</p>
-<p>如算法执行所需时间f(n)&#x3D;6n^3+2n+3,T(n)&#x3D;O(f(n))&#x3D;O(n^3)</p>
-<h4 id="例"><a href="#例" class="headerlink" title="例"></a>例</h4><h5 id="线性查找：f-n-n，T-n-O-f-n-O-n"><a href="#线性查找：f-n-n，T-n-O-f-n-O-n" class="headerlink" title="线性查找：f(n)&#x3D;n，T(n)&#x3D;O(f(n))&#x3D;O(n)"></a>线性查找：f(n)&#x3D;n，T(n)&#x3D;O(f(n))&#x3D;O(n)</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">function</span><span class="params">(vector&lt;<span class="type">int</span>&gt; vec,<span class="type">int</span> tag)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n=vec.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(vec[i]==tag)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="折半查找：f-n-log-2-n，T-n-O-f-n-O-logn"><a href="#折半查找：f-n-log-2-n，T-n-O-f-n-O-logn" class="headerlink" title="折半查找：f(n)&#x3D;log(2)n，T(n)&#x3D;O(f(n))&#x3D;O(logn)"></a>折半查找：f(n)&#x3D;log(2)n，T(n)&#x3D;O(f(n))&#x3D;O(logn)</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">function</span><span class="params">(vector&lt;<span class="type">int</span>&gt; vec,<span class="type">int</span> tag)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//vec是升序向量</span></span><br><span class="line">    <span class="type">int</span> first=<span class="number">0</span>,last=vec.<span class="built_in">size</span>()<span class="number">-1</span>;</span><br><span class="line">    <span class="type">int</span> index=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(first&lt;=last)</span><br><span class="line">    &#123;</span><br><span class="line">        index=(first+last)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(vec[index]&gt;tag)</span><br><span class="line">            last=index<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(vec[index]&gt;tag)</span><br><span class="line">            first=index<span class="number">+1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/08/20/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" data-id="cm9zmq90400fosqhl5i1fh6qu" data-title="时间复杂度" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-js控制文本框禁止输入特殊字符" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/08/12/js%E6%8E%A7%E5%88%B6%E6%96%87%E6%9C%AC%E6%A1%86%E7%A6%81%E6%AD%A2%E8%BE%93%E5%85%A5%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6/" class="article-date">
-  <time class="dt-published" datetime="2020-08-12T10:50:43.000Z" itemprop="datePublished">2020-08-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/js/">js</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2020/08/12/js%E6%8E%A7%E5%88%B6%E6%96%87%E6%9C%AC%E6%A1%86%E7%A6%81%E6%AD%A2%E8%BE%93%E5%85%A5%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6/">JS控制文本框禁止输入特殊字符</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h4 id="JS-控制不能输入特殊字符"><a href="#JS-控制不能输入特殊字符" class="headerlink" title="JS 控制不能输入特殊字符"></a><strong>JS 控制不能输入特殊字符</strong></h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span><span class="attr">class</span>=<span class="string">&quot;domain&quot;</span><span class="attr">onkeyup</span>=<span class="string">&quot;this.value=this.value.replace(/[^u4e00-u9fa5w]/g,&#x27;&#x27;)&quot;</span>；</span></span><br><span class="line"><span class="tag"></span></span><br><span class="line"><span class="tag"><span class="attr">this.value</span>=<span class="string">this.value.replace(/[^u4e00-u9fa5w]/g,</span>&#x27;&#x27;)</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="JS-控制文本框只能输入数字"><a href="#JS-控制文本框只能输入数字" class="headerlink" title="JS 控制文本框只能输入数字"></a><strong>JS 控制文本框只能输入数字</strong></h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">onkeyup</span>=<span class="string">&quot;value=value.replace(/[^0-9]/g,&#x27;&#x27;)&quot;</span> <span class="attr">onpaste</span>=<span class="string">&quot;value=value.replace(/[^0-9]/g,&#x27;&#x27;)&quot;</span> <span class="attr">oncontextmenu</span> = <span class="string">&quot;value=value.replace(/[^0-9]/g,&#x27;&#x27;)&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="JS-控制文本框只能输入数字、小数点"><a href="#JS-控制文本框只能输入数字、小数点" class="headerlink" title="JS 控制文本框只能输入数字、小数点"></a><strong>JS 控制文本框只能输入数字、小数点</strong></h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">onkeyup</span>=<span class="string">&quot;value=value.replace(/[^\\0-9\\.]/g,&#x27;&#x27;)&quot;</span> <span class="attr">onpaste</span>=<span class="string">&quot;value=value.replace(/[^\\0-9\\.]/g,&#x27;&#x27;)&quot;</span> <span class="attr">oncontextmenu</span> = <span class="string">&quot;value=value.replace(/[^\\0-9\\.]/g,&#x27;&#x27;)&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="JS-控制文本框只能输入英文"><a href="#JS-控制文本框只能输入英文" class="headerlink" title="JS 控制文本框只能输入英文"></a><strong>JS 控制文本框只能输入英文</strong></h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">onkeyup</span>=<span class="string">&quot;value=value.replace(/[^\\a-\\z\\A-\\Z]/g,&#x27;&#x27;)&quot;</span> <span class="attr">onpaste</span>=<span class="string">&quot;value=value.replace(/[^\\a-\\z\\A-\\Z]/g,&#x27;&#x27;)&quot;</span> <span class="attr">oncontextmenu</span> = <span class="string">&quot;value=value.replace(/[^\\a-\\z\\A-\\Z]/g,&#x27;&#x27;)&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="JS-控制文本框只能输入英文、数字"><a href="#JS-控制文本框只能输入英文、数字" class="headerlink" title="JS 控制文本框只能输入英文、数字"></a><strong>JS 控制文本框只能输入英文、数字</strong></h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">onkeyup</span>=<span class="string">&quot;value=value.replace(/[^\\a-\\z\\A-\\Z0-9]/g,&#x27;&#x27;)&quot;</span> <span class="attr">onpaste</span>=<span class="string">&quot;value=value.replace(/[^\\a-\\z\\A-\\Z0-9]/g,&#x27;&#x27;)&quot;</span> <span class="attr">oncontextmenu</span> = <span class="string">&quot;value=value.replace(/[^\\a-\\z\\A-\\Z0-9]/g,&#x27;&#x27;)&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="JS-控制文本框只能输入中文"><a href="#JS-控制文本框只能输入中文" class="headerlink" title="JS 控制文本框只能输入中文"></a><strong>JS 控制文本框只能输入中文</strong></h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">onkeyup</span>=<span class="string">&quot;value=value.replace(/[^\\u4E00-\\u9FA5]/g,&#x27;&#x27;)&quot;</span> <span class="attr">onpaste</span>=<span class="string">&quot;value=value.replace(/[^\\u4E00-\\u9FA5]/g,&#x27;&#x27;)&quot;</span> <span class="attr">oncontextmenu</span> = <span class="string">&quot;value=value.replace(/[^\\u4E00-\\u9FA5]/g,&#x27;&#x27;)&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="JS-控制文本框只能输入中文、英文、数字"><a href="#JS-控制文本框只能输入中文、英文、数字" class="headerlink" title="JS 控制文本框只能输入中文、英文、数字"></a><strong>JS 控制文本框只能输入中文、英文、数字</strong></h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">onkeyup</span>=<span class="string">&quot;value=value.replace(/[^\\a-\\z\\A-\\Z0-9\\u4E00-\\u9FA5]/g,&#x27;&#x27;)&quot;</span> <span class="attr">onpaste</span>=<span class="string">&quot;value=value.replace(/[^\\a-\\z\\A-\\Z0-9\\u4E00-\\u9FA5]/g,&#x27;&#x27;)&quot;</span> <span class="attr">oncontextmenu</span> = <span class="string">&quot;value=value.replace(/[^\\a-\\z\\A-\\Z0-9\\u4E00-\\u9FA5]/g,&#x27;&#x27;)&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="JS-控制文本框只能输入中文、英文、数字、空格"><a href="#JS-控制文本框只能输入中文、英文、数字、空格" class="headerlink" title="JS 控制文本框只能输入中文、英文、数字、空格"></a><strong>JS 控制文本框只能输入中文、英文、数字、空格</strong></h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">onkeyup</span>=<span class="string">&quot;value=value.replace(/[^\\a-\\z\\A-\\Z0-9\\u4E00-\\u9FA5\\ ]/g,&#x27;&#x27;)&quot;</span> <span class="attr">onpaste</span>=<span class="string">&quot;value=value.replace(/[^\\a-\\z\\A-\\Z0-9\\u4E00-\\u9FA5\\ ]/g,&#x27;&#x27;)&quot;</span> <span class="attr">oncontextmenu</span> = <span class="string">&quot;value=value.replace(/[^\\a-\\z\\A-\\Z0-9\\u4E00-\\u9FA5\\ ]/g,&#x27;&#x27;)&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="JS-控制文本框只能输入中文、英文、数字、小数点"><a href="#JS-控制文本框只能输入中文、英文、数字、小数点" class="headerlink" title="JS 控制文本框只能输入中文、英文、数字、小数点"></a><strong>JS 控制文本框只能输入中文、英文、数字、小数点</strong></h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">onkeyup</span>=<span class="string">&quot;value=value.replace(/[^\\a-\\z\\A-\\Z0-9\\u4E00-\\u9FA5\\.]/g,&#x27;&#x27;)&quot;</span> <span class="attr">onpaste</span>=<span class="string">&quot;value=value.replace(/[^\\a-\\z\\A-\\Z0-9\\u4E00-\\u9FA5\\.]/g,&#x27;&#x27;)&quot;</span> <span class="attr">oncontextmenu</span> = <span class="string">&quot;value=value.replace(/[^\\a-\\z\\A-\\Z0-9\\u4E00-\\u9FA5\\.]/g,&#x27;&#x27;)&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="https://www.jb51.net/article/110620.htm">https://www.jb51.net/article/110620.htm</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/08/12/js%E6%8E%A7%E5%88%B6%E6%96%87%E6%9C%AC%E6%A1%86%E7%A6%81%E6%AD%A2%E8%BE%93%E5%85%A5%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6/" data-id="cm9zmq8xn003usqhlh64xh7xj" data-title="JS控制文本框禁止输入特殊字符" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/" rel="tag">js</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-js动态添加div" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/08/12/js%E5%8A%A8%E6%80%81%E6%B7%BB%E5%8A%A0div/" class="article-date">
-  <time class="dt-published" datetime="2020-08-12T07:04:24.000Z" itemprop="datePublished">2020-08-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/js/">js</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2020/08/12/js%E5%8A%A8%E6%80%81%E6%B7%BB%E5%8A%A0div/">JS动态添加div</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>本文实例讲述了jQuery中prepend()方法。</p>
-<p>此方法可向所有匹配元素的内部的前面追加HTML内容。</p>
-<h4 id="特别说明"><a href="#特别说明" class="headerlink" title="特别说明:"></a><strong>特别说明:</strong></h4><p>此方法是追加内容，也就是原来的内容还在。<br>HTML内容就是内容中可以包含HTML标签，并且能够被浏览器渲染。<br>文本内容是先将内容中的html预定义字符转换成html字符实体，这样html标签就不会被渲染。</p>
-<h4 id="语法结构"><a href="#语法结构" class="headerlink" title="语法结构:"></a><strong>语法结构:</strong></h4><p>代码如下:$(selector).prepend(content)</p>
-<h4 id="实例代码"><a href="#实例代码" class="headerlink" title="实例代码:"></a><strong>实例代码:</strong></h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot; utf-8&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">$(<span class="variable language_">document</span>).<span class="title function_">ready</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">  $(<span class="string">&quot;div&quot;</span>).<span class="title function_">prepend</span>(<span class="string">&quot;&lt;b&gt;新增内容&lt;/b&gt;&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">&#125;)</span></span><br><span class="line"><span class="language-javascript"><span class="keyword">function</span> <span class="title function_">submit</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="language-javascript">&#123;</span></span><br><span class="line"><span class="language-javascript">  $(<span class="string">&quot;#divid&quot;</span>).<span class="title function_">prepend</span>(<span class="string">&#x27;&lt;div&gt;按钮添加的新内容&lt;/div&gt;&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">&#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&#x27;divid&#x27;</span>&gt;</span>原来内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;添加&quot;</span> <span class="attr">onclick</span>=<span class="string">&quot;submit()&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h4><p><img src="https://xinhaojin.github.io/imgs-host/past/2020/08/image.png"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/08/12/js%E5%8A%A8%E6%80%81%E6%B7%BB%E5%8A%A0div/" data-id="cm9zmq8xo003xsqhl80fv6pn7" data-title="JS动态添加div" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/" rel="tag">js</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-nginxphp配置" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/08/11/nginxphp%E9%85%8D%E7%BD%AE/" class="article-date">
-  <time class="dt-published" datetime="2020-08-11T08:58:42.000Z" itemprop="datePublished">2020-08-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%9D%82/">杂</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2020/08/11/nginxphp%E9%85%8D%E7%BD%AE/">Nginx+PHP配置</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h4 id="在nginx-conf中添加一个server"><a href="#在nginx-conf中添加一个server" class="headerlink" title="在nginx.conf中添加一个server"></a>在nginx.conf中添加一个server</h4><pre><code>server &#123;
-    listen 999;
-    server_name blog.xinhaojin.top;
-    location ~\\.php?.*$ &#123;
-        root /www/wwwroot/blog.xinhaojin.top;#php文件目录
-        fastcgi_pass unix:/tmp/php-cgi-70.sock;#.sock的形式
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        include fastcgi_params;
-    &#125;
-&#125;
-</code></pre>
-<h4 id="需要注意的是php-fpm-conf与nginx-conf的监听方式是否相同"><a href="#需要注意的是php-fpm-conf与nginx-conf的监听方式是否相同" class="headerlink" title="需要注意的是php-fpm.conf与nginx.conf的监听方式是否相同"></a>需要注意的是php-fpm.conf与nginx.conf的监听方式是否相同</h4><p>方式1，统一成ip+port的形式:</p>
-<pre><code>php-fpm.conf:
-
-listen = 127.0.0.1:9000
-
-nginx.conf:
-
-fastcgi_pass 127.0.0.1:9000;
-</code></pre>
-<p>方式2，统一成.sock的形式:</p>
-<pre><code>php-fpm.conf:
-
-listen = /tmp/php-fpm.sock
-
-nginx.conf:
-
-fastcgi_pass unix:/tmp/php-fpm.sock;
-</code></pre>
-<p>然后<a target="_blank" rel="noopener" href="http://xx.xx.xx.xx/test.php%E5%B0%B1%E5%8F%AF%E4%BB%A5%E6%AD%A3%E5%B8%B8%E8%BF%90%E8%A1%8C%E4%BA%86">http://xx.xx.xx.xx/test.php就可以正常运行了</a></p>
-<h4 id="Done"><a href="#Done" class="headerlink" title="Done."></a>Done.</h4>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/08/11/nginxphp%E9%85%8D%E7%BD%AE/" data-id="cm9zmq8xx005bsqhl84smbxcp" data-title="Nginx+PHP配置" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/" rel="tag">php</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-centos-下源码安装-node-js" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/07/05/centos-%E4%B8%8B%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85-node-js/" class="article-date">
-  <time class="dt-published" datetime="2020-07-05T01:25:10.000Z" itemprop="datePublished">2020-07-05</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">软件安装配置</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2020/07/05/centos-%E4%B8%8B%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85-node-js/">CentOS 下源码安装 Node.js</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h4 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h4><pre><code>curl --silent --location https://rpm.nodesource.com/setup_10.x  sudo bash
-
-curl --silent --location https://rpm.nodesource.com/setup_10.x  sudo bash
-</code></pre>
-<h2 id="Installing-the-NodeSource-Node-js-10-x-repo…"><a href="#Installing-the-NodeSource-Node-js-10-x-repo…" class="headerlink" title="Installing the NodeSource Node.js 10.x repo…"></a>Installing the NodeSource Node.js 10.x repo…</h2><h2 id="Inspecting-system…"><a href="#Inspecting-system…" class="headerlink" title="Inspecting system…"></a>Inspecting system…</h2><ul>
-<li>rpm -q –whatprovides redhat-release  rpm -q –whatprovides centos-release  rpm -q –whatprovides cloudlinux-release  rpm -q –whatprovides sl-release</li>
-<li>uname -m</li>
-</ul>
-<h2 id="Confirming-“el6-x86-64”-is-supported…"><a href="#Confirming-“el6-x86-64”-is-supported…" class="headerlink" title="Confirming “el6-x86_64” is supported…"></a>Confirming “el6-x86_64” is supported…</h2><ul>
-<li>curl -sLf -o &#x2F;dev&#x2F;null ‘<a target="_blank" rel="noopener" href="https://rpm.nodesource.com/pub_10.x/el/6/x86_64/nodesource-release-el6-1.noarch.rpm">https://rpm.nodesource.com/pub_10.x/el/6/x86_64/nodesource-release-el6-1.noarch.rpm</a>‘</li>
-</ul>
-<h2 id="Downloading-release-setup-RPM…"><a href="#Downloading-release-setup-RPM…" class="headerlink" title="Downloading release setup RPM…"></a>Downloading release setup RPM…</h2><ul>
-<li>mktemp</li>
-<li>curl -sL -o ‘&#x2F;tmp&#x2F;tmp.aoQY5ifb9m’ ‘<a target="_blank" rel="noopener" href="https://rpm.nodesource.com/pub_10.x/el/6/x86_64/nodesource-release-el6-1.noarch.rpm">https://rpm.nodesource.com/pub_10.x/el/6/x86_64/nodesource-release-el6-1.noarch.rpm</a>‘</li>
-</ul>
-<h2 id="Installing-release-setup-RPM…"><a href="#Installing-release-setup-RPM…" class="headerlink" title="Installing release setup RPM…"></a>Installing release setup RPM…</h2><ul>
-<li>rpm -i –nosignature –force ‘&#x2F;tmp&#x2F;tmp.aoQY5ifb9m’</li>
-</ul>
-<h2 id="Cleaning-up…"><a href="#Cleaning-up…" class="headerlink" title="Cleaning up…"></a>Cleaning up…</h2><ul>
-<li>rm -f ‘&#x2F;tmp&#x2F;tmp.aoQY5ifb9m’</li>
-</ul>
-<h2 id="Checking-for-existing-installations…"><a href="#Checking-for-existing-installations…" class="headerlink" title="Checking for existing installations…"></a>Checking for existing installations…</h2><ul>
-<li>rpm -qa ‘nodenpm’  grep -v nodesource</li>
-</ul>
-<h2 id="Run-sudo-yum-install-y-nodejs-to-install-Node-js-10-x-and-npm"><a href="#Run-sudo-yum-install-y-nodejs-to-install-Node-js-10-x-and-npm" class="headerlink" title="Run `sudo yum install -y nodejs` to install Node.js 10.x and npm."></a>Run `sudo yum install -y nodejs` to install Node.js 10.x and npm.</h2><h2 id="You-may-also-need-development-tools-to-build-native-addons"><a href="#You-may-also-need-development-tools-to-build-native-addons" class="headerlink" title="You may also need development tools to build native addons:"></a>You may also need development tools to build native addons:</h2><pre><code>sudo yum install gcc-c++ make
-</code></pre>
-<h2 id="To-install-the-Yarn-package-manager-run"><a href="#To-install-the-Yarn-package-manager-run" class="headerlink" title="To install the Yarn package manager, run:"></a>To install the Yarn package manager, run:</h2><pre><code>curl -sL https://dl.yarnpkg.com/rpm/yarn.repo  sudo tee /etc/yum.repos.d/yarn.repo
- sudo yum install yarn
-</code></pre>
-<h4 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h4><pre><code>sudo yum -y install nodejs
-
-node -v查看版本
-</code></pre>
-<p>如果以上步骤不能安装，执行以下命令后再执行第二步：</p>
-<pre><code>sudo yum clean all
-</code></pre>
-<p>如果存在多个 nodesoucre，执行以下命令删除，然后重新执行第一第二步：</p>
-<pre><code>sudo rm -fv /etc/yum.repos.d/nodesource*
-</code></pre>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/07/05/centos-%E4%B8%8B%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85-node-js/" data-id="cm9zmq8xb0028sqhlcrkc9qam" data-title="CentOS 下源码安装 Node.js" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-centos-debian设置root用户以及允许第三方ssh登录" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/07/03/centos-debian%E8%AE%BE%E7%BD%AEroot%E7%94%A8%E6%88%B7%E4%BB%A5%E5%8F%8A%E5%85%81%E8%AE%B8%E7%AC%AC%E4%B8%89%E6%96%B9ssh%E7%99%BB%E5%BD%95/" class="article-date">
-  <time class="dt-published" datetime="2020-07-03T09:54:36.000Z" itemprop="datePublished">2020-07-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%9D%82/">杂</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2020/07/03/centos-debian%E8%AE%BE%E7%BD%AEroot%E7%94%A8%E6%88%B7%E4%BB%A5%E5%8F%8A%E5%85%81%E8%AE%B8%E7%AC%AC%E4%B8%89%E6%96%B9ssh%E7%99%BB%E5%BD%95/">Linux设置ROOT用户以及允许第三方SSH登录</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h4 id="切换到root帐号"><a href="#切换到root帐号" class="headerlink" title="切换到root帐号"></a>切换到root帐号</h4><pre><code>sudo -i
-</code></pre>
-<h4 id="设置root密码"><a href="#设置root密码" class="headerlink" title="设置root密码"></a>设置root密码</h4><pre><code>passwd
-</code></pre>
-<p>然后会要求输入新密码，然后再重复一次密码，输入密码的时候不会显示出来，所以直接输入密码，然后回车，再然后重复输入密码回车</p>
-<h4 id="开启SSH权限"><a href="#开启SSH权限" class="headerlink" title="开启SSH权限"></a>开启SSH权限</h4><pre><code>vim /etc/ssh/sshd_config #打开 ssh 配置文件
-PermitRootLogin yes #默认为no，需要开启root用户访问改为yes
-PasswordAuthentication yes    #默认为no，改为yes开启密码登陆
-</code></pre>
-<h4 id="重启服务器"><a href="#重启服务器" class="headerlink" title="重启服务器"></a>重启服务器</h4><pre><code>reboot
-</code></pre>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/07/03/centos-debian%E8%AE%BE%E7%BD%AEroot%E7%94%A8%E6%88%B7%E4%BB%A5%E5%8F%8A%E5%85%81%E8%AE%B8%E7%AC%AC%E4%B8%89%E6%96%B9ssh%E7%99%BB%E5%BD%95/" data-id="cm9zmq8xa0026sqhl6flwg9zz" data-title="Linux设置ROOT用户以及允许第三方SSH登录" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-centos下ngnix静态资源代理配置" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/07/01/centos%E4%B8%8Bngnix%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/" class="article-date">
-  <time class="dt-published" datetime="2020-07-01T12:55:54.000Z" itemprop="datePublished">2020-07-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%9D%82/">杂</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2020/07/01/centos%E4%B8%8Bngnix%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/">CentOS下Nginx静态资源代理配置</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>打开nginx.conf,我的路径是&#x2F;www&#x2F;server&#x2F;nginx&#x2F;conf</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">user root#第一行用户这里改成root</span><br><span class="line">......</span><br><span class="line">http</span><br><span class="line">&#123;</span><br><span class="line">    ......</span><br><span class="line">    server</span><br><span class="line">    &#123;</span><br><span class="line">        listen 888;#监听端口，可修改，记得放行</span><br><span class="line">        server_name localhost;#主机IP</span><br><span class="line">        .......</span><br><span class="line">        #有以下两行的话注释掉，取消身份验证</span><br><span class="line">        #auth_basic &quot;Authorization&quot;;</span><br><span class="line">        #auth_basic_user_file /www/server/pass/phpmyadmin.pass;</span><br><span class="line">        #添加一个location</span><br><span class="line">        location /upload/</span><br><span class="line">        &#123;</span><br><span class="line">            root /ftp;#路径映射</span><br><span class="line">            autoindex on;//开启目录自动索引</span><br><span class="line">        &#125;</span><br><span class="line">        ......</span><br><span class="line">    &#125;</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如上配置之后重启Ngnix服务，<a target="_blank" rel="noopener" href="http://ip:888/upload/test.txt%E5%B0%B1%E5%8F%AF%E4%BB%A5%E8%AE%BF%E9%97%AE%E5%88%B0/ftp/upload/test.txt">http://IP:888/upload/test.txt就可以访问到/ftp/upload/test.txt</a></p>
-<p>Done.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/07/01/centos%E4%B8%8Bngnix%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/" data-id="cm9zmq8xe002ksqhld4rigmon" data-title="CentOS下Nginx静态资源代理配置" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BB%A3%E7%90%86/" rel="tag">代理</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-百度网盘倍速播放" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/06/25/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E5%80%8D%E9%80%9F%E6%92%AD%E6%94%BE/" class="article-date">
-  <time class="dt-published" datetime="2020-06-25T08:41:23.000Z" itemprop="datePublished">2020-06-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%9D%82/">杂</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2020/06/25/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E5%80%8D%E9%80%9F%E6%92%AD%E6%94%BE/">百度网盘倍速播放</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>最近在百度网盘看一些网课，有时候会嫌老师讲得太慢，如果能1.5倍速播放就好了，但是百度网盘开倍速要会员，仅仅为了这个功能开会员也是duck不必。分享一招！</p>
-<p>在电脑浏览器里打开百度网盘播放视频，在视频播放界面进入“开发者调试模式”，谷歌、Edge浏览器直接按F12，其余浏览器我没试过，不确定是否能用。</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2020/09/image-1.png"></p>
-<p>选择控制台（console），点击下方空白区域，输入</p>
-<p>videojs.getPlayers(“viedo”).html5player.tech_.setPlaybackRate(1.5)</p>
-<p>回车执行，然后就可以关闭了。</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2020/09/image-2.png"></p>
-<p>这里的1.5是指1.5倍速，你可以修改为自己想要的倍速，可灵活使用，这个操作只对当前播放的视频有效，关闭网页或播放下个视频不再起作用，想要改回正常速度可以重新执行一次代码，把数值改为1.0，或者直接关闭视频重新打开。另外，这串代码并不用每次手动复制粘贴输入，有过一次输入之后，下次再到这个输入代码的步骤，直接按方向上键即可自动填充。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/06/25/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E5%80%8D%E9%80%9F%E6%92%AD%E6%94%BE/" data-id="cm9zmq90i00hfsqhlg8rqaiph" data-title="百度网盘倍速播放" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%80%8D%E9%80%9F%E6%92%AD%E6%94%BE/" rel="tag">倍速播放</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-centos7下安装python3-7" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/06/11/centos7%E4%B8%8B%E5%AE%89%E8%A3%85python3-7/" class="article-date">
-  <time class="dt-published" datetime="2020-06-11T09:13:04.000Z" itemprop="datePublished">2020-06-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">软件安装配置</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2020/06/11/centos7%E4%B8%8B%E5%AE%89%E8%A3%85python3-7/">CentOS7下安装Python3.7、</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>CentOS7默认已经安装了Python2.7，现安装3.7和它并存</p>
-<h4 id="一、安装依赖"><a href="#一、安装依赖" class="headerlink" title="一、安装依赖"></a>一、安装依赖</h4><pre><code>yum -y groupinstall &quot;Development tools&quot;
-</code></pre>
-<p>若出现以下错误：No packages in any requested group available to install or update</p>
-<p>解决方法：</p>
-<pre><code>cd /etc/yum.repos.d
-sudo wget http://public-yum.oracle.com/public-yum-el5.repo
-
-cd /etc/pki/rpm-gpg/
-sudo wget https://public-yum.oracle.com/RPM-GPG-KEY-oracle-el5
-</code></pre>
-<p>然后重试即可</p>
-<pre><code>yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel
-
-yum install -y libffi-devel zlib1g-dev
-
-yum install zlib* -y
-</code></pre>
-<h4 id="二、下载解压"><a href="#二、下载解压" class="headerlink" title="二、下载解压"></a>二、下载解压</h4><pre><code>cd /tmp
-
-wget wget https://www.python.org/ftp/python/3.7.2/Python-3.7.2.tar.xz
-
-tar -xvJf Python-3.7.2.tar.xz
-</code></pre>
-<h4 id="三、创建编译安装目录"><a href="#三、创建编译安装目录" class="headerlink" title="三、创建编译安装目录"></a>三、创建编译安装目录</h4><pre><code>mkdir /usr/local/python3
-</code></pre>
-<h4 id="四、安装"><a href="#四、安装" class="headerlink" title="四、安装"></a>四、安装</h4><pre><code>cd Python-3.7.2
-
-./configure --prefix=/usr/local/python3 --enable-optimizations --with-ssl
-
-make &amp;&amp; make install
-</code></pre>
-<h4 id="五、建立软链接"><a href="#五、建立软链接" class="headerlink" title="五、建立软链接"></a>五、建立软链接</h4><pre><code>ln -s /usr/local/python3/bin/python3 /usr/local/bin/python3
-
-ln -s /usr/local/python3/bin/pip3 /usr/local/bin/pip3
-</code></pre>
-<h4 id="六、验证"><a href="#六、验证" class="headerlink" title="六、验证"></a>六、验证</h4><pre><code>python3 -V
-
-pip3 -V
-</code></pre>
-<h4 id="Done"><a href="#Done" class="headerlink" title="Done."></a>Done.</h4>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/06/11/centos7%E4%B8%8B%E5%AE%89%E8%A3%85python3-7/" data-id="cm9zmq8xc002dsqhl9xm4fbs9" data-title="CentOS7下安装Python3.7、" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-android日期选择器datepicker" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2020/06/01/android%E6%97%A5%E6%9C%9F%E9%80%89%E6%8B%A9%E5%99%A8datepicker/" class="article-date">
-  <time class="dt-published" datetime="2020-06-01T04:40:42.000Z" itemprop="datePublished">2020-06-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%AE%89%E5%8D%93/">安卓</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2020/06/01/android%E6%97%A5%E6%9C%9F%E9%80%89%E6%8B%A9%E5%99%A8datepicker/">Android日期选择器DatePicker</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>感觉这个窗口形式的日期选择器很实用，特此记录</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2020/06/image-5.png"></p>
-<pre><code>public void dateSelect()
-    &#123;
-        //Calendar cal=Calendar.getInstance();
-        //获取年月日时分秒信息
-        //int year = cal.get(Calendar.YEAR);
-        //int month = cal.get(Calendar.MONTH)+1;//注意点 ，要加一
-        //int day = cal.get(Calendar.DAY_OF_MONTH);
-        //int hour = cal.get(Calendar.HOUR_OF_DAY);
-        //int minute = cal.get(Calendar.MINUTE);
-        Toast.makeText(register.this, &quot;可在顶部选择年份哦~&quot;, Toast.LENGTH_SHORT).show();
-        new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() &#123;
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int day) &#123;
-                //setTitle(&quot;当前时间：&quot;+year+&quot;年-&quot;+month+&quot;月-&quot;+day+&quot;日 &quot;);
-                //这里是点击确定后选择的日期
-            &#125;
-        &#125;, year, month, day).show(); //后三个参数用于日期初始化，即默认选择的日期
-    &#125;
-</code></pre>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/06/01/android%E6%97%A5%E6%9C%9F%E9%80%89%E6%8B%A9%E5%99%A8datepicker/" data-id="cm9zmq8x7001ssqhlevat291u" data-title="Android日期选择器DatePicker" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AE%89%E5%8D%93/" rel="tag">安卓</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/page/18/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/20/">Next &raquo;</a>
-  </nav>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/LeetCode/">LeetCode</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/%E6%9D%82/">杂</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/%E6%9D%82/">杂</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/pytorch/">pytorch</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">图像处理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%8D%93/">安卓</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82/">杂</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%88%AC%E8%99%AB/">爬虫</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/">目标检测</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E5%B7%A5/">网工</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">软件安装配置</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/linux/">linux</a></li></ul></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/" rel="tag">CDN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DDNS/" rel="tag">DDNS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DHCP/" rel="tag">DHCP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNS/" rel="tag">DNS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IP/" rel="tag">IP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IPsec/" rel="tag">IPsec</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDA/" rel="tag">LDA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NFC/" rel="tag">NFC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDF/" rel="tag">PDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SMTP/" rel="tag">SMTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chatgpt/" rel="tag">chatgpt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloudflare/" rel="tag">cloudflare</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/" rel="tag">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ocr/" rel="tag">ocr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyinstaller/" rel="tag">pyinstaller</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pytorch/" rel="tag">pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rpa/" rel="tag">rpa</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/selenium/" rel="tag">selenium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/" rel="tag">socket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssl/" rel="tag">ssl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wget/" rel="tag">wget</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wol/" rel="tag">wol</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/" rel="tag">wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/worldcloud/" rel="tag">worldcloud</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%91%E7%9B%98/" rel="tag">云盘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B/" rel="tag">人脸检测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%90%86/" rel="tag">代理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%80%8D%E9%80%9F%E6%92%AD%E6%94%BE/" rel="tag">倍速播放</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" rel="tag">内网穿透</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E7%9B%AE%E6%91%84%E5%83%8F%E5%A4%B4%E6%B5%8B%E8%B7%9D/" rel="tag">单目摄像头测距</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%93%88%E5%A4%AB%E6%9B%BC/" rel="tag">哈夫曼</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" rel="tag">哈希表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%9F%E5%90%8D/" rel="tag">域名</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A0%86/" rel="tag">堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E5%B1%8F%E5%8D%8F%E5%90%8C/" rel="tag">多屏协同</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%AA%E7%94%9F%E7%BD%91%E7%BB%9C/" rel="tag">孪生网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E5%8D%93/" rel="tag">安卓</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/" rel="tag">局域网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/" rel="tag">数据集</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%BB%84/" rel="tag">数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" rel="tag">树莓派</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BF%80%E5%85%89%E6%B5%8B%E8%B7%9D/" rel="tag">激光测距</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%82%B9%E9%80%89%E9%AA%8C%E8%AF%81%E7%A0%81/" rel="tag">点选验证码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" rel="tag">目标检测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" rel="tag">端口转发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" rel="tag">编译原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E5%B7%A5/" rel="tag">网工</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%80%81%E6%AF%9B%E5%AD%90%E5%9B%BA%E4%BB%B6/" rel="tag">老毛子固件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" rel="tag">虚拟机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD/" rel="tag">视频下载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E6%B5%81/" rel="tag">视频流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%AD%E9%9F%B3%E8%BD%AC%E6%96%87%E5%AD%97/" rel="tag">语音转文字</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B6%85%E5%83%8F%E7%B4%A0/" rel="tag">超像素</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B6%85%E5%A3%B0%E6%B3%A2/" rel="tag">超声波</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8%E5%88%B7%E6%9C%BA/" rel="tag">路由器刷机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" rel="tag">软件安装配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E7%94%BB%E5%90%8C%E6%AD%A5/" rel="tag">音画同步</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/" rel="tag">验证码</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/CDN/" style="font-size: 10px;">CDN</a> <a href="/tags/DDNS/" style="font-size: 10px;">DDNS</a> <a href="/tags/DHCP/" style="font-size: 10px;">DHCP</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/IP/" style="font-size: 10.67px;">IP</a> <a href="/tags/IPsec/" style="font-size: 10px;">IPsec</a> <a href="/tags/LDA/" style="font-size: 10px;">LDA</a> <a href="/tags/NFC/" style="font-size: 10px;">NFC</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/SMTP/" style="font-size: 10px;">SMTP</a> <a href="/tags/blog/" style="font-size: 11.33px;">blog</a> <a href="/tags/c/" style="font-size: 16px;">c++</a> <a href="/tags/chatgpt/" style="font-size: 10.67px;">chatgpt</a> <a href="/tags/cloudflare/" style="font-size: 11.33px;">cloudflare</a> <a href="/tags/docker/" style="font-size: 12.67px;">docker</a> <a href="/tags/flask/" style="font-size: 11.33px;">flask</a> <a href="/tags/java/" style="font-size: 13.33px;">java</a> <a href="/tags/js/" style="font-size: 11.33px;">js</a> <a href="/tags/linux/" style="font-size: 19.33px;">linux</a> <a href="/tags/nginx/" style="font-size: 12.67px;">nginx</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/ocr/" style="font-size: 10px;">ocr</a> <a href="/tags/php/" style="font-size: 10.67px;">php</a> <a href="/tags/pyinstaller/" style="font-size: 10px;">pyinstaller</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/pytorch/" style="font-size: 16.67px;">pytorch</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/rpa/" style="font-size: 10px;">rpa</a> <a href="/tags/selenium/" style="font-size: 11.33px;">selenium</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/socket/" style="font-size: 10px;">socket</a> <a href="/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/tags/ssh/" style="font-size: 13.33px;">ssh</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/wget/" style="font-size: 10px;">wget</a> <a href="/tags/wol/" style="font-size: 10px;">wol</a> <a href="/tags/wordpress/" style="font-size: 10.67px;">wordpress</a> <a href="/tags/worldcloud/" style="font-size: 10px;">worldcloud</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 12.67px;">二叉树</a> <a href="/tags/%E4%BA%91%E7%9B%98/" style="font-size: 10px;">云盘</a> <a href="/tags/%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B/" style="font-size: 10px;">人脸检测</a> <a href="/tags/%E4%BB%A3%E7%90%86/" style="font-size: 13.33px;">代理</a> <a href="/tags/%E5%80%8D%E9%80%9F%E6%92%AD%E6%94%BE/" style="font-size: 10px;">倍速播放</a> <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" style="font-size: 11.33px;">内网穿透</a> <a href="/tags/%E5%8D%95%E7%9B%AE%E6%91%84%E5%83%8F%E5%A4%B4%E6%B5%8B%E8%B7%9D/" style="font-size: 10px;">单目摄像头测距</a> <a href="/tags/%E5%93%88%E5%A4%AB%E6%9B%BC/" style="font-size: 10px;">哈夫曼</a> <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" style="font-size: 10.67px;">哈希表</a> <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" style="font-size: 14px;">图像处理</a> <a href="/tags/%E5%9F%9F%E5%90%8D/" style="font-size: 10px;">域名</a> <a href="/tags/%E5%A0%86/" style="font-size: 10px;">堆</a> <a href="/tags/%E5%A4%9A%E5%B1%8F%E5%8D%8F%E5%90%8C/" style="font-size: 10px;">多屏协同</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a> <a href="/tags/%E5%AD%AA%E7%94%9F%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">孪生网络</a> <a href="/tags/%E5%AE%89%E5%8D%93/" style="font-size: 13.33px;">安卓</a> <a href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/" style="font-size: 12px;">局域网</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 18.67px;">数据结构</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/" style="font-size: 15.33px;">数据集</a> <a href="/tags/%E6%95%B0%E7%BB%84/" style="font-size: 10px;">数组</a> <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" style="font-size: 14.67px;">树莓派</a> <a href="/tags/%E6%BF%80%E5%85%89%E6%B5%8B%E8%B7%9D/" style="font-size: 10px;">激光测距</a> <a href="/tags/%E7%82%B9%E9%80%89%E9%AA%8C%E8%AF%81%E7%A0%81/" style="font-size: 10px;">点选验证码</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 13.33px;">爬虫</a> <a href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" style="font-size: 18px;">目标检测</a> <a href="/tags/%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" style="font-size: 10px;">端口转发</a> <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" style="font-size: 11.33px;">编译原理</a> <a href="/tags/%E7%BD%91%E5%B7%A5/" style="font-size: 14px;">网工</a> <a href="/tags/%E8%80%81%E6%AF%9B%E5%AD%90%E5%9B%BA%E4%BB%B6/" style="font-size: 10px;">老毛子固件</a> <a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" style="font-size: 10px;">虚拟机</a> <a href="/tags/%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD/" style="font-size: 10.67px;">视频下载</a> <a href="/tags/%E8%A7%86%E9%A2%91%E6%B5%81/" style="font-size: 10px;">视频流</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.67px;">计算机网络</a> <a href="/tags/%E8%AF%AD%E9%9F%B3%E8%BD%AC%E6%96%87%E5%AD%97/" style="font-size: 10px;">语音转文字</a> <a href="/tags/%E8%B6%85%E5%83%8F%E7%B4%A0/" style="font-size: 10px;">超像素</a> <a href="/tags/%E8%B6%85%E5%A3%B0%E6%B3%A2/" style="font-size: 10px;">超声波</a> <a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8%E5%88%B7%E6%9C%BA/" style="font-size: 10px;">路由器刷机</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" style="font-size: 17.33px;">软件安装配置</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 10.67px;">递归</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 11.33px;">链表</a> <a href="/tags/%E9%9F%B3%E7%94%BB%E5%90%8C%E6%AD%A5/" style="font-size: 10px;">音画同步</a> <a href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/" style="font-size: 12.67px;">验证码</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2025/04/27/hello-world/">Hello World</a>
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
           </li>
+          
         
-          <li>
-            <a href="/2025/04/25/ubuntu24%E9%87%8D%E8%A3%85%E8%AE%B0%E5%BD%95/">ubuntu24重装记录</a>
-          </li>
         
-          <li>
-            <a href="/2025/04/01/win11%E6%B7%BB%E5%8A%A0%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0%E7%BD%91%E5%8D%A1%E5%BC%82%E5%B8%B8%E8%87%AA%E5%8A%A8%E9%87%8D%E5%90%AF/">win11添加开机自启动脚本实现网卡异常自动重启</a>
-          </li>
-        
-          <li>
-            <a href="/2025/02/06/DBeaver%E8%BF%9E%E6%8E%A5MySQL%E5%92%8CIoTDB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%AD%A5%E9%AA%A4/">DBeaver连接MySQL和IoTDB数据库步骤</a>
-          </li>
-        
-          <li>
-            <a href="/2025/01/26/%E4%BD%BF%E7%94%A8polkit%E5%AE%9E%E7%8E%B0%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86systemctl%E6%9C%8D%E5%8A%A1/">使用polkit实现普通用户管理systemctl服务</a>
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
           </li>
         
       </ul>
     </div>
   </div>
+</nav>
 
   
-</aside>
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Make the world a little bit better."></span>
+          
+        </div>
+
         
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
+
       
-      &copy; 2025 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
     </div>
   </div>
-</footer>
+</div>
 
-    </div>
-    <nav id="mobile-nav">
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2020/08/20/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" target="_self">
+          时间复杂度
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2020/08/20/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" target="_self">
+        <div>
+          简介我们往往把一个算法的复杂度分为时间复杂度和空间复杂度，时间复杂度对应算法执行所需要的时间，空间复杂度对应所需要的内存，相对来讲空间代价肯定是比时间代价更小，所以算法的时间复杂度成为评价算法优劣的最重要的指标之一。 引用百度百科的介绍：“一般情况下，算法中基本操作重复执行的次数是问题规模n的某个函数，用T(n)表示，若有某个辅助函数f(n),使得当n趋近于无穷大时，T（n)&#x2F;f (n)
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-20 13:05" pubdate>
+              2020-08-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
   
-    <a href="/" class="mobile-nav-link">Home</a>
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">数据结构</a>
   
-</nav>
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">#数据结构</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2020/08/12/js%E6%8E%A7%E5%88%B6%E6%96%87%E6%9C%AC%E6%A1%86%E7%A6%81%E6%AD%A2%E8%BE%93%E5%85%A5%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6/" target="_self">
+          JS控制文本框禁止输入特殊字符
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2020/08/12/js%E6%8E%A7%E5%88%B6%E6%96%87%E6%9C%AC%E6%A1%86%E7%A6%81%E6%AD%A2%E8%BE%93%E5%85%A5%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6/" target="_self">
+        <div>
+          JS 控制不能输入特殊字符123&lt;input type=&quot;text&quot;class=&quot;domain&quot;onkeyup=&quot;this.value=this.value.replace(/[^u4e00-u9fa5w]/g,&#x27;&#x27;)&quot;；this.value=this.value.replace(/[^u4e00-u9fa5w]
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-12 18:50" pubdate>
+              2020-08-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/js/" class="category-chain-item">js</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/js/">#js</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/08/12/js%E5%8A%A8%E6%80%81%E6%B7%BB%E5%8A%A0div/" target="_self">
+          <img src="https://xinhaojin.github.io/imgs-host/past/2020/08/image.png" srcset="/img/loading.gif" lazyload alt="JS动态添加div">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2020/08/12/js%E5%8A%A8%E6%80%81%E6%B7%BB%E5%8A%A0div/" target="_self">
+          JS动态添加div
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/2020/08/12/js%E5%8A%A8%E6%80%81%E6%B7%BB%E5%8A%A0div/" target="_self">
+        <div>
+          本文实例讲述了jQuery中prepend()方法。 此方法可向所有匹配元素的内部的前面追加HTML内容。 特别说明:此方法是追加内容，也就是原来的内容还在。HTML内容就是内容中可以包含HTML标签，并且能够被浏览器渲染。文本内容是先将内容中的html预定义字符转换成html字符实体，这样html标签就不会被渲染。 语法结构:代码如下:$(selector).prepend(content) 实
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-12 15:04" pubdate>
+              2020-08-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/js/" class="category-chain-item">js</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/js/">#js</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2020/08/11/nginxphp%E9%85%8D%E7%BD%AE/" target="_self">
+          Nginx+PHP配置
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2020/08/11/nginxphp%E9%85%8D%E7%BD%AE/" target="_self">
+        <div>
+          在nginx.conf中添加一个serverserver &#123;     listen 999;     server_name blog.xinhaojin.top;     location ~\\.php?.*$ &#123;         root /www/wwwroot/blog.xinhaojin.top;#php文件目录         fastcgi_pass unix:
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-11 16:58" pubdate>
+              2020-08-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%9D%82/" class="category-chain-item">杂</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/nginx/">#nginx</a>
+            
+              <a href="/tags/php/">#php</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2020/07/05/centos-%E4%B8%8B%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85-node-js/" target="_self">
+          CentOS 下源码安装 Node.js
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2020/07/05/centos-%E4%B8%8B%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85-node-js/" target="_self">
+        <div>
+          第一步curl --silent --location https://rpm.nodesource.com/setup_10.x  sudo bash  curl --silent --location https://rpm.nodesource.com/setup_10.x  sudo bash  Installing the NodeSource Node.js 10.x repo…Ins
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-07-05 09:25" pubdate>
+              2020-07-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件安装配置</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/linux/">#linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2020/07/03/centos-debian%E8%AE%BE%E7%BD%AEroot%E7%94%A8%E6%88%B7%E4%BB%A5%E5%8F%8A%E5%85%81%E8%AE%B8%E7%AC%AC%E4%B8%89%E6%96%B9ssh%E7%99%BB%E5%BD%95/" target="_self">
+          Linux设置ROOT用户以及允许第三方SSH登录
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2020/07/03/centos-debian%E8%AE%BE%E7%BD%AEroot%E7%94%A8%E6%88%B7%E4%BB%A5%E5%8F%8A%E5%85%81%E8%AE%B8%E7%AC%AC%E4%B8%89%E6%96%B9ssh%E7%99%BB%E5%BD%95/" target="_self">
+        <div>
+          切换到root帐号sudo -i  设置root密码passwd  然后会要求输入新密码，然后再重复一次密码，输入密码的时候不会显示出来，所以直接输入密码，然后回车，再然后重复输入密码回车 开启SSH权限vim /etc/ssh/sshd_config #打开 ssh 配置文件 PermitRootLogin yes #默认为no，需要开启root用户访问改为yes PasswordAuthent
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-07-03 17:54" pubdate>
+              2020-07-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%9D%82/" class="category-chain-item">杂</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/linux/">#linux</a>
+            
+              <a href="/tags/ssh/">#ssh</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2020/07/01/centos%E4%B8%8Bngnix%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/" target="_self">
+          CentOS下Nginx静态资源代理配置
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2020/07/01/centos%E4%B8%8Bngnix%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/" target="_self">
+        <div>
+          打开nginx.conf,我的路径是&#x2F;www&#x2F;server&#x2F;nginx&#x2F;conf 1234567891011121314151617181920212223user root#第一行用户这里改成root......http&#123;    ......    server    &#123;        listen 888;#监听端口，可修改，记得放行
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-07-01 20:55" pubdate>
+              2020-07-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%9D%82/" class="category-chain-item">杂</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/linux/">#linux</a>
+            
+              <a href="/tags/nginx/">#nginx</a>
+            
+              <a href="/tags/%E4%BB%A3%E7%90%86/">#代理</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2020/06/25/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E5%80%8D%E9%80%9F%E6%92%AD%E6%94%BE/" target="_self">
+          百度网盘倍速播放
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2020/06/25/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E5%80%8D%E9%80%9F%E6%92%AD%E6%94%BE/" target="_self">
+        <div>
+          最近在百度网盘看一些网课，有时候会嫌老师讲得太慢，如果能1.5倍速播放就好了，但是百度网盘开倍速要会员，仅仅为了这个功能开会员也是duck不必。分享一招！ 在电脑浏览器里打开百度网盘播放视频，在视频播放界面进入“开发者调试模式”，谷歌、Edge浏览器直接按F12，其余浏览器我没试过，不确定是否能用。  选择控制台（console），点击下方空白区域，输入 videojs.getPlayers(“v
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-06-25 16:41" pubdate>
+              2020-06-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%9D%82/" class="category-chain-item">杂</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%80%8D%E9%80%9F%E6%92%AD%E6%94%BE/">#倍速播放</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2020/06/11/centos7%E4%B8%8B%E5%AE%89%E8%A3%85python3-7/" target="_self">
+          CentOS7下安装Python3.7、
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2020/06/11/centos7%E4%B8%8B%E5%AE%89%E8%A3%85python3-7/" target="_self">
+        <div>
+          CentOS7默认已经安装了Python2.7，现安装3.7和它并存 一、安装依赖yum -y groupinstall &quot;Development tools&quot;  若出现以下错误：No packages in any requested group available to install or update 解决方法： cd /etc/yum.repos.d sudo wge
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-06-11 17:13" pubdate>
+              2020-06-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件安装配置</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/linux/">#linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/06/01/android%E6%97%A5%E6%9C%9F%E9%80%89%E6%8B%A9%E5%99%A8datepicker/" target="_self">
+          <img src="https://xinhaojin.github.io/imgs-host/past/2020/06/image-5.png" srcset="/img/loading.gif" lazyload alt="Android日期选择器DatePicker">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2020/06/01/android%E6%97%A5%E6%9C%9F%E9%80%89%E6%8B%A9%E5%99%A8datepicker/" target="_self">
+          Android日期选择器DatePicker
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/2020/06/01/android%E6%97%A5%E6%9C%9F%E9%80%89%E6%8B%A9%E5%99%A8datepicker/" target="_self">
+        <div>
+          感觉这个窗口形式的日期选择器很实用，特此记录  public void dateSelect()     &#123;         //Calendar cal=Calendar.getInstance();         //获取年月日时分秒信息         //int year = cal.get(Calendar.YEAR);         //int month = cal.g
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-06-01 12:40" pubdate>
+              2020-06-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AE%89%E5%8D%93/" class="category-chain-item">安卓</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%AE%89%E5%8D%93/">#安卓</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/18/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/#board">17</a><a class="page-number" href="/page/18/#board">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/#board">20</a><a class="extend next" rel="next" href="/page/20/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     
 
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-<script src="/js/jquery-3.6.4.min.js"></script>
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+        次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+        次
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
 
-<script src="/js/script.js"></script>
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
 
 
-  </div>
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>

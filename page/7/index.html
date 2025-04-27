@@ -1,901 +1,1075 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  <link rel="icon" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
   
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xinhaojin">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="xinhaojin&#39;s blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="xinhaojin&#39;s blog">
 <meta property="og:url" content="http://example.com/page/7/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
+<meta property="og:site_name" content="xinhaojin&#39;s blog">
+<meta property="og:description" content="xinhaojin&#39;s blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="xinhaojin">
+<meta name="twitter:card" content="summary_large_image">
   
   
+    <meta name="referrer" content="no-referrer-when-downgrade">
   
-<link rel="stylesheet" href="/css/style.css">
+  
+  <title>xinhaojin&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
 
   
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?596b73bb5b70c262b123e997b6686f49";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
 
   
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
 
+  
+
+  
+
+  
+
+
+
+  
 <meta name="generator" content="Hexo 7.3.0"></head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xinhaojin&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-          <a class="main-nav-link" href="/">Home</a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
         
-      </nav>
-      <nav id="sub-nav">
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
         
         
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-yoloxsiamese孪生神经网络图标点选验证码识别" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/09/15/yoloxsiamese%E5%AD%AA%E7%94%9F%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%A0%87%E7%82%B9%E9%80%89%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/" class="article-date">
-  <time class="dt-published" datetime="2022-09-15T13:42:26.000Z" itemprop="datePublished">2022-09-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/">目标检测</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/09/15/yoloxsiamese%E5%AD%AA%E7%94%9F%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%A0%87%E7%82%B9%E9%80%89%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/">Yolox+Siamese孪生神经网络:图标点选验证码识别</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p><a target="_blank" rel="noopener" href="https://dun.163.com/trial/icon-click">图标点选验证码_点选验证码_验证码API_在线体验_网易易盾 (163.com)</a></p>
-<p>网页场景</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/09/image.png"></p>
-<p>图片下载下来是这样的，底部会有几行小图标，第三行小图标是正确的顺序</p>
-<p>这个问题的目标就是按顺序给出三个坐标点。</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/09/00001.jpg"></p>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="step1-使用yolox检测出所有图标的位置（不包含下面的三行图标）"><a href="#step1-使用yolox检测出所有图标的位置（不包含下面的三行图标）" class="headerlink" title="step1.使用yolox检测出所有图标的位置（不包含下面的三行图标）"></a>step1.使用yolox检测出所有图标的位置（不包含下面的三行图标）</h3><p>因为图标种类众多，没法直接用yolox进行图标详细分类，所以我训练的时候只分了两类，一类白的，一类黑的，虽然在本文写的方法中这个类别并没有发挥作用，但考虑到标注一类和两类的工作量是一样的，所以还是标了两类，而且如果采用其他方法对图标进行预处理，这个分类还是有用的。</p>
-<p>yolox部分不做介绍了，之前也写过几篇相关的文章，可以参考。</p>
-<p><a target="_blank" rel="noopener" href="https://blog.xinhaojin.top/?s=yolox">“yolox”的搜索结果 – Xinhao Jin</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/Megvii-BaseDetection/YOLOX">Megvii-BaseDetection&#x2F;YOLOX: YOLOX is a high-performance anchor-free YOLO, exceeding yolov3~v5 with MegEngine, ONNX, TensorRT, ncnn, and OpenVINO supported. Documentation: https://yolox.readthedocs.io/ (github.com)</a></p>
-<p>效果如下图</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/09/image-1.png"></p>
-<h3 id="step2-使用孪生神经网络训练图像相似度"><a href="#step2-使用孪生神经网络训练图像相似度" class="headerlink" title="step2.使用孪生神经网络训练图像相似度"></a>step2.使用孪生神经网络训练图像相似度</h3><p>借用了大佬提供的代码，特征提取网络采用vgg16</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/bubbliiiing/Siamese-pytorch">bubbliiiing&#x2F;Siamese-pytorch: 这是一个孪生神经网络（Siamese network）的库，可进行图片的相似性比较。 (github.com)</a></p>
-<p>需要关注的是数据集的格式，就是一个类别一个文件夹，里面放同一类别的图片，相似度记为1，不同文件夹里的图片是不同类的，相似度记为0。</p>
-<p><strong>快速打标签制作数据集的方法</strong></p>
-<p>yolox框出来的5张小图，从左到右记为1-5，给出图标正确顺序对应的记号，如，例图的标签为243，</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/09/00001-1.jpg"></p>
-<p>打开图片文件夹放大，打开一个记事本即可快速打标签</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/09/image-2.png"></p>
-<p>打完标签，结合yolox给出的位置框，即可扣出图片，每张验证码图片可以形成3对图片（3个类别），每个类别有3张图：验证码图片下方给出的黑图、白图，以及嵌入背景的图标。</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/09/image-3.png"></p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/09/image-4.png"></p>
-<h3 id="数据集去重"><a href="#数据集去重" class="headerlink" title="数据集去重"></a>数据集去重</h3><p>开头提到图标种类很多，但也会有重复的，因此如果仅按照上面的流程，会导致同一类图标放进了两个不同文件夹，神经网络就不懂了，到底是要算一类还是两类？</p>
-<p>所以需要给数据集去重，确保同一类的放在同一个文件夹，方法是取出每个文件夹的第一个图标（1.jpg是验证码图片下方三排中的黑底白图），进行相似度计算，如果足够相似，则把两个文件夹合并。</p>
-<p>怎么判断足够相似？如果同一个图标（黑底白图）出现在不同验证码图片中，那么他们几乎是像素级一致的，可以进行二值化后将两张图片相减，取差值绝对值之和，如果这个值足够小，说明是同一类的图标。</p>
-<h3 id="训练-预测"><a href="#训练-预测" class="headerlink" title="训练&amp;预测"></a>训练&amp;预测</h3><p>训练过程省略</p>
-<p>预测就是输入两个图片，给出相似度</p>
-<h3 id="结果处理"><a href="#结果处理" class="headerlink" title="结果处理"></a>结果处理</h3><p>预测得到一个3*5的相似度矩阵，循环选取相似度最大值并删除所在行列即可得到最佳匹配结果，结果绘图如下</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/09/image-5.png"></p>
-<p>Done.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/09/15/yoloxsiamese%E5%AD%AA%E7%94%9F%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%A0%87%E7%82%B9%E9%80%89%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/" data-id="cm9zmq8zc00busqhl55fbcqru" data-title="Yolox+Siamese孪生神经网络:图标点选验证码识别" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%AA%E7%94%9F%E7%BD%91%E7%BB%9C/" rel="tag">孪生网络</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/" rel="tag">数据集</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" rel="tag">目标检测</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-paddleocr转pytorch推理" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/08/17/paddleocr%E8%BD%ACpytorch%E6%8E%A8%E7%90%86/" class="article-date">
-  <time class="dt-published" datetime="2022-08-17T13:48:53.000Z" itemprop="datePublished">2022-08-17</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/pytorch/">pytorch</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/08/17/paddleocr%E8%BD%ACpytorch%E6%8E%A8%E7%90%86/">paddleocr转pytorch推理</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://github.com/frotms/PaddleOCR2Pytorch">frotms&#x2F;PaddleOCR2Pytorch: PaddleOCR inference in PyTorch. Converted from <a target="_blank" rel="noopener" href="https://github.com/PaddlePaddle/PaddleOCR">PaddleOCR</a></a></p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre><code>paddlepaddle==2.0.0
-shapely
-numpy
-pillow
-pyclipper
-opencv-python &lt;= 4.2.0.32
-pytorch
-pyyaml
-scikit-image
-</code></pre>
-<h2 id="中英文推理"><a href="#中英文推理" class="headerlink" title="中英文推理"></a>中英文推理</h2><p>fork了一个，把重要的两个检测识别模型直接加到了主分支中</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/xinhaojin/PaddleOCR2Pytorch">xinhaojin&#x2F;PaddleOCR2Pytorch: PaddleOCR inference in PyTorch. Converted from <a target="_blank" rel="noopener" href="https://github.com/PaddlePaddle/PaddleOCR">PaddleOCR</a></a></p>
-<p>单检测</p>
-<pre><code>python tools/infer/predict_det.py --det_model_path weights/ch_ptocr_v3_det_infer.pth --image_dir doc/imgs/example.jpg
-</code></pre>
-<p>单识别</p>
-<pre><code>python tools/infer/predict_rec.py --rec_model_path weights/ch_ptocr_v3_rec_infer.pth --rec_image_shape 3,48,320 --rec_yaml_path configs/rec/PP-OCRv3/multi_language/chinese_cht_PP-OCRv3_rec.yml --rec_char_dict_path pytorchocr/utils/ppocr_keys_v1.txt  --image_dir doc/imgs_words/ch/word_4.jpg
-</code></pre>
-<p>检测并识别</p>
-<pre><code>python tools/infer/predict_system.py --image_dir doc/imgs/example.jpg --det_model_path weights/ch_ptocr_v3_det_infer.pth --rec_image_shape 3,48,320 --rec_model_path weights/ch_ptocr_v3_rec_infer.pth
-</code></pre>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/08/image-1.png"></p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/08/example2-1024x724.jpg"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/08/17/paddleocr%E8%BD%ACpytorch%E6%8E%A8%E7%90%86/" data-id="cm9zmq8y0005rsqhl9g0chuzd" data-title="paddleocr转pytorch推理" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pytorch/" rel="tag">pytorch</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-用yolox预测结果自动生成voc数据集标签文件" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/07/12/%E7%94%A8yolox%E9%A2%84%E6%B5%8B%E7%BB%93%E6%9E%9C%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90voc%E6%95%B0%E6%8D%AE%E9%9B%86%E6%A0%87%E7%AD%BE%E6%96%87%E4%BB%B6/" class="article-date">
-  <time class="dt-published" datetime="2022-07-12T07:59:00.000Z" itemprop="datePublished">2022-07-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/">目标检测</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/07/12/%E7%94%A8yolox%E9%A2%84%E6%B5%8B%E7%BB%93%E6%9E%9C%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90voc%E6%95%B0%E6%8D%AE%E9%9B%86%E6%A0%87%E7%AD%BE%E6%96%87%E4%BB%B6/">用yolox预测结果自动生成voc数据集标签文件</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>已有少量（100张）数据集由手工标注，训练结果也不算差，但希望能够进一步提高准确率，需要扩充数据集样本，手工标注太累，因此利用已有训练权重进行预测，用预测结果自动生成xml格式的标注文件，当然也会存在预测错误的情况，自定义条件筛选正确，其余手工标注即可。</p>
-<h2 id="voc数据集的xml文件格式"><a href="#voc数据集的xml文件格式" class="headerlink" title="voc数据集的xml文件格式"></a>voc数据集的xml文件格式</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">annotation</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">folder</span>&gt;</span>jiyan[_new<span class="tag">&lt;/<span class="name">folder</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">filename</span>&gt;</span>00002.png<span class="tag">&lt;/<span class="name">filename</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">path</span>&gt;</span>E:[[Y1[[验证码[[数据集[[jiyan[_new[[00002.png<span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">source</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">database</span>&gt;</span>Unknown<span class="tag">&lt;/<span class="name">database</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">source</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">size</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">width</span>&gt;</span>300<span class="tag">&lt;/<span class="name">width</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">height</span>&gt;</span>200<span class="tag">&lt;/<span class="name">height</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">depth</span>&gt;</span>3<span class="tag">&lt;/<span class="name">depth</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">size</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">segmented</span>&gt;</span>0<span class="tag">&lt;/<span class="name">segmented</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">object</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span>word<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">pose</span>&gt;</span>Unspecified<span class="tag">&lt;/<span class="name">pose</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">truncated</span>&gt;</span>0<span class="tag">&lt;/<span class="name">truncated</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">difficult</span>&gt;</span>0<span class="tag">&lt;/<span class="name">difficult</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bndbox</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">xmin</span>&gt;</span>123<span class="tag">&lt;/<span class="name">xmin</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ymin</span>&gt;</span>52<span class="tag">&lt;/<span class="name">ymin</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">xmax</span>&gt;</span>177<span class="tag">&lt;/<span class="name">xmax</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ymax</span>&gt;</span>106<span class="tag">&lt;/<span class="name">ymax</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bndbox</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">object</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">object</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span>word<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">pose</span>&gt;</span>Unspecified<span class="tag">&lt;/<span class="name">pose</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">truncated</span>&gt;</span>0<span class="tag">&lt;/<span class="name">truncated</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">difficult</span>&gt;</span>0<span class="tag">&lt;/<span class="name">difficult</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bndbox</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">xmin</span>&gt;</span>206<span class="tag">&lt;/<span class="name">xmin</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ymin</span>&gt;</span>16<span class="tag">&lt;/<span class="name">ymin</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">xmax</span>&gt;</span>260<span class="tag">&lt;/<span class="name">xmax</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ymax</span>&gt;</span>70<span class="tag">&lt;/<span class="name">ymax</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bndbox</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">object</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">object</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span>word<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">pose</span>&gt;</span>Unspecified<span class="tag">&lt;/<span class="name">pose</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">truncated</span>&gt;</span>0<span class="tag">&lt;/<span class="name">truncated</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">difficult</span>&gt;</span>0<span class="tag">&lt;/<span class="name">difficult</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bndbox</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">xmin</span>&gt;</span>194<span class="tag">&lt;/<span class="name">xmin</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ymin</span>&gt;</span>90<span class="tag">&lt;/<span class="name">ymin</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">xmax</span>&gt;</span>247<span class="tag">&lt;/<span class="name">xmax</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ymax</span>&gt;</span>142<span class="tag">&lt;/<span class="name">ymax</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bndbox</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">object</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">annotation</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="修改预测代码"><a href="#修改预测代码" class="headerlink" title="修改预测代码"></a>修改预测代码</h2><p>使得针对每场图片，输出预测矩形框及对应的类别</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/07/image.png"></p>
-<h2 id="生成xml文件"><a href="#生成xml文件" class="headerlink" title="生成xml文件"></a>生成xml文件</h2><p>拿到矩形框和类别名，就可以写xml文件了，按照上面的格式写就行，有些标签是次要的，并不会用到，可以省略。</p>
-<p>这个函数是copilot插件自动生成的，我只写了个函数名，连参数都没写，就给我自动补全了，你敢信？属实牛逼！</p>
-<p>我只改动了两三行，再加个import，就能用了</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> xml.etree.ElementTree <span class="keyword">as</span> et</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">box2xml</span>(<span class="params">bboxes, <span class="keyword">class</span>[_names, save[_path</span>):</span><br><span class="line">    root = et.Element(<span class="string">&#x27;annotation&#x27;</span>)</span><br><span class="line">    et.SubElement(root, <span class="string">&#x27;folder&#x27;</span>).text = <span class="string">&#x27;VOC2007&#x27;</span></span><br><span class="line">    <span class="comment">#et.SubElement(root, &#x27;filename&#x27;).text = os.path.basename(save[_path)</span></span><br><span class="line">    et.SubElement(root, <span class="string">&#x27;source&#x27;</span>).text = <span class="string">&#x27; &#x27;</span>.join([[<span class="string">&#x27;VOC2007&#x27;</span>, <span class="string">&#x27;createed by YOLOX&#x27;</span>[])</span><br><span class="line">    <span class="comment">#et.SubElement(root, &#x27;segmented&#x27;).text = &#x27;0&#x27;</span></span><br><span class="line">    size = et.SubElement(root, <span class="string">&#x27;size&#x27;</span>)</span><br><span class="line">    et.SubElement(size, <span class="string">&#x27;width&#x27;</span>).text = <span class="string">&#x27;300&#x27;</span></span><br><span class="line">    et.SubElement(size, <span class="string">&#x27;height&#x27;</span>).text = <span class="string">&#x27;200&#x27;</span></span><br><span class="line">    et.SubElement(size, <span class="string">&#x27;depth&#x27;</span>).text = <span class="string">&#x27;3&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(bboxes.shape[[<span class="number">0</span>[]):</span><br><span class="line">        obj = et.SubElement(root, <span class="string">&#x27;object&#x27;</span>)</span><br><span class="line">        et.SubElement(obj, <span class="string">&#x27;name&#x27;</span>).text = <span class="keyword">class</span>[_names[[i[]</span><br><span class="line">        et.SubElement(obj, <span class="string">&#x27;pose&#x27;</span>).text = <span class="string">&#x27;Unspecified&#x27;</span></span><br><span class="line">        et.SubElement(obj, <span class="string">&#x27;truncated&#x27;</span>).text = <span class="string">&#x27;0&#x27;</span></span><br><span class="line">        et.SubElement(obj, <span class="string">&#x27;difficult&#x27;</span>).text = <span class="string">&#x27;0&#x27;</span></span><br><span class="line">        bbox = et.SubElement(obj, <span class="string">&#x27;bndbox&#x27;</span>)</span><br><span class="line">        et.SubElement(bbox, <span class="string">&#x27;xmin&#x27;</span>).text = <span class="built_in">str</span>(bboxes[[i, <span class="number">0</span>[])</span><br><span class="line">        et.SubElement(bbox, <span class="string">&#x27;ymin&#x27;</span>).text = <span class="built_in">str</span>(bboxes[[i, <span class="number">1</span>[])</span><br><span class="line">        et.SubElement(bbox, <span class="string">&#x27;xmax&#x27;</span>).text = <span class="built_in">str</span>(bboxes[[i, <span class="number">2</span>[])</span><br><span class="line">        et.SubElement(bbox, <span class="string">&#x27;ymax&#x27;</span>).text = <span class="built_in">str</span>(bboxes[[i, <span class="number">3</span>[])</span><br><span class="line">    tree = et.ElementTree(root)</span><br><span class="line">    tree.write(save[_path)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;save xml file to &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(save[_path))</span><br></pre></td></tr></table></figure>
-
-<h2 id="怎么确定标注的正确性？"><a href="#怎么确定标注的正确性？" class="headerlink" title="怎么确定标注的正确性？"></a>怎么确定标注的正确性？</h2><p>具体问题具体分析</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/07/00001.jpg"></p>
-<p>针对我的场景，正确标注应该是3个框，已有权重有时会只检测出两个框，因此我的筛选条件就是，预测框个数&lt;3的，把文件名汇总起来最后输出，我自己再修改即可。</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/07/image-1-1024x108.png"></p>
-<p>这样工作量就从标注500多张图片锐减到30多张。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>由tools&#x2F;demo.py修改</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -[*- coding:utf-8 -[*-</span></span><br><span class="line"><span class="comment"># Copyright (c) Megvii, Inc. and its affiliates.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> loguru <span class="keyword">import</span> logger</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> yolox.data.data[_augment <span class="keyword">import</span> ValTransform</span><br><span class="line"><span class="keyword">from</span> yolox.data.datasets <span class="keyword">import</span> COCO[_CLASSES</span><br><span class="line"><span class="keyword">from</span> yolox.exp <span class="keyword">import</span> get[_exp</span><br><span class="line"><span class="keyword">from</span> yolox.utils <span class="keyword">import</span> fuse[_model, get[_model[_info, postprocess, vis</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> xml.etree.ElementTree <span class="keyword">as</span> et</span><br><span class="line"></span><br><span class="line">IMAGE[_EXT = [[<span class="string">&quot;.jpg&quot;</span>, <span class="string">&quot;.jpeg&quot;</span>, <span class="string">&quot;.webp&quot;</span>, <span class="string">&quot;.bmp&quot;</span>, <span class="string">&quot;.png&quot;</span>[]</span><br><span class="line"><span class="comment">#python tools/predict2xml.py image -n yolox-s -c weights/90jiyan.pth --path /home/jxh/work/YOLOX/datasets/VOCdevkit/VOC2007/JPEGImages --conf 0.6 --nms 0.6 --save[_result --device [[cpu/gpu[]</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">make</span>[_parser():</span><br><span class="line">    parser = argparse.ArgumentParser(<span class="string">&quot;YOLOX Demo!&quot;</span>)</span><br><span class="line">    parser.add[_argument(</span><br><span class="line">        <span class="string">&quot;demo&quot;</span>, default=<span class="string">&quot;image&quot;</span>, <span class="built_in">help</span>=<span class="string">&quot;demo type, eg. image, video and webcam&quot;</span></span><br><span class="line">    )</span><br><span class="line">    parser.add[_argument(<span class="string">&quot;-expn&quot;</span>, <span class="string">&quot;--experiment-name&quot;</span>, <span class="built_in">type</span>=<span class="built_in">str</span>, default=<span class="string">&#x27;test&#x27;</span>)</span><br><span class="line">    parser.add[_argument(<span class="string">&quot;-n&quot;</span>, <span class="string">&quot;--name&quot;</span>, <span class="built_in">type</span>=<span class="built_in">str</span>, default=<span class="string">&#x27;yolox-s&#x27;</span>, <span class="built_in">help</span>=<span class="string">&quot;model name&quot;</span>)</span><br><span class="line"></span><br><span class="line">    parser.add[_argument(</span><br><span class="line">        <span class="string">&quot;--path&quot;</span>, default=<span class="string">&quot;./assets/test&quot;</span>, <span class="built_in">help</span>=<span class="string">&quot;path to images or video&quot;</span></span><br><span class="line">    )</span><br><span class="line">    parser.add[_argument(<span class="string">&quot;--camid&quot;</span>, <span class="built_in">type</span>=<span class="built_in">int</span>, default=<span class="number">0</span>, <span class="built_in">help</span>=<span class="string">&quot;webcam demo camera id&quot;</span>)</span><br><span class="line">    parser.add[_argument(</span><br><span class="line">        <span class="string">&quot;--save[_result&quot;</span>,</span><br><span class="line">        action=<span class="string">&quot;store[_true&quot;</span>,</span><br><span class="line">        <span class="built_in">help</span>=<span class="string">&quot;whether to save the inference result of image/video&quot;</span>,</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    <span class="comment"># exp file</span></span><br><span class="line">    parser.add[_argument(</span><br><span class="line">        <span class="string">&quot;-f&quot;</span>,</span><br><span class="line">        <span class="string">&quot;--exp[_file&quot;</span>,</span><br><span class="line">        default=<span class="string">&#x27;exps/example/yolox[_voc/yolox[_voc[_s.py&#x27;</span>,</span><br><span class="line">        <span class="built_in">type</span>=<span class="built_in">str</span>,</span><br><span class="line">        <span class="built_in">help</span>=<span class="string">&quot;pls input your experiment description file&quot;</span>,</span><br><span class="line">    )</span><br><span class="line">    parser.add[_argument(<span class="string">&quot;-c&quot;</span>, <span class="string">&quot;--ckpt&quot;</span>, default=<span class="string">&#x27;YOLOX[_outputs/yolox[_voc[_s/90jiyan[_new.pth&#x27;</span>, <span class="built_in">type</span>=<span class="built_in">str</span>, <span class="built_in">help</span>=<span class="string">&quot;ckpt for eval&quot;</span>)</span><br><span class="line">    parser.add[_argument(</span><br><span class="line">        <span class="string">&quot;--device&quot;</span>,</span><br><span class="line">        default=<span class="string">&quot;cpu&quot;</span>,</span><br><span class="line">        <span class="built_in">type</span>=<span class="built_in">str</span>,</span><br><span class="line">        <span class="built_in">help</span>=<span class="string">&quot;device to run our model, can either be cpu or gpu&quot;</span>,</span><br><span class="line">    )</span><br><span class="line">    parser.add[_argument(<span class="string">&quot;--conf&quot;</span>, default=<span class="number">0.5</span>, <span class="built_in">type</span>=<span class="built_in">float</span>, <span class="built_in">help</span>=<span class="string">&quot;test conf&quot;</span>)</span><br><span class="line">    parser.add[_argument(<span class="string">&quot;--nms&quot;</span>, default=<span class="number">0.5</span>, <span class="built_in">type</span>=<span class="built_in">float</span>, <span class="built_in">help</span>=<span class="string">&quot;test nms threshold&quot;</span>)</span><br><span class="line">    parser.add[_argument(<span class="string">&quot;--tsize&quot;</span>, default=<span class="literal">None</span>, <span class="built_in">type</span>=<span class="built_in">int</span>, <span class="built_in">help</span>=<span class="string">&quot;test img size&quot;</span>)</span><br><span class="line">    parser.add[_argument(</span><br><span class="line">        <span class="string">&quot;--fp16&quot;</span>,</span><br><span class="line">        dest=<span class="string">&quot;fp16&quot;</span>,</span><br><span class="line">        default=<span class="literal">False</span>,</span><br><span class="line">        action=<span class="string">&quot;store[_true&quot;</span>,</span><br><span class="line">        <span class="built_in">help</span>=<span class="string">&quot;Adopting mix precision evaluating.&quot;</span>,</span><br><span class="line">    )</span><br><span class="line">    parser.add[_argument(</span><br><span class="line">        <span class="string">&quot;--legacy&quot;</span>,</span><br><span class="line">        dest=<span class="string">&quot;legacy&quot;</span>,</span><br><span class="line">        default=<span class="literal">False</span>,</span><br><span class="line">        action=<span class="string">&quot;store[_true&quot;</span>,</span><br><span class="line">        <span class="built_in">help</span>=<span class="string">&quot;To be compatible with older versions&quot;</span>,</span><br><span class="line">    )</span><br><span class="line">    parser.add[_argument(</span><br><span class="line">        <span class="string">&quot;--fuse&quot;</span>,</span><br><span class="line">        dest=<span class="string">&quot;fuse&quot;</span>,</span><br><span class="line">        default=<span class="literal">False</span>,</span><br><span class="line">        action=<span class="string">&quot;store[_true&quot;</span>,</span><br><span class="line">        <span class="built_in">help</span>=<span class="string">&quot;Fuse conv and bn for testing.&quot;</span>,</span><br><span class="line">    )</span><br><span class="line">    parser.add[_argument(</span><br><span class="line">        <span class="string">&quot;--trt&quot;</span>,</span><br><span class="line">        dest=<span class="string">&quot;trt&quot;</span>,</span><br><span class="line">        default=<span class="literal">False</span>,</span><br><span class="line">        action=<span class="string">&quot;store[_true&quot;</span>,</span><br><span class="line">        <span class="built_in">help</span>=<span class="string">&quot;Using TensorRT model for testing.&quot;</span>,</span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> parser</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get</span>[_image[_<span class="built_in">list</span>(path):</span><br><span class="line">    image[_names = [[[]</span><br><span class="line">    <span class="keyword">for</span> maindir, subdir, file[_name[_<span class="built_in">list</span> <span class="keyword">in</span> os.walk(path):</span><br><span class="line">        <span class="keyword">for</span> filename <span class="keyword">in</span> file[_name[_<span class="built_in">list</span>:</span><br><span class="line">            apath = os.path.join(maindir, filename)</span><br><span class="line">            ext = os.path.splitext(apath)[[<span class="number">1</span>[]</span><br><span class="line">            <span class="keyword">if</span> ext <span class="keyword">in</span> IMAGE[_EXT:</span><br><span class="line">                image[_names.append(apath)</span><br><span class="line">    <span class="keyword">return</span> image[_names</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">box2xml</span>(<span class="params">bboxes, <span class="keyword">class</span>[_names, save[_path</span>):</span><br><span class="line">    root = et.Element(<span class="string">&#x27;annotation&#x27;</span>)</span><br><span class="line">    et.SubElement(root, <span class="string">&#x27;folder&#x27;</span>).text = <span class="string">&#x27;VOC2007&#x27;</span></span><br><span class="line">    <span class="comment">#et.SubElement(root, &#x27;filename&#x27;).text = os.path.basename(save[_path)</span></span><br><span class="line">    et.SubElement(root, <span class="string">&#x27;source&#x27;</span>).text = <span class="string">&#x27; &#x27;</span>.join([[<span class="string">&#x27;VOC2007&#x27;</span>, <span class="string">&#x27;createed by YOLOX&#x27;</span>[])</span><br><span class="line">    <span class="comment">#et.SubElement(root, &#x27;segmented&#x27;).text = &#x27;0&#x27;</span></span><br><span class="line">    size = et.SubElement(root, <span class="string">&#x27;size&#x27;</span>)</span><br><span class="line">    et.SubElement(size, <span class="string">&#x27;width&#x27;</span>).text = <span class="string">&#x27;300&#x27;</span></span><br><span class="line">    et.SubElement(size, <span class="string">&#x27;height&#x27;</span>).text = <span class="string">&#x27;200&#x27;</span></span><br><span class="line">    et.SubElement(size, <span class="string">&#x27;depth&#x27;</span>).text = <span class="string">&#x27;3&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(bboxes.shape[[<span class="number">0</span>[]):</span><br><span class="line">        obj = et.SubElement(root, <span class="string">&#x27;object&#x27;</span>)</span><br><span class="line">        et.SubElement(obj, <span class="string">&#x27;name&#x27;</span>).text = <span class="keyword">class</span>[_names[[i[]</span><br><span class="line">        et.SubElement(obj, <span class="string">&#x27;pose&#x27;</span>).text = <span class="string">&#x27;Unspecified&#x27;</span></span><br><span class="line">        et.SubElement(obj, <span class="string">&#x27;truncated&#x27;</span>).text = <span class="string">&#x27;0&#x27;</span></span><br><span class="line">        et.SubElement(obj, <span class="string">&#x27;difficult&#x27;</span>).text = <span class="string">&#x27;0&#x27;</span></span><br><span class="line">        bbox = et.SubElement(obj, <span class="string">&#x27;bndbox&#x27;</span>)</span><br><span class="line">        et.SubElement(bbox, <span class="string">&#x27;xmin&#x27;</span>).text = <span class="built_in">str</span>(bboxes[[i, <span class="number">0</span>[])</span><br><span class="line">        et.SubElement(bbox, <span class="string">&#x27;ymin&#x27;</span>).text = <span class="built_in">str</span>(bboxes[[i, <span class="number">1</span>[])</span><br><span class="line">        et.SubElement(bbox, <span class="string">&#x27;xmax&#x27;</span>).text = <span class="built_in">str</span>(bboxes[[i, <span class="number">2</span>[])</span><br><span class="line">        et.SubElement(bbox, <span class="string">&#x27;ymax&#x27;</span>).text = <span class="built_in">str</span>(bboxes[[i, <span class="number">3</span>[])</span><br><span class="line">    tree = et.ElementTree(root)</span><br><span class="line">    tree.write(save[_path)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;save xml file to &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(save[_path))</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Predictor</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> [_[_init[_[_(</span><br><span class="line">        <span class="variable language_">self</span>,</span><br><span class="line">        model,</span><br><span class="line">        exp,</span><br><span class="line">        cls[_names=COCO[_CLASSES,</span><br><span class="line">        trt[_file=<span class="literal">None</span>,</span><br><span class="line">        decoder=<span class="literal">None</span>,</span><br><span class="line">        device=<span class="string">&quot;cpu&quot;</span>,</span><br><span class="line">        fp16=<span class="literal">False</span>,</span><br><span class="line">        legacy=<span class="literal">False</span>,</span><br><span class="line">    ):</span><br><span class="line">        <span class="variable language_">self</span>.model = model</span><br><span class="line">        <span class="variable language_">self</span>.cls[_names = cls[_names</span><br><span class="line">        <span class="variable language_">self</span>.decoder = decoder</span><br><span class="line">        <span class="variable language_">self</span>.num[_classes = exp.num[_classes</span><br><span class="line">        <span class="variable language_">self</span>.confthre = exp.test[_conf</span><br><span class="line">        <span class="variable language_">self</span>.nmsthre = exp.nmsthre</span><br><span class="line">        <span class="variable language_">self</span>.test[_size = exp.test[_size</span><br><span class="line">        <span class="variable language_">self</span>.device = device</span><br><span class="line">        <span class="variable language_">self</span>.fp16 = fp16</span><br><span class="line">        <span class="variable language_">self</span>.preproc = ValTransform(legacy=legacy)</span><br><span class="line">        <span class="keyword">if</span> trt[_file <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">from</span> torch2trt <span class="keyword">import</span> TRTModule</span><br><span class="line"></span><br><span class="line">            model[_trt = TRTModule()</span><br><span class="line">            model[_trt.load[_state[_<span class="built_in">dict</span>(torch.load(trt[_file))</span><br><span class="line"></span><br><span class="line">            x = torch.ones(<span class="number">1</span>, <span class="number">3</span>, exp.test[_size[[<span class="number">0</span>[], exp.test[_size[[<span class="number">1</span>[]).cuda()</span><br><span class="line">            <span class="variable language_">self</span>.model(x)</span><br><span class="line">            <span class="variable language_">self</span>.model = model[_trt</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">inference</span>(<span class="params">self, img</span>):</span><br><span class="line">        img[_info = &#123;<span class="string">&quot;id&quot;</span>: <span class="number">0</span>&#125;</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(img, <span class="built_in">str</span>):</span><br><span class="line">            img[_info[[<span class="string">&quot;file[_name&quot;</span>[] = os.path.basename(img)</span><br><span class="line">            img = cv2.imread(img)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            img[_info[[<span class="string">&quot;file[_name&quot;</span>[] = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">        height, width = img.shape[[:<span class="number">2</span>[]</span><br><span class="line">        img[_info[[<span class="string">&quot;height&quot;</span>[] = height</span><br><span class="line">        img[_info[[<span class="string">&quot;width&quot;</span>[] = width</span><br><span class="line">        img[_info[[<span class="string">&quot;raw[_img&quot;</span>[] = img</span><br><span class="line"></span><br><span class="line">        ratio = <span class="built_in">min</span>(<span class="variable language_">self</span>.test[_size[[<span class="number">0</span>[] / img.shape[[<span class="number">0</span>[], <span class="variable language_">self</span>.test[_size[[<span class="number">1</span>[] / img.shape[[<span class="number">1</span>[])</span><br><span class="line">        img[_info[[<span class="string">&quot;ratio&quot;</span>[] = ratio</span><br><span class="line"></span><br><span class="line">        img, [_ = <span class="variable language_">self</span>.preproc(img, <span class="literal">None</span>, <span class="variable language_">self</span>.test[_size)</span><br><span class="line">        img = torch.<span class="keyword">from</span>[_numpy(img).unsqueeze(<span class="number">0</span>)</span><br><span class="line">        img = img.<span class="built_in">float</span>()</span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.device == <span class="string">&quot;gpu&quot;</span>:</span><br><span class="line">            img = img.cuda()</span><br><span class="line">            <span class="keyword">if</span> <span class="variable language_">self</span>.fp16:</span><br><span class="line">                img = img.half()  <span class="comment"># to FP16</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">with</span> torch.no[_grad():</span><br><span class="line">            t0 = time.time()</span><br><span class="line">            outputs = <span class="variable language_">self</span>.model(img)</span><br><span class="line">            <span class="keyword">if</span> <span class="variable language_">self</span>.decoder <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">                outputs = <span class="variable language_">self</span>.decoder(outputs, dtype=outputs.<span class="built_in">type</span>())</span><br><span class="line">            outputs = postprocess(</span><br><span class="line">                outputs, <span class="variable language_">self</span>.num[_classes, <span class="variable language_">self</span>.confthre,</span><br><span class="line">                <span class="variable language_">self</span>.nmsthre, <span class="keyword">class</span>[_agnostic=<span class="literal">True</span></span><br><span class="line">            )</span><br><span class="line">            logger.info(<span class="string">&quot;Infer time: &#123;:.4f&#125;s&quot;</span>.<span class="built_in">format</span>(time.time() - t0))</span><br><span class="line">        <span class="keyword">return</span> outputs, img[_info</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">visual</span>(<span class="params">self, output, img[_info, cls[_conf=<span class="number">0.5</span></span>):</span><br><span class="line">        <span class="comment">#print(img[_info)</span></span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">        &#123;&#x27;id&#x27;: 0, &#x27;file[_name&#x27;: &#x27;00032团圆汤.png&#x27;, &#x27;height&#x27;: 200, &#x27;width&#x27;: 300,&#x27;&#x27;&#x27;</span></span><br><span class="line">        ratio = img[_info[[<span class="string">&quot;ratio&quot;</span>[]</span><br><span class="line">        img = img[_info[[<span class="string">&quot;raw[_img&quot;</span>[]</span><br><span class="line">        <span class="keyword">if</span> output <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> img</span><br><span class="line">        output = output.cpu()</span><br><span class="line"></span><br><span class="line">        bboxes = output[[:, <span class="number">0</span>:<span class="number">4</span>[]</span><br><span class="line">        <span class="comment"># preprocessing: resize</span></span><br><span class="line">        bboxes /= ratio</span><br><span class="line">        boxes=bboxes.numpy()</span><br><span class="line">        boxes = boxes.astype(<span class="built_in">int</span>)</span><br><span class="line">        <span class="built_in">print</span>(boxes)</span><br><span class="line">        cls = output[[:, <span class="number">6</span>[]</span><br><span class="line">        clses= cls.numpy()</span><br><span class="line">        <span class="comment">#转为list</span></span><br><span class="line">        clses = clses.tolist()</span><br><span class="line">        classnames = [[<span class="variable language_">self</span>.cls[_names[[<span class="built_in">int</span>(i)[] <span class="keyword">for</span> i <span class="keyword">in</span> clses[]</span><br><span class="line">        <span class="built_in">print</span>(classnames)</span><br><span class="line">        box2xml(boxes, classnames, <span class="string">&#x27;xml[_output/&#x27;</span>+img[_info[[<span class="string">&#x27;file[_name&#x27;</span>[].split(<span class="string">&#x27;.&#x27;</span>)[[<span class="number">0</span>[]+<span class="string">&#x27;.xml&#x27;</span>)</span><br><span class="line">        scores = output[[:, <span class="number">4</span>[] [* output[[:, <span class="number">5</span>[]</span><br><span class="line"></span><br><span class="line">        vis[_res = vis(img, bboxes, scores, cls, cls[_conf, <span class="variable language_">self</span>.cls[_names)</span><br><span class="line">        <span class="keyword">return</span> vis[_res,bboxes</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">image</span>[_demo(predictor, vis[_folder, path, current[_time, save[_result):</span><br><span class="line">    <span class="keyword">if</span> os.path.isdir(path):</span><br><span class="line">        files = get[_image[_<span class="built_in">list</span>(path)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        files = [[path[]</span><br><span class="line">    files.sort()</span><br><span class="line">    error=[[[]</span><br><span class="line">    <span class="keyword">for</span> image[_name <span class="keyword">in</span> files:</span><br><span class="line">        outputs, img[_info = predictor.inference(image[_name)</span><br><span class="line">        result[_image,bboxes = predictor.visual(outputs[[<span class="number">0</span>[], img[_info, predictor.confthre)</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(bboxes)&lt;<span class="number">3</span>:</span><br><span class="line">            error.append(image[_name)</span><br><span class="line">        <span class="keyword">if</span> save[_result:</span><br><span class="line">            save[_folder = os.path.join(</span><br><span class="line">                vis[_folder, time.strftime(<span class="string">&quot;%Y[_%m[_%d[_%H[_%M[_%S&quot;</span>, current[_time)</span><br><span class="line">            )</span><br><span class="line">            os.makedirs(save[_folder, exist[_ok=<span class="literal">True</span>)</span><br><span class="line">            save[_file[_name = os.path.join(save[_folder, os.path.basename(image[_name))</span><br><span class="line">            logger.info(<span class="string">&quot;Saving detection result in &#123;&#125;&quot;</span>.<span class="built_in">format</span>(save[_file[_name))</span><br><span class="line">            <span class="comment">####################################</span></span><br><span class="line">            bboxes=bboxes.numpy()</span><br><span class="line">            bboxes = bboxes.astype(<span class="built_in">int</span>)</span><br><span class="line">            log[_file = <span class="built_in">open</span>(<span class="string">&#x27;log.txt&#x27;</span>,<span class="string">&#x27;a+&#x27;</span>)</span><br><span class="line">            log[_file.write(save[_file[_name+<span class="string">&quot;[[n&quot;</span>)</span><br><span class="line">            log[_file.write(<span class="built_in">str</span>(bboxes)+<span class="string">&quot;[[n&quot;</span>)</span><br><span class="line">            log[_file.close()</span><br><span class="line">            <span class="comment">###################################</span></span><br><span class="line">            <span class="comment"># result[_image=koutu(result[_image,bboxes)</span></span><br><span class="line">            cv2.imwrite(save[_file[_name, result[_image)</span><br><span class="line">        ch = cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">if</span> ch == <span class="number">27</span> <span class="keyword">or</span> ch == <span class="built_in">ord</span>(<span class="string">&quot;q&quot;</span>) <span class="keyword">or</span> ch == <span class="built_in">ord</span>(<span class="string">&quot;Q&quot;</span>):</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;错误标注文件:&#x27;</span>,error)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">imageflow</span>[_demo(predictor, vis[_folder, current[_time, args):</span><br><span class="line">    cap = cv2.VideoCapture(args.path <span class="keyword">if</span> args.demo == <span class="string">&quot;video&quot;</span> <span class="keyword">else</span> args.camid)</span><br><span class="line">    width = cap.get(cv2.CAP[_PROP[_FRAME[_WIDTH)  <span class="comment"># float</span></span><br><span class="line">    height = cap.get(cv2.CAP[_PROP[_FRAME[_HEIGHT)  <span class="comment"># float</span></span><br><span class="line">    fps = cap.get(cv2.CAP[_PROP[_FPS)</span><br><span class="line">    <span class="keyword">if</span> args.save[_result:</span><br><span class="line">        save[_folder = os.path.join(</span><br><span class="line">            vis[_folder, time.strftime(<span class="string">&quot;%Y[_%m[_%d[_%H[_%M[_%S&quot;</span>, current[_time)</span><br><span class="line">        )</span><br><span class="line">        os.makedirs(save[_folder, exist[_ok=<span class="literal">True</span>)</span><br><span class="line">        <span class="keyword">if</span> args.demo == <span class="string">&quot;video&quot;</span>:</span><br><span class="line">            save[_path = os.path.join(save[_folder, os.path.basename(args.path))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            save[_path = os.path.join(save[_folder, <span class="string">&quot;camera.mp4&quot;</span>)</span><br><span class="line">        logger.info(<span class="string">f&quot;video save[_path is <span class="subst">&#123;save[_path&#125;</span>&quot;</span>)</span><br><span class="line">        vid[_writer = cv2.VideoWriter(</span><br><span class="line">            save[_path, cv2.VideoWriter[_fourcc([*<span class="string">&quot;mp4v&quot;</span>), fps, (<span class="built_in">int</span>(width), <span class="built_in">int</span>(height))</span><br><span class="line">        )</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        ret[_val, frame = cap.read()</span><br><span class="line">        <span class="keyword">if</span> ret[_val:</span><br><span class="line">            outputs, img[_info = predictor.inference(frame)</span><br><span class="line">            result[_frame = predictor.visual(outputs[[<span class="number">0</span>[], img[_info, predictor.confthre)</span><br><span class="line">            <span class="keyword">if</span> args.save[_result:</span><br><span class="line">                vid[_writer.write(result[_frame)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                cv2.namedWindow(<span class="string">&quot;yolox&quot;</span>, cv2.WINDOW[_NORMAL)</span><br><span class="line">                cv2.imshow(<span class="string">&quot;yolox&quot;</span>, result[_frame)</span><br><span class="line">            ch = cv2.waitKey(<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">if</span> ch == <span class="number">27</span> <span class="keyword">or</span> ch == <span class="built_in">ord</span>(<span class="string">&quot;q&quot;</span>) <span class="keyword">or</span> ch == <span class="built_in">ord</span>(<span class="string">&quot;Q&quot;</span>):</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>(<span class="params">exp, args</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> args.experiment[_name:</span><br><span class="line">        args.experiment[_name = exp.exp[_name</span><br><span class="line"></span><br><span class="line">    file[_name = os.path.join(exp.output[_<span class="built_in">dir</span>, args.experiment[_name)</span><br><span class="line">    os.makedirs(file[_name, exist[_ok=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">    vis[_folder = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">if</span> args.save[_result:</span><br><span class="line">        vis[_folder = os.path.join(file[_name, <span class="string">&quot;vis[_res&quot;</span>)</span><br><span class="line">        os.makedirs(vis[_folder, exist[_ok=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> args.trt:</span><br><span class="line">        args.device = <span class="string">&quot;gpu&quot;</span></span><br><span class="line"></span><br><span class="line">    logger.info(<span class="string">&quot;Args: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(args))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> args.conf <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        exp.test[_conf = args.conf</span><br><span class="line">    <span class="keyword">if</span> args.nms <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        exp.nmsthre = args.nms</span><br><span class="line">    <span class="keyword">if</span> args.tsize <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        exp.test[_size = (args.tsize, args.tsize)</span><br><span class="line"></span><br><span class="line">    model = exp.get[_model()</span><br><span class="line">    logger.info(<span class="string">&quot;Model Summary: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(get[_model[_info(model, exp.test[_size)))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> args.device == <span class="string">&quot;gpu&quot;</span>:</span><br><span class="line">        model.cuda()</span><br><span class="line">        <span class="keyword">if</span> args.fp16:</span><br><span class="line">            model.half()  <span class="comment"># to FP16</span></span><br><span class="line">    model.<span class="built_in">eval</span>()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> args.trt:</span><br><span class="line">        <span class="keyword">if</span> args.ckpt <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            ckpt[_file = os.path.join(file[_name, <span class="string">&quot;best[_ckpt.pth&quot;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            ckpt[_file = args.ckpt</span><br><span class="line">        logger.info(<span class="string">&quot;loading checkpoint&quot;</span>)</span><br><span class="line">        ckpt = torch.load(ckpt[_file, <span class="built_in">map</span>[_location=<span class="string">&quot;cpu&quot;</span>)</span><br><span class="line">        <span class="comment"># load the model state dict</span></span><br><span class="line">        model.load[_state[_<span class="built_in">dict</span>(ckpt[[<span class="string">&quot;model&quot;</span>[])</span><br><span class="line">        logger.info(<span class="string">&quot;loaded checkpoint done.&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> args.fuse:</span><br><span class="line">        logger.info(<span class="string">&quot;[[tFusing model...&quot;</span>)</span><br><span class="line">        model = fuse[_model(model)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> args.trt:</span><br><span class="line">        <span class="keyword">assert</span> <span class="keyword">not</span> args.fuse, <span class="string">&quot;TensorRT model is not support model fusing!&quot;</span></span><br><span class="line">        trt[_file = os.path.join(file[_name, <span class="string">&quot;model[_trt.pth&quot;</span>)</span><br><span class="line">        <span class="keyword">assert</span> os.path.exists(</span><br><span class="line">            trt[_file</span><br><span class="line">        ), <span class="string">&quot;TensorRT model is not found![[n Run python3 tools/trt.py first!&quot;</span></span><br><span class="line">        model.head.decode[_<span class="keyword">in</span>[_inference = <span class="literal">False</span></span><br><span class="line">        decoder = model.head.decode[_outputs</span><br><span class="line">        logger.info(<span class="string">&quot;Using TensorRT to inference&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        trt[_file = <span class="literal">None</span></span><br><span class="line">        decoder = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    predictor = Predictor(</span><br><span class="line">        model, exp, COCO[_CLASSES, trt[_file, decoder,</span><br><span class="line">        args.device, args.fp16, args.legacy,</span><br><span class="line">    )</span><br><span class="line">    current[_time = time.localtime()</span><br><span class="line">    <span class="keyword">if</span> args.demo == <span class="string">&quot;image&quot;</span>:</span><br><span class="line">        image[_demo(predictor, vis[_folder, args.path, current[_time, args.save[_result)</span><br><span class="line">    <span class="keyword">elif</span> args.demo == <span class="string">&quot;video&quot;</span> <span class="keyword">or</span> args.demo == <span class="string">&quot;webcam&quot;</span>:</span><br><span class="line">        imageflow[_demo(predictor, vis[_folder, current[_time, args)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [_[_name[_[_ == <span class="string">&quot;[_[_main[_[_&quot;</span>:</span><br><span class="line">    args = make[_parser().parse[_args()</span><br><span class="line">    exp = get[_exp(args.exp[_file, args.name)</span><br><span class="line"></span><br><span class="line">    main(exp, args)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/07/12/%E7%94%A8yolox%E9%A2%84%E6%B5%8B%E7%BB%93%E6%9E%9C%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90voc%E6%95%B0%E6%8D%AE%E9%9B%86%E6%A0%87%E7%AD%BE%E6%96%87%E4%BB%B6/" data-id="cm9zmq90f00h1sqhlbtyyeqoe" data-title="用yolox预测结果自动生成voc数据集标签文件" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/" rel="tag">数据集</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" rel="tag">目标检测</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-基于直方图分析的自适应阈值分割" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/06/10/%E5%9F%BA%E4%BA%8E%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%88%86%E6%9E%90%E7%9A%84%E8%87%AA%E9%80%82%E5%BA%94%E9%98%88%E5%80%BC%E5%88%86%E5%89%B2/" class="article-date">
-  <time class="dt-published" datetime="2022-06-10T07:27:52.000Z" itemprop="datePublished">2022-06-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python/">python</a>►<a class="article-category-link" href="/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">图像处理</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/06/10/%E5%9F%BA%E4%BA%8E%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%88%86%E6%9E%90%E7%9A%84%E8%87%AA%E9%80%82%E5%BA%94%E9%98%88%E5%80%BC%E5%88%86%E5%89%B2/">基于直方图分析的自适应阈值分割</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>分割出文字，去掉背景</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/06/image-11.png"></p>
-<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>画出直方图，用多项式曲线拟合。在斜率绝对值最大处左右两侧找极小值，对应横坐标作为分割的左右阈值。</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/06/image-10-1024x534.png"></p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/06/image-12-1024x538.png"></p>
-<p>对于背景复杂，前景颜色单一的图片，分割效果佳，其余情况可能不适合。</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/06/image-13.png"></p>
-<p>细节略</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/06/10/%E5%9F%BA%E4%BA%8E%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%88%86%E6%9E%90%E7%9A%84%E8%87%AA%E9%80%82%E5%BA%94%E9%98%88%E5%80%BC%E5%88%86%E5%89%B2/" data-id="cm9zmq8zu00efsqhl2sqm6byt" data-title="基于直方图分析的自适应阈值分割" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-基于已知背景的验证码文字倾斜矫正及识别" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/06/10/%E5%9F%BA%E4%BA%8E%E5%B7%B2%E7%9F%A5%E8%83%8C%E6%99%AF%E7%9A%84%E9%AA%8C%E8%AF%81%E7%A0%81%E6%96%87%E5%AD%97%E5%80%BE%E6%96%9C%E7%9F%AB%E6%AD%A3%E5%8F%8A%E8%AF%86%E5%88%AB/" class="article-date">
-  <time class="dt-published" datetime="2022-06-10T07:21:32.000Z" itemprop="datePublished">2022-06-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python/">python</a>►<a class="article-category-link" href="/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">图像处理</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/06/10/%E5%9F%BA%E4%BA%8E%E5%B7%B2%E7%9F%A5%E8%83%8C%E6%99%AF%E7%9A%84%E9%AA%8C%E8%AF%81%E7%A0%81%E6%96%87%E5%AD%97%E5%80%BE%E6%96%9C%E7%9F%AB%E6%AD%A3%E5%8F%8A%E8%AF%86%E5%88%AB/">基于已知背景的验证码文字倾斜矫正及识别</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>请点击“荔枝茶”。即判断文字位置及顺序。</p>
-<p>已知条件：yolox能够预测汉字位置，paddleOCR可以直接识别文字，但有时出错。</p>
-<p>现在要做的是矫正验证码图片中的文字倾斜，以提高文字识别准确率。</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/06/image-6.png"></p>
-<h2 id="背景匹配"><a href="#背景匹配" class="headerlink" title="背景匹配"></a>背景匹配</h2><p>所有可能的背景</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/06/image-5.png"></p>
-<p>用直方图标准差的方法来做背景匹配</p>
-<p><a target="_blank" rel="noopener" href="https://xinhaojin.github.io/2022/06/10/%E5%9B%BE%E5%83%8F%E7%9B%B8%E4%BC%BC%E5%BA%A6-%E7%9B%B4%E6%96%B9%E5%9B%BE%E6%A0%87%E5%87%86%E5%B7%AE/">图像相似度-直方图标准差</a></p>
-<h2 id="汉字分割"><a href="#汉字分割" class="headerlink" title="汉字分割"></a>汉字分割</h2><p>为什么要分割？分割后可以根据二值图来画出最小外接矩形，计算倾斜角度，给原图汉字矫正。</p>
-<p>怎么分割？遍历像素，如果与对应背景像素相差较大，认为是汉字。</p>
-<p>怎么定义“相差较大大”？可以计算像素间的距离（颜色距离&#x2F;差异）。一种比较接近人眼观察的颜色差异的计算方法是LAB色彩空间的deltaE，（貌似计算速度较慢），但很准确，相比较rgb值方差之类的方法。</p>
-<p>计算方法<a target="_blank" rel="noopener" href="https://python-colormath.readthedocs.io/en/latest/delta_e.html">Delta E Equations — python-colormath 3.0.0 documentation</a></p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> colormath.color_objects <span class="keyword">import</span> LabColor</span><br><span class="line"><span class="keyword">from</span> colormath.color_diff <span class="keyword">import</span> delta_e_cmc</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line">img_lab=cv2.cvtColor(img,cv2.COLOR_BGR2LAB)</span><br><span class="line">background_lab=cv2.cvtColor(background,cv2.COLOR_BGR2LAB)</span><br><span class="line">......</span><br><span class="line">a=img_lab[j,k]</span><br><span class="line">b=background_lab[j,k]</span><br><span class="line">color1 = LabColor(lab_l=a[<span class="number">0</span>], lab_a=a[<span class="number">1</span>], lab_b=a[<span class="number">2</span>])</span><br><span class="line">color2 = LabColor(lab_l=b[<span class="number">0</span>], lab_a=b[<span class="number">1</span>], lab_b=b[<span class="number">2</span>])</span><br><span class="line">delta_e = delta_e_cmc(color1, color2)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/06/image-7.png"></p>
-<h2 id="倾斜矫正"><a href="#倾斜矫正" class="headerlink" title="倾斜矫正"></a>倾斜矫正</h2><p>倾斜矫正的基础是上一步的分割，得到二值图像之后，</p>
-<p>先用contours, hierarchy &#x3D; cv2.findContours(img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)画出轮廓</p>
-<p>然后最关键的一步，要把轮廓点汇总，把轮廓改成rect &#x3D; cv2.minAreaRect(contours)接收的输入格式，画出最小外接矩形</p>
-<p>然后计算倾斜角度，因为这里基本上是+-45度小角度偏转，所以只要计算外接矩形的任意两个相邻顶点的直线斜率即可，若角度过大，+-90度使角度恢复到+-45度范围内即可。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">rotate</span>(<span class="params">img, angle</span>):</span><br><span class="line">    rows, cols = img.shape[:<span class="number">2</span>]</span><br><span class="line">    rotate = cv2.getRotationMatrix2D((rows*<span class="number">0.5</span>, cols*<span class="number">0.5</span>), angle, <span class="number">1</span>)</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    第一个参数：旋转中心点</span></span><br><span class="line"><span class="string">    第二个参数：旋转角度</span></span><br><span class="line"><span class="string">    第三个参数：缩放比例</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    res = cv2.warpAffine(img, rotate, (cols, rows))</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">getAngle</span>(<span class="params">box</span>):</span><br><span class="line">    x1, y1 = <span class="built_in">list</span>(box[<span class="number">0</span>])</span><br><span class="line">    x2, y2 = <span class="built_in">list</span>(box[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">abs</span>(x1-x2)&lt;=<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    k = (y1-y2)/(x1-x2)  <span class="comment"># 计算斜率的相反数，因为图像左上角为原点，不同于普通直角坐标系</span></span><br><span class="line">    angle = np.arctan(-k)*<span class="number">180</span>/math.pi</span><br><span class="line">    <span class="keyword">if</span> angle &gt; <span class="number">45</span>:</span><br><span class="line">        angle -= <span class="number">90</span></span><br><span class="line">    <span class="keyword">elif</span> angle&lt;-<span class="number">45</span>:</span><br><span class="line">        angle += <span class="number">90</span></span><br><span class="line">    <span class="keyword">return</span> angle</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">mergeContours</span>(<span class="params">contours</span>):  <span class="comment"># 轮廓点汇总</span></span><br><span class="line">    nb = []</span><br><span class="line">    <span class="keyword">for</span> contour <span class="keyword">in</span> contours:</span><br><span class="line">        rect = cv2.minAreaRect(contour)  <span class="comment"># 最小外接矩形</span></span><br><span class="line">        box = cv2.boxPoints(rect)</span><br><span class="line">        box = np.int0(box)  <span class="comment"># np.ndarray</span></span><br><span class="line">        <span class="keyword">for</span> b <span class="keyword">in</span> box:</span><br><span class="line">            temp = []</span><br><span class="line">            temp.append(b.tolist())</span><br><span class="line">            nb.append(temp)</span><br><span class="line">    nb = np.array(nb)</span><br><span class="line">    <span class="keyword">return</span> nb</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">drawBox</span>(<span class="params">img, contours</span>):  <span class="comment"># 图,轮廓点,返回包含所有轮廓点的最小外接矩形的图,矩形四角</span></span><br><span class="line">    rect = cv2.minAreaRect(contours)  <span class="comment"># 最小外接矩形</span></span><br><span class="line">    box = cv2.boxPoints(rect)</span><br><span class="line">    box = np.int0(box)</span><br><span class="line">    img = cv2.drawContours(img, [box], <span class="number">0</span>, (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> img, box</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">correct</span>(<span class="params">img</span>):  <span class="comment"># 传入单通道灰度图</span></span><br><span class="line">    ret, img = cv2.threshold(img, <span class="number">127</span>, <span class="number">255</span>, cv2.THRESH_BINARY)</span><br><span class="line">    <span class="comment">#img = cv2.resize(img, (64, 64))</span></span><br><span class="line">    contours, hierarchy = cv2.findContours(</span><br><span class="line">        img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)</span><br><span class="line">    img = cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)</span><br><span class="line"></span><br><span class="line">    contours = mergeContours(contours)  <span class="comment"># 合并轮廓点</span></span><br><span class="line">    img, box = drawBox(img, contours)  <span class="comment"># 画最小外接矩形</span></span><br><span class="line">    angle = getAngle(box)</span><br><span class="line">    <span class="built_in">print</span>(angle)</span><br><span class="line">    img = rotate(img, <span class="built_in">int</span>(-angle))</span><br><span class="line">    <span class="keyword">return</span> img</span><br></pre></td></tr></table></figure>
-
-<p>最后矫正的效果如上图所示，二值图中的文字其实已经矫正了。</p>
-<h2 id="文字识别"><a href="#文字识别" class="headerlink" title="文字识别"></a>文字识别</h2><p>1.直接识别文字是不行的，因为文字图片并不算清楚，十有八九要识别错误。</p>
-<p>2.但是，文字识别模型的输出结果其实是对应字典里每个字的概率，我只要去找标题中三个字的概率哪个最大就行了。</p>
-<p>3.可能有两个框，对于概率最大的是同一个字，怎么处理？</p>
-<p>4.每一个矩形框（一张小图），可以得到标题中三个字的概率，三个矩形框中的文字识别结束后，得到一个3*3的概率矩阵</p>
-<p>先找到9个中最大的，记录它的行列号，消去所在行所在列，剩余4个</p>
-<p>找到4个中最大的，记录它原先的行列号，消去所在行所在列，剩余1个</p>
-<p>三个框，三个字，一一对应，能充分利用排除法和题目已知条件</p>
-<table>
-<thead>
-<tr>
-<th>字1</th>
-<th>字2</th>
-<th>字3</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>矩形框1</td>
-<td>0.xxx</td>
-<td>0.xxx</td>
-</tr>
-<tr>
-<td>矩形框2</td>
-<td>0.xxx(9个中最大)</td>
-<td>0.xxx</td>
-</tr>
-<tr>
-<td>矩形框3</td>
-<td>0.xxx</td>
-<td>0.xxx(4个中最大)</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>把矫正后的文字小图放进文字识别模型中识别，如下两图，其中“糖”矫正成了偏转90度的样子，但结果却是正确的，得益于上述排除法。100张测试图片识别准确率从84%提高到99%。</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/06/image-8.png"></p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/06/image-9.png"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/06/10/%E5%9F%BA%E4%BA%8E%E5%B7%B2%E7%9F%A5%E8%83%8C%E6%99%AF%E7%9A%84%E9%AA%8C%E8%AF%81%E7%A0%81%E6%96%87%E5%AD%97%E5%80%BE%E6%96%9C%E7%9F%AB%E6%AD%A3%E5%8F%8A%E8%AF%86%E5%88%AB/" data-id="cm9zmq8zt00ecsqhl6wvr6vm8" data-title="基于已知背景的验证码文字倾斜矫正及识别" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/" rel="tag">验证码</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-图像相似度-直方图标准差" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/06/10/%E5%9B%BE%E5%83%8F%E7%9B%B8%E4%BC%BC%E5%BA%A6-%E7%9B%B4%E6%96%B9%E5%9B%BE%E6%A0%87%E5%87%86%E5%B7%AE/" class="article-date">
-  <time class="dt-published" datetime="2022-06-10T06:36:21.000Z" itemprop="datePublished">2022-06-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python/">python</a>►<a class="article-category-link" href="/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">图像处理</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/06/10/%E5%9B%BE%E5%83%8F%E7%9B%B8%E4%BC%BC%E5%BA%A6-%E7%9B%B4%E6%96%B9%E5%9B%BE%E6%A0%87%E5%87%86%E5%B7%AE/">图像相似度-直方图标准差</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>现有一张验证码图片，可能的背景有6种，怎么判断他的背景是哪一种？</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/06/image-2.png"></p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/06/image-4.png"></p>
-<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>对于这种大面积相同的图片，一种很快速的方法是计算两张图直方图的标准差。</p>
-<p>计算和每一张背景图的标准差，取最小的就行</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment">#计算直方图的标准差</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">image_contrast_std</span>(<span class="params">img1, img2</span>):</span><br><span class="line">    image1 = Image.<span class="built_in">open</span>(img1)</span><br><span class="line">    image2 = Image.<span class="built_in">open</span>(img2)</span><br><span class="line"></span><br><span class="line">    h1 = image1.histogram()</span><br><span class="line">    h2 = image2.histogram()</span><br><span class="line">    h1 = np.array(h1)</span><br><span class="line">    h2 = np.array(h2)</span><br><span class="line">    result = np.std(h1-h2)</span><br><span class="line">    <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/06/10/%E5%9B%BE%E5%83%8F%E7%9B%B8%E4%BC%BC%E5%BA%A6-%E7%9B%B4%E6%96%B9%E5%9B%BE%E6%A0%87%E5%87%86%E5%B7%AE/" data-id="cm9zmq8zt00e8sqhl9htn8vs1" data-title="图像相似度-直方图标准差" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-验证码背景合成（多张残缺图合成一张完整图）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/06/10/%E9%AA%8C%E8%AF%81%E7%A0%81%E8%83%8C%E6%99%AF%E5%90%88%E6%88%90%EF%BC%88%E5%A4%9A%E5%BC%A0%E6%AE%8B%E7%BC%BA%E5%9B%BE%E5%90%88%E6%88%90%E4%B8%80%E5%BC%A0%E5%AE%8C%E6%95%B4%E5%9B%BE%EF%BC%89/" class="article-date">
-  <time class="dt-published" datetime="2022-06-10T05:23:17.000Z" itemprop="datePublished">2022-06-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python/">python</a>►<a class="article-category-link" href="/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">图像处理</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/06/10/%E9%AA%8C%E8%AF%81%E7%A0%81%E8%83%8C%E6%99%AF%E5%90%88%E6%88%90%EF%BC%88%E5%A4%9A%E5%BC%A0%E6%AE%8B%E7%BC%BA%E5%9B%BE%E5%90%88%E6%88%90%E4%B8%80%E5%BC%A0%E5%AE%8C%E6%95%B4%E5%9B%BE%EF%BC%89/">验证码背景合成（多张残缺图合成一张完整图）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>有多张验证码图片，背景相同，如何获取完整的背景图？</p>
-<p>已有条件：可以使用yolox检测出汉字的位置矩形框。</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/06/image.png"></p>
-<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>输入：一个验证码图片文件夹</p>
-<p>输出：包含所有的背景图片的文件夹</p>
-<ol>
-<li>背景区分：假设相同的背景的验证码图片的背景部分是完全一致的的，那么可以比较边框的像素点来判断是否是同一个背景，把所有图片按照背景分类。</li>
-<li>针对每一个分类，用yolox预测出汉字框，把汉字框部分像素点设置为黑色，以其中一张为基础，遍历它的黑色像素位置，在其他几张验证码图片上查找是否有不是黑色的像素点，如果有，则替换基础图片的对应像素点。</li>
-<li>保存合成的背景图片。</li>
-</ol>
-<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p><img src="https://xinhaojin.github.io/imgs-host/past/2022/06/image-1.png"></p>
-<h2 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h2><p>这里的yolox_predict.imagedemo()用于得到所有文字矩形框</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"><span class="comment">#用于分析合成所有背景图</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> yolox_predict</span><br><span class="line"></span><br><span class="line"><span class="comment">#图片背景分类</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">classify</span>(<span class="params"><span class="built_in">dir</span></span>):</span><br><span class="line">    <span class="built_in">dict</span>=&#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> fileName <span class="keyword">in</span> os.listdir(<span class="built_in">dir</span>):</span><br><span class="line">        filePath=os.path.join(<span class="built_in">dir</span>,fileName)</span><br><span class="line">        img=cv2.imdecode(np.fromfile(filePath,dtype=np.uint8),-<span class="number">1</span>)</span><br><span class="line">        x,y=img.shape[:<span class="number">2</span>]</span><br><span class="line">        <span class="comment">#提取四个角的像素值作为特征点，分类依据</span></span><br><span class="line">        feature = <span class="string">&#x27;&#x27;</span>.join(<span class="built_in">str</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> img[<span class="number">0</span>,<span class="number">0</span>])+<span class="string">&#x27;&#x27;</span>.join(<span class="built_in">str</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> img[<span class="number">0</span>,y-<span class="number">1</span>])+<span class="string">&#x27;&#x27;</span>.join(<span class="built_in">str</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> img[x-<span class="number">1</span>,<span class="number">0</span>])+<span class="string">&#x27;&#x27;</span>.join(<span class="built_in">str</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> img[x-<span class="number">1</span>,y-<span class="number">1</span>])</span><br><span class="line">        <span class="built_in">print</span>(feature)</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">dict</span>.__contains__(<span class="built_in">str</span>(feature)):</span><br><span class="line">            <span class="built_in">dict</span>[<span class="built_in">str</span>(feature)].append(fileName)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">dict</span>[<span class="built_in">str</span>(feature)]=[fileName]</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">dict</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># inputDir=&quot;E:/Y1/验证码/数据集/VOC2007-网易/JPEGImages&quot;</span></span><br><span class="line">inputDir=<span class="string">&quot;C:/Users/Administrator/Desktop/test&quot;</span></span><br><span class="line">outputDir=<span class="string">&quot;C:/Users/Administrator/Desktop/result&quot;</span></span><br><span class="line">DICT=classify(inputDir)<span class="comment">#图片背景分类</span></span><br><span class="line"><span class="built_in">print</span>(DICT)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;分类完成...&#x27;</span>)</span><br><span class="line">predictor,current_time= yolox_predict.init()<span class="comment">#加载模型</span></span><br><span class="line">index=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> key,value <span class="keyword">in</span> DICT.items():</span><br><span class="line">    imgs=[]<span class="comment">#该分类下所有挖掉汉字后的背景图</span></span><br><span class="line">    rects=[]<span class="comment">#最后一张图的三个矩形框</span></span><br><span class="line">    <span class="keyword">for</span> fileName <span class="keyword">in</span> value:<span class="comment">#同一背景的验证码图片</span></span><br><span class="line">        filePath=os.path.join(inputDir,fileName)</span><br><span class="line">        rects=yolox_predict.image_demo(predictor, vis_folder=outputDir, path=filePath, current_time=current_time)</span><br><span class="line">        <span class="built_in">print</span>(filePath+<span class="string">&#x27;预测完成...&#x27;</span>)</span><br><span class="line">        img=cv2.imdecode(np.fromfile(filePath,dtype=np.uint8),-<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span> rect <span class="keyword">in</span> rects:</span><br><span class="line">            x1,y1,x2,y2=rect</span><br><span class="line">            img[y1:y2,x1:x2]=[<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>]</span><br><span class="line">        imgs.append(img)</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(imgs)&lt;<span class="number">5</span>:<span class="comment">#5张相同背景的验证码图片，被认为可以拼凑出完整背景</span></span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    <span class="keyword">for</span> rect <span class="keyword">in</span> rects:</span><br><span class="line">        x1,y1,x2,y2=rect</span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(x1,x2):</span><br><span class="line">            <span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(y1,y2):<span class="comment">#空缺的每个像素</span></span><br><span class="line">                <span class="keyword">for</span> img <span class="keyword">in</span> imgs[:-<span class="number">1</span>]:<span class="comment">#在其余几张图中找</span></span><br><span class="line">                        <span class="keyword">if</span> <span class="built_in">sum</span>(img[y,x])&gt;<span class="number">0</span>:<span class="comment">#不是黑的</span></span><br><span class="line">                            imgs[-<span class="number">1</span>][y,x]=img[y,x]<span class="comment">#找到，替换</span></span><br><span class="line">    cv2.imwrite(os.path.join(outputDir,<span class="built_in">str</span>(index)+<span class="string">&#x27;.jpg&#x27;</span>) ,imgs[-<span class="number">1</span>])</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;合成背景图&#x27;</span>+os.path.join(outputDir,<span class="built_in">str</span>(index)+<span class="string">&#x27;.jpg&#x27;</span>))</span><br><span class="line">    index+=<span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/06/10/%E9%AA%8C%E8%AF%81%E7%A0%81%E8%83%8C%E6%99%AF%E5%90%88%E6%88%90%EF%BC%88%E5%A4%9A%E5%BC%A0%E6%AE%8B%E7%BC%BA%E5%9B%BE%E5%90%88%E6%88%90%E4%B8%80%E5%BC%A0%E5%AE%8C%E6%95%B4%E5%9B%BE%EF%BC%89/" data-id="cm9zmq90u00izsqhlhf369fj4" data-title="验证码背景合成（多张残缺图合成一张完整图）" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/" rel="tag">验证码</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-ubuntu20-04安装配置vncserver" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/05/18/ubuntu20-04%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEvncserver/" class="article-date">
-  <time class="dt-published" datetime="2022-05-18T13:01:40.000Z" itemprop="datePublished">2022-05-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">软件安装配置</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/05/18/ubuntu20-04%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEvncserver/">ubuntu20.04安装配置vncserver</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="更新系统"><a href="#更新系统" class="headerlink" title="更新系统"></a>更新系统</h2><pre><code>sudo apt update
-sudo apt upgrade
-</code></pre>
-<h2 id="安装软件"><a href="#安装软件" class="headerlink" title="安装软件"></a>安装软件</h2><pre><code>sudo apt install tigervncserver
-</code></pre>
-<p>打开端口</p>
-<pre><code>sudo firewall-cmd --zone=public --add-port=5900/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=5901/tcp --permanent
-</code></pre>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>运行 vncserver 命令，该命令将创建初始配置并设置密码。运行以下命令时不要使用 sudo</p>
-<pre><code>vncserver
-</code></pre>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/05/image-3-1024x386.png"></p>
-<p>系统将提示您输入并确认密码，以及是否将其设置为仅查看密码。如果您选择设置仅查看密码，则用户将无法使用鼠标和键盘与 VNC 实例进行交互</p>
-<p>第一次 vncserver 运行命令时，它将创建密码文件并将其存储在 ~&#x2F;.vnc 目录中，如果不存在，将创建该目录。</p>
-<p>注意上面输出中主机名之后的 :1 。这表示运行 vnc 服务器的显示端口号。在我们的例子中，服务器在 TCP 端口 5901 (5900 + 1)上运行。如果您创建第二个实例， vncserver 它将在下一个空闲端口上运行，即 :2 这意味着服务器正在端口 5902 (5900 + 2)上运行。</p>
-<p>重要的是要记住，当使用 VNC 服务器时， :X 是一个引用的显示端口 5900+X 。</p>
-<p>注：如果启动时出现 vnc 启动异常： is taken because of &#x2F;tmp&#x2F;.X11-unix&#x2F;X1</p>
-<p>此时只需要将提示的文件删除即可。再次输入 vncserver。</p>
-<p>在继续下一步之前，首先使用带有 -kill 选项和服务器编号作为参数的 vncserver 命令停止 VNC 实例。在我们的例子中，服务器在端口 5901 (:1)中运行，因此我们将使用以下命令停止它：</p>
-<pre><code>vncserver -kill :1
-</code></pre>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/05/image-4.png"></p>
-<p>现在我们已经在服务器上安装了 Xfce 和 TigerVNC ，我们需要配置 TigerVNC 来使用 Xfce 。为此，请创建以下文件 〜&#x2F;.vnc&#x2F;xstartup：</p>
-<pre><code>vi ~/.vnc/xstartup
-
-#!/bin/sh
-unset SESSION_MANAGER
-unset DBUS_SESSION_BUS_ADDRESS
-exec startxfce4
-</code></pre>
-<p>保存并关闭文件。无论何时启动或重启 TigerVNC 服务器，都将自动执行上述命令。</p>
-<p>~&#x2F;.vnc&#x2F;xstartup 文件还需要具有执行权限。运行以下命令以确保权限正确：</p>
-<pre><code>chmod u+x ~/.vnc/xstartup
-</code></pre>
-<p>如果需要将<a href="https://xie.infoq.cn/link?target=http://tigervnc.org/doc/vncserver.html">附加选项</a>传递给 VNC 服务器，则可以创建一个名为 config 的文件，并为每行添加一个选项。这是一个例子：</p>
-<p>文件 ~&#x2F;.vnc&#x2F;config</p>
-<pre><code>geometry=1920x1084
-dpi=96
-</code></pre>
-<h2 id="创建-Systemd-单元文件"><a href="#创建-Systemd-单元文件" class="headerlink" title="创建 Systemd 单元文件"></a>创建 Systemd 单元文件</h2><p>我们将创建一个 systemd 单元文件，使我们能够根据需要轻松启动，停止和重新启动 VNC 服务，与任何其他 systemd 服务相同。</p>
-<p>打开文本编辑器，将以下配置复制并粘贴到其中。</p>
-<pre><code>sudo vi /etc/systemd/system/vncserver@.service
-</code></pre>
-<p>请务必更改第 7 行中的用户名以匹配您的用户名。</p>
-<pre><code>[Unit]
-Description=Remote desktop service (VNC)
-After=syslog.target network.target
-
-[Service]
-Type=simple
-User=username
-PAMName=login
-PIDFile=/home/%u/.vnc/%H%i.pid
-ExecStartPre=/bin/sh -c &#39;/usr/bin/vncserver -kill :%i &gt; /dev/null 2&gt;&amp;1  :&#39;
-ExecStart=/usr/bin/vncserver :%i -geometry 1440x900 -alwaysshared -fg
-ExecStop=/usr/bin/vncserver -kill :%i
-
-[Install]
-WantedBy=multi-user.target
-</code></pre>
-<p>保存并关闭文件。</p>
-<p>通知 systemd 我们创建了一个新的单元文件：</p>
-<pre><code>sudo systemctl daemon-reload
-</code></pre>
-<p>下一步是使用以下命令启用单元文件：</p>
-<pre><code>sudo systemctl enable vncserver@1.service
-</code></pre>
-<p>符号 1 后面的数字 @ 定义了运行 VNC 服务的显示端口。这意味着 VNC 服务器将侦听端口 5901 ，正如我们在上一节中讨论的那样。</p>
-<p>执行以下命令启动 VNC 服务：</p>
-<pre><code>sudo systemctl start vncserver@1.service
-</code></pre>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/05/image-5-1024x237.png"></p>
-<pre><code>sudo systemctl start vncserver@1.service#启动
-sudo systemctl enable vncserver@1.service#自启动
-</code></pre>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/05/18/ubuntu20-04%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEvncserver/" data-id="cm9zmq8yp0092sqhlaeyve3ib" data-title="ubuntu20.04安装配置vncserver" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" rel="tag">软件安装配置</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-selenium爬取极验验证码，paddleocr识别文字作为文件名" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/05/15/selenium%E7%88%AC%E5%8F%96%E6%9E%81%E9%AA%8C%E9%AA%8C%E8%AF%81%E7%A0%81%EF%BC%8Cpaddleocr%E8%AF%86%E5%88%AB%E6%96%87%E5%AD%97%E4%BD%9C%E4%B8%BA%E6%96%87%E4%BB%B6%E5%90%8D/" class="article-date">
-  <time class="dt-published" datetime="2022-05-15T12:09:35.000Z" itemprop="datePublished">2022-05-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python/">python</a>►<a class="article-category-link" href="/categories/%E7%88%AC%E8%99%AB/">爬虫</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/05/15/selenium%E7%88%AC%E5%8F%96%E6%9E%81%E9%AA%8C%E9%AA%8C%E8%AF%81%E7%A0%81%EF%BC%8Cpaddleocr%E8%AF%86%E5%88%AB%E6%96%87%E5%AD%97%E4%BD%9C%E4%B8%BA%E6%96%87%E4%BB%B6%E5%90%8D/">selenium爬取极验验证码，PaddleOCR识别文字作为文件名</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>自动爬取验证码图片，图片文件名需要包含右上角的标题文字（在网页上是图片类型，不是文本）</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/05/image-2.png"></p>
-<h2 id="Edge-driver初始化"><a href="#Edge-driver初始化" class="headerlink" title="Edge driver初始化"></a>Edge driver初始化</h2><p>第一种</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> msedge.selenium_tools <span class="keyword">import</span> Edge, EdgeOptions</span><br><span class="line">        edge_options = EdgeOptions()</span><br><span class="line">        edge_options.use_chromium = <span class="literal">True</span></span><br><span class="line">        edge_options.add_argument(<span class="string">&#x27;headless&#x27;</span>)<span class="comment">#后台运行</span></span><br><span class="line">        edge_options.add_experimental_option(<span class="string">&#x27;excludeSwitches&#x27;</span>,[<span class="string">&#x27;enable-automation&#x27;</span>,<span class="string">&#x27;enable-logging&#x27;</span>])</span><br><span class="line">        driver = Edge(options=edge_options)</span><br><span class="line">        <span class="keyword">return</span> driver</span><br></pre></td></tr></table></figure>
-
-<p>第二种</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line">driver=webdriver.Edge(executable_path=<span class="string">&#x27;msedgedriver.exe&#x27;</span>)</span><br><span class="line"><span class="comment">#在https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/下载对应驱动</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="PaddleOCR文字识别"><a href="#PaddleOCR文字识别" class="headerlink" title="PaddleOCR文字识别"></a>PaddleOCR文字识别</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> paddleocr <span class="keyword">import</span> PaddleOCR</span><br><span class="line">ocr = PaddleOCR(use_angle_cls=<span class="literal">True</span>, lang=<span class="string">&quot;ch&quot;</span>)<span class="comment">#启动ocr引擎</span></span><br><span class="line">result = ocr.ocr(<span class="string">&#x27;temp.jpg&#x27;</span>)</span><br><span class="line">text=result[<span class="number">0</span>][<span class="number">1</span>][<span class="number">0</span>]<span class="comment">#只有一个字的情况</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="图片处理"><a href="#图片处理" class="headerlink" title="图片处理"></a>图片处理</h2><p>图片下载下来后，用paddleOCR识别，发现无结果，用opencv读取，发现有4通道，应该是有一个透明的通道</p>
-<p>把4通道分别显示出来后发现有信息的是第4通道，所以需要把下载下来的图片读取第4通道保存为灰度图，再给paddleOCR识别即可。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">img=cv2.imdecode(np.fromfile(<span class="string">&#x27;temp.jpg&#x27;</span>,dtype=np.uint8),-<span class="number">1</span>)<span class="comment">#读取图片</span></span><br><span class="line">img=img[:,:,<span class="number">3</span>]<span class="comment">#取第四个通道</span></span><br><span class="line">cv2.imwrite(<span class="string">&#x27;temp.jpg&#x27;</span>,img)<span class="comment">#保存包含汉字信息的灰度图</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://static.geetest.com/nerualpic/original_word_pic/jiangchengzhengjunti/fd6a0e7d3606d6c328cd552c2bb52fa3.png"></p>
-<h2 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> paddleocr <span class="keyword">import</span> PaddleOCR</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">downloadPic</span>(<span class="params">url, filename</span>):<span class="comment"># 下载图片</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="comment"># 下载图片，并保存到文件夹中</span></span><br><span class="line">        urllib.request.urlretrieve(url=url, filename=filename)</span><br><span class="line">    <span class="keyword">except</span> IOError <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;IOError&quot;</span>)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Exception&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">transfer</span>(<span class="params">num</span>):<span class="comment"># 序号前加0</span></span><br><span class="line">    temp = num</span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        temp = <span class="built_in">int</span>(temp/<span class="number">10</span>)</span><br><span class="line">        <span class="keyword">if</span> temp &gt; <span class="number">0</span>:</span><br><span class="line">            count = count+<span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;0&#x27;</span>*(<span class="number">4</span>-count)+<span class="built_in">str</span>(num)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">getTitleText</span>(<span class="params">titleImgs,ocr</span>):</span><br><span class="line">    title = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">        downloadPic(titleImgs[i],<span class="string">&#x27;temp.jpg&#x27;</span>) <span class="comment"># 下载图片,保存到当前文件夹</span></span><br><span class="line">        img=cv2.imdecode(np.fromfile(<span class="string">&#x27;temp.jpg&#x27;</span>,dtype=np.uint8),-<span class="number">1</span>)<span class="comment">#读取图片</span></span><br><span class="line">        img=img[:,:,<span class="number">3</span>]<span class="comment">#取第四个通道</span></span><br><span class="line">        cv2.imwrite(<span class="string">&#x27;temp.jpg&#x27;</span>,img)<span class="comment">#保存包含汉字信息的灰度图</span></span><br><span class="line">        time.sleep(<span class="number">0.2</span>)</span><br><span class="line">        result = ocr.ocr(<span class="string">&#x27;temp.jpg&#x27;</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(result)==<span class="number">0</span>:<span class="comment">#识别失败，不知道什么原因，跳过即可</span></span><br><span class="line">            <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            title+=result[<span class="number">0</span>][<span class="number">1</span>][<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">return</span> title</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">init</span>(<span class="params">mode</span>):<span class="comment">#初始化driver</span></span><br><span class="line">    <span class="keyword">if</span> mode ==<span class="number">1</span>:<span class="comment">#不用driver.exe</span></span><br><span class="line">        <span class="keyword">from</span> msedge.selenium_tools <span class="keyword">import</span> Edge, EdgeOptions</span><br><span class="line">        edge_options = EdgeOptions()</span><br><span class="line">        edge_options.use_chromium = <span class="literal">True</span></span><br><span class="line">        edge_options.add_argument(<span class="string">&#x27;headless&#x27;</span>)</span><br><span class="line">        edge_options.add_experimental_option(<span class="string">&#x27;excludeSwitches&#x27;</span>,[<span class="string">&#x27;enable-automation&#x27;</span>,<span class="string">&#x27;enable-logging&#x27;</span>])</span><br><span class="line">        driver = Edge(options=edge_options)</span><br><span class="line">        <span class="keyword">return</span> driver</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        driver=webdriver.Edge(executable_path=<span class="string">&#x27;msedgedriver.exe&#x27;</span>)</span><br><span class="line">        driver.maximize_window()</span><br><span class="line">        <span class="keyword">return</span> driver</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        ocr = PaddleOCR(use_angle_cls=<span class="literal">True</span>, lang=<span class="string">&quot;ch&quot;</span>)<span class="comment">#启动ocr引擎</span></span><br><span class="line">        <span class="built_in">dir</span>=<span class="string">&#x27;datasets/jiyan_new/&#x27;</span><span class="comment">#保存图片的文件夹</span></span><br><span class="line">        driver=init(<span class="number">0</span>)</span><br><span class="line">        driver.get(<span class="string">&#x27;https://www.geetest.com/adaptive-captcha-demo&#x27;</span>)</span><br><span class="line">        driver.implicitly_wait(<span class="number">10</span>)  <span class="comment"># 最多等待时间</span></span><br><span class="line">        driver.find_element_by_css_selector(<span class="string">&#x27;.tab-item-2&#x27;</span>).click()</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line">        driver.find_element_by_css_selector(<span class="string">&#x27;.geetest_btn_click&#x27;</span>).click()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(<span class="built_in">dir</span>):</span><br><span class="line">            os.mkdir(<span class="built_in">dir</span>)</span><br><span class="line">        files = os.listdir(<span class="built_in">dir</span>)  <span class="comment"># 获取文件数目</span></span><br><span class="line">        num = <span class="built_in">len</span>(files)+<span class="number">1</span>  <span class="comment"># 起始序号</span></span><br><span class="line"></span><br><span class="line">        index = <span class="number">0</span></span><br><span class="line">        last_img_src = <span class="string">&#x27;&#x27;</span></span><br><span class="line">     </span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> index &lt; <span class="number">500</span>:  <span class="comment"># 需要获取的验证码数量</span></span><br><span class="line">            time.sleep(<span class="number">0.8</span>)</span><br><span class="line">            title_imgs=driver.find_element_by_css_selector(<span class="string">&#x27;.geetest_ques_tips&#x27;</span>)</span><br><span class="line">            <span class="comment">#获取子元素</span></span><br><span class="line">            title_imgs=title_imgs.find_elements_by_tag_name(<span class="string">&#x27;img&#x27;</span>)</span><br><span class="line">            <span class="comment">#获取子元素的src属性 标题三个字的图片url</span></span><br><span class="line">            title_imgs=[title_img.get_attribute(<span class="string">&#x27;src&#x27;</span>) <span class="keyword">for</span> title_img <span class="keyword">in</span> title_imgs]</span><br><span class="line">            title=getTitleText(title_imgs,ocr)</span><br><span class="line">            <span class="keyword">if</span> title==<span class="string">&#x27;&#x27;</span>:</span><br><span class="line">                driver.find_element_by_css_selector(</span><br><span class="line">                <span class="string">&#x27;.geetest_refresh&#x27;</span>).click()  <span class="comment"># 刷新按钮</span></span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            img_src = driver.find_element_by_css_selector(<span class="string">&#x27;.geetest_bg&#x27;</span>).get_attribute(<span class="string">&#x27;style&#x27;</span>)  <span class="comment"># 图片url</span></span><br><span class="line">            <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">            background-image: </span></span><br><span class="line"><span class="string">            url(&quot;https://static.geetest.com/captcha_v4/policy/fdd2aaa4a429487381bd673b104f152d/word/14/2022-03-22T17/9cc1499b9d0646618f0b12863e6410ce.jpg&quot;);</span></span><br><span class="line"><span class="string">            &#x27;&#x27;&#x27;</span></span><br><span class="line">            img_src = img_src.split(<span class="string">&#x27;&quot;&#x27;</span>)[<span class="number">1</span>]</span><br><span class="line">            <span class="keyword">if</span> img_src == last_img_src:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            last_img_src = img_src</span><br><span class="line">            filename = transfer(num+index)+title+<span class="string">&#x27;.png&#x27;</span></span><br><span class="line">            downloadPic(img_src, <span class="built_in">dir</span>+filename)</span><br><span class="line">            time.sleep(<span class="number">0.2</span>)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;序号：&#x27;</span>+<span class="built_in">str</span>(index))</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;文件名：&#x27;</span>+filename)</span><br><span class="line">            index += <span class="number">1</span></span><br><span class="line">            driver.find_element_by_css_selector(</span><br><span class="line">                <span class="string">&#x27;.geetest_refresh&#x27;</span>).click()  <span class="comment"># 刷新按钮</span></span><br><span class="line">        driver.quit()</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(e)</span><br><span class="line">        driver.quit()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/05/15/selenium%E7%88%AC%E5%8F%96%E6%9E%81%E9%AA%8C%E9%AA%8C%E8%AF%81%E7%A0%81%EF%BC%8Cpaddleocr%E8%AF%86%E5%88%AB%E6%96%87%E5%AD%97%E4%BD%9C%E4%B8%BA%E6%96%87%E4%BB%B6%E5%90%8D/" data-id="cm9zmq8ym008ksqhl26e02t3r" data-title="selenium爬取极验验证码，PaddleOCR识别文字作为文件名" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ocr/" rel="tag">ocr</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/selenium/" rel="tag">selenium</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/" rel="tag">验证码</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-linux命令行代理工具：proxychains" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/05/09/linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BB%A3%E7%90%86%E5%B7%A5%E5%85%B7%EF%BC%9Aproxychains/" class="article-date">
-  <time class="dt-published" datetime="2022-05-09T14:03:09.000Z" itemprop="datePublished">2022-05-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%9D%82/">杂</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/05/09/linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BB%A3%E7%90%86%E5%B7%A5%E5%85%B7%EF%BC%9Aproxychains/">linux命令行代理工具：proxychains</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre><code>sudo apt install proxychains4
-</code></pre>
-<p>编辑&#x2F;etc&#x2F;proxychains4.conf</p>
-<p>在末尾添加代理服务器设置</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/05/image.png"></p>
-<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><pre><code>curl www.httpbin.org/ip
-</code></pre>
-<p>在命令前添加proxychains4来走代理</p>
-<pre><code>proxychains4 curl www.httpbin.org/ip
-</code></pre>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/05/image-1-1024x339.png"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/05/09/linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BB%A3%E7%90%86%E5%B7%A5%E5%85%B7%EF%BC%9Aproxychains/" data-id="cm9zmq8xs004ksqhlejiy6snj" data-title="linux命令行代理工具：proxychains" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BB%A3%E7%90%86/" rel="tag">代理</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
-  </nav>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/LeetCode/">LeetCode</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/%E6%9D%82/">杂</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/%E6%9D%82/">杂</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/pytorch/">pytorch</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">图像处理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%8D%93/">安卓</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82/">杂</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%88%AC%E8%99%AB/">爬虫</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/">目标检测</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E5%B7%A5/">网工</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">软件安装配置</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/linux/">linux</a></li></ul></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/" rel="tag">CDN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DDNS/" rel="tag">DDNS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DHCP/" rel="tag">DHCP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNS/" rel="tag">DNS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IP/" rel="tag">IP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IPsec/" rel="tag">IPsec</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDA/" rel="tag">LDA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NFC/" rel="tag">NFC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDF/" rel="tag">PDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SMTP/" rel="tag">SMTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chatgpt/" rel="tag">chatgpt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloudflare/" rel="tag">cloudflare</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/" rel="tag">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ocr/" rel="tag">ocr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyinstaller/" rel="tag">pyinstaller</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pytorch/" rel="tag">pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rpa/" rel="tag">rpa</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/selenium/" rel="tag">selenium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/" rel="tag">socket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssl/" rel="tag">ssl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wget/" rel="tag">wget</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wol/" rel="tag">wol</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/" rel="tag">wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/worldcloud/" rel="tag">worldcloud</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%91%E7%9B%98/" rel="tag">云盘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B/" rel="tag">人脸检测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%90%86/" rel="tag">代理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%80%8D%E9%80%9F%E6%92%AD%E6%94%BE/" rel="tag">倍速播放</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" rel="tag">内网穿透</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E7%9B%AE%E6%91%84%E5%83%8F%E5%A4%B4%E6%B5%8B%E8%B7%9D/" rel="tag">单目摄像头测距</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%93%88%E5%A4%AB%E6%9B%BC/" rel="tag">哈夫曼</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" rel="tag">哈希表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%9F%E5%90%8D/" rel="tag">域名</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A0%86/" rel="tag">堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E5%B1%8F%E5%8D%8F%E5%90%8C/" rel="tag">多屏协同</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%AA%E7%94%9F%E7%BD%91%E7%BB%9C/" rel="tag">孪生网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E5%8D%93/" rel="tag">安卓</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/" rel="tag">局域网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/" rel="tag">数据集</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%BB%84/" rel="tag">数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" rel="tag">树莓派</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BF%80%E5%85%89%E6%B5%8B%E8%B7%9D/" rel="tag">激光测距</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%82%B9%E9%80%89%E9%AA%8C%E8%AF%81%E7%A0%81/" rel="tag">点选验证码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" rel="tag">目标检测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" rel="tag">端口转发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" rel="tag">编译原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E5%B7%A5/" rel="tag">网工</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%80%81%E6%AF%9B%E5%AD%90%E5%9B%BA%E4%BB%B6/" rel="tag">老毛子固件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" rel="tag">虚拟机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD/" rel="tag">视频下载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E6%B5%81/" rel="tag">视频流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%AD%E9%9F%B3%E8%BD%AC%E6%96%87%E5%AD%97/" rel="tag">语音转文字</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B6%85%E5%83%8F%E7%B4%A0/" rel="tag">超像素</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B6%85%E5%A3%B0%E6%B3%A2/" rel="tag">超声波</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8%E5%88%B7%E6%9C%BA/" rel="tag">路由器刷机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" rel="tag">软件安装配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E7%94%BB%E5%90%8C%E6%AD%A5/" rel="tag">音画同步</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/" rel="tag">验证码</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/CDN/" style="font-size: 10px;">CDN</a> <a href="/tags/DDNS/" style="font-size: 10px;">DDNS</a> <a href="/tags/DHCP/" style="font-size: 10px;">DHCP</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/IP/" style="font-size: 10.67px;">IP</a> <a href="/tags/IPsec/" style="font-size: 10px;">IPsec</a> <a href="/tags/LDA/" style="font-size: 10px;">LDA</a> <a href="/tags/NFC/" style="font-size: 10px;">NFC</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/SMTP/" style="font-size: 10px;">SMTP</a> <a href="/tags/blog/" style="font-size: 11.33px;">blog</a> <a href="/tags/c/" style="font-size: 16px;">c++</a> <a href="/tags/chatgpt/" style="font-size: 10.67px;">chatgpt</a> <a href="/tags/cloudflare/" style="font-size: 11.33px;">cloudflare</a> <a href="/tags/docker/" style="font-size: 12.67px;">docker</a> <a href="/tags/flask/" style="font-size: 11.33px;">flask</a> <a href="/tags/java/" style="font-size: 13.33px;">java</a> <a href="/tags/js/" style="font-size: 11.33px;">js</a> <a href="/tags/linux/" style="font-size: 19.33px;">linux</a> <a href="/tags/nginx/" style="font-size: 12.67px;">nginx</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/ocr/" style="font-size: 10px;">ocr</a> <a href="/tags/php/" style="font-size: 10.67px;">php</a> <a href="/tags/pyinstaller/" style="font-size: 10px;">pyinstaller</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/pytorch/" style="font-size: 16.67px;">pytorch</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/rpa/" style="font-size: 10px;">rpa</a> <a href="/tags/selenium/" style="font-size: 11.33px;">selenium</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/socket/" style="font-size: 10px;">socket</a> <a href="/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/tags/ssh/" style="font-size: 13.33px;">ssh</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/wget/" style="font-size: 10px;">wget</a> <a href="/tags/wol/" style="font-size: 10px;">wol</a> <a href="/tags/wordpress/" style="font-size: 10.67px;">wordpress</a> <a href="/tags/worldcloud/" style="font-size: 10px;">worldcloud</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 12.67px;">二叉树</a> <a href="/tags/%E4%BA%91%E7%9B%98/" style="font-size: 10px;">云盘</a> <a href="/tags/%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B/" style="font-size: 10px;">人脸检测</a> <a href="/tags/%E4%BB%A3%E7%90%86/" style="font-size: 13.33px;">代理</a> <a href="/tags/%E5%80%8D%E9%80%9F%E6%92%AD%E6%94%BE/" style="font-size: 10px;">倍速播放</a> <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" style="font-size: 11.33px;">内网穿透</a> <a href="/tags/%E5%8D%95%E7%9B%AE%E6%91%84%E5%83%8F%E5%A4%B4%E6%B5%8B%E8%B7%9D/" style="font-size: 10px;">单目摄像头测距</a> <a href="/tags/%E5%93%88%E5%A4%AB%E6%9B%BC/" style="font-size: 10px;">哈夫曼</a> <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" style="font-size: 10.67px;">哈希表</a> <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" style="font-size: 14px;">图像处理</a> <a href="/tags/%E5%9F%9F%E5%90%8D/" style="font-size: 10px;">域名</a> <a href="/tags/%E5%A0%86/" style="font-size: 10px;">堆</a> <a href="/tags/%E5%A4%9A%E5%B1%8F%E5%8D%8F%E5%90%8C/" style="font-size: 10px;">多屏协同</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a> <a href="/tags/%E5%AD%AA%E7%94%9F%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">孪生网络</a> <a href="/tags/%E5%AE%89%E5%8D%93/" style="font-size: 13.33px;">安卓</a> <a href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/" style="font-size: 12px;">局域网</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 18.67px;">数据结构</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/" style="font-size: 15.33px;">数据集</a> <a href="/tags/%E6%95%B0%E7%BB%84/" style="font-size: 10px;">数组</a> <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" style="font-size: 14.67px;">树莓派</a> <a href="/tags/%E6%BF%80%E5%85%89%E6%B5%8B%E8%B7%9D/" style="font-size: 10px;">激光测距</a> <a href="/tags/%E7%82%B9%E9%80%89%E9%AA%8C%E8%AF%81%E7%A0%81/" style="font-size: 10px;">点选验证码</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 13.33px;">爬虫</a> <a href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" style="font-size: 18px;">目标检测</a> <a href="/tags/%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" style="font-size: 10px;">端口转发</a> <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" style="font-size: 11.33px;">编译原理</a> <a href="/tags/%E7%BD%91%E5%B7%A5/" style="font-size: 14px;">网工</a> <a href="/tags/%E8%80%81%E6%AF%9B%E5%AD%90%E5%9B%BA%E4%BB%B6/" style="font-size: 10px;">老毛子固件</a> <a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" style="font-size: 10px;">虚拟机</a> <a href="/tags/%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD/" style="font-size: 10.67px;">视频下载</a> <a href="/tags/%E8%A7%86%E9%A2%91%E6%B5%81/" style="font-size: 10px;">视频流</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.67px;">计算机网络</a> <a href="/tags/%E8%AF%AD%E9%9F%B3%E8%BD%AC%E6%96%87%E5%AD%97/" style="font-size: 10px;">语音转文字</a> <a href="/tags/%E8%B6%85%E5%83%8F%E7%B4%A0/" style="font-size: 10px;">超像素</a> <a href="/tags/%E8%B6%85%E5%A3%B0%E6%B3%A2/" style="font-size: 10px;">超声波</a> <a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8%E5%88%B7%E6%9C%BA/" style="font-size: 10px;">路由器刷机</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" style="font-size: 17.33px;">软件安装配置</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 10.67px;">递归</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 11.33px;">链表</a> <a href="/tags/%E9%9F%B3%E7%94%BB%E5%90%8C%E6%AD%A5/" style="font-size: 10px;">音画同步</a> <a href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/" style="font-size: 12.67px;">验证码</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2025/04/27/hello-world/">Hello World</a>
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
           </li>
+          
         
-          <li>
-            <a href="/2025/04/25/ubuntu24%E9%87%8D%E8%A3%85%E8%AE%B0%E5%BD%95/">ubuntu24重装记录</a>
-          </li>
         
-          <li>
-            <a href="/2025/04/01/win11%E6%B7%BB%E5%8A%A0%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0%E7%BD%91%E5%8D%A1%E5%BC%82%E5%B8%B8%E8%87%AA%E5%8A%A8%E9%87%8D%E5%90%AF/">win11添加开机自启动脚本实现网卡异常自动重启</a>
-          </li>
-        
-          <li>
-            <a href="/2025/02/06/DBeaver%E8%BF%9E%E6%8E%A5MySQL%E5%92%8CIoTDB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%AD%A5%E9%AA%A4/">DBeaver连接MySQL和IoTDB数据库步骤</a>
-          </li>
-        
-          <li>
-            <a href="/2025/01/26/%E4%BD%BF%E7%94%A8polkit%E5%AE%9E%E7%8E%B0%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86systemctl%E6%9C%8D%E5%8A%A1/">使用polkit实现普通用户管理systemctl服务</a>
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
           </li>
         
       </ul>
     </div>
   </div>
+</nav>
 
   
-</aside>
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Make the world a little bit better."></span>
+          
+        </div>
+
         
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
+
       
-      &copy; 2025 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
     </div>
   </div>
-</footer>
+</div>
 
-    </div>
-    <nav id="mobile-nav">
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/09/15/yoloxsiamese%E5%AD%AA%E7%94%9F%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%A0%87%E7%82%B9%E9%80%89%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/" target="_self">
+          Yolox+Siamese孪生神经网络:图标点选验证码识别
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/15/yoloxsiamese%E5%AD%AA%E7%94%9F%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%A0%87%E7%82%B9%E9%80%89%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/" target="_self">
+        <div>
+          问题描述图标点选验证码_点选验证码_验证码API_在线体验_网易易盾 (163.com) 网页场景  图片下载下来是这样的，底部会有几行小图标，第三行小图标是正确的顺序 这个问题的目标就是按顺序给出三个坐标点。  解决方案step1.使用yolox检测出所有图标的位置（不包含下面的三行图标）因为图标种类众多，没法直接用yolox进行图标详细分类，所以我训练的时候只分了两类，一类白的，一类黑的，虽然
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-09-15 21:42" pubdate>
+              2022-09-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
   
-    <a href="/" class="mobile-nav-link">Home</a>
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" class="category-chain-item">目标检测</a>
   
-</nav>
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/">#数据集</a>
+            
+              <a href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/">#目标检测</a>
+            
+              <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">#图像处理</a>
+            
+              <a href="/tags/%E5%AD%AA%E7%94%9F%E7%BD%91%E7%BB%9C/">#孪生网络</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/08/17/paddleocr%E8%BD%ACpytorch%E6%8E%A8%E7%90%86/" target="_self">
+          <img src="https://xinhaojin.github.io/imgs-host/past/2022/08/example2-1024x724.jpg" srcset="/img/loading.gif" lazyload alt="paddleocr转pytorch推理">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/08/17/paddleocr%E8%BD%ACpytorch%E6%8E%A8%E7%90%86/" target="_self">
+          paddleocr转pytorch推理
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/2022/08/17/paddleocr%E8%BD%ACpytorch%E6%8E%A8%E7%90%86/" target="_self">
+        <div>
+          frotms&#x2F;PaddleOCR2Pytorch: PaddleOCR inference in PyTorch. Converted from PaddleOCR 安装paddlepaddle==2.0.0 shapely numpy pillow pyclipper opencv-python &lt;= 4.2.0.32 pytorch pyyaml scikit-image  中
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-17 21:48" pubdate>
+              2022-08-17
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/pytorch/" class="category-chain-item">pytorch</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">#python</a>
+            
+              <a href="/tags/pytorch/">#pytorch</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/07/12/%E7%94%A8yolox%E9%A2%84%E6%B5%8B%E7%BB%93%E6%9E%9C%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90voc%E6%95%B0%E6%8D%AE%E9%9B%86%E6%A0%87%E7%AD%BE%E6%96%87%E4%BB%B6/" target="_self">
+          用yolox预测结果自动生成voc数据集标签文件
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/07/12/%E7%94%A8yolox%E9%A2%84%E6%B5%8B%E7%BB%93%E6%9E%9C%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90voc%E6%95%B0%E6%8D%AE%E9%9B%86%E6%A0%87%E7%AD%BE%E6%96%87%E4%BB%B6/" target="_self">
+        <div>
+          问题已有少量（100张）数据集由手工标注，训练结果也不算差，但希望能够进一步提高准确率，需要扩充数据集样本，手工标注太累，因此利用已有训练权重进行预测，用预测结果自动生成xml格式的标注文件，当然也会存在预测错误的情况，自定义条件筛选正确，其余手工标注即可。 voc数据集的xml文件格式12345678910111213141516171819202122232425262728293031323
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-07-12 15:59" pubdate>
+              2022-07-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" class="category-chain-item">目标检测</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/">#数据集</a>
+            
+              <a href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/">#目标检测</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/06/10/%E5%9F%BA%E4%BA%8E%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%88%86%E6%9E%90%E7%9A%84%E8%87%AA%E9%80%82%E5%BA%94%E9%98%88%E5%80%BC%E5%88%86%E5%89%B2/" target="_self">
+          <img src="https://xinhaojin.github.io/imgs-host/past/2022/06/image-12-1024x538.png" srcset="/img/loading.gif" lazyload alt="基于直方图分析的自适应阈值分割">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/06/10/%E5%9F%BA%E4%BA%8E%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%88%86%E6%9E%90%E7%9A%84%E8%87%AA%E9%80%82%E5%BA%94%E9%98%88%E5%80%BC%E5%88%86%E5%89%B2/" target="_self">
+          基于直方图分析的自适应阈值分割
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/2022/06/10/%E5%9F%BA%E4%BA%8E%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%88%86%E6%9E%90%E7%9A%84%E8%87%AA%E9%80%82%E5%BA%94%E9%98%88%E5%80%BC%E5%88%86%E5%89%B2/" target="_self">
+        <div>
+          问题描述分割出文字，去掉背景  方法画出直方图，用多项式曲线拟合。在斜率绝对值最大处左右两侧找极小值，对应横坐标作为分割的左右阈值。   对于背景复杂，前景颜色单一的图片，分割效果佳，其余情况可能不适合。  细节略
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-06-10 15:27" pubdate>
+              2022-06-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">#python</a>
+            
+              <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">#图像处理</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/06/10/%E5%9F%BA%E4%BA%8E%E5%B7%B2%E7%9F%A5%E8%83%8C%E6%99%AF%E7%9A%84%E9%AA%8C%E8%AF%81%E7%A0%81%E6%96%87%E5%AD%97%E5%80%BE%E6%96%9C%E7%9F%AB%E6%AD%A3%E5%8F%8A%E8%AF%86%E5%88%AB/" target="_self">
+          <img src="https://xinhaojin.github.io/imgs-host/past/2022/06/image-9.png" srcset="/img/loading.gif" lazyload alt="基于已知背景的验证码文字倾斜矫正及识别">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/06/10/%E5%9F%BA%E4%BA%8E%E5%B7%B2%E7%9F%A5%E8%83%8C%E6%99%AF%E7%9A%84%E9%AA%8C%E8%AF%81%E7%A0%81%E6%96%87%E5%AD%97%E5%80%BE%E6%96%9C%E7%9F%AB%E6%AD%A3%E5%8F%8A%E8%AF%86%E5%88%AB/" target="_self">
+          基于已知背景的验证码文字倾斜矫正及识别
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/2022/06/10/%E5%9F%BA%E4%BA%8E%E5%B7%B2%E7%9F%A5%E8%83%8C%E6%99%AF%E7%9A%84%E9%AA%8C%E8%AF%81%E7%A0%81%E6%96%87%E5%AD%97%E5%80%BE%E6%96%9C%E7%9F%AB%E6%AD%A3%E5%8F%8A%E8%AF%86%E5%88%AB/" target="_self">
+        <div>
+          问题描述请点击“荔枝茶”。即判断文字位置及顺序。 已知条件：yolox能够预测汉字位置，paddleOCR可以直接识别文字，但有时出错。 现在要做的是矫正验证码图片中的文字倾斜，以提高文字识别准确率。  背景匹配所有可能的背景  用直方图标准差的方法来做背景匹配 图像相似度-直方图标准差 汉字分割为什么要分割？分割后可以根据二值图来画出最小外接矩形，计算倾斜角度，给原图汉字矫正。 怎么分割？遍历像
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-06-10 15:21" pubdate>
+              2022-06-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">#python</a>
+            
+              <a href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/">#验证码</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/06/10/%E5%9B%BE%E5%83%8F%E7%9B%B8%E4%BC%BC%E5%BA%A6-%E7%9B%B4%E6%96%B9%E5%9B%BE%E6%A0%87%E5%87%86%E5%B7%AE/" target="_self">
+          图像相似度-直方图标准差
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/06/10/%E5%9B%BE%E5%83%8F%E7%9B%B8%E4%BC%BC%E5%BA%A6-%E7%9B%B4%E6%96%B9%E5%9B%BE%E6%A0%87%E5%87%86%E5%B7%AE/" target="_self">
+        <div>
+          问题描述现有一张验证码图片，可能的背景有6种，怎么判断他的背景是哪一种？   方法对于这种大面积相同的图片，一种很快速的方法是计算两张图直方图的标准差。 计算和每一张背景图的标准差，取最小的就行 1234567891011121314from PIL import Imageimport numpy as np#计算直方图的标准差def image_contrast_std(img1, img2)
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-06-10 14:36" pubdate>
+              2022-06-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">#python</a>
+            
+              <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">#图像处理</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/06/10/%E9%AA%8C%E8%AF%81%E7%A0%81%E8%83%8C%E6%99%AF%E5%90%88%E6%88%90%EF%BC%88%E5%A4%9A%E5%BC%A0%E6%AE%8B%E7%BC%BA%E5%9B%BE%E5%90%88%E6%88%90%E4%B8%80%E5%BC%A0%E5%AE%8C%E6%95%B4%E5%9B%BE%EF%BC%89/" target="_self">
+          验证码背景合成（多张残缺图合成一张完整图）
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/06/10/%E9%AA%8C%E8%AF%81%E7%A0%81%E8%83%8C%E6%99%AF%E5%90%88%E6%88%90%EF%BC%88%E5%A4%9A%E5%BC%A0%E6%AE%8B%E7%BC%BA%E5%9B%BE%E5%90%88%E6%88%90%E4%B8%80%E5%BC%A0%E5%AE%8C%E6%95%B4%E5%9B%BE%EF%BC%89/" target="_self">
+        <div>
+          问题描述有多张验证码图片，背景相同，如何获取完整的背景图？ 已有条件：可以使用yolox检测出汉字的位置矩形框。  方法输入：一个验证码图片文件夹 输出：包含所有的背景图片的文件夹  背景区分：假设相同的背景的验证码图片的背景部分是完全一致的的，那么可以比较边框的像素点来判断是否是同一个背景，把所有图片按照背景分类。 针对每一个分类，用yolox预测出汉字框，把汉字框部分像素点设置为黑色，以其中一
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-06-10 13:23" pubdate>
+              2022-06-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">#python</a>
+            
+              <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">#图像处理</a>
+            
+              <a href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/">#验证码</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/05/18/ubuntu20-04%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEvncserver/" target="_self">
+          ubuntu20.04安装配置vncserver
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/18/ubuntu20-04%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEvncserver/" target="_self">
+        <div>
+          更新系统sudo apt update sudo apt upgrade  安装软件sudo apt install tigervncserver  打开端口 sudo firewall-cmd --zone=public --add-port=5900/tcp --permanent sudo firewall-cmd --zone=public --add-port=5901/tcp --pe
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-05-18 21:01" pubdate>
+              2022-05-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件安装配置</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/linux/">#linux</a>
+            
+              <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">#软件安装配置</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/05/15/selenium%E7%88%AC%E5%8F%96%E6%9E%81%E9%AA%8C%E9%AA%8C%E8%AF%81%E7%A0%81%EF%BC%8Cpaddleocr%E8%AF%86%E5%88%AB%E6%96%87%E5%AD%97%E4%BD%9C%E4%B8%BA%E6%96%87%E4%BB%B6%E5%90%8D/" target="_self">
+          <img src="https://xinhaojin.github.io/imgs-host/past/2022/05/image-2.png" srcset="/img/loading.gif" lazyload alt="selenium爬取极验验证码，PaddleOCR识别文字作为文件名">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/05/15/selenium%E7%88%AC%E5%8F%96%E6%9E%81%E9%AA%8C%E9%AA%8C%E8%AF%81%E7%A0%81%EF%BC%8Cpaddleocr%E8%AF%86%E5%88%AB%E6%96%87%E5%AD%97%E4%BD%9C%E4%B8%BA%E6%96%87%E4%BB%B6%E5%90%8D/" target="_self">
+          selenium爬取极验验证码，PaddleOCR识别文字作为文件名
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/2022/05/15/selenium%E7%88%AC%E5%8F%96%E6%9E%81%E9%AA%8C%E9%AA%8C%E8%AF%81%E7%A0%81%EF%BC%8Cpaddleocr%E8%AF%86%E5%88%AB%E6%96%87%E5%AD%97%E4%BD%9C%E4%B8%BA%E6%96%87%E4%BB%B6%E5%90%8D/" target="_self">
+        <div>
+          问题描述自动爬取验证码图片，图片文件名需要包含右上角的标题文字（在网页上是图片类型，不是文本）  Edge driver初始化第一种 1234567from msedge.selenium_tools import Edge, EdgeOptions        edge_options = EdgeOptions()        edge_options.use_chromium = Tru
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-05-15 20:09" pubdate>
+              2022-05-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%88%AC%E8%99%AB/">#爬虫</a>
+            
+              <a href="/tags/selenium/">#selenium</a>
+            
+              <a href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/">#验证码</a>
+            
+              <a href="/tags/ocr/">#ocr</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/05/09/linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BB%A3%E7%90%86%E5%B7%A5%E5%85%B7%EF%BC%9Aproxychains/" target="_self">
+          linux命令行代理工具：proxychains
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/09/linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BB%A3%E7%90%86%E5%B7%A5%E5%85%B7%EF%BC%9Aproxychains/" target="_self">
+        <div>
+          安装sudo apt install proxychains4  编辑&#x2F;etc&#x2F;proxychains4.conf 在末尾添加代理服务器设置  验证curl www.httpbin.org/ip  在命令前添加proxychains4来走代理 proxychains4 curl www.httpbin.org/ip
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-05-09 22:03" pubdate>
+              2022-05-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%9D%82/" class="category-chain-item">杂</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/linux/">#linux</a>
+            
+              <a href="/tags/%E4%BB%A3%E7%90%86/">#代理</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/6/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/#board">8</a><a class="page-number" href="/page/9/#board">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/#board">20</a><a class="extend next" rel="next" href="/page/8/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     
 
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-<script src="/js/jquery-3.6.4.min.js"></script>
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+        次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+        次
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
 
-<script src="/js/script.js"></script>
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
 
 
-  </div>
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>
