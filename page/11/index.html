@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/11/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-nodejs-cheerio爬虫" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/12/14/nodejs-cheerio%E7%88%AC%E8%99%AB/" class="article-date">
+  <time class="dt-published" datetime="2021-12-14T11:29:28.000Z" itemprop="datePublished">2021-12-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%88%AC%E8%99%AB/">爬虫</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/12/14/nodejs-cheerio%E7%88%AC%E8%99%AB/">nodejs cheerio爬虫</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>获取美国各州疫情数据<a target="_blank" rel="noopener" href="https://www.guruin.com/guides/covid19">美国疫情（每小时更新） 各州新增新冠确诊案例、疫苗接种率、实时新闻、疫情地图 - 咕噜美国通 (Guruin.com)</a></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/12/image-3.png"></p>
+<p>本来用的数据来源不是这个网站，但原先的数据源不让跨域爬虫，http和request都没法获取HTML源码，只好换了一个数据源</p>
+<h2 id="request获取目标网页源代码"><a href="#request获取目标网页源代码" class="headerlink" title="request获取目标网页源代码"></a>request获取目标网页源代码</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> request = <span class="built_in">require</span>(<span class="string">&#x27;request&#x27;</span>);</span><br><span class="line"><span class="title function_">request</span>(&#123;</span><br><span class="line">        <span class="attr">url</span>: <span class="string">&#x27;https://www.guruin.com/guides/covid19&#x27;</span>,</span><br><span class="line">        <span class="attr">method</span>: <span class="string">&#x27;GET&#x27;</span>,                   <span class="comment">// 请求方法</span></span><br><span class="line">        <span class="attr">headers</span>: &#123;                       <span class="comment">// 指定请求头</span></span><br><span class="line">            <span class="string">&#x27;User-Agent&#x27;</span>:</span><br><span class="line">                <span class="string">&#x27;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36&#x27;</span>,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, <span class="keyword">function</span> (<span class="params">error, response, body</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!error &amp;&amp; response.<span class="property">statusCode</span> == <span class="number">200</span>) &#123;</span><br><span class="line">            <span class="comment">// console.log(body) // body即为HTML内容</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="转换为cheerio对象，利用jquery选择器规则选取需要的元素"><a href="#转换为cheerio对象，利用jquery选择器规则选取需要的元素" class="headerlink" title="转换为cheerio对象，利用jquery选择器规则选取需要的元素"></a>转换为cheerio对象，利用jquery选择器规则选取需要的元素</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> cheerio = <span class="built_in">require</span>(<span class="string">&#x27;cheerio&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> $ = cheerio.<span class="title function_">load</span>(body);<span class="comment">// body为html内容</span></span><br><span class="line"></span><br><span class="line">[jQuery 选择器 菜鸟教程 (runoob.<span class="property">com</span>)](<span class="attr">https</span>:<span class="comment">//www.runoob.com/jquery/jquery-ref-selectors.html)</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">&#x27;选择器&#x27;</span>)即为筛选的元素，要获取其文本，用.<span class="title function_">text</span>()方法</span><br><span class="line"></span><br><span class="line">如$(<span class="string">&#x27;[data-total-positive]&#x27;</span>).<span class="title function_">text</span>()，得到具有 data-total-positive 属性的元素的文本</span><br><span class="line"></span><br><span class="line">要遍历所有符合的元素进行单独操作，使用 $(<span class="string">&#x27;选择器&#x27;</span>).<span class="title function_">each</span>(<span class="keyword">function</span>(<span class="params">i,elem</span>)&#123;$(<span class="variable language_">this</span>).<span class="title function_">text</span>()...&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//把有data-total-positive属性的元素遍历，其文本内容放到数组</span></span><br><span class="line"><span class="keyword">var</span> positive = []</span><br><span class="line">$(<span class="string">&#x27;[data-total-positive]&#x27;</span>).<span class="title function_">each</span>(<span class="keyword">function</span> (<span class="params">i, elem</span>) &#123;</span><br><span class="line">                positive[i] = $(<span class="variable language_">this</span>).<span class="title function_">text</span>();</span><br><span class="line">            &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>针对需求分析，可以选择用以下三个属性来筛选，分别对应确诊、死亡和接种率，然后分别遍历放到三个数组中</p>
+<p>……写到这刚发现忘记爬取州名了，问题不大。</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/12/image-4.png"></p>
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> request = <span class="built_in">require</span>(<span class="string">&#x27;request&#x27;</span>);</span><br><span class="line"><span class="comment">//  Cheerio 是一个Node.js的库， 它可以从html的片断中构建DOM结构，然后提供像jquery一样的css选择器查询</span></span><br><span class="line"><span class="keyword">var</span> cheerio = <span class="built_in">require</span>(<span class="string">&#x27;cheerio&#x27;</span>);</span><br><span class="line"><span class="comment">//包装成模块函数</span></span><br><span class="line"><span class="keyword">export</span> &#123; getData &#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getData</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">request</span>(&#123;</span><br><span class="line">        <span class="attr">url</span>: <span class="string">&#x27;https://www.guruin.com/guides/covid19&#x27;</span>,</span><br><span class="line">        <span class="attr">method</span>: <span class="string">&#x27;GET&#x27;</span>,                   <span class="comment">// 请求方法</span></span><br><span class="line">        <span class="attr">headers</span>: &#123;                       <span class="comment">// 指定请求头</span></span><br><span class="line">            <span class="string">&#x27;User-Agent&#x27;</span>:</span><br><span class="line">                <span class="string">&#x27;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36&#x27;</span>,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, <span class="keyword">function</span> (<span class="params">error, response, body</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!error &amp;&amp; response.<span class="property">statusCode</span> == <span class="number">200</span>) &#123;</span><br><span class="line">            <span class="comment">// console.log(body) // 输出网页内容</span></span><br><span class="line">            <span class="comment">// 接下来用cheerio来提取网页中的数据</span></span><br><span class="line">            <span class="comment">// 通过 load 方法把 HTML 代码转换成一个 jQuery 对象</span></span><br><span class="line">            <span class="keyword">var</span> $ = cheerio.<span class="title function_">load</span>(body);<span class="comment">//table-row .collapsed</span></span><br><span class="line">            <span class="keyword">var</span> positive = []</span><br><span class="line">            <span class="keyword">var</span> death = []</span><br><span class="line">            <span class="keyword">var</span> detection_rate = []</span><br><span class="line">            $(<span class="string">&#x27;[data-total-positive]&#x27;</span>).<span class="title function_">each</span>(<span class="keyword">function</span> (<span class="params">i, elem</span>) &#123;</span><br><span class="line">                positive[i] = $(<span class="variable language_">this</span>).<span class="title function_">text</span>();</span><br><span class="line">            &#125;);</span><br><span class="line">            $(<span class="string">&#x27;[data-total-death]&#x27;</span>).<span class="title function_">each</span>(<span class="keyword">function</span> (<span class="params">i, elem</span>) &#123;</span><br><span class="line">                death[i] = $(<span class="variable language_">this</span>).<span class="title function_">text</span>();</span><br><span class="line">            &#125;);</span><br><span class="line">            $(<span class="string">&#x27;[data-detection-rate]&#x27;</span>).<span class="title function_">each</span>(<span class="keyword">function</span> (<span class="params">i, elem</span>) &#123;</span><br><span class="line">                detection_rate[i] = $(<span class="variable language_">this</span>).<span class="title function_">text</span>();</span><br><span class="line">            &#125;);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(positive);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(death);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(detection_rate);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/12/image-5-1024x241.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/12/14/nodejs-cheerio%E7%88%AC%E8%99%AB/" data-id="cm9zmq8xy005fsqhlallu3t2g" data-title="nodejs cheerio爬虫" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-ubuntu普通用户安装配置anaconda" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/12/10/ubuntu%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEanaconda/" class="article-date">
+  <time class="dt-published" datetime="2021-12-10T06:48:25.000Z" itemprop="datePublished">2021-12-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">软件安装配置</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/12/10/ubuntu%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEanaconda/">ubuntu普通用户安装配置anaconda</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><p><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/">anaconda清华源地址</a></p>
+<p>方法一：在服务器上使用wget命令</p>
+<pre><code>wget -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-2021.11-Linux-x86_64.sh
+</code></pre>
+<p>方法二：下载到本地之后通过ftp工具上传到服务器（推荐使用FinalShell）</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>在下载目录执行下载的bash文件</p>
+<pre><code>bash Anaconda3-2021.11-Linux-x86_64.sh
+</code></pre>
+<p>根据提示一路yes即可</p>
+<h4 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h4><p>安装完之后conda还不能直接使用，需要把conda目录加入到用户变量中</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/12/image.png"></p>
+<pre><code>vi ~/.bashrc
+</code></pre>
+<p>在最后一行加入</p>
+<pre><code>export PATH=/home/username/anaconda3/bin:$PATH
+</code></pre>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/12/image-1.png"></p>
+<p>保存退出，再执行</p>
+<pre><code>source ~/.bashrc
+</code></pre>
+<p>成功</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/12/image-2.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/12/10/ubuntu%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEanaconda/" data-id="cm9zmq8yv009jsqhl1mmo76r3" data-title="ubuntu普通用户安装配置anaconda" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" rel="tag">软件安装配置</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-seleniumbeautifulsoup4获取网页动态加载的数据" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/11/25/seleniumbeautifulsoup4%E8%8E%B7%E5%8F%96%E7%BD%91%E9%A1%B5%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E7%9A%84%E6%95%B0%E6%8D%AE/" class="article-date">
+  <time class="dt-published" datetime="2021-11-25T08:28:47.000Z" itemprop="datePublished">2021-11-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>►<a class="article-category-link" href="/categories/%E7%88%AC%E8%99%AB/">爬虫</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/11/25/seleniumbeautifulsoup4%E8%8E%B7%E5%8F%96%E7%BD%91%E9%A1%B5%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E7%9A%84%E6%95%B0%E6%8D%AE/">selenium+beautifulsoup4获取网页动态加载的数据</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>想要获取一个网页中的表格数据，但是不提供下载</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/11/image-5-1024x475.png"></p>
+<p>网页源码中能看到表格信息，但beautiful获取源码结果中没有表格</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/11/image-6.png"></p>
+<p>原因是表格数据从后台动态加载，beautifulsoup无法获取</p>
+<h2 id="使用selenium获取源码"><a href="#使用selenium获取源码" class="headerlink" title="使用selenium获取源码"></a>使用selenium获取源码</h2><p>selenium是浏览器自动化工具，可以模拟人的操作，能够正常获取所有源码</p>
+<p>为了程序运行更优雅，设置浏览器在后台静默运行</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line">options=webdriver.ChromeOptions()</span><br><span class="line"><span class="comment">#后台静默运行</span></span><br><span class="line">options.add_argument(<span class="string">&#x27;--headless&#x27;</span>)</span><br><span class="line"><span class="comment">#忽略无用的报错</span></span><br><span class="line">options.add_experimental_option(<span class="string">&#x27;excludeSwitches&#x27;</span>,[<span class="string">&#x27;enable-automation&#x27;</span>,<span class="string">&#x27;enable-logging&#x27;</span>])</span><br><span class="line">driver=webdriver.Chrome(chrome_options=options,executable_path=<span class="string">&#x27;./driver/chromedriver.exe&#x27;</span>)</span><br><span class="line"><span class="comment">#把驱动文件放到根目录，或把路径当作参数传入，chrome驱动下载地址如下：</span></span><br><span class="line"><span class="comment">#http://npm.taobao.org/mirrors/chromedriver/</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">driver=webdriver.Edge(executable_path=&#x27;./driver/edgedriver.exe&#x27;)</span></span><br><span class="line"><span class="string">https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment">#driver.set_window_size(1000,800)#打开浏览器的窗口尺寸</span></span><br><span class="line"><span class="comment">#driver.maximize_window()</span></span><br><span class="line"></span><br><span class="line">url=<span class="string">&#x27;https://www.heywhale.com/mw/dataset/5fe1c7d183e4460030ab6c08/file&#x27;</span></span><br><span class="line">driver.get(url)</span><br><span class="line">driver.implicitly_wait(<span class="number">10</span>)<span class="comment">#最多等待时间</span></span><br><span class="line">html=driver.page_source<span class="comment">#html源码</span></span><br><span class="line">driver.quit()<span class="comment">#退出浏览器</span></span><br><span class="line"></span><br><span class="line">![](https://xinhaojin.github.io/imgs-host/past/<span class="number">2021</span>/<span class="number">11</span>/image-<span class="number">7.</span>png)</span><br><span class="line"></span><br><span class="line"><span class="comment">## 转为beautifulsoup对象</span></span><br><span class="line"></span><br><span class="line">soup = BeautifulSoup(html,<span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line"><span class="comment">#print(soup.prettify())#prettify是格式化结果</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 获取表格数据</span></span><br><span class="line"></span><br><span class="line">results=[]<span class="comment">#表格结果保存到二维数组</span></span><br><span class="line">tags=soup.find_all(<span class="string">&#x27;tr&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> tag <span class="keyword">in</span> tags:<span class="comment">#tag表示一行数据</span></span><br><span class="line">    result=[]</span><br><span class="line">    <span class="keyword">for</span> content <span class="keyword">in</span> tag.contents:<span class="comment">#content表示每一行的每一个数据</span></span><br><span class="line">        result.append(content.string)</span><br><span class="line">    results.append(result)</span><br><span class="line"><span class="comment">#print(results)</span></span><br><span class="line"></span><br><span class="line">![](https://xinhaojin.github.io/imgs-host/past/<span class="number">2021</span>/<span class="number">11</span>/image-<span class="number">8</span>-1024x336.png)</span><br><span class="line"></span><br><span class="line"><span class="comment">## 写入Excel</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> xlwt</span><br><span class="line">wk=xlwt.Workbook()</span><br><span class="line">sheet = wk.add_sheet(<span class="string">&quot;数据&quot;</span>, cell_overwrite_ok=<span class="literal">True</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(results)):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(results[<span class="number">0</span>])):</span><br><span class="line">        sheet.write(i , j, results[i][j])</span><br><span class="line">wk.save(<span class="string">&quot;数据.xls&quot;</span>)</span><br><span class="line"></span><br><span class="line">![](https://xinhaojin.github.io/imgs-host/past/<span class="number">2021</span>/<span class="number">11</span>/image-<span class="number">9</span>-1024x263.png)</span><br></pre></td></tr></table></figure>
+
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line">options=webdriver.ChromeOptions()</span><br><span class="line"><span class="comment">#后台静默运行</span></span><br><span class="line">options.add_argument(<span class="string">&#x27;--headless&#x27;</span>)</span><br><span class="line"><span class="comment">#忽略无用的报错</span></span><br><span class="line">options.add_experimental_option(<span class="string">&#x27;excludeSwitches&#x27;</span>,[<span class="string">&#x27;enable-automation&#x27;</span>,<span class="string">&#x27;enable-logging&#x27;</span>])</span><br><span class="line">driver=webdriver.Chrome(chrome_options=options,executable_path=<span class="string">&#x27;./driver/chromedriver.exe&#x27;</span>)</span><br><span class="line"><span class="comment">#把驱动文件放到根目录，或把路径当作参数传入，chrome驱动下载地址如下：</span></span><br><span class="line"><span class="comment">#http://npm.taobao.org/mirrors/chromedriver/</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">driver=webdriver.Edge(executable_path=&#x27;./driver/edgedriver.exe&#x27;)</span></span><br><span class="line"><span class="string">https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment">#driver.set_window_size(1000,800)#打开浏览器的窗口尺寸</span></span><br><span class="line"><span class="comment">#driver.maximize_window()</span></span><br><span class="line"></span><br><span class="line">url=<span class="string">&#x27;https://www.heywhale.com/mw/dataset/5fe1c7d183e4460030ab6c08/file&#x27;</span></span><br><span class="line">driver.get(url)</span><br><span class="line">driver.implicitly_wait(<span class="number">10</span>)<span class="comment">#最多等待时间</span></span><br><span class="line">html=driver.page_source</span><br><span class="line">driver.quit()</span><br><span class="line">soup = BeautifulSoup(html,<span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line"><span class="comment">#print(soup.prettify())#prettify是格式化结果</span></span><br><span class="line"></span><br><span class="line">results=[]<span class="comment">#表格结果保存到二维数组</span></span><br><span class="line">tags=soup.find_all(<span class="string">&#x27;tr&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> tag <span class="keyword">in</span> tags:<span class="comment">#tag表示一行数据</span></span><br><span class="line">    result=[]</span><br><span class="line">    <span class="keyword">for</span> content <span class="keyword">in</span> tag.contents:<span class="comment">#content表示每一行的每一个数据</span></span><br><span class="line">        result.append(content.string)</span><br><span class="line">    results.append(result)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">len</span>(results)==<span class="number">0</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Error!&quot;</span>)</span><br><span class="line">    exit()</span><br><span class="line">  </span><br><span class="line"><span class="comment">#写入excel</span></span><br><span class="line"><span class="keyword">import</span> xlwt</span><br><span class="line">wk=xlwt.Workbook()</span><br><span class="line">sheet = wk.add_sheet(<span class="string">&quot;数据&quot;</span>, cell_overwrite_ok=<span class="literal">True</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(results)):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(results[<span class="number">0</span>])):</span><br><span class="line">        sheet.write(i , j, results[i][j])</span><br><span class="line">wk.save(<span class="string">&quot;数据.xls&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Success!&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2><p>因为这次需求中的表格没有完整显示在网页中，所以只获取了一部分数据，没有满足需求，但对于数据完全显示在网页上的需求，有参考价值，特此记录</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/11/image-11.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/11/25/seleniumbeautifulsoup4%E8%8E%B7%E5%8F%96%E7%BD%91%E9%A1%B5%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E7%9A%84%E6%95%B0%E6%8D%AE/" data-id="cm9zmq8yl008gsqhl9h504dfw" data-title="selenium+beautifulsoup4获取网页动态加载的数据" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/selenium/" rel="tag">selenium</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-wordcloud词云" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/11/10/wordcloud%E8%AF%8D%E4%BA%91/" class="article-date">
+  <time class="dt-published" datetime="2021-11-10T12:55:36.000Z" itemprop="datePublished">2021-11-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/11/10/wordcloud%E8%AF%8D%E4%BA%91/">wordcloud词云</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h4 id="加载停用词"><a href="#加载停用词" class="headerlink" title="加载停用词"></a>加载停用词</h4><p>stopwords.txt是一个自定义的停用词列表，里面的词都会被过滤</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;读取停用词&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;stopwords.txt&quot;</span>, <span class="string">&quot;r&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    stopwords = <span class="built_in">set</span>([s.rstrip() <span class="keyword">for</span> s <span class="keyword">in</span> fp.readlines()])</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/11/image.png"></p>
+<h4 id="读取文本内容，过滤停用词"><a href="#读取文本内容，过滤停用词" class="headerlink" title="读取文本内容，过滤停用词"></a>读取文本内容，过滤停用词</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;获取文本内容&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;input.txt&quot;</span>, <span class="string">&quot;r&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    content = fp.read()</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;中文分词&quot;&quot;&quot;</span></span><br><span class="line">content = jieba.lcut(content)</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;去除停用词&quot;&quot;&quot;</span></span><br><span class="line">text = []</span><br><span class="line"><span class="keyword">for</span> word <span class="keyword">in</span> content:</span><br><span class="line">    <span class="keyword">if</span> word <span class="keyword">not</span> <span class="keyword">in</span> stopwords:</span><br><span class="line">        text.append(word)</span><br></pre></td></tr></table></figure>
+
+<h4 id="计算词频"><a href="#计算词频" class="headerlink" title="计算词频"></a>计算词频</h4><p>词频格式是字典{词：数量}，text是一个去掉停用词后的词数组，直接统计</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frequency = <span class="built_in">dict</span>(Counter(text))  <span class="comment"># 去掉停用词后的词频统计</span></span><br></pre></td></tr></table></figure>
+
+<p>计算词频的目的是根据词频来生成词云</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wordcloud.fit_words(frequency)</span><br></pre></td></tr></table></figure>
+
+<h4 id="wordcloud（）参数"><a href="#wordcloud（）参数" class="headerlink" title="wordcloud（）参数"></a>wordcloud（）参数</h4><p>具体API请查阅<a target="_blank" rel="noopener" href="https://amueller.github.io/word_cloud/generated/wordcloud.WordCloud.html">wordcloud.WordCloud — wordcloud 1.8.1 documentation (amueller.github.io)</a></p>
+<p>常用的有这些</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">wc = WordCloud(font_path=<span class="string">&#x27;C:\\Windows\\Fonts\\STZHONGS.TTF&#x27;</span>,  <span class="comment"># 字体</span></span><br><span class="line">               background_color=<span class="string">&quot;white&quot;</span>,  <span class="comment"># 背景色</span></span><br><span class="line">               mask=mask_image,  <span class="comment"># 遮罩</span></span><br><span class="line">               prefer_horizontal=<span class="number">0.6</span>,  <span class="comment"># 水平文字比例</span></span><br><span class="line">               width=<span class="number">800</span>,  <span class="comment"># 宽度</span></span><br><span class="line">               height=<span class="number">1000</span>,  <span class="comment"># 高度</span></span><br><span class="line">               colormap=<span class="string">&quot;tab10&quot;</span>  <span class="comment"># 指定字体颜色</span></span><br><span class="line">               )</span><br></pre></td></tr></table></figure>
+
+<p>其中遮罩是一个白底的图片，非白色部分就是词云的形状</p>
+<p>有时候找的背景图不是白色或者不够白，可以在画图工具中打开图片，画笔-填充-颜色默认-白色-点击背景色</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/11/image-1-1024x792.png"></p>
+<p>colormap就是指定的颜色集合，参数填的是string类型，可选的值有下面这些，左侧列表都可作为参数值，对应的颜色是右边这些</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/11/colormaps_reference_00.png"></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/11/colormaps_reference_01.png"></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/11/colormaps_reference_02.png"></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/11/colormaps_reference_03.png"></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/11/colormaps_reference_04.png"></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/11/colormaps_reference_05.png"></p>
+<h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4><p><img src="https://xinhaojin.github.io/imgs-host/past/2021/11/output.png"></p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> wordcloud <span class="keyword">import</span> WordCloud</span><br><span class="line"><span class="keyword">import</span> jieba</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"><span class="keyword">from</span> imageio <span class="keyword">import</span> imread</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;读取停用词&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;stopwords.txt&quot;</span>, <span class="string">&quot;r&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    stopwords = <span class="built_in">set</span>([s.rstrip() <span class="keyword">for</span> s <span class="keyword">in</span> fp.readlines()])  <span class="comment"># 数组转集合</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;获取文本内容&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;input.txt&quot;</span>, <span class="string">&quot;r&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    content = fp.read()</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;中文分词&quot;&quot;&quot;</span></span><br><span class="line">content = jieba.lcut(content)</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;去除停用词&quot;&quot;&quot;</span></span><br><span class="line">text = []</span><br><span class="line"><span class="keyword">for</span> word <span class="keyword">in</span> content:</span><br><span class="line">    <span class="keyword">if</span> word <span class="keyword">not</span> <span class="keyword">in</span> stopwords:</span><br><span class="line">        text.append(word)</span><br><span class="line"></span><br><span class="line">frequency = <span class="built_in">dict</span>(Counter(text))  <span class="comment"># 去掉停用词后的词频统计</span></span><br><span class="line"></span><br><span class="line">mask_image = imread(<span class="string">&quot;map.jpg&quot;</span>)</span><br><span class="line"></span><br><span class="line">wc = WordCloud(font_path=<span class="string">&#x27;C:\\Windows\\Fonts\\STZHONGS.TTF&#x27;</span>,  <span class="comment"># 字体</span></span><br><span class="line">               background_color=<span class="string">&quot;white&quot;</span>,  <span class="comment"># 背景色</span></span><br><span class="line">               mask=mask_image,  <span class="comment"># 遮罩</span></span><br><span class="line">               prefer_horizontal=<span class="number">0.6</span>,  <span class="comment"># 水平文字比例</span></span><br><span class="line">               width=<span class="number">800</span>,  <span class="comment"># 宽度</span></span><br><span class="line">               height=<span class="number">1000</span>,  <span class="comment"># 高度</span></span><br><span class="line">               colormap=<span class="string">&quot;tab10&quot;</span></span><br><span class="line">               )</span><br><span class="line"></span><br><span class="line">wc.fit_words(frequency)</span><br><span class="line"></span><br><span class="line">plt.imshow(wc, interpolation=<span class="string">&quot;bilinear&quot;</span>)</span><br><span class="line">plt.axis(<span class="string">&quot;off&quot;</span>)</span><br><span class="line">plt.show()</span><br><span class="line">wc.to_file(<span class="string">&quot;output.png&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/11/10/wordcloud%E8%AF%8D%E4%BA%91/" data-id="cm9zmq8z800b9sqhlbhsmg053" data-title="wordcloud词云" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/worldcloud/" rel="tag">worldcloud</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-红米ac2100在线刷breed老毛子固件" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/10/25/%E7%BA%A2%E7%B1%B3ac2100%E5%9C%A8%E7%BA%BF%E5%88%B7breed%E8%80%81%E6%AF%9B%E5%AD%90%E5%9B%BA%E4%BB%B6/" class="article-date">
+  <time class="dt-published" datetime="2021-10-25T02:16:36.000Z" itemprop="datePublished">2021-10-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82/">杂</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/10/25/%E7%BA%A2%E7%B1%B3ac2100%E5%9C%A8%E7%BA%BF%E5%88%B7breed%E8%80%81%E6%AF%9B%E5%AD%90%E5%9B%BA%E4%BB%B6/">红米AC2100在线刷breed+老毛子固件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>纯记录，不放图了</p>
+<h4 id="刷breed"><a href="#刷breed" class="headerlink" title="刷breed"></a>刷breed</h4><p>登录路由器后台192.168.31.1，复制地址栏的stock</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/10/stock-1024x286.png"></p>
+<p>替换掉下面地址中的stock，直接在浏览器里输入并回车，返回一个code:0即成功</p>
+<p><a target="_blank" rel="noopener" href="http://192.168.31.1/cgi-bin/luci/;stok=dcd5c3196a7d5e620bd382328bf36218/api/misystem/set_config_iotdev?bssid=Xiaomi&user_id=longdike&ssid=%0Acd%20/tmp%0Acurl%20-o%20B%20-O%20https://breed.hackpascal.net/breed-mt7621-xiaomi-r3g.bin%20-k%0A%5B%20-z%20%22$(sha256sum%20B%20%7C%20grep%20242d42eb5f5aaa67ddc9c1baf1acdf58d289e3f792adfdd77b589b9dc71eff85)%22%20%5D%20%7C%7C%20mtd%20-r%20write%20B%20Bootloader%0A">http://192.168.31.1/cgi-bin/luci/;stok=dcd5c3196a7d5e620bd382328bf36218/api/misystem/set_config_iotdev?bssid=Xiaomi&amp;user_id=longdike&amp;ssid=%0Acd%20%2Ftmp%0Acurl%20-o%20B%20-O%20https%3A%2F%2Fbreed.hackpascal.net%2Fbreed-mt7621-xiaomi-r3g.bin%20-k%0A%5B%20-z%20%22%24(sha256sum%20B%20%7C%20grep%20242d42eb5f5aaa67ddc9c1baf1acdf58d289e3f792adfdd77b589b9dc71eff85)%22%20%5D%20%7C%7C%20mtd%20-r%20write%20B%20Bootloader%0A</a></p>
+<p>等待路由器灯变成橘色，断开电源，按下reset，同时接通电源，等待10秒钟松开reset，等待一下输入192.168.1.1进入breed后台</p>
+<h4 id="刷老毛子固件"><a href="#刷老毛子固件" class="headerlink" title="刷老毛子固件"></a>刷老毛子固件</h4><p>在breed后台选择固件更新，上传固件即可</p>
+<p><a target="_blank" rel="noopener" href="https://xinhaojin.lanzoui.com/ixnETvqlrfa">固件下载地址</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.right.com.cn/forum/forum.php?mod=forumdisplay&fid=171&filter=digest&digest=1&typeid=43">固件精华帖</a></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/10/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20210306233855.png"></p>
+<p>提示更新完成后等待两分钟进入192.168.123.1，用户名admin，密码admin，进入老毛子后台。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/10/25/%E7%BA%A2%E7%B1%B3ac2100%E5%9C%A8%E7%BA%BF%E5%88%B7breed%E8%80%81%E6%AF%9B%E5%AD%90%E5%9B%BA%E4%BB%B6/" data-id="cm9zmq90m00htsqhlafx524ir" data-title="红米AC2100在线刷breed+老毛子固件" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%80%81%E6%AF%9B%E5%AD%90%E5%9B%BA%E4%BB%B6/" rel="tag">老毛子固件</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8%E5%88%B7%E6%9C%BA/" rel="tag">路由器刷机</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-jupyter-matplotlib画图中文乱码的解决方案" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/10/14/jupyter-matplotlib%E7%94%BB%E5%9B%BE%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="article-date">
+  <time class="dt-published" datetime="2021-10-14T03:19:36.000Z" itemprop="datePublished">2021-10-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>►<a class="article-category-link" href="/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">图像处理</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/10/14/jupyter-matplotlib%E7%94%BB%E5%9B%BE%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">jupyter matplotlib画图中文乱码的解决方案</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在jupyter notebook中使用matplotlib画图时，中文字体显示乱码</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/10/image-1-1024x416.png"></p>
+<p>看提示是缺少字体</p>
+<h4 id="查找matplotlib字体配置文件的目录"><a href="#查找matplotlib字体配置文件的目录" class="headerlink" title="查找matplotlib字体配置文件的目录"></a>查找matplotlib字体配置文件的目录</h4><p>import matplotlib<br>matplotlib.matplotlib_fname()</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/10/image-2.png"></p>
+<h4 id="下载字体，放入对应目录中"><a href="#下载字体，放入对应目录中" class="headerlink" title="下载字体，放入对应目录中"></a>下载字体，放入对应目录中</h4><p>下载地址：<a target="_blank" rel="noopener" href="https://xinhaojin.lanzoui.com/ibUMJvbo7ib">https://xinhaojin.lanzoui.com/ibUMJvbo7ib</a></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/10/image-3.png"></p>
+<h4 id="修改配置文件，启用新字体"><a href="#修改配置文件，启用新字体" class="headerlink" title="修改配置文件，启用新字体"></a>修改配置文件，启用新字体</h4><p>打开matplotliblibrc</p>
+<p>取消font.family前面的注释</p>
+<p>取消font.sans-serif前面的注释，冒号后面增加SimHei</p>
+<p>取消axes.unicode_minus前面的注释，True改为False</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/10/image-4.png"></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/10/image-5.png"></p>
+<h4 id="清除缓存"><a href="#清除缓存" class="headerlink" title="清除缓存"></a>清除缓存</h4><p>删除~&#x2F;.cache&#x2F;matplotlib</p>
+<h4 id="重启服务器"><a href="#重启服务器" class="headerlink" title="重启服务器"></a>重启服务器</h4><p>中文出现</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/10/image-6.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/10/14/jupyter-matplotlib%E7%94%BB%E5%9B%BE%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" data-id="cm9zmq8xp0040sqhl3u1e3wmk" data-title="jupyter matplotlib画图中文乱码的解决方案" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-python与rpa（转载）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/09/14/python%E4%B8%8Erpa%EF%BC%88%E8%BD%AC%E8%BD%BD%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2021-09-14T02:26:54.000Z" itemprop="datePublished">2021-09-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/09/14/python%E4%B8%8Erpa%EF%BC%88%E8%BD%AC%E8%BD%BD%EF%BC%89/">python与RPA（转载）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>RPA，是Robotic Process Automation的英文缩写，中文是机器人流程自动化，利用软件将重复性的工作自动化。基本目标是让人从重复性强的繁琐工作中解放出来去做更有意义更具创造性的工作。比如自动爬取网站内容、将十几个Excel中数据合并分析、定时发送邮件等都是简单的RPA应用的例子。</p>
+<p>加上如今AI技术的快速发展，能极大地扩展软件自动化的应用范围，可以实现更复杂的功能。比如，可以通过图像识别、语义理解等技术将图片、特定格式的文档等非结构化数据转换为结构化数据，自动提交到数据中心，然后基于机器学习算法定时分析结果生成报表并发送到邮箱。</p>
+<p>RPA的本质是让计算机自动为人服务，RPA就像一个粘合剂，通过RPA人不需要对计算机操作细节，只需要指挥计算机执行某个任务就行了。</p>
+<p>现在国内外有不少功能在研发RPA软件用于实现流程自动化。但作为一个Python程序员，我觉得Python是实现RPA的天然工具。</p>
+<p>Python作为RPA工具有以下优势：</p>
+<p>一方面，Python语法简单，容易上手。而且早期Python起源就是作为c语言和shell脚本之间的中间层而被开发出来（详见漫画Python三十年），可见它本身就有这方面的基因；</p>
+<p>另一方面，Python应用范围广阔，包括系统管理、文件处理、邮件发送、机器学习、深度学习等，基本上都有免费开源的类库可以使用，RPA需要的功能Python基本上都可以支持，不需要自己再重新开发。</p>
+<p>有兴趣的同学可以基于Python根据自己的需要定制一套强大的自动化系统。但根据业务不同实现方式也不能一概而论。这里收集整理了几个常用自动化处理工具库供大家参考学习，能力有限，不足之处请多指正。</p>
+<p>概要如下图：</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/09/aHR0cHM6Ly90dmExLnNpbmFpbWcuY24vbGFyZ2UvMDA3UzhaSWxseTFnaHp3YjYxeTV6ajMweXUwdTBqd3MuanBn-1024x882.jpg"></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/09/aHR0cHM6Ly90dmExLnNpbmFpbWcuY24vbGFyZ2UvMDA3UzhaSWxseTFnaHp3YjVubjd6ajMxMnUwaGdqdDMuanBn-1024x460.jpg"></p>
+<h4 id="Excel自动化"><a href="#Excel自动化" class="headerlink" title="Excel自动化"></a>Excel自动化</h4><p><strong>功能</strong>：实现对excel文件的增删改写、格式修改等</p>
+<p><strong>常用库</strong>：xlwings、xlrd、xlwt</p>
+<ul>
+<li>xlrd用于读Excel文件(<a target="_blank" rel="noopener" href="https://xlrd.readthedocs.io/en/latest/">官方文档</a>)</li>
+<li>xlwt用于写Excel文件(<a target="_blank" rel="noopener" href="https://xlwt.readthedocs.io/en/latest/">官方文档</a>)</li>
+<li>xlwings实现了Excel中调用Python，python中调用Excel的骚操作，还支持VBA。（<a target="_blank" rel="noopener" href="https://www.xlwings.org/">官方文档</a>）</li>
+</ul>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/09/aHR0cHM6Ly90dmExLnNpbmFpbWcuY24vbGFyZ2UvMDA3UzhaSWxneTFnaTB4N3B4djNiajMyNGgwdTBha2suanBn-1024x402.jpg"></p>
+<h4 id="Word自动化"><a href="#Word自动化" class="headerlink" title="Word自动化"></a>Word自动化</h4><p><strong>实现功能</strong>：对word文件的增删改写、格式修改等</p>
+<p><strong>常用库</strong>：python-docx</p>
+<p>官方示例：</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/09/aHR0cHM6Ly90dmExLnNpbmFpbWcuY24vbGFyZ2UvMDA3UzhaSWxseTFnaTBpemdyOGxlajMwd2owdTBxYzMuanBn-1024x944.jpg"></p>
+<p><a target="_blank" rel="noopener" href="https://python-docx.readthedocs.io/en/latest/">官方文档</a></p>
+<h4 id="PPT自动化"><a href="#PPT自动化" class="headerlink" title="PPT自动化"></a>PPT自动化</h4><p><strong>实现功能</strong>：对PPT的创建和修改</p>
+<p><strong>常用库</strong>：python-pptx</p>
+<p>简单示例：</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/09/aHR0cHM6Ly90dmExLnNpbmFpbWcuY24vbGFyZ2UvMDA3UzhaSWxseTFnaTBpemhiYXE5ajMxY3EwdTBncDMuanBn-1024x631.jpg"></p>
+<p><a target="_blank" rel="noopener" href="https://python-pptx.readthedocs.io/en/latest/user/quickstart.html">官方文档</a></p>
+<h4 id="邮件自动化"><a href="#邮件自动化" class="headerlink" title="邮件自动化"></a>邮件自动化</h4><p><strong>实现功能</strong>：构造邮件和发送邮件</p>
+<p><strong>常用库</strong>：smtplib和email</p>
+<p><strong>smtplib</strong>提供了一种很方便的途径发送电子邮件。它对smtp协议进行了简单的封装。使用如下：</p>
+<p>import smtplib<br>smtp &#x3D; smtplib.SMTP( [host [, port [, local_hostname]]] )</p>
+<p>其中参数说明如下：</p>
+<p>host: SMTP 服务器主机。 你可以指定主机的ip地址或者域名如: runoob.com，这个是可选参数。<br>port: 如果你提供了 host 参数, 你需要指定 SMTP 服务使用的端口号，一般情况下 SMTP 端口号为25。<br>local_hostname: 如果 SMTP 在你的本机上，你只需要指定服务器地址为 localhost 即可。<br>然后使用sendmail发送邮件，示例如下：</p>
+<p>smtp.sendmail(from_addr, to_addrs, msg[, mail_options, rcpt_options])</p>
+<p>参数说明如下：</p>
+<ul>
+<li>from_addr: 邮件发送者地址。</li>
+<li>to_addrs: 字符串列表，邮件发送地址。</li>
+<li>msg: 发送消息</li>
+</ul>
+<p><strong>email</strong>库可以读取、写入和发送电子邮件内容，示例如下：</p>
+<p>import smtplib</p>
+<h1 id="Import-the-email-modules-we’ll-need"><a href="#Import-the-email-modules-we’ll-need" class="headerlink" title="Import the email modules we’ll need"></a>Import the email modules we’ll need</h1><p>from email.message import EmailMessage</p>
+<h1 id="Open-the-plain-text-file-whose-name-is-in-textfile-for-reading"><a href="#Open-the-plain-text-file-whose-name-is-in-textfile-for-reading" class="headerlink" title="Open the plain text file whose name is in textfile for reading."></a>Open the plain text file whose name is in textfile for reading.</h1><p>with open(textfile) as fp:<br>    # Create a text&#x2F;plain message<br>    msg &#x3D; EmailMessage()<br>    msg.set_content(fp.read())</p>
+<h1 id="me-the-sender’s-email-address"><a href="#me-the-sender’s-email-address" class="headerlink" title="me &#x3D;&#x3D; the sender’s email address"></a>me &#x3D;&#x3D; the sender’s email address</h1><h1 id="you-the-recipient’s-email-address"><a href="#you-the-recipient’s-email-address" class="headerlink" title="you &#x3D;&#x3D; the recipient’s email address"></a>you &#x3D;&#x3D; the recipient’s email address</h1><p>msg[‘Subject’] &#x3D; f’The contents of {textfile}’<br>msg[‘From’] &#x3D; me<br>msg[‘To’] &#x3D; you</p>
+<h1 id="Send-the-message-via-our-own-SMTP-server"><a href="#Send-the-message-via-our-own-SMTP-server" class="headerlink" title="Send the message via our own SMTP server."></a>Send the message via our own SMTP server.</h1><p>s &#x3D; smtplib.SMTP(‘localhost’)<br>s.send_message(msg)<br>s.quit()</p>
+<h4 id="文件处理"><a href="#文件处理" class="headerlink" title="文件处理"></a>文件处理</h4><p><strong>实现功能</strong>：批量修改文件等重复性操作</p>
+<p><strong>常用库</strong>：os</p>
+<p><strong>os</strong>库提供了一种使用与操作系统相关的功能的便捷式途径，常用操作如下：</p>
+<p>函数</p>
+<p>功能</p>
+<p>os.listdir()</p>
+<p>列出当前目录下的所有文件和文件夹（包括被隐藏的）</p>
+<p>os.system()</p>
+<p>运行shell命令；可将 指令 以 字符串 &#x2F; 字符串拼接 的形式喂进去</p>
+<p>os.sep()</p>
+<p>更改操作系统中的路径分隔符</p>
+<p>os.getcwd()</p>
+<p>获取当前路径(中间会自动添上一个路径分隔符)</p>
+<p>os.walk</p>
+<p>循环遍历目录，返回tuple表，表中每一个tuple包含该层文件、文件夹及该层父节点</p>
+<p>os.path.isfile()</p>
+<p>是否是文件</p>
+<p>os.path.isdir()</p>
+<p>是否是文件夹</p>
+<p>os.path.exists()</p>
+<p>路径是否存在</p>
+<p>os.path.abspath()</p>
+<p>如果输入路径是相对路径，则转换为绝对路径</p>
+<p>os.path.dirname()</p>
+<p>获取指定目录的父目录路径</p>
+<p>os.path.pardir</p>
+<p>获取当前目录的父目录路径</p>
+<p>os.pardir()</p>
+<p>获取当前目录的父目录路径</p>
+<p>os.path.split()</p>
+<p>将目录和文件名分割开，组成二元组返回</p>
+<p>os.remove()</p>
+<p>删除指定文件</p>
+<p>os.rmdir()</p>
+<p>删除空文件夹</p>
+<p>os.mkdir()</p>
+<p>新建文件夹</p>
+<p>os.makedirs( , exist_ok&#x3D;True)</p>
+<p>创建递归的目录树(exist_ok是py3.2才加入的参数)</p>
+<p>os.chdir()</p>
+<p>改变当前目录到指定目录中</p>
+<p>os.rename(path1 ,path2)</p>
+<p>重命名文件</p>
+<p>os.chmod(path ,mode)</p>
+<p>改变文件权限模式</p>
+<p>os.access(path ,mode)</p>
+<p>检验文件权限模式</p>
+<p>os.sep</p>
+<p>输出操作系统特定的路径分隔符。win下为””,macx下为”&#x2F;“</p>
+<p>os.linesep</p>
+<p>输出当前平台使用的行终止符</p>
+<p>os.pathsep</p>
+<p>输出用于分割文件路径的字符串</p>
+<p>os.name</p>
+<p>输出字符串指示当前使用平台。win-&gt;‘nt’; mac-&gt;‘posix’</p>
+<p>os.environ</p>
+<p>获取系统环境变量</p>
+<h4 id="爬虫"><a href="#爬虫" class="headerlink" title="爬虫"></a>爬虫</h4><p><strong>实现功能</strong>：爬取豆瓣、知乎、微博等数据用于数据分析</p>
+<p><strong>常用库</strong>：requests、scrapy</p>
+<p><strong>requests</strong>是一个Python HTTP库，在Apache License 2.0下发布。该项目的目标是使HTTP请求更简单，更人性化。示例如下：</p>
+<p>&gt;&gt;&gt; r &#x3D; requests.get(‘<a target="_blank" rel="noopener" href="https://api.github.com/user">https://api.github.com/user</a>‘, auth&#x3D;(‘user’, ‘pass’))</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>r.status_code<br>200<br>r.headers[‘content-type’]<br>‘application&#x2F;json; charset&#x3D;utf8’<br>r.encoding<br>‘utf-8’<br>r.text<br>‘{“type”:”User”…’<br>r.json()<br>{‘private_gists’: 419, ‘total_private_repos’: 77, …}</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://requests.readthedocs.io/en/master/">官方文档</a></p>
+<p><strong>Scrapy</strong> 是用Python 实现的一个为了爬取网站数据、提取结构性数据而编写的应用框架，其架构如下：</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/09/aHR0cHM6Ly90dmExLnNpbmFpbWcuY24vbGFyZ2UvMDA3UzhaSWxseTFnaTBqbmNva2xhajMwamcwZHE3NWQuanBn.jpg"></p>
+<p><a target="_blank" rel="noopener" href="https://scrapy-chs.readthedocs.io/zh_CN/0.24/intro/tutorial.html">官方文档</a></p>
+<h4 id="数据分析"><a href="#数据分析" class="headerlink" title="数据分析"></a>数据分析</h4><p>实现功能：处理统计各种数据，并进行可视化</p>
+<p>常用库：pandas、matplotlib</p>
+<p>pandas是为Python编程语言编写的软件库，用于数据处理和分析。特别是，它提供了用于操作数值表和时间序列的数据结构和操作。(十分钟入门pandas)</p>
+<p>Matplotlib 是 Python 的一个绘图库。它包含了大量的工具，你可以使用这些工具创建各种图形，包括简单的散点图，正弦曲线，甚至是三维图形。</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/09/aHR0cHM6Ly90dmExLnNpbmFpbWcuY24vbGFyZ2UvMDA3UzhaSWxseTFnaTBrNzEyNGw5ajMxZzIwdHNqdHkuanBn-1024x586.jpg"></p>
+<p><a target="_blank" rel="noopener" href="https://matplotlib.org/">官方教程</a></p>
+<h4 id="图像识别"><a href="#图像识别" class="headerlink" title="图像识别"></a>图像识别</h4><p><strong>实现功能</strong>：识别出文本等信息</p>
+<p><strong>常用库</strong>：‎pytesseract，opencv</p>
+<p><strong>Python-tesseract</strong> 是一个基于 google’s Tesseract-OCR 的独立封装包，功能是识别图片文件中文字，并作为返回参数返回识别结果。</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/09/aHR0cHM6Ly90dmExLnNpbmFpbWcuY24vbGFyZ2UvMDA3UzhaSWxseTFnaTBrYXN1OTZtajMwemwwdTBuMHEuanBn-1024x863.jpg"></p>
+<p>OpenCV的全称是Open Source Computer Vision Library，是一个跨平台的计算机视觉库，用于图像处理、分析、机器视觉方面的开源函数库。OpenCV采用C&#x2F;C++语言编写，python-opencv是Python对OpenCV的封装，可以让Python调用OpenCV的功能。</p>
+<p><a target="_blank" rel="noopener" href="https://docs.opencv.org/master/d6/d00/tutorial_py_root.html">官方教程</a></p>
+<h4 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h4><p><strong>实现功能</strong>：定制执行某个动作</p>
+<p><strong>常用库</strong>：APScheduler</p>
+<p><strong>APScheduler</strong>实现了一个定时任务框架，提供了非常丰富而且方便易用的定时任务接口，可以实现基于日期、固定时间间隔以及crontab 类型的任务。</p>
+<p><a target="_blank" rel="noopener" href="https://apscheduler.readthedocs.io/en/stable/">官方文档</a></p>
+<h4 id="RPA框架"><a href="#RPA框架" class="headerlink" title="RPA框架"></a>RPA框架</h4><p><strong>实现功能</strong>：模拟鼠标键盘操作，控制浏览器、桌面应用等软件，让电脑上操作流程自动化</p>
+<p><strong>常用库</strong>：python-rpa</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/09/aHR0cHM6Ly90dmExLnNpbmFpbWcuY24vbGFyZ2UvMDA3UzhaSWxseTFnaTBqbmN5NGN3ajMwazAwZGNxNmYuanBn.jpg"></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/tebelorg/RPA-Python">官方文档</a></p>
+<p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/pyfun/article/details/108216876">https://blog.csdn.net/pyfun/article/details/108216876</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/09/14/python%E4%B8%8Erpa%EF%BC%88%E8%BD%AC%E8%BD%BD%EF%BC%89/" data-id="cm9zmq8y6006qsqhlfh310jsh" data-title="python与RPA（转载）" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rpa/" rel="tag">rpa</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-使用labelme制作coco数据集" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/09/02/%E4%BD%BF%E7%94%A8labelme%E5%88%B6%E4%BD%9Ccoco%E6%95%B0%E6%8D%AE%E9%9B%86/" class="article-date">
+  <time class="dt-published" datetime="2021-09-02T07:07:55.000Z" itemprop="datePublished">2021-09-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/">目标检测</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/09/02/%E4%BD%BF%E7%94%A8labelme%E5%88%B6%E4%BD%9Ccoco%E6%95%B0%E6%8D%AE%E9%9B%86/">使用labelme制作coco数据集</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h4 id="安装labelme"><a href="#安装labelme" class="headerlink" title="安装labelme"></a>安装labelme</h4><p>直接使用pip安装</p>
+<pre><code>pip install labelme
+</code></pre>
+<h4 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h4><p>命令行执行</p>
+<pre><code>labelme
+</code></pre>
+<p>打开后选择打开文件夹，选择自动保存</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/09/image-1.png"></p>
+<p>编辑，画矩形，然后打上标签</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/09/image-2-1024x626.png"></p>
+<p>在图片目录下会保存json格式的标签信息</p>
+<h4 id="应用（以yolox为例）"><a href="#应用（以yolox为例）" class="headerlink" title="应用（以yolox为例）"></a>应用（以yolox为例）</h4><p>yolox的数据集readme中写明了需要的数据集格式</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/09/image-3.png"></p>
+<p>其中instancesxxx.json是很多json的集合，需要手动生成</p>
+<p>现在要做的是，先手动划分训练集和测试集，再生成对应标签的json集合</p>
+<p>下载labelme2coco.py</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Tony607/labelme2coco">https://github.com/Tony607/labelme2coco</a></p>
+<p>进入json文件夹，执行</p>
+<pre><code>python labelme2coco.py ./
+</code></pre>
+<p>会生成一个大json文件，改成需要的文件名使用即可</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/09/02/%E4%BD%BF%E7%94%A8labelme%E5%88%B6%E4%BD%9Ccoco%E6%95%B0%E6%8D%AE%E9%9B%86/" data-id="cm9zmq8zn00dgsqhl3ro8fjux" data-title="使用labelme制作coco数据集" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/" rel="tag">数据集</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" rel="tag">目标检测</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-flask使用https" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/09/01/flask%E4%BD%BF%E7%94%A8https/" class="article-date">
+  <time class="dt-published" datetime="2021-09-01T06:36:51.000Z" itemprop="datePublished">2021-09-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/09/01/flask%E4%BD%BF%E7%94%A8https/">flask使用https</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>有一个https页面，需要加载http资源（后台是flask），出于安全原因被浏览器禁止了</p>
+<p>既然只能用https，那就干脆把flask的所有请求都改成https</p>
+<p>代码方面，只需要在app.run方法中增加ssl_context&#x3D;’adhoc’，意思是使用服务器的本地SSL证书</p>
+<p>if <strong>name</strong>&#x3D;&#x3D;”<strong>main</strong>“:<br>    app.run(host&#x3D;”0.0.0.0”, port&#x3D;5000,ssl_context&#x3D;’adhoc’)</p>
+<p>然后就可以使用https访问了</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/09/image.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/09/01/flask%E4%BD%BF%E7%94%A8https/" data-id="cm9zmq8xl003isqhlcc602bdl" data-title="flask使用https" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flask/" rel="tag">flask</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-ubuntu20安装cudacudnn" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/14/ubuntu20%E5%AE%89%E8%A3%85cudacudnn/" class="article-date">
+  <time class="dt-published" datetime="2021-08-14T09:31:02.000Z" itemprop="datePublished">2021-08-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">软件安装配置</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/14/ubuntu20%E5%AE%89%E8%A3%85cudacudnn/">ubuntu20安装cuda&amp;cudnn</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h4 id="安装驱动"><a href="#安装驱动" class="headerlink" title="安装驱动"></a>安装驱动</h4><p>在软件和更新-附加驱动里，选择显卡驱动</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/08/2021-08-14-15-39-14%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png"></p>
+<p>禁用自带显卡驱动</p>
+<pre><code>sudo gedit /etc/modprobe.d/blacklist.conf
+</code></pre>
+<p>在最后一行加上:  blacklist nouveau ，将Ubuntu自带的显卡驱动加入黑名单，修改后保存</p>
+<p>还需执行一条命令使他生效</p>
+<pre><code>sudo update-initramfs -u
+</code></pre>
+<p>然后重启，输入以下命令查看支持的cuda版本</p>
+<pre><code>nvidia-smi
+</code></pre>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/08/2021-08-14-16-18-59%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png"></p>
+<p>所以我可以安装的是cuda11.4版本</p>
+<h4 id="下载cuda"><a href="#下载cuda" class="headerlink" title="下载cuda"></a>下载cuda</h4><p><a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-toolkit-archive">https://developer.nvidia.com/cuda-toolkit-archive</a></p>
+<p>选择正确的版本</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/08/2021-08-14-16-23-17%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png"></p>
+<p>选择操作系统、架构等，依次执行下面生成的命令</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/08/2021-08-14-16-24-23%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE-1024x545.png"></p>
+<p>我这里就是这样</p>
+<pre><code>wget https://developer.download.nvidia.com/compute/cuda/11.4.0/local_installers/cuda_11.4.0_470.42.01_linux.run
+sudo sh cuda_11.4.0_470.42.01_linux.run
+</code></pre>
+<p>bash命令执行要等一会儿，出现这个界面后选择continue</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/08/2021-08-14-16-47-50%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png"></p>
+<p>下个界面输入accept</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/08/2021-08-14-16-49-42%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png"></p>
+<p>再下个界面先按空格，取消安装驱动，因为上面我们已经安装好了，然后选择install</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/08/2021-08-14-16-50-48%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png"></p>
+<p>等待安装完成后是这个界面</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/08/2021-08-14-16-52-43%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png"></p>
+<h4 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h4><p>输入gedit ~&#x2F;.bashrc命令打开文件，在文件结尾输入以下语句，保存</p>
+<pre><code>export PATH=/usr/local/cuda-11.4/bin$&#123;PATH:+:$&#123;PATH&#125;&#125;
+export LD_LIBRARY_PATH=/usr/local/cuda-11.4/lib64$&#123;LD_LIBRARY_PATH:+:$&#123;LD_LIBRARY_PATH&#125;&#125;
+</code></pre>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/08/2021-08-14-16-54-30%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png"></p>
+<p>更新环境变量配置</p>
+<pre><code>source ~/.bashrc
+</code></pre>
+<p>至此，cuda安装完成，输入nvcc -V 查看是否成功</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/08/2021-08-14-16-56-54%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png"></p>
+<h4 id="安装cudnn"><a href="#安装cudnn" class="headerlink" title="安装cudnn"></a>安装cudnn</h4><p><a target="_blank" rel="noopener" href="https://developer.nvidia.com/rdp/cudnn-download">https://developer.nvidia.com/rdp/cudnn-download</a></p>
+<p>需要登录(比较麻烦，建议看最后一步的阿里云镜像源)</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/08/2021-08-14-17-01-39%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png"></p>
+<p>解压后进入解压目录，将cuda&#x2F;include&#x2F;cudnn.h文件复制到usr&#x2F;local&#x2F;cuda&#x2F;include文件夹，将cuda&#x2F;lib64&#x2F;下所有文件复制到&#x2F;usr&#x2F;local&#x2F;cuda&#x2F;lib64文件夹中,再添加读取权限</p>
+<p>可以在解压后的cudnn-11.4…..&#x2F;cuda目录下执行</p>
+<pre><code>sudo cp include/cudnn.h /usr/local/cuda/include/cudnn.h
+sudo cp -r lib64/* /usr/local/cuda/lib64
+sudo chmod a+r /usr/local/cuda/lib64/libcudnn*
+sudo chmod a+r /usr/local/cuda/include/cudnn.h
+</code></pre>
+<p>至此，cudnn安装完成</p>
+<h4 id="阿里云镜像deb安装方法"><a href="#阿里云镜像deb安装方法" class="headerlink" title="阿里云镜像deb安装方法"></a>阿里云镜像deb安装方法</h4><p><a target="_blank" rel="noopener" href="https://mirrors.aliyun.com/nvidia-cuda/">https://mirrors.aliyun.com/nvidia-cuda/</a></p>
+<p>选择对应的操作系统版本，查找cuda版本对应的cudnn，dev和非dev两个版本，都需要下载<br><img src="https://xinhaojin.github.io/imgs-host/20221025/xxx.4tdndxgkm1k0.png"><br>安装命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i libcudnn8-dev_8.2.4.15-1+cuda11.4_amd64.deb</span><br><span class="line">sudo dpkg -i libcudnn8_8.2.4.15-1+cuda11.4_amd64.deb</span><br></pre></td></tr></table></figure>
+
+<p>检查是否安装成功，有以上两个的安装信息即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -l | grep cudnn</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/14/ubuntu20%E5%AE%89%E8%A3%85cudacudnn/" data-id="cm9zmq8yq0095sqhl0fn3803f" data-title="ubuntu20安装cuda&amp;cudnn" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" rel="tag">软件安装配置</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/10/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/12/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/LeetCode/">LeetCode</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/%E6%9D%82/">杂</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/%E6%9D%82/">杂</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/pytorch/">pytorch</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">图像处理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%8D%93/">安卓</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82/">杂</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%88%AC%E8%99%AB/">爬虫</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/">目标检测</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E5%B7%A5/">网工</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">软件安装配置</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/linux/">linux</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/" rel="tag">CDN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DDNS/" rel="tag">DDNS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DHCP/" rel="tag">DHCP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNS/" rel="tag">DNS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IP/" rel="tag">IP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IPsec/" rel="tag">IPsec</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDA/" rel="tag">LDA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NFC/" rel="tag">NFC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDF/" rel="tag">PDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SMTP/" rel="tag">SMTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chatgpt/" rel="tag">chatgpt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloudflare/" rel="tag">cloudflare</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/" rel="tag">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ocr/" rel="tag">ocr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyinstaller/" rel="tag">pyinstaller</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pytorch/" rel="tag">pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rpa/" rel="tag">rpa</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/selenium/" rel="tag">selenium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/" rel="tag">socket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssl/" rel="tag">ssl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wget/" rel="tag">wget</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wol/" rel="tag">wol</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/" rel="tag">wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/worldcloud/" rel="tag">worldcloud</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%91%E7%9B%98/" rel="tag">云盘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B/" rel="tag">人脸检测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%90%86/" rel="tag">代理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%80%8D%E9%80%9F%E6%92%AD%E6%94%BE/" rel="tag">倍速播放</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" rel="tag">内网穿透</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E7%9B%AE%E6%91%84%E5%83%8F%E5%A4%B4%E6%B5%8B%E8%B7%9D/" rel="tag">单目摄像头测距</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%93%88%E5%A4%AB%E6%9B%BC/" rel="tag">哈夫曼</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" rel="tag">哈希表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%9F%E5%90%8D/" rel="tag">域名</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A0%86/" rel="tag">堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E5%B1%8F%E5%8D%8F%E5%90%8C/" rel="tag">多屏协同</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%AA%E7%94%9F%E7%BD%91%E7%BB%9C/" rel="tag">孪生网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E5%8D%93/" rel="tag">安卓</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/" rel="tag">局域网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/" rel="tag">数据集</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%BB%84/" rel="tag">数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" rel="tag">树莓派</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BF%80%E5%85%89%E6%B5%8B%E8%B7%9D/" rel="tag">激光测距</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%82%B9%E9%80%89%E9%AA%8C%E8%AF%81%E7%A0%81/" rel="tag">点选验证码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" rel="tag">目标检测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" rel="tag">端口转发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" rel="tag">编译原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E5%B7%A5/" rel="tag">网工</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%80%81%E6%AF%9B%E5%AD%90%E5%9B%BA%E4%BB%B6/" rel="tag">老毛子固件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" rel="tag">虚拟机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD/" rel="tag">视频下载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E6%B5%81/" rel="tag">视频流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%AD%E9%9F%B3%E8%BD%AC%E6%96%87%E5%AD%97/" rel="tag">语音转文字</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B6%85%E5%83%8F%E7%B4%A0/" rel="tag">超像素</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B6%85%E5%A3%B0%E6%B3%A2/" rel="tag">超声波</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8%E5%88%B7%E6%9C%BA/" rel="tag">路由器刷机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" rel="tag">软件安装配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E7%94%BB%E5%90%8C%E6%AD%A5/" rel="tag">音画同步</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/" rel="tag">验证码</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CDN/" style="font-size: 10px;">CDN</a> <a href="/tags/DDNS/" style="font-size: 10px;">DDNS</a> <a href="/tags/DHCP/" style="font-size: 10px;">DHCP</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/IP/" style="font-size: 10.67px;">IP</a> <a href="/tags/IPsec/" style="font-size: 10px;">IPsec</a> <a href="/tags/LDA/" style="font-size: 10px;">LDA</a> <a href="/tags/NFC/" style="font-size: 10px;">NFC</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/SMTP/" style="font-size: 10px;">SMTP</a> <a href="/tags/blog/" style="font-size: 11.33px;">blog</a> <a href="/tags/c/" style="font-size: 16px;">c++</a> <a href="/tags/chatgpt/" style="font-size: 10.67px;">chatgpt</a> <a href="/tags/cloudflare/" style="font-size: 11.33px;">cloudflare</a> <a href="/tags/docker/" style="font-size: 12.67px;">docker</a> <a href="/tags/flask/" style="font-size: 11.33px;">flask</a> <a href="/tags/java/" style="font-size: 13.33px;">java</a> <a href="/tags/js/" style="font-size: 11.33px;">js</a> <a href="/tags/linux/" style="font-size: 19.33px;">linux</a> <a href="/tags/nginx/" style="font-size: 12.67px;">nginx</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/ocr/" style="font-size: 10px;">ocr</a> <a href="/tags/php/" style="font-size: 10.67px;">php</a> <a href="/tags/pyinstaller/" style="font-size: 10px;">pyinstaller</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/pytorch/" style="font-size: 16.67px;">pytorch</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/rpa/" style="font-size: 10px;">rpa</a> <a href="/tags/selenium/" style="font-size: 11.33px;">selenium</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/socket/" style="font-size: 10px;">socket</a> <a href="/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/tags/ssh/" style="font-size: 13.33px;">ssh</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/wget/" style="font-size: 10px;">wget</a> <a href="/tags/wol/" style="font-size: 10px;">wol</a> <a href="/tags/wordpress/" style="font-size: 10.67px;">wordpress</a> <a href="/tags/worldcloud/" style="font-size: 10px;">worldcloud</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 12.67px;">二叉树</a> <a href="/tags/%E4%BA%91%E7%9B%98/" style="font-size: 10px;">云盘</a> <a href="/tags/%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B/" style="font-size: 10px;">人脸检测</a> <a href="/tags/%E4%BB%A3%E7%90%86/" style="font-size: 13.33px;">代理</a> <a href="/tags/%E5%80%8D%E9%80%9F%E6%92%AD%E6%94%BE/" style="font-size: 10px;">倍速播放</a> <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" style="font-size: 11.33px;">内网穿透</a> <a href="/tags/%E5%8D%95%E7%9B%AE%E6%91%84%E5%83%8F%E5%A4%B4%E6%B5%8B%E8%B7%9D/" style="font-size: 10px;">单目摄像头测距</a> <a href="/tags/%E5%93%88%E5%A4%AB%E6%9B%BC/" style="font-size: 10px;">哈夫曼</a> <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" style="font-size: 10.67px;">哈希表</a> <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" style="font-size: 14px;">图像处理</a> <a href="/tags/%E5%9F%9F%E5%90%8D/" style="font-size: 10px;">域名</a> <a href="/tags/%E5%A0%86/" style="font-size: 10px;">堆</a> <a href="/tags/%E5%A4%9A%E5%B1%8F%E5%8D%8F%E5%90%8C/" style="font-size: 10px;">多屏协同</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a> <a href="/tags/%E5%AD%AA%E7%94%9F%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">孪生网络</a> <a href="/tags/%E5%AE%89%E5%8D%93/" style="font-size: 13.33px;">安卓</a> <a href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/" style="font-size: 12px;">局域网</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 18.67px;">数据结构</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/" style="font-size: 15.33px;">数据集</a> <a href="/tags/%E6%95%B0%E7%BB%84/" style="font-size: 10px;">数组</a> <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" style="font-size: 14.67px;">树莓派</a> <a href="/tags/%E6%BF%80%E5%85%89%E6%B5%8B%E8%B7%9D/" style="font-size: 10px;">激光测距</a> <a href="/tags/%E7%82%B9%E9%80%89%E9%AA%8C%E8%AF%81%E7%A0%81/" style="font-size: 10px;">点选验证码</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 13.33px;">爬虫</a> <a href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" style="font-size: 18px;">目标检测</a> <a href="/tags/%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" style="font-size: 10px;">端口转发</a> <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" style="font-size: 11.33px;">编译原理</a> <a href="/tags/%E7%BD%91%E5%B7%A5/" style="font-size: 14px;">网工</a> <a href="/tags/%E8%80%81%E6%AF%9B%E5%AD%90%E5%9B%BA%E4%BB%B6/" style="font-size: 10px;">老毛子固件</a> <a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" style="font-size: 10px;">虚拟机</a> <a href="/tags/%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD/" style="font-size: 10.67px;">视频下载</a> <a href="/tags/%E8%A7%86%E9%A2%91%E6%B5%81/" style="font-size: 10px;">视频流</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.67px;">计算机网络</a> <a href="/tags/%E8%AF%AD%E9%9F%B3%E8%BD%AC%E6%96%87%E5%AD%97/" style="font-size: 10px;">语音转文字</a> <a href="/tags/%E8%B6%85%E5%83%8F%E7%B4%A0/" style="font-size: 10px;">超像素</a> <a href="/tags/%E8%B6%85%E5%A3%B0%E6%B3%A2/" style="font-size: 10px;">超声波</a> <a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8%E5%88%B7%E6%9C%BA/" style="font-size: 10px;">路由器刷机</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" style="font-size: 17.33px;">软件安装配置</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 10.67px;">递归</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 11.33px;">链表</a> <a href="/tags/%E9%9F%B3%E7%94%BB%E5%90%8C%E6%AD%A5/" style="font-size: 10px;">音画同步</a> <a href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/" style="font-size: 12.67px;">验证码</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/04/27/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2025/04/25/ubuntu24%E9%87%8D%E8%A3%85%E8%AE%B0%E5%BD%95/">ubuntu24重装记录</a>
+          </li>
+        
+          <li>
+            <a href="/2025/04/01/win11%E6%B7%BB%E5%8A%A0%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0%E7%BD%91%E5%8D%A1%E5%BC%82%E5%B8%B8%E8%87%AA%E5%8A%A8%E9%87%8D%E5%90%AF/">win11添加开机自启动脚本实现网卡异常自动重启</a>
+          </li>
+        
+          <li>
+            <a href="/2025/02/06/DBeaver%E8%BF%9E%E6%8E%A5MySQL%E5%92%8CIoTDB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%AD%A5%E9%AA%A4/">DBeaver连接MySQL和IoTDB数据库步骤</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/26/%E4%BD%BF%E7%94%A8polkit%E5%AE%9E%E7%8E%B0%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86systemctl%E6%9C%8D%E5%8A%A1/">使用polkit实现普通用户管理systemctl服务</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

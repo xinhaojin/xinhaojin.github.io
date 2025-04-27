@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/16/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-树莓派4b编译安装opencv" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/12/%E6%A0%91%E8%8E%93%E6%B4%BE4b%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85opencv/" class="article-date">
+  <time class="dt-published" datetime="2021-01-11T16:45:18.000Z" itemprop="datePublished">2021-01-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/12/%E6%A0%91%E8%8E%93%E6%B4%BE4b%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85opencv/">树莓派4B编译安装opencv</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>pip安装失败，无奈选择手动编译安装</p>
+<h4 id="下载opencv-3-4-13"><a href="#下载opencv-3-4-13" class="headerlink" title="下载opencv-3.4.13"></a>下载opencv-3.4.13</h4><p>官网<a target="_blank" rel="noopener" href="https://opencv.org/releases/">https://opencv.org/releases/</a></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/01/image-35.png"></p>
+<p>官网源码是github链接，下载巨慢，github挂代理也不管用，结果试了一下用手机浏览器下载，不到10s就下载完了，现在还有点懵……总之能下载下来就行</p>
+<p>这里放一个蓝奏云链接提供下载<a target="_blank" rel="noopener" href="https://xinhaojin.lanzous.com/iEQV5kamg6j">https://xinhaojin.lanzous.com/iEQV5kamg6j</a></p>
+<p>解压，放到要安装的目录下，进入opencv-3.4.13文件夹</p>
+<h4 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h4><p>分别执行以下命令</p>
+<pre><code>cd  opencv-3.4.13
+mkdir release
+cd release
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local ..
+make
+sudo make install
+</code></pre>
+<p>其中make要等待很长时间，我大概花了一个多小时</p>
+<p>结果是[100%] Built target opencv verson忘记截图了</p>
+<pre><code>sudo make install
+</code></pre>
+<p>之后是这样的</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/01/image-36.png"></p>
+<p>Done.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/12/%E6%A0%91%E8%8E%93%E6%B4%BE4b%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85opencv/" data-id="cm9zmq90a00ggsqhlcsgx6f2s" data-title="树莓派4B编译安装opencv" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" rel="tag">树莓派</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-树莓派4b接usb摄像头" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/11/%E6%A0%91%E8%8E%93%E6%B4%BE4b%E6%8E%A5usb%E6%91%84%E5%83%8F%E5%A4%B4/" class="article-date">
+  <time class="dt-published" datetime="2021-01-11T10:46:03.000Z" itemprop="datePublished">2021-01-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/11/%E6%A0%91%E8%8E%93%E6%B4%BE4b%E6%8E%A5usb%E6%91%84%E5%83%8F%E5%A4%B4/">树莓派4B接USB摄像头发送视频流</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h4 id="添加摄像头设备"><a href="#添加摄像头设备" class="headerlink" title="添加摄像头设备"></a>添加摄像头设备</h4><p>插拔摄像头分别执行一次以下命令</p>
+<pre><code>pi@raspberrypi:~ $ lsusb
+</code></pre>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/01/image-31.png"></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/01/image-32.png"></p>
+<p>或者</p>
+<pre><code>pi@raspberrypi:~ $ ls /dev
+</code></pre>
+<p>插上USB摄像头有video0即可</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/01/image-30.png"></p>
+<p>不插的情况</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/01/image-33.png"></p>
+<h4 id="安装MJPG-Streamer"><a href="#安装MJPG-Streamer" class="headerlink" title="安装MJPG-Streamer"></a>安装MJPG-Streamer</h4><p>依次通过以下命令安装</p>
+<pre><code>pi@raspberrypi:~ $ sudo apt-get install cmake libjpeg8-dev
+pi@raspberrypi:~ $ git clone https://e.coding.net/fivecc/mjpg-streamer/mjpg-streamer.git
+pi@raspberrypi:~ $ cd mjpg-*
+pi@raspberrypi:~/mjpg-streamer-master $ cd mjpg-*
+pi@raspberrypi:~/mjpg-streamer-master/mjpg-streamer-experimental $ make
+pi@raspberrypi:~/mjpg-streamer-master/mjpg-streamer-experimental $ sudo make install
+pi@raspberrypi:~/mjpg-streamer-master/mjpg-streamer-experimental $ cd
+pi@raspberrypi:~ $
+</code></pre>
+<h4 id="启动-MJPG-Streamer"><a href="#启动-MJPG-Streamer" class="headerlink" title="启动 MJPG-Streamer"></a>启动 MJPG-Streamer</h4><pre><code>pi@raspberrypi: ~ $ /usr/local/bin/mjpg_streamer -i &quot;/usr/local/lib/mjpg-streamer/input_uvc.so -n -f 30 -r 1280x720&quot; -o &quot;/usr/local/lib/mjpg-streamer/output_http.so -p 8080 -w /usr/local/share/mjpg-streamer/www&quot;
+</code></pre>
+<p>正常的结果</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/01/image-34.png"></p>
+<h4 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h4><p>   -i “&#x2F;usr&#x2F;local&#x2F;lib&#x2F;mjpg-streamer&#x2F;input_uvc.so -n -f 30 -r 1280x720”</p>
+<p>  -i 输入</p>
+<p>         input_uvc.so：UVC输入组件</p>
+<p>       -f  30             ：表示30帧</p>
+<p>       -r 1280*720     ：分辨率</p>
+<p>       -y                   ：YUV格式输入（有卡顿），不加表示MJPG输入（需要摄像头支持）</p>
+<p>    -o “&#x2F;usr&#x2F;local&#x2F;lib&#x2F;mjpg-streamer&#x2F;output_http.so -p 8080 -w &#x2F;usr&#x2F;local&#x2F;share&#x2F;mjpg-streamer&#x2F;www”</p>
+<p>          -o 输出</p>
+<p>            output_http.so          ：网页输出组件</p>
+<p>            -w www                                  : 网页输出</p>
+<p>           -p 8080                                   ：端口   8080</p>
+<p>             -d 1000                                   ： 时间1S</p>
+<h4 id="浏览器实时视频接收"><a href="#浏览器实时视频接收" class="headerlink" title="浏览器实时视频接收"></a>浏览器实时视频接收</h4><p>创建一个html文件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>实时视频<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">     <span class="selector-id">#webcam</span>&#123;</span></span><br><span class="line"><span class="language-css">          <span class="attribute">width</span>: <span class="number">80%</span>;</span></span><br><span class="line"><span class="language-css">          <span class="attribute">height</span>: <span class="number">80%</span>;</span></span><br><span class="line"><span class="language-css">          <span class="attribute">display</span>: block;</span></span><br><span class="line"><span class="language-css">          <span class="attribute">margin</span>: <span class="number">10%</span> auto;</span></span><br><span class="line"><span class="language-css">          <span class="attribute">text-align</span>: center;</span></span><br><span class="line"><span class="language-css">          <span class="attribute">position</span>: relative;</span></span><br><span class="line"><span class="language-css">     &#125;</span></span><br><span class="line"><span class="language-css">     <span class="selector-id">#webcam</span> <span class="selector-tag">img</span>&#123;</span></span><br><span class="line"><span class="language-css">         <span class="attribute">width</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="language-css">         <span class="attribute">height</span>: auto;</span></span><br><span class="line"><span class="language-css">         <span class="attribute">display</span>: block;</span></span><br><span class="line"><span class="language-css">         <span class="attribute">margin</span>: <span class="number">0</span> auto;</span></span><br><span class="line"><span class="language-css">     &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;webcam&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> imageNr = <span class="number">0</span>; <span class="comment">// 图片的索引号</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> finished = <span class="keyword">new</span> <span class="title class_">Array</span>(); <span class="comment">// 下载图片的队列</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> paused = <span class="literal">false</span>; <span class="comment">//</span></span></span><br><span class="line"><span class="language-javascript">   </span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">createImageLayer</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> img = <span class="keyword">new</span> <span class="title class_">Image</span>();</span></span><br><span class="line"><span class="language-javascript">      img.<span class="property">style</span>.<span class="property">position</span> = <span class="string">&quot;absolute&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">      img.<span class="property">style</span>.<span class="property">zIndex</span> = -<span class="number">1</span>;</span></span><br><span class="line"><span class="language-javascript">      img.<span class="property">onload</span> = imageOnload;</span></span><br><span class="line"><span class="language-javascript">      img.<span class="property">onclick</span> = imageOnclick;</span></span><br><span class="line"><span class="language-javascript">         <span class="comment">//填你对应的ip和端口</span></span></span><br><span class="line"><span class="language-javascript">      img.<span class="property">src</span> = <span class="string">&quot;http://192.16.34.182:8080/?action=snapshot&amp;n=&quot;</span> + (++imageNr);</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">var</span> webcam = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;webcam&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">      webcam.<span class="title function_">insertBefore</span>(img, webcam.<span class="property">firstChild</span>);</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">   </span></span><br><span class="line"><span class="language-javascript">   </span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">imageOnload</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">this</span>.<span class="property">style</span>.<span class="property">zIndex</span> = imageNr; </span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">while</span> (<span class="number">1</span> &lt; finished.<span class="property">length</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> del = finished.<span class="title function_">shift</span>(); <span class="comment">// 删除旧照片</span></span></span><br><span class="line"><span class="language-javascript">        del.<span class="property">parentNode</span>.<span class="title function_">removeChild</span>(del);</span></span><br><span class="line"><span class="language-javascript">      &#125;</span></span><br><span class="line"><span class="language-javascript">      finished.<span class="title function_">push</span>(<span class="variable language_">this</span>);</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">if</span> (!paused) <span class="title function_">createImageLayer</span>();</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">   </span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">imageOnclick</span>(<span class="params"></span>) &#123; </span></span><br><span class="line"><span class="language-javascript">      paused = !paused;</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">if</span> (!paused) <span class="title function_">createImageLayer</span>();</span></span><br><span class="line"><span class="language-javascript">    &#125; </span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">createImageLayer</span>() </span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>把IP部分改成树莓派的IP，打开网页即可</p>
+<p>其实只需要关注“<a target="_blank" rel="noopener" href="http://192.16.34.182:8080/?action=snapshot&n=%E2%80%9D%EF%BC%8C%E8%BF%99%E5%90%8E%E9%9D%A2%E6%98%AF%E8%A7%86%E9%A2%91%E5%B8%A7%E7%9A%84%E7%B4%A2%E5%BC%95%EF%BC%8C%E5%8F%AA%E9%9C%80%E8%A6%81%E7%BB%99%E4%B8%80%E4%B8%AA%E8%B6%B3%E5%A4%9F%E5%A4%A7%E7%9A%84%E6%95%B0%E5%B0%B1%E5%8F%AF%E4%BB%A5%E8%8E%B7%E5%8F%96%E6%9C%80%E6%96%B0%E7%9A%84%E8%A7%86%E9%A2%91%E5%B8%A7">http://192.16.34.182:8080/?action=snapshot&amp;n=”，这后面是视频帧的索引，只需要给一个足够大的数就可以获取最新的视频帧</a></p>
+<p>如“<a target="_blank" rel="noopener" href="http://192.16.34.182:8080/?action=snapshot&n=100000000%E2%80%9D">http://192.16.34.182:8080/?action=snapshot&amp;n=100000000”</a></p>
+<p>当然，也可直接在浏览器输入视频流地址“<a target="_blank" rel="noopener" href="http://192.16.34.182:8080/?action=streamer%E2%80%9D">http://192.16.34.182:8080/?action=streamer”</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/11/%E6%A0%91%E8%8E%93%E6%B4%BE4b%E6%8E%A5usb%E6%91%84%E5%83%8F%E5%A4%B4/" data-id="cm9zmq90800g9sqhlg37k8ial" data-title="树莓派4B接USB摄像头发送视频流" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" rel="tag">树莓派</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E6%B5%81/" rel="tag">视频流</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-linux关闭占用端口的进程" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/10/linux%E5%85%B3%E9%97%AD%E5%8D%A0%E7%94%A8%E7%AB%AF%E5%8F%A3%E7%9A%84%E8%BF%9B%E7%A8%8B/" class="article-date">
+  <time class="dt-published" datetime="2021-01-10T13:22:26.000Z" itemprop="datePublished">2021-01-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82/">杂</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/10/linux%E5%85%B3%E9%97%AD%E5%8D%A0%E7%94%A8%E7%AB%AF%E5%8F%A3%E7%9A%84%E8%BF%9B%E7%A8%8B/">linux关闭占用端口的进程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <pre><code>[root@izuf64lmg25t75c8db3hxcz workspace]# lsof -i:9999
+COMMAND   PID USER   FD   TYPE  DEVICE SIZE/OFF NODE NAME
+python3 11902 root    3u  IPv4 9435173      0t0  TCP *:distinct (LISTEN)
+python3 11902 root    5u  IPv4 9451420      0t0  TCP izuf64lmg25t75c8db3hxcz:distinct-&gt;115.200.48.232:ibm-mgr (CLOSE_WAIT)
+[root@izuf64lmg25t75c8db3hxcz workspace]# kill -9 11902
+</code></pre>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/01/image-29-1024x173.png"></p>
+<p>lsof -i:端口号</p>
+<p>kill -9 pid</p>
+<p>当然也有另一种不用查看pid的方法</p>
+<p>kill -9 `lsof -i:9999  awk ‘NR&#x3D;&#x3D;2{print $2}’`</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/10/linux%E5%85%B3%E9%97%AD%E5%8D%A0%E7%94%A8%E7%AB%AF%E5%8F%A3%E7%9A%84%E8%BF%9B%E7%A8%8B/" data-id="cm9zmq8xr004gsqhlbbos634l" data-title="linux关闭占用端口的进程" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-android设置横屏" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/08/android%E8%AE%BE%E7%BD%AE%E6%A8%AA%E5%B1%8F/" class="article-date">
+  <time class="dt-published" datetime="2021-01-08T12:13:34.000Z" itemprop="datePublished">2021-01-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AE%89%E5%8D%93/">安卓</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/08/android%E8%AE%BE%E7%BD%AE%E6%A8%AA%E5%B1%8F/">Android设置横屏/避免旋转屏幕导致avtivity重载</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在AndroidManifest.xml的activity标签中添加如下片段：</p>
+<p>android:screenOrientation&#x3D;”portrait”</p>
+<p>横屏改成android:screenOrientation&#x3D;”landscape”</p>
+<p>另一个问题，有时把程序切换到后台或旋转屏幕使布局改变时，会重载onCreate方法导致activity重载，避免这种情况的方法是在AndroidManifest.xml中activity标签中添加</p>
+<p>android:configChanges&#x3D;”orientationkeyboardHiddenscreenSize”</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/04/image-24.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/08/android%E8%AE%BE%E7%BD%AE%E6%A8%AA%E5%B1%8F/" data-id="cm9zmq8x8001xsqhla2he1cj1" data-title="Android设置横屏/避免旋转屏幕导致avtivity重载" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AE%89%E5%8D%93/" rel="tag">安卓</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-树莓派4b换源" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/06/%E6%A0%91%E8%8E%93%E6%B4%BE4b%E6%8D%A2%E6%BA%90/" class="article-date">
+  <time class="dt-published" datetime="2021-01-06T15:55:15.000Z" itemprop="datePublished">2021-01-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/06/%E6%A0%91%E8%8E%93%E6%B4%BE4b%E6%8D%A2%E6%BA%90/">树莓派4B换源</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h4 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h4><pre><code>sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+
+sudo cp /etc/apt/sources.list.d/raspi.list /etc/apt/sources.list.d/raspi.list.bak
+</code></pre>
+<h4 id="更改系统源文件"><a href="#更改系统源文件" class="headerlink" title="更改系统源文件"></a>更改系统源文件</h4><pre><code>sudo vim /etc/apt/sources.list
+</code></pre>
+<p>把原有的注释掉，添加</p>
+<pre><code>deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main contrib non-free rpi
+
+deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ buster main contrib non-free rpi
+</code></pre>
+<h4 id="更新软件列表和软件"><a href="#更新软件列表和软件" class="headerlink" title="更新软件列表和软件"></a>更新软件列表和软件</h4><pre><code>sudo apt-get update
+
+sudo apt-get upgrade
+</code></pre>
+<h4 id="更改系统源"><a href="#更改系统源" class="headerlink" title="更改系统源"></a>更改系统源</h4><pre><code>sudo vim /etc/apt/sources.list.d/raspi.list
+</code></pre>
+<p>同样注释掉原内容，添加上</p>
+<pre><code>deb http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ buster main ui
+
+deb-src http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ buster main ui
+</code></pre>
+<p>刚更新到了最新版本</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/01/image-16-1024x805.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/06/%E6%A0%91%E8%8E%93%E6%B4%BE4b%E6%8D%A2%E6%BA%90/" data-id="cm9zmq90600fzsqhl9zmubilb" data-title="树莓派4B换源" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" rel="tag">树莓派</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-pip换源" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/06/pip%E6%8D%A2%E6%BA%90/" class="article-date">
+  <time class="dt-published" datetime="2021-01-06T15:48:32.000Z" itemprop="datePublished">2021-01-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82/">杂</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/06/pip%E6%8D%A2%E6%BA%90/">pip换源、设置多个源并添加信任</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h4 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h4><pre><code>cd ~ # 进入家目录
+mkdir .pip # 新建.pip隐藏文件夹
+cd .pip # 进入.pip文件夹
+touch pip.conf # 新建pip.conf文件
+vim pip.conf # 用vim编辑pip.conf文件
+
+[global]
+index-url=https://mirror.baidu.com/pypi/simple
+extra-index-url=https://pypi.tuna.tsinghua.edu.cn/simple/
+                http://mirrors.aliyun.com/pypi/simple/
+
+[install]
+trusted-host=mirrors.baidu.com
+            pypi.tuna.tsinghua.edu.cn
+            mirrors.aliyun.com
+</code></pre>
+<h4 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h4><p>在这个目录下</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/08/image-2.png"></p>
+<p>找到pip文件夹，没有pip文件夹就新建一个</p>
+<p>在pip文件夹里面新建一个txt,内容同上</p>
+<p>命名为pip.ini保存</p>
+<h4 id="临时换源"><a href="#临时换源" class="headerlink" title="临时换源"></a>临时换源</h4><pre><code>pip install xxx -i http://mirrors.baidu.com/pypi/simple --trusted-host mirrors.baidu.com
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/06/pip%E6%8D%A2%E6%BA%90/" data-id="cm9zmq8y20067sqhlcwp40ym3" data-title="pip换源、设置多个源并添加信任" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-chrome插件switchyomega配置" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/06/chrome%E6%8F%92%E4%BB%B6switchyomega%E9%85%8D%E7%BD%AE/" class="article-date">
+  <time class="dt-published" datetime="2021-01-06T05:42:18.000Z" itemprop="datePublished">2021-01-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">软件安装配置</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/06/chrome%E6%8F%92%E4%BB%B6switchyomega%E9%85%8D%E7%BD%AE/">Chrome插件SwitchyOmega配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h4 id="到插件选项界面，新建情景模式，选择代理服务器"><a href="#到插件选项界面，新建情景模式，选择代理服务器" class="headerlink" title="到插件选项界面，新建情景模式，选择代理服务器"></a>到插件选项界面，新建情景模式，选择代理服务器</h4><p><img src="https://xinhaojin.github.io/imgs-host/past/2021/01/image-8-1024x598.png"></p>
+<h4 id="选择socket5代理，填写正确的代理端口"><a href="#选择socket5代理，填写正确的代理端口" class="headerlink" title="选择socket5代理，填写正确的代理端口"></a>选择socket5代理，填写正确的代理端口</h4><p><img src="https://xinhaojin.github.io/imgs-host/past/2021/01/image-11-1024x221.png"></p>
+<h4 id="端口号可以在代理客户端中查看"><a href="#端口号可以在代理客户端中查看" class="headerlink" title="端口号可以在代理客户端中查看"></a>端口号可以在代理客户端中查看</h4><p><img src="https://xinhaojin.github.io/imgs-host/past/2021/01/image-10-1024x684.png"></p>
+<h4 id="选择应用选项"><a href="#选择应用选项" class="headerlink" title="选择应用选项"></a>选择应用选项</h4><p><img src="https://xinhaojin.github.io/imgs-host/past/2021/01/image-12.png"></p>
+<h4 id="配置auto-switch-默认选择直连，规则列表规则对应点情景模式为刚新建的那个情景模式，规则列表格式选择AutoProxy-规则列表网址GitHub-gfwlist-gfwlist-The-one-and-only-one-gfwlist-here"><a href="#配置auto-switch-默认选择直连，规则列表规则对应点情景模式为刚新建的那个情景模式，规则列表格式选择AutoProxy-规则列表网址GitHub-gfwlist-gfwlist-The-one-and-only-one-gfwlist-here" class="headerlink" title="配置auto switch,默认选择直连，规则列表规则对应点情景模式为刚新建的那个情景模式，规则列表格式选择AutoProxy,规则列表网址GitHub - gfwlist&#x2F;gfwlist: The one and only one gfwlist here"></a>配置auto switch,默认选择直连，规则列表规则对应点情景模式为刚新建的那个情景模式，规则列表格式选择AutoProxy,规则列表网址<a target="_blank" rel="noopener" href="https://github.com/gfwlist/gfwlist">GitHub - gfwlist&#x2F;gfwlist: The one and only one gfwlist here</a></h4><p>建议地址<a target="_blank" rel="noopener" href="https://gitlab.com/gfwlist/gfwlist/raw/master/gfwlist.txt">https://gitlab.com/gfwlist/gfwlist/raw/master/gfwlist.txt</a></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/01/image-13-1024x467.png"></p>
+<h4 id="选择立即更新，再保存"><a href="#选择立即更新，再保存" class="headerlink" title="选择立即更新，再保存"></a>选择立即更新，再保存</h4><p><img src="https://xinhaojin.github.io/imgs-host/past/2021/01/image-14.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/06/chrome%E6%8F%92%E4%BB%B6switchyomega%E9%85%8D%E7%BD%AE/" data-id="cm9zmq8xg002ssqhla01th291" data-title="Chrome插件SwitchyOmega配置" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BB%A3%E7%90%86/" rel="tag">代理</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-cloudflareip优选cdn加速" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/04/cloudflareip%E4%BC%98%E9%80%89cdn%E5%8A%A0%E9%80%9F/" class="article-date">
+  <time class="dt-published" datetime="2021-01-04T10:48:55.000Z" itemprop="datePublished">2021-01-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82/">杂</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/04/cloudflareip%E4%BC%98%E9%80%89cdn%E5%8A%A0%E9%80%9F/">CloudFlareIP优选CDN加速</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="cloudflare代理"><a href="#cloudflare代理" class="headerlink" title="cloudflare代理"></a>cloudflare代理</h3><p><img src="https://xinhaojin.github.io/imgs-host/past/2021/01/image-1024x149.png"></p>
+<p>ping域名结果都是cloudflare节点就说明代理成功了，延迟高速度不一定慢</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/01/image-5-1024x594.png"></p>
+<h3 id="IP优选"><a href="#IP优选" class="headerlink" title="IP优选"></a>IP优选</h3><p>下载地址<a target="_blank" rel="noopener" href="https://github.com/badafans/better-cloudflare-ip,%E7%82%B9%E5%87%BB%E5%8F%B3%E4%BE%A7release%E9%80%89%E6%8B%A9%E7%89%88%E6%9C%AC%E4%B8%8B%E8%BD%BD">https://github.com/badafans/better-cloudflare-ip,点击右侧release选择版本下载</a></p>
+<p>双击打开</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/01/image-2.png"></p>
+<p>输入期望带宽，建议小一点，否则可能选不到合适的IP</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/01/image-3.png"></p>
+<p>等待结果，第一个IP即是</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/01/image-4.png"></p>
+<h3 id="新的IP优选工具"><a href="#新的IP优选工具" class="headerlink" title="新的IP优选工具"></a>新的IP优选工具</h3><p><a target="_blank" rel="noopener" href="https://github.com/XIU2/CloudflareSpeedTest">https://github.com/XIU2/CloudflareSpeedTest</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/04/cloudflareip%E4%BC%98%E9%80%89cdn%E5%8A%A0%E9%80%9F/" data-id="cm9zmq8xf002osqhlfwi260ty" data-title="CloudFlareIP优选CDN加速" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CDN/" rel="tag">CDN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cloudflare/" rel="tag">cloudflare</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-树莓派4b连接wifi" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/12/30/%E6%A0%91%E8%8E%93%E6%B4%BE4b%E8%BF%9E%E6%8E%A5wifi/" class="article-date">
+  <time class="dt-published" datetime="2020-12-29T16:33:50.000Z" itemprop="datePublished">2020-12-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/12/30/%E6%A0%91%E8%8E%93%E6%B4%BE4b%E8%BF%9E%E6%8E%A5wifi/">树莓派4B连接WiFi</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>新建TXT文件，格式如：</p>
+<pre><code>country=CN
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+network=&#123;
+    ssid=&quot;目标Wi-Fi名称&quot;
+    psk=&quot;目标Wi-Fi密码&quot;
+    priority=3
+&#125;
+network=&#123;
+    ssid=&quot;目标Wi-Fi名称&quot;
+    psk=&quot;目标Wi-Fi密码&quot;
+    priority=2
+&#125;
+</code></pre>
+<p>ssid为WiFi名称，psk为密码，保留引号，priority为连接优先级</p>
+<p>重命名为wpa_supplicant.conf，复制文件到boot目录下</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2020/12/image-22-1024x516.png"></p>
+<p>拔掉网线重新启动，查看路由器，发现没有连上网，折腾了很久，发现好像需要手动打开WiFi开关</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2020/12/image-23.png"></p>
+<p>重启，上线！</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2020/12/image-24-1024x493.png"></p>
+<p>这时候有一个变化，就是IP改了，远程连接时需要进行修改。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/12/30/%E6%A0%91%E8%8E%93%E6%B4%BE4b%E8%BF%9E%E6%8E%A5wifi/" data-id="cm9zmq90d00grsqhl6cem4v0f" data-title="树莓派4B连接WiFi" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" rel="tag">树莓派</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-树莓派4b查找ip，开启ssh或vnc连接" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/12/29/%E6%A0%91%E8%8E%93%E6%B4%BE4b%E6%9F%A5%E6%89%BEip%EF%BC%8C%E5%BC%80%E5%90%AFssh%E6%88%96vnc%E8%BF%9E%E6%8E%A5/" class="article-date">
+  <time class="dt-published" datetime="2020-12-29T15:49:46.000Z" itemprop="datePublished">2020-12-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/12/29/%E6%A0%91%E8%8E%93%E6%B4%BE4b%E6%9F%A5%E6%89%BEip%EF%BC%8C%E5%BC%80%E5%90%AFssh%E6%88%96vnc%E8%BF%9E%E6%8E%A5/">树莓派4B查找IP，开启SSH或VNC连接</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="一、查找IP"><a href="#一、查找IP" class="headerlink" title="一、查找IP"></a>一、查找IP</h3><p>方法有很多，只介绍我实践成功的方法，可能也是最方便的方法：</p>
+<p>网线连接路由器和树莓派，树莓派网线接口灯光快闪表示连接正常，此时打开路由器终端管理界面：</p>
+<p>在电脑连接WiFi的情况下，命令行运行ipconfig，无线局域网适配器的默认网关就是路由器终端管理界面地址</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2020/12/image-7.png"></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2020/12/image-8-1024x588.png"></p>
+<p>找到有线连接设备，很多路由器在这里会显示Raspberry，很好识别，我这里因为设备少也很好识别，如果有多个疑似IP的话，可以挨个尝试SSH连接</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2020/12/image-9-1024x505.png"></p>
+<h3 id="二、SSH连接"><a href="#二、SSH连接" class="headerlink" title="二、SSH连接"></a>二、SSH连接</h3><p>新建空白txt文件，重命名为ssh，删去后缀，复制文件到SD卡boot根目录</p>
+<p>插卡，通电。官方推荐用Putty作为SSH连接工具，默认用户名pi，密码raspberry，注意输入密码时不显示字符</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2020/12/image-12.png"></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2020/12/image-13.png"></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2020/12/image-14.png"></p>
+<p>然后输入sudo raspi-config，进入树莓派配置界面</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2020/12/image-15.png"></p>
+<p>选择3 Interface Options，开启SSH和VNC服务</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2020/12/image-16.png"></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2020/12/image-17.png"></p>
+<p>如果要用VNC操作图形界面，建议再操作一步，确保VNC连接后图形界面可以成功显示（默认设置有时候会提示没法显示）</p>
+<p>选择2 Display Options D1 Resolution 修改分辨率</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2020/12/image-18.png"></p>
+<h3 id="三、VNC连接"><a href="#三、VNC连接" class="headerlink" title="三、VNC连接"></a>三、VNC连接</h3><p>VNC只针对系统镜像带图形界面的。这里使用VNC viewer，地址栏输入IP即可</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2020/12/image-19.png"></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2020/12/image-20.png"></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2020/12/image-21-1024x801.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/12/29/%E6%A0%91%E8%8E%93%E6%B4%BE4b%E6%9F%A5%E6%89%BEip%EF%BC%8C%E5%BC%80%E5%90%AFssh%E6%88%96vnc%E8%BF%9E%E6%8E%A5/" data-id="cm9zmq90700g6sqhlg3m22q5g" data-title="树莓派4B查找IP，开启SSH或VNC连接" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" rel="tag">树莓派</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/15/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/17/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/LeetCode/">LeetCode</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/%E6%9D%82/">杂</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/%E6%9D%82/">杂</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/pytorch/">pytorch</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">图像处理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%8D%93/">安卓</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82/">杂</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%88%AC%E8%99%AB/">爬虫</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/">目标检测</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E5%B7%A5/">网工</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">软件安装配置</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/linux/">linux</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/" rel="tag">CDN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DDNS/" rel="tag">DDNS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DHCP/" rel="tag">DHCP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNS/" rel="tag">DNS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IP/" rel="tag">IP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IPsec/" rel="tag">IPsec</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDA/" rel="tag">LDA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NFC/" rel="tag">NFC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDF/" rel="tag">PDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SMTP/" rel="tag">SMTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chatgpt/" rel="tag">chatgpt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloudflare/" rel="tag">cloudflare</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/" rel="tag">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ocr/" rel="tag">ocr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyinstaller/" rel="tag">pyinstaller</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pytorch/" rel="tag">pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rpa/" rel="tag">rpa</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/selenium/" rel="tag">selenium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/" rel="tag">socket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssl/" rel="tag">ssl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wget/" rel="tag">wget</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wol/" rel="tag">wol</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/" rel="tag">wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/worldcloud/" rel="tag">worldcloud</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%91%E7%9B%98/" rel="tag">云盘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B/" rel="tag">人脸检测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%90%86/" rel="tag">代理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%80%8D%E9%80%9F%E6%92%AD%E6%94%BE/" rel="tag">倍速播放</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" rel="tag">内网穿透</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E7%9B%AE%E6%91%84%E5%83%8F%E5%A4%B4%E6%B5%8B%E8%B7%9D/" rel="tag">单目摄像头测距</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%93%88%E5%A4%AB%E6%9B%BC/" rel="tag">哈夫曼</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" rel="tag">哈希表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%9F%E5%90%8D/" rel="tag">域名</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A0%86/" rel="tag">堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E5%B1%8F%E5%8D%8F%E5%90%8C/" rel="tag">多屏协同</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%AA%E7%94%9F%E7%BD%91%E7%BB%9C/" rel="tag">孪生网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E5%8D%93/" rel="tag">安卓</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/" rel="tag">局域网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/" rel="tag">数据集</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%BB%84/" rel="tag">数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" rel="tag">树莓派</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BF%80%E5%85%89%E6%B5%8B%E8%B7%9D/" rel="tag">激光测距</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%82%B9%E9%80%89%E9%AA%8C%E8%AF%81%E7%A0%81/" rel="tag">点选验证码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" rel="tag">目标检测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" rel="tag">端口转发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" rel="tag">编译原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E5%B7%A5/" rel="tag">网工</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%80%81%E6%AF%9B%E5%AD%90%E5%9B%BA%E4%BB%B6/" rel="tag">老毛子固件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" rel="tag">虚拟机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD/" rel="tag">视频下载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E6%B5%81/" rel="tag">视频流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%AD%E9%9F%B3%E8%BD%AC%E6%96%87%E5%AD%97/" rel="tag">语音转文字</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B6%85%E5%83%8F%E7%B4%A0/" rel="tag">超像素</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B6%85%E5%A3%B0%E6%B3%A2/" rel="tag">超声波</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8%E5%88%B7%E6%9C%BA/" rel="tag">路由器刷机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" rel="tag">软件安装配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E7%94%BB%E5%90%8C%E6%AD%A5/" rel="tag">音画同步</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/" rel="tag">验证码</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CDN/" style="font-size: 10px;">CDN</a> <a href="/tags/DDNS/" style="font-size: 10px;">DDNS</a> <a href="/tags/DHCP/" style="font-size: 10px;">DHCP</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/IP/" style="font-size: 10.67px;">IP</a> <a href="/tags/IPsec/" style="font-size: 10px;">IPsec</a> <a href="/tags/LDA/" style="font-size: 10px;">LDA</a> <a href="/tags/NFC/" style="font-size: 10px;">NFC</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/SMTP/" style="font-size: 10px;">SMTP</a> <a href="/tags/blog/" style="font-size: 11.33px;">blog</a> <a href="/tags/c/" style="font-size: 16px;">c++</a> <a href="/tags/chatgpt/" style="font-size: 10.67px;">chatgpt</a> <a href="/tags/cloudflare/" style="font-size: 11.33px;">cloudflare</a> <a href="/tags/docker/" style="font-size: 12.67px;">docker</a> <a href="/tags/flask/" style="font-size: 11.33px;">flask</a> <a href="/tags/java/" style="font-size: 13.33px;">java</a> <a href="/tags/js/" style="font-size: 11.33px;">js</a> <a href="/tags/linux/" style="font-size: 19.33px;">linux</a> <a href="/tags/nginx/" style="font-size: 12.67px;">nginx</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/ocr/" style="font-size: 10px;">ocr</a> <a href="/tags/php/" style="font-size: 10.67px;">php</a> <a href="/tags/pyinstaller/" style="font-size: 10px;">pyinstaller</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/pytorch/" style="font-size: 16.67px;">pytorch</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/rpa/" style="font-size: 10px;">rpa</a> <a href="/tags/selenium/" style="font-size: 11.33px;">selenium</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/socket/" style="font-size: 10px;">socket</a> <a href="/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/tags/ssh/" style="font-size: 13.33px;">ssh</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/wget/" style="font-size: 10px;">wget</a> <a href="/tags/wol/" style="font-size: 10px;">wol</a> <a href="/tags/wordpress/" style="font-size: 10.67px;">wordpress</a> <a href="/tags/worldcloud/" style="font-size: 10px;">worldcloud</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 12.67px;">二叉树</a> <a href="/tags/%E4%BA%91%E7%9B%98/" style="font-size: 10px;">云盘</a> <a href="/tags/%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B/" style="font-size: 10px;">人脸检测</a> <a href="/tags/%E4%BB%A3%E7%90%86/" style="font-size: 13.33px;">代理</a> <a href="/tags/%E5%80%8D%E9%80%9F%E6%92%AD%E6%94%BE/" style="font-size: 10px;">倍速播放</a> <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" style="font-size: 11.33px;">内网穿透</a> <a href="/tags/%E5%8D%95%E7%9B%AE%E6%91%84%E5%83%8F%E5%A4%B4%E6%B5%8B%E8%B7%9D/" style="font-size: 10px;">单目摄像头测距</a> <a href="/tags/%E5%93%88%E5%A4%AB%E6%9B%BC/" style="font-size: 10px;">哈夫曼</a> <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" style="font-size: 10.67px;">哈希表</a> <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" style="font-size: 14px;">图像处理</a> <a href="/tags/%E5%9F%9F%E5%90%8D/" style="font-size: 10px;">域名</a> <a href="/tags/%E5%A0%86/" style="font-size: 10px;">堆</a> <a href="/tags/%E5%A4%9A%E5%B1%8F%E5%8D%8F%E5%90%8C/" style="font-size: 10px;">多屏协同</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a> <a href="/tags/%E5%AD%AA%E7%94%9F%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">孪生网络</a> <a href="/tags/%E5%AE%89%E5%8D%93/" style="font-size: 13.33px;">安卓</a> <a href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/" style="font-size: 12px;">局域网</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 18.67px;">数据结构</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/" style="font-size: 15.33px;">数据集</a> <a href="/tags/%E6%95%B0%E7%BB%84/" style="font-size: 10px;">数组</a> <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" style="font-size: 14.67px;">树莓派</a> <a href="/tags/%E6%BF%80%E5%85%89%E6%B5%8B%E8%B7%9D/" style="font-size: 10px;">激光测距</a> <a href="/tags/%E7%82%B9%E9%80%89%E9%AA%8C%E8%AF%81%E7%A0%81/" style="font-size: 10px;">点选验证码</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 13.33px;">爬虫</a> <a href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" style="font-size: 18px;">目标检测</a> <a href="/tags/%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" style="font-size: 10px;">端口转发</a> <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" style="font-size: 11.33px;">编译原理</a> <a href="/tags/%E7%BD%91%E5%B7%A5/" style="font-size: 14px;">网工</a> <a href="/tags/%E8%80%81%E6%AF%9B%E5%AD%90%E5%9B%BA%E4%BB%B6/" style="font-size: 10px;">老毛子固件</a> <a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" style="font-size: 10px;">虚拟机</a> <a href="/tags/%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD/" style="font-size: 10.67px;">视频下载</a> <a href="/tags/%E8%A7%86%E9%A2%91%E6%B5%81/" style="font-size: 10px;">视频流</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.67px;">计算机网络</a> <a href="/tags/%E8%AF%AD%E9%9F%B3%E8%BD%AC%E6%96%87%E5%AD%97/" style="font-size: 10px;">语音转文字</a> <a href="/tags/%E8%B6%85%E5%83%8F%E7%B4%A0/" style="font-size: 10px;">超像素</a> <a href="/tags/%E8%B6%85%E5%A3%B0%E6%B3%A2/" style="font-size: 10px;">超声波</a> <a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8%E5%88%B7%E6%9C%BA/" style="font-size: 10px;">路由器刷机</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" style="font-size: 17.33px;">软件安装配置</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 10.67px;">递归</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 11.33px;">链表</a> <a href="/tags/%E9%9F%B3%E7%94%BB%E5%90%8C%E6%AD%A5/" style="font-size: 10px;">音画同步</a> <a href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/" style="font-size: 12.67px;">验证码</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/04/27/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2025/04/25/ubuntu24%E9%87%8D%E8%A3%85%E8%AE%B0%E5%BD%95/">ubuntu24重装记录</a>
+          </li>
+        
+          <li>
+            <a href="/2025/04/01/win11%E6%B7%BB%E5%8A%A0%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0%E7%BD%91%E5%8D%A1%E5%BC%82%E5%B8%B8%E8%87%AA%E5%8A%A8%E9%87%8D%E5%90%AF/">win11添加开机自启动脚本实现网卡异常自动重启</a>
+          </li>
+        
+          <li>
+            <a href="/2025/02/06/DBeaver%E8%BF%9E%E6%8E%A5MySQL%E5%92%8CIoTDB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%AD%A5%E9%AA%A4/">DBeaver连接MySQL和IoTDB数据库步骤</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/26/%E4%BD%BF%E7%94%A8polkit%E5%AE%9E%E7%8E%B0%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86systemctl%E6%9C%8D%E5%8A%A1/">使用polkit实现普通用户管理systemctl服务</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/13/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-wordpress一键搬迁" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/06/01/wordpress%E4%B8%80%E9%94%AE%E6%90%AC%E8%BF%81/" class="article-date">
+  <time class="dt-published" datetime="2021-06-01T12:21:29.000Z" itemprop="datePublished">2021-06-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82/">杂</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/06/01/wordpress%E4%B8%80%E9%94%AE%E6%90%AC%E8%BF%81/">wordpress一键搬迁</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p>之前用的阿里云服务器快到期了，续费不起，买了台腾讯云服务器，3年300块，真香。香的同时，问题也来了，之前的网站怎么搬迁过来，同时我对之前的网站域名还不满意，想重新换一个新的。</p>
+<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><p>本来想把踩坑过程记录一下的，想想还是算了吧，总感觉罗里吧嗦的。直接把最正确最完美的一次做对的方案贴出来！</p>
+<h5 id="导出-wpress文件"><a href="#导出-wpress文件" class="headerlink" title="导出.wpress文件"></a>导出.wpress文件</h5><p>首先安装<a target="_blank" rel="noopener" href="https://wordpress.org/plugins/all-in-one-wp-migration/">All in one WP migration</a>插件，然后选择导出，导出的时候可以添加条件，把数据库的文件内容进行自定义的替换，特别适合要改域名的我，比如</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/06/image-1024x457.png"></p>
+<p>然后下载到本地电脑，文件后缀是.wpress</p>
+<h5 id="安装老版本插件"><a href="#安装老版本插件" class="headerlink" title="安装老版本插件"></a>安装老版本插件</h5><p>在新wordpress站点上，安装旧版本的All in one WP Migration插件（新版本的插件不能免费恢复备份）</p>
+<p>下载地址<a target="_blank" rel="noopener" href="https://webhostingadvices.com/wp-content/uploads/2020/05/all-in-one-wp-migration-6.7.zip">All-in-on WP Migration Plugin 6.7</a>，下载完后通过本地上传的方式安装插件</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/06/image-1.png"></p>
+<h5 id="上传-wpress"><a href="#上传-wpress" class="headerlink" title="上传.wpress"></a>上传.wpress</h5><p>启用插件后，通过FTP工具把之前下载的.wpress文件上传到服务器这个文件夹中（网站根目录下的wp-content&#x2F;ai1wm-backups）</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/06/image-2.png"></p>
+<h5 id="提高文件上传上限"><a href="#提高文件上传上限" class="headerlink" title="提高文件上传上限"></a>提高文件上传上限</h5><p>查找php.ini</p>
+<pre><code>php -i  grep &#39;php.ini&#39;
+</code></pre>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/06/image-3.png"></p>
+<p>打开php.ini</p>
+<pre><code>vim /www/server/php/70/etc/php.ini
+</code></pre>
+<p>修改以下几个参数，由于我的.wpress大概780M，所以我把filesize改成了1024M，其他参数也可以根据需求调很大</p>
+<pre><code>upload_max_filesize 128M
+post_max_size 128M
+memory_limit 256M
+max_execution_time 300
+max_input_time 300
+</code></pre>
+<p>到这里只是解除了php服务的限制，插件本身还有限制，需要对插件进行编辑，选择插件-插件编辑器，右侧选中All in one WP Migration,点击选择，然后选择constants.php，编辑284行，size修改为如图（数字30原本是28），增大1就增大一倍，30的话限制上传是2G，够了</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/06/image-4-1024x409.png"></p>
+<h5 id="恢复备份"><a href="#恢复备份" class="headerlink" title="恢复备份"></a>恢复备份</h5><p><img src="https://xinhaojin.github.io/imgs-host/past/2021/06/image-5-1024x455.png"></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/06/QQ%E6%88%AA%E5%9B%BE20210601193705-1024x435.png"></p>
+<p>Done.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/06/01/wordpress%E4%B8%80%E9%94%AE%E6%90%AC%E8%BF%81/" data-id="cm9zmq8z800bcsqhlhb0l7095" data-title="wordpress一键搬迁" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wordpress/" rel="tag">wordpress</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-windows安装openssh" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/05/22/windows%E5%AE%89%E8%A3%85openssh/" class="article-date">
+  <time class="dt-published" datetime="2021-05-22T07:46:39.000Z" itemprop="datePublished">2021-05-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">软件安装配置</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/05/22/windows%E5%AE%89%E8%A3%85openssh/">windows安装openssh</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h4 id="不吐不快（有戾气，未成年人请在家长陪同下阅读）"><a href="#不吐不快（有戾气，未成年人请在家长陪同下阅读）" class="headerlink" title="不吐不快（有戾气，未成年人请在家长陪同下阅读）"></a>不吐不快（有戾气，未成年人请在家长陪同下阅读）</h4><p>就装个SSH，网上一堆教程贼xx，真不知道哪里来的自信发出来，没图没逻辑没重点没上下文，我吐了</p>
+<p>有些人真以为自己安装成功了就可以随便发几句话出来成为小白教程了？傻逼。</p>
+<h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><p><a target="_blank" rel="noopener" href="https://github.com/PowerShell/Win32-OpenSSH/releases">https://github.com/PowerShell/Win32-OpenSSH/releases</a></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/05/image-35.png"></p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>解压到c:\Program Files\</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/05/image-36.png"></p>
+<p>在OpenSSH-Win64文件夹中打开cmd</p>
+<pre><code>powershell.exe -ExecutionPolicy Bypass -File install-sshd.ps1
+sc config sshd start= auto
+net start sshd
+</code></pre>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/05/image-37.png"></p>
+<p>添加环境变量</p>
+<p>环境变量-系统变量-Path末尾添加;<code>C:\Program Files\OpenSSH-Win64</code></p>
+<h4 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h4><p>以上安装只针对windows作为客户端的情况</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/22/windows%E5%AE%89%E8%A3%85openssh/" data-id="cm9zmq8z600b2sqhl4lj6e4fu" data-title="windows安装openssh" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" rel="tag">软件安装配置</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-linux服务器安装jupyter-notebook" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/05/22/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85jupyter-notebook/" class="article-date">
+  <time class="dt-published" datetime="2021-05-22T04:54:15.000Z" itemprop="datePublished">2021-05-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">软件安装配置</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/05/22/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85jupyter-notebook/">linux服务器安装jupyter notebook</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>用pip安装</p>
+<pre><code>sudo pip3 install jupyter
+</code></pre>
+<p>进入python3环境，设置密码，生成秘钥，复制下来</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> notebook.auth <span class="keyword">import</span> passwd</span><br><span class="line">passwd()</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/05/image-33.png"></p>
+<p>查找配置文件所在路径</p>
+<pre><code>jupyter notebook --generate-config
+</code></pre>
+<p>如果提示未找到命令，先找一下jupyter的安装目录</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/10/image.png"></p>
+<p>根据路径打开配置文件jupyter_notebook_config.py,输入</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#允许root用户启动</span></span><br><span class="line">c.NotebookApp.allow_root = <span class="literal">True</span></span><br><span class="line"><span class="comment">#允许任意IP访问</span></span><br><span class="line">c.NotebookApp.ip=<span class="string">&#x27;*&#x27;</span></span><br><span class="line"><span class="comment">#默认不打开浏览器，仅启动服务</span></span><br><span class="line">c.NotebookApp.open_browser=<span class="literal">False</span></span><br><span class="line"><span class="comment">#密钥</span></span><br><span class="line">c.NotebookApp.password=<span class="string">&#x27;argI******你的密钥**********zQ&#x27;</span></span><br><span class="line"><span class="comment">#端口号，记得放行</span></span><br><span class="line">c.NotebookApp.port=<span class="number">8888</span></span><br><span class="line"><span class="comment">#工作目录</span></span><br><span class="line">c.NotebookApp.notebook_dir=<span class="string">&#x27;/notebook_space&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后在任意终端的浏览器输入IP端口号就能打开了，密码是自己设置的passwd</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/05/image-34-1024x332.png"></p>
+<p>为了方便，直接把jupyter notebook加入开机启动项</p>
+<p>在&#x2F;etc&#x2F;rc.d&#x2F;rc.local中添加</p>
+<pre><code>jupyter notebook
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/22/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85jupyter-notebook/" data-id="cm9zmq8xt004osqhl3lczcaed" data-title="linux服务器安装jupyter notebook" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-云服务器wget转储：解决网络造成的下载问题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/05/21/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8wget%E8%BD%AC%E5%82%A8%EF%BC%9A%E8%A7%A3%E5%86%B3%E7%BD%91%E7%BB%9C%E9%80%A0%E6%88%90%E7%9A%84%E4%B8%8B%E8%BD%BD%E9%97%AE%E9%A2%98/" class="article-date">
+  <time class="dt-published" datetime="2021-05-21T07:37:06.000Z" itemprop="datePublished">2021-05-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82/">杂</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/05/21/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8wget%E8%BD%AC%E5%82%A8%EF%BC%9A%E8%A7%A3%E5%86%B3%E7%BD%91%E7%BB%9C%E9%80%A0%E6%88%90%E7%9A%84%E4%B8%8B%E8%BD%BD%E9%97%AE%E9%A2%98/">云服务器+wget+转储：解决网络造成的下载问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>下载经常是一件让人头痛的事情，尤其是下载国外网站的资源，能用的国内镜像站很少且不稳定，归根到底还是网络环境不够好。</p>
+<p>一种无需代理的解决方案是利用云服务器下载资源，再转存到本地， 因为云服务器的网络环境通常非常好（部分资源在国内云服务器上仍然无法下载，可以考虑用境外服务器下载）</p>
+<p>下面举个例子，我特意找了一个之前下载列表里失败的一个条目，再次尝试下载，果然还是失败的，正好来拿测试</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/05/QQ%E6%88%AA%E5%9B%BE20210521151432.png"></p>
+<p>复制下载链接，登上服务器，使用wget命令下载，畅通无阻，由于带宽限制不算特别快，但至少解决了完全无法下载的问题</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/05/image-31.png"></p>
+<p>接下来就是从自己的服务器下载资源到本地了，例如我使用finalshell,直接选择下载即可</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/05/image-32-1024x678.png"></p>
+<p>以后碰到下载方面的疑难杂症，优先考虑此方法，特此记录。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/21/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8wget%E8%BD%AC%E5%82%A8%EF%BC%9A%E8%A7%A3%E5%86%B3%E7%BD%91%E7%BB%9C%E9%80%A0%E6%88%90%E7%9A%84%E4%B8%8B%E8%BD%BD%E9%97%AE%E9%A2%98/" data-id="cm9zmq8zl00d4sqhlcn2ld2wg" data-title="云服务器+wget+转储：解决网络造成的下载问题" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BB%A3%E7%90%86/" rel="tag">代理</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-windows安装wget用法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/05/21/windows%E5%AE%89%E8%A3%85wget%E7%94%A8%E6%B3%95/" class="article-date">
+  <time class="dt-published" datetime="2021-05-21T07:13:56.000Z" itemprop="datePublished">2021-05-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">软件安装配置</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/05/21/windows%E5%AE%89%E8%A3%85wget%E7%94%A8%E6%B3%95/">windows安装wget+用法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>wget是一个轻量级的可配置下载工具</p>
+<h4 id="windows下安装wget"><a href="#windows下安装wget" class="headerlink" title="windows下安装wget"></a>windows下安装wget</h4><p>下载地址-&gt;<a target="_blank" rel="noopener" href="https://jaist.dl.sourceforge.net/project/gnuwin32/wget/1.11.4-1/">这里</a></p>
+<p>安装时记住安装目录，这玩意儿压根不占空间，随他默认即可</p>
+<p>在高级系统设置-环境变量-系统变量中添加一个字段</p>
+<pre><code>GNU_HOME=C:\\Program Files (x86)\\GnuWin32
+</code></pre>
+<p>在系统变量Path中添加;%GNU_HOME%\bin（win7注意前面有分号）</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/05/image-30.png"></p>
+<h4 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h4><p><strong>直接下载单个文件</strong> wget url</p>
+<pre><code>wget https://down.qq.com/qqweb/PCQQ/PCQQ_EXE/PCQQ2021.exe
+</code></pre>
+<p><strong>自定义文件名</strong> wget -O name url</p>
+<p>wget默认会以最后一个符合”&#x2F;”的后面的字符来命令，对于动态链接的下载通常文件名会不正确。 </p>
+<p>下面的例子会下载一个文件并以名称download.php?id&#x3D;1080保存 </p>
+<pre><code>wget http://www.xxxx.xxx/download?id=1080
+</code></pre>
+<p>即使下载的文件是zip格式，它仍然以download.php?id&#x3D;1080命名</p>
+<p>为了解决这个问题，我们可以使用参数-O来指定一个文件名</p>
+<pre><code>wget -O abc.zip http://www.xxxx.xxx/download.php?id=1080
+</code></pre>
+<p><strong>断点续传</strong> wget -c</p>
+<p>对于大文件下载时间较长，过程中可能会出现网络中断，这时使用wget -c url便可以续传</p>
+<p><strong>后台下载</strong> wget -b</p>
+<pre><code>wget -b url
+</code></pre>
+<p>查看进度可以使用wget-log</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/21/windows%E5%AE%89%E8%A3%85wget%E7%94%A8%E6%B3%95/" data-id="cm9zmq8z700b5sqhl32q82750" data-title="windows安装wget+用法" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wget/" rel="tag">wget</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" rel="tag">软件安装配置</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-lda模型中文主题提取" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/05/20/lda%E6%A8%A1%E5%9E%8B%E4%B8%AD%E6%96%87%E4%B8%BB%E9%A2%98%E6%8F%90%E5%8F%96/" class="article-date">
+  <time class="dt-published" datetime="2021-05-20T07:29:46.000Z" itemprop="datePublished">2021-05-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/05/20/lda%E6%A8%A1%E5%9E%8B%E4%B8%AD%E6%96%87%E4%B8%BB%E9%A2%98%E6%8F%90%E5%8F%96/">LDA模型(gensim)中文主题提取</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h4 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h4><p>python版本3.7</p>
+<pre><code>pip install gensim
+pip install jieba
+</code></pre>
+<h4 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h4><p>数据很随意，没什么格式要求，像这样的都行</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/05/image-25-1024x596.png"></p>
+<h4 id="分词"><a href="#分词" class="headerlink" title="分词"></a>分词</h4><p>把原始数据按行分词，去掉没用的部分</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/05/image-26-1024x388.png"></p>
+<p>分词代码如下，可以一次转换单个txt或者整个文件夹（文件夹内不能有其他格式文件）</p>
+<p>#coding&#x3D;utf-8<br>import re<br>import jieba as jb<br>import os<br>def stopwordslist(filepath):<br>    stopwords &#x3D; [line.strip() for line in open(filepath, ‘r’, encoding&#x3D;’utf-8’).readlines()]<br>    return stopwords</p>
+<h1 id="对句子进行分词"><a href="#对句子进行分词" class="headerlink" title="对句子进行分词"></a>对句子进行分词</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">seg_sentence</span>(<span class="params">sentence</span>):</span><br><span class="line">    sentence = re.sub(<span class="string">u&#x27;[0-9\\.]+&#x27;</span>, <span class="string">u&#x27;&#x27;</span>, sentence)</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;jb.add_word(&#x27;光线摄影学院&#x27;)# 这里是加入用户自定义的词来补充jieba词典。</span></span><br><span class="line"><span class="string">    jb.add_word(&#x27;曾兰老师&#x27;)# 同样，如果你想删除哪个特定的未登录词，就先把它加上然后放进停用词表里。</span></span><br><span class="line"><span class="string">    jb.add_word(&#x27;网页链接&#x27;)</span></span><br><span class="line"><span class="string">    jb.add_word(&#x27;微博视频&#x27;)&#x27;&#x27;&#x27;</span></span><br><span class="line">    sentence_seged = jb.cut(sentence.strip())</span><br><span class="line">    stopwords = stopwordslist(<span class="string">&#x27;stopwords.txt&#x27;</span>)  <span class="comment"># 这里加载停用词的路径</span></span><br><span class="line">    outstr = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> word <span class="keyword">in</span> sentence_seged:</span><br><span class="line">        <span class="keyword">if</span> word <span class="keyword">not</span> <span class="keyword">in</span> stopwords <span class="keyword">and</span> word.__len__()&gt;<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">if</span> word != <span class="string">&#x27;\\t&#x27;</span>:</span><br><span class="line">                outstr += word</span><br><span class="line">                outstr += <span class="string">&quot; &quot;</span></span><br><span class="line">    <span class="keyword">return</span> outstr</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">seg_file</span>(<span class="params">input_file,output_file</span>):<span class="comment">#单个txt</span></span><br><span class="line">    inputs = <span class="built_in">open</span>(input_file, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">    outputs = <span class="built_in">open</span>(output_file, <span class="string">&#x27;w&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> inputs:</span><br><span class="line">        line_seg = seg_sentence(line)  <span class="comment"># 这里的返回值是字符串</span></span><br><span class="line">        outputs.write(line_seg + <span class="string">&#x27;\\n&#x27;</span>)</span><br><span class="line">    outputs.close()</span><br><span class="line">    inputs.close()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">seg_dir</span>(<span class="params">input_dir,output_dir</span>):<span class="comment">#整个文件夹</span></span><br><span class="line">    filelist=os.listdir(input_dir)</span><br><span class="line">    <span class="keyword">for</span> files <span class="keyword">in</span> filelist:</span><br><span class="line">        inputs = <span class="built_in">open</span>(input_dir+<span class="string">&#x27;/&#x27;</span>+files, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">        outputs = <span class="built_in">open</span>(output_dir+<span class="string">&#x27;/&#x27;</span>+files, <span class="string">&#x27;w&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> inputs:</span><br><span class="line">            line_seg = seg_sentence(line)  <span class="comment"># 这里的返回值是字符串</span></span><br><span class="line">            outputs.write(line_seg + <span class="string">&#x27;\\n&#x27;</span>)</span><br><span class="line">        outputs.close()</span><br><span class="line">        inputs.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">seg_dir(<span class="string">&quot;original_input&quot;</span>,<span class="string">&quot;processed_input&quot;</span>)</span><br><span class="line"><span class="comment">#seg_file(&quot;original_input/绍兴.txt&quot;,&quot;processed_input/绍兴.txt&quot;)</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="聚类"><a href="#聚类" class="headerlink" title="聚类"></a>聚类</h4><p>相关性强的词聚为一类</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/05/image-27.png"></p>
+<p>聚类代码如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"><span class="keyword">import</span> codecs</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> gensim <span class="keyword">import</span> corpora</span><br><span class="line"><span class="keyword">from</span> gensim.models <span class="keyword">import</span> LdaModel</span><br><span class="line"><span class="keyword">from</span> gensim.corpora <span class="keyword">import</span> Dictionary</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">classify</span>(<span class="params">file</span>):</span><br><span class="line">    train = []</span><br><span class="line">    fp = codecs.<span class="built_in">open</span>(<span class="string">&#x27;processed_input/&#x27;</span>+file,<span class="string">&#x27;r&#x27;</span>,encoding=<span class="string">&#x27;utf8&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> fp:</span><br><span class="line">        <span class="keyword">if</span> line != <span class="string">&#x27;&#x27;</span>:</span><br><span class="line">            line = line.split()</span><br><span class="line">            train.append([w <span class="keyword">for</span> w <span class="keyword">in</span> line])</span><br><span class="line"></span><br><span class="line">    dictionary = corpora.Dictionary(train)</span><br><span class="line"></span><br><span class="line">    corpus = [dictionary.doc2bow(text) <span class="keyword">for</span> text <span class="keyword">in</span> train]</span><br><span class="line"></span><br><span class="line">    lda = LdaModel(corpus=corpus, id2word=dictionary, num_topics=<span class="number">5</span>, passes=<span class="number">100</span>)</span><br><span class="line">    <span class="comment"># num_topics：主题数目</span></span><br><span class="line">    <span class="comment"># passes：训练伦次</span></span><br><span class="line">    <span class="comment"># num_words：每个主题下输出的term的数目</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> os.path.exists(<span class="string">&#x27;txt_output/&#x27;</span>+file):</span><br><span class="line">        os.remove(<span class="string">&#x27;txt_output/&#x27;</span>+file)</span><br><span class="line">    f=<span class="built_in">open</span>(<span class="string">&#x27;txt_output/&#x27;</span>+file,<span class="string">&#x27;w&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> topic <span class="keyword">in</span> lda.print_topics(num_words = <span class="number">10</span>):</span><br><span class="line">        termNumber = topic[<span class="number">0</span>]</span><br><span class="line">        <span class="built_in">print</span>(topic[<span class="number">0</span>], <span class="string">&#x27;:&#x27;</span>, sep=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">        f.write(<span class="built_in">str</span>(topic[<span class="number">0</span>])+<span class="string">&#x27;:\\n&#x27;</span>)<span class="comment">#输出保存到文件</span></span><br><span class="line">        listOfTerms = topic[<span class="number">1</span>].split(<span class="string">&#x27;+&#x27;</span>)</span><br><span class="line">        <span class="keyword">for</span> term <span class="keyword">in</span> listOfTerms:</span><br><span class="line">            listItems = term.split(<span class="string">&#x27;*&#x27;</span>)</span><br><span class="line">            result=<span class="string">&#x27;  &#x27;</span>+listItems[<span class="number">1</span>]+<span class="string">&#x27;(&#x27;</span>+<span class="built_in">str</span>(listItems[<span class="number">0</span>])+<span class="string">&#x27;)&#x27;</span></span><br><span class="line">            <span class="built_in">print</span>(result)</span><br><span class="line">            f.write(result+<span class="string">&#x27;\\n&#x27;</span>)<span class="comment">#输出保存到文件</span></span><br><span class="line">    f.close()</span><br><span class="line">classify(<span class="string">&#x27;塞纳河.txt&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="可视化"><a href="#可视化" class="headerlink" title="可视化"></a>可视化</h4><p>添加依赖</p>
+<pre><code>pip install pyldavis
+</code></pre>
+<p>在聚类代码的基础上，增加可视化，保存网页文件到本地</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"><span class="keyword">import</span> codecs</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> gensim</span><br><span class="line"><span class="keyword">import</span> OpenSSL.crypto</span><br><span class="line"><span class="keyword">import</span> pyLDAvis.gensim_models</span><br><span class="line"><span class="keyword">from</span> gensim <span class="keyword">import</span> corpora, models</span><br><span class="line"><span class="keyword">from</span> gensim.corpora <span class="keyword">import</span> Dictionary</span><br><span class="line"><span class="keyword">from</span> gensim.models <span class="keyword">import</span> LdaModel</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">visualize</span>(<span class="params">file</span>):</span><br><span class="line">    train = []</span><br><span class="line">    fp = codecs.<span class="built_in">open</span>(<span class="string">&#x27;processed_input/&#x27;</span>+file,<span class="string">&#x27;r&#x27;</span>,encoding=<span class="string">&#x27;utf8&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> fp:</span><br><span class="line">        <span class="keyword">if</span> line != <span class="string">&#x27;&#x27;</span>:</span><br><span class="line">            line = line.split()</span><br><span class="line">            train.append([w <span class="keyword">for</span> w <span class="keyword">in</span> line])</span><br><span class="line"></span><br><span class="line">    dictionary = corpora.Dictionary(train)</span><br><span class="line"></span><br><span class="line">    corpus = [dictionary.doc2bow(text) <span class="keyword">for</span> text <span class="keyword">in</span> train]</span><br><span class="line"></span><br><span class="line">    lda = LdaModel(corpus=corpus, id2word=dictionary, num_topics=<span class="number">5</span>, passes=<span class="number">100</span>)</span><br><span class="line">    <span class="comment"># num_topics：主题数目</span></span><br><span class="line">    <span class="comment"># passes：训练伦次</span></span><br><span class="line">    <span class="comment"># num_words：每个主题下输出的term的数目</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> os.path.exists(<span class="string">&#x27;txt_output/&#x27;</span>+file):</span><br><span class="line">        os.remove(<span class="string">&#x27;txt_output/&#x27;</span>+file)</span><br><span class="line">    f=<span class="built_in">open</span>(<span class="string">&#x27;txt_output/&#x27;</span>+file,<span class="string">&#x27;w&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> topic <span class="keyword">in</span> lda.print_topics(num_words = <span class="number">10</span>):</span><br><span class="line">        termNumber = topic[<span class="number">0</span>]</span><br><span class="line">        <span class="built_in">print</span>(topic[<span class="number">0</span>], <span class="string">&#x27;:&#x27;</span>, sep=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">        f.write(<span class="built_in">str</span>(topic[<span class="number">0</span>])+<span class="string">&#x27;:\\n&#x27;</span>)<span class="comment">#输出保存到文件</span></span><br><span class="line">        listOfTerms = topic[<span class="number">1</span>].split(<span class="string">&#x27;+&#x27;</span>)</span><br><span class="line">        <span class="keyword">for</span> term <span class="keyword">in</span> listOfTerms:</span><br><span class="line">            listItems = term.split(<span class="string">&#x27;*&#x27;</span>)</span><br><span class="line">            result=<span class="string">&#x27;  &#x27;</span>+listItems[<span class="number">1</span>]+<span class="string">&#x27;(&#x27;</span>+<span class="built_in">str</span>(listItems[<span class="number">0</span>])+<span class="string">&#x27;)&#x27;</span></span><br><span class="line">            <span class="built_in">print</span>(result)</span><br><span class="line">            f.write(result+<span class="string">&#x27;\\n&#x27;</span>)<span class="comment">#输出保存到文件</span></span><br><span class="line">    f.close()</span><br><span class="line">    <span class="comment">#dictionary = gensim.corpora.Dictionary.load(&#x27;lda.dict&#x27;)</span></span><br><span class="line">    <span class="comment">#corpus = gensim.corpora.MmCorpus(&#x27;lda.mm&#x27;)</span></span><br><span class="line">    <span class="comment">#lda = models.ldamodel.LdaModel.load(&#x27;lda.lda&#x27;)</span></span><br><span class="line">    vis = pyLDAvis.gensim_models.prepare(lda, corpus, dictionary)</span><br><span class="line">    pyLDAvis.save_html(vis, <span class="string">&#x27;html_output/&#x27;</span>+file[:-<span class="number">4</span>]+<span class="string">&#x27;.html&#x27;</span>)</span><br><span class="line"></span><br><span class="line">visualize(<span class="string">&quot;绍兴.txt&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/05/image-28-1024x646.png"></p>
+<h4 id="可视化结果的含义"><a href="#可视化结果的含义" class="headerlink" title="可视化结果的含义"></a>可视化结果的含义</h4><p>左边的每个气泡代表一个主题，气泡越大，序号也越小，代表这个主题出现的频率越高，气泡之间的距离远近代表主题之间的相关性，气泡重叠代表主题之间的特征词有交叉重复</p>
+<p>选中主题气泡后，右侧列出了这个主题下的30个最具相关性的主题词，红色柱子代表该特征词在这个主题下出现的次数，更长的浅蓝色柱子代表该主题词在整个文本中出现的次数</p>
+<p>右上角的λ参数，可以通过拉动调节，代表的是主题词与主题的相关性。如果λ接近1，那么在该主题下更频繁出现的词，跟主题更相关；如果λ越接近0，那么该主题下更特殊、更独有的词，跟主题更相关。</p>
+<h4 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h4><p>目录格式如下</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/05/image-29.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/20/lda%E6%A8%A1%E5%9E%8B%E4%B8%AD%E6%96%87%E4%B8%BB%E9%A2%98%E6%8F%90%E5%8F%96/" data-id="cm9zmq8xr004csqhl28nt1vxc" data-title="LDA模型(gensim)中文主题提取" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LDA/" rel="tag">LDA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-anaconda国内镜像源3个" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/05/20/anaconda%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E6%BA%903%E4%B8%AA/" class="article-date">
+  <time class="dt-published" datetime="2021-05-20T05:30:00.000Z" itemprop="datePublished">2021-05-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">软件安装配置</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/05/20/anaconda%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E6%BA%903%E4%B8%AA/">Anaconda国内镜像源3个</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h4 id="北京外国语大学镜像源"><a href="#北京外国语大学镜像源" class="headerlink" title="北京外国语大学镜像源"></a>北京外国语大学镜像源</h4><pre><code>channels:
+  - defaults
+show_channel_urls: true
+channel_alias: https://mirrors.bfsu.edu.cn/anaconda
+default_channels:
+  - https://mirrors.bfsu.edu.cn/anaconda/pkgs/main
+  - https://mirrors.bfsu.edu.cn/anaconda/pkgs/free
+  - https://mirrors.bfsu.edu.cn/anaconda/pkgs/r
+  - https://mirrors.bfsu.edu.cn/anaconda/pkgs/pro
+  - https://mirrors.bfsu.edu.cn/anaconda/pkgs/msys2
+custom_channels:
+  conda-forge: https://mirrors.bfsu.edu.cn/anaconda/cloud
+  msys2: https://mirrors.bfsu.edu.cn/anaconda/cloud
+  bioconda: https://mirrors.bfsu.edu.cn/anaconda/cloud
+  menpo: https://mirrors.bfsu.edu.cn/anaconda/cloud
+  pytorch: https://mirrors.bfsu.edu.cn/anaconda/cloud
+  simpleitk: https://mirrors.bfsu.edu.cn/anaconda/cloud
+</code></pre>
+<h4 id="上海交通大学镜像源"><a href="#上海交通大学镜像源" class="headerlink" title="上海交通大学镜像源"></a>上海交通大学镜像源</h4><pre><code>channels:
+  - defaults
+show_channel_urls: true
+channel_alias: https://anaconda.mirrors.sjtug.sjtu.edu.cn/
+default_channels:
+  - https://anaconda.mirrors.sjtug.sjtu.edu.cn/pkgs/main
+  - https://anaconda.mirrors.sjtug.sjtu.edu.cn/pkgs/free
+  - https://anaconda.mirrors.sjtug.sjtu.edu.cn/pkgs/mro
+  - https://anaconda.mirrors.sjtug.sjtu.edu.cn/pkgs/msys2
+  - https://anaconda.mirrors.sjtug.sjtu.edu.cn/pkgs/pro
+  - https://anaconda.mirrors.sjtug.sjtu.edu.cn/pkgs/r
+custom_channels:
+  conda-forge: https://anaconda.mirrors.sjtug.sjtu.edu.cn/conda-forge
+  soumith: https://anaconda.mirrors.sjtug.sjtu.edu.cn/cloud/soumith
+  bioconda: https://anaconda.mirrors.sjtug.sjtu.edu.cn/cloud/bioconda
+  menpo: https://anaconda.mirrors.sjtug.sjtu.edu.cn/cloud/menpo
+  viscid-hub: https://anaconda.mirrors.sjtug.sjtu.edu.cn/cloud/viscid-hub
+  atztogo: https://anaconda.mirrors.sjtug.sjtu.edu.cn/cloud/atztogo
+</code></pre>
+<h4 id="清华大学镜像源"><a href="#清华大学镜像源" class="headerlink" title="清华大学镜像源"></a>清华大学镜像源</h4><pre><code>channels:
+  - defaults
+show_channel_urls: true
+channel_alias: https://mirrors.tuna.tsinghua.edu.cn/anaconda
+default_channels:
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/pro
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2
+custom_channels:
+  conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/20/anaconda%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E6%BA%903%E4%B8%AA/" data-id="cm9zmq8x4001dsqhl9w6hgr1u" data-title="Anaconda国内镜像源3个" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-cudnn安装" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/05/19/cudnn%E5%AE%89%E8%A3%85/" class="article-date">
+  <time class="dt-published" datetime="2021-05-19T06:48:19.000Z" itemprop="datePublished">2021-05-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">软件安装配置</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/05/19/cudnn%E5%AE%89%E8%A3%85/">cudnn安装</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>上一篇已经介绍了cuda的安装方法</p>
+<p>于是我尝试运行一个paddle样例，报错，最前面的提示信息是这样的，好的我看懂了</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/05/image-20-1024x129.png"></p>
+<p>所以，cudnn是什么？</p>
+<p><em>cuDNN（CUDA Deep Neural Network library）：是NVIDIA打造的针对深度神经网络的加速库，是一个用于深层神经网络的GPU加速库。 如果你要用GPU训练模型，cuDNN不是必须的，但是一般会采用这个加速库。</em></p>
+<h4 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h4><p><a target="_blank" rel="noopener" href="https://developer.nvidia.com/rdp/cudnn-download">下载地址</a>下载前需要注册登录NVIDIA账号</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/05/QQ%E6%88%AA%E5%9B%BE20210519135720.png"></p>
+<p>登录后重新打开下载链接</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/05/QQ%E6%88%AA%E5%9B%BE20210519140216.png"></p>
+<p>下载完成后解压，然后把bin、include、lib目录下的文件复制到cuda安装目录下的bin、include、lib目录</p>
+<p>这是cuda安装的默认路径C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2</p>
+<h4 id="验证安装"><a href="#验证安装" class="headerlink" title="验证安装"></a>验证安装</h4><p>在CUDA文件夹中打开cmd</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/05/image-22.png"></p>
+<p>输入.\bandwidthTest.exe和.\deviceQuery.exe，result&#x3D;PASS即可</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/05/image-24-1024x493.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/19/cudnn%E5%AE%89%E8%A3%85/" data-id="cm9zmq8xh0031sqhlczo36g8q" data-title="cudnn安装" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" rel="tag">软件安装配置</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-cuda安装" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/05/18/cuda%E5%AE%89%E8%A3%85/" class="article-date">
+  <time class="dt-published" datetime="2021-05-18T15:53:28.000Z" itemprop="datePublished">2021-05-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">软件安装配置</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/05/18/cuda%E5%AE%89%E8%A3%85/">cuda安装</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h4 id="确定安装版本"><a href="#确定安装版本" class="headerlink" title="确定安装版本"></a>确定安装版本</h4><p>首先查看显卡信息，一般都是用的英伟达显卡，打开NVIDIA控制面板-帮助-系统信息-显示，查看驱动程序版本</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/05/image-9.png"></p>
+<p>使用驱动精灵查看可更新的驱动版本（只用于查看，不需要在这更新驱动，cuda安装时会自动更新驱动）</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/05/image-10-1024x664.png"></p>
+<p>最后对照这张<a target="_blank" rel="noopener" href="https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html">表</a>，查看可以安装的cuda版本，对于我的机器而言，更新驱动后最高能安装cuda10.2版本</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/05/image-12-1024x504.png"></p>
+<h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><p>在<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-toolkit-archive">这里</a>选择我要安装的版本</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/05/image-14.png"></p>
+<p>点击下载链接</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/05/image-13-1024x490.png"></p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>打开安装包，默认路径即可，保证C盘空间充足</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/05/image-15.png"></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/05/image-16.png"></p>
+<p>安装完成后再次打开NVIDIA控制面板-帮助-系统信息</p>
+<p>驱动成功更新</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/05/image-17.png"></p>
+<p>cuda10.2也安装成功</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/05/image-18.png"></p>
+<p>cmd输入nvcc -V能看到版本号</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/05/image-19.png"></p>
+<p>Done.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/18/cuda%E5%AE%89%E8%A3%85/" data-id="cm9zmq8xh002xsqhl4hjbchjj" data-title="cuda安装" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" rel="tag">软件安装配置</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-cloudflare域名重定向" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/05/11/cloudflare%E5%9F%9F%E5%90%8D%E9%87%8D%E5%AE%9A%E5%90%91/" class="article-date">
+  <time class="dt-published" datetime="2021-05-11T08:54:29.000Z" itemprop="datePublished">2021-05-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82/">杂</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/05/11/cloudflare%E5%9F%9F%E5%90%8D%E9%87%8D%E5%AE%9A%E5%90%91/">cloudflare域名重定向</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h4 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h4><p>将<a target="_blank" rel="noopener" href="https://www.xinhaojin.top,https//xinhaojin.top%E4%B8%A4%E4%B8%AA%E5%9F%9F%E5%90%8D%E9%83%BD%E9%87%8D%E5%AE%9A%E5%90%91%E5%88%B0https://main.xinhaojin.top">https://www.xinhaojin.top,https://xinhaojin.top两个域名都重定向到https://main.xinhaojin.top</a></p>
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><p>使用cloudflare管理域名</p>
+<p>修改DNS的A记录，地址解析到任意DNS解析服务器，如114.114.114,8.8.8.8,223.5.5.5等(建议使用阿里云公共DNS)，代理状态选择代理</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/05/image-6-1024x471.png"></p>
+<p>选择页面规则，新建规则</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/05/image-7-1024x490.png"></p>
+<p>选择转发URL，301重定向</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2021/05/image-8.png"></p>
+<p>这就完成了从<a target="_blank" rel="noopener" href="http://www.xinhaojin.top到main.xinhaojin.top的重定向/">www.xinhaojin.top到main.xinhaojin.top的重定向</a></p>
+<p>Done.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/11/cloudflare%E5%9F%9F%E5%90%8D%E9%87%8D%E5%AE%9A%E5%90%91/" data-id="cm9zmq8xg002vsqhl8k807qio" data-title="cloudflare域名重定向" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cloudflare/" rel="tag">cloudflare</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9F%9F%E5%90%8D/" rel="tag">域名</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/12/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/14/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/LeetCode/">LeetCode</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/%E6%9D%82/">杂</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/python/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/%E6%9D%82/">杂</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/pytorch/">pytorch</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">图像处理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%8D%93/">安卓</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82/">杂</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%88%AC%E8%99%AB/">爬虫</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/">目标检测</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E5%B7%A5/">网工</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">软件安装配置</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/linux/">linux</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/" rel="tag">CDN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DDNS/" rel="tag">DDNS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DHCP/" rel="tag">DHCP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNS/" rel="tag">DNS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IP/" rel="tag">IP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IPsec/" rel="tag">IPsec</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDA/" rel="tag">LDA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NFC/" rel="tag">NFC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDF/" rel="tag">PDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SMTP/" rel="tag">SMTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chatgpt/" rel="tag">chatgpt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloudflare/" rel="tag">cloudflare</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/" rel="tag">flask</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ocr/" rel="tag">ocr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyinstaller/" rel="tag">pyinstaller</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pytorch/" rel="tag">pytorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rpa/" rel="tag">rpa</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/selenium/" rel="tag">selenium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/" rel="tag">socket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssl/" rel="tag">ssl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wget/" rel="tag">wget</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wol/" rel="tag">wol</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/" rel="tag">wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/worldcloud/" rel="tag">worldcloud</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%91%E7%9B%98/" rel="tag">云盘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B/" rel="tag">人脸检测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%90%86/" rel="tag">代理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%80%8D%E9%80%9F%E6%92%AD%E6%94%BE/" rel="tag">倍速播放</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" rel="tag">内网穿透</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E7%9B%AE%E6%91%84%E5%83%8F%E5%A4%B4%E6%B5%8B%E8%B7%9D/" rel="tag">单目摄像头测距</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%93%88%E5%A4%AB%E6%9B%BC/" rel="tag">哈夫曼</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" rel="tag">哈希表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%9F%E5%90%8D/" rel="tag">域名</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A0%86/" rel="tag">堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E5%B1%8F%E5%8D%8F%E5%90%8C/" rel="tag">多屏协同</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%AA%E7%94%9F%E7%BD%91%E7%BB%9C/" rel="tag">孪生网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E5%8D%93/" rel="tag">安卓</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/" rel="tag">局域网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/" rel="tag">数据集</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%BB%84/" rel="tag">数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" rel="tag">树莓派</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BF%80%E5%85%89%E6%B5%8B%E8%B7%9D/" rel="tag">激光测距</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%82%B9%E9%80%89%E9%AA%8C%E8%AF%81%E7%A0%81/" rel="tag">点选验证码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" rel="tag">目标检测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" rel="tag">端口转发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" rel="tag">编译原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E5%B7%A5/" rel="tag">网工</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%80%81%E6%AF%9B%E5%AD%90%E5%9B%BA%E4%BB%B6/" rel="tag">老毛子固件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" rel="tag">虚拟机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD/" rel="tag">视频下载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E6%B5%81/" rel="tag">视频流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%AD%E9%9F%B3%E8%BD%AC%E6%96%87%E5%AD%97/" rel="tag">语音转文字</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B6%85%E5%83%8F%E7%B4%A0/" rel="tag">超像素</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B6%85%E5%A3%B0%E6%B3%A2/" rel="tag">超声波</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8%E5%88%B7%E6%9C%BA/" rel="tag">路由器刷机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" rel="tag">软件安装配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E7%94%BB%E5%90%8C%E6%AD%A5/" rel="tag">音画同步</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/" rel="tag">验证码</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CDN/" style="font-size: 10px;">CDN</a> <a href="/tags/DDNS/" style="font-size: 10px;">DDNS</a> <a href="/tags/DHCP/" style="font-size: 10px;">DHCP</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/HTTP/" style="font-size: 10.67px;">HTTP</a> <a href="/tags/IP/" style="font-size: 10.67px;">IP</a> <a href="/tags/IPsec/" style="font-size: 10px;">IPsec</a> <a href="/tags/LDA/" style="font-size: 10px;">LDA</a> <a href="/tags/NFC/" style="font-size: 10px;">NFC</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/SMTP/" style="font-size: 10px;">SMTP</a> <a href="/tags/blog/" style="font-size: 11.33px;">blog</a> <a href="/tags/c/" style="font-size: 16px;">c++</a> <a href="/tags/chatgpt/" style="font-size: 10.67px;">chatgpt</a> <a href="/tags/cloudflare/" style="font-size: 11.33px;">cloudflare</a> <a href="/tags/docker/" style="font-size: 12.67px;">docker</a> <a href="/tags/flask/" style="font-size: 11.33px;">flask</a> <a href="/tags/java/" style="font-size: 13.33px;">java</a> <a href="/tags/js/" style="font-size: 11.33px;">js</a> <a href="/tags/linux/" style="font-size: 19.33px;">linux</a> <a href="/tags/nginx/" style="font-size: 12.67px;">nginx</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/ocr/" style="font-size: 10px;">ocr</a> <a href="/tags/php/" style="font-size: 10.67px;">php</a> <a href="/tags/pyinstaller/" style="font-size: 10px;">pyinstaller</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/pytorch/" style="font-size: 16.67px;">pytorch</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/rpa/" style="font-size: 10px;">rpa</a> <a href="/tags/selenium/" style="font-size: 11.33px;">selenium</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/socket/" style="font-size: 10px;">socket</a> <a href="/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/tags/ssh/" style="font-size: 13.33px;">ssh</a> <a href="/tags/ssl/" style="font-size: 10px;">ssl</a> <a href="/tags/wget/" style="font-size: 10px;">wget</a> <a href="/tags/wol/" style="font-size: 10px;">wol</a> <a href="/tags/wordpress/" style="font-size: 10.67px;">wordpress</a> <a href="/tags/worldcloud/" style="font-size: 10px;">worldcloud</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 12.67px;">二叉树</a> <a href="/tags/%E4%BA%91%E7%9B%98/" style="font-size: 10px;">云盘</a> <a href="/tags/%E4%BA%BA%E8%84%B8%E6%A3%80%E6%B5%8B/" style="font-size: 10px;">人脸检测</a> <a href="/tags/%E4%BB%A3%E7%90%86/" style="font-size: 13.33px;">代理</a> <a href="/tags/%E5%80%8D%E9%80%9F%E6%92%AD%E6%94%BE/" style="font-size: 10px;">倍速播放</a> <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" style="font-size: 11.33px;">内网穿透</a> <a href="/tags/%E5%8D%95%E7%9B%AE%E6%91%84%E5%83%8F%E5%A4%B4%E6%B5%8B%E8%B7%9D/" style="font-size: 10px;">单目摄像头测距</a> <a href="/tags/%E5%93%88%E5%A4%AB%E6%9B%BC/" style="font-size: 10px;">哈夫曼</a> <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" style="font-size: 10.67px;">哈希表</a> <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" style="font-size: 14px;">图像处理</a> <a href="/tags/%E5%9F%9F%E5%90%8D/" style="font-size: 10px;">域名</a> <a href="/tags/%E5%A0%86/" style="font-size: 10px;">堆</a> <a href="/tags/%E5%A4%9A%E5%B1%8F%E5%8D%8F%E5%90%8C/" style="font-size: 10px;">多屏协同</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a> <a href="/tags/%E5%AD%AA%E7%94%9F%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">孪生网络</a> <a href="/tags/%E5%AE%89%E5%8D%93/" style="font-size: 13.33px;">安卓</a> <a href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/" style="font-size: 12px;">局域网</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 18.67px;">数据结构</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/" style="font-size: 15.33px;">数据集</a> <a href="/tags/%E6%95%B0%E7%BB%84/" style="font-size: 10px;">数组</a> <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" style="font-size: 14.67px;">树莓派</a> <a href="/tags/%E6%BF%80%E5%85%89%E6%B5%8B%E8%B7%9D/" style="font-size: 10px;">激光测距</a> <a href="/tags/%E7%82%B9%E9%80%89%E9%AA%8C%E8%AF%81%E7%A0%81/" style="font-size: 10px;">点选验证码</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 13.33px;">爬虫</a> <a href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" style="font-size: 18px;">目标检测</a> <a href="/tags/%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" style="font-size: 10px;">端口转发</a> <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" style="font-size: 11.33px;">编译原理</a> <a href="/tags/%E7%BD%91%E5%B7%A5/" style="font-size: 14px;">网工</a> <a href="/tags/%E8%80%81%E6%AF%9B%E5%AD%90%E5%9B%BA%E4%BB%B6/" style="font-size: 10px;">老毛子固件</a> <a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" style="font-size: 10px;">虚拟机</a> <a href="/tags/%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD/" style="font-size: 10.67px;">视频下载</a> <a href="/tags/%E8%A7%86%E9%A2%91%E6%B5%81/" style="font-size: 10px;">视频流</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10.67px;">计算机网络</a> <a href="/tags/%E8%AF%AD%E9%9F%B3%E8%BD%AC%E6%96%87%E5%AD%97/" style="font-size: 10px;">语音转文字</a> <a href="/tags/%E8%B6%85%E5%83%8F%E7%B4%A0/" style="font-size: 10px;">超像素</a> <a href="/tags/%E8%B6%85%E5%A3%B0%E6%B3%A2/" style="font-size: 10px;">超声波</a> <a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8%E5%88%B7%E6%9C%BA/" style="font-size: 10px;">路由器刷机</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" style="font-size: 17.33px;">软件安装配置</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 10.67px;">递归</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 11.33px;">链表</a> <a href="/tags/%E9%9F%B3%E7%94%BB%E5%90%8C%E6%AD%A5/" style="font-size: 10px;">音画同步</a> <a href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/" style="font-size: 12.67px;">验证码</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/04/27/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2025/04/25/ubuntu24%E9%87%8D%E8%A3%85%E8%AE%B0%E5%BD%95/">ubuntu24重装记录</a>
+          </li>
+        
+          <li>
+            <a href="/2025/04/01/win11%E6%B7%BB%E5%8A%A0%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0%E7%BD%91%E5%8D%A1%E5%BC%82%E5%B8%B8%E8%87%AA%E5%8A%A8%E9%87%8D%E5%90%AF/">win11添加开机自启动脚本实现网卡异常自动重启</a>
+          </li>
+        
+          <li>
+            <a href="/2025/02/06/DBeaver%E8%BF%9E%E6%8E%A5MySQL%E5%92%8CIoTDB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%AD%A5%E9%AA%A4/">DBeaver连接MySQL和IoTDB数据库步骤</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/26/%E4%BD%BF%E7%94%A8polkit%E5%AE%9E%E7%8E%B0%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86systemctl%E6%9C%8D%E5%8A%A1/">使用polkit实现普通用户管理systemctl服务</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
