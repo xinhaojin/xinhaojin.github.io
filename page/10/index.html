@@ -255,6 +255,136 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2022/03/31/yolox%E8%AE%AD%E7%BB%83%E4%B8%8D%E5%90%8C%E6%95%B0%E6%8D%AE%E9%9B%86%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" target="_self">
+          yolox训练不同数据集注意事项
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/03/31/yolox%E8%AE%AD%E7%BB%83%E4%B8%8D%E5%90%8C%E6%95%B0%E6%8D%AE%E9%9B%86%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" target="_self">
+        <div>
+          问题先后训练两个数据集，都是VOC格式，仅有图片和标签不同，那么怎么对他们进行训练？ 答：直觉就是，配置好一次环境，先训练第一个数据集，然后训练第二个数据集的时候，把数据集文件夹内容替换，其余一律不变。 但这样有一个致命错误：AP始终很小，可能是0.00000XXX。 原因因为两个数据集的标注工作是分别在labelme和labelimg上完成的，还是有一些细微区别，所以首先怀疑数据集本身的问题，于
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-03-31 15:47" pubdate>
+              2022-03-31
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" class="category-chain-item">目标检测</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/">#数据集</a>
+            
+              <a href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/">#目标检测</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2022/03/09/%E9%AA%8C%E8%AF%81%E7%A0%81%E6%B1%89%E5%AD%97%E5%9B%BE%E4%BA%8C%E5%80%BC%E5%8C%96%E5%A4%84%E7%90%86/" target="_self">
+          验证码汉字图二值化处理
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/03/09/%E9%AA%8C%E8%AF%81%E7%A0%81%E6%B1%89%E5%AD%97%E5%9B%BE%E4%BA%8C%E5%80%BC%E5%8C%96%E5%A4%84%E7%90%86/" target="_self">
+        <div>
+          需求把下图中汉字图片标准化处理，与背景分离，白字黑底  转为灰度图emmm,勉强还是看得清的  灰度图直方图如下  直方图均衡化均衡化后的直方图  对应灰度图  二值化 二值化之后遇到一个问题，白字or黑字？需要统一一下 黑字白底的情况下，需要进行反色处理 判别条件：边界像素中，白色像素比黑色像素少 根据条件反色后的灰度图如下  代码12345678910111213141516171819202
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-03-09 17:10" pubdate>
+              2022-03-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">#python</a>
+            
+              <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">#图像处理</a>
+            
+              <a href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/">#验证码</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2022/03/08/opencv%E4%B8%AD%E6%96%87%E8%B7%AF%E5%BE%84%E3%80%81%E5%9B%BE%E7%89%87%E5%90%8D%E7%9A%84%E8%AF%BB%E5%86%99/" target="_self">
           opencv中文路径、图片名的读写
         </a>
@@ -752,136 +882,6 @@
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/">#验证码</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2022/01/07/ubuntu%E7%BB%88%E7%AB%AFsource-not-found/" target="_self">
-          ubuntu终端source: not found
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/01/07/ubuntu%E7%BB%88%E7%AB%AFsource-not-found/" target="_self">
-        <div>
-          错误shell脚本中含有source命令运行时提示 source: not found 运行 ls -l &#x2F;bin&#x2F;sh 后显示&#x2F;bin&#x2F;sh -&gt; dash这说明是用dash来进行解析的。 解决方案命令行执行：（需要root权限） dpkg-reconfigure dash  在界面中选择no再运行ls -l &#x2F;bin&#x2F;sh 后显
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-01-07 21:27" pubdate>
-              2022-01-07
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%9D%82/" class="category-chain-item">杂</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/linux/">#linux</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/12/14/nodejs-cheerio%E7%88%AC%E8%99%AB/" target="_self">
-          <img src="https://xinhaojin.github.io/imgs-host/past/2021/12/image-3.png" srcset="/img/loading.gif" lazyload alt="nodejs cheerio爬虫">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2021/12/14/nodejs-cheerio%E7%88%AC%E8%99%AB/" target="_self">
-          nodejs cheerio爬虫
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt " href="/2021/12/14/nodejs-cheerio%E7%88%AC%E8%99%AB/" target="_self">
-        <div>
-          需求获取美国各州疫情数据美国疫情（每小时更新） 各州新增新冠确诊案例、疫苗接种率、实时新闻、疫情地图 - 咕噜美国通 (Guruin.com)  本来用的数据来源不是这个网站，但原先的数据源不让跨域爬虫，http和request都没法获取HTML源码，只好换了一个数据源 request获取目标网页源代码12345678910111213var request = require(&#x27;req
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-12-14 19:29" pubdate>
-              2021-12-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%88%AC%E8%99%AB/" class="category-chain-item">爬虫</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E7%88%AC%E8%99%AB/">#爬虫</a>
-            
-              <a href="/tags/nodejs/">#nodejs</a>
             
           </div>
         
