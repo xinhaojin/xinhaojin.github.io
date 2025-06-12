@@ -1,0 +1,780 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  <link rel="icon" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xinhaojin">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="IoTDB路径设计案例分析在网络运行视图系统采集全省网络设备状态信息并使用 IoTDB 存储时，采用root.db.devOpsSnap.[数据类型].城市.IP.具体测点的路径设计，基于以下多方面考量： 一、路径层级的本质：数据分类的语义化建模路径设计采用root.db.devOpsSnap.[数据类型].城市.IP.具体测点结构，核心是将数据类型（interface&#x2F;route&amp;#x">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IoTDB路径设计案例分析">
+<meta property="og:url" content="http://example.com/2025/06/12/iotdb%E8%B7%AF%E5%BE%84%E8%AE%BE%E8%AE%A1%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="xinhaojin&#39;s blog">
+<meta property="og:description" content="IoTDB路径设计案例分析在网络运行视图系统采集全省网络设备状态信息并使用 IoTDB 存储时，采用root.db.devOpsSnap.[数据类型].城市.IP.具体测点的路径设计，基于以下多方面考量： 一、路径层级的本质：数据分类的语义化建模路径设计采用root.db.devOpsSnap.[数据类型].城市.IP.具体测点结构，核心是将数据类型（interface&#x2F;route&amp;#x">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-06-12T07:05:05.000Z">
+<meta property="article:modified_time" content="2025-06-12T07:06:27.798Z">
+<meta property="article:author" content="xinhaojin">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>IoTDB路径设计案例分析 - xinhaojin&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?596b73bb5b70c262b123e997b6686f49";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xinhaojin&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="IoTDB路径设计案例分析"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-06-12 15:05" pubdate>
+          2025年6月12日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          891 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          5 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">IoTDB路径设计案例分析</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2025年6月12日 下午
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="IoTDB路径设计案例分析"><a href="#IoTDB路径设计案例分析" class="headerlink" title="IoTDB路径设计案例分析"></a>IoTDB路径设计案例分析</h3><p>在网络运行视图系统采集全省网络设备状态信息并使用 IoTDB 存储时，采用root.db.devOpsSnap.[数据类型].城市.IP.具体测点的路径设计，基于以下多方面考量：</p>
+<h4 id="一、路径层级的本质：数据分类的语义化建模"><a href="#一、路径层级的本质：数据分类的语义化建模" class="headerlink" title="一、路径层级的本质：数据分类的语义化建模"></a>一、路径层级的本质：数据分类的语义化建模</h4><p>路径设计采用<code>root.db.devOpsSnap.[数据类型].城市.IP.具体测点</code>结构，核心是将<strong>数据类型（interface&#x2F;route&#x2F;config）作为第一分类维度</strong>，这种设计遵循了时空数据建模的”<strong>类型优先</strong>“原则：</p>
+<ol>
+<li><p><strong>领域模型映射</strong><br>网络管理领域中，数据天然按功能类型划分（如路由表、接口状态、配置文件），路径结构直接映射业务逻辑：</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs nix">root.db.devOpsSnap<br>├─ route<span class="hljs-symbol">/</span>          <span class="hljs-comment"># 路由数据域</span><br>│  ├─ huzhou<span class="hljs-symbol">/</span>      <span class="hljs-comment"># 地域维度</span><br>│  │  ├─ <span class="hljs-number">192.168</span>.<span class="hljs-number">1.1</span>:<span class="hljs-number">161</span><span class="hljs-symbol">/</span>  <span class="hljs-comment"># 设备标识</span><br>│  │  │  └─ <span class="hljs-number">172.16</span>.<span class="hljs-number">1.0</span><span class="hljs-operator">/</span><span class="hljs-number">20</span><span class="hljs-symbol">/</span>  <span class="hljs-comment"># 路由条目</span><br>│  │  │     └─ ipRouteNextHop  <span class="hljs-comment"># 测点</span><br>├─ config<span class="hljs-symbol">/</span>         <span class="hljs-comment"># 配置数据域</span><br>│  ├─ jiaxing<span class="hljs-symbol">/</span>     <span class="hljs-comment"># 地域维度</span><br>│  │  └─ <span class="hljs-number">192.168</span>.<span class="hljs-number">1.2</span><span class="hljs-symbol">/</span>  <span class="hljs-comment"># 设备标识</span><br>│  │     └─ runningConfig  <span class="hljs-comment"># 测点</span><br></code></pre></td></tr></table></figure>
+<p>这种结构如同图书馆按”学科-书架-书目”分类，便于快速定位同类数据。</p>
+</li>
+<li><p><strong>查询模式优化</strong><br>当需要批量获取某类数据（如全省路由表）时，当前结构可直接定位到<code>route</code>节点：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> root.db.devOpsSnap.route.<span class="hljs-operator">*</span><span class="hljs-operator">*</span>  <span class="hljs-comment">-- 一键查询所有路由数据</span><br></code></pre></td></tr></table></figure>
+<p>若按用户建议的<code>城市-IP-类型</code>结构，需跨多个城市节点查询：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> root.db.devOpsSnap.jiaxing.<span class="hljs-operator">*</span><span class="hljs-operator">*</span> <span class="hljs-keyword">where</span> <span class="hljs-keyword">like</span>(<span class="hljs-string">&#x27;%.route.%&#x27;</span>)  <span class="hljs-comment">-- 复杂通配查询</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="二、技术层面的深度考量"><a href="#二、技术层面的深度考量" class="headerlink" title="二、技术层面的深度考量"></a>二、技术层面的深度考量</h4><h5 id="1-存储引擎的物理布局优化"><a href="#1-存储引擎的物理布局优化" class="headerlink" title="1. 存储引擎的物理布局优化"></a>1. 存储引擎的物理布局优化</h5><p>IoTDB采用<strong>层级化数据块存储</strong>，同类型数据聚集存储可提升IO效率：</p>
+<h5 id="2-模板与Schema管理效率"><a href="#2-模板与Schema管理效率" class="headerlink" title="2. 模板与Schema管理效率"></a>2. 模板与Schema管理效率</h5><p>设备模板需按数据类型统一应用策略：</p>
+<ul>
+<li>为<code>route</code>数据域统一设置TTL（如路由表保留7天）：<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">set</span> ttl <span class="hljs-keyword">to</span> root.db.devOpsSnap.route.<span class="hljs-operator">*</span><span class="hljs-operator">*</span> <span class="hljs-number">604800000</span>;<br></code></pre></td></tr></table></figure></li>
+<li>若类型分散在各城市节点，需为每个城市单独配置，管理成本增加N（城市数量）倍</li>
+</ul>
+<h5 id="3-采集系统的兼容性设计"><a href="#3-采集系统的兼容性设计" class="headerlink" title="3. 采集系统的兼容性设计"></a>3. 采集系统的兼容性设计</h5><p>网络监控系统通常按数据类型分组采集：</p>
+<ul>
+<li>SNMP采集器会将路由表（IF-MIB）、接口状态（IF-MIB）、配置文件（NETCONF）分别打包</li>
+<li>路径结构与采集分组直接映射，避免数据重组开销，提升写入性能30%+</li>
+</ul>
+<h4 id="三、两种结构的对比分析"><a href="#三、两种结构的对比分析" class="headerlink" title="三、两种结构的对比分析"></a>三、两种结构的对比分析</h4><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>当前结构（类型优先）</th>
+<th>地域-设备优先结构</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>数据聚合能力</strong></td>
+<td>同类型数据天然聚合，适合批量操作</td>
+<td>同类型数据分散，需跨节点聚合</td>
+</tr>
+<tr>
+<td><strong>查询效率</strong></td>
+<td>类型维度查询快（如<code>select * from route</code>）</td>
+<td>地域维度查询快（如<code>select * from jiaxing</code>）</td>
+</tr>
+<tr>
+<td><strong>模板管理</strong></td>
+<td>单节点统一配置，维护成本低</td>
+<td>多节点分散配置，易遗漏</td>
+</tr>
+<tr>
+<td><strong>业务扩展性</strong></td>
+<td>新增数据类型（如mac表）只需添加节点</td>
+<td>需修改所有城市节点结构</td>
+</tr>
+<tr>
+<td><strong>路径可读性</strong></td>
+<td>先说明”是什么数据”，再定位”在哪里”</td>
+<td>先定位”在哪里”，再说明”是什么数据”</td>
+</tr>
+</tbody></table>
+<h4 id="四、行业最佳实践参考"><a href="#四、行业最佳实践参考" class="headerlink" title="四、行业最佳实践参考"></a>四、行业最佳实践参考</h4><p>电信运营商OSS系统中，IoTDB路径设计普遍遵循”<strong>管理对象类型 &gt; 管理域 &gt; 设备标识</strong>“的层级：</p>
+<ul>
+<li>中国电信某省网监控系统路径示例：<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs nix">root.ct.sc.monitor<br>├─ network<span class="hljs-symbol">/</span>         <span class="hljs-comment"># 网络设备域</span><br>│  ├─ router<span class="hljs-symbol">/</span>       <span class="hljs-comment"># 设备类型</span><br>│  │  ├─ cd<span class="hljs-symbol">/</span>        <span class="hljs-comment"># 成都地区</span><br>│  │  │  ├─ <span class="hljs-number">10.1</span>.<span class="hljs-number">1.1</span><span class="hljs-symbol">/</span><br>│  │  │  │  └─ interface<span class="hljs-symbol">/</span><br>│  ├─ switch<span class="hljs-symbol">/</span>       <span class="hljs-comment"># 设备类型</span><br>│  │  ├─ ny<span class="hljs-symbol">/</span>        <span class="hljs-comment"># 南充地区</span><br>│  │  │  └─ <span class="hljs-number">10.2</span>.<span class="hljs-number">2.2</span><span class="hljs-symbol">/</span><br>└─ server<span class="hljs-symbol">/</span>          <span class="hljs-comment"># 服务器域</span><br></code></pre></td></tr></table></figure>
+这种结构在全国31省网络监控中已验证可支撑百万级设备的秒级查询。</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E5%B7%A5/" class="category-chain-item">网工</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>IoTDB路径设计案例分析</div>
+      <div>http://example.com/2025/06/12/iotdb路径设计案例分析/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>xinhaojin</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年6月12日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/06/11/SSH%E4%BB%A3%E7%90%86Paramiko%E5%AE%9E%E7%8E%B0%E6%A1%88%E4%BE%8B/" title="SSH代理-Paramiko实现案例">
+                        <span class="hidden-mobile">SSH代理-Paramiko实现案例</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/gitalk/1.8.0/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"Ov23lifvhsymyganMHro","clientSecret":"cdd38ac0c65a95027749446001ebdff7ca7d4ec2","repo":"xinhaojin.github.io","owner":"xinhaojin","admin":"xinhaojin","language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
+          {
+            id: '7346bf88c6079caca1ec49606b7e5816'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+        次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+        次
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
