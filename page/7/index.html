@@ -255,6 +255,67 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2022/12/07/yolov5%E5%8D%95%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%AE%80%E5%8C%96%E6%94%B9%E8%BF%9B/" target="_self">
+          yolov5单目标检测简化改进
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/12/07/yolov5%E5%8D%95%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%AE%80%E5%8C%96%E6%94%B9%E8%BF%9B/" target="_self">
+        <div>
+          backbone部分,去掉了7.8两层的conv和c3,只做到16倍下采样 head部分,去掉所有concat,3个检测层改为1个 Model size:3.63M-&gt;1.01M Params:1.7M-&gt;0.45M FLOPs:4.1G-&gt;2.8G mAP:81.46-&gt;81.96 主要原因应该是对于我的检测任务，待检测目标的大小几乎不会有很大的变化，且和16倍下采样后每
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-12-07 14:22" pubdate>
+              2022-12-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" class="category-chain-item">目标检测</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/">#目标检测</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2022/10/24/yolox%E5%B0%8F%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E6%94%B9%E8%BF%9B%EF%BC%88%E5%88%A0%E9%99%A4%E6%84%9F%E5%8F%97%E9%87%8E%E5%A4%A7%E7%9A%84%E7%89%B9%E5%BE%81%E5%9B%BE%EF%BC%89/" target="_self">
           yolox小目标检测改进（删除感受野大的特征图）
         </a>
@@ -829,71 +890,6 @@
               <a href="/tags/python/">#python</a>
             
               <a href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/">#验证码</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2022/06/10/%E5%9B%BE%E5%83%8F%E7%9B%B8%E4%BC%BC%E5%BA%A6-%E7%9B%B4%E6%96%B9%E5%9B%BE%E6%A0%87%E5%87%86%E5%B7%AE/" target="_self">
-          图像相似度-直方图标准差
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/06/10/%E5%9B%BE%E5%83%8F%E7%9B%B8%E4%BC%BC%E5%BA%A6-%E7%9B%B4%E6%96%B9%E5%9B%BE%E6%A0%87%E5%87%86%E5%B7%AE/" target="_self">
-        <div>
-          问题描述现有一张验证码图片，可能的背景有6种，怎么判断他的背景是哪一种？   方法对于这种大面积相同的图片，一种很快速的方法是计算两张图直方图的标准差。 计算和每一张背景图的标准差，取最小的就行 1234567891011121314from PIL import Imageimport numpy as np#计算直方图的标准差def image_contrast_std(img1, img2)
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-06-10 14:36" pubdate>
-              2022-06-10
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/python/" class="category-chain-item">python</a>
-  
-  
-
-      </span>
-    
-  
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/python/">#python</a>
-            
-              <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">#图像处理</a>
             
           </div>
         
