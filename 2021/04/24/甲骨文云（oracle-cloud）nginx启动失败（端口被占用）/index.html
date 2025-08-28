@@ -22,7 +22,7 @@
     <meta name="description" content="甲骨文云创建实例后，始终有进程占用80端口，导致nginx无法正常启用默认80端口，非常不方便  当然可以kill之后再尝试，但是这明显是开启自启的服务，kill一次，还会有千千万万次 对于centos,终端输入ntsysv,查看所有服务  方向键选择，找到相关的，按空格设置或取消服务，按tanab键切到下方按钮 这里明显需要关闭红框中的服务,也可以直接用命令 systemctl stop ora">
 <meta property="og:type" content="article">
 <meta property="og:title" content="甲骨文云（Oracle Cloud）nginx启动失败（端口被占用）">
-<meta property="og:url" content="http://example.com/2021/04/24/%E7%94%B2%E9%AA%A8%E6%96%87%E4%BA%91%EF%BC%88oracle-cloud%EF%BC%89nginx%E5%90%AF%E5%8A%A8%E5%A4%B1%E8%B4%A5%EF%BC%88%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8%EF%BC%89/index.html">
+<meta property="og:url" content="https://xinhaojin.github.io/2021/04/24/%E7%94%B2%E9%AA%A8%E6%96%87%E4%BA%91%EF%BC%88oracle-cloud%EF%BC%89nginx%E5%90%AF%E5%8A%A8%E5%A4%B1%E8%B4%A5%EF%BC%88%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8%EF%BC%89/index.html">
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
 <meta property="og:description" content="甲骨文云创建实例后，始终有进程占用80端口，导致nginx无法正常启用默认80端口，非常不方便  当然可以kill之后再尝试，但是这明显是开启自启的服务，kill一次，还会有千千万万次 对于centos,终端输入ntsysv,查看所有服务  方向键选择，找到相关的，按空格设置或取消服务，按tanab键切到下方按钮 这里明显需要关闭红框中的服务,也可以直接用命令 systemctl stop ora">
 <meta property="og:locale" content="zh_CN">
@@ -77,7 +77,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"xinhaojin.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -372,7 +372,7 @@ systemctl disable oracle-cloud-agent-updater
   <div class="license-box my-3">
     <div class="license-title">
       <div>甲骨文云（Oracle Cloud）nginx启动失败（端口被占用）</div>
-      <div>http://example.com/2021/04/24/甲骨文云（oracle-cloud）nginx启动失败（端口被占用）/</div>
+      <div>https://xinhaojin.github.io/2021/04/24/甲骨文云（oracle-cloud）nginx启动失败（端口被占用）/</div>
     </div>
     <div class="license-meta">
       

@@ -22,7 +22,7 @@
     <meta name="description" content="下载经常是一件让人头痛的事情，尤其是下载国外网站的资源，能用的国内镜像站很少且不稳定，归根到底还是网络环境不够好。 一种无需代理的解决方案是利用云服务器下载资源，再转存到本地， 因为云服务器的网络环境通常非常好（部分资源在国内云服务器上仍然无法下载，可以考虑用境外服务器下载） 下面举个例子，我特意找了一个之前下载列表里失败的一个条目，再次尝试下载，果然还是失败的，正好来拿测试  复制下载链接，登上">
 <meta property="og:type" content="article">
 <meta property="og:title" content="云服务器+wget+转储：解决网络造成的下载问题">
-<meta property="og:url" content="http://example.com/2021/05/21/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8wget%E8%BD%AC%E5%82%A8%EF%BC%9A%E8%A7%A3%E5%86%B3%E7%BD%91%E7%BB%9C%E9%80%A0%E6%88%90%E7%9A%84%E4%B8%8B%E8%BD%BD%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:url" content="https://xinhaojin.github.io/2021/05/21/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8wget%E8%BD%AC%E5%82%A8%EF%BC%9A%E8%A7%A3%E5%86%B3%E7%BD%91%E7%BB%9C%E9%80%A0%E6%88%90%E7%9A%84%E4%B8%8B%E8%BD%BD%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
 <meta property="og:description" content="下载经常是一件让人头痛的事情，尤其是下载国外网站的资源，能用的国内镜像站很少且不稳定，归根到底还是网络环境不够好。 一种无需代理的解决方案是利用云服务器下载资源，再转存到本地， 因为云服务器的网络环境通常非常好（部分资源在国内云服务器上仍然无法下载，可以考虑用境外服务器下载） 下面举个例子，我特意找了一个之前下载列表里失败的一个条目，再次尝试下载，果然还是失败的，正好来拿测试  复制下载链接，登上">
 <meta property="og:locale" content="zh_CN">
@@ -79,7 +79,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"xinhaojin.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -372,7 +372,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>云服务器+wget+转储：解决网络造成的下载问题</div>
-      <div>http://example.com/2021/05/21/云服务器wget转储：解决网络造成的下载问题/</div>
+      <div>https://xinhaojin.github.io/2021/05/21/云服务器wget转储：解决网络造成的下载问题/</div>
     </div>
     <div class="license-meta">
       

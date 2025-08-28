@@ -22,7 +22,7 @@
     <meta name="description" content="问题描述有多张验证码图片，背景相同，如何获取完整的背景图？ 已有条件：可以使用yolox检测出汉字的位置矩形框。  方法输入：一个验证码图片文件夹 输出：包含所有的背景图片的文件夹  背景区分：假设相同的背景的验证码图片的背景部分是完全一致的的，那么可以比较边框的像素点来判断是否是同一个背景，把所有图片按照背景分类。 针对每一个分类，用yolox预测出汉字框，把汉字框部分像素点设置为黑色，以其中一">
 <meta property="og:type" content="article">
 <meta property="og:title" content="验证码背景合成（多张残缺图合成一张完整图）">
-<meta property="og:url" content="http://example.com/2022/06/10/%E9%AA%8C%E8%AF%81%E7%A0%81%E8%83%8C%E6%99%AF%E5%90%88%E6%88%90%EF%BC%88%E5%A4%9A%E5%BC%A0%E6%AE%8B%E7%BC%BA%E5%9B%BE%E5%90%88%E6%88%90%E4%B8%80%E5%BC%A0%E5%AE%8C%E6%95%B4%E5%9B%BE%EF%BC%89/index.html">
+<meta property="og:url" content="https://xinhaojin.github.io/2022/06/10/%E9%AA%8C%E8%AF%81%E7%A0%81%E8%83%8C%E6%99%AF%E5%90%88%E6%88%90%EF%BC%88%E5%A4%9A%E5%BC%A0%E6%AE%8B%E7%BC%BA%E5%9B%BE%E5%90%88%E6%88%90%E4%B8%80%E5%BC%A0%E5%AE%8C%E6%95%B4%E5%9B%BE%EF%BC%89/index.html">
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
 <meta property="og:description" content="问题描述有多张验证码图片，背景相同，如何获取完整的背景图？ 已有条件：可以使用yolox检测出汉字的位置矩形框。  方法输入：一个验证码图片文件夹 输出：包含所有的背景图片的文件夹  背景区分：假设相同的背景的验证码图片的背景部分是完全一致的的，那么可以比较边框的像素点来判断是否是同一个背景，把所有图片按照背景分类。 针对每一个分类，用yolox预测出汉字框，把汉字框部分像素点设置为黑色，以其中一">
 <meta property="og:locale" content="zh_CN">
@@ -79,7 +79,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"xinhaojin.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -388,7 +388,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>验证码背景合成（多张残缺图合成一张完整图）</div>
-      <div>http://example.com/2022/06/10/验证码背景合成（多张残缺图合成一张完整图）/</div>
+      <div>https://xinhaojin.github.io/2022/06/10/验证码背景合成（多张残缺图合成一张完整图）/</div>
     </div>
     <div class="license-meta">
       

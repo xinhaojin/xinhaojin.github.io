@@ -22,7 +22,7 @@
     <meta name="description" content="问题先后训练两个数据集，都是VOC格式，仅有图片和标签不同，那么怎么对他们进行训练？ 答：直觉就是，配置好一次环境，先训练第一个数据集，然后训练第二个数据集的时候，把数据集文件夹内容替换，其余一律不变。 但这样有一个致命错误：AP始终很小，可能是0.00000XXX。 原因因为两个数据集的标注工作是分别在labelme和labelimg上完成的，还是有一些细微区别，所以首先怀疑数据集本身的问题，于">
 <meta property="og:type" content="article">
 <meta property="og:title" content="yolox训练不同数据集注意事项">
-<meta property="og:url" content="http://example.com/2022/03/31/yolox%E8%AE%AD%E7%BB%83%E4%B8%8D%E5%90%8C%E6%95%B0%E6%8D%AE%E9%9B%86%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/index.html">
+<meta property="og:url" content="https://xinhaojin.github.io/2022/03/31/yolox%E8%AE%AD%E7%BB%83%E4%B8%8D%E5%90%8C%E6%95%B0%E6%8D%AE%E9%9B%86%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/index.html">
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
 <meta property="og:description" content="问题先后训练两个数据集，都是VOC格式，仅有图片和标签不同，那么怎么对他们进行训练？ 答：直觉就是，配置好一次环境，先训练第一个数据集，然后训练第二个数据集的时候，把数据集文件夹内容替换，其余一律不变。 但这样有一个致命错误：AP始终很小，可能是0.00000XXX。 原因因为两个数据集的标注工作是分别在labelme和labelimg上完成的，还是有一些细微区别，所以首先怀疑数据集本身的问题，于">
 <meta property="og:locale" content="zh_CN">
@@ -78,7 +78,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"xinhaojin.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -377,7 +377,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>yolox训练不同数据集注意事项</div>
-      <div>http://example.com/2022/03/31/yolox训练不同数据集注意事项/</div>
+      <div>https://xinhaojin.github.io/2022/03/31/yolox训练不同数据集注意事项/</div>
     </div>
     <div class="license-meta">
       

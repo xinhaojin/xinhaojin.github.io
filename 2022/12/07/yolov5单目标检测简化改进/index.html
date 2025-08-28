@@ -22,7 +22,7 @@
     <meta name="description" content="backbone部分,去掉了7.8两层的conv和c3,只做到16倍下采样 head部分,去掉所有concat,3个检测层改为1个 Model size:3.63M-&gt;1.01M Params:1.7M-&gt;0.45M FLOPs:4.1G-&gt;2.8G mAP:81.46-&gt;81.96 主要原因应该是对于我的检测任务，待检测目标的大小几乎不会有很大的变化，且和16倍下采样后每">
 <meta property="og:type" content="article">
 <meta property="og:title" content="yolov5单目标检测简化改进">
-<meta property="og:url" content="http://example.com/2022/12/07/yolov5%E5%8D%95%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%AE%80%E5%8C%96%E6%94%B9%E8%BF%9B/index.html">
+<meta property="og:url" content="https://xinhaojin.github.io/2022/12/07/yolov5%E5%8D%95%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%AE%80%E5%8C%96%E6%94%B9%E8%BF%9B/index.html">
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
 <meta property="og:description" content="backbone部分,去掉了7.8两层的conv和c3,只做到16倍下采样 head部分,去掉所有concat,3个检测层改为1个 Model size:3.63M-&gt;1.01M Params:1.7M-&gt;0.45M FLOPs:4.1G-&gt;2.8G mAP:81.46-&gt;81.96 主要原因应该是对于我的检测任务，待检测目标的大小几乎不会有很大的变化，且和16倍下采样后每">
 <meta property="og:locale" content="zh_CN">
@@ -74,7 +74,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"xinhaojin.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -366,7 +366,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>yolov5单目标检测简化改进</div>
-      <div>http://example.com/2022/12/07/yolov5单目标检测简化改进/</div>
+      <div>https://xinhaojin.github.io/2022/12/07/yolov5单目标检测简化改进/</div>
     </div>
     <div class="license-meta">
       

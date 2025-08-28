@@ -22,7 +22,7 @@
     <meta name="description" content="上篇曾提到超声波测距非常不准，所以花10块钱在淘宝买了个激光测距传感器VL53L0X（便宜才买的），特此记录配置过程 接线有4个引脚需要接 VIN接3-5V电源；GND接地；SDA和SCL接树莓派上对应的SDA和SCL  那么怎么判断接线是否正确呢？可以查看I2C设备地址，如果接线后I2C设备多了一个，那就基本没错了 开启I2C sudo raspi-config #依次选择Interfacing">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VL53L0X激光测距（树莓派）">
-<meta property="og:url" content="http://example.com/2021/04/27/vl53l0x%E6%BF%80%E5%85%89%E6%B5%8B%E8%B7%9D%EF%BC%88%E6%A0%91%E8%8E%93%E6%B4%BE%EF%BC%89/index.html">
+<meta property="og:url" content="https://xinhaojin.github.io/2021/04/27/vl53l0x%E6%BF%80%E5%85%89%E6%B5%8B%E8%B7%9D%EF%BC%88%E6%A0%91%E8%8E%93%E6%B4%BE%EF%BC%89/index.html">
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
 <meta property="og:description" content="上篇曾提到超声波测距非常不准，所以花10块钱在淘宝买了个激光测距传感器VL53L0X（便宜才买的），特此记录配置过程 接线有4个引脚需要接 VIN接3-5V电源；GND接地；SDA和SCL接树莓派上对应的SDA和SCL  那么怎么判断接线是否正确呢？可以查看I2C设备地址，如果接线后I2C设备多了一个，那就基本没错了 开启I2C sudo raspi-config #依次选择Interfacing">
 <meta property="og:locale" content="zh_CN">
@@ -77,7 +77,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"xinhaojin.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -386,7 +386,7 @@ make
   <div class="license-box my-3">
     <div class="license-title">
       <div>VL53L0X激光测距（树莓派）</div>
-      <div>http://example.com/2021/04/27/vl53l0x激光测距（树莓派）/</div>
+      <div>https://xinhaojin.github.io/2021/04/27/vl53l0x激光测距（树莓派）/</div>
     </div>
     <div class="license-meta">
       

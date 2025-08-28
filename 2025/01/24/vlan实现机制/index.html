@@ -22,7 +22,7 @@
     <meta name="description" content="VLAN标识符VID VLAN标记的最后12比特称为VLAN标识符VID，唯一标志以太网帧属于哪一个VLAN。 VID取值范围是0 ~ 4095 (0 ~ 2^12 - 1)。 0和4095不用来表示VLAN，有效取值范围是1 ~ 4094。  802.1Q帧 在以太网帧基础上，用于实现虚拟局域网（VLAN）功能的一种数据帧格式 结构特点：在普通以太网帧中插入4字节VLAN标记，其最后12比特是V">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vlan实现机制">
-<meta property="og:url" content="http://example.com/2025/01/24/vlan%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6/index.html">
+<meta property="og:url" content="https://xinhaojin.github.io/2025/01/24/vlan%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6/index.html">
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
 <meta property="og:description" content="VLAN标识符VID VLAN标记的最后12比特称为VLAN标识符VID，唯一标志以太网帧属于哪一个VLAN。 VID取值范围是0 ~ 4095 (0 ~ 2^12 - 1)。 0和4095不用来表示VLAN，有效取值范围是1 ~ 4094。  802.1Q帧 在以太网帧基础上，用于实现虚拟局域网（VLAN）功能的一种数据帧格式 结构特点：在普通以太网帧中插入4字节VLAN标记，其最后12比特是V">
 <meta property="og:locale" content="zh_CN">
@@ -79,7 +79,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"xinhaojin.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -421,7 +421,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>vlan实现机制</div>
-      <div>http://example.com/2025/01/24/vlan实现机制/</div>
+      <div>https://xinhaojin.github.io/2025/01/24/vlan实现机制/</div>
     </div>
     <div class="license-meta">
       

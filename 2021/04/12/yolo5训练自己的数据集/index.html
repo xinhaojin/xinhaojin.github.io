@@ -22,7 +22,7 @@
     <meta name="description" content="前期准备yolov5的环境配置 制作yolov5数据集 配置文件修改1.复制data目录下的coco.yaml，重命名为自定义的，如test.yaml 要修改的内容是，图片路径，类别数，类别名称   可以看到我修改后的图片路径的表达方式不同，是直接给出图片的目录，建议就像我这样改，目录结构在之前文章中介绍过  2.修改weights目录下的yolov5s.yaml（要用哪个就修改哪个） 修改内容是">
 <meta property="og:type" content="article">
 <meta property="og:title" content="yolov5训练自己的数据集">
-<meta property="og:url" content="http://example.com/2021/04/12/yolo5%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
+<meta property="og:url" content="https://xinhaojin.github.io/2021/04/12/yolo5%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86/index.html">
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
 <meta property="og:description" content="前期准备yolov5的环境配置 制作yolov5数据集 配置文件修改1.复制data目录下的coco.yaml，重命名为自定义的，如test.yaml 要修改的内容是，图片路径，类别数，类别名称   可以看到我修改后的图片路径的表达方式不同，是直接给出图片的目录，建议就像我这样改，目录结构在之前文章中介绍过  2.修改weights目录下的yolov5s.yaml（要用哪个就修改哪个） 修改内容是">
 <meta property="og:locale" content="zh_CN">
@@ -89,7 +89,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"xinhaojin.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -325,8 +325,8 @@
             
               <div class="markdown-body">
                 
-                <h4 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h4><p><a target="_blank" rel="noopener" href="https://xinhaojin.github.io/2021/04/12/yolov5%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">yolov5的环境配置</a></p>
-<p><a target="_blank" rel="noopener" href="https://xinhaojin.github.io/2021/04/12/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B-%E5%88%B6%E4%BD%9C%E6%95%B0%E6%8D%AE%E9%9B%86/">制作yolov5数据集</a></p>
+                <h4 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h4><p><a href="https://xinhaojin.github.io/2021/04/12/yolov5%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">yolov5的环境配置</a></p>
+<p><a href="https://xinhaojin.github.io/2021/04/12/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B-%E5%88%B6%E4%BD%9C%E6%95%B0%E6%8D%AE%E9%9B%86/">制作yolov5数据集</a></p>
 <h4 id="配置文件修改"><a href="#配置文件修改" class="headerlink" title="配置文件修改"></a>配置文件修改</h4><p>1.复制data目录下的coco.yaml，重命名为自定义的，如test.yaml</p>
 <p>要修改的内容是，图片路径，类别数，类别名称</p>
 <p><img src="https://xinhaojin.github.io/imgs-host/past/2021/04/image-9-1024x416.png" srcset="/img/loading.gif" lazyload></p>
@@ -403,7 +403,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>yolov5训练自己的数据集</div>
-      <div>http://example.com/2021/04/12/yolo5训练自己的数据集/</div>
+      <div>https://xinhaojin.github.io/2021/04/12/yolo5训练自己的数据集/</div>
     </div>
     <div class="license-meta">
       

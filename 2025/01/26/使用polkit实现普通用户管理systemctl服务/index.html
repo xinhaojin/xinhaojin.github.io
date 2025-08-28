@@ -22,7 +22,7 @@
     <meta name="description" content="1. 背景默认情况下，普通用户无法直接使用 systemctl 管理系统服务（如 nginx），因为需要管理员权限（root 或 sudo）。通过 polkit，可以为普通用户授权管理特定服务。  2. 实现步骤2.1 创建 polkit 规则文件 进入 polkit 规则目录： 1cd &#x2F;etc&#x2F;polkit-1&#x2F;rules.d&#x2F;  创建一个新的规则文件（例如 20-nginx.rules）：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用polkit实现普通用户管理systemctl服务">
-<meta property="og:url" content="http://example.com/2025/01/26/%E4%BD%BF%E7%94%A8polkit%E5%AE%9E%E7%8E%B0%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86systemctl%E6%9C%8D%E5%8A%A1/index.html">
+<meta property="og:url" content="https://xinhaojin.github.io/2025/01/26/%E4%BD%BF%E7%94%A8polkit%E5%AE%9E%E7%8E%B0%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86systemctl%E6%9C%8D%E5%8A%A1/index.html">
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
 <meta property="og:description" content="1. 背景默认情况下，普通用户无法直接使用 systemctl 管理系统服务（如 nginx），因为需要管理员权限（root 或 sudo）。通过 polkit，可以为普通用户授权管理特定服务。  2. 实现步骤2.1 创建 polkit 规则文件 进入 polkit 规则目录： 1cd &#x2F;etc&#x2F;polkit-1&#x2F;rules.d&#x2F;  创建一个新的规则文件（例如 20-nginx.rules）：">
 <meta property="og:locale" content="zh_CN">
@@ -74,7 +74,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"xinhaojin.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -432,7 +432,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>使用polkit实现普通用户管理systemctl服务</div>
-      <div>http://example.com/2025/01/26/使用polkit实现普通用户管理systemctl服务/</div>
+      <div>https://xinhaojin.github.io/2025/01/26/使用polkit实现普通用户管理systemctl服务/</div>
     </div>
     <div class="license-meta">
       

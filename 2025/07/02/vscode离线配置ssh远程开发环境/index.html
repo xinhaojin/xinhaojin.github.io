@@ -22,7 +22,7 @@
     <meta name="description" content="背景实际开发中，部分程序需要跑在内网服务器上，无法在本地调试，因此需要远程开发，但内网环境无法自动下载组件上传到服务器，需要离线配置。尝试过pycharm手动上传服务器版本但仍然无法建立连接，可能是服务器运行库部分软件版本低导致的，加上pycharm本身也比较臃肿占资源大，不喜欢，因此没有深究。好在最近找到了使用vscode离线部署远程开发环境的方法，特此记录。 下载vscode客户端官网：htt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vscode离线配置ssh远程开发环境">
-<meta property="og:url" content="http://example.com/2025/07/02/vscode%E7%A6%BB%E7%BA%BF%E9%85%8D%E7%BD%AEssh%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/index.html">
+<meta property="og:url" content="https://xinhaojin.github.io/2025/07/02/vscode%E7%A6%BB%E7%BA%BF%E9%85%8D%E7%BD%AEssh%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/index.html">
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
 <meta property="og:description" content="背景实际开发中，部分程序需要跑在内网服务器上，无法在本地调试，因此需要远程开发，但内网环境无法自动下载组件上传到服务器，需要离线配置。尝试过pycharm手动上传服务器版本但仍然无法建立连接，可能是服务器运行库部分软件版本低导致的，加上pycharm本身也比较臃肿占资源大，不喜欢，因此没有深究。好在最近找到了使用vscode离线部署远程开发环境的方法，特此记录。 下载vscode客户端官网：htt">
 <meta property="og:locale" content="zh_CN">
@@ -78,7 +78,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"xinhaojin.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -383,7 +383,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>vscode离线配置ssh远程开发环境</div>
-      <div>http://example.com/2025/07/02/vscode离线配置ssh远程开发环境/</div>
+      <div>https://xinhaojin.github.io/2025/07/02/vscode离线配置ssh远程开发环境/</div>
     </div>
     <div class="license-meta">
       
