@@ -1,0 +1,878 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  <link rel="icon" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xinhaojin">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="华为&#x2F;新华三ACL核心笔记一、ACL核心思想：网络的“门卫”华为&#x2F;新华三的ACL与思科&#x2F;锐捷核心思想完全一致，是网络流量的“门卫”。它根据预定义的规则，对数据包进行“你是谁？（源IP）”、“你要去哪？（目的IP）”、“你去干什么？（协议&#x2F;端口）”的盘问，并决定放行（permit）或阻拦（deny）。  工作原理：自上而下，逐条匹配，一旦匹配成功就立刻执行动作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="华为&#x2F;新华三ACL核心笔记">
+<meta property="og:url" content="https://xinhaojin.github.io/2025/09/10/%E5%8D%8E%E4%B8%BA%E6%96%B0%E5%8D%8E%E4%B8%89ACL%E6%A0%B8%E5%BF%83%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="xinhaojin&#39;s blog">
+<meta property="og:description" content="华为&#x2F;新华三ACL核心笔记一、ACL核心思想：网络的“门卫”华为&#x2F;新华三的ACL与思科&#x2F;锐捷核心思想完全一致，是网络流量的“门卫”。它根据预定义的规则，对数据包进行“你是谁？（源IP）”、“你要去哪？（目的IP）”、“你去干什么？（协议&#x2F;端口）”的盘问，并决定放行（permit）或阻拦（deny）。  工作原理：自上而下，逐条匹配，一旦匹配成功就立刻执行动作">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-09-10T02:39:30.000Z">
+<meta property="article:modified_time" content="2025-09-10T02:39:34.687Z">
+<meta property="article:author" content="xinhaojin">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>华为/新华三ACL核心笔记 - xinhaojin&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xinhaojin.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?596b73bb5b70c262b123e997b6686f49";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xinhaojin&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="华为/新华三ACL核心笔记"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-09-10 10:39" pubdate>
+          2025年9月10日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          9 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">华为/新华三ACL核心笔记</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2025年9月10日 上午
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="华为-新华三ACL核心笔记"><a href="#华为-新华三ACL核心笔记" class="headerlink" title="华为&#x2F;新华三ACL核心笔记"></a>华为&#x2F;新华三ACL核心笔记</h1><h3 id="一、ACL核心思想：网络的“门卫”"><a href="#一、ACL核心思想：网络的“门卫”" class="headerlink" title="一、ACL核心思想：网络的“门卫”"></a><strong>一、ACL核心思想：网络的“门卫”</strong></h3><p>华为&#x2F;新华三的ACL与思科&#x2F;锐捷核心思想完全一致，是网络流量的“门卫”。它根据预定义的规则，对数据包进行“你是谁？（源IP）”、“你要去哪？（目的IP）”、“你去干什么？（协议&#x2F;端口）”的盘问，并决定放行（<code>permit</code>）或阻拦（<code>deny</code>）。</p>
+<ul>
+<li><strong>工作原理</strong>：自上而下，逐条匹配，一旦匹配成功就立刻执行动作，并<strong>停止</strong>后续匹配。</li>
+<li><strong>默认规则</strong>：所有ACL末尾都有一条看不见的 <code>rule deny ip source any destination any</code>，即“默认禁止所有”。</li>
+</ul>
+<hr>
+<h3 id="二、通配符掩码（反掩码）：华为-华三的“模糊匹配”技巧"><a href="#二、通配符掩码（反掩码）：华为-华三的“模糊匹配”技巧" class="headerlink" title="二、通配符掩码（反掩码）：华为&#x2F;华三的“模糊匹配”技巧"></a><strong>二、通配符掩码（反掩码）：华为&#x2F;华三的“模糊匹配”技巧</strong></h3><p>华为&#x2F;新华三设备使用<strong>通配符掩码</strong>，其含义和功能与思科&#x2F;锐捷<strong>完全一致</strong>。<code>0</code>表示需匹配，<code>1</code>表示不关心。</p>
+<table>
+<thead>
+<tr>
+<th align="left">例子</th>
+<th align="left">通配符掩码</th>
+<th align="left">解释</th>
+<th align="left">等效写法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>192.168.1.1 0</code></td>
+<td align="left"><code>0</code></td>
+<td align="left">匹配<strong>唯一</strong>的主机 <code>192.168.1.1</code></td>
+<td align="left"><code>source 192.168.1.1 0</code></td>
+</tr>
+<tr>
+<td align="left"><code>192.168.1.0 0.0.0.255</code></td>
+<td align="left"><code>0.0.0.255</code></td>
+<td align="left">匹配 <code>192.168.1.0</code> 网段的所有主机</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>0.0.0.0 255.255.255.255</code></td>
+<td align="left"><code>255.255.255.255</code></td>
+<td align="left">匹配<strong>任何</strong>IP地址</td>
+<td align="left"><code>any</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="三、ACL类型详解与实战配置"><a href="#三、ACL类型详解与实战配置" class="headerlink" title="三、ACL类型详解与实战配置"></a><strong>三、ACL类型详解与实战配置</strong></h3><p>华为&#x2F;新华三的ACL体系采用**“类型驱动”** 的严格分类，每种类型有固定的编号范围，功能划分非常清晰。</p>
+<h4 id="1-基本ACL-Basic-ACL-2000-2999"><a href="#1-基本ACL-Basic-ACL-2000-2999" class="headerlink" title="1. 基本ACL (Basic ACL, 2000-2999)"></a><strong>1. 基本ACL (Basic ACL, 2000-2999)</strong></h4><p><strong>功能</strong>：等同于思科的<strong>标准ACL</strong>。仅根据<strong>源IP地址</strong>进行过滤。<br><strong>配置示例</strong>：允许内网（<code>192.168.1.0/24</code>）上网，禁止其他所有流量。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">// 创建基本ACL 2000<br>acl number 2000<br> rule 5 permit <span class="hljs-built_in">source</span> 192.168.1.0 0.0.0.255  // rule 5为规则编号，可自定义<br>// 应用ACL：通常应用在离“目的地”近的接口入方向（inbound）<br>interface GigabitEthernet0/0/1<br> traffic-filter inbound acl 2000<br></code></pre></td></tr></table></figure>
+<p><strong>注意事项</strong>：控制粒度粗，放置在离源太近的地方可能会误伤其他合法流量。</p>
+<h4 id="2-高级ACL-Advanced-ACL-3000-3999"><a href="#2-高级ACL-Advanced-ACL-3000-3999" class="headerlink" title="2. 高级ACL (Advanced ACL, 3000-3999)"></a><strong>2. 高级ACL (Advanced ACL, 3000-3999)</strong></h4><p><strong>功能</strong>：等同于思科的<strong>扩展ACL</strong>。可根据<strong>源IP、目的IP、协议、源端口、目的端口</strong>等进行精细过滤。<strong>是企业网络中的绝对主力。</strong><br><strong>配置示例</strong>：允许内网访问外部Web和DNS，但禁止访问外部MySQL数据库。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">// 创建高级ACL 3000<br>acl number 3000<br> rule 5 permit tcp <span class="hljs-built_in">source</span> 192.168.1.0 0.0.0.255 destination any destination-port eq 80<br> rule 10 permit tcp <span class="hljs-built_in">source</span> 192.168.1.0 0.0.0.255 destination any destination-port eq 443<br> rule 15 permit udp <span class="hljs-built_in">source</span> any destination any destination-port eq 53<br> rule 20 deny tcp <span class="hljs-built_in">source</span> any destination any destination-port eq 3306<br> rule 25 permit ip <span class="hljs-built_in">source</span> any destination any // 显式允许其他所有流量<br>// 应用ACL：通常应用在离“源”近的接口出方向（outbound）<br>interface GigabitEthernet0/0/2<br> traffic-filter outbound acl 3000<br></code></pre></td></tr></table></figure>
+<p><strong>注意事项</strong>：规则顺序至关重要！<code>rule</code> 后的编号（如5,10,15）决定了匹配顺序，编号越小优先级越高。</p>
+<h4 id="3-二层ACL-Layer-2-ACL-4000-4999"><a href="#3-二层ACL-Layer-2-ACL-4000-4999" class="headerlink" title="3. 二层ACL (Layer 2 ACL, 4000-4999)"></a><strong>3. 二层ACL (Layer 2 ACL, 4000-4999)</strong></h4><p><strong>功能</strong>：华为&#x2F;华三特色功能。基于<strong>源&#x2F;目的MAC地址、以太网协议类型</strong>等二层信息进行过滤。<br><strong>配置示例</strong>：阻止来自特定MAC地址 <code>aabb-ccdd-eeff</code> 的所有流量。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">// 创建二层ACL 4000<br>acl number 4000<br> rule 5 deny dest-mac aabb-ccdd-eeff ffff-ffff-ffff // 目的MAC匹配<br> rule 10 permit<br>// 应用ACL<br>interface GigabitEthernet0/0/3<br> traffic-filter inbound acl 4000<br></code></pre></td></tr></table></figure>
+
+<h4 id="4-用户自定义ACL-User-defined-ACL-5000-5999"><a href="#4-用户自定义ACL-User-defined-ACL-5000-5999" class="headerlink" title="4. 用户自定义ACL (User-defined ACL, 5000-5999)"></a><strong>4. 用户自定义ACL (User-defined ACL, 5000-5999)</strong></h4><p><strong>功能</strong>：通过报文头偏移量进行比特位级别的高级匹配，用于过滤特定格式的协议报文。<strong>属于专家级功能。</strong><br><strong>配置示例</strong>：匹配IP报文头协议字段为1（ICMP）的报文。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">acl number 5000<br> rule 5 permit ip-head 8 1 0x01 0xff // 匹配协议字段为1<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="四、高级ACL（3000系列）的核心：五元组语法详解"><a href="#四、高级ACL（3000系列）的核心：五元组语法详解" class="headerlink" title="四、高级ACL（3000系列）的核心：五元组语法详解"></a><strong>四、高级ACL（3000系列）的核心：五元组语法详解</strong></h3><p>“五元组”是高级ACL进行精细流量控制的基石。华为的配置语法更显式，要求明确写出 <code>source</code>、<code>destination</code>、<code>destination-port</code> 等关键字。</p>
+<h4 id="通用命令语法格式"><a href="#通用命令语法格式" class="headerlink" title="通用命令语法格式"></a><strong>通用命令语法格式</strong></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rule [rule-id] permit/deny [protocol] <span class="hljs-built_in">source</span> &#123;src-addr wildcard&#125; [src-port op port] destination &#123;dest-addr wildcard&#125; [dest-port op port]<br></code></pre></td></tr></table></figure>
+
+<h4 id="语法元素拆解与示例"><a href="#语法元素拆解与示例" class="headerlink" title="语法元素拆解与示例"></a><strong>语法元素拆解与示例</strong></h4><table>
+<thead>
+<tr>
+<th align="left">语法元素</th>
+<th align="left">说明与可选值</th>
+<th align="left">华为&#x2F;华三配置示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong><code>[protocol]</code></strong></td>
+<td align="left"><code>ip</code>, <code>tcp</code>, <code>udp</code>, <code>icmp</code>, <code>gre</code></td>
+<td align="left"><code>permit tcp ...</code></td>
+</tr>
+<tr>
+<td align="left"><strong><code>source &#123;src-addr wildcard&#125;</code></strong></td>
+<td align="left">定义源IP地址范围，必须带 <code>source</code> 关键字</td>
+<td align="left"><code>source 192.168.1.0 0.0.0.255</code></td>
+</tr>
+<tr>
+<td align="left"><strong><code>[src-port op port]</code></strong></td>
+<td align="left"><strong>可选</strong>。定义源端口，运算符：<code>eq</code>, <code>gt</code>, <code>lt</code>, <code>range</code></td>
+<td align="left"><code>source-port eq 80</code></td>
+</tr>
+<tr>
+<td align="left"><strong><code>destination &#123;dest-addr wildcard&#125;</code></strong></td>
+<td align="left">定义目的IP地址范围，必须带 <code>destination</code> 关键字</td>
+<td align="left"><code>destination any</code></td>
+</tr>
+<tr>
+<td align="left"><strong><code>[dest-port op port]</code></strong></td>
+<td align="left"><strong>可选</strong>。定义目的端口，运算符同上。</td>
+<td align="left"><code>destination-port eq 443</code></td>
+</tr>
+</tbody></table>
+<h4 id="综合配置示例与场景解读"><a href="#综合配置示例与场景解读" class="headerlink" title="综合配置示例与场景解读"></a><strong>综合配置示例与场景解读</strong></h4><p><strong>场景1：允许内网用户访问外部所有Web服务（HTTP&#x2F;HTTPS）</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">acl number 3001<br> rule 5 permit tcp <span class="hljs-built_in">source</span> 192.168.1.0 0.0.0.255 destination any destination-port eq 80<br> rule 10 permit tcp <span class="hljs-built_in">source</span> 192.168.1.0 0.0.0.255 destination any destination-port eq 443<br></code></pre></td></tr></table></figure>
+
+<p><strong>场景2：允许来自任何地方的DNS查询请求（UDP 53）到达DNS服务器</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">acl number 3002<br> rule 5 permit udp <span class="hljs-built_in">source</span> any destination 192.168.1.53 0 destination-port eq 53<br></code></pre></td></tr></table></figure>
+
+<p><strong>场景3：允许管理员IP（172.16.1.100）远程管理所有服务器（10.0.0.0&#x2F;24网段）的SSH服务</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">acl number 3003<br> rule 5 permit tcp <span class="hljs-built_in">source</span> 172.16.1.100 0 destination 10.0.0.0 0.0.0.255 destination-port eq 22<br></code></pre></td></tr></table></figure>
+
+<p><strong>场景4：使用 <code>established</code> 关键字允许外部Web服务器返回的流量（TCP连接应答包）</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">acl number 3004<br> rule 5 permit tcp <span class="hljs-built_in">source</span> any destination 192.168.1.0 0.0.0.255 tcp-established<br></code></pre></td></tr></table></figure>
+<p><em>注意：华为&#x2F;华三使用 <code>tcp-established</code> 关键字来实现与思科 <code>established</code> 相同的功能。</em></p>
+<hr>
+<h3 id="五、总结与最佳实践"><a href="#五、总结与最佳实践" class="headerlink" title="五、总结与最佳实践"></a><strong>五、总结与最佳实践</strong></h3><table>
+<thead>
+<tr>
+<th align="left">特性</th>
+<th align="left"><strong>基本ACL (2000-2999)</strong></th>
+<th align="left"><strong>高级ACL (3000-3999)</strong></th>
+<th align="left"><strong>二层ACL (4000-4999)</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>匹配依据</strong></td>
+<td align="left">仅源IP</td>
+<td align="left">五元组（源IP、目的IP、协议、端口）</td>
+<td align="left">源&#x2F;目的MAC地址</td>
+</tr>
+<tr>
+<td align="left"><strong>控制粒度</strong></td>
+<td align="left">粗</td>
+<td align="left"><strong>细（绝对主力）</strong></td>
+<td align="left">特殊</td>
+</tr>
+<tr>
+<td align="left"><strong>规则管理</strong></td>
+<td align="left"><strong>优（规则有序号，可编辑）</strong></td>
+<td align="left"><strong>优（规则有序号，可编辑）</strong></td>
+<td align="left"><strong>优（规则有序号，可编辑）</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>企业应用</strong></td>
+<td align="left">较少</td>
+<td align="left"><strong>强烈推荐</strong></td>
+<td align="left">特定场景</td>
+</tr>
+</tbody></table>
+<p><strong>黄金法则</strong>：</p>
+<ol>
+<li><strong>最小权限</strong>：只放行必要的流量。</li>
+<li><strong>精确优先</strong>：将最具体的规则放在前面（使用较小的 <code>rule-id</code>）。</li>
+<li><strong>靠近源&#x2F;目的</strong>：基本ACL近目的，高级ACL近源。</li>
+<li><strong>类型选择</strong>：根据需求选择正确的ACL类型，<strong>高级ACL 3000系列</strong>适用绝大部分场景。</li>
+<li><strong>先规划后配置</strong>：在文本编辑器里规划好 <code>rule-id</code> 和规则，再粘贴到设备。</li>
+</ol>
+<hr>
+<h3 id="六、配置Checklist-常见错误"><a href="#六、配置Checklist-常见错误" class="headerlink" title="六、配置Checklist &amp; 常见错误"></a><strong>六、配置Checklist &amp; 常见错误</strong></h3><p><strong>配置前 Checklist：</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> 需求是否明确？（允许什么？拒绝什么？）</li>
+<li><input disabled="" type="checkbox"> 是否选择了正确的ACL类型？（基本、高级还是二层？）</li>
+<li><input disabled="" type="checkbox"> <code>rule-id</code> 的顺序是否最优？（精确规则ID小）</li>
+<li><input disabled="" type="checkbox"> 是否显式添加了 <code>rule deny ip source any destination any</code>？</li>
+<li><input disabled="" type="checkbox"> 通配符掩码计算是否正确？</li>
+<li><input disabled="" type="checkbox"> ACL应用的方向（<code>inbound</code>&#x2F;<code>outbound</code>）和接口是否正确？</li>
+</ul>
+<p><strong>常见错误：</strong></p>
+<ul>
+<li><strong>错误1</strong>：在基本ACL（2000）中尝试配置目的端口或协议。</li>
+<li><strong>错误2</strong>：混淆接口应用方向，<code>inbound</code> 和 <code>outbound</code> 应用错误。</li>
+<li><strong>错误3</strong>：忘记了ACL末尾的隐式拒绝所有，导致预期外的流量被拒绝。</li>
+<li><strong>错误4</strong>：错误理解了通配符掩码，匹配了错误的IP范围。</li>
+<li><strong>错误5</strong>：在配置中遗漏了关键字，如 <code>source</code>, <code>destination</code>, <code>destination-port</code>。华为语法要求更显式。</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E5%B7%A5/" class="category-chain-item">网工</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>华为/新华三ACL核心笔记</div>
+      <div>https://xinhaojin.github.io/2025/09/10/华为新华三ACL核心笔记/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>xinhaojin</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年9月10日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/09/10/%E6%80%9D%E7%A7%91%E9%94%90%E6%8D%B7ACL%E6%A0%B8%E5%BF%83%E7%AC%94%E8%AE%B0/" title="思科/锐捷ACL核心笔记">
+                        <span class="hidden-mobile">思科/锐捷ACL核心笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/gitalk/1.8.0/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"Ov23lifvhsymyganMHro","clientSecret":"cdd38ac0c65a95027749446001ebdff7ca7d4ec2","repo":"xinhaojin.github.io","owner":"xinhaojin","admin":"xinhaojin","language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
+          {
+            id: 'd6d66e5e0fff44ff22eed739ac4c9bfb'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+        次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+        次
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
