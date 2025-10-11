@@ -255,6 +255,137 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/11/20/vlan%E9%97%B4%E9%80%9A%E4%BF%A1(%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1%E3%80%81%E5%A4%9A%E8%87%82%E8%B7%AF%E7%94%B1%E3%80%81%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2)%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4(%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA)/" target="_self">
+          vlan间通信(单臂路由、多臂路由、三层交换)配置命令(思科+华为)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/11/20/vlan%E9%97%B4%E9%80%9A%E4%BF%A1(%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1%E3%80%81%E5%A4%9A%E8%87%82%E8%B7%AF%E7%94%B1%E3%80%81%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2)%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4(%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA)/" target="_self">
+        <div>
+          单臂路由路由器单个接口配置多个子接口，打上vlan标签，模拟三层交换机的vlanif接口功能 注意：路由器不具备vlan划分和处理能力，一个物理接口默认只处理一个vlan网络，因此需要为每个vlan配置一个物理子接口作为vlan网关地址，而不是直接配置vlan接口（某些路由器接口不支持配置子接口）    描述 思科 华为    创建 VLAN vlan 10  vlan 20 vlan batch
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-11-20 10:20" pubdate>
+              2024-11-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E5%B7%A5/" class="category-chain-item">网工</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%BD%91%E5%B7%A5/">#网工</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/10/16/DHCP%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%EF%BC%8C%E5%8F%A6%E8%B5%B7%E4%B8%80%E4%B8%AADHCP%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%BF%98%E4%B8%8D%E8%A1%8C%EF%BC%8C%E5%8E%9F%E5%9B%A0%E7%AB%9F%E6%98%AF%E4%B8%8B%E7%BA%A7%E8%B7%AF%E7%94%B1%E5%99%A8%E4%BB%A5%E4%B8%8B%E7%8A%AF%E4%B8%8A/" target="_self">
+          DHCP故障排查，另起一个DHCP服务器竟然还不行，原因竟是下级路由器以下犯上
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/16/DHCP%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%EF%BC%8C%E5%8F%A6%E8%B5%B7%E4%B8%80%E4%B8%AADHCP%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%BF%98%E4%B8%8D%E8%A1%8C%EF%BC%8C%E5%8E%9F%E5%9B%A0%E7%AB%9F%E6%98%AF%E4%B8%8B%E7%BA%A7%E8%B7%AF%E7%94%B1%E5%99%A8%E4%BB%A5%E4%B8%8B%E7%8A%AF%E4%B8%8A/" target="_self">
+        <div>
+          前言家里小米路由器局域网网段是192.168.31.0&#x2F;24，但很多设备经常会获取到192.168.1.0&#x2F;24网段的IP，导致上不了网，让人非常恼火。经常之前有段时间我误以为是光猫DHCP服务没有彻底关闭导致的，但我最近仔细琢磨了一下才想起来我的光猫其实设置的网段是192.168.10.0&#x2F;24网段，所以不是光猫的问题，而是DHCP服务故障。 家里连接的设备大概在2
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-10-16 21:40" pubdate>
+              2024-10-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件安装配置</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/linux/" class="category-chain-item">linux</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/DHCP/">#DHCP</a>
+            
+              <a href="/tags/linux/">#linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/10/02/%E6%9C%AC%E5%9C%B0%E5%8F%AF%E9%81%93%E4%BA%91%E9%80%9A%E8%BF%87Alist%E6%8C%82%E8%BD%BD%E5%A4%B8%E5%85%8B%E4%BA%91%E7%9B%98%EF%BC%8C%E5%AE%9E%E7%8E%B0%E7%BD%91%E7%9B%98%E7%BB%9F%E4%B8%80%E5%85%A5%E5%8F%A3%E7%AE%A1%E7%90%86/" target="_self">
           本地可道云通过Alist挂载夸克云盘，实现网盘统一入口管理
         </a>
@@ -763,128 +894,6 @@
               <a href="/tags/python/">#python</a>
             
               <a href="/tags/pyinstaller/">#pyinstaller</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/09/10/pip%E5%AF%BC%E5%87%BA%E4%BE%9D%E8%B5%96%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85/" target="_self">
-          pip导出依赖离线安装
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/10/pip%E5%AF%BC%E5%87%BA%E4%BE%9D%E8%B5%96%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85/" target="_self">
-        <div>
-          前言为了方便离线机器环境部署，可以在有网的机器上导出requirements.txt文件，然后下载依赖文件，这样就可以在没有网络的机器上安装依赖 安装pipreqs1pip install pipreqs  生成requirements.txt文件123在项目根目录下执行```shellpipreqs .   会导出requirements.txt文件，里面包含了项目所需要的依赖，可能某些依赖没有
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-09-10 11:13" pubdate>
-              2024-09-10
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/python/" class="category-chain-item">python</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/python/">#python</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/09/03/IPsec%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/" target="_self">
-          IPsec概念及工作原理
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/09/03/IPsec%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/" target="_self">
-        <div>
-          什么是IPsec？IPsec（Internet Protocol Security）是一种网络层安全协议，用于保护网络通信的完整性、机密性和真实性。它是一套由多个协议和算法组成的框架，可以在IP层上对数据包进行加密和认证，是构建VPN的一种核心技术。  IPsec工作模式传输模式（Transport Mode） 加密范围：只加密数据包的有效载荷部分。 IP头：保留原始的IP头，不加密。 适用场景：
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-09-03 11:40" pubdate>
-              2024-09-03
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%BD%91%E5%B7%A5/" class="category-chain-item">网工</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/IPsec/">#IPsec</a>
             
           </div>
         
