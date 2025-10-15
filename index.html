@@ -255,6 +255,114 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2025/10/13/linux%E4%BD%BF%E7%94%A8rsync%E5%8D%95%E5%90%91%E5%90%8C%E6%AD%A5%E6%96%87%E4%BB%B6%E5%A4%B9/" target="_self">
+          linux使用rsync单向同步文件夹
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/10/13/linux%E4%BD%BF%E7%94%A8rsync%E5%8D%95%E5%90%91%E5%90%8C%E6%AD%A5%E6%96%87%E4%BB%B6%E5%A4%B9/" target="_self">
+        <div>
+          linux使用rsync单向同步文件夹一、核心目标将 源服务器 192.168.1.100 上的指定文件夹，单向、增量地同步到 目标服务器 192.168.1.200 的目标文件夹。 二、前置条件 网络连通性：确保源服务器 192.168.1.100 可以通过 SSH 访问目标服务器 192.168.1.200。  权限：  在 192.168.1.100 上，拥有对源文件夹的读取权限。 在 19
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-10-13 10:56" pubdate>
+              2025-10-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/linux/" class="category-chain-item">linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/10/13/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9A%E6%97%B6%E5%90%8C%E6%AD%A5/" target="_self">
+          MySQL数据库定时同步
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/10/13/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9A%E6%97%B6%E5%90%8C%E6%AD%A5/" target="_self">
+        <div>
+          MySQL 数据库定时同步一、核心目标将 源服务器 192.168.1.100 上的所有 MySQL 数据库，通过 mysqldump 导出，并实时导入到 目标服务器 192.168.1.200 中，实现数据同步。 二、前置条件 网络连通性：确保目标服务器 192.168.1.200 可以通过 SSH 连接到源服务器 192.168.1.100。 权限： 在 192.168.1.100 上，拥有可
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-10-13 10:55" pubdate>
+              2025-10-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/linux/" class="category-chain-item">linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2025/10/11/RIP%20Metric%E8%B0%83%E6%95%B4%E5%AE%9E%E7%8E%B0%E8%B4%9F%E8%BD%BD%E5%88%86%E6%8B%85%E6%9C%BA%E5%88%B6/" target="_self">
           RIP Metric调整实现负载分担机制
         </a>
@@ -681,119 +789,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/08/25/STP%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AE/" target="_self">
-          STP生成树协议
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/08/25/STP%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AE/" target="_self">
-        <div>
-          STP生成树协议一、核心概念与要解决的问题1. 协议定位与核心矛盾 全称：Spanning Tree Protocol 本质：二层链路管理协议，通过逻辑阻塞冗余链路，构建 “无环且有冗余” 的二层网络拓扑。 解决的核心问题： 广播风暴：消除二层环路导致的数据包无限循环转发。 MAC表震荡：避免因环路引发的MAC地址表频繁刷新，导致设备无法正常转发。 冗余备份：在主链路发生故障时，备份链路能够自动切
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-08-25 17:10" pubdate>
-              2025-08-25
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%BD%91%E5%B7%A5/" class="category-chain-item">网工</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/07/02/vscode%E7%A6%BB%E7%BA%BF%E9%85%8D%E7%BD%AEssh%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" target="_self">
-          vscode离线配置ssh远程开发环境
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/07/02/vscode%E7%A6%BB%E7%BA%BF%E9%85%8D%E7%BD%AEssh%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" target="_self">
-        <div>
-          背景实际开发中，部分程序需要跑在内网服务器上，无法在本地调试，因此需要远程开发，但内网环境无法自动下载组件上传到服务器，需要离线配置。尝试过pycharm手动上传服务器版本但仍然无法建立连接，可能是服务器运行库部分软件版本低导致的，加上pycharm本身也比较臃肿占资源大，不喜欢，因此没有深究。好在最近找到了使用vscode离线部署远程开发环境的方法，特此记录。 下载vscode客户端官网：htt
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-07-02 15:08" pubdate>
-              2025-07-02
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件安装配置</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/#board">21</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/#board">22</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
