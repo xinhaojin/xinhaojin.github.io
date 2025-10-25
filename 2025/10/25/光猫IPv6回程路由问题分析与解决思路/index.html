@@ -21,13 +21,13 @@
   
     <meta name="description" content="光猫 IPv6 回程路由问题分析与解决思路一、网络拓扑与背景在典型的家庭宽带环境中，光猫负责拨号上网并启用 DHCP 功能，为下级路由器分配私有 IPv4 地址。拓扑结构如下： 1公网 ↔ 光猫（PPPoE 拨号，LAN: 192.168.1.0&#x2F;24） ↔ 路由器（WAN: 192.168.1.2） ↔ 内网（LAN: 192.168.31.0&#x2F;24）  光猫开启 IPv6，工作在 Native">
 <meta property="og:type" content="article">
-<meta property="og:title" content="自动同步光猫IPv6信息至路由器静态IPv6配置">
+<meta property="og:title" content="光猫IPv6回程路由问题分析与解决思路">
 <meta property="og:url" content="https://xinhaojin.github.io/2025/10/25/%E5%85%89%E7%8C%ABIPv6%E5%9B%9E%E7%A8%8B%E8%B7%AF%E7%94%B1%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%80%9D%E8%B7%AF/index.html">
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
 <meta property="og:description" content="光猫 IPv6 回程路由问题分析与解决思路一、网络拓扑与背景在典型的家庭宽带环境中，光猫负责拨号上网并启用 DHCP 功能，为下级路由器分配私有 IPv4 地址。拓扑结构如下： 1公网 ↔ 光猫（PPPoE 拨号，LAN: 192.168.1.0&#x2F;24） ↔ 路由器（WAN: 192.168.1.2） ↔ 内网（LAN: 192.168.31.0&#x2F;24）  光猫开启 IPv6，工作在 Native">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-10-24T16:15:00.000Z">
-<meta property="article:modified_time" content="2025-10-24T16:18:45.678Z">
+<meta property="article:modified_time" content="2025-10-25T00:59:44.798Z">
 <meta property="article:author" content="xinhaojin">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -35,7 +35,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>自动同步光猫IPv6信息至路由器静态IPv6配置 - xinhaojin&#39;s blog</title>
+  <title>光猫IPv6回程路由问题分析与解决思路 - xinhaojin&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -225,7 +225,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="自动同步光猫IPv6信息至路由器静态IPv6配置"></span>
+            <span id="subtitle" data-typed-text="光猫IPv6回程路由问题分析与解决思路"></span>
           
         </div>
 
@@ -296,12 +296,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">自动同步光猫IPv6信息至路由器静态IPv6配置</h1>
+            <h1 id="seo-header">光猫IPv6回程路由问题分析与解决思路</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年10月25日 凌晨
+                    本文最后更新于 2025年10月25日 早上
                   
                 
               </p>
@@ -384,7 +384,7 @@
 
 <h4 id="部署与管理命令"><a href="#部署与管理命令" class="headerlink" title="部署与管理命令"></a>部署与管理命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 拷贝服务文件后，重载systemd配置</span><br><span class="hljs-built_in">sudo</span> systemctl daemon-reload<br><span class="hljs-comment"># 启用服务（开机自启）</span><br><span class="hljs-built_in">sudo</span> systemctl <span class="hljs-built_in">enable</span> ipv6-sync.service<br><span class="hljs-comment"># 启动服务</span><br><span class="hljs-built_in">sudo</span> systemctl start ipv6-sync.service<br><span class="hljs-comment"># 查看服务状态</span><br><span class="hljs-built_in">sudo</span> systemctl status ipv6-sync.service<br><span class="hljs-comment"># 查看服务日志</span><br><span class="hljs-built_in">sudo</span> journalctl -u ipv6-sync.service -f<br></code></pre></td></tr></table></figure>
 
-<h4 id="运行日志示例"><a href="#运行日志示例" class="headerlink" title="运行日志示例"></a>运行日志示例</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs log">2025-10-02 11:57:02,171 - INFO - IPv6同步服务已启动，将每5分钟执行一次<br>2025-10-02 11:57:02,171 - INFO - === IPv6同步服务开始执行 (Run ID: 1759377422) ===<br>2025-10-02 11:57:02,171 - INFO - 【步骤1/4】信息采集 - 正在从光猫获取IPv6信息...<br>2025-10-02 11:57:02,172 - INFO - 正在访问光猫登录页面以获取动态令牌...<br>2025-10-02 11:57:02,206 - INFO - 正在使用令牌和密文登录光猫...<br>2025-10-02 11:57:02,312 - INFO - ✅ 光猫登录成功！<br>2025-10-02 11:57:02,313 - INFO - 正在获取会话令牌...<br>2025-10-02 11:57:02,401 - INFO - 正在获取并解析光猫IPv6连接信息...<br>2025-10-02 11:57:02,485 - INFO - ✅ 成功从光猫获取到IPv6信息<br>2025-10-02 11:57:02,485 - INFO -    前缀: 2409:8a28:4a14:6dd0::/60<br>2025-10-02 11:57:02,485 - INFO -    网关: fe80::ea4:2ff:feb1:3401<br>2025-10-02 11:57:02,485 - INFO -    DNS1: 2409:8028:2000::1111<br>2025-10-02 11:57:02,485 - INFO -    DNS2: 2409:8028:2000::2222<br>2025-10-02 11:57:02,485 - INFO - 正在注销光猫会话...<br>2025-10-02 11:57:02,509 - INFO - ✅ 光猫会话注销成功 (302重定向)<br>2025-10-02 11:57:02,510 - INFO - ✅ 光猫会话已关闭<br>2025-10-02 11:57:02,510 - INFO - ✅ 信息采集成功<br>2025-10-02 11:57:02,510 - INFO - 【步骤2/4】决策判断 - 检查IPv6信息是否发生变化...<br>2025-10-02 11:57:02,511 - INFO - ✅ 决策结果：信息未变化，无需更新路由器配置<br>2025-10-02 11:57:02,512 - INFO - === IPv6同步服务执行完成 (结果: ✅ 跳过) ===<br>2025-10-02 11:57:45,493 - INFO - IPv6同步服务已启动，将每5分钟执行一次<br>2025-10-02 11:57:45,494 - INFO - === IPv6同步服务开始执行 (Run ID: 1759377465) ===<br>2025-10-02 11:57:45,494 - INFO - 【步骤1/4】信息采集 - 正在从光猫获取IPv6信息...<br>2025-10-02 11:57:45,494 - INFO - 正在访问光猫登录页面以获取动态令牌...<br></code></pre></td></tr></table></figure>
+<h4 id="运行日志示例"><a href="#运行日志示例" class="headerlink" title="运行日志示例"></a>运行日志示例</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs log">2025-10-25 00:05:19,885 - INFO - IPv6同步服务启动，每60秒执行一次检查<br>2025-10-25 00:05:19,885 - INFO - === 开始IPv6状态检查 ===<br>2025-10-25 00:05:19,885 - INFO - 【步骤1】检查历史光猫公网IPv6地址...<br>2025-10-25 00:05:19,885 - INFO - 无历史地址记录，直接获取光猫最新信息<br>2025-10-25 00:05:19,885 - INFO - 【步骤2】登录光猫获取最新公网IPv6地址...<br>2025-10-25 00:05:19,885 - INFO - 启动浏览器，准备访问光猫管理页面...<br>2025-10-25 00:05:20,484 - INFO - 访问光猫登录页: http://192.168.1.1<br>2025-10-25 00:05:20,735 - INFO - 输入光猫登录信息...<br>2025-10-25 00:05:20,808 - INFO - 提交登录请求...<br>2025-10-25 00:05:21,817 - INFO - 导航到IPv6连接信息页面...<br>2025-10-25 00:05:23,039 - INFO - 提取光猫IPv6信息...<br>2025-10-25 00:05:23,075 - INFO - 退出光猫登录...<br>2025-10-25 00:05:23,848 - INFO - ✅ 成功从光猫获取核心IPv6信息<br>2025-10-25 00:05:23,849 - INFO -    光猫公网IPv6（GUA）: 2409:8a28:4af1:f69d:ea9:4aff:feef:744f<br>2025-10-25 00:05:23,991 - INFO - 光猫操作浏览器会话已关闭<br>2025-10-25 00:05:24,001 - INFO - ✅ 获取到最新光猫公网IPv6: 2409:8a28:4af1:f69d:ea9:4aff:feef:744f<br>2025-10-25 00:05:24,001 - INFO - 【步骤3】测试新获取的光猫公网IPv6可达性...<br>2025-10-25 00:05:26,009 - INFO - ✅ 新地址(2409:8a28:4af1:f69d:ea9:4aff:feef:744f)可达，更新历史记录<br>2025-10-25 00:05:26,010 - INFO - === IPv6状态检查完成 ===<br><br>2025-10-25 00:05:26,010 - INFO - 等待60秒后进行下一次检查...<br><br>2025-10-25 00:06:26,010 - INFO - === 开始IPv6状态检查 ===<br>2025-10-25 00:06:26,011 - INFO - 【步骤1】检查历史光猫公网IPv6地址...<br>2025-10-25 00:06:26,011 - INFO - 使用上次保存的地址: 2409:8a28:4af1:f69d:ea9:4aff:feef:744f 进行ping测试<br>2025-10-25 00:06:28,021 - INFO - ✅ 历史地址(2409:8a28:4af1:f69d:ea9:4aff:feef:744f)可达，无需进一步操作<br>2025-10-25 00:06:28,021 - INFO - === IPv6状态检查完成 ===<br><br>2025-10-25 00:06:28,021 - INFO - 等待60秒后进行下一次检查...<br></code></pre></td></tr></table></figure>
 
 <h2 id="六、结论"><a href="#六、结论" class="headerlink" title="六、结论"></a>六、结论</h2><ul>
 <li>IPv6 的自动协商机制（RA&#x2F;PD&#x2F;NDP）是维持回程路由的核心，Native 模式是触发该机制的最佳方式。</li>
@@ -432,7 +432,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>自动同步光猫IPv6信息至路由器静态IPv6配置</div>
+      <div>光猫IPv6回程路由问题分析与解决思路</div>
       <div>https://xinhaojin.github.io/2025/10/25/光猫IPv6回程路由问题分析与解决思路/</div>
     </div>
     <div class="license-meta">
