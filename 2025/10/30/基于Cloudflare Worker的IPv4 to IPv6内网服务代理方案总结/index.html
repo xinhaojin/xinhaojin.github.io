@@ -27,7 +27,7 @@
 <meta property="og:description" content="基于Cloudflare Worker的IPv4 to IPv6内网服务代理方案总结背景与问题用户需要在IPv4网络环境下访问家庭内网中仅支持IPv6的主机（6.xinhaojin.top）上的服务。由于IPv4网络无法直接访问IPv6-only主机，需要通过Cloudflare Worker搭建代理服务，实现：  IPv4 ↔ IPv6 网络协议转换 单一域名支持多端口服务代理 页面内资源请求正">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-10-30T01:40:08.000Z">
-<meta property="article:modified_time" content="2025-10-30T01:38:30.023Z">
+<meta property="article:modified_time" content="2025-10-30T01:40:48.553Z">
 <meta property="article:author" content="xinhaojin">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -315,7 +315,7 @@
 <li>单一域名支持多端口服务代理</li>
 <li>页面内资源请求正确转发</li>
 </ul>
-<p>首先，新建一个workers绑定域名<code>4.xinhaojin.top</code></p>
+<p>首先，新建一个worker绑定域名<code>4.xinhaojin.top</code></p>
 <h2 id="方案一：路径前缀方案"><a href="#方案一：路径前缀方案" class="headerlink" title="方案一：路径前缀方案"></a>方案一：路径前缀方案</h2><h3 id="核心思路"><a href="#核心思路" class="headerlink" title="核心思路"></a>核心思路</h3><p>使用根域名 <code>4.xinhaojin.top</code> 配合路径前缀来区分不同端口服务：</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">https</span>://<span class="hljs-number">4</span>.xinhaojin.top/<span class="hljs-number">911</span>/          → http://<span class="hljs-number">6</span>.xinhaojin.top:<span class="hljs-number">911</span>/<br><span class="hljs-attribute">https</span>://<span class="hljs-number">4</span>.xinhaojin.top/<span class="hljs-number">912</span>/admin     → http://<span class="hljs-number">6</span>.xinhaojin.top:<span class="hljs-number">912</span>/admin<br></code></pre></td></tr></table></figure>
 
