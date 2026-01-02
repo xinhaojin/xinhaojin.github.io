@@ -1,0 +1,928 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  <link rel="icon" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xinhaojin">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="🧭 接入层交换机互联与链路聚合一、为什么要让两台接入交换机互联？假设你的网络结构如下： 12终端们 → S1 → R1 → Internet终端们 → S2 → R1 → Internet   S1、S2 是接入层交换机； 每台交换机各自上行到同一台路由器 R1； 默认路由都指向 R1； S1 和 S2 之间另外用两根网线相连，并做了链路聚合（LACP）。   疑问：“既然终端都直接走 S1→R">
+<meta property="og:type" content="article">
+<meta property="og:title" content="接入层交换机互联与链路聚合">
+<meta property="og:url" content="https://xinhaojin.github.io/2025/10/11/%E6%8E%A5%E5%85%A5%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E4%BA%92%E8%81%94%E4%B8%8E%E9%93%BE%E8%B7%AF%E8%81%9A%E5%90%88/index.html">
+<meta property="og:site_name" content="xinhaojin&#39;s blog">
+<meta property="og:description" content="🧭 接入层交换机互联与链路聚合一、为什么要让两台接入交换机互联？假设你的网络结构如下： 12终端们 → S1 → R1 → Internet终端们 → S2 → R1 → Internet   S1、S2 是接入层交换机； 每台交换机各自上行到同一台路由器 R1； 默认路由都指向 R1； S1 和 S2 之间另外用两根网线相连，并做了链路聚合（LACP）。   疑问：“既然终端都直接走 S1→R">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-10-11T14:42:00.000Z">
+<meta property="article:modified_time" content="2025-10-11T13:43:27.442Z">
+<meta property="article:author" content="xinhaojin">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>接入层交换机互联与链路聚合 - xinhaojin&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xinhaojin.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?596b73bb5b70c262b123e997b6686f49";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xinhaojin&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="接入层交换机互联与链路聚合"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-10-11 22:42" pubdate>
+          2025年10月11日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          7 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">接入层交换机互联与链路聚合</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2025年10月11日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="🧭-接入层交换机互联与链路聚合"><a href="#🧭-接入层交换机互联与链路聚合" class="headerlink" title="🧭 接入层交换机互联与链路聚合"></a>🧭 接入层交换机互联与链路聚合</h1><h2 id="一、为什么要让两台接入交换机互联？"><a href="#一、为什么要让两台接入交换机互联？" class="headerlink" title="一、为什么要让两台接入交换机互联？"></a>一、为什么要让两台接入交换机互联？</h2><p>假设你的网络结构如下：</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs armasm">终端们 → <span class="hljs-built_in">S1</span> → <span class="hljs-built_in">R1</span> → Internet<br>终端们 → <span class="hljs-built_in">S2</span> → <span class="hljs-built_in">R1</span> → Internet<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>S1、S2 是接入层交换机；</li>
+<li>每台交换机各自上行到同一台路由器 R1；</li>
+<li>默认路由都指向 R1；</li>
+<li>S1 和 S2 之间另外用两根网线相连，并做了<strong>链路聚合（LACP）</strong>。</li>
+</ul>
+<blockquote>
+<p>疑问：<br>“既然终端都直接走 S1→R1 或 S2→R1，<br>那 S1↔S2 的链路到底在传什么？<br>做聚合真的有意义吗？”</p>
+</blockquote>
+<p>这是非常典型的入门困惑。下面我们分层分析。</p>
+<hr>
+<h2 id="二、理解链路聚合的基本原理"><a href="#二、理解链路聚合的基本原理" class="headerlink" title="二、理解链路聚合的基本原理"></a>二、理解链路聚合的基本原理</h2><p><strong>链路聚合（Link Aggregation &#x2F; EtherChannel &#x2F; LACP）</strong><br>是把多条物理链路捆绑成一个<strong>逻辑通道</strong>的技术。</p>
+<p>它带来三大好处：</p>
+<table>
+<thead>
+<tr>
+<th>作用</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>✅ <strong>带宽叠加</strong></td>
+<td>多条线同时转发不同流量（整体带宽 &#x3D; 多条线总和）</td>
+</tr>
+<tr>
+<td>✅ <strong>链路冗余</strong></td>
+<td>一条断了不掉线，流量自动切换</td>
+</tr>
+<tr>
+<td>✅ <strong>STP 优化</strong></td>
+<td>被视为一个逻辑口，避免生成树阻塞单链路</td>
+</tr>
+</tbody></table>
+<p>但是——<br>带宽叠加是否真正发生，要看这条逻辑链路<strong>承载了什么流量</strong>。<br>这就要看<strong>S1↔S2之间到底有什么数据在跑</strong>。</p>
+<hr>
+<h2 id="三、你的场景：S1-与-S2-不属于同一逻辑设备"><a href="#三、你的场景：S1-与-S2-不属于同一逻辑设备" class="headerlink" title="三、你的场景：S1 与 S2 不属于同一逻辑设备"></a>三、你的场景：S1 与 S2 不属于同一逻辑设备</h2><p>你这里的情况是：</p>
+<ul>
+<li>S1 与 S2 只是普通的两台接入交换机；</li>
+<li>各自上行到 R1；</li>
+<li>不是堆叠（IRF &#x2F; VSU）；</li>
+<li>也没有跨设备聚合（MLAG &#x2F; vPC）；</li>
+<li>仅仅是「S1↔S2 之间做了链路聚合」。</li>
+</ul>
+<p>因此，这个聚合链路的作用<strong>并不是上网流量负载均衡</strong>。<br>真正的功能如下：</p>
+<hr>
+<h2 id="四、S1↔S2-聚合链路在这种架构下的实际作用"><a href="#四、S1↔S2-聚合链路在这种架构下的实际作用" class="headerlink" title="四、S1↔S2 聚合链路在这种架构下的实际作用"></a>四、S1↔S2 聚合链路在这种架构下的实际作用</h2><h3 id="1️⃣-冗余路径（容灾）"><a href="#1️⃣-冗余路径（容灾）" class="headerlink" title="1️⃣ 冗余路径（容灾）"></a>1️⃣ <strong>冗余路径（容灾）</strong></h3><p>如果 S1 上行到 R1 的链路断了：</p>
+<ul>
+<li>S1 可以通过聚合链路把流量转发到 S2；</li>
+<li>再由 S2 上行到 R1；</li>
+<li>业务不中断。</li>
+</ul>
+<p>🔹 这就是“环网保护”或“简易备份路径”场景。</p>
+<hr>
+<h3 id="2️⃣-同-VLAN-终端之间的通信"><a href="#2️⃣-同-VLAN-终端之间的通信" class="headerlink" title="2️⃣ 同 VLAN 终端之间的通信"></a>2️⃣ <strong>同 VLAN 终端之间的通信</strong></h3><p>如果有些 VLAN 同时存在于 S1 和 S2 上：</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs armasm"><span class="hljs-symbol">VLAN</span> <span class="hljs-number">10</span>: 财务网<br>  A 接在 <span class="hljs-built_in">S1</span><br>  <span class="hljs-keyword">B</span> 接在 <span class="hljs-built_in">S2</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>A 要访问 B（打印机、NAS、共享文件等），<br>流量就必须经过 S1↔S2；</li>
+<li>如果只是单条线，很可能成为瓶颈；</li>
+<li>用链路聚合后，能实现带宽叠加与流量均衡。</li>
+</ul>
+<p>🔹 这是接入层互联最常见的<strong>东西向（East-West）流量路径</strong>。</p>
+<hr>
+<h3 id="3️⃣-STP-稳定与防环路优化"><a href="#3️⃣-STP-稳定与防环路优化" class="headerlink" title="3️⃣ STP 稳定与防环路优化"></a>3️⃣ <strong>STP 稳定与防环路优化</strong></h3><ul>
+<li>如果两台交换机用两条线直连但不聚合，STP 会阻塞一条；</li>
+<li>聚合后，这两条线被视为一个逻辑端口；</li>
+<li>STP 不再阻塞任何一条；</li>
+<li>网络稳定、带宽不浪费。</li>
+</ul>
+<p>🔹 所以即便平时没大量数据流量，聚合也是一种<strong>防环路、加稳态的好习惯</strong>。</p>
+<hr>
+<h3 id="4️⃣-控制-管理流量、ARP、广播同步"><a href="#4️⃣-控制-管理流量、ARP、广播同步" class="headerlink" title="4️⃣ 控制&#x2F;管理流量、ARP、广播同步"></a>4️⃣ <strong>控制&#x2F;管理流量、ARP、广播同步</strong></h3><ul>
+<li>同 VLAN 的广播、ARP 请求等也会在 S1↔S2 之间传播；</li>
+<li>聚合链路可保证这些控制流量不拥塞、不丢包；</li>
+<li>维持 VLAN 表项一致。</li>
+</ul>
+<hr>
+<h2 id="五、什么时候聚合能真正“叠加上行带宽”？"><a href="#五、什么时候聚合能真正“叠加上行带宽”？" class="headerlink" title="五、什么时候聚合能真正“叠加上行带宽”？"></a>五、什么时候聚合能真正“叠加上行带宽”？</h2><p>要想让多条上行线<strong>同时承担业务流量</strong>，<br>必须让上层设备（R1）把两条线都当作<strong>同一条逻辑链路</strong>。<br>这需要：</p>
+<ul>
+<li>S1 和 S2 逻辑上“合体”；</li>
+<li>或通过跨设备聚合技术实现。</li>
+</ul>
+<p>即以下架构：</p>
+<table>
+<thead>
+<tr>
+<th>架构类型</th>
+<th>技术实现</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>✅ 单交换机聚合</td>
+<td>LACP（单机）</td>
+<td>一台交换机对 R1 聚合</td>
+</tr>
+<tr>
+<td>✅ 跨设备聚合</td>
+<td>MLAG &#x2F; vPC &#x2F; IRF &#x2F; VSU</td>
+<td>两台交换机协同对 R1 聚合</td>
+</tr>
+<tr>
+<td>❌ 普通双上行</td>
+<td>无</td>
+<td>各走各路，带宽不能叠加，只能做路由冗余</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="六、所以：在你当前的网络结构中"><a href="#六、所以：在你当前的网络结构中" class="headerlink" title="六、所以：在你当前的网络结构中"></a>六、所以：在你当前的网络结构中</h2><p>你的 S1 与 S2 是<strong>完全独立的接入设备</strong>，<br>它们之间的聚合链路仅用于：</p>
+<ol>
+<li><strong>同 VLAN 的终端横向通信；</strong></li>
+<li><strong>冗余备份路径（单上行故障时可绕行）；</strong></li>
+<li><strong>STP 优化、防环路；</strong></li>
+<li><strong>控制平面广播同步。</strong></li>
+</ol>
+<p>平时：</p>
+<ul>
+<li>上行流量依然各走各的（S1→R1、S2→R1）；</li>
+<li>聚合链路只承担局部通信与冗余作用；</li>
+<li>不会主动分担“上网”带宽。</li>
+</ul>
+<hr>
+<h2 id="七、对比一下常见三种结构"><a href="#七、对比一下常见三种结构" class="headerlink" title="七、对比一下常见三种结构"></a>七、对比一下常见三种结构</h2><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>描述</th>
+<th>聚合意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>单上行 + 普通互联（你的场景）</strong></td>
+<td>S1、S2 各自上行，之间聚合</td>
+<td>冗余 + 同VLAN通信</td>
+</tr>
+<tr>
+<td><strong>双上行 + 跨设备聚合 (MLAG&#x2F;vPC)</strong></td>
+<td>S1、S2协同上行到R1</td>
+<td>真正的上行带宽叠加</td>
+</tr>
+<tr>
+<td><strong>堆叠 (IRF&#x2F;VSU)</strong></td>
+<td>S1、S2逻辑上合为一台</td>
+<td>完全共享配置、上行聚合带宽翻倍</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="八、思维总结：物理-vs-逻辑视角"><a href="#八、思维总结：物理-vs-逻辑视角" class="headerlink" title="八、思维总结：物理 vs 逻辑视角"></a>八、思维总结：物理 vs 逻辑视角</h2><table>
+<thead>
+<tr>
+<th>思维层面</th>
+<th>物理连接角度</th>
+<th>逻辑网络角度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>看见的是</td>
+<td>“两台交换机 + 两根线”</td>
+<td>“一个广播域 + 多个转发路径”</td>
+</tr>
+<tr>
+<td>聚合理解</td>
+<td>把两根线捆成一根</td>
+<td>让网络看起来更简单、更可靠</td>
+</tr>
+<tr>
+<td>关注点</td>
+<td>线是否插对</td>
+<td>VLAN、冗余、STP、转发表一致性</td>
+</tr>
+<tr>
+<td>结果</td>
+<td>看似多余，其实关键</td>
+<td>稳定、高可用、故障自愈</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="九、一句话结论"><a href="#九、一句话结论" class="headerlink" title="九、一句话结论"></a>九、一句话结论</h2><blockquote>
+<p>在你当前的拓扑中（S1、S2 独立，各自上行到 R1）：</p>
+<ul>
+<li>S1↔S2 的链路聚合<strong>不会直接提高上网带宽</strong>；</li>
+<li>它的意义在于<strong>冗余、稳定、同 VLAN 通信与防环路</strong>；</li>
+<li>真正实现“带宽叠加”的前提是：<strong>上层和下层都在逻辑上协同聚合</strong>。</li>
+</ul>
+</blockquote>
+<hr>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E5%B7%A5/" class="category-chain-item">网工</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>接入层交换机互联与链路聚合</div>
+      <div>https://xinhaojin.github.io/2025/10/11/接入层交换机互联与链路聚合/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>xinhaojin</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年10月11日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/10/11/RIP%20Metric%E8%B0%83%E6%95%B4%E5%AE%9E%E7%8E%B0%E8%B4%9F%E8%BD%BD%E5%88%86%E6%8B%85%E6%9C%BA%E5%88%B6/" title="RIP Metric调整实现负载分担机制">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">RIP Metric调整实现负载分担机制</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/09/22/VPDN+IPsec%E5%AE%8C%E6%95%B4%E8%BF%9E%E6%8E%A5%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0/" title="VPDN+IPsec完整连接过程笔记">
+                        <span class="hidden-mobile">VPDN+IPsec完整连接过程笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/gitalk/1.8.0/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"Ov23lifvhsymyganMHro","clientSecret":"cdd38ac0c65a95027749446001ebdff7ca7d4ec2","repo":"xinhaojin.github.io","owner":"xinhaojin","admin":"xinhaojin","language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
+          {
+            id: '254448f5f6b61157311e12d739d4ee99'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+        次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+        次
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,1042 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  <link rel="icon" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xinhaojin">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="VPDN+IPsec完整连接过程笔记一、核心概念与对象定义（含英文缩写）在理解连接流程前，需明确参与交互的核心设备、协议及组件，避免混淆：    英文缩写&#x2F;全称 中文名称 核心作用    VPDN (Virtual Private Dial-up Network) 虚拟专用拨号网络 基于公共网络（互联网&#x2F;运营商网络），通过拨号建立远程接入企业内网的逻辑通道   IPsec (I">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VPDN+IPsec完整连接过程笔记">
+<meta property="og:url" content="https://xinhaojin.github.io/2025/09/22/VPDN+IPsec%E5%AE%8C%E6%95%B4%E8%BF%9E%E6%8E%A5%E8%BF%87%E7%A8%8B%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="xinhaojin&#39;s blog">
+<meta property="og:description" content="VPDN+IPsec完整连接过程笔记一、核心概念与对象定义（含英文缩写）在理解连接流程前，需明确参与交互的核心设备、协议及组件，避免混淆：    英文缩写&#x2F;全称 中文名称 核心作用    VPDN (Virtual Private Dial-up Network) 虚拟专用拨号网络 基于公共网络（互联网&#x2F;运营商网络），通过拨号建立远程接入企业内网的逻辑通道   IPsec (I">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-09-22T08:00:25.000Z">
+<meta property="article:modified_time" content="2025-09-22T08:01:55.286Z">
+<meta property="article:author" content="xinhaojin">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>VPDN+IPsec完整连接过程笔记 - xinhaojin&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xinhaojin.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?596b73bb5b70c262b123e997b6686f49";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xinhaojin&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="VPDN+IPsec完整连接过程笔记"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-09-22 16:00" pubdate>
+          2025年9月22日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          17 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">VPDN+IPsec完整连接过程笔记</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2025年9月22日 下午
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="VPDN-IPsec完整连接过程笔记"><a href="#VPDN-IPsec完整连接过程笔记" class="headerlink" title="VPDN+IPsec完整连接过程笔记"></a>VPDN+IPsec完整连接过程笔记</h1><h2 id="一、核心概念与对象定义（含英文缩写）"><a href="#一、核心概念与对象定义（含英文缩写）" class="headerlink" title="一、核心概念与对象定义（含英文缩写）"></a>一、核心概念与对象定义（含英文缩写）</h2><p>在理解连接流程前，需明确参与交互的核心设备、协议及组件，避免混淆：</p>
+<table>
+<thead>
+<tr>
+<th>英文缩写&#x2F;全称</th>
+<th>中文名称</th>
+<th>核心作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>VPDN</strong> (Virtual Private Dial-up Network)</td>
+<td>虚拟专用拨号网络</td>
+<td>基于公共网络（互联网&#x2F;运营商网络），通过拨号建立远程接入企业内网的逻辑通道</td>
+</tr>
+<tr>
+<td><strong>IPsec</strong> (Internet Protocol Security)</td>
+<td>互联网协议安全</td>
+<td>一套协议组合，通过加密、认证保障IP层数据传输的安全性（机密性、完整性、抗重放）</td>
+</tr>
+<tr>
+<td><strong>Client</strong></td>
+<td>用户终端</td>
+<td>发起连接的设备（如办公电脑、工业监控终端、物联网设备）</td>
+</tr>
+<tr>
+<td><strong>LAC</strong> (L2TP Access Concentrator)</td>
+<td>L2TP访问集中器</td>
+<td>运营商部署的接入设备，接收用户拨号请求，转发至企业侧LNS</td>
+</tr>
+<tr>
+<td><strong>LNS</strong> (L2TP Network Server)</td>
+<td>L2TP网络服务器</td>
+<td>企业侧部署的服务器，是VPDN隧道终点，负责终结隧道、对接企业内网</td>
+</tr>
+<tr>
+<td><strong>RADIUS</strong> (Remote Authentication Dial-In User Service)</td>
+<td>远程认证拨号用户服务</td>
+<td>企业&#x2F;运营商部署的认证服务器，校验用户身份合法性及权限</td>
+</tr>
+<tr>
+<td><strong>PPP</strong> (Point-to-Point Protocol)</td>
+<td>点对点协议</td>
+<td>建立用户终端与LAC、LNS之间的基础数据链路，支持认证、IP分配</td>
+</tr>
+<tr>
+<td><strong>L2TP</strong> (Layer 2 Tunnel Protocol)</td>
+<td>第二层隧道协议</td>
+<td>在LAC与LNS之间建立隧道，封装PPP帧（用户数据），实现跨公网传输</td>
+</tr>
+<tr>
+<td><strong>IKE</strong> (Internet Key Exchange)</td>
+<td>互联网密钥交换协议</td>
+<td>IPsec的“密钥协商工具”，负责生成加密密钥、建立安全关联（SA），不直接加密数据</td>
+</tr>
+<tr>
+<td><strong>IPsec SA</strong> (Security Association)</td>
+<td>IPsec安全关联</td>
+<td>IPsec的“通信契约”，记录双方协商的加密算法（如AES）、认证算法（如SHA）、密钥等，单向生效（需 inbound&#x2F;outbound 成对）</td>
+</tr>
+<tr>
+<td><strong>ESP</strong> (Encapsulating Security Payload)</td>
+<td>封装安全载荷</td>
+<td>IPsec核心加密协议，同时实现数据加密和完整性认证（VPDN场景首选）</td>
+</tr>
+<tr>
+<td><strong>AH</strong> (Authentication Header)</td>
+<td>认证头</td>
+<td>IPsec协议之一，仅做完整性认证和身份校验，不加密数据（VPDN场景极少用）</td>
+</tr>
+<tr>
+<td><strong>SPI</strong> (Security Parameter Index)</td>
+<td>安全参数索引</td>
+<td>标识IPsec SA的唯一编号，用于接收方快速匹配对应的加密规则</td>
+</tr>
+<tr>
+<td><strong>ECDH</strong> (Elliptic Curve Diffie-Hellman)</td>
+<td>椭圆曲线迪菲-赫尔曼</td>
+<td>IKE协商中用于生成共享密钥的算法，无需传输密钥本身，仅交换公钥即可计算一致密钥</td>
+</tr>
+</tbody></table>
+<h2 id="二、VPDN-IPsec-完整连接流程（5大阶段）"><a href="#二、VPDN-IPsec-完整连接流程（5大阶段）" class="headerlink" title="二、VPDN+IPsec 完整连接流程（5大阶段）"></a>二、VPDN+IPsec 完整连接流程（5大阶段）</h2><p>VPDN+IPsec的连接是“拨号建链路→隧道传数据→加密保安全”的复合过程，需经历5个阶段，各阶段环环相扣：</p>
+<h3 id="阶段1：用户终端与LAC建立PPP基础链路"><a href="#阶段1：用户终端与LAC建立PPP基础链路" class="headerlink" title="阶段1：用户终端与LAC建立PPP基础链路"></a>阶段1：用户终端与LAC建立PPP基础链路</h3><p>核心目标：通过拨号建立用户终端与运营商LAC之间的点对点数据链路，为后续隧道传输打基础。</p>
+<pre><code class=" mermaid">sequenceDiagram
+    participant C as 用户终端(Client)
+    participant L as LAC(运营商)
+
+    C-&gt;&gt;L: 拨号请求(账号/密码)
+    L-&gt;&gt;C: LCP 参数协商 (MTU/压缩等)
+    C-&gt;&gt;L: 回应确认
+    L-&gt;&gt;C: CHAP 挑战(随机数)
+    C-&gt;&gt;L: CHAP 响应(加密后的随机数)
+    L-&gt;&gt;C: 认证结果(成功)
+    Note over C,L: PPP 链路建立成功
+
+</code></pre>
+
+<ol>
+<li><p><strong>参数配置与拨号发起</strong><br>用户在终端（如电脑）配置VPDN拨号参数：运营商提供的VPDN账号&#x2F;密码、LAC公网地址，通过本地网络（宽带、4G&#x2F;5G）向LAC发起拨号请求。</p>
+</li>
+<li><p><strong>PPP链路协商（LCP阶段）</strong>  </p>
+<ul>
+<li>终端与LAC通过 <strong>LCP（链路控制协议）</strong> 协商链路参数：最大传输单元（MTU）、数据压缩方式、链路超时时间等。  </li>
+<li>协商通过后，建立基础数据链路（物理层&#x2F;数据链路层连通）。</li>
+</ul>
+</li>
+<li><p><strong>PPP临时认证（CHAP&#x2F;PAP阶段）</strong>  </p>
+<ul>
+<li>LAC通过 <strong>CHAP（挑战-响应认证协议，优先）</strong> 或 <strong>PAP（密码认证协议，明文传输，安全性低）</strong> 校验用户身份：  <ul>
+<li>CHAP流程：LAC发送随机“挑战码”→终端用账号密码加密挑战码→LAC解密后比对，确认身份合法。</li>
+</ul>
+</li>
+<li>认证通过后，终端与LAC的PPP链路正式激活。</li>
+</ul>
+</li>
+</ol>
+<h3 id="阶段2：LAC与LNS建立L2TP隧道"><a href="#阶段2：LAC与LNS建立L2TP隧道" class="headerlink" title="阶段2：LAC与LNS建立L2TP隧道"></a>阶段2：LAC与LNS建立L2TP隧道</h3><p>核心目标：在LAC与企业侧LNS之间建立L2TP隧道，封装用户PPP帧，实现跨公网传输（此时数据暂未加密，需后续IPsec保护）。</p>
+<pre><code class=" mermaid">sequenceDiagram
+    participant LAC as LAC
+    participant LNS as LNS
+
+    LAC-&gt;&gt;LNS: 隧道建立请求 (用户信息、LAC 标识)
+    LNS-&gt;&gt;LAC: 分配 Tunnel ID / Session ID
+    LAC-&gt;&gt;LNS: 确认隧道参数
+    Note over LAC,LNS: L2TP 隧道建立成功
+
+</code></pre>
+
+<ol>
+<li><p><strong>L2TP隧道协商发起</strong><br>LAC验证用户拨号请求后，向企业侧LNS发送 <strong>L2TP隧道建立请求</strong>，携带用户信息（账号、拨号类型）、LAC自身标识（如公网IP）。</p>
+</li>
+<li><p><strong>L2TP隧道参数确认</strong>  </p>
+<ul>
+<li>LAC与LNS通过L2TP协议协商核心参数：  <ul>
+<li>隧道ID（标识唯一隧道，如LAC→LNS为Tunnel ID 100，LNS→LAC为Tunnel ID 200）；  </li>
+<li>会话ID（区分同一隧道内不同用户的连接，如用户A为Session ID 5，用户B为Session ID 6）；  </li>
+<li>隧道验证（可选，通过预共享密钥确认LAC与LNS身份，防止非法设备接入）。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>L2TP隧道激活</strong><br>协商通过后，LAC与LNS之间形成逻辑隧道，用户终端的PPP帧可通过该隧道传输（此时数据以明文形式封装在L2TP报文中，需进入IPsec阶段加密）。</p>
+</li>
+</ol>
+<h3 id="阶段3：LAC与LNS建立IPsec加密隧道（核心安全环节）"><a href="#阶段3：LAC与LNS建立IPsec加密隧道（核心安全环节）" class="headerlink" title="阶段3：LAC与LNS建立IPsec加密隧道（核心安全环节）"></a>阶段3：LAC与LNS建立IPsec加密隧道（核心安全环节）</h3><p>核心目标：通过IKE协商生成加密密钥和安全关联（SA），建立IPsec隧道，加密L2TP隧道的所有流量，防止公网传输中被窃听、篡改。</p>
+<pre><code class=" mermaid">sequenceDiagram
+    participant LAC as LAC
+    participant LNS as LNS
+
+    Note over LAC,LNS: 阶段1: 建立 IKE SA
+    LAC-&gt;&gt;LNS: 提供算法列表 + Nonce + ECDH 公钥
+    LNS-&gt;&gt;LAC: 选择算法 + Nonce + ECDH 公钥
+    Note over LAC,LNS: 双方计算共享密钥
+    LAC-&gt;&gt;LNS: 身份认证(加密)
+    LNS-&gt;&gt;LAC: 身份认证响应
+    Note over LAC,LNS: IKE SA 建立成功
+
+    Note over LAC,LNS: 阶段2: 建立 IPsec SA
+    LAC-&gt;&gt;LNS: 提议 ESP + AES + SHA
+    LNS-&gt;&gt;LAC: 确认参数
+    Note over LAC,LNS: 双方生成 IPsec 加密/认证密钥&lt;br/&gt;IPsec SA 生效
+
+</code></pre>
+
+<h4 id="3-1-IKE协商：生成密钥与安全关联（2个子阶段）"><a href="#3-1-IKE协商：生成密钥与安全关联（2个子阶段）" class="headerlink" title="3.1 IKE协商：生成密钥与安全关联（2个子阶段）"></a>3.1 IKE协商：生成密钥与安全关联（2个子阶段）</h4><p>IKE是IPsec的“前置工具”，分两步完成密钥和规则协商，确保后续加密参数一致。</p>
+<h5 id="子阶段1：建立IKE-SA（保护后续协商安全）"><a href="#子阶段1：建立IKE-SA（保护后续协商安全）" class="headerlink" title="子阶段1：建立IKE SA（保护后续协商安全）"></a>子阶段1：建立IKE SA（保护后续协商安全）</h5><ul>
+<li><strong>目的</strong>：建立临时加密通道（IKE SA），避免后续IPsec参数协商被窃听。  </li>
+<li><strong>流程</strong>：  <ol>
+<li><strong>IKE_SA_INIT Request（LAC→LNS）</strong>：<br>LAC发送支持的算法列表（加密：AES-256-GCM；哈希：SHA-256；密钥交换：ECDH）、随机数（Nonce）、LAC的ECDH公钥。  </li>
+<li><strong>IKE_SA_INIT Response（LNS→LAC）</strong>：<br>LNS从LAC的算法列表中选择一套（如确定AES-256+SHA-256+ECDH），返回自身随机数、ECDH公钥，可选附加LNS证书（身份标识）。  </li>
+<li><strong>共享密钥生成</strong>：<br>LAC和LNS分别用自身私钥、对方公钥、双方随机数，通过ECDH算法计算出 <strong>共享密钥（Shared Secret）</strong>，再衍生出IKE SA的加密密钥、认证密钥（双方结果完全一致，无需传输密钥）。  </li>
+<li><strong>IKE_AUTH Request&#x2F;Response（身份认证）</strong>：  <ul>
+<li>LAC用IKE SA密钥加密自身身份（如LAC公网IP）和认证数据（私钥签名的哈希值），发送给LNS；  </li>
+<li>LNS验证LAC身份后，同样加密自身身份返回；  </li>
+<li>验证通过，<strong>IKE SA建立成功</strong>（有效期几小时，用于保护后续子SA协商）。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h5 id="子阶段2：建立IPsec-SA（确定数据加密规则）"><a href="#子阶段2：建立IPsec-SA（确定数据加密规则）" class="headerlink" title="子阶段2：建立IPsec SA（确定数据加密规则）"></a>子阶段2：建立IPsec SA（确定数据加密规则）</h5><ul>
+<li><strong>目的</strong>：在IKE SA保护下，协商IPsec的具体加密规则，生成IPsec SA。  </li>
+<li><strong>流程</strong>：  <ol>
+<li><strong>CREATE_CHILD_SA Request（LAC→LNS）</strong>：<br>LAC提出IPsec参数需求：隧道模式（必选，保护原始IP地址）、ESP协议（加密+认证）、加密算法（AES-256-GCM）、认证算法（SHA-256）。  </li>
+<li><strong>CREATE_CHILD_SA Response（LNS→LAC）</strong>：<br>LNS确认参数，双方基于IKE SA密钥，通过密钥派生算法生成 <strong>IPsec SA的加密密钥、认证密钥</strong>。  </li>
+<li><strong>IPsec SA生效</strong>：<br>双方记录IPsec SA信息（SPI、算法、密钥、有效期：几分钟到1小时），此时IPsec隧道的“加密规则”正式确定。</li>
+</ol>
+</li>
+</ul>
+<h4 id="3-2-IPsec隧道激活：加密L2TP流量"><a href="#3-2-IPsec隧道激活：加密L2TP流量" class="headerlink" title="3.2 IPsec隧道激活：加密L2TP流量"></a>3.2 IPsec隧道激活：加密L2TP流量</h4><p>IPsec SA建立后，LAC与LNS之间的所有L2TP隧道流量（用户PPP数据）会被ESP协议加密，封装流程如下：  </p>
+<ol>
+<li><strong>原始数据</strong>：L2TP封装后的报文（含用户PPP帧，源IP：LAC内网IP，目的IP：LNS内网IP）；  </li>
+<li><strong>ESP加密</strong>：用IPsec SA加密密钥（AES-256）加密整个原始数据，同时用认证密钥（SHA-256）计算数据哈希值（存于ESP认证字段，防篡改）；  </li>
+<li><strong>添加ESP头&#x2F;尾</strong>：  <ul>
+<li>头部：SPI（标识对应的IPsec SA）、序列号（防重放攻击，每次发送递增）；  </li>
+<li>尾部：填充信息（确保数据长度符合加密块要求）、Next Header（标识原始协议为L2TP）；</li>
+</ul>
+</li>
+<li><strong>添加公网IP头</strong>：源IP（LAC公网IP）、目的IP（LNS公网IP）、协议字段&#x3D;50（标识ESP协议）；  </li>
+<li><strong>公网传输</strong>：加密后的报文通过互联网发送至LNS，即使被截取也无法解密。</li>
+</ol>
+<h3 id="阶段4：用户身份二次认证（企业级权限校验）"><a href="#阶段4：用户身份二次认证（企业级权限校验）" class="headerlink" title="阶段4：用户身份二次认证（企业级权限校验）"></a>阶段4：用户身份二次认证（企业级权限校验）</h3><p>核心目标：通过企业内部RADIUS服务器，做更严格的身份和权限校验（避免运营商侧认证通过但非企业合法用户的情况）。</p>
+<ol>
+<li><p><strong>LNS发起认证请求</strong><br>LNS从L2TP报文中提取用户账号&#x2F;密码，发送至企业内部RADIUS服务器，请求校验。</p>
+</li>
+<li><p><strong>RADIUS认证与权限返回</strong>  </p>
+<ul>
+<li>RADIUS服务器查询用户白名单、权限配置（如是否允许访问财务系统、可访问的内网网段）；  </li>
+<li>认证通过：返回用户权限信息（如可访问的内网网段192.168.1.0&#x2F;24、VLAN ID&#x3D;10）；  </li>
+<li>认证失败：拒绝用户接入，终止连接。</li>
+</ul>
+</li>
+</ol>
+<h3 id="阶段5：分配内网IP，访问企业资源"><a href="#阶段5：分配内网IP，访问企业资源" class="headerlink" title="阶段5：分配内网IP，访问企业资源"></a>阶段5：分配内网IP，访问企业资源</h3><p>核心目标：用户终端获得企业内网IP，通过加密隧道访问内网资源，完成通信闭环。</p>
+<ol>
+<li><p><strong>分配企业内网IP（IPCP阶段）</strong><br>LNS通过 <strong>PPP的IPCP（IP控制协议）</strong> 给用户终端分配企业内网IP地址（如192.168.1.100，与企业办公区设备同网段），同时返回DNS服务器地址、子网掩码。</p>
+</li>
+<li><p><strong>用户访问内网资源</strong>  </p>
+<ul>
+<li>终端发送请求（如访问OA系统）：数据先封装为PPP帧→L2TP隧道封装→IPsec加密→公网传输至LNS；  </li>
+<li>LNS处理：解密IPsec流量→解封装L2TP&#x2F;PPP帧→根据用户权限转发至内网服务器（如OA服务器192.168.1.5）；  </li>
+<li>响应返回：服务器响应数据按原路（内网→LNS→IPsec加密→L2TP隧道→用户终端）返回，用户终端接收后解析显示。</li>
+</ul>
+</li>
+<li><p><strong>密钥更新（无缝保障安全）</strong><br>IPsec SA到期前（如1小时），LAC与LNS通过IKE的 <strong>CREATE_CHILD_SA</strong> 消息协商新的IPsec SA（复用已有的IKE SA，无需重新认证），实现密钥“无缝更新”，避免长期使用同一密钥导致安全风险。</p>
+</li>
+</ol>
+<h2 id="三、关键技术总结"><a href="#三、关键技术总结" class="headerlink" title="三、关键技术总结"></a>三、关键技术总结</h2><h3 id="3-1-数据封装顺序（从用户到公网）"><a href="#3-1-数据封装顺序（从用户到公网）" class="headerlink" title="3.1 数据封装顺序（从用户到公网）"></a>3.1 数据封装顺序（从用户到公网）</h3><p><code>用户应用数据（如HTTP请求）→ PPP帧封装（含用户标识）→ L2TP隧道封装（跨公网传输）→ IPsec ESP加密（安全保障）→ 公网IP头封装（路由转发）</code></p>
+<pre><code class=" mermaid">flowchart TB
+    App[&quot;用户应用数据&lt;br/&gt;(HTTP 请求)&quot;]
+    PPP[&quot;PPP 帧封装&lt;br/&gt;(用户认证信息)&quot;]
+    L2TP[&quot;L2TP 隧道封装&lt;br/&gt;(Tunnel ID / Session ID)&quot;]
+    ESP[&quot;IPsec ESP 加密&lt;br/&gt;(AES+SHA, SPI, 序列号)&quot;]
+    IP[&quot;公网IP头&lt;br/&gt;(LAC公网 → LNS公网)&quot;]
+
+    App --&gt; PPP --&gt; L2TP --&gt; ESP --&gt; IP
+
+</code></pre>
+
+<h3 id="3-2-IPsec的核心安全保障"><a href="#3-2-IPsec的核心安全保障" class="headerlink" title="3.2 IPsec的核心安全保障"></a>3.2 IPsec的核心安全保障</h3><table>
+<thead>
+<tr>
+<th>安全维度</th>
+<th>实现机制</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>机密性</td>
+<td>AES-256等对称加密算法，加密IP层数据</td>
+</tr>
+<tr>
+<td>完整性</td>
+<td>SHA-256等哈希算法，生成数据摘要，防止篡改</td>
+</tr>
+<tr>
+<td>抗重放</td>
+<td>ESP头部序列号，拒绝重复接收的数据包</td>
+</tr>
+<tr>
+<td>身份认证</td>
+<td>IKE协商中的预共享密钥&#x2F;证书，确保LAC与LNS为授权设备</td>
+</tr>
+</tbody></table>
+<h3 id="3-3-适用场景"><a href="#3-3-适用场景" class="headerlink" title="3.3 适用场景"></a>3.3 适用场景</h3><ul>
+<li>企业员工远程办公（在家&#x2F;出差访问内网OA、ERP）；  </li>
+<li>分支机构互联（如上海分公司通过VPDN+IPsec访问杭州总部内网）；  </li>
+<li>物联网设备远程管理（如各地充电桩、ATM机接入企业管理平台）；  </li>
+<li>高安全需求行业（金融、政务、医疗），需符合数据传输合规要求。</li>
+</ul>
+<h2 id="四、整体流程图"><a href="#四、整体流程图" class="headerlink" title="四、整体流程图"></a>四、整体流程图</h2><pre><code class=" mermaid">sequenceDiagram
+    participant Client as 用户终端(Client)
+    participant LAC as LAC(运营商接入设备)
+    participant LNS as LNS(企业L2TP服务器)
+    participant RADIUS as RADIUS(企业认证服务器)
+    participant Intranet as 企业内网资源
+
+    %% 阶段1 PPP 拨号
+    Client-&gt;&gt;LAC: 拨号请求(账号/密码)
+    LAC-&gt;&gt;Client: LCP 参数协商
+    Client-&gt;&gt;LAC: CHAP/PAP 认证响应
+    LAC-&gt;&gt;Client: 认证成功 → PPP 链路建立
+
+    %% 阶段2 L2TP 隧道
+    LAC-&gt;&gt;LNS: 请求建立 L2TP 隧道
+    LNS-&gt;&gt;LAC: 分配 Tunnel ID / Session ID
+    Note over LAC,LNS: L2TP 隧道建立成功
+
+    %% 阶段3 IPsec 建立
+    LAC-&gt;&gt;LNS: IKE_SA_INIT (算法/Nonce/ECDH 公钥)
+    LNS-&gt;&gt;LAC: 响应 (选择算法/公钥)
+    Note over LAC,LNS: 计算共享密钥，建立 IKE SA
+    LAC-&gt;&gt;LNS: CREATE_CHILD_SA (ESP/AES/SHA 提议)
+    LNS-&gt;&gt;LAC: 确认参数
+    Note over LAC,LNS: IPsec SA 生效，L2TP 流量受保护
+
+    %% 阶段4 二次认证
+    LNS-&gt;&gt;RADIUS: 转发用户凭证进行认证
+    RADIUS-&gt;&gt;LNS: 返回认证结果+权限
+    LNS-&gt;&gt;Client: 通知认证通过/拒绝
+
+    %% 阶段5 分配内网IP并访问
+    LNS-&gt;&gt;Client: IPCP 分配内网IP/DNS
+    Client-&gt;&gt;Intranet: 访问内网应用(OA/ERP等)
+    Intranet-&gt;&gt;Client: 返回业务数据(通过L2TP+IPsec)
+</code></pre>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E5%B7%A5/" class="category-chain-item">网工</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>VPDN+IPsec完整连接过程笔记</div>
+      <div>https://xinhaojin.github.io/2025/09/22/VPDN+IPsec完整连接过程笔记/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>xinhaojin</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年9月22日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/10/11/%E6%8E%A5%E5%85%A5%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E4%BA%92%E8%81%94%E4%B8%8E%E9%93%BE%E8%B7%AF%E8%81%9A%E5%90%88/" title="接入层交换机互联与链路聚合">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">接入层交换机互联与链路聚合</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/09/18/vue-element-admin%20%E5%8A%A8%E6%80%81%E5%A4%9A%E6%A0%87%E7%AD%BE%E9%A1%B5%EF%BC%88%E5%B8%A6%E5%8F%82%E6%95%B0+%E7%BC%93%E5%AD%98%E4%B8%8D%E5%88%B7%E6%96%B0%EF%BC%89%E5%AE%8C%E6%95%B4%E5%AE%9E%E7%8E%B0%E6%8C%87%E5%8D%97/" title="vue-element-admin动态多标签页（带参数+缓存不刷新）完整实现指南">
+                        <span class="hidden-mobile">vue-element-admin动态多标签页（带参数+缓存不刷新）完整实现指南</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/gitalk/1.8.0/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"Ov23lifvhsymyganMHro","clientSecret":"cdd38ac0c65a95027749446001ebdff7ca7d4ec2","repo":"xinhaojin.github.io","owner":"xinhaojin","admin":"xinhaojin","language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
+          {
+            id: 'f41bc3efeed328385c8563e411cb07ac'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+        次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+        次
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

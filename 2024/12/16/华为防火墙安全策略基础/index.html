@@ -1,0 +1,939 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  <link rel="icon" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xinhaojin">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="安全策略基础安全策略的组成每一条安全策略都是由匹配条件和动作组成的规则。防火墙接收到报文以后，将报文的属性与安全策略的匹配条件进行匹配。如果所有条件都匹配，则此报文成功匹配安全策略，防火墙按照该安全策略的动作处理这个报文及其后续双向流量。因此，安全策略的核心元素是匹配条件和动作。 匹配条件 谁 从哪里来到哪里去 干什么 什么时候  用户、终端设备、时间段、地址、地区、服务、应用、URL分类等匹配条">
+<meta property="og:type" content="article">
+<meta property="og:title" content="华为防火墙安全策略基础">
+<meta property="og:url" content="https://xinhaojin.github.io/2024/12/16/%E5%8D%8E%E4%B8%BA%E9%98%B2%E7%81%AB%E5%A2%99%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="xinhaojin&#39;s blog">
+<meta property="og:description" content="安全策略基础安全策略的组成每一条安全策略都是由匹配条件和动作组成的规则。防火墙接收到报文以后，将报文的属性与安全策略的匹配条件进行匹配。如果所有条件都匹配，则此报文成功匹配安全策略，防火墙按照该安全策略的动作处理这个报文及其后续双向流量。因此，安全策略的核心元素是匹配条件和动作。 匹配条件 谁 从哪里来到哪里去 干什么 什么时候  用户、终端设备、时间段、地址、地区、服务、应用、URL分类等匹配条">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-12-16T08:50:00.000Z">
+<meta property="article:modified_time" content="2025-04-27T12:29:45.671Z">
+<meta property="article:author" content="xinhaojin">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>华为防火墙安全策略基础 - xinhaojin&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xinhaojin.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?596b73bb5b70c262b123e997b6686f49";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xinhaojin&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="华为防火墙安全策略基础"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-12-16 16:50" pubdate>
+          2024年12月16日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          19 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">华为防火墙安全策略基础</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2025年4月27日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="安全策略基础"><a href="#安全策略基础" class="headerlink" title="安全策略基础"></a>安全策略基础</h1><h2 id="安全策略的组成"><a href="#安全策略的组成" class="headerlink" title="安全策略的组成"></a>安全策略的组成</h2><p>每一条安全策略都是由匹配条件和动作组成的规则。防火墙接收到报文以后，将报文的属性与安全策略的匹配条件进行匹配。如果所有条件都匹配，则此报文成功匹配安全策略，防火墙按照该安全策略的动作处理这个报文及其后续双向流量。因此，安全策略的核心元素是匹配条件和动作。</p>
+<h3 id="匹配条件"><a href="#匹配条件" class="headerlink" title="匹配条件"></a>匹配条件</h3><ul>
+<li>谁</li>
+<li>从哪里来到哪里去</li>
+<li>干什么</li>
+<li>什么时候</li>
+</ul>
+<p>用户、终端设备、时间段、地址、地区、服务、应用、URL分类等匹配条件可以帮助防火墙精准地识别和过滤恶意流量。</p>
+<h3 id="动作"><a href="#动作" class="headerlink" title="动作"></a>动作</h3><ul>
+<li><p><strong>允许</strong></p>
+<ul>
+<li>流量通过</li>
+<li>可以执行内容安全检查</li>
+</ul>
+</li>
+<li><p><strong>禁止</strong></p>
+<ul>
+<li>流量不通过</li>
+<li>可以选择发送反馈报文，快速结束会话</li>
+</ul>
+</li>
+</ul>
+<h3 id="策略标识"><a href="#策略标识" class="headerlink" title="策略标识"></a>策略标识</h3><ul>
+<li><p><strong>名称</strong></p>
+<ul>
+<li>唯一标识安全策略</li>
+</ul>
+</li>
+<li><p><strong>描述</strong></p>
+<ul>
+<li>记录安全策略的相关信息</li>
+</ul>
+</li>
+<li><p><strong>策略组</strong></p>
+<ul>
+<li>简化管理相同目的的安全策略</li>
+</ul>
+</li>
+<li><p><strong>标签</strong></p>
+<ul>
+<li>标识安全策略</li>
+<li>筛选具有相同特征的策略</li>
+<li>建议使用固定前缀和颜色区分不同动作</li>
+</ul>
+</li>
+</ul>
+<h2 id="安全策略的命令行配置方式"><a href="#安全策略的命令行配置方式" class="headerlink" title="安全策略的命令行配置方式"></a>安全策略的命令行配置方式</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;sysname&gt; system-view</span><br><span class="line">[sysname] security-policy</span><br><span class="line">[sysname-policy-security] rule name &quot;Allow access to the Internet&quot;</span><br><span class="line">[sysname-policy-security-rule-Allow access to the Internet] source-zone trust</span><br><span class="line">[sysname-policy-security-rule-Allow access to the Internet] destination-zone untrust</span><br><span class="line">[sysname-policy-security-rule-Allow access to the Internet] source-address 192.168.1.0 mask 24</span><br><span class="line">[sysname-policy-security-rule-Allow access to the Internet] source-address 192.168.2.0 mask 24</span><br><span class="line">[sysname-policy-security-rule-Allow access to the Internet] service http https</span><br><span class="line">[sysname-policy-security-rule-Allow access to the Internet] action permit</span><br><span class="line">[sysname-policy-security-rule-Allow access to the Internet] quit</span><br></pre></td></tr></table></figure>
+<h2 id="缺省策略和匹配规则"><a href="#缺省策略和匹配规则" class="headerlink" title="缺省策略和匹配规则"></a>缺省策略和匹配规则</h2><h4 id="缺省策略"><a href="#缺省策略" class="headerlink" title="缺省策略"></a>缺省策略</h4><ul>
+<li>出厂设置：存在一条显式的缺省策略<code>default</code>，默认禁止所有域间流量。</li>
+<li>位置：永远位于策略列表的最底端，不可删除。</li>
+</ul>
+<h3 id="安全策略匹配流程"><a href="#安全策略匹配流程" class="headerlink" title="安全策略匹配流程"></a>安全策略匹配流程</h3><ul>
+<li>用户创建的安全策略按创建顺序排列，新策略默认位于策略列表底部，缺省策略之前。</li>
+<li>流量处理：防火墙接收到流量后，从上至下依次匹配安全策略。</li>
+<li>匹配成功：一旦某条安全策略匹配成功，停止匹配，按该策略指定的动作处理流量。</li>
+<li>未匹配：如果所有手工创建的安全策略都未匹配，则按缺省策略处理。</li>
+</ul>
+<h3 id="建议"><a href="#建议" class="headerlink" title="建议"></a>建议</h3><ul>
+<li><strong>保持缺省策略</strong><ul>
+<li>建议保持缺省策略的动作为禁止，不要修改。</li>
+<li>缺省策略的目的是保证所有未明确允许的流量都被禁止，这是防火墙的基本设计理念。</li>
+</ul>
+</li>
+<li><strong>策略顺序</strong><ul>
+<li>安全策略的顺序至关重要。</li>
+<li>创建安全策略后，需根据业务需要手动调整策略顺序，以确保策略匹配结果符合预期。</li>
+</ul>
+</li>
+</ul>
+<h2 id="本地安全策略和接口访问控制"><a href="#本地安全策略和接口访问控制" class="headerlink" title="本地安全策略和接口访问控制"></a>本地安全策略和接口访问控制</h2><p>针对从防火墙发出的流量、访问防火墙的流量的安全策略，叫做本地安全策略。<br>eg：ping防火墙接口，不需要专门写策略，允许指定协议即可</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">interface GigabitEthernet 0/0/1</span><br><span class="line">ip address 10.1.1.1 255.255.255.0</span><br><span class="line">service-manage enable //开启接口的访问控制功能。</span><br><span class="line">service-manage ping permit //允许通过Ping访问此接口。</span><br></pre></td></tr></table></figure>
+<p>缺省情况下：</p>
+<ul>
+<li>防火墙带外管理口MGMT接口已经启用接口访问控制功能，并且允许通过HTTP、HTTPS、Ping、SSH、Telnet、NETCONF和SNMP访问防火墙</li>
+<li>其他接口也启用了接口访问控制功能，但是未允许任何协议。</li>
+</ul>
+<p><strong>另外注意</strong>：如果想要从管理终端Ping防火墙的GE0&#x2F;0&#x2F;2接口，也需要开启GE0&#x2F;0&#x2F;1的接口访问控制功能，因为流量是从GE0&#x2F;0&#x2F;1进入防火墙的。</p>
+<h2 id="哪些业务需要开放安全策略"><a href="#哪些业务需要开放安全策略" class="headerlink" title="哪些业务需要开放安全策略"></a>哪些业务需要开放安全策略</h2><p><strong>安全策略仅控制单播报文</strong>，你需要为所有合法的单播报文开放安全策略。缺省情况下，组播报文和广播报文不受防火墙的安全策略控制。防火墙直接转发组播报文和广播报文，不需要开放安全策略。</p>
+<p>特别值得提醒的是：以上规则同样适用于网络互连互通的基础协议（包括BGP、BFD、DHCP、DHCPv6、LDP、OSPF），你需要为它们的单播报文配置安全策略。这是防火墙与路由器和交换机最大的不同。如果想要快速接入网络，你也可以使用命令undo firewall packet-filter basic-protocol enable取消这个控制。取消以后，上述协议的单播报文不受安全策略控制。</p>
+<ul>
+<li><p>华为防火墙作为状态检测防火墙，只需为报文发起方配置安全策略。</p>
+<ul>
+<li>收到发起方的首包报文后，执行安全策略检查并记录会话表。后续报文和回程报文只需命中会话表即可通过，不再检查安全策略。</li>
+<li>如果通信双方都可能发起连接，需要为双向报文分别配置安全策略。</li>
+</ul>
+</li>
+<li><p>源和目的在同一个安全区域内的域内流量，默认不需要配置安全策略。</p>
+</li>
+</ul>
+<h1 id="引用对象"><a href="#引用对象" class="headerlink" title="引用对象"></a>引用对象</h1><h2 id="什么是对象"><a href="#什么是对象" class="headerlink" title="什么是对象"></a>什么是对象</h2><p>对象是通用元素（如IP地址、服务、应用等）的集合。创建了集合形式的对象，你就可以在各种业务策略中直接引用该对象，而不需要一次次重复输入或选择。当需要修改多个业务策略的适用范围时，只需要修改其引用的对象，就可以快速完成多个策略的调整。使用对象，可以显著降低管理成本，提高维护效率。<br><strong>地址对象</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ip address-set Research_Dept type object //object表示地址对象</span><br><span class="line">address 10 range 192.168.1.1 192.168.1.120 //指定IPv4地址段的起止地址</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ip address-set Research_Dept type object </span><br><span class="line">address 11 192.168.1.1 0.0.0.255 //使用通配符指定地址范围</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ip address-set Research_Dept type object </span><br><span class="line">address 11 192.168.1.1 mask 255.255.255.0 //使用掩码指定地址范围</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ip address-set Research_Dept type object </span><br><span class="line">address 11 192.168.1.1 mask 24 //使用掩码长度指定地址范围</span><br></pre></td></tr></table></figure>
+<p><strong>地址组</strong></p>
+<ul>
+<li>地址组可以添加地址、地址对象或地址组，可以方便地管理复杂的地址范围。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ip address-set R&amp;D_Dept type group //group表示地址组</span><br><span class="line">address address-set Research_Dept //将地址对象Research_Dept加入地址组R&amp;D_Dept</span><br><span class="line">address address-set Test_Dept</span><br><span class="line">ip address-set Product type group</span><br><span class="line">address address-set R&amp;D_Dept //将地址组R&amp;D_Dept加入地址组Product</span><br></pre></td></tr></table></figure>
+<h2 id="在安全策略中引用地址对象和地址组"><a href="#在安全策略中引用地址对象和地址组" class="headerlink" title="在安全策略中引用地址对象和地址组"></a>在安全策略中引用地址对象和地址组</h2><p>eg:禁止地址组R&amp;D_Dept访问DMZ区域的HR服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">security-policy </span><br><span class="line"> rule name &quot;Deny R&amp;D_Dept to HR&quot; </span><br><span class="line"> source-zone trust</span><br><span class="line"> destination-zone dmz </span><br><span class="line"> source-address address-set R&amp;D_Dept //以地址组方式指定源地址</span><br><span class="line"> service HRService //自定义的HR服务</span><br><span class="line"> action deny</span><br></pre></td></tr></table></figure>
+<p>在此基础上排除某个地址</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">security-policy </span><br><span class="line"> rule name &quot;Deny R&amp;D_Dept to HR&quot; </span><br><span class="line"> source-zone trust</span><br><span class="line"> destination-zone dmz </span><br><span class="line"> source-address address-set R&amp;D_Dept //以地址集方式指定源地址（192.168.1.1/24）</span><br><span class="line"> source-address-exclude 192.168.1.66 32 //排除此地址</span><br><span class="line"> service HRService //自定义的HR服务</span><br><span class="line"> action deny</span><br></pre></td></tr></table></figure>
+<h2 id="在安全策略中引用服务和服务组"><a href="#在安全策略中引用服务和服务组" class="headerlink" title="在安全策略中引用服务和服务组"></a>在安全策略中引用服务和服务组</h2><ul>
+<li><strong>服务</strong>是一个或多个应用协议的集合，<strong>由协议类型、源端口、目的端口等信息来指定</strong>。</li>
+<li><strong>服务组</strong>是服务的集合，服务组的成员可以是服务，也可以是服务组。</li>
+</ul>
+<p>防火墙默认提供了常见的知名服务，即预定义服务，例如HTTP、FTP、Telnet、DNS等。在现实网络中，如果协议使用端口与预定义服务的端口不同时，需要创建自定义服务。例如，预定义服务ILS的端口号为1002，但是某些旧版软件可能使用389端口来接收ILS报文。此时，你需要自定义一个端口号为389的服务，并在安全策略中引用。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">system-view</span><br><span class="line"> ip service-set new_ils type object //object表示自定义服务</span><br><span class="line"> service protocol tcp destination-port 389 //以目的端口指定ILS服务</span><br></pre></td></tr></table></figure>
+<h3 id="自定义ICMP服务提高安全性"><a href="#自定义ICMP服务提高安全性" class="headerlink" title="自定义ICMP服务提高安全性"></a>自定义ICMP服务提高安全性</h3><p>对于TCP、UDP和SCTP服务，可以通过源端口和目的端口来定义，通常只定义目的端口即可。<br>对于ICMP和ICMPv6服务，需要使用类型号和消息码来定义。ICMP服务常用于Ping和Tracert，一般直接使用预定义的ICMP服务即可。但是，ICMP服务也经常被攻击者用来窥测网络或建立隐蔽通道。因此，如果你对安全性有更高的要求，可以自定义服务，仅开放特定类型的ICMP报文。<br>以Ping为例，Ping需要使用两种类型的ICMP报文：Echo Request（Type 8）和Echo Reply（Type 0）。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">system-view</span><br><span class="line"> ip service-set ICMP_Echo_Request type object</span><br><span class="line"> service protocol icmp icmp-type 8 //自定义ICMP type 8</span><br></pre></td></tr></table></figure>
+<p>eg:Trust区域的PC要Ping Untrust区域的交换机，安全策略配置如下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">security-policy</span><br><span class="line"> rule name &quot;Allow Ping&quot; </span><br><span class="line"> source-zone trust </span><br><span class="line"> destination-zone untrust </span><br><span class="line"> source-address 10.1.1.10 24</span><br><span class="line"> destination-address 10.1.2.10 24</span><br><span class="line"> service ICMP_Echo_Request</span><br><span class="line"> action permit</span><br></pre></td></tr></table></figure>
+<h2 id="在安全策略中引用应用"><a href="#在安全策略中引用应用" class="headerlink" title="在安全策略中引用应用"></a>在安全策略中引用应用</h2><p>防火墙可以根据服务和服务组识别常用的应用协议。不过，识别服务依赖端口识别技术，其主要依据的是端口号，因此只能用于识别FTP、HTTP等基础协议。然而，大量应用承载在HTTP协议之上，仅识别出服务已经不能解决应用管控的问题了。</p>
+<p>报文五元组：源IP地址、源端口、目的IP地址、目的端口、协议类型</p>
+<p>业务感知技术：流量特征分析</p>
+<h2 id="其他引用类型"><a href="#其他引用类型" class="headerlink" title="其他引用类型"></a>其他引用类型</h2><p>地区组、域名组、URL分类等</p>
+<h1 id="管理配置原则"><a href="#管理配置原则" class="headerlink" title="管理配置原则"></a>管理配置原则</h1><h2 id="使用安全区域划分网络"><a href="#使用安全区域划分网络" class="headerlink" title="使用安全区域划分网络"></a>使用安全区域划分网络</h2><p>防火墙默认提供Untrust、Trust、DMZ，通常分别用于连接外网、内网和具有中间状态的DMZ区。缺省情况下，同一个安全区域内的设备可以互相访问，不同安全区域内的设备互访需要开放安全策略。这种设计在性能和安全性之间取得了良好的平衡。如果网络被入侵，攻击者只能访问同一个安全区域内的资源，这就把损失控制在一个比较小的范围内。攻击者必须突破安全区域和安全策略的控制，才能访问其他资源。</p>
+<ul>
+<li>对于彼此之间没有交互的系统，不要将它们置于同一子网中。否则，攻击者只要突破外围防御措施，就可以更轻松地访问所有内容。</li>
+<li>把具有相同安全级别的设备和业务资源部署在同一个安全区域中。</li>
+<li>对于需要交互的不同安全等级的系统，请部署在不同安全区域，并开放严格的安全策略。例如，所有对外提供服务的服务器（如Web服务器、邮件服务器）应该部署在一个专用区域（通常为DMZ），不应该被外网直接访问的服务器（如数据库）必须部署在内部服务器区。</li>
+</ul>
+<h2 id="遵循最小授权原则"><a href="#遵循最小授权原则" class="headerlink" title="遵循最小授权原则"></a>遵循最小授权原则</h2><h3 id="1-精确匹配条件"><a href="#1-精确匹配条件" class="headerlink" title="1. 精确匹配条件"></a>1. 精确匹配条件</h3><ul>
+<li>避免使用”Any”作为匹配条件，以减少安全风险。<ul>
+<li>限制到具体的源&#x2F;目的IP地址和服务。</li>
+<li>设置尽可能多的匹配条件，如用户、应用等。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-对外开放服务"><a href="#2-对外开放服务" class="headerlink" title="2. 对外开放服务"></a>2. 对外开放服务</h3><ul>
+<li>如果需要对Internet开放服务：<ul>
+<li>源IP可设置为”Any”，目的IP必须明确指定。</li>
+<li>避免开放所有服务或端口，以防止字典攻击和暴力破解。</li>
+</ul>
+</li>
+<li>对于非公开服务：<ul>
+<li>必须限定源IP地址范围。</li>
+<li>不允许任意源IP访问敏感业务。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-应用识别"><a href="#3-应用识别" class="headerlink" title="3. 应用识别"></a>3. 应用识别</h3><ul>
+<li>利用防火墙的应用识别能力，实现精细化管控。<ul>
+<li>根据应用类型或标签设置安全策略，如允许带有“企业应用”标签的应用。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-临时安全策略"><a href="#4-临时安全策略" class="headerlink" title="4. 临时安全策略"></a>4. 临时安全策略</h3><ul>
+<li>为临时安全策略设置明确的生效时间，合作结束后自动失效。<ul>
+<li>确保系统时间准确，推荐使用NTP同步时间。</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-安全策略方向"><a href="#5-安全策略方向" class="headerlink" title="5. 安全策略方向"></a>5. 安全策略方向</h3><ul>
+<li>华为防火墙作为状态检测防火墙：<ul>
+<li>只需允许业务的主动发起方建立连接。</li>
+</ul>
+</li>
+<li>仅在通信双方都需要主动发起连接的情况下，配置双向安全策略。</li>
+<li>服务器的系统和软件更新：<ul>
+<li>应通过统一的中央服务器获取。</li>
+<li>在安全策略中限制到具体的域名或应用。</li>
+</ul>
+</li>
+</ul>
+<h2 id="顺序很重要，先精确后宽泛，先常用后少用"><a href="#顺序很重要，先精确后宽泛，先常用后少用" class="headerlink" title="顺序很重要，先精确后宽泛，先常用后少用"></a>顺序很重要，先精确后宽泛，先常用后少用</h2><ul>
+<li>始终将更精确的安全策略放在前面，将更宽泛的安全策略放在后面。<ul>
+<li>对于这些宽泛的安全策略，要持续分析，逐渐精确化，或者停用</li>
+</ul>
+</li>
+<li>将频繁命中的安全策略放在更前面。<ul>
+<li>命中次数越多，说明匹配此策略的流量越多。</li>
+<li>让主要流量快速完成安全策略匹配，显著提高性能，这在高负载环境中尤为明显。</li>
+</ul>
+</li>
+</ul>
+<h1 id="部署安全策略"><a href="#部署安全策略" class="headerlink" title="部署安全策略"></a>部署安全策略</h1><h2 id="策略顺序"><a href="#策略顺序" class="headerlink" title="策略顺序"></a>策略顺序</h2><ol>
+<li><strong>白名单（允许列表）</strong>：<ul>
+<li>最优先级的策略是白名单，这些策略定义了哪些特定的流量是被明确允许的。这些策略应该尽可能具体，以确保只有合法的流量被允许通过。</li>
+</ul>
+</li>
+<li><strong>业务相关的安全策略</strong>：<ul>
+<li>接下来是与业务相关的安全策略，这些策略基于业务需求和安全政策来允许或拒绝特定的流量。</li>
+</ul>
+</li>
+<li><strong>黑名单（拒绝列表）</strong>：<ul>
+<li>黑名单策略通常位于白名单和业务相关策略之后。这些策略定义了哪些特定的流量是被明确拒绝的，例如已知的恶意IP地址、非法应用等。</li>
+</ul>
+</li>
+<li><strong>临时安全策略</strong>：<ul>
+<li>临时安全策略通常位于策略列表的底部，作为最后的手段。这种策略允许所有流量通过，用于在配置初期或在分析阶段确保业务不受影响，同时收集流量数据以便于后续策略的精确配置。</li>
+</ul>
+</li>
+<li><strong>默认策略（缺省策略）</strong>：<ul>
+<li>最后是默认策略，如果没有匹配到任何上述策略，流量将按照默认策略处理，通常是拒绝所有未明确允许的流量。<br>因此，黑名单策略通常位于临时安全策略之前，而临时安全策略位于默认策略之前。这种顺序确保了只有在白名单和业务策略中明确允许的流量才能通过，而所有未明确允许的流量都将被默认策略拒绝。通过这种方式，可以在不影响业务运行的情况下，逐步构建和优化安全策略。</li>
+</ul>
+</li>
+</ol>
+<h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><p> <strong>1.粗略确定白名单和黑名单</strong><br> <strong>2.写入临时安全策略允许所有流量</strong><br> <strong>3.迅速写入黑名单策略</strong><br> <strong>4.写入白名单策略</strong><br> <strong>5.精细化业务相关的安全策略以逐渐替代临时安全策略</strong></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E5%B7%A5/" class="category-chain-item">网工</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>华为防火墙安全策略基础</div>
+      <div>https://xinhaojin.github.io/2024/12/16/华为防火墙安全策略基础/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>xinhaojin</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年12月16日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/12/31/vue3%E6%A0%B8%E5%BF%83%E7%AC%94%E8%AE%B0/" title="vue3核心笔记">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">vue3核心笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/12/11/systemctl%E7%AE%A1%E7%90%86%E6%9C%8D%E5%8A%A1/" title="systemctl管理服务">
+                        <span class="hidden-mobile">systemctl管理服务</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/gitalk/1.8.0/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"Ov23lifvhsymyganMHro","clientSecret":"cdd38ac0c65a95027749446001ebdff7ca7d4ec2","repo":"xinhaojin.github.io","owner":"xinhaojin","admin":"xinhaojin","language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
+          {
+            id: 'e31155152a4f6feeaeb1e6528e1aea98'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+        次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+        次
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

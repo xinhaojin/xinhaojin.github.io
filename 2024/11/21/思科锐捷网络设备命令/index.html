@@ -1,0 +1,1366 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  <link rel="icon" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xinhaojin">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="类别 命令 说明    基础命令 enable 进入特权模式    configure terminal 进入全局配置模式    show running-config 查看当前运行的配置    show startup-config 查看启动时的配置    copy running-config startup-config 保存当前配置到启动配置文件    reload 重新启动交换机">
+<meta property="og:type" content="article">
+<meta property="og:title" content="思科锐捷网络设备配置命令">
+<meta property="og:url" content="https://xinhaojin.github.io/2024/11/21/%E6%80%9D%E7%A7%91%E9%94%90%E6%8D%B7%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="xinhaojin&#39;s blog">
+<meta property="og:description" content="类别 命令 说明    基础命令 enable 进入特权模式    configure terminal 进入全局配置模式    show running-config 查看当前运行的配置    show startup-config 查看启动时的配置    copy running-config startup-config 保存当前配置到启动配置文件    reload 重新启动交换机">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-11-21T02:12:00.000Z">
+<meta property="article:modified_time" content="2025-04-27T12:29:45.655Z">
+<meta property="article:author" content="xinhaojin">
+<meta property="article:tag" content="网工">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>思科锐捷网络设备配置命令 - xinhaojin&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xinhaojin.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?596b73bb5b70c262b123e997b6686f49";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xinhaojin&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="思科锐捷网络设备配置命令"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-11-21 10:12" pubdate>
+          2024年11月21日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          12 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">思科锐捷网络设备配置命令</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2025年4月27日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <table>
+<thead>
+<tr>
+<th>类别</th>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>基础命令</strong></td>
+<td><code>enable</code></td>
+<td>进入特权模式</td>
+</tr>
+<tr>
+<td></td>
+<td><code>configure terminal</code></td>
+<td>进入全局配置模式</td>
+</tr>
+<tr>
+<td></td>
+<td><code>show running-config</code></td>
+<td>查看当前运行的配置</td>
+</tr>
+<tr>
+<td></td>
+<td><code>show startup-config</code></td>
+<td>查看启动时的配置</td>
+</tr>
+<tr>
+<td></td>
+<td><code>copy running-config startup-config</code></td>
+<td>保存当前配置到启动配置文件</td>
+</tr>
+<tr>
+<td></td>
+<td><code>reload</code></td>
+<td>重新启动交换机</td>
+</tr>
+<tr>
+<td><strong>接口配置</strong></td>
+<td><code>interface &lt;接口号&gt;</code></td>
+<td>进入指定接口配置模式</td>
+</tr>
+<tr>
+<td></td>
+<td><code>interface range &lt;接口范围&gt;</code></td>
+<td>配置多个接口（例如 <code>interface range fastEthernet 0/1 - 24</code>）</td>
+</tr>
+<tr>
+<td></td>
+<td><code>ip address &lt;ip地址&gt; &lt;子网掩码&gt;</code></td>
+<td>配置接口的IP地址和子网掩码</td>
+</tr>
+<tr>
+<td></td>
+<td><code>no shutdown</code></td>
+<td>启动接口（默认接口关闭时需要启用）</td>
+</tr>
+<tr>
+<td></td>
+<td><code>shutdown</code></td>
+<td>关闭接口</td>
+</tr>
+<tr>
+<td></td>
+<td><code>description &lt;接口描述&gt;</code></td>
+<td>设置接口描述</td>
+</tr>
+<tr>
+<td></td>
+<td><code>speed &lt;速度&gt;</code></td>
+<td>设置接口速率（例如 <code>speed 100</code>）</td>
+</tr>
+<tr>
+<td></td>
+<td><code>duplex &lt;双工模式&gt;</code></td>
+<td>设置接口双工模式（<code>full</code> 或 <code>half</code>）</td>
+</tr>
+<tr>
+<td></td>
+<td><code>switchport mode access</code></td>
+<td>设置端口为访问模式</td>
+</tr>
+<tr>
+<td></td>
+<td><code>switchport mode trunk</code></td>
+<td>设置端口为干线模式</td>
+</tr>
+<tr>
+<td></td>
+<td><code>switchport trunk encapsulation dot1q</code></td>
+<td>设置干线端口的封装方式为IEEE 802.1Q</td>
+</tr>
+<tr>
+<td></td>
+<td><code>switchport trunk allowed vlan &lt;vlan列表&gt;</code></td>
+<td>配置允许通过的VLAN列表</td>
+</tr>
+<tr>
+<td></td>
+<td><code>switchport trunk native vlan &lt;vlan编号&gt;</code></td>
+<td>设置干线端口的原生VLAN（通常是VLAN 1）</td>
+</tr>
+<tr>
+<td></td>
+<td><code>switchport access vlan &lt;vlan编号&gt;</code></td>
+<td>将端口分配给指定VLAN</td>
+</tr>
+<tr>
+<td></td>
+<td><code>switchport nonegotiate</code></td>
+<td>禁用干线端口的协商</td>
+</tr>
+<tr>
+<td></td>
+<td><code>switchport mode dynamic auto</code></td>
+<td>设置接口为动态自动模式，允许接口协商是否为访问端口或干线端口</td>
+</tr>
+<tr>
+<td></td>
+<td><code>switchport mode dynamic desirable</code></td>
+<td>设置接口为动态协商模式，要求端口以干线端口身份进行协商</td>
+</tr>
+<tr>
+<td></td>
+<td><code>int g0/0/0.1</code></td>
+<td>添加子接口，适合单臂路由实现vlan间通信</td>
+</tr>
+<tr>
+<td></td>
+<td><code>encapsulation dot1Q 10</code></td>
+<td>给子接口打上vlan标签</td>
+</tr>
+<tr>
+<td></td>
+<td><code>ip address 192.168.10.254 255.255.255.0</code></td>
+<td>配置子接口IP地址和子网掩码</td>
+</tr>
+<tr>
+<td><strong>VLAN配置</strong></td>
+<td><code>vlan &lt;vlan编号&gt;</code></td>
+<td>创建VLAN或进入现有VLAN配置模式</td>
+</tr>
+<tr>
+<td></td>
+<td><code>name &lt;vlan名称&gt;</code></td>
+<td>设置VLAN名称</td>
+</tr>
+<tr>
+<td></td>
+<td><code>show vlan brief</code></td>
+<td>显示VLAN的基本信息</td>
+</tr>
+<tr>
+<td></td>
+<td><code>show vlan</code></td>
+<td>显示所有VLAN的信息</td>
+</tr>
+<tr>
+<td></td>
+<td><code>vlan database</code></td>
+<td>进入VLAN数据库模式</td>
+</tr>
+<tr>
+<td></td>
+<td><code>exit</code></td>
+<td>退出VLAN数据库模式</td>
+</tr>
+<tr>
+<td><strong>STP配置</strong></td>
+<td><code>spanning-tree vlan &lt;vlan编号&gt; root primary</code></td>
+<td>设置VLAN根桥为主设备</td>
+</tr>
+<tr>
+<td></td>
+<td><code>spanning-tree vlan &lt;vlan编号&gt; priority &lt;优先级值&gt;</code></td>
+<td>设置VLAN根桥的优先级</td>
+</tr>
+<tr>
+<td></td>
+<td><code>spanning-tree mode &lt;pvst| rapid-pvst</code></td>
+<td>设置STP模式</td>
+</tr>
+<tr>
+<td></td>
+<td><code>spanning-tree vlan &lt;vlan编号&gt; cost &lt;路径成本&gt;</code></td>
+<td>设置VLAN的STP路径成本</td>
+</tr>
+<tr>
+<td></td>
+<td><code>spanning-tree portfast</code></td>
+<td>启用端口快速收敛（用于接入层端口）</td>
+</tr>
+<tr>
+<td></td>
+<td><code>spanning-tree bpduguard enable</code></td>
+<td>启用BPDU Guard（防止非法根桥）</td>
+</tr>
+<tr>
+<td></td>
+<td><code>show spanning-tree</code></td>
+<td>显示STP状态</td>
+</tr>
+<tr>
+<td><strong>静态路由</strong></td>
+<td><code>ip route &lt;目标网络地址&gt; &lt;子网掩码&gt; &lt;下一跳地址&gt;</code></td>
+<td>添加一条静态路由。指定目标网络地址、子网掩码和下一跳路由器的 IP 地址。</td>
+</tr>
+<tr>
+<td></td>
+<td><code>ip route 0.0.0.0 0.0.0.0 &lt;下一跳地址&gt;</code></td>
+<td>添加默认路由，通常用于指向出口路由器的下一跳地址。</td>
+</tr>
+<tr>
+<td></td>
+<td><code>ip route &lt;目标网络地址&gt; &lt;子网掩码&gt; &lt;出口接口&gt;</code></td>
+<td>添加静态路由并指定出接口，而非下一跳地址。适用于直接连接的网络。</td>
+</tr>
+<tr>
+<td></td>
+<td><code>no ip route &lt;目标网络地址&gt; &lt;子网掩码&gt; &lt;下一跳地址&gt;</code></td>
+<td>删除已配置的静态路由。</td>
+</tr>
+<tr>
+<td></td>
+<td><code>show ip route</code></td>
+<td>查看当前设备的路由表，显示静态路由、动态路由等所有路由信息。</td>
+</tr>
+<tr>
+<td><strong>路由协议</strong></td>
+<td><code>router rip</code></td>
+<td>启用RIP路由协议</td>
+</tr>
+<tr>
+<td></td>
+<td><code>network &lt;网络地址&gt;</code></td>
+<td>指定RIP路由协议的网络</td>
+</tr>
+<tr>
+<td></td>
+<td><code>version 2</code></td>
+<td>RIP版本2，支持CIDR地址</td>
+</tr>
+<tr>
+<td></td>
+<td><code>router ospf &lt;进程ID&gt;</code></td>
+<td>启用OSPF路由协议</td>
+</tr>
+<tr>
+<td></td>
+<td><code>network &lt;网络地址&gt; &lt;反向掩码&gt; area &lt;区域号&gt;</code></td>
+<td>配置OSPF的网络和区域</td>
+</tr>
+<tr>
+<td></td>
+<td><code>router bgp &lt;AS号&gt;</code></td>
+<td>启用BGP路由协议</td>
+</tr>
+<tr>
+<td></td>
+<td><code>neighbor &lt;邻居IP地址&gt; remote-as &lt;AS号&gt;</code></td>
+<td>配置BGP邻居及其AS号</td>
+</tr>
+<tr>
+<td></td>
+<td><code>network &lt;网络地址&gt; mask &lt;子网掩码&gt;</code></td>
+<td>配置BGP的网络公告</td>
+</tr>
+<tr>
+<td></td>
+<td><code>redistribute ospf</code></td>
+<td>将OSPF路由重新分发到其他路由协议</td>
+</tr>
+<tr>
+<td><strong>NAT配置</strong></td>
+<td><code>ip nat inside source list &lt;访问控制列表编号&gt; interface &lt;接口号&gt; overload</code></td>
+<td>配置动态NAT，使用访问控制列表（ACL）来控制哪些地址可以进行NAT，指定外部接口并启用超载模式（overload）</td>
+</tr>
+<tr>
+<td></td>
+<td><code>ip nat inside</code></td>
+<td>配置接口为内部网络接口（NAT Inside）。通常是本地私有地址的接口。</td>
+</tr>
+<tr>
+<td></td>
+<td><code>ip nat outside</code></td>
+<td>配置接口为外部网络接口（NAT Outside）。通常是连接到公共Internet的接口。</td>
+</tr>
+<tr>
+<td></td>
+<td><code>ip nat inside source static &lt;内部IP地址&gt; &lt;外部IP地址&gt;</code></td>
+<td>配置静态NAT，将一个内部IP地址映射到一个固定的外部IP地址（1:1映射）。</td>
+</tr>
+<tr>
+<td></td>
+<td><code>ip nat inside source static &lt;内部IP地址&gt; &lt;外部IP地址&gt; extendable</code></td>
+<td>配置扩展的静态NAT，允许在NAT映射的IP地址用尽时动态扩展静态NAT映射。</td>
+</tr>
+<tr>
+<td></td>
+<td><code>ip nat inside source list &lt;ACL编号&gt; pool &lt;池名称&gt; overload</code></td>
+<td>配置基于ACL的动态NAT并使用NAT池（例如，当有多个外部IP地址时）。启用超载功能允许多个内部IP共享一个外部IP。</td>
+</tr>
+<tr>
+<td></td>
+<td><code>ip nat pool &lt;池名称&gt; &lt;起始IP地址&gt; &lt;结束IP地址&gt; netmask &lt;子网掩码&gt;</code></td>
+<td>创建一个NAT池，指定池的起始和结束IP地址及子网掩码，用于动态分配外部IP地址给内部IP。</td>
+</tr>
+<tr>
+<td></td>
+<td><code>ip nat inside source list &lt;ACL编号&gt; interface &lt;接口号&gt; overload</code></td>
+<td>配置基于ACL的动态NAT，指定外部接口并启用超载模式，允许多个内部地址共享一个外部IP地址。</td>
+</tr>
+<tr>
+<td></td>
+<td><code>ip nat translation tcp-timeout &lt;秒数&gt;</code></td>
+<td>设置TCP连接的NAT超时时间，默认为24小时（86400秒）。</td>
+</tr>
+<tr>
+<td></td>
+<td><code>ip nat translation udp-timeout &lt;秒数&gt;</code></td>
+<td>设置UDP连接的NAT超时时间。默认为5分钟（300秒）。</td>
+</tr>
+<tr>
+<td></td>
+<td><code>ip nat translation udp-timeout &lt;秒数&gt;</code></td>
+<td>设置UDP连接的NAT超时时间。默认为5分钟（300秒）。</td>
+</tr>
+<tr>
+<td></td>
+<td><code>ip nat translation no-fragment</code></td>
+<td>禁用NAT转换时的IP分片（Fragmentation）。</td>
+</tr>
+<tr>
+<td></td>
+<td><code>show ip nat translations</code></td>
+<td>查看当前NAT转换表，显示所有活动的NAT条目。</td>
+</tr>
+<tr>
+<td></td>
+<td><code>clear ip nat translations *</code></td>
+<td>清除所有NAT转换条目。</td>
+</tr>
+<tr>
+<td></td>
+<td><code>show ip nat statistics</code></td>
+<td>查看NAT统计信息，如NAT池使用情况、命中次数、转换次数等。</td>
+</tr>
+<tr>
+<td></td>
+<td><code>clear ip nat statistics</code></td>
+<td>清除NAT的统计数据。</td>
+</tr>
+<tr>
+<td></td>
+<td><code>ip nat enable</code></td>
+<td>在接口上启用NAT功能，通常在接口配置模式下使用。</td>
+</tr>
+<tr>
+<td></td>
+<td><code>ip route &lt;目标网络&gt; &lt;子网掩码&gt; &lt;NAT接口&gt;</code></td>
+<td>配置NAT接口的静态路由。确保NAT流量能够正确路由到外部网络。</td>
+</tr>
+<tr>
+<td><strong>ACL配置</strong></td>
+<td><code>ip access-lists extended &lt;编号&gt;</code></td>
+<td>创建&#x2F;进入扩展ACL</td>
+</tr>
+<tr>
+<td></td>
+<td><code>&lt;编号&gt; permit ip permit ip &lt;源地址&gt; &lt;反掩码&gt; &lt;目标地址&gt; &lt;反掩码&gt;</code></td>
+<td>添加rule</td>
+</tr>
+<tr>
+<td></td>
+<td><code>ip access-group &lt;ACL编号&gt; in/out</code></td>
+<td>应用ACL到接口的流量方向（in&#x2F;out）</td>
+</tr>
+<tr>
+<td></td>
+<td><code>show access-lists &lt;编号&gt;</code></td>
+<td>查看ACL配置及规则</td>
+</tr>
+<tr>
+<td><strong>端口安全</strong></td>
+<td><code>switchport port-security</code></td>
+<td>启用端口安全</td>
+</tr>
+<tr>
+<td></td>
+<td><code>switchport port-security maximum &lt;最大数量&gt;</code></td>
+<td>设置端口允许的最大MAC地址数量</td>
+</tr>
+<tr>
+<td></td>
+<td><code>switchport port-security violation &lt;protect/restrict/shutdown&gt;</code></td>
+<td>配置端口安全违规处理方式</td>
+</tr>
+<tr>
+<td></td>
+<td><code>show port-security</code></td>
+<td>查看端口安全的配置信息</td>
+</tr>
+<tr>
+<td><strong>SNMP配置</strong></td>
+<td><code>snmp-server community &lt;community_string&gt; RO</code></td>
+<td>配置SNMP社区字符串并设置只读权限</td>
+</tr>
+<tr>
+<td></td>
+<td><code>snmp-server enable traps</code></td>
+<td>启用SNMP陷阱</td>
+</tr>
+<tr>
+<td><strong>日志配置</strong></td>
+<td><code>logging buffered &lt;大小&gt;</code></td>
+<td>设置日志缓冲区大小</td>
+</tr>
+<tr>
+<td></td>
+<td><code>logging console</code></td>
+<td>启用控制台日志输出</td>
+</tr>
+<tr>
+<td><strong>NTP配置</strong></td>
+<td><code>ntp server &lt;NTP服务器地址&gt;</code></td>
+<td>配置NTP服务器</td>
+</tr>
+<tr>
+<td><strong>SSH配置</strong></td>
+<td><code>ip domain-name &lt;域名&gt;</code></td>
+<td>配置域名（用于SSH）</td>
+</tr>
+<tr>
+<td></td>
+<td><code>crypto key generate rsa</code></td>
+<td>生成RSA密钥对（用于SSH）</td>
+</tr>
+<tr>
+<td></td>
+<td><code>ip ssh version 2</code></td>
+<td>启用SSH版本2</td>
+</tr>
+<tr>
+<td></td>
+<td><code>line vty 0 4</code></td>
+<td>进入VTY线路配置模式（配置远程访问）</td>
+</tr>
+<tr>
+<td></td>
+<td><code>login local</code></td>
+<td>使用本地用户名和密码进行登录</td>
+</tr>
+<tr>
+<td></td>
+<td><code>transport input ssh</code></td>
+<td>仅允许SSH远程访问</td>
+</tr>
+<tr>
+<td><strong>EtherChannel</strong></td>
+<td><code>interface range &lt;接口范围&gt;</code></td>
+<td>进入多个接口配置模式（例如 <code>interface range gig 0/1 - 2</code>）</td>
+</tr>
+<tr>
+<td></td>
+<td><code>channel-group &lt;编号&gt; mode on</code></td>
+<td>配置EtherChannel，开启通道组</td>
+</tr>
+<tr>
+<td></td>
+<td><code>channel-group &lt;编号&gt; mode passive</code></td>
+<td>设置EtherChannel为被动模式（等待对端聚合）</td>
+</tr>
+<tr>
+<td></td>
+<td><code>channel-group &lt;编号&gt; mode active</code></td>
+<td>设置EtherChannel为主动模式</td>
+</tr>
+<tr>
+<td></td>
+<td><code>show etherchannel summary</code></td>
+<td>查看EtherChannel状态</td>
+</tr>
+<tr>
+<td><strong>VTP配置</strong></td>
+<td><code>vtp mode &lt;模式&gt;</code></td>
+<td>设置VTP模式（<code>server</code>, <code>client</code>, <code>transparent</code>）</td>
+</tr>
+<tr>
+<td></td>
+<td><code>vtp domain &lt;域名&gt;</code></td>
+<td>设置VTP域名</td>
+</tr>
+<tr>
+<td></td>
+<td><code>vtp password &lt;密码&gt;</code></td>
+<td>设置VTP密码</td>
+</tr>
+<tr>
+<td><strong>DHCP配置</strong></td>
+<td><code>ip dhcp pool &lt;池名称&gt;</code></td>
+<td>创建一个DHCP地址池</td>
+</tr>
+<tr>
+<td></td>
+<td><code>network &lt;网络地址&gt; &lt;子网掩码&gt;</code></td>
+<td>配置DHCP池的网络地址和子网掩码</td>
+</tr>
+<tr>
+<td></td>
+<td><code>default-router &lt;默认网关地址&gt;</code></td>
+<td>配置DHCP客户端的默认网关</td>
+</tr>
+<tr>
+<td></td>
+<td><code>dns-server &lt;DNS服务器地址&gt;</code></td>
+<td>配置DHCP客户端的DNS服务器地址</td>
+</tr>
+<tr>
+<td></td>
+<td><code>domain-name &lt;域名&gt;</code></td>
+<td>配置DHCP客户端的域名</td>
+</tr>
+<tr>
+<td></td>
+<td><code>lease &lt;租期&gt;</code></td>
+<td>设置DHCP租期（单位：天、小时、分钟）</td>
+</tr>
+<tr>
+<td></td>
+<td><code>excluded-address &lt;地址范围&gt;</code></td>
+<td>配置DHCP池中排除的地址范围，不会分配给DHCP客户端</td>
+</tr>
+<tr>
+<td></td>
+<td><code>address &lt;地址&gt; &lt;子网掩码&gt;</code></td>
+<td>配置DHCP池的特定IP地址和子网掩码</td>
+</tr>
+<tr>
+<td></td>
+<td><code>ip dhcp excluded-address &lt;起始地址&gt; &lt;结束地址&gt;</code></td>
+<td>配置排除的DHCP地址范围，确保这些地址不会被分配给客户端</td>
+</tr>
+<tr>
+<td></td>
+<td><code>show ip dhcp pool</code></td>
+<td>查看DHCP池的状态和分配的地址信息</td>
+</tr>
+<tr>
+<td></td>
+<td><code>show ip dhcp binding</code></td>
+<td>查看DHCP客户端的IP地址绑定信息</td>
+</tr>
+<tr>
+<td></td>
+<td><code>clear ip dhcp binding &lt;IP地址&gt;</code></td>
+<td>清除指定DHCP客户端的IP地址绑定</td>
+</tr>
+<tr>
+<td></td>
+<td><code>ip helper-address &lt;服务器地址&gt;</code></td>
+<td>配置DHCP中继代理，指向DHCP服务器的IP地址</td>
+</tr>
+<tr>
+<td><strong>系统管理</strong></td>
+<td><code>show version</code></td>
+<td>查看系统版本信息</td>
+</tr>
+<tr>
+<td></td>
+<td><code>show ip interface brief</code></td>
+<td>查看接口状态摘要</td>
+</tr>
+<tr>
+<td></td>
+<td><code>show interfaces</code></td>
+<td>查看接口详细信息</td>
+</tr>
+<tr>
+<td></td>
+<td><code>show running-config</code></td>
+<td>查看当前运行配置</td>
+</tr>
+<tr>
+<td></td>
+<td><code>show startup-config</code></td>
+<td>查看启动配置</td>
+</tr>
+<tr>
+<td></td>
+<td><code>show logging</code></td>
+<td>查看日志信息</td>
+</tr>
+<tr>
+<td></td>
+<td><code>clear logging</code></td>
+<td>清除日志信息</td>
+</tr>
+<tr>
+<td><strong>工程配置3招</strong></td>
+<td><code>no ip domain lookup</code></td>
+<td>关闭域名解析（防止敲错命令查询）</td>
+</tr>
+<tr>
+<td></td>
+<td><code>line console 0</code></td>
+<td>进入控制台线路0的配置模式</td>
+</tr>
+<tr>
+<td></td>
+<td><code>logging synchronous</code></td>
+<td>log当前显示信息同步，不会打断控制台的输入</td>
+</tr>
+<tr>
+<td></td>
+<td><code>no exec - timeout</code></td>
+<td>关闭会话超时，防止一段时间不操作自动退出</td>
+</tr>
+</tbody></table>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E5%B7%A5/" class="category-chain-item">网工</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%BD%91%E5%B7%A5/" class="print-no-link">#网工</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>思科锐捷网络设备配置命令</div>
+      <div>https://xinhaojin.github.io/2024/11/21/思科锐捷网络设备命令/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>xinhaojin</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年11月21日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/11/21/%E6%80%9D%E7%A7%91%E6%A0%B8%E5%BF%83%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87%E4%BB%BD/" title="思科核心交换机双机热备份">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">思科核心交换机双机热备份</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/11/20/vlan%E9%97%B4%E9%80%9A%E4%BF%A1(%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1%E3%80%81%E5%A4%9A%E8%87%82%E8%B7%AF%E7%94%B1%E3%80%81%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2)%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4(%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA)/" title="vlan间通信(单臂路由、多臂路由、三层交换)配置命令(思科+华为)">
+                        <span class="hidden-mobile">vlan间通信(单臂路由、多臂路由、三层交换)配置命令(思科+华为)</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/gitalk/1.8.0/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"Ov23lifvhsymyganMHro","clientSecret":"cdd38ac0c65a95027749446001ebdff7ca7d4ec2","repo":"xinhaojin.github.io","owner":"xinhaojin","admin":"xinhaojin","language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
+          {
+            id: 'b442efd247eafdb16d3a71e419df724d'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+        次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+        次
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

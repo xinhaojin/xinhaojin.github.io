@@ -1,0 +1,847 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  <link rel="icon" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xinhaojin">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="1     问题描述超像素视频生成小软件:完成一段小程序，读入一段原始视频，要求调用SLIC算法生成超像素视频。该软件要求有友好的用户界面，有功能按钮及视频显示等细节，要求能在界面上设置SLIC的输入参数。 2    超像素介绍2.1概念超像素概念是2003年Xiaofeng Ren提出和发展起来的图像分割技术，它是指具有相似纹理、颜色、亮度等特征的相邻像素构成的有一定视觉意义的不规则像素块。它利">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SLIC超像素视频转换">
+<meta property="og:url" content="https://xinhaojin.github.io/2020/04/30/%E8%B6%85%E5%83%8F%E7%B4%A0%E8%A7%86%E9%A2%91%E8%BD%AC%E6%8D%A2/index.html">
+<meta property="og:site_name" content="xinhaojin&#39;s blog">
+<meta property="og:description" content="1     问题描述超像素视频生成小软件:完成一段小程序，读入一段原始视频，要求调用SLIC算法生成超像素视频。该软件要求有友好的用户界面，有功能按钮及视频显示等细节，要求能在界面上设置SLIC的输入参数。 2    超像素介绍2.1概念超像素概念是2003年Xiaofeng Ren提出和发展起来的图像分割技术，它是指具有相似纹理、颜色、亮度等特征的相邻像素构成的有一定视觉意义的不规则像素块。它利">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2020/04/5-8-592x1024.jpg">
+<meta property="article:published_time" content="2020-04-30T12:03:41.000Z">
+<meta property="article:modified_time" content="2025-04-27T12:29:45.675Z">
+<meta property="article:author" content="xinhaojin">
+<meta property="article:tag" content="超像素">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://xinhaojin.github.io/imgs-host/past/2020/04/5-8-592x1024.jpg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>SLIC超像素视频转换 - xinhaojin&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xinhaojin.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?596b73bb5b70c262b123e997b6686f49";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xinhaojin&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="SLIC超像素视频转换"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2020-04-30 20:03" pubdate>
+          2020年4月30日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          30 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">SLIC超像素视频转换</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2025年4月27日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1     问题描述"></a>1     问题描述</h2><p>超像素视频生成小软件:完成一段小程序，读入一段原始视频，要求调用SLIC算法生成超像素视频。该软件要求有友好的用户界面，有功能按钮及视频显示等细节，要求能在界面上设置SLIC的输入参数。</p>
+<h2 id="2-超像素介绍"><a href="#2-超像素介绍" class="headerlink" title="2    超像素介绍"></a>2    超像素介绍</h2><h3 id="2-1概念"><a href="#2-1概念" class="headerlink" title="2.1概念"></a>2.1概念</h3><p>超像素概念是2003年Xiaofeng Ren提出和发展起来的图像分割技术，它是指具有相似纹理、颜色、亮度等特征的相邻像素构成的有一定视觉意义的不规则像素块。它利用像素之间特征的相似性将像素分组,用少量的超像素代替大量的像素来表达图片特征,很大程度上降低了图像后处理的复杂度，所以通常作为分割<a target="_blank" rel="noopener" href="https://edu.csdn.net/course/detail/25300">算法</a>的预处理步骤。该技术已经被广泛的应用到图像分割、姿势估计、目标跟踪、目标识别等多个<a target="_blank" rel="noopener" href="https://edu.csdn.net/course/detail/10552">计算机视觉</a>任务等。</p>
+<h3 id="2-2特点"><a href="#2-2特点" class="headerlink" title="2.2特点"></a>2.2特点</h3><ul>
+<li>计算效率比较高</li>
+</ul>
+<p>虽然计算实际的超像素组可能很昂贵，但它允许我们将图像本身的复杂性从几十万像素降低到几百像素。这些超级像素中的每一个都将包含某种感知的、理想的语义值。</p>
+<ul>
+<li>含有更多的感知信息</li>
+</ul>
+<p>单个的像素网格其实并没有太大的感知意义，而超像素组中的像素具有共性，例如相似的颜色或纹理分布。下图展示了这种情况，单单将图中箭头所指的图像像素网格进行放大后并不能得到什么感知信息。</p>
+<ul>
+<li>过度分割可以减少像素损失</li>
+</ul>
+<p>大多数的超像素算法都会使图像失真。这意味着图像中的大部分重要边界都被找到了；但是它的代价是生成许多无关紧要的边界。虽然这听起来像是使用超级像素的问题，但实际上它会带来优点，这种过度扩张的最终结果是-从像素网格到超级像素映射的像素损失非常小。</p>
+<h2 id="3-SLIC算法介绍"><a href="#3-SLIC算法介绍" class="headerlink" title="3     SLIC算法介绍"></a>3     SLIC算法介绍</h2><h3 id="3-1算法原理"><a href="#3-1算法原理" class="headerlink" title="3.1算法原理"></a>3.1算法原理</h3><p>简单线性迭代聚类SILC（simple linear iterative clustering）是一种图像分割算法。默认情况下，该算法的唯一参数是k，约等于超像素尺寸的期望数量。对于CIELAB彩色空间的图像，在相隔S像素上采样得到初始聚类中心。为了产生大致相同尺寸的超像素，格点的距离是S&#x3D;N&#x2F;k−−−−√S&#x3D;N&#x2F;k。中心需要被移到3x3领域内的最低梯度处，这样做是为了避免超像素中心在边缘和噪声点上。</p>
+<p>　　接下来为每一个像素ii设置最近的聚类中心，该聚类中心的搜索区域要覆盖该像素的位置。这是本算法加速的关键，因为通过限制搜索区域的大小减小了距离计算的数量，并且相对于传统的k-means聚类算法有显著的速度优势，因为后者的每个像素都必须和所有的聚类中心进行比较。一个超像素的预期空间范围是约为SxS的区域，这里对于相似像素的搜索是在超像素中心的2Sx2S区域完成。</p>
+<p>　　一旦每个像素被关联到最近的聚类中心后，就通过求聚类中心所有像素的均值来执行聚类中心的更新。使用L2L2范数计算前一个聚类中心和当前聚类中心的残差。assignment和update步骤被重复迭代直到误差收敛，但是我们发现对于大多数图像10次迭代就够了。</p>
+<h3 id="3-2算法步骤"><a href="#3-2算法步骤" class="headerlink" title="3.2算法步骤"></a>3.2算法步骤</h3><ul>
+<li>步骤1-初始化种子点（聚类中心）按照设定的超像素组个数，在图像内均匀的分配一些种子点。假设图片总共有含有N 个像素点，预分割为 K 个相同尺寸的超像素，那么每个超像素的大小为N&#x2F; K ，则相邻种子点的距离或者步长近似可以表示为S&#x3D;sqrt(N&#x2F;K)。</li>
+<li>步骤2-在种子点的n*n邻域内重新选择种子点（一般取n&#x3D;3）。首先计算该邻域内所有像素点的梯度值；然后将种子点移到该邻域内梯度最小的地方。这样做的目的是为了避免种子点落在梯度较大的轮廓边界上，以免影响后续聚类效果。</li>
+<li>步骤3-在每个种子点周围的邻域内为每个像素点分配类标签（即属于哪个聚类中心）。和标准的k-means在整张图中搜索不同，SLIC的搜索范围限制为2S_2S，可以加速算法收敛，具体的区别如下图所示。需要注意的是，期望的超像素尺寸为S_S，但是搜索的范围是2S*2S。</li>
+</ul>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2020/04/kmean.png" srcset="/img/loading.gif" lazyload></p>
+<p>图3-1 标准K-means和SLIC搜索范围区别</p>
+<ul>
+<li>步骤4-距离度量。具体包括颜色和空间距离。对于每个搜索到的像素点，分别计算它到该种子点之间的距离。具体的距离公式如下所示：</li>
+</ul>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2020/04/juli.png" srcset="/img/loading.gif" lazyload></p>
+<p>图3-2 距离公式</p>
+<h3 id="3-3算法调用"><a href="#3-3算法调用" class="headerlink" title="3.3算法调用"></a>3.3算法调用</h3><p>slic(image,<br>n_segments&#x3D;100,<br>compactness&#x3D;10,<br>max_iter&#x3D;10,<br>sigma&#x3D;0,<br>spacing&#x3D;None,<br>multichannel&#x3D;True,<br>convert2lab&#x3D;None,<br>enforce_connectivity&#x3D;True,<br>min_size_factor&#x3D;0.5,<br>max_size_factor&#x3D;3,<br>slic_zero&#x3D;False)</p>
+<p>image 2D, 3D or 4D 数组</p>
+<p>n_segments超像素近似个数</p>
+<p>max_iter最大k均值迭代次数</p>
+<p>sigma高斯平滑核宽</p>
+<p>本实验中支持调整的参数有两个：n_segments, sigma</p>
+<h2 id="4-程序说明"><a href="#4-程序说明" class="headerlink" title="4     程序说明"></a>4     程序说明</h2><h3 id="4-1主程序流程图"><a href="#4-1主程序流程图" class="headerlink" title="4.1主程序流程图"></a>4.1主程序流程图</h3><p><img src="https://xinhaojin.github.io/imgs-host/past/2020/04/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200430194359.png" srcset="/img/loading.gif" lazyload></p>
+<p>图4-1 主程序流程图(不含UI界面事件)</p>
+<h3 id="4-2主要函数说明"><a href="#4-2主要函数说明" class="headerlink" title="4.2主要函数说明"></a>4.2主要函数说明</h3><p>表4-1 主要函数说明</p>
+<table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>功能</th>
+<th>输入</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Read_video(path,file_name)</td>
+<td>把视频转化为很多图片，并且提取音频文件</td>
+<td>视频路径、文件名</td>
+<td>帧率、尺寸</td>
+</tr>
+<tr>
+<td>Super_pixel(path,numSegments,numSigma,outputDir,outputFilename)</td>
+<td>把单张图片转为超像素图像</td>
+<td>图片路径、超像素个数、平滑度、输出路径、输出文件名</td>
+<td>无</td>
+</tr>
+<tr>
+<td>Picture_conversion(inputDir,outputDir,numSegments,numSigma)</td>
+<td>调用Super_pixel批量把图片转化成超像素图像</td>
+<td>源目录、输出目录、超像素个数、平滑度</td>
+<td>无</td>
+</tr>
+<tr>
+<td>Create_video(videoDir,fps,height,width)</td>
+<td>把批量的超像素图像合成为视频并进行压缩，加入音频</td>
+<td>视频路径、帧率、尺寸</td>
+<td>无</td>
+</tr>
+</tbody></table>
+<h2 id="5-功能测试"><a href="#5-功能测试" class="headerlink" title="5     功能测试"></a>5     功能测试</h2><p>图形界面有3个可修改的参数和4个按钮，如图5-1</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2020/04/5-1-1024x781.png" srcset="/img/loading.gif" lazyload></p>
+<p>图5-1 原视频</p>
+<p>点击开始转换按钮，经过一段漫长的等待时间，显示转换成功</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2020/04/5-2-1024x724.png" srcset="/img/loading.gif" lazyload></p>
+<p>图5-2 转换成功</p>
+<p>注意到第二个播放按钮变为可用，点击播放转换后的视频</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2020/04/5-3-1024x781.png" srcset="/img/loading.gif" lazyload></p>
+<p>图5-3 播放转换后的视频</p>
+<p>不同参数情况下的转换结果：</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2020/04/5-4-592x1024.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>图5-4 n_segments&#x3D;100,sigma&#x3D;0</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2020/04/5-5-592x1024.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>图5-5 n_segments&#x3D;100,sigma&#x3D;5</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2020/04/5-6-592x1024.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>图5-6 n_segments&#x3D;100,sigma&#x3D;10</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2020/04/5-7-1-592x1024.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>图5-7 n_segments&#x3D;500,sigma&#x3D;5</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2020/04/5-8-592x1024.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>图5-4 n_segments&#x3D;1000,sigma&#x3D;5</p>
+<h2 id="6-实验总结"><a href="#6-实验总结" class="headerlink" title="6     实验总结"></a>6     实验总结</h2><p>本次实验有一定的挑战性，一方面是还没用PyQt5写过界面，另一方面，平时做的都是单张图像处理，还没做过视频处理，有些不知所措。查阅资料后发现没有能够直接对视频对象进行转换的，所以就确定了基本思路：把每一帧图像单独拆分出来进行超像素转换，再组合成新的视频，然后把原视频的音频信息再加入到新视频中。碰到的难点主要在单张图像的超像素转换和存储、视频的压缩以及在图形化界面中的视频播放。经过一番折腾也算是基本完成了任务需求，也积累了不少相关的开发经验，受益良多，很有意义。</p>
+<h2 id="7-源码"><a href="#7-源码" class="headerlink" title="7     源码"></a>7     源码</h2><h3 id="test-ui"><a href="#test-ui" class="headerlink" title="test.ui"></a>test.ui</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ui</span> <span class="attr">version</span>=<span class="string">&quot;4.0&quot;</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">class</span>&gt;</span>SuperpixelVideo<span class="tag">&lt;/<span class="name">class</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">widget</span> <span class="attr">class</span>=<span class="string">&quot;QMainWindow&quot;</span> <span class="attr">name</span>=<span class="string">&quot;SuperpixelVideo&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;geometry&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">rect</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">x</span>&gt;</span>0<span class="tag">&lt;/<span class="name">x</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">y</span>&gt;</span>0<span class="tag">&lt;/<span class="name">y</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">width</span>&gt;</span>1120<span class="tag">&lt;/<span class="name">width</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">height</span>&gt;</span>817<span class="tag">&lt;/<span class="name">height</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">rect</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;font&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">font</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">pointsize</span>&gt;</span>9<span class="tag">&lt;/<span class="name">pointsize</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;windowTitle&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">string</span>&gt;</span>MainWindow<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">widget</span> <span class="attr">class</span>=<span class="string">&quot;QWidget&quot;</span> <span class="attr">name</span>=<span class="string">&quot;centralwidget&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">widget</span> <span class="attr">class</span>=<span class="string">&quot;QLabel&quot;</span> <span class="attr">name</span>=<span class="string">&quot;n_segments&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;geometry&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">rect</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">x</span>&gt;</span>80<span class="tag">&lt;/<span class="name">x</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">y</span>&gt;</span>40<span class="tag">&lt;/<span class="name">y</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">width</span>&gt;</span>151<span class="tag">&lt;/<span class="name">width</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">height</span>&gt;</span>51<span class="tag">&lt;/<span class="name">height</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">rect</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;minimumSize&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">size</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">width</span>&gt;</span>16<span class="tag">&lt;/<span class="name">width</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">height</span>&gt;</span>16<span class="tag">&lt;/<span class="name">height</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">size</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;font&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">font</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">pointsize</span>&gt;</span>16<span class="tag">&lt;/<span class="name">pointsize</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">weight</span>&gt;</span>75<span class="tag">&lt;/<span class="name">weight</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">bold</span>&gt;</span>true<span class="tag">&lt;/<span class="name">bold</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">underline</span>&gt;</span>false<span class="tag">&lt;/<span class="name">underline</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;text&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">string</span>&gt;</span>超像素个数<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;textFormat&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">enum</span>&gt;</span>Qt::AutoText<span class="tag">&lt;/<span class="name">enum</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">widget</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">widget</span> <span class="attr">class</span>=<span class="string">&quot;QLabel&quot;</span> <span class="attr">name</span>=<span class="string">&quot;sigma&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;geometry&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">rect</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">x</span>&gt;</span>140<span class="tag">&lt;/<span class="name">x</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">y</span>&gt;</span>90<span class="tag">&lt;/<span class="name">y</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">width</span>&gt;</span>81<span class="tag">&lt;/<span class="name">width</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">height</span>&gt;</span>31<span class="tag">&lt;/<span class="name">height</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">rect</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;font&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">font</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">pointsize</span>&gt;</span>16<span class="tag">&lt;/<span class="name">pointsize</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">weight</span>&gt;</span>75<span class="tag">&lt;/<span class="name">weight</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">bold</span>&gt;</span>true<span class="tag">&lt;/<span class="name">bold</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">underline</span>&gt;</span>false<span class="tag">&lt;/<span class="name">underline</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;text&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">string</span>&gt;</span>平滑度<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">widget</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">widget</span> <span class="attr">class</span>=<span class="string">&quot;QPushButton&quot;</span> <span class="attr">name</span>=<span class="string">&quot;cofirmButton&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;geometry&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">rect</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">x</span>&gt;</span>830<span class="tag">&lt;/<span class="name">x</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">y</span>&gt;</span>30<span class="tag">&lt;/<span class="name">y</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">width</span>&gt;</span>221<span class="tag">&lt;/<span class="name">width</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">height</span>&gt;</span>91<span class="tag">&lt;/<span class="name">height</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">rect</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;palette&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">palette</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">active</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">colorrole</span> <span class="attr">role</span>=<span class="string">&quot;Button&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">brush</span> <span class="attr">brushstyle</span>=<span class="string">&quot;SolidPattern&quot;</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">color</span> <span class="attr">alpha</span>=<span class="string">&quot;255&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">red</span>&gt;</span>85<span class="tag">&lt;/<span class="name">red</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">green</span>&gt;</span>170<span class="tag">&lt;/<span class="name">green</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">blue</span>&gt;</span>255<span class="tag">&lt;/<span class="name">blue</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">color</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">brush</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">colorrole</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">active</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">inactive</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">colorrole</span> <span class="attr">role</span>=<span class="string">&quot;Button&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">brush</span> <span class="attr">brushstyle</span>=<span class="string">&quot;SolidPattern&quot;</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">color</span> <span class="attr">alpha</span>=<span class="string">&quot;255&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">red</span>&gt;</span>85<span class="tag">&lt;/<span class="name">red</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">green</span>&gt;</span>170<span class="tag">&lt;/<span class="name">green</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">blue</span>&gt;</span>255<span class="tag">&lt;/<span class="name">blue</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">color</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">brush</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">colorrole</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">inactive</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">disabled</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">colorrole</span> <span class="attr">role</span>=<span class="string">&quot;Button&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">brush</span> <span class="attr">brushstyle</span>=<span class="string">&quot;SolidPattern&quot;</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">color</span> <span class="attr">alpha</span>=<span class="string">&quot;255&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">red</span>&gt;</span>85<span class="tag">&lt;/<span class="name">red</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">green</span>&gt;</span>170<span class="tag">&lt;/<span class="name">green</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">blue</span>&gt;</span>255<span class="tag">&lt;/<span class="name">blue</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">color</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">brush</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">colorrole</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">disabled</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">palette</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;font&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">font</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">pointsize</span>&gt;</span>28<span class="tag">&lt;/<span class="name">pointsize</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">weight</span>&gt;</span>75<span class="tag">&lt;/<span class="name">weight</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">italic</span>&gt;</span>false<span class="tag">&lt;/<span class="name">italic</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">bold</span>&gt;</span>true<span class="tag">&lt;/<span class="name">bold</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">strikeout</span>&gt;</span>false<span class="tag">&lt;/<span class="name">strikeout</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;text&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">string</span>&gt;</span>开始转换<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">widget</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">widget</span> <span class="attr">class</span>=<span class="string">&quot;QLabel&quot;</span> <span class="attr">name</span>=<span class="string">&quot;videoPath&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;geometry&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">rect</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">x</span>&gt;</span>110<span class="tag">&lt;/<span class="name">x</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">y</span>&gt;</span>0<span class="tag">&lt;/<span class="name">y</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">width</span>&gt;</span>121<span class="tag">&lt;/<span class="name">width</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">height</span>&gt;</span>51<span class="tag">&lt;/<span class="name">height</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">rect</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;font&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">font</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">pointsize</span>&gt;</span>16<span class="tag">&lt;/<span class="name">pointsize</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">weight</span>&gt;</span>75<span class="tag">&lt;/<span class="name">weight</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">bold</span>&gt;</span>true<span class="tag">&lt;/<span class="name">bold</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">underline</span>&gt;</span>false<span class="tag">&lt;/<span class="name">underline</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;text&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">string</span>&gt;</span>视频路径<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">widget</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">widget</span> <span class="attr">class</span>=<span class="string">&quot;QLineEdit&quot;</span> <span class="attr">name</span>=<span class="string">&quot;lineEdit01&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;geometry&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">rect</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">x</span>&gt;</span>240<span class="tag">&lt;/<span class="name">x</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">y</span>&gt;</span>10<span class="tag">&lt;/<span class="name">y</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">width</span>&gt;</span>351<span class="tag">&lt;/<span class="name">width</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">height</span>&gt;</span>31<span class="tag">&lt;/<span class="name">height</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">rect</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;font&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">font</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">pointsize</span>&gt;</span>14<span class="tag">&lt;/<span class="name">pointsize</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">widget</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">widget</span> <span class="attr">class</span>=<span class="string">&quot;QLineEdit&quot;</span> <span class="attr">name</span>=<span class="string">&quot;lineEdit02&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;geometry&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">rect</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">x</span>&gt;</span>240<span class="tag">&lt;/<span class="name">x</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">y</span>&gt;</span>50<span class="tag">&lt;/<span class="name">y</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">width</span>&gt;</span>81<span class="tag">&lt;/<span class="name">width</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">height</span>&gt;</span>31<span class="tag">&lt;/<span class="name">height</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">rect</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;font&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">font</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">pointsize</span>&gt;</span>14<span class="tag">&lt;/<span class="name">pointsize</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">widget</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">widget</span> <span class="attr">class</span>=<span class="string">&quot;QLineEdit&quot;</span> <span class="attr">name</span>=<span class="string">&quot;lineEdit03&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;geometry&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">rect</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">x</span>&gt;</span>240<span class="tag">&lt;/<span class="name">x</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">y</span>&gt;</span>90<span class="tag">&lt;/<span class="name">y</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">width</span>&gt;</span>81<span class="tag">&lt;/<span class="name">width</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">height</span>&gt;</span>31<span class="tag">&lt;/<span class="name">height</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">rect</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;font&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">font</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">pointsize</span>&gt;</span>14<span class="tag">&lt;/<span class="name">pointsize</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">widget</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">widget</span> <span class="attr">class</span>=<span class="string">&quot;QPushButton&quot;</span> <span class="attr">name</span>=<span class="string">&quot;button1&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;geometry&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">rect</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">x</span>&gt;</span>220<span class="tag">&lt;/<span class="name">x</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">y</span>&gt;</span>710<span class="tag">&lt;/<span class="name">y</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">width</span>&gt;</span>111<span class="tag">&lt;/<span class="name">width</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">height</span>&gt;</span>51<span class="tag">&lt;/<span class="name">height</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">rect</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;font&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">font</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">pointsize</span>&gt;</span>16<span class="tag">&lt;/<span class="name">pointsize</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">weight</span>&gt;</span>75<span class="tag">&lt;/<span class="name">weight</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">bold</span>&gt;</span>true<span class="tag">&lt;/<span class="name">bold</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;text&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">string</span>&gt;</span>播放<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">widget</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">widget</span> <span class="attr">class</span>=<span class="string">&quot;QWidget&quot;</span> <span class="attr">name</span>=<span class="string">&quot;verticalLayoutWidget&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;geometry&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">rect</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">x</span>&gt;</span>20<span class="tag">&lt;/<span class="name">x</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">y</span>&gt;</span>130<span class="tag">&lt;/<span class="name">y</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">width</span>&gt;</span>511<span class="tag">&lt;/<span class="name">width</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">height</span>&gt;</span>561<span class="tag">&lt;/<span class="name">height</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">rect</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">layout</span> <span class="attr">class</span>=<span class="string">&quot;QVBoxLayout&quot;</span> <span class="attr">name</span>=<span class="string">&quot;videoplayer1&quot;</span>/&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">widget</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">widget</span> <span class="attr">class</span>=<span class="string">&quot;QWidget&quot;</span> <span class="attr">name</span>=<span class="string">&quot;verticalLayoutWidget_2&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;geometry&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">rect</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">x</span>&gt;</span>580<span class="tag">&lt;/<span class="name">x</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">y</span>&gt;</span>130<span class="tag">&lt;/<span class="name">y</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">width</span>&gt;</span>521<span class="tag">&lt;/<span class="name">width</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">height</span>&gt;</span>561<span class="tag">&lt;/<span class="name">height</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">rect</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">layout</span> <span class="attr">class</span>=<span class="string">&quot;QVBoxLayout&quot;</span> <span class="attr">name</span>=<span class="string">&quot;videoplayer2&quot;</span>/&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">widget</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">widget</span> <span class="attr">class</span>=<span class="string">&quot;QPushButton&quot;</span> <span class="attr">name</span>=<span class="string">&quot;button2&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;enabled&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">bool</span>&gt;</span>false<span class="tag">&lt;/<span class="name">bool</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;geometry&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">rect</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">x</span>&gt;</span>780<span class="tag">&lt;/<span class="name">x</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">y</span>&gt;</span>710<span class="tag">&lt;/<span class="name">y</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">width</span>&gt;</span>111<span class="tag">&lt;/<span class="name">width</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">height</span>&gt;</span>51<span class="tag">&lt;/<span class="name">height</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">rect</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;font&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">font</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">pointsize</span>&gt;</span>16<span class="tag">&lt;/<span class="name">pointsize</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">weight</span>&gt;</span>75<span class="tag">&lt;/<span class="name">weight</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">bold</span>&gt;</span>true<span class="tag">&lt;/<span class="name">bold</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;text&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">string</span>&gt;</span>播放<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">widget</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">widget</span> <span class="attr">class</span>=<span class="string">&quot;QLabel&quot;</span> <span class="attr">name</span>=<span class="string">&quot;label&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;geometry&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">rect</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">x</span>&gt;</span>620<span class="tag">&lt;/<span class="name">x</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">y</span>&gt;</span>60<span class="tag">&lt;/<span class="name">y</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">width</span>&gt;</span>211<span class="tag">&lt;/<span class="name">width</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">height</span>&gt;</span>41<span class="tag">&lt;/<span class="name">height</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">rect</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;palette&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">palette</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">active</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">colorrole</span> <span class="attr">role</span>=<span class="string">&quot;WindowText&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">brush</span> <span class="attr">brushstyle</span>=<span class="string">&quot;SolidPattern&quot;</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">color</span> <span class="attr">alpha</span>=<span class="string">&quot;255&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">red</span>&gt;</span>255<span class="tag">&lt;/<span class="name">red</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">green</span>&gt;</span>0<span class="tag">&lt;/<span class="name">green</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">blue</span>&gt;</span>0<span class="tag">&lt;/<span class="name">blue</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">color</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">brush</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">colorrole</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">active</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">inactive</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">colorrole</span> <span class="attr">role</span>=<span class="string">&quot;WindowText&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">brush</span> <span class="attr">brushstyle</span>=<span class="string">&quot;SolidPattern&quot;</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">color</span> <span class="attr">alpha</span>=<span class="string">&quot;255&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">red</span>&gt;</span>255<span class="tag">&lt;/<span class="name">red</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">green</span>&gt;</span>0<span class="tag">&lt;/<span class="name">green</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">blue</span>&gt;</span>0<span class="tag">&lt;/<span class="name">blue</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">color</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">brush</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">colorrole</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">inactive</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">disabled</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">colorrole</span> <span class="attr">role</span>=<span class="string">&quot;WindowText&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">brush</span> <span class="attr">brushstyle</span>=<span class="string">&quot;SolidPattern&quot;</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">color</span> <span class="attr">alpha</span>=<span class="string">&quot;255&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">red</span>&gt;</span>120<span class="tag">&lt;/<span class="name">red</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">green</span>&gt;</span>120<span class="tag">&lt;/<span class="name">green</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">blue</span>&gt;</span>120<span class="tag">&lt;/<span class="name">blue</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">color</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">brush</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">colorrole</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">disabled</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">palette</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;font&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">font</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">pointsize</span>&gt;</span>16<span class="tag">&lt;/<span class="name">pointsize</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">weight</span>&gt;</span>75<span class="tag">&lt;/<span class="name">weight</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">bold</span>&gt;</span>true<span class="tag">&lt;/<span class="name">bold</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;layoutDirection&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">enum</span>&gt;</span>Qt::LeftToRight<span class="tag">&lt;/<span class="name">enum</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;text&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">string</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">widget</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">widget</span> <span class="attr">class</span>=<span class="string">&quot;QLabel&quot;</span> <span class="attr">name</span>=<span class="string">&quot;label_2&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;geometry&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">rect</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">x</span>&gt;</span>340<span class="tag">&lt;/<span class="name">x</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">y</span>&gt;</span>100<span class="tag">&lt;/<span class="name">y</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">width</span>&gt;</span>72<span class="tag">&lt;/<span class="name">width</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">height</span>&gt;</span>15<span class="tag">&lt;/<span class="name">height</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">rect</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;text&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">string</span>&gt;</span>0为不平滑<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">widget</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">widget</span> <span class="attr">class</span>=<span class="string">&quot;QLabel&quot;</span> <span class="attr">name</span>=<span class="string">&quot;label_3&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;geometry&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">rect</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">x</span>&gt;</span>340<span class="tag">&lt;/<span class="name">x</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">y</span>&gt;</span>60<span class="tag">&lt;/<span class="name">y</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">width</span>&gt;</span>72<span class="tag">&lt;/<span class="name">width</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">height</span>&gt;</span>15<span class="tag">&lt;/<span class="name">height</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">rect</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;text&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">string</span>&gt;</span>近似<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">widget</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">widget</span> <span class="attr">class</span>=<span class="string">&quot;QLabel&quot;</span> <span class="attr">name</span>=<span class="string">&quot;label_4&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;geometry&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">rect</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">x</span>&gt;</span>610<span class="tag">&lt;/<span class="name">x</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">y</span>&gt;</span>20<span class="tag">&lt;/<span class="name">y</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">width</span>&gt;</span>91<span class="tag">&lt;/<span class="name">width</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">height</span>&gt;</span>16<span class="tag">&lt;/<span class="name">height</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">rect</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;text&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">string</span>&gt;</span>单左斜杠&#x27;/&#x27;<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">widget</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">widget</span> <span class="attr">class</span>=<span class="string">&quot;QPushButton&quot;</span> <span class="attr">name</span>=<span class="string">&quot;button3&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;geometry&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">rect</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">x</span>&gt;</span>500<span class="tag">&lt;/<span class="name">x</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">y</span>&gt;</span>710<span class="tag">&lt;/<span class="name">y</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">width</span>&gt;</span>111<span class="tag">&lt;/<span class="name">width</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">height</span>&gt;</span>51<span class="tag">&lt;/<span class="name">height</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">rect</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;font&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">font</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">pointsize</span>&gt;</span>16<span class="tag">&lt;/<span class="name">pointsize</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">weight</span>&gt;</span>75<span class="tag">&lt;/<span class="name">weight</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">bold</span>&gt;</span>true<span class="tag">&lt;/<span class="name">bold</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;text&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">string</span>&gt;</span>停止<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">widget</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">widget</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">widget</span> <span class="attr">class</span>=<span class="string">&quot;QMenuBar&quot;</span> <span class="attr">name</span>=<span class="string">&quot;menubar&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;geometry&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">rect</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">x</span>&gt;</span>0<span class="tag">&lt;/<span class="name">x</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">y</span>&gt;</span>0<span class="tag">&lt;/<span class="name">y</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">width</span>&gt;</span>1120<span class="tag">&lt;/<span class="name">width</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">height</span>&gt;</span>26<span class="tag">&lt;/<span class="name">height</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">rect</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">widget</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">widget</span> <span class="attr">class</span>=<span class="string">&quot;QStatusBar&quot;</span> <span class="attr">name</span>=<span class="string">&quot;statusbar&quot;</span>/&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">widget</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">resources</span>/&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">connections</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ui</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Ui-test-py"><a href="#Ui-test-py" class="headerlink" title="Ui_test.py"></a>Ui_test.py</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Form implementation generated from reading ui file &#x27;e:testtest.ui&#x27;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Created by: PyQt5 UI code generator 5.13.0</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># WARNING! All changes made in this file will be lost!</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> PyQt5 <span class="keyword">import</span> QtCore, QtGui, QtWidgets</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Ui_SuperpixelVideo</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">setupUi</span>(<span class="params">self, SuperpixelVideo</span>):</span><br><span class="line">        SuperpixelVideo.setObjectName(<span class="string">&quot;SuperpixelVideo&quot;</span>)</span><br><span class="line">        SuperpixelVideo.resize(<span class="number">1120</span>, <span class="number">817</span>)</span><br><span class="line">        font = QtGui.QFont()</span><br><span class="line">        font.setPointSize(<span class="number">9</span>)</span><br><span class="line">        SuperpixelVideo.setFont(font)</span><br><span class="line">        <span class="variable language_">self</span>.centralwidget = QtWidgets.QWidget(SuperpixelVideo)</span><br><span class="line">        <span class="variable language_">self</span>.centralwidget.setObjectName(<span class="string">&quot;centralwidget&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.n_segments = QtWidgets.QLabel(<span class="variable language_">self</span>.centralwidget)</span><br><span class="line">        <span class="variable language_">self</span>.n_segments.setGeometry(QtCore.QRect(<span class="number">80</span>, <span class="number">40</span>, <span class="number">151</span>, <span class="number">51</span>))</span><br><span class="line">        <span class="variable language_">self</span>.n_segments.setMinimumSize(QtCore.QSize(<span class="number">16</span>, <span class="number">16</span>))</span><br><span class="line">        font = QtGui.QFont()</span><br><span class="line">        font.setPointSize(<span class="number">16</span>)</span><br><span class="line">        font.setBold(<span class="literal">True</span>)</span><br><span class="line">        font.setUnderline(<span class="literal">False</span>)</span><br><span class="line">        font.setWeight(<span class="number">75</span>)</span><br><span class="line">        <span class="variable language_">self</span>.n_segments.setFont(font)</span><br><span class="line">        <span class="variable language_">self</span>.n_segments.setTextFormat(QtCore.Qt.AutoText)</span><br><span class="line">        <span class="variable language_">self</span>.n_segments.setObjectName(<span class="string">&quot;n_segments&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.sigma = QtWidgets.QLabel(<span class="variable language_">self</span>.centralwidget)</span><br><span class="line">        <span class="variable language_">self</span>.sigma.setGeometry(QtCore.QRect(<span class="number">140</span>, <span class="number">90</span>, <span class="number">81</span>, <span class="number">31</span>))</span><br><span class="line">        font = QtGui.QFont()</span><br><span class="line">        font.setPointSize(<span class="number">16</span>)</span><br><span class="line">        font.setBold(<span class="literal">True</span>)</span><br><span class="line">        font.setUnderline(<span class="literal">False</span>)</span><br><span class="line">        font.setWeight(<span class="number">75</span>)</span><br><span class="line">        <span class="variable language_">self</span>.sigma.setFont(font)</span><br><span class="line">        <span class="variable language_">self</span>.sigma.setObjectName(<span class="string">&quot;sigma&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.cofirmButton = QtWidgets.QPushButton(<span class="variable language_">self</span>.centralwidget)</span><br><span class="line">        <span class="variable language_">self</span>.cofirmButton.setGeometry(QtCore.QRect(<span class="number">830</span>, <span class="number">30</span>, <span class="number">221</span>, <span class="number">91</span>))</span><br><span class="line">        palette = QtGui.QPalette()</span><br><span class="line">        brush = QtGui.QBrush(QtGui.QColor(<span class="number">85</span>, <span class="number">170</span>, <span class="number">255</span>))</span><br><span class="line">        brush.setStyle(QtCore.Qt.SolidPattern)</span><br><span class="line">        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Button, brush)</span><br><span class="line">        brush = QtGui.QBrush(QtGui.QColor(<span class="number">85</span>, <span class="number">170</span>, <span class="number">255</span>))</span><br><span class="line">        brush.setStyle(QtCore.Qt.SolidPattern)</span><br><span class="line">        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Button, brush)</span><br><span class="line">        brush = QtGui.QBrush(QtGui.QColor(<span class="number">85</span>, <span class="number">170</span>, <span class="number">255</span>))</span><br><span class="line">        brush.setStyle(QtCore.Qt.SolidPattern)</span><br><span class="line">        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Button, brush)</span><br><span class="line">        <span class="variable language_">self</span>.cofirmButton.setPalette(palette)</span><br><span class="line">        font = QtGui.QFont()</span><br><span class="line">        font.setPointSize(<span class="number">28</span>)</span><br><span class="line">        font.setBold(<span class="literal">True</span>)</span><br><span class="line">        font.setItalic(<span class="literal">False</span>)</span><br><span class="line">        font.setWeight(<span class="number">75</span>)</span><br><span class="line">        font.setStrikeOut(<span class="literal">False</span>)</span><br><span class="line">        <span class="variable language_">self</span>.cofirmButton.setFont(font)</span><br><span class="line">        <span class="variable language_">self</span>.cofirmButton.setObjectName(<span class="string">&quot;cofirmButton&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.videoPath = QtWidgets.QLabel(<span class="variable language_">self</span>.centralwidget)</span><br><span class="line">        <span class="variable language_">self</span>.videoPath.setGeometry(QtCore.QRect(<span class="number">110</span>, <span class="number">0</span>, <span class="number">121</span>, <span class="number">51</span>))</span><br><span class="line">        font = QtGui.QFont()</span><br><span class="line">        font.setPointSize(<span class="number">16</span>)</span><br><span class="line">        font.setBold(<span class="literal">True</span>)</span><br><span class="line">        font.setUnderline(<span class="literal">False</span>)</span><br><span class="line">        font.setWeight(<span class="number">75</span>)</span><br><span class="line">        <span class="variable language_">self</span>.videoPath.setFont(font)</span><br><span class="line">        <span class="variable language_">self</span>.videoPath.setObjectName(<span class="string">&quot;videoPath&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.lineEdit01 = QtWidgets.QLineEdit(<span class="variable language_">self</span>.centralwidget)</span><br><span class="line">        <span class="variable language_">self</span>.lineEdit01.setGeometry(QtCore.QRect(<span class="number">240</span>, <span class="number">10</span>, <span class="number">351</span>, <span class="number">31</span>))</span><br><span class="line">        font = QtGui.QFont()</span><br><span class="line">        font.setPointSize(<span class="number">14</span>)</span><br><span class="line">        <span class="variable language_">self</span>.lineEdit01.setFont(font)</span><br><span class="line">        <span class="variable language_">self</span>.lineEdit01.setObjectName(<span class="string">&quot;lineEdit01&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.lineEdit02 = QtWidgets.QLineEdit(<span class="variable language_">self</span>.centralwidget)</span><br><span class="line">        <span class="variable language_">self</span>.lineEdit02.setGeometry(QtCore.QRect(<span class="number">240</span>, <span class="number">50</span>, <span class="number">81</span>, <span class="number">31</span>))</span><br><span class="line">        font = QtGui.QFont()</span><br><span class="line">        font.setPointSize(<span class="number">14</span>)</span><br><span class="line">        <span class="variable language_">self</span>.lineEdit02.setFont(font)</span><br><span class="line">        <span class="variable language_">self</span>.lineEdit02.setObjectName(<span class="string">&quot;lineEdit02&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.lineEdit03 = QtWidgets.QLineEdit(<span class="variable language_">self</span>.centralwidget)</span><br><span class="line">        <span class="variable language_">self</span>.lineEdit03.setGeometry(QtCore.QRect(<span class="number">240</span>, <span class="number">90</span>, <span class="number">81</span>, <span class="number">31</span>))</span><br><span class="line">        font = QtGui.QFont()</span><br><span class="line">        font.setPointSize(<span class="number">14</span>)</span><br><span class="line">        <span class="variable language_">self</span>.lineEdit03.setFont(font)</span><br><span class="line">        <span class="variable language_">self</span>.lineEdit03.setObjectName(<span class="string">&quot;lineEdit03&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.button1 = QtWidgets.QPushButton(<span class="variable language_">self</span>.centralwidget)</span><br><span class="line">        <span class="variable language_">self</span>.button1.setGeometry(QtCore.QRect(<span class="number">220</span>, <span class="number">710</span>, <span class="number">111</span>, <span class="number">51</span>))</span><br><span class="line">        font = QtGui.QFont()</span><br><span class="line">        font.setPointSize(<span class="number">16</span>)</span><br><span class="line">        font.setBold(<span class="literal">True</span>)</span><br><span class="line">        font.setWeight(<span class="number">75</span>)</span><br><span class="line">        <span class="variable language_">self</span>.button1.setFont(font)</span><br><span class="line">        <span class="variable language_">self</span>.button1.setObjectName(<span class="string">&quot;button1&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.verticalLayoutWidget = QtWidgets.QWidget(<span class="variable language_">self</span>.centralwidget)</span><br><span class="line">        <span class="variable language_">self</span>.verticalLayoutWidget.setGeometry(QtCore.QRect(<span class="number">20</span>, <span class="number">130</span>, <span class="number">511</span>, <span class="number">561</span>))</span><br><span class="line">        <span class="variable language_">self</span>.verticalLayoutWidget.setObjectName(<span class="string">&quot;verticalLayoutWidget&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.videoplayer1 = QtWidgets.QVBoxLayout(<span class="variable language_">self</span>.verticalLayoutWidget)</span><br><span class="line">        <span class="variable language_">self</span>.videoplayer1.setContentsMargins(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">        <span class="variable language_">self</span>.videoplayer1.setObjectName(<span class="string">&quot;videoplayer1&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.verticalLayoutWidget_2 = QtWidgets.QWidget(<span class="variable language_">self</span>.centralwidget)</span><br><span class="line">        <span class="variable language_">self</span>.verticalLayoutWidget_2.setGeometry(QtCore.QRect(<span class="number">580</span>, <span class="number">130</span>, <span class="number">521</span>, <span class="number">561</span>))</span><br><span class="line">        <span class="variable language_">self</span>.verticalLayoutWidget_2.setObjectName(<span class="string">&quot;verticalLayoutWidget_2&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.videoplayer2 = QtWidgets.QVBoxLayout(<span class="variable language_">self</span>.verticalLayoutWidget_2)</span><br><span class="line">        <span class="variable language_">self</span>.videoplayer2.setContentsMargins(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">        <span class="variable language_">self</span>.videoplayer2.setObjectName(<span class="string">&quot;videoplayer2&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.button2 = QtWidgets.QPushButton(<span class="variable language_">self</span>.centralwidget)</span><br><span class="line">        <span class="variable language_">self</span>.button2.setEnabled(<span class="literal">False</span>)</span><br><span class="line">        <span class="variable language_">self</span>.button2.setGeometry(QtCore.QRect(<span class="number">780</span>, <span class="number">710</span>, <span class="number">111</span>, <span class="number">51</span>))</span><br><span class="line">        font = QtGui.QFont()</span><br><span class="line">        font.setPointSize(<span class="number">16</span>)</span><br><span class="line">        font.setBold(<span class="literal">True</span>)</span><br><span class="line">        font.setWeight(<span class="number">75</span>)</span><br><span class="line">        <span class="variable language_">self</span>.button2.setFont(font)</span><br><span class="line">        <span class="variable language_">self</span>.button2.setObjectName(<span class="string">&quot;button2&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.label = QtWidgets.QLabel(<span class="variable language_">self</span>.centralwidget)</span><br><span class="line">        <span class="variable language_">self</span>.label.setGeometry(QtCore.QRect(<span class="number">620</span>, <span class="number">60</span>, <span class="number">211</span>, <span class="number">41</span>))</span><br><span class="line">        palette = QtGui.QPalette()</span><br><span class="line">        brush = QtGui.QBrush(QtGui.QColor(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>))</span><br><span class="line">        brush.setStyle(QtCore.Qt.SolidPattern)</span><br><span class="line">        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.WindowText, brush)</span><br><span class="line">        brush = QtGui.QBrush(QtGui.QColor(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>))</span><br><span class="line">        brush.setStyle(QtCore.Qt.SolidPattern)</span><br><span class="line">        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.WindowText, brush)</span><br><span class="line">        brush = QtGui.QBrush(QtGui.QColor(<span class="number">120</span>, <span class="number">120</span>, <span class="number">120</span>))</span><br><span class="line">        brush.setStyle(QtCore.Qt.SolidPattern)</span><br><span class="line">        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.WindowText, brush)</span><br><span class="line">        <span class="variable language_">self</span>.label.setPalette(palette)</span><br><span class="line">        font = QtGui.QFont()</span><br><span class="line">        font.setPointSize(<span class="number">16</span>)</span><br><span class="line">        font.setBold(<span class="literal">True</span>)</span><br><span class="line">        font.setWeight(<span class="number">75</span>)</span><br><span class="line">        <span class="variable language_">self</span>.label.setFont(font)</span><br><span class="line">        <span class="variable language_">self</span>.label.setLayoutDirection(QtCore.Qt.LeftToRight)</span><br><span class="line">        <span class="variable language_">self</span>.label.setText(<span class="string">&quot;&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.label.setObjectName(<span class="string">&quot;label&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.label_2 = QtWidgets.QLabel(<span class="variable language_">self</span>.centralwidget)</span><br><span class="line">        <span class="variable language_">self</span>.label_2.setGeometry(QtCore.QRect(<span class="number">340</span>, <span class="number">100</span>, <span class="number">72</span>, <span class="number">15</span>))</span><br><span class="line">        <span class="variable language_">self</span>.label_2.setObjectName(<span class="string">&quot;label_2&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.label_3 = QtWidgets.QLabel(<span class="variable language_">self</span>.centralwidget)</span><br><span class="line">        <span class="variable language_">self</span>.label_3.setGeometry(QtCore.QRect(<span class="number">340</span>, <span class="number">60</span>, <span class="number">72</span>, <span class="number">15</span>))</span><br><span class="line">        <span class="variable language_">self</span>.label_3.setObjectName(<span class="string">&quot;label_3&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.label_4 = QtWidgets.QLabel(<span class="variable language_">self</span>.centralwidget)</span><br><span class="line">        <span class="variable language_">self</span>.label_4.setGeometry(QtCore.QRect(<span class="number">610</span>, <span class="number">20</span>, <span class="number">91</span>, <span class="number">16</span>))</span><br><span class="line">        <span class="variable language_">self</span>.label_4.setObjectName(<span class="string">&quot;label_4&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.button3 = QtWidgets.QPushButton(<span class="variable language_">self</span>.centralwidget)</span><br><span class="line">        <span class="variable language_">self</span>.button3.setGeometry(QtCore.QRect(<span class="number">500</span>, <span class="number">710</span>, <span class="number">111</span>, <span class="number">51</span>))</span><br><span class="line">        font = QtGui.QFont()</span><br><span class="line">        font.setPointSize(<span class="number">16</span>)</span><br><span class="line">        font.setBold(<span class="literal">True</span>)</span><br><span class="line">        font.setWeight(<span class="number">75</span>)</span><br><span class="line">        <span class="variable language_">self</span>.button3.setFont(font)</span><br><span class="line">        <span class="variable language_">self</span>.button3.setObjectName(<span class="string">&quot;button3&quot;</span>)</span><br><span class="line">        SuperpixelVideo.setCentralWidget(<span class="variable language_">self</span>.centralwidget)</span><br><span class="line">        <span class="variable language_">self</span>.menubar = QtWidgets.QMenuBar(SuperpixelVideo)</span><br><span class="line">        <span class="variable language_">self</span>.menubar.setGeometry(QtCore.QRect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">1120</span>, <span class="number">26</span>))</span><br><span class="line">        <span class="variable language_">self</span>.menubar.setObjectName(<span class="string">&quot;menubar&quot;</span>)</span><br><span class="line">        SuperpixelVideo.setMenuBar(<span class="variable language_">self</span>.menubar)</span><br><span class="line">        <span class="variable language_">self</span>.statusbar = QtWidgets.QStatusBar(SuperpixelVideo)</span><br><span class="line">        <span class="variable language_">self</span>.statusbar.setObjectName(<span class="string">&quot;statusbar&quot;</span>)</span><br><span class="line">        SuperpixelVideo.setStatusBar(<span class="variable language_">self</span>.statusbar)</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">self</span>.retranslateUi(SuperpixelVideo)</span><br><span class="line">        QtCore.QMetaObject.connectSlotsByName(SuperpixelVideo)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">retranslateUi</span>(<span class="params">self, SuperpixelVideo</span>):</span><br><span class="line">        _translate = QtCore.QCoreApplication.translate</span><br><span class="line">        SuperpixelVideo.setWindowTitle(_translate(<span class="string">&quot;SuperpixelVideo&quot;</span>, <span class="string">&quot;MainWindow&quot;</span>))</span><br><span class="line">        <span class="variable language_">self</span>.n_segments.setText(_translate(<span class="string">&quot;SuperpixelVideo&quot;</span>, <span class="string">&quot;超像素个数&quot;</span>))</span><br><span class="line">        <span class="variable language_">self</span>.sigma.setText(_translate(<span class="string">&quot;SuperpixelVideo&quot;</span>, <span class="string">&quot;平滑度&quot;</span>))</span><br><span class="line">        <span class="variable language_">self</span>.cofirmButton.setText(_translate(<span class="string">&quot;SuperpixelVideo&quot;</span>, <span class="string">&quot;开始转换&quot;</span>))</span><br><span class="line">        <span class="variable language_">self</span>.videoPath.setText(_translate(<span class="string">&quot;SuperpixelVideo&quot;</span>, <span class="string">&quot;视频路径&quot;</span>))</span><br><span class="line">        <span class="variable language_">self</span>.button1.setText(_translate(<span class="string">&quot;SuperpixelVideo&quot;</span>, <span class="string">&quot;播放&quot;</span>))</span><br><span class="line">        <span class="variable language_">self</span>.button2.setText(_translate(<span class="string">&quot;SuperpixelVideo&quot;</span>, <span class="string">&quot;播放&quot;</span>))</span><br><span class="line">        <span class="variable language_">self</span>.label_2.setText(_translate(<span class="string">&quot;SuperpixelVideo&quot;</span>, <span class="string">&quot;0为不平滑&quot;</span>))</span><br><span class="line">        <span class="variable language_">self</span>.label_3.setText(_translate(<span class="string">&quot;SuperpixelVideo&quot;</span>, <span class="string">&quot;近似&quot;</span>))</span><br><span class="line">        <span class="variable language_">self</span>.label_4.setText(_translate(<span class="string">&quot;SuperpixelVideo&quot;</span>, <span class="string">&quot;单左斜杠&#x27;/&#x27;&quot;</span>))</span><br><span class="line">        <span class="variable language_">self</span>.button3.setText(_translate(<span class="string">&quot;SuperpixelVideo&quot;</span>, <span class="string">&quot;停止&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<h3 id="main-py"><a href="#main-py" class="headerlink" title="main.py"></a>main.py</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> glob</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> subprocess <span class="keyword">import</span> call</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> ffmpy3 <span class="keyword">import</span> FFmpeg</span><br><span class="line"><span class="keyword">from</span> moviepy.editor <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> PyQt5 <span class="keyword">import</span> QtCore, QtGui, QtWidgets</span><br><span class="line"><span class="keyword">from</span> PyQt5.QtCore <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> PyQt5.QtGui <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> PyQt5.QtMultimedia <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> PyQt5.QtMultimediaWidgets <span class="keyword">import</span> QVideoWidget</span><br><span class="line"><span class="keyword">from</span> PyQt5.QtWidgets <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> skimage <span class="keyword">import</span> io</span><br><span class="line"><span class="keyword">from</span> skimage.segmentation <span class="keyword">import</span> mark_boundaries, slic</span><br><span class="line"><span class="keyword">from</span> skimage.util <span class="keyword">import</span> img_as_float</span><br><span class="line"><span class="keyword">from</span> Ui_test <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">Read_video</span>(<span class="params">path,file_name</span>):</span><br><span class="line">    video_path = path+file_name</span><br><span class="line">    sourceFileName=file_name</span><br><span class="line">    times=<span class="number">0</span></span><br><span class="line">    <span class="comment">#提取视频的频率，每1帧提取一个</span></span><br><span class="line">    frameFrequency=<span class="number">1</span></span><br><span class="line">    outPutDirName=path+<span class="string">&quot;input_pictures/&quot;</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(outPutDirName):</span><br><span class="line">        <span class="comment">#如果文件目录不存在则创建目录</span></span><br><span class="line">        os.makedirs(outPutDirName) </span><br><span class="line">    video = cv2.VideoCapture(video_path)</span><br><span class="line">    video_temp = VideoFileClip(video_path)</span><br><span class="line">    audio=video_temp.audio</span><br><span class="line">    audio.write_audiofile(path+<span class="string">&#x27;audio.mp3&#x27;</span>)</span><br><span class="line">    fps = video.get(cv2.CAP_PROP_FPS)</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        times+=<span class="number">1</span></span><br><span class="line">        res, image = video.read()</span><br><span class="line">        <span class="keyword">if</span> times==<span class="number">1</span>:</span><br><span class="line">            size=image.shape</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> res:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">if</span> times%frameFrequency==<span class="number">0</span>:</span><br><span class="line">            cv2.imwrite(outPutDirName + <span class="built_in">str</span>(times)+<span class="string">&#x27;.jpg&#x27;</span>, image)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;reading &quot;</span>+outPutDirName + <span class="built_in">str</span>(times)+<span class="string">&#x27;.jpg&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;done&#x27;</span>)</span><br><span class="line">    video.release()</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">int</span>(fps),size[<span class="number">0</span>],size[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">Super_pixel</span>(<span class="params">path,numSegments,numSigma,outputDir,outputFilename</span>):</span><br><span class="line">        image = img_as_float(io.imread(path))</span><br><span class="line">        b,g,r = cv2.split(image)</span><br><span class="line">        image = cv2.merge([r,g,b])</span><br><span class="line">        segments = slic(image, n_segments = numSegments, sigma = numSigma)</span><br><span class="line">        image_out=mark_boundaries(image, segments)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(outputDir):</span><br><span class="line">            <span class="comment">#如果文件目录不存在则创建目录</span></span><br><span class="line">            os.makedirs(outputDir) </span><br><span class="line">        cv2.imwrite(outputDir+outputFilename, image_out*<span class="number">255</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;writing &quot;</span>+outputDir+outputFilename)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">Picture_conversion</span>(<span class="params">inputDir,outputDir,numSegments,numSigma</span>):</span><br><span class="line">    <span class="keyword">for</span> root, dirs, files <span class="keyword">in</span> os.walk(inputDir):</span><br><span class="line">        <span class="keyword">for</span> file <span class="keyword">in</span> files:</span><br><span class="line">            imgPath=root+<span class="string">&#x27;/&#x27;</span>+file</span><br><span class="line">            Super_pixel(imgPath,numSegments,numSigma,outputDir,file)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;done&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">Create_video</span>(<span class="params">videoDir,fps,height,width</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;waiting...&quot;</span>)</span><br><span class="line">    path=videoDir+<span class="string">&quot;output_pictures/&quot;</span></span><br><span class="line">    filelist = os.listdir(path)</span><br><span class="line">    size = (width,height)</span><br><span class="line">    os.chdir(videoDir) <span class="comment">#跳转到目标目录</span></span><br><span class="line">    <span class="comment">#生成avi视频</span></span><br><span class="line">    <span class="keyword">if</span> os.path.exists(<span class="string">&#x27;video.avi&#x27;</span>):</span><br><span class="line">        os.remove(<span class="string">&#x27;video.avi&#x27;</span>)</span><br><span class="line">    video = cv2.VideoWriter(<span class="string">&quot;video.avi&quot;</span>, cv2.VideoWriter_fourcc(<span class="string">&#x27;I&#x27;</span>, <span class="string">&#x27;4&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;0&#x27;</span>), fps, size)</span><br><span class="line">    num=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> filelist:<span class="comment">#统计有多少帧</span></span><br><span class="line">        <span class="keyword">if</span> item.endswith(<span class="string">&#x27;.jpg&#x27;</span>): </span><br><span class="line">            num+=<span class="number">1</span></span><br><span class="line">    window.ui.label.setText(<span class="string">&quot;生成超像素视频...&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(num):</span><br><span class="line">        frame = cv2.imread(path+<span class="built_in">str</span>(i+<span class="number">1</span>)+<span class="string">&#x27;.jpg&#x27;</span>)</span><br><span class="line">        video.write(frame)<span class="comment">#添加到视频中</span></span><br><span class="line">    video.release()</span><br><span class="line">    cv2.destroyAllWindows()</span><br><span class="line">    inputVideo = videoDir+<span class="string">&#x27;video&#x27;</span></span><br><span class="line">    window.ui.label.setText(<span class="string">&quot;压缩视频...&quot;</span>)</span><br><span class="line">    command = <span class="string">&quot;ffmpeg -i %s.avi %s.mp4&quot;</span> % (inputVideo, inputVideo)</span><br><span class="line">    <span class="keyword">if</span> os.path.exists(<span class="string">&#x27;video.mp4&#x27;</span>):</span><br><span class="line">        os.remove(<span class="string">&#x27;video.mp4&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> os.path.exists(<span class="string">&#x27;output.mp4&#x27;</span>):</span><br><span class="line">        os.remove(<span class="string">&#x27;output.mp4&#x27;</span>)</span><br><span class="line">    call(command.split())</span><br><span class="line">    window.ui.label.setText(<span class="string">&quot;加入音频...&quot;</span>)</span><br><span class="line">    subprocess.call(<span class="string">&#x27;ffmpeg -i video.mp4 -i audio.mp3  -strict -2 -f mp4 output.mp4&#x27;</span>, shell=<span class="literal">True</span>)</span><br><span class="line">    os.remove(<span class="string">&quot;video.avi&quot;</span>)</span><br><span class="line">    os.remove(<span class="string">&quot;audio.mp3&quot;</span>)</span><br><span class="line">    os.remove(<span class="string">&quot;video.mp4&quot;</span>)</span><br><span class="line">    window.ui.label.setText(<span class="string">&quot;转换成功!&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">confirm</span>():</span><br><span class="line">    window.ui.button2.setEnabled(<span class="literal">False</span>)</span><br><span class="line">    videoPath=window.ui.lineEdit01.text()</span><br><span class="line">    <span class="keyword">if</span> videoPath==<span class="string">&#x27;&#x27;</span>:</span><br><span class="line">        videoPath=<span class="string">&#x27;E:/test/input.mp4&#x27;</span></span><br><span class="line">    index=videoPath.rfind(<span class="string">&#x27;/&#x27;</span>)</span><br><span class="line">    videoDir=videoPath[:index+<span class="number">1</span>]</span><br><span class="line">    videoName=videoPath[index+<span class="number">1</span>:]</span><br><span class="line">    strSegments=window.ui.lineEdit02.text()</span><br><span class="line">    <span class="keyword">if</span> strSegments==<span class="string">&#x27;&#x27;</span>:</span><br><span class="line">        strSegments=<span class="string">&#x27;100&#x27;</span></span><br><span class="line">    numSegments=<span class="built_in">int</span>(strSegments)</span><br><span class="line">    strSigma=window.ui.lineEdit03.text()</span><br><span class="line">    <span class="keyword">if</span> strSigma==<span class="string">&#x27;&#x27;</span>:</span><br><span class="line">        strSigma=<span class="string">&#x27;5&#x27;</span></span><br><span class="line">    numSigma=<span class="built_in">int</span>(strSigma)</span><br><span class="line">    inputDir=videoDir+<span class="string">&quot;input_pictures/&quot;</span></span><br><span class="line">    outputDir=videoDir+<span class="string">&quot;output_pictures/&quot;</span></span><br><span class="line">    window.ui.label.setText(<span class="string">&quot;读取视频...&quot;</span>)</span><br><span class="line">    window.ui.button1.setEnabled(<span class="literal">False</span>)</span><br><span class="line">    otherInfo=Read_video(videoDir,videoName)</span><br><span class="line">    window.ui.button1.setEnabled(<span class="literal">True</span>)</span><br><span class="line">    <span class="comment">#otherInfo=(25, 1246, 720)</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;fps,height,width=&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(otherInfo)</span><br><span class="line">    fps=otherInfo[<span class="number">0</span>]</span><br><span class="line">    height=otherInfo[<span class="number">1</span>]</span><br><span class="line">    width=otherInfo[<span class="number">2</span>]</span><br><span class="line">    window.ui.label.setText(<span class="string">&quot;转换成超像素...&quot;</span>)</span><br><span class="line">    <span class="comment">#Picture_conversion(inputDir,outputDir,numSegments,numSigma)</span></span><br><span class="line">    Create_video(videoDir,fps,height,width)</span><br><span class="line">    window.ui.button2.setEnabled(<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">mainWindow</span>(<span class="title class_ inherited__">QMainWindow</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>(QMainWindow, <span class="variable language_">self</span>).__init__()</span><br><span class="line">        <span class="variable language_">self</span>.ui = Ui_SuperpixelVideo()</span><br><span class="line">        <span class="variable language_">self</span>.ui.setupUi(<span class="variable language_">self</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">play1</span>():</span><br><span class="line">    path=window.ui.lineEdit01.text()</span><br><span class="line">    <span class="keyword">if</span> path==<span class="string">&#x27;&#x27;</span>:</span><br><span class="line">        path=<span class="string">&#x27;E:/test/input.mp4&#x27;</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(path):</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    window.ui.videoplayer1.addWidget(videoWidget)</span><br><span class="line">    player.setMedia(QMediaContent(QUrl.fromLocalFile(path)))</span><br><span class="line">    player.play()</span><br><span class="line"> </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">play2</span>():</span><br><span class="line">    path=window.ui.lineEdit01.text()</span><br><span class="line">    index=path.rfind(<span class="string">&#x27;/&#x27;</span>)</span><br><span class="line">    videoDir=path[:index+<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(videoDir+<span class="string">&#x27;output.mp4&#x27;</span>):</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    window.ui.videoplayer2.addWidget(videoWidget)</span><br><span class="line">    player.setMedia(QMediaContent(QUrl.fromLocalFile(videoDir+<span class="string">&quot;output.mp4&quot;</span>)))</span><br><span class="line">    player.play()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">stop</span>():</span><br><span class="line">    player.stop()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    window = mainWindow()</span><br><span class="line">    window.show()</span><br><span class="line">  </span><br><span class="line">    player = QMediaPlayer()</span><br><span class="line">    player.setVolume(<span class="number">100</span>)</span><br><span class="line">    playlist = QMediaPlaylist()</span><br><span class="line">    playlist.setPlaybackMode(QMediaPlaylist.CurrentItemOnce)<span class="comment">#只播放一次</span></span><br><span class="line">    player.setPlaylist(playlist)</span><br><span class="line">    videoWidget = QVideoWidget()</span><br><span class="line">    palette = QPalette()</span><br><span class="line">    palette.setBrush(QPalette.Background, Qt.black)</span><br><span class="line">    player.setVideoOutput(videoWidget)</span><br><span class="line">    videoWidget.show()</span><br><span class="line">    window.ui.videoplayer1.addWidget(videoWidget)</span><br><span class="line"></span><br><span class="line">    window.ui.lineEdit01.setText(<span class="string">&quot;E:/test/input.mp4&quot;</span>)</span><br><span class="line">    window.ui.lineEdit02.setText(<span class="string">&quot;100&quot;</span>)</span><br><span class="line">    window.ui.lineEdit03.setText(<span class="string">&quot;5&quot;</span>)</span><br><span class="line"></span><br><span class="line">    window.ui.button1.setEnabled(<span class="literal">True</span>)</span><br><span class="line">    window.ui.button2.setEnabled(<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">    window.ui.button1.clicked.connect(<span class="keyword">lambda</span>:play1())</span><br><span class="line">    window.ui.button2.clicked.connect(<span class="keyword">lambda</span>:play2())</span><br><span class="line">    window.ui.button3.clicked.connect(<span class="keyword">lambda</span>:stop())</span><br><span class="line">    window.ui.cofirmButton.clicked.connect(<span class="keyword">lambda</span>:confirm())</span><br><span class="line">    sys.exit(app.exec_())</span><br></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" class="category-chain-item">图像处理</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%B6%85%E5%83%8F%E7%B4%A0/" class="print-no-link">#超像素</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>SLIC超像素视频转换</div>
+      <div>https://xinhaojin.github.io/2020/04/30/超像素视频转换/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>xinhaojin</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2020年4月30日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/05/19/lr0%E6%96%87%E6%B3%95%EF%BC%9A%E6%9E%84%E9%80%A0dfa%E3%80%81%E5%88%86%E6%9E%90%E8%A1%A8%EF%BC%8C%E5%8F%A5%E5%AD%90%E6%8E%A8%E5%AF%BC/" title="LR(0)文法：构造DFA、分析表，句子推导">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">LR(0)文法：构造DFA、分析表，句子推导</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/04/30/vscodepyqt5qtdesigner-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" title="VSCode+PyQt5+QtDesigner 环境搭建">
+                        <span class="hidden-mobile">VSCode+PyQt5+QtDesigner 环境搭建</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/gitalk/1.8.0/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"Ov23lifvhsymyganMHro","clientSecret":"cdd38ac0c65a95027749446001ebdff7ca7d4ec2","repo":"xinhaojin.github.io","owner":"xinhaojin","admin":"xinhaojin","language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
+          {
+            id: 'c98189defe79359da7c4d81a147050fe'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+        次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+        次
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

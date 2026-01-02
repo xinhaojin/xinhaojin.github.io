@@ -1,0 +1,784 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  <link rel="icon" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xinhaojin">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="问题描述自动爬取验证码图片，图片文件名需要包含右上角的标题文字（在网页上是图片类型，不是文本）  Edge driver初始化第一种 1234567from msedge.selenium_tools import Edge, EdgeOptions        edge_options &#x3D; EdgeOptions()        edge_options.use_chromium &#x3D; Tru">
+<meta property="og:type" content="article">
+<meta property="og:title" content="selenium爬取极验验证码，PaddleOCR识别文字作为文件名">
+<meta property="og:url" content="https://xinhaojin.github.io/2022/05/15/selenium%E7%88%AC%E5%8F%96%E6%9E%81%E9%AA%8C%E9%AA%8C%E8%AF%81%E7%A0%81%EF%BC%8Cpaddleocr%E8%AF%86%E5%88%AB%E6%96%87%E5%AD%97%E4%BD%9C%E4%B8%BA%E6%96%87%E4%BB%B6%E5%90%8D/index.html">
+<meta property="og:site_name" content="xinhaojin&#39;s blog">
+<meta property="og:description" content="问题描述自动爬取验证码图片，图片文件名需要包含右上角的标题文字（在网页上是图片类型，不是文本）  Edge driver初始化第一种 1234567from msedge.selenium_tools import Edge, EdgeOptions        edge_options &#x3D; EdgeOptions()        edge_options.use_chromium &#x3D; Tru">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/05/image-2.png">
+<meta property="article:published_time" content="2022-05-15T12:09:35.000Z">
+<meta property="article:modified_time" content="2025-04-27T12:29:45.683Z">
+<meta property="article:author" content="xinhaojin">
+<meta property="article:tag" content="爬虫">
+<meta property="article:tag" content="selenium">
+<meta property="article:tag" content="验证码">
+<meta property="article:tag" content="ocr">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://xinhaojin.github.io/imgs-host/past/2022/05/image-2.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>selenium爬取极验验证码，PaddleOCR识别文字作为文件名 - xinhaojin&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xinhaojin.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?596b73bb5b70c262b123e997b6686f49";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xinhaojin&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="selenium爬取极验验证码，PaddleOCR识别文字作为文件名"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-15 20:09" pubdate>
+          2022年5月15日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          785 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          4 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">selenium爬取极验验证码，PaddleOCR识别文字作为文件名</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2025年4月27日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>自动爬取验证码图片，图片文件名需要包含右上角的标题文字（在网页上是图片类型，不是文本）</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/05/image-2.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="Edge-driver初始化"><a href="#Edge-driver初始化" class="headerlink" title="Edge driver初始化"></a>Edge driver初始化</h2><p>第一种</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> msedge.selenium_tools <span class="keyword">import</span> Edge, EdgeOptions</span><br><span class="line">        edge_options = EdgeOptions()</span><br><span class="line">        edge_options.use_chromium = <span class="literal">True</span></span><br><span class="line">        edge_options.add_argument(<span class="string">&#x27;headless&#x27;</span>)<span class="comment">#后台运行</span></span><br><span class="line">        edge_options.add_experimental_option(<span class="string">&#x27;excludeSwitches&#x27;</span>,[<span class="string">&#x27;enable-automation&#x27;</span>,<span class="string">&#x27;enable-logging&#x27;</span>])</span><br><span class="line">        driver = Edge(options=edge_options)</span><br><span class="line">        <span class="keyword">return</span> driver</span><br></pre></td></tr></table></figure>
+
+<p>第二种</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line">driver=webdriver.Edge(executable_path=<span class="string">&#x27;msedgedriver.exe&#x27;</span>)</span><br><span class="line"><span class="comment">#在https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/下载对应驱动</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="PaddleOCR文字识别"><a href="#PaddleOCR文字识别" class="headerlink" title="PaddleOCR文字识别"></a>PaddleOCR文字识别</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> paddleocr <span class="keyword">import</span> PaddleOCR</span><br><span class="line">ocr = PaddleOCR(use_angle_cls=<span class="literal">True</span>, lang=<span class="string">&quot;ch&quot;</span>)<span class="comment">#启动ocr引擎</span></span><br><span class="line">result = ocr.ocr(<span class="string">&#x27;temp.jpg&#x27;</span>)</span><br><span class="line">text=result[<span class="number">0</span>][<span class="number">1</span>][<span class="number">0</span>]<span class="comment">#只有一个字的情况</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="图片处理"><a href="#图片处理" class="headerlink" title="图片处理"></a>图片处理</h2><p>图片下载下来后，用paddleOCR识别，发现无结果，用opencv读取，发现有4通道，应该是有一个透明的通道</p>
+<p>把4通道分别显示出来后发现有信息的是第4通道，所以需要把下载下来的图片读取第4通道保存为灰度图，再给paddleOCR识别即可。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">img=cv2.imdecode(np.fromfile(<span class="string">&#x27;temp.jpg&#x27;</span>,dtype=np.uint8),-<span class="number">1</span>)<span class="comment">#读取图片</span></span><br><span class="line">img=img[:,:,<span class="number">3</span>]<span class="comment">#取第四个通道</span></span><br><span class="line">cv2.imwrite(<span class="string">&#x27;temp.jpg&#x27;</span>,img)<span class="comment">#保存包含汉字信息的灰度图</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://static.geetest.com/nerualpic/original_word_pic/jiangchengzhengjunti/fd6a0e7d3606d6c328cd552c2bb52fa3.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> paddleocr <span class="keyword">import</span> PaddleOCR</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">downloadPic</span>(<span class="params">url, filename</span>):<span class="comment"># 下载图片</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="comment"># 下载图片，并保存到文件夹中</span></span><br><span class="line">        urllib.request.urlretrieve(url=url, filename=filename)</span><br><span class="line">    <span class="keyword">except</span> IOError <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;IOError&quot;</span>)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Exception&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">transfer</span>(<span class="params">num</span>):<span class="comment"># 序号前加0</span></span><br><span class="line">    temp = num</span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        temp = <span class="built_in">int</span>(temp/<span class="number">10</span>)</span><br><span class="line">        <span class="keyword">if</span> temp &gt; <span class="number">0</span>:</span><br><span class="line">            count = count+<span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;0&#x27;</span>*(<span class="number">4</span>-count)+<span class="built_in">str</span>(num)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">getTitleText</span>(<span class="params">titleImgs,ocr</span>):</span><br><span class="line">    title = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">        downloadPic(titleImgs[i],<span class="string">&#x27;temp.jpg&#x27;</span>) <span class="comment"># 下载图片,保存到当前文件夹</span></span><br><span class="line">        img=cv2.imdecode(np.fromfile(<span class="string">&#x27;temp.jpg&#x27;</span>,dtype=np.uint8),-<span class="number">1</span>)<span class="comment">#读取图片</span></span><br><span class="line">        img=img[:,:,<span class="number">3</span>]<span class="comment">#取第四个通道</span></span><br><span class="line">        cv2.imwrite(<span class="string">&#x27;temp.jpg&#x27;</span>,img)<span class="comment">#保存包含汉字信息的灰度图</span></span><br><span class="line">        time.sleep(<span class="number">0.2</span>)</span><br><span class="line">        result = ocr.ocr(<span class="string">&#x27;temp.jpg&#x27;</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(result)==<span class="number">0</span>:<span class="comment">#识别失败，不知道什么原因，跳过即可</span></span><br><span class="line">            <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            title+=result[<span class="number">0</span>][<span class="number">1</span>][<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">return</span> title</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">init</span>(<span class="params">mode</span>):<span class="comment">#初始化driver</span></span><br><span class="line">    <span class="keyword">if</span> mode ==<span class="number">1</span>:<span class="comment">#不用driver.exe</span></span><br><span class="line">        <span class="keyword">from</span> msedge.selenium_tools <span class="keyword">import</span> Edge, EdgeOptions</span><br><span class="line">        edge_options = EdgeOptions()</span><br><span class="line">        edge_options.use_chromium = <span class="literal">True</span></span><br><span class="line">        edge_options.add_argument(<span class="string">&#x27;headless&#x27;</span>)</span><br><span class="line">        edge_options.add_experimental_option(<span class="string">&#x27;excludeSwitches&#x27;</span>,[<span class="string">&#x27;enable-automation&#x27;</span>,<span class="string">&#x27;enable-logging&#x27;</span>])</span><br><span class="line">        driver = Edge(options=edge_options)</span><br><span class="line">        <span class="keyword">return</span> driver</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        driver=webdriver.Edge(executable_path=<span class="string">&#x27;msedgedriver.exe&#x27;</span>)</span><br><span class="line">        driver.maximize_window()</span><br><span class="line">        <span class="keyword">return</span> driver</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        ocr = PaddleOCR(use_angle_cls=<span class="literal">True</span>, lang=<span class="string">&quot;ch&quot;</span>)<span class="comment">#启动ocr引擎</span></span><br><span class="line">        <span class="built_in">dir</span>=<span class="string">&#x27;datasets/jiyan_new/&#x27;</span><span class="comment">#保存图片的文件夹</span></span><br><span class="line">        driver=init(<span class="number">0</span>)</span><br><span class="line">        driver.get(<span class="string">&#x27;https://www.geetest.com/adaptive-captcha-demo&#x27;</span>)</span><br><span class="line">        driver.implicitly_wait(<span class="number">10</span>)  <span class="comment"># 最多等待时间</span></span><br><span class="line">        driver.find_element_by_css_selector(<span class="string">&#x27;.tab-item-2&#x27;</span>).click()</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line">        driver.find_element_by_css_selector(<span class="string">&#x27;.geetest_btn_click&#x27;</span>).click()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(<span class="built_in">dir</span>):</span><br><span class="line">            os.mkdir(<span class="built_in">dir</span>)</span><br><span class="line">        files = os.listdir(<span class="built_in">dir</span>)  <span class="comment"># 获取文件数目</span></span><br><span class="line">        num = <span class="built_in">len</span>(files)+<span class="number">1</span>  <span class="comment"># 起始序号</span></span><br><span class="line"></span><br><span class="line">        index = <span class="number">0</span></span><br><span class="line">        last_img_src = <span class="string">&#x27;&#x27;</span></span><br><span class="line">     </span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> index &lt; <span class="number">500</span>:  <span class="comment"># 需要获取的验证码数量</span></span><br><span class="line">            time.sleep(<span class="number">0.8</span>)</span><br><span class="line">            title_imgs=driver.find_element_by_css_selector(<span class="string">&#x27;.geetest_ques_tips&#x27;</span>)</span><br><span class="line">            <span class="comment">#获取子元素</span></span><br><span class="line">            title_imgs=title_imgs.find_elements_by_tag_name(<span class="string">&#x27;img&#x27;</span>)</span><br><span class="line">            <span class="comment">#获取子元素的src属性 标题三个字的图片url</span></span><br><span class="line">            title_imgs=[title_img.get_attribute(<span class="string">&#x27;src&#x27;</span>) <span class="keyword">for</span> title_img <span class="keyword">in</span> title_imgs]</span><br><span class="line">            title=getTitleText(title_imgs,ocr)</span><br><span class="line">            <span class="keyword">if</span> title==<span class="string">&#x27;&#x27;</span>:</span><br><span class="line">                driver.find_element_by_css_selector(</span><br><span class="line">                <span class="string">&#x27;.geetest_refresh&#x27;</span>).click()  <span class="comment"># 刷新按钮</span></span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            img_src = driver.find_element_by_css_selector(<span class="string">&#x27;.geetest_bg&#x27;</span>).get_attribute(<span class="string">&#x27;style&#x27;</span>)  <span class="comment"># 图片url</span></span><br><span class="line">            <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">            background-image: </span></span><br><span class="line"><span class="string">            url(&quot;https://static.geetest.com/captcha_v4/policy/fdd2aaa4a429487381bd673b104f152d/word/14/2022-03-22T17/9cc1499b9d0646618f0b12863e6410ce.jpg&quot;);</span></span><br><span class="line"><span class="string">            &#x27;&#x27;&#x27;</span></span><br><span class="line">            img_src = img_src.split(<span class="string">&#x27;&quot;&#x27;</span>)[<span class="number">1</span>]</span><br><span class="line">            <span class="keyword">if</span> img_src == last_img_src:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            last_img_src = img_src</span><br><span class="line">            filename = transfer(num+index)+title+<span class="string">&#x27;.png&#x27;</span></span><br><span class="line">            downloadPic(img_src, <span class="built_in">dir</span>+filename)</span><br><span class="line">            time.sleep(<span class="number">0.2</span>)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;序号：&#x27;</span>+<span class="built_in">str</span>(index))</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;文件名：&#x27;</span>+filename)</span><br><span class="line">            index += <span class="number">1</span></span><br><span class="line">            driver.find_element_by_css_selector(</span><br><span class="line">                <span class="string">&#x27;.geetest_refresh&#x27;</span>).click()  <span class="comment"># 刷新按钮</span></span><br><span class="line">        driver.quit()</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(e)</span><br><span class="line">        driver.quit()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/python/" class="category-chain-item">python</a>
+  
+  
+
+      </span>
+    
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%88%AC%E8%99%AB/" class="category-chain-item">爬虫</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%88%AC%E8%99%AB/" class="print-no-link">#爬虫</a>
+      
+        <a href="/tags/selenium/" class="print-no-link">#selenium</a>
+      
+        <a href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/" class="print-no-link">#验证码</a>
+      
+        <a href="/tags/ocr/" class="print-no-link">#ocr</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>selenium爬取极验验证码，PaddleOCR识别文字作为文件名</div>
+      <div>https://xinhaojin.github.io/2022/05/15/selenium爬取极验验证码，paddleocr识别文字作为文件名/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>xinhaojin</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年5月15日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/18/ubuntu20-04%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEvncserver/" title="ubuntu20.04安装配置vncserver">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">ubuntu20.04安装配置vncserver</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/09/linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BB%A3%E7%90%86%E5%B7%A5%E5%85%B7%EF%BC%9Aproxychains/" title="linux命令行代理工具：proxychains">
+                        <span class="hidden-mobile">linux命令行代理工具：proxychains</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/gitalk/1.8.0/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"Ov23lifvhsymyganMHro","clientSecret":"cdd38ac0c65a95027749446001ebdff7ca7d4ec2","repo":"xinhaojin.github.io","owner":"xinhaojin","admin":"xinhaojin","language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
+          {
+            id: '8768037027c16ec93e087f143dda587e'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+        次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+        次
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

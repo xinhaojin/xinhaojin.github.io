@@ -1,0 +1,893 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  <link rel="icon" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xinhaojin">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="什么是IPsec？IPsec（Internet Protocol Security）是一种网络层安全协议，用于保护网络通信的完整性、机密性和真实性。它是一套由多个协议和算法组成的框架，可以在IP层上对数据包进行加密和认证，是构建VPN的一种核心技术。  IPsec工作模式传输模式（Transport Mode） 加密范围：只加密数据包的有效载荷部分。 IP头：保留原始的IP头，不加密。 适用场景：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IPsec概念及工作原理">
+<meta property="og:url" content="https://xinhaojin.github.io/2024/09/03/IPsec%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/index.html">
+<meta property="og:site_name" content="xinhaojin&#39;s blog">
+<meta property="og:description" content="什么是IPsec？IPsec（Internet Protocol Security）是一种网络层安全协议，用于保护网络通信的完整性、机密性和真实性。它是一套由多个协议和算法组成的框架，可以在IP层上对数据包进行加密和认证，是构建VPN的一种核心技术。  IPsec工作模式传输模式（Transport Mode） 加密范围：只加密数据包的有效载荷部分。 IP头：保留原始的IP头，不加密。 适用场景：">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/1725329131814.2yyapdsvbc.jpg">
+<meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/1725329435149.6t728cbzmm.jpg">
+<meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/1725329442282.1lbrlcjn7k.jpg">
+<meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/1725332232301.54xpb5mrdk.jpg">
+<meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/1725332902352.7w6rj89cup.jpg">
+<meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/1725332909549.99tan9ku0w.jpg">
+<meta property="article:published_time" content="2024-09-03T03:40:01.000Z">
+<meta property="article:modified_time" content="2025-04-27T12:29:45.667Z">
+<meta property="article:author" content="xinhaojin">
+<meta property="article:tag" content="IPsec">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://xinhaojin.github.io/picx-images-hosting/1725329131814.2yyapdsvbc.jpg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>IPsec概念及工作原理 - xinhaojin&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xinhaojin.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?596b73bb5b70c262b123e997b6686f49";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xinhaojin&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="IPsec概念及工作原理"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-09-03 11:40" pubdate>
+          2024年9月3日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          13 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">IPsec概念及工作原理</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2025年4月27日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="什么是IPsec？"><a href="#什么是IPsec？" class="headerlink" title="什么是IPsec？"></a>什么是IPsec？</h2><p>IPsec（Internet Protocol Security）是一种网络层安全协议，用于保护网络通信的完整性、机密性和真实性。它是一套由多个协议和算法组成的框架，可以在IP层上对数据包进行加密和认证，是构建VPN的一种核心技术。</p>
+<p><img src="https://xinhaojin.github.io/picx-images-hosting/1725329131814.2yyapdsvbc.jpg" srcset="/img/loading.gif" lazyload alt="1725329131814"></p>
+<h2 id="IPsec工作模式"><a href="#IPsec工作模式" class="headerlink" title="IPsec工作模式"></a>IPsec工作模式</h2><h3 id="传输模式（Transport-Mode）"><a href="#传输模式（Transport-Mode）" class="headerlink" title="传输模式（Transport Mode）"></a>传输模式（Transport Mode）</h3><ul>
+<li><strong>加密范围</strong>：只加密数据包的有效载荷部分。</li>
+<li><strong>IP头</strong>：保留原始的IP头，不加密。</li>
+<li><strong>适用场景</strong>：端到端通信，如两台主机之间的直接通信。</li>
+<li><strong>配置</strong>：相对简单，性能开销较小。</li>
+<li><strong>IP地址</strong>：不隐藏通信双方的IP地址。</li>
+</ul>
+<h3 id="隧道模式（Tunnel-Mode）"><a href="#隧道模式（Tunnel-Mode）" class="headerlink" title="隧道模式（Tunnel Mode）"></a>隧道模式（Tunnel Mode）</h3><ul>
+<li><strong>加密范围</strong>：加密整个数据包，包括有效载荷和IP头。</li>
+<li><strong>IP头</strong>：创建一个新的IP头，隐藏原始的IP头。</li>
+<li><strong>适用场景</strong>：网络到网络的通信，如VPN。</li>
+<li><strong>配置</strong>：相对复杂，性能开销较大。</li>
+<li><strong>IP地址</strong>：可以隐藏通信双方的IP地址，提供更高级别的隐私。</li>
+</ul>
+<h2 id="通信保护协议"><a href="#通信保护协议" class="headerlink" title="通信保护协议"></a>通信保护协议</h2><h3 id="AH（Authentication-Header）"><a href="#AH（Authentication-Header）" class="headerlink" title="AH（Authentication Header）"></a>AH（Authentication Header）</h3><ul>
+<li><strong>功能</strong>：提供数据完整性和认证。</li>
+<li><strong>加密</strong>：不提供数据加密。</li>
+<li><strong>NAT支持</strong>：不支持网络地址转换（NAT），因为 AH 保护整个 IP 数据包，包括 IP 头，而 NAT 需要修改 IP 头中的地址信息。<br><img src="https://xinhaojin.github.io/picx-images-hosting/1725329435149.6t728cbzmm.jpg" srcset="/img/loading.gif" lazyload alt="1725329435149"></li>
+</ul>
+<h3 id="ESP（Encapsulating-Security-Payload）"><a href="#ESP（Encapsulating-Security-Payload）" class="headerlink" title="ESP（Encapsulating Security Payload）"></a>ESP（Encapsulating Security Payload）</h3><ul>
+<li><strong>功能</strong>：提供数据完整性、认证和加密。</li>
+<li><strong>加密</strong>：保护数据不被未授权访问和篡改。</li>
+<li><strong>NAT支持</strong>：支持网络地址转换（NAT），因为 ESP 只加密数据部分，不包括 IP 头，允许 NAT 设备修改地址信息。<br><img src="https://xinhaojin.github.io/picx-images-hosting/1725329442282.1lbrlcjn7k.jpg" srcset="/img/loading.gif" lazyload alt="1725329442282"></li>
+</ul>
+<h2 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h2><h3 id="SA-Security-Association"><a href="#SA-Security-Association" class="headerlink" title="SA(Security Association)"></a>SA(Security Association)</h3><p><strong>定义</strong><br>SA 是 IPsec 中用于定义两个通信实体间安全通信规则的参数集合。</p>
+<p><strong>组成</strong></p>
+<ul>
+<li><strong>加密和认证算法</strong>：确定用于保护数据的加密和认证方法。</li>
+<li><strong>密钥</strong>：用于数据加密和验证的密钥。</li>
+<li><strong>生存周期</strong>：定义 SA 的有效期限和数据包数量限制。</li>
+</ul>
+<p><strong>作用</strong><br>SAs 确保 IPsec 隧道内的数据传输是安全和受保护的。</p>
+<h3 id="IKE（Internet-Key-Exchange）"><a href="#IKE（Internet-Key-Exchange）" class="headerlink" title="IKE（Internet Key Exchange）"></a>IKE（Internet Key Exchange）</h3><p><strong>定义</strong><br>IKE 是一种协议，用于在两个通信实体间自动协商、建立和维护 SAs。</p>
+<p><strong>功能</strong></p>
+<ul>
+<li><strong>密钥交换</strong>：IKE 负责生成和交换加密密钥。</li>
+<li><strong>参数协商</strong>：IKE 协商加密、认证和其它安全参数。</li>
+<li><strong>安全通道</strong>：IKE 确保密钥交换过程的安全性。<br><img src="https://xinhaojin.github.io/picx-images-hosting/1725332232301.54xpb5mrdk.jpg" srcset="/img/loading.gif" lazyload alt="1725332232301"></li>
+</ul>
+<h3 id="两种SA"><a href="#两种SA" class="headerlink" title="两种SA"></a>两种SA</h3><ul>
+<li>IKE SA 主要用于建立安全的通信信道，进行密钥交换以及协商 IPsec SA 的各种参数等。</li>
+<li>IPsec SA 则基于 IKE SA 协商的结果，具体定义对实际 IP 数据包进行加密、认证和封装等操作的安全规则和参数，以实现数据的安全传输。</li>
+</ul>
+<h2 id="IPsec-VPN-的建立"><a href="#IPsec-VPN-的建立" class="headerlink" title="IPsec VPN 的建立"></a>IPsec VPN 的建立</h2><p>IPsec VPN 通过在网络间建立加密的通信隧道来确保数据传输的安全性。</p>
+<h3 id="第一阶段"><a href="#第一阶段" class="headerlink" title="第一阶段"></a>第一阶段</h3><p>IPsec VPN建立的第一阶段主要是为了建立一个安全的通道，用于后续的协商和数据传输。</p>
+<h4 id="主动模式"><a href="#主动模式" class="headerlink" title="主动模式"></a>主动模式</h4><ul>
+<li>特点：在主动模式下，通信双方会进行多次消息交换，以协商安全参数。这个过程相对较慢，但更加安全。</li>
+<li>步骤：<ul>
+<li>发起方发送一个包含安全策略提议的消息给响应方。</li>
+<li>响应方收到消息后，选择一个合适的安全策略，并发送回应消息。</li>
+<li>双方进行密钥交换，以生成用于加密和认证的共享密钥。</li>
+<li>最后，双方进行身份验证，确保通信的双方是合法的。<br><img src="https://xinhaojin.github.io/picx-images-hosting/1725332902352.7w6rj89cup.jpg" srcset="/img/loading.gif" lazyload alt="1725332902352"></li>
+</ul>
+</li>
+</ul>
+<h4 id="野蛮模式"><a href="#野蛮模式" class="headerlink" title="野蛮模式"></a>野蛮模式</h4><ul>
+<li>特点：野蛮模式的协商过程相对简单快速，但安全性相对较低。</li>
+<li>步骤：<ul>
+<li>发起方直接发送一个包含所有安全策略提议和身份信息的消息给响应方。</li>
+<li>响应方收到消息后，选择一个合适的安全策略，并发送回应消息，其中包含身份验证信息。</li>
+<li>发起方收到回应消息后，进行身份验证，如果验证通过，则建立安全通道。<br><img src="https://xinhaojin.github.io/picx-images-hosting/1725332909549.99tan9ku0w.jpg" srcset="/img/loading.gif" lazyload alt="1725332909549"></li>
+</ul>
+</li>
+</ul>
+<h4 id="密钥的产生"><a href="#密钥的产生" class="headerlink" title="密钥的产生"></a>密钥的产生</h4><p>Diffie-Hellman（DH）算法是一种密钥交换算法，用于在不安全的通信信道上安全地生成共享密钥。以下是 DH 算法的具体流程：</p>
+<ol>
+<li><p>初始化参数</p>
+<ul>
+<li>首先确定两个大素数 <code>p</code>和 <code>g</code>，其中 <code>p</code>是一个非常大的素数，<code>g</code>是一个小于 <code>p</code>的整数，且 <code>g</code>是 <code>p</code>的一个原根。这些参数可以公开。</li>
+</ul>
+</li>
+<li><p>双方生成私钥</p>
+<ul>
+<li>通信双方（通常称为 Alice 和 Bob）各自独立地生成一个随机整数作为私钥。</li>
+<li>Alice 生成私钥 <code>a</code>，<code>a</code>是一个随机整数且满足 <code>1 &lt; a &lt; p - 1</code>。</li>
+<li>Bob 生成私钥 <code>b</code>，同样 <code>1 &lt; b &lt; p - 1</code>。</li>
+</ul>
+</li>
+<li><p>计算公钥</p>
+<ul>
+<li>Alice 和 Bob 分别使用自己的私钥和公开的参数计算公钥。</li>
+<li>Alice 计算公钥 <code>A = g^a mod p</code>。</li>
+<li>Bob 计算公钥 <code>B = g^b mod p</code>。</li>
+</ul>
+</li>
+<li><p>交换公钥</p>
+<ul>
+<li>Alice 将自己的公钥 <code>A</code>发送给 Bob。</li>
+<li>Bob 将自己的公钥 <code>B</code>发送给 Alice。</li>
+</ul>
+</li>
+<li><p>计算共享密钥</p>
+<ul>
+<li>Alice 收到 Bob 的公钥 <code>B</code>后，计算共享密钥 <code>K = B^a mod p</code>。</li>
+<li>Bob 收到 Alice 的公钥 <code>A</code>后，计算共享密钥 <code>K = A^b mod p</code>。</li>
+</ul>
+</li>
+</ol>
+<p>由于指数运算的性质，双方计算得到的共享密钥是相同的，即 <code>K = (g^b mod p)^a mod p = (g^a mod p)^b mod p</code>。</p>
+<p>这个共享密钥可以用于后续的加密通信，只有通信双方知道这个密钥，攻击者即使截获了公开参数和公钥，也很难计算出共享密钥，因为计算离散对数是一个非常困难的问题。</p>
+<h3 id="第二阶段"><a href="#第二阶段" class="headerlink" title="第二阶段"></a>第二阶段</h3><p>IPsec VPN建立的第二阶段是在第一阶段建立的安全通道基础上，进一步协商具体的数据加密和认证参数，以确保实际数据传输的安全性。</p>
+<ul>
+<li>加密算法选择：双方协商选择一种合适的加密算法，如 AES、DES 等。</li>
+<li>认证算法选择：确定一种认证算法，如 HMAC-SHA1、HMAC-SHA256 等。</li>
+<li>封装协议：选择 IPsec 的封装协议，如 ESP（Encapsulating Security Payload）或 AH（Authentication Header）。</li>
+<li>安全关联（SA）建立：根据协商的参数，建立安全关联，用于实际的数据加密和认证。</li>
+</ul>
+<p>通过以上两个阶段的协商和建立，IPsec VPN 可以在网络间建立起安全的通信隧道，确保数据传输的机密性、完整性和真实性。</p>
+<h2 id="IPsec-的-NAT（Network-Address-Translation）-穿透方法"><a href="#IPsec-的-NAT（Network-Address-Translation）-穿透方法" class="headerlink" title="IPsec 的 NAT（Network Address Translation） 穿透方法"></a>IPsec 的 NAT（Network Address Translation） 穿透方法</h2><h3 id="（AH、ESP）与NAT的兼容性分析"><a href="#（AH、ESP）与NAT的兼容性分析" class="headerlink" title="（AH、ESP）与NAT的兼容性分析"></a>（AH、ESP）与NAT的兼容性分析</h3><p>AH（Authentication Header，认证头）协议不兼容 NAT。</p>
+<p>AH 协议对整个 IP 数据包（包括 IP 报头）进行完整性校验和身份认证。当数据包经过 NAT 设备时，NAT 会修改 IP 报头中的源地址和端口号等信息，这将导致 AH 计算的完整性校验失败，因为 AH 验证的数据包括了原始的、未被 NAT 修改过的 IP 报头。</p>
+<p>ESP（Encapsulating Security Payload，封装安全载荷）协议在一定程度上兼容 NAT，但也存在一些限制。</p>
+<p>ESP 协议主要对 IP 数据包的载荷部分进行加密和可选的完整性校验。当 NAT 只修改 IP 报头中的地址和端口信息而不触及 ESP 封装的载荷部分时，ESP 可以在经过 NAT 后继续工作。然而，如果 NAT 设备对 ESP 数据包进行深度包检测或修改了 ESP 载荷部分，那么 ESP 的安全性将受到破坏。</p>
+<h3 id="NAT-T（NAT-Traversal）"><a href="#NAT-T（NAT-Traversal）" class="headerlink" title="NAT-T（NAT Traversal）"></a>NAT-T（NAT Traversal）</h3><p>由于 AH 协议不兼容 NAT，而 ESP 协议与 NAT 的兼容性有限，为了解决 IPsec 在 NAT 环境下的通信问题，引入了 NAT-T（NAT Traversal）技术。</p>
+<p>NAT-T 主要通过在 IPsec 数据包外再封装一个 UDP 包头的方式来实现 NAT 穿透。这样，当 IPsec 数据包经过 NAT 设备时，NAT 设备将把这个 UDP 数据包当作普通的 UDP 流量进行处理，只修改 UDP 报头和 IP 报头中的地址信息，而不会影响到内部的 IPsec 数据包。从而使得 IPsec 可以在 NAT 环境下正常通信。</p>
+<h2 id="IPsec-与-NAT-T-的工作流程"><a href="#IPsec-与-NAT-T-的工作流程" class="headerlink" title="IPsec 与 NAT-T 的工作流程"></a>IPsec 与 NAT-T 的工作流程</h2><p>从通信两端支持 NAT-T 的设备角度来看，IPsec 和 NAT-T 的具体工作流程如下：</p>
+<h3 id="一、初始化阶段"><a href="#一、初始化阶段" class="headerlink" title="一、初始化阶段"></a>一、初始化阶段</h3><ol>
+<li>通信双方的设备确定需要建立 IPsec 连接，并检测到它们处于 NAT 环境中。此时，设备会启用 NAT-T 功能。</li>
+</ol>
+<h3 id="二、IKE-协商阶段"><a href="#二、IKE-协商阶段" class="headerlink" title="二、IKE 协商阶段"></a>二、IKE 协商阶段</h3><ol>
+<li>发起方设备向响应方设备发送 IKE（Internet Key Exchange）请求，该请求中包含了支持 NAT-T 的标识。</li>
+<li>响应方设备收到请求后，如果也支持 NAT-T，则回应一个包含支持 NAT-T 标识的 IKE 响应。</li>
+<li>双方设备开始进行 IKE 协商，确定加密算法、认证方法、Diffie-Hellman 组等安全参数。在这个过程中，由于双方都知道要使用 NAT-T，所以会对协商的消息进行特殊处理，以适应 NAT-T 的封装格式。</li>
+</ol>
+<h3 id="三、NAT-T-封装阶段"><a href="#三、NAT-T-封装阶段" class="headerlink" title="三、NAT-T 封装阶段"></a>三、NAT-T 封装阶段</h3><ol>
+<li>一旦 IKE 协商成功，双方设备开始建立 IPsec SA（Security Association）。在这个阶段，IPsec 数据包会被封装在一个 UDP 数据包中，这个 UDP 数据包的目的端口通常是 4500。</li>
+<li>封装后的数据包可以在经过 NAT 设备时被正确处理，因为 NAT 设备会把这个 UDP 数据包当作普通的 UDP 流量，只修改 IP 报头和 UDP 报头中的地址和端口信息，而不会影响到内部的 IPsec 数据包。</li>
+</ol>
+<h3 id="四、数据传输阶段"><a href="#四、数据传输阶段" class="headerlink" title="四、数据传输阶段"></a>四、数据传输阶段</h3><ol>
+<li>通信双方可以开始通过 IPsec 隧道传输数据。发送方设备将数据进行 IPsec 加密和封装后，再用 UDP 进行封装，然后发送出去。</li>
+<li>数据包经过 NAT 设备时，NAT 设备进行地址和端口转换。</li>
+<li>接收方设备收到数据包后，先去除 UDP 封装，然后进行 IPsec 解密和验证，得到原始数据。</li>
+</ol>
+<h3 id="五、连接维护阶段"><a href="#五、连接维护阶段" class="headerlink" title="五、连接维护阶段"></a>五、连接维护阶段</h3><ol>
+<li>通信双方的设备会定期发送 IKE 保活消息，以确保 IPsec 连接的有效性。如果在一定时间内没有收到对方的回应，设备会尝试重新建立连接。</li>
+<li>如果 NAT 设备的地址或端口发生变化，双方设备会通过 IKE 协商来更新 IPsec 连接的参数，以适应 NAT 的变化。</li>
+</ol>
+<p>总之，当通信两端的设备支持 NAT-T 时，它们可以通过特殊的封装和协商过程，在 NAT 环境下建立安全的 IPsec 连接，实现数据的加密传输。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E5%B7%A5/" class="category-chain-item">网工</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/IPsec/" class="print-no-link">#IPsec</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>IPsec概念及工作原理</div>
+      <div>https://xinhaojin.github.io/2024/09/03/IPsec概念及工作原理/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>xinhaojin</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年9月3日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/09/10/pip%E5%AF%BC%E5%87%BA%E4%BE%9D%E8%B5%96%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85/" title="pip导出依赖离线安装">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">pip导出依赖离线安装</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/08/28/%E6%B7%BB%E5%8A%A0%E7%BD%91%E5%8D%A1%E7%AC%AC%E4%BA%8CIP/" title="添加网卡第二IP">
+                        <span class="hidden-mobile">添加网卡第二IP</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/gitalk/1.8.0/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"Ov23lifvhsymyganMHro","clientSecret":"cdd38ac0c65a95027749446001ebdff7ca7d4ec2","repo":"xinhaojin.github.io","owner":"xinhaojin","admin":"xinhaojin","language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
+          {
+            id: 'c7d1c3de846384c3753c96829111efd3'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+        次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+        次
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

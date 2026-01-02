@@ -1,0 +1,788 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  <link rel="icon" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xinhaojin">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="前言家里小米路由器局域网网段是192.168.31.0&#x2F;24，但很多设备经常会获取到192.168.1.0&#x2F;24网段的IP，导致上不了网，让人非常恼火。经常之前有段时间我误以为是光猫DHCP服务没有彻底关闭导致的，但我最近仔细琢磨了一下才想起来我的光猫其实设置的网段是192.168.10.0&#x2F;24网段，所以不是光猫的问题，而是DHCP服务故障。 家里连接的设备大概在2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DHCP故障排查，另起一个DHCP服务器竟然还不行，原因竟是下级路由器以下犯上">
+<meta property="og:url" content="https://xinhaojin.github.io/2024/10/16/DHCP%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%EF%BC%8C%E5%8F%A6%E8%B5%B7%E4%B8%80%E4%B8%AADHCP%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%9F%E7%84%B6%E8%BF%98%E4%B8%8D%E8%A1%8C%EF%BC%8C%E5%8E%9F%E5%9B%A0%E7%AB%9F%E6%98%AF%E4%B8%8B%E7%BA%A7%E8%B7%AF%E7%94%B1%E5%99%A8%E4%BB%A5%E4%B8%8B%E7%8A%AF%E4%B8%8A/index.html">
+<meta property="og:site_name" content="xinhaojin&#39;s blog">
+<meta property="og:description" content="前言家里小米路由器局域网网段是192.168.31.0&#x2F;24，但很多设备经常会获取到192.168.1.0&#x2F;24网段的IP，导致上不了网，让人非常恼火。经常之前有段时间我误以为是光猫DHCP服务没有彻底关闭导致的，但我最近仔细琢磨了一下才想起来我的光猫其实设置的网段是192.168.10.0&#x2F;24网段，所以不是光猫的问题，而是DHCP服务故障。 家里连接的设备大概在2">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-10-16T13:40:04.000Z">
+<meta property="article:modified_time" content="2025-04-27T12:29:45.667Z">
+<meta property="article:author" content="xinhaojin">
+<meta property="article:tag" content="DHCP">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>DHCP故障排查，另起一个DHCP服务器竟然还不行，原因竟是下级路由器以下犯上 - xinhaojin&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xinhaojin.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?596b73bb5b70c262b123e997b6686f49";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xinhaojin&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="DHCP故障排查，另起一个DHCP服务器竟然还不行，原因竟是下级路由器以下犯上"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-10-16 21:40" pubdate>
+          2024年10月16日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          8 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">DHCP故障排查，另起一个DHCP服务器竟然还不行，原因竟是下级路由器以下犯上</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2025年4月27日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>家里小米路由器局域网网段是192.168.31.0&#x2F;24，但很多设备经常会获取到192.168.1.0&#x2F;24网段的IP，导致上不了网，让人非常恼火。<br>经常之前有段时间我误以为是光猫DHCP服务没有彻底关闭导致的，但我最近仔细琢磨了一下才想起来我的光猫其实设置的网段是192.168.10.0&#x2F;24网段，所以不是光猫的问题，而是DHCP服务故障。</p>
+<p>家里连接的设备大概在20个左右，之前装宽带的师傅就跟我说不要在光猫lan口直接接交换机，应该买个性能好一点的路由器来做DHCP服务器，我想我的红米AX6000主路由应该足够强了，但还是莫名其妙的出现获取不到IP的情况，搞得人非常火大，于是决定另起一个DHCP服务。</p>
+<h2 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a>安装配置</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install isc-dhcp-server</span><br></pre></td></tr></table></figure>
+<p>修改<code>/etc/dhcp/dhcpd.conf</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 定义全局选项</span><br><span class="line">option domain-name-servers 223.5.5.5,223.6.6.6; # 使用阿里DNS服务器</span><br><span class="line"></span><br><span class="line"># 定义子网</span><br><span class="line">subnet 192.168.31.0 netmask 255.255.255.0 &#123;</span><br><span class="line">    range 192.168.31.2 192.168.31.220; # 指定IP地址分配范围</span><br><span class="line">    option routers 192.168.31.1; # 指定网关</span><br><span class="line">    option subnet-mask 255.255.255.0; # 指定子网掩码</span><br><span class="line">    option domain-name-servers 223.5.5.5,223.6.6.6; # 指定DNS服务器</span><br><span class="line">    authoritative;</span><br><span class="line">&#125;</span><br><span class="line"># 日志</span><br><span class="line"># grep dhcp /var/log/syslog</span><br></pre></td></tr></table></figure>
+<p>修改<code>/etc/default/isc-dhcp-server</code>,指定配置文件路径和网络接口名称</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DHCPDv4_CONF=/etc/dhcp/dhcpd.conf</span><br><span class="line">INTERFACESv4=&quot;enp3s0&quot;</span><br><span class="line">INTERFACESv6=&quot;enp3s0&quot;</span><br></pre></td></tr></table></figure>
+<p>设置为开机自启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start isc-dhcp-server</span><br><span class="line">sudo systemctl enable isc-dhcp-server</span><br></pre></td></tr></table></figure>
+<p>然后关闭路由器的DHCP服务</p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>手机忘记此网络，重新连接，给我气笑了，获取到了192.168.1.100的IP，根本不是我的网段</p>
+<p>查看日志</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep dhcp /var/log/syslog</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">2024-10-17T21:26:57.401204+08:00 firebat-server dhcpd[2087508]: DHCPDISCOVER from c2:02:42:75:22:f5 (CET-AL00) via enp3s0</span><br><span class="line">2024-10-17T21:26:57.467998+08:00 firebat-server dhcpd[2087508]: DHCPREQUEST for 192.168.1.100 (192.168.1.1) from c2:02:42:75:22:f5 via enp3s0: wrong network.</span><br><span class="line">2024-10-17T21:26:57.468319+08:00 firebat-server dhcpd[2087508]: DHCPNAK on 192.168.1.100 to c2:02:42:75:22:f5 via enp3s0</span><br><span class="line">2024-10-17T21:26:57.596163+08:00 firebat-server dhcpd[2087508]: DHCPREQUEST for 192.168.1.100 (192.168.1.1) from c2:02:42:75:22:f5 via enp3s0: wrong network.</span><br><span class="line">2024-10-17T21:26:57.596290+08:00 firebat-server dhcpd[2087508]: DHCPNAK on 192.168.1.100 to c2:02:42:75:22:f5 via enp3s0</span><br><span class="line">2024-10-17T21:26:58.402446+08:00 firebat-server dhcpd[2087508]: DHCPOFFER on 192.168.31.5 to c2:02:42:75:22:f5 (CET-AL00) via enp3s0</span><br><span class="line">2024-10-17T21:27:05.243708+08:00 firebat-server dhcpd[2087508]: DHCPREQUEST for 192.168.1.119 from 24:27:30:4d:30:38 via enp3s0: wrong network.</span><br><span class="line">2024-10-17T21:27:05.244090+08:00 firebat-server dhcpd[2087508]: DHCPNAK on 192.168.1.119 to 24:27:30:4d:30:38 via enp3s0</span><br><span class="line">2024-10-17T21:27:05.276043+08:00 firebat-server dhcpd[2087508]: DHCPDISCOVER from 24:27:30:4d:30:38 via enp3s0</span><br><span class="line">2024-10-17T21:27:05.297040+08:00 firebat-server dhcpd[2087508]: DHCPREQUEST for 192.168.1.119 (192.168.1.1) from 24:27:30:4d:30:38 via enp3s0: wrong network.</span><br><span class="line">2024-10-17T21:27:05.297336+08:00 firebat-server dhcpd[2087508]: DHCPNAK on 192.168.1.119 to 24:27:30:4d:30:38 via enp3s0</span><br><span class="line">2024-10-17T21:27:06.278249+08:00 firebat-server dhcpd[2087508]: DHCPOFFER on 192.168.31.195 to 24:27:30:4d:30:38 via enp3s0</span><br></pre></td></tr></table></figure>
+<p>日志显示有个192.168.1.1的狗东西TMD在积极地给我分配错误的IP，导致我的手机优先获取到了192.168.1.1这个DHCP服务器分配的IP。在我家的网络中，这只有可能是我192.168.31.1主路由的下级路由器。</p>
+<h2 id="排障"><a href="#排障" class="headerlink" title="排障"></a>排障</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping 192.168.1.1</span><br></pre></td></tr></table></figure>
+<p>可以ping通</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">正在 Ping 192.168.1.1 具有 32 字节的数据:</span><br><span class="line">来自 192.168.1.1 的回复: 字节=32 时间=3ms TTL=251</span><br><span class="line">来自 192.168.1.1 的回复: 字节=32 时间=3ms TTL=251</span><br><span class="line"></span><br><span class="line">192.168.1.1 的 Ping 统计信息:</span><br><span class="line">    数据包: 已发送 = 2，已接收 = 2，丢失 = 0 (0% 丢失)，</span><br><span class="line">往返行程的估计时间(以毫秒为单位):</span><br><span class="line">    最短 = 3ms，最长 = 3ms，平均 = 3ms</span><br></pre></td></tr></table></figure>
+<p>安装局域网扫描工具</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install arp-scan</span><br><span class="line">arp-scan 192.168.1.0/24</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Interface: enp3s0, type: EN10MB, MAC: 68:1d:ef:40:55:9a, IPv4: 192.168.31.31</span><br><span class="line">Starting arp-scan 1.10.0 with 256 hosts (https://github.com/royhills/arp-scan)</span><br><span class="line">192.168.1.1     00:5c:c2:45:87:4f       SHENZHEN MERCURY COMMUNICATION TECHNOLOGIES CO.,LTD.</span><br><span class="line">192.168.1.108   c8:bf:4c:31:5b:16       Beijing Xiaomi Mobile Software Co., Ltd</span><br><span class="line">192.168.1.113   a4:39:b3:ca:23:42       Beijing Xiaomi Mobile Software Co., Ltd</span><br><span class="line">192.168.1.217   b0:59:47:8e:f7:21       Shenzhen Qihu Intelligent Technology Company Limited</span><br><span class="line">192.168.1.119   24:27:30:4d:30:38       (Unknown)</span><br><span class="line"></span><br><span class="line">5 packets received by filter, 0 packets dropped by kernel</span><br><span class="line">Ending arp-scan 1.10.0: 256 hosts scanned in 1.929 seconds (132.71 hosts/sec). 5 responded</span><br></pre></td></tr></table></figure>
+<p>明显是个水星路由器</p>
+<p>再扫一下我的31网段</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arp-scan 192.168.31.0/24</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Interface: enp3s0, type: EN10MB, MAC: 68:1d:ef:40:55:9a, IPv4: 192.168.31.31</span><br><span class="line">Starting arp-scan 1.10.0 with 256 hosts (https://github.com/royhills/arp-scan)</span><br><span class="line">192.168.31.1    24:cf:24:5d:64:da       Beijing Xiaomi Mobile Software Co., Ltd</span><br><span class="line">192.168.31.2    b0:59:47:8e:f7:21       Shenzhen Qihu Intelligent Technology Company Limited</span><br><span class="line">192.168.31.32   80:fa:5b:4e:ba:96       CLEVO CO.</span><br><span class="line">192.168.31.5    c2:02:42:75:22:f5       (Unknown: locally administered)</span><br><span class="line">192.168.31.6    d4:35:38:14:4f:4f       Beijing Xiaomi Mobile Software Co., Ltd</span><br><span class="line">192.168.31.3    68:ab:bc:ed:68:aa       Beijing Xiaomi Mobile Software Co., Ltd</span><br><span class="line">192.168.31.72   d4:bb:e6:64:60:29       Huawei Device Co., Ltd.</span><br><span class="line">192.168.31.34   b8:ab:62:ae:a5:a3       Hui Zhou Gaoshengda Technology Co.,LTD</span><br><span class="line">192.168.31.100  58:11:22:4a:95:91       ASUSTek COMPUTER INC.</span><br><span class="line">192.168.31.166  50:88:11:d7:66:b9       (Unknown)</span><br><span class="line">192.168.31.194  44:e6:4a:53:48:ac       (Unknown)</span><br><span class="line">192.168.31.80   4c:11:ae:01:22:29       Espressif Inc.</span><br><span class="line">192.168.31.130  50:2c:c6:09:f2:08       GREE ELECTRIC APPLIANCES, INC. OF ZHUHAI</span><br><span class="line"></span><br><span class="line">14 packets received by filter, 0 packets dropped by kernel</span><br><span class="line">Ending arp-scan 1.10.0: 256 hosts scanned in 1.940 seconds (131.96 hosts/sec). 13 responded</span><br></pre></td></tr></table></figure>
+<p>没有192.168.1.1那个MAC地址的IP，我都不知道他是怎么上网的。</p>
+<p>神奇的是有一个MAC为<code>b0:59:47:8e:f7:21</code>的设备，同时拥有两个网段的IP：192.168.31.2和192.168.1.217 ，生产厂商是Shenzhen Qihu Intelligent Technology Company Limited，qihu奇虎应该是360的东西，应该是我的无线摄像头，点开摄像头app一看IP果然是,小小摄像头获取了两个IP，设计的还比较聪明，有两个DHCP服务器就配置两个IP，这样能上网的概率高得多，其他设备要是有这么聪明就好了，不愧是360。</p>
+<p>接下来我手机登录到内网机器宝塔面板的终端，一根根拔网线排查，每拔一次就输入<code>arp-scan 192.168.1.0/24</code>看一下192.168.1.1那个设备还在不在。果然，两三下就被我找到了罪魁祸首。</p>
+<p>一看果然是水星路由器，登上去管理地址之后发现上网方式是宽带上网…，还改不了设置，看了下网口，网线插在了LAN口…，我都无语了，怪不得会以下犯上，他以为我是他的下级呢。</p>
+<p>网线插了WAN口之后可以设置自动获取IP，这时候就正常了。</p>
+<p>这也意味着我的路由器DHCP可以重新开启，内网ubuntu的DHCP可以关闭。但是不改了，先用着，总比路由器的DHCP服务能力强。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件安装配置</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/linux/" class="category-chain-item">linux</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/DHCP/" class="print-no-link">#DHCP</a>
+      
+        <a href="/tags/linux/" class="print-no-link">#linux</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>DHCP故障排查，另起一个DHCP服务器竟然还不行，原因竟是下级路由器以下犯上</div>
+      <div>https://xinhaojin.github.io/2024/10/16/DHCP故障排查，另起一个DHCP服务器竟然还不行，原因竟是下级路由器以下犯上/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>xinhaojin</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年10月16日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/11/20/vlan%E9%97%B4%E9%80%9A%E4%BF%A1(%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1%E3%80%81%E5%A4%9A%E8%87%82%E8%B7%AF%E7%94%B1%E3%80%81%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2)%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4(%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA)/" title="vlan间通信(单臂路由、多臂路由、三层交换)配置命令(思科+华为)">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">vlan间通信(单臂路由、多臂路由、三层交换)配置命令(思科+华为)</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/10/02/%E6%9C%AC%E5%9C%B0%E5%8F%AF%E9%81%93%E4%BA%91%E9%80%9A%E8%BF%87Alist%E6%8C%82%E8%BD%BD%E5%A4%B8%E5%85%8B%E4%BA%91%E7%9B%98%EF%BC%8C%E5%AE%9E%E7%8E%B0%E7%BD%91%E7%9B%98%E7%BB%9F%E4%B8%80%E5%85%A5%E5%8F%A3%E7%AE%A1%E7%90%86/" title="本地可道云通过Alist挂载夸克云盘，实现网盘统一入口管理">
+                        <span class="hidden-mobile">本地可道云通过Alist挂载夸克云盘，实现网盘统一入口管理</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/gitalk/1.8.0/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"Ov23lifvhsymyganMHro","clientSecret":"cdd38ac0c65a95027749446001ebdff7ca7d4ec2","repo":"xinhaojin.github.io","owner":"xinhaojin","admin":"xinhaojin","language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
+          {
+            id: '518806de6bc0c8f66eebb39f6397e922'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+        次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+        次
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
