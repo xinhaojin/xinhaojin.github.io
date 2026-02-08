@@ -19,27 +19,23 @@
   <meta name="author" content="xinhaojin">
   <meta name="keywords" content="">
   
-    <meta name="description" content="在电脑模拟器上跑得好好的APP，用手机真机调试时，发现在发出HTTP请求时出现闪退，突然想起之前移动应用开发的老师讲过高版本SDK可能请求方式不一样，版本问题…OMG，才想起来我练手时都是在安卓4.4开发，现在要适配到安卓9，10… OK，凡事不要慌，开始面向搜索引擎编程。  先放一张版本图  在Android9.0以上的设备上，如果应用使用的是非加密的明文流量的HTTP网络请求，则会导致该应用">
+    <meta name="description" content="使用1Panel+DockerCompose一键部署PanSou网盘资源搜索引擎PanSou 是一款高性能的网盘资源搜索工具，支持 TG 频道聚合 + 多插件并发搜索，几乎覆盖主流网盘（阿里、百度、夸克、115、天翼、UC、迅雷、PikPak 等）。前后端集成镜像 ghcr.io&#x2F;fish2018&#x2F;pansou-web:latest 开箱即用，结合 1Panel 的容器编排和反向代理功能，部署简单">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android9.0以上请求HTTP的方法">
-<meta property="og:url" content="https://xinhaojin.github.io/2020/06/01/android9-0%E4%BB%A5%E4%B8%8A%E8%AF%B7%E6%B1%82http%E7%9A%84%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:title" content="使用1Panel+DockerCompose一键部署PanSou网盘资源搜索引擎">
+<meta property="og:url" content="https://xinhaojin.github.io/2026/02/08/%E4%BD%BF%E7%94%A81Panel+DockerCompose%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2PanSou%E7%BD%91%E7%9B%98%E8%B5%84%E6%BA%90%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/index.html">
 <meta property="og:site_name" content="xinhaojin&#39;s blog">
-<meta property="og:description" content="在电脑模拟器上跑得好好的APP，用手机真机调试时，发现在发出HTTP请求时出现闪退，突然想起之前移动应用开发的老师讲过高版本SDK可能请求方式不一样，版本问题…OMG，才想起来我练手时都是在安卓4.4开发，现在要适配到安卓9，10… OK，凡事不要慌，开始面向搜索引擎编程。  先放一张版本图  在Android9.0以上的设备上，如果应用使用的是非加密的明文流量的HTTP网络请求，则会导致该应用">
+<meta property="og:description" content="使用1Panel+DockerCompose一键部署PanSou网盘资源搜索引擎PanSou 是一款高性能的网盘资源搜索工具，支持 TG 频道聚合 + 多插件并发搜索，几乎覆盖主流网盘（阿里、百度、夸克、115、天翼、UC、迅雷、PikPak 等）。前后端集成镜像 ghcr.io&#x2F;fish2018&#x2F;pansou-web:latest 开箱即用，结合 1Panel 的容器编排和反向代理功能，部署简单">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2020/06/image-3.png">
-<meta property="article:published_time" content="2020-06-01T04:32:56.000Z">
-<meta property="article:modified_time" content="2026-02-06T16:17:02.000Z">
+<meta property="article:published_time" content="2026-02-08T12:06:29.000Z">
+<meta property="article:modified_time" content="2026-02-08T12:06:43.230Z">
 <meta property="article:author" content="xinhaojin">
-<meta property="article:tag" content="安卓">
-<meta property="article:tag" content="HTTP">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://xinhaojin.github.io/imgs-host/past/2020/06/image-3.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Android9.0以上请求HTTP的方法 - xinhaojin&#39;s blog</title>
+  <title>使用1Panel+DockerCompose一键部署PanSou网盘资源搜索引擎 - xinhaojin&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -229,7 +225,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Android9.0以上请求HTTP的方法"></span>
+            <span id="subtitle" data-typed-text="使用1Panel+DockerCompose一键部署PanSou网盘资源搜索引擎"></span>
           
         </div>
 
@@ -240,8 +236,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2020-06-01 12:32" pubdate>
-          2020年6月1日 下午
+        <time datetime="2026-02-08 20:06" pubdate>
+          2026年2月8日 晚上
         </time>
       </span>
     
@@ -252,7 +248,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          328 字
+          1.2k 字
         
       </span>
     
@@ -263,7 +259,7 @@
         
         
         
-          2 分钟
+          7 分钟
         
       </span>
     
@@ -300,12 +296,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Android9.0以上请求HTTP的方法</h1>
+            <h1 id="seo-header">使用1Panel+DockerCompose一键部署PanSou网盘资源搜索引擎</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2026年2月7日 凌晨
+                    本文最后更新于 2026年2月8日 晚上
                   
                 
               </p>
@@ -313,25 +309,57 @@
             
               <div class="markdown-body">
                 
-                <blockquote>
-<p>在电脑模拟器上跑得好好的APP，用手机真机调试时，发现在发出HTTP请求时出现闪退，突然想起之前移动应用开发的老师讲过高版本SDK可能请求方式不一样，版本问题…OMG，才想起来我练手时都是在安卓4.4开发，现在要适配到安卓9，10…</p>
-<p>OK，凡事不要慌，开始面向搜索引擎编程。</p>
-</blockquote>
-<p>先放一张版本图</p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2020/06/image-1.png" srcset="/img/loading.gif" lazyload></p>
-<p>在Android9.0以上的设备上，如果应用使用的是非加密的明文流量的HTTP网络请求，则会导致该应用无法进行网络请求，HTTPS则不会受影响，如果应用嵌套了webview，webview也只能使用HTTPS请求。</p>
-<p>但是，我们可以通过APP配置来解除限制</p>
-<p>在Manifest下的application标签下，与activity并列，加入：</p>
-<p>&lt;**uses-library android:name&#x3D;”org.apache.http.legacy” android:required&#x3D;”false”** &#x2F;&gt;</p>
-<p>在Manifest下的application标签内，加入：</p>
-<p><strong>android</strong><strong>:usesCleartextTraffic&#x3D;****”true”</strong></p>
-<p><img src="https://xinhaojin.github.io/imgs-host/past/2020/06/image-3.png" srcset="/img/loading.gif" lazyload></p>
-<p>到此，HTTP网络问题应该已经解决。</p>
-<p>另外，我在调试时还发现有一个日历窗口弹不出，会直接finish整个activity，在Android4.4版本也没有问题，原因好像是：android 9.0上使用前台服务，需要添加权限</p>
-<p>在Manifest里面加上这权限</p>
-<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+                <h1 id="使用1Panel-DockerCompose一键部署PanSou网盘资源搜索引擎"><a href="#使用1Panel-DockerCompose一键部署PanSou网盘资源搜索引擎" class="headerlink" title="使用1Panel+DockerCompose一键部署PanSou网盘资源搜索引擎"></a>使用1Panel+DockerCompose一键部署PanSou网盘资源搜索引擎</h1><p>PanSou 是一款高性能的网盘资源搜索工具，支持 TG 频道聚合 + 多插件并发搜索，几乎覆盖主流网盘（阿里、百度、夸克、115、天翼、UC、迅雷、PikPak 等）。前后端集成镜像 <code>ghcr.io/fish2018/pansou-web:latest</code> 开箱即用，结合 1Panel 的容器编排和反向代理功能，部署简单、安全、可扩展。</p>
+<p>本文记录我在 1Panel 面板中使用 Docker Compose 部署 PanSou 的完整配置（含认证、数据持久化、自动重启），并通过反向代理实现域名 + HTTPS 访问。</p>
+<h2 id="部署目标"><a href="#部署目标" class="headerlink" title="部署目标"></a>部署目标</h2><ul>
+<li>容器化运行 PanSou 前后端集成版</li>
+<li>启用用户名&#x2F;密码认证（防止陌生人访问）</li>
+<li>数据持久化（缓存 + 日志）</li>
+<li>使用 1Panel 反向代理 + Let’s Encrypt 证书，实现域名 HTTPS 访问（如 <a target="_blank" rel="noopener" href="https://pan.xinhaojin.top)/">https://pan.xinhaojin.top）</a></li>
+<li>添加 autoheal 容器，自动监控并重启异常的 pansou 容器</li>
+</ul>
+<h2 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h2><ul>
+<li>已安装 1Panel 面板（推荐最新版）</li>
+<li>服务器有公网 IP 或内网穿透（域名已解析）</li>
+<li>1Panel 中已开放 80&#x2F;443 端口（用于证书申请和 HTTPS）</li>
+<li>Docker 环境正常（1Panel 自带）</li>
+</ul>
+<h2 id="docker-compose-yaml-配置（完整版）"><a href="#docker-compose-yaml-配置（完整版）" class="headerlink" title="docker-compose.yaml 配置（完整版）"></a>docker-compose.yaml 配置（完整版）</h2><p>在 1Panel → 容器 → 容器编排 → 创建（或编辑）中，直接粘贴以下内容：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3.8&#x27;</span><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">pansou:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">ghcr.io/fish2018/pansou-web:latest</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">pansou-app</span><br>    <span class="hljs-attr">labels:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;autoheal=true&quot;</span>  <span class="hljs-comment"># 标记允许 autoheal 自动重启</span><br>    <span class="hljs-attr">ports:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;3001:80&quot;</span>        <span class="hljs-comment"># 只暴露 HTTP 端口，供 1Panel 反向代理使用</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-comment"># 基础配置（后端监听地址，保持本地回环最安全）</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">PANSOU_PORT=8888</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">PANSOU_HOST=127.0.0.1</span><br><br>      <span class="hljs-comment"># 数据目录（统一挂载）</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">CACHE_PATH=/app/data/cache</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">LOG_PATH=/app/data/logs</span><br><br>      <span class="hljs-comment"># 插件列表（推荐全开，覆盖大部分来源）</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">ENABLED_PLUGINS=labi,zhizhen,shandian,duoduo,muou,wanou,hunhepan,jikepan,panwiki,pansearch,panta,qupansou,hdr4k,pan666,susu,thepiratebay,xuexizhinan,panyq,ouge,huban,cyg,erxiao,miaoso,fox4k,pianku,clmao,wuji,cldi,xiaozhang,libvio,leijing,xb6v,xys,ddys,hdmoli,yuhuage,u3c3,javdb,clxiong,jutoushe,sdso,xiaoji,xdyh,haisou,bixin,djgou,nyaa,xinjuc,aikanzy,qupanshe,xdpan,discourse,yunsou,ahhhhfs,nsgame,gying</span><br><br>      <span class="hljs-comment"># TG 频道列表（默认推荐频道，覆盖热门分享源）</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">CHANNELS=tgsearchers3,Aliyun_4K_Movies,bdbdndn11,yunpanx,bsbdbfjfjff,yp123pan,sbsbsnsqq,yunpanxunlei,tianyifc,BaiduCloudDisk,txtyzy,peccxinpd,gotopan,PanjClub,kkxlzy,baicaoZY,MCPH01,bdwpzhpd,ysxb48,jdjdn1111,yggpan,MCPH086,zaihuayun,Q66Share,ucwpzy,shareAliyun,alyp_1,dianyingshare,Quark_Movies,XiangxiuNBB,ydypzyfx,ucquark,xx123pan,yingshifenxiang123,zyfb123,tyypzhpd,tianyirigeng,cloudtianyi,hdhhd21,Lsp115,oneonefivewpfx,qixingzhenren,taoxgzy,Channel_Shares_115,tyysypzypd,vip115hot,wp123zy,yunpan139,yunpan189,yunpanuc,yydf_hzl,leoziyuan,pikpakpan,Q_dongman,yoyokuakeduanju,TG654TG,WFYSFX02,QukanMovie,yeqingjie_GJG666,movielover8888_film3,Baidu_netdisk,D_wusun,FLMdongtianfudi,KaiPanshare,QQZYDAPP,rjyxfx</span><br><br>      <span class="hljs-comment"># 健康检查（容器内部）</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">HEALTH_CHECK_INTERVAL=30</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">HEALTH_CHECK_TIMEOUT=10</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">HEALTH_CHECK_RETRIES=3</span><br><br>      <span class="hljs-comment"># 认证（启用用户名密码登录）</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">AUTH_ENABLED=true</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">AUTH_USERS=admin:123456</span>          <span class="hljs-comment"># 用户名:密码，可加多个用逗号分隔</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">AUTH_TOKEN_EXPIRY=720</span>               <span class="hljs-comment"># Token 有效期 720 小时（30 天）</span><br><br>      <span class="hljs-comment"># JWT 密钥（强烈建议自定义，防止重启后 Token 失效）</span><br>      <span class="hljs-comment"># - AUTH_JWT_SECRET=your-very-long-random-secret-2026-change-this</span><br><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">pansou-data:/app/data</span>               <span class="hljs-comment"># 持久化缓存、日志等</span><br><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">unless-stopped</span><br>    <span class="hljs-attr">healthcheck:</span><br>      <span class="hljs-attr">test:</span> [<span class="hljs-string">&quot;CMD&quot;</span>, <span class="hljs-string">&quot;/app/healthcheck.sh&quot;</span>]<br>      <span class="hljs-attr">interval:</span> <span class="hljs-string">30s</span><br>      <span class="hljs-attr">timeout:</span> <span class="hljs-string">10s</span><br>      <span class="hljs-attr">retries:</span> <span class="hljs-number">3</span><br>      <span class="hljs-attr">start_period:</span> <span class="hljs-string">40s</span><br><br>  <span class="hljs-attr">autoheal:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">willfarrell/autoheal:latest</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">pansou-autoheal</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">AUTOHEAL_CONTAINER_LABEL=autoheal</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">AUTOHEAL_INTERVAL=30</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">AUTOHEAL_START_PERIOD=60</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">AUTOHEAL_DEFAULT_STOP_TIMEOUT=10</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">/var/run/docker.sock:/var/run/docker.sock</span><br><br><span class="hljs-attr">volumes:</span><br>  <span class="hljs-attr">pansou-data:</span><br>    <span class="hljs-attr">driver:</span> <span class="hljs-string">local</span><br></code></pre></td></tr></table></figure>
 
-<p>然后就解决啦。</p>
+<p><strong>关键说明</strong>：</p>
+<ul>
+<li><strong>不映射 443</strong>：HTTPS 交给 1Panel 反向代理处理，避免证书冲突。</li>
+<li><strong>DOMAIN 未设置</strong>：推荐不设，使用相对路径，避免前端生成 localhost 链接导致白屏。</li>
+<li><strong>AUTH_JWT_SECRET</strong>：建议手动设置一个长随机字符串（可用 <code>openssl rand -base64 48</code> 生成），否则重启容器后旧登录失效。</li>
+<li><strong>插件 &amp; 频道</strong>：列表很全，基本覆盖主流来源；如需精简可自行删除部分。</li>
+</ul>
+<h2 id="1Panel-反向代理配置步骤"><a href="#1Panel-反向代理配置步骤" class="headerlink" title="1Panel 反向代理配置步骤"></a>1Panel 反向代理配置步骤</h2><ol>
+<li>容器编排部署成功 → 确认 pansou-app 运行正常。</li>
+<li>测试本地访问：http:&#x2F;&#x2F;服务器IP:3001（应看到登录页，用 guest &#x2F; 999999999 登录）。</li>
+<li>1Panel → <strong>网站</strong> → <strong>创建网站</strong> → 选择 <strong>反向代理</strong>。<ul>
+<li>主域名：pan.xinhaojin.top（DNS 已解析到服务器 IP）</li>
+<li>代理地址：<a href="http://127.0.0.1:3001（或">http://127.0.0.1:3001（或</a> <a href="http://pansou-app:80，如果同网络）">http://pansou-app:80，如果同网络）</a></li>
+<li>强制 HTTPS：<strong>开启</strong>（或先关掉测试，避免重定向循环）</li>
+<li>SSL：Let’s Encrypt 一键申请（自动验证 + 续期）</li>
+</ul>
+</li>
+<li>保存 → 等待证书申请成功。</li>
+<li>访问 <a target="_blank" rel="noopener" href="https://pan.xinhaojin.top/">https://pan.xinhaojin.top</a> → 输入用户名&#x2F;密码登录，即可使用。</li>
+</ol>
+<h2 id="常见问题-解决方案"><a href="#常见问题-解决方案" class="headerlink" title="常见问题 &amp; 解决方案"></a>常见问题 &amp; 解决方案</h2><ul>
+<li><strong>ERR_TOO_MANY_REDIRECTS</strong>：关闭 1Panel 站点的“强制 HTTPS” 再测试，或检查代理地址是否为 http 而非 https。</li>
+<li><strong>登录后白屏&#x2F;资源 404</strong>：确认 DOMAIN 未设置（或设为你的域名），清浏览器缓存。</li>
+<li><strong>搜索结果少&#x2F;慢</strong>：检查插件拼写、网络是否需 PROXY（被墙 TG 频道常见），或调高 MAX_CONCURRENCY。</li>
+<li><strong>证书申请失败</strong>：80 端口被占、DNS 未解析、Cloudflare 代理模式关掉（用 DNS only）。</li>
+<li><strong>资源链接失效</strong>：PanSou 只聚合，不负责验证；优先选最新结果，多试几个来源。</li>
+</ul>
+<h2 id="优化建议"><a href="#优化建议" class="headerlink" title="优化建议"></a>优化建议</h2><ul>
+<li><strong>加代理</strong>：如果 TG 频道访问慢，加 <code>- PROXY=socks5://你的代理IP:端口</code></li>
+<li><strong>前端升级</strong>：官方 UI 简约，可替换为 pansou-ui（<a target="_blank" rel="noopener" href="https://github.com/ZhjGo/pansou-ui%EF%BC%89%E6%88%96">https://github.com/ZhjGo/pansou-ui）或</a> aipan-netdisk-search 等更美观的前端，通过 Vercel 部署并代理。</li>
+<li><strong>备份</strong>：定期备份 pansou-data 卷（缓存可丢，日志可留）。</li>
+<li><strong>监控</strong>：1Panel 自带容器日志 + autoheal 已够用。</li>
+</ul>
 
                 
               </div>
@@ -350,7 +378,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%AE%89%E5%8D%93/" class="category-chain-item">安卓</a>
+  <a href="/categories/%E6%9D%82/" class="category-chain-item">杂</a>
   
   
 
@@ -362,15 +390,6 @@
     </div>
   
   
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E5%AE%89%E5%8D%93/" class="print-no-link">#安卓</a>
-      
-        <a href="/tags/HTTP/" class="print-no-link">#HTTP</a>
-      
-    </div>
-  
 </div>
 
 
@@ -379,8 +398,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Android9.0以上请求HTTP的方法</div>
-      <div>https://xinhaojin.github.io/2020/06/01/android9-0以上请求http的方法/</div>
+      <div>使用1Panel+DockerCompose一键部署PanSou网盘资源搜索引擎</div>
+      <div>https://xinhaojin.github.io/2026/02/08/使用1Panel+DockerCompose一键部署PanSou网盘资源搜索引擎/</div>
     </div>
     <div class="license-meta">
       
@@ -392,7 +411,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2020年6月1日</div>
+          <div>2026年2月8日</div>
         </div>
       
       
@@ -424,18 +443,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/06/01/android%E6%97%A5%E6%9C%9F%E9%80%89%E6%8B%A9%E5%99%A8datepicker/" title="Android日期选择器DatePicker">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Android日期选择器DatePicker</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/05/19/lr0%E6%96%87%E6%B3%95%EF%BC%9A%E6%9E%84%E9%80%A0dfa%E3%80%81%E5%88%86%E6%9E%90%E8%A1%A8%EF%BC%8C%E5%8F%A5%E5%AD%90%E6%8E%A8%E5%AF%BC/" title="LR(0)文法：构造DFA、分析表，句子推导">
-                        <span class="hidden-mobile">LR(0)文法：构造DFA、分析表，句子推导</span>
+                      <a href="/2026/01/15/%E5%9F%BA%E4%BA%8ECloudflare%20Worker%E7%9A%84IPv4%20to%20IPv6%E5%86%85%E7%BD%91%E6%9C%8D%E5%8A%A1%E4%BB%A3%E7%90%86%E6%96%B9%E6%A1%88%E6%80%BB%E7%BB%93/" title="基于Cloudflare Worker构建IPv4至IPv6内网穿透网关的最佳实践">
+                        <span class="hidden-mobile">基于Cloudflare Worker构建IPv4至IPv6内网穿透网关的最佳实践</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -458,7 +471,7 @@
         var options = Object.assign(
           {"clientID":"Ov23lifvhsymyganMHro","clientSecret":"cdd38ac0c65a95027749446001ebdff7ca7d4ec2","repo":"xinhaojin.github.io","owner":"xinhaojin","admin":"xinhaojin","language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
           {
-            id: '7ac2f7d30fffa0d43ff7ee0d80b96ed3'
+            id: 'e341777e16b9ae517759d3d7ee2374d0'
           }
         )
         var gitalk = new Gitalk(options);
