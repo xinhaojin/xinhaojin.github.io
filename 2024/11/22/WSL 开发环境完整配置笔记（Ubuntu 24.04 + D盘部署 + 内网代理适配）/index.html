@@ -1,0 +1,848 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  <link rel="icon" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xinhaojin">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="WSL 开发环境完整配置笔记（Ubuntu 24.04 + D盘部署 + 内网代理适配）聚焦内网代理开发场景、工具独立代理、无全局污染、一键可执行  一、Windows 前置开启（管理员 PowerShell）12345# 启用 WSL 功能dism.exe &#x2F;online &#x2F;enable-feature &#x2F;featurename:Microsoft-Windows-Subsystem-Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WSL 开发环境完整配置笔记（Ubuntu 24.04 + D盘部署 + 内网代理适配）">
+<meta property="og:url" content="https://xinhaojin.github.io/2024/11/22/WSL%20%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%AE%8C%E6%95%B4%E9%85%8D%E7%BD%AE%E7%AC%94%E8%AE%B0%EF%BC%88Ubuntu%2024.04%20+%20D%E7%9B%98%E9%83%A8%E7%BD%B2%20+%20%E5%86%85%E7%BD%91%E4%BB%A3%E7%90%86%E9%80%82%E9%85%8D%EF%BC%89/index.html">
+<meta property="og:site_name" content="xinhaojin&#39;s blog">
+<meta property="og:description" content="WSL 开发环境完整配置笔记（Ubuntu 24.04 + D盘部署 + 内网代理适配）聚焦内网代理开发场景、工具独立代理、无全局污染、一键可执行  一、Windows 前置开启（管理员 PowerShell）12345# 启用 WSL 功能dism.exe &#x2F;online &#x2F;enable-feature &#x2F;featurename:Microsoft-Windows-Subsystem-Linux">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-11-22T07:56:00.000Z">
+<meta property="article:modified_time" content="2026-04-07T14:39:54.706Z">
+<meta property="article:author" content="xinhaojin">
+<meta property="article:tag" content="WSL">
+<meta property="article:tag" content="claude code">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>WSL 开发环境完整配置笔记（Ubuntu 24.04 + D盘部署 + 内网代理适配） - xinhaojin&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xinhaojin.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?596b73bb5b70c262b123e997b6686f49";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xinhaojin&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="WSL 开发环境完整配置笔记（Ubuntu 24.04 + D盘部署 + 内网代理适配）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-11-22 15:56" pubdate>
+          2024年11月22日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          7 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">WSL 开发环境完整配置笔记（Ubuntu 24.04 + D盘部署 + 内网代理适配）</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2026年4月7日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="WSL-开发环境完整配置笔记（Ubuntu-24-04-D盘部署-内网代理适配）"><a href="#WSL-开发环境完整配置笔记（Ubuntu-24-04-D盘部署-内网代理适配）" class="headerlink" title="WSL 开发环境完整配置笔记（Ubuntu 24.04 + D盘部署 + 内网代理适配）"></a>WSL 开发环境完整配置笔记（Ubuntu 24.04 + D盘部署 + 内网代理适配）</h1><p><strong>聚焦内网代理开发场景、工具独立代理、无全局污染、一键可执行</strong></p>
+<hr>
+<h2 id="一、Windows-前置开启（管理员-PowerShell）"><a href="#一、Windows-前置开启（管理员-PowerShell）" class="headerlink" title="一、Windows 前置开启（管理员 PowerShell）"></a>一、Windows 前置开启（管理员 PowerShell）</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-comment"># 启用 WSL 功能</span><br>dism.exe /online /<span class="hljs-built_in">enable-feature</span> /featurename:Microsoft<span class="hljs-literal">-Windows-Subsystem-Linux</span> /all /norestart<br><br><span class="hljs-comment"># 启用虚拟机平台（WSL2 必需）</span><br>dism.exe /online /<span class="hljs-built_in">enable-feature</span> /featurename:VirtualMachinePlatform /all /norestart<br></code></pre></td></tr></table></figure>
+<p>✅ 执行后<strong>重启电脑</strong></p>
+<hr>
+<h2 id="二、安装最新版-WSL（支持-–location-自定义盘符）"><a href="#二、安装最新版-WSL（支持-–location-自定义盘符）" class="headerlink" title="二、安装最新版 WSL（支持 –location 自定义盘符）"></a>二、安装最新版 WSL（支持 –location 自定义盘符）</h2><p>下载官方离线包双击安装：<br><a target="_blank" rel="noopener" href="https://github.com/microsoft/WSL/releases/download/2.7.1/wsl.2.7.1.0.x64.msi">https://github.com/microsoft/WSL/releases/download/2.7.1/wsl.2.7.1.0.x64.msi</a></p>
+<hr>
+<h2 id="三、安装-Ubuntu-24-04-到-D-盘（二选一）"><a href="#三、安装-Ubuntu-24-04-到-D-盘（二选一）" class="headerlink" title="三、安装 Ubuntu 24.04 到 D 盘（二选一）"></a>三、安装 Ubuntu 24.04 到 D 盘（二选一）</h2><h3 id="方案1｜在线安装"><a href="#方案1｜在线安装" class="headerlink" title="方案1｜在线安装"></a>方案1｜在线安装</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">wsl <span class="hljs-literal">--install</span> <span class="hljs-literal">-d</span> Ubuntu <span class="hljs-number">24.04</span> <span class="hljs-literal">--location</span> D:\<br></code></pre></td></tr></table></figure>
+
+<h3 id="方案2｜离线安装（推荐，内网-无网络限制）"><a href="#方案2｜离线安装（推荐，内网-无网络限制）" class="headerlink" title="方案2｜离线安装（推荐，内网&#x2F;无网络限制）"></a>方案2｜离线安装（推荐，内网&#x2F;无网络限制）</h3><ol>
+<li><p>下载清华镜像离线包：<br><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/24.04.4/ubuntu-24.04.4-wsl-amd64.wsl">https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/24.04.4/ubuntu-24.04.4-wsl-amd64.wsl</a></p>
+</li>
+<li><p>执行安装（修改为你的实际路径）：</p>
+</li>
+</ol>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">wsl <span class="hljs-literal">--install</span> <span class="hljs-literal">--from-file</span> E:\tools\ubuntu<span class="hljs-literal">-24</span>.<span class="hljs-number">04.4</span><span class="hljs-literal">-wsl-amd64</span>.wsl <span class="hljs-literal">--location</span> D:\Ubuntu<span class="hljs-literal">-24</span>.<span class="hljs-number">04</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="四、验证安装状态"><a href="#四、验证安装状态" class="headerlink" title="四、验证安装状态"></a>四、验证安装状态</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs powershell">wsl <span class="hljs-literal">--version</span>       <span class="hljs-comment"># 必须 ≥ 2.7.1</span><br>wsl <span class="hljs-literal">-l</span> <span class="hljs-literal">-v</span>           <span class="hljs-comment"># 必须 VERSION=2</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="五、WSL-镜像网络（Win11-专属｜IP-与-Windows-完全一致）"><a href="#五、WSL-镜像网络（Win11-专属｜IP-与-Windows-完全一致）" class="headerlink" title="五、WSL 镜像网络（Win11 专属｜IP 与 Windows 完全一致）"></a>五、WSL 镜像网络（Win11 专属｜IP 与 Windows 完全一致）</h2><p>编辑 Windows 配置文件：<code>C:\Users\jxh\.wslconfig</code></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[wsl2]</span><br><span class="hljs-attr">networkingMode</span>=mirrored<br></code></pre></td></tr></table></figure>
+
+<p>重启 WSL 生效：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs powershell">wsl <span class="hljs-literal">--shutdown</span><br>wsl<br></code></pre></td></tr></table></figure>
+
+<h3 id="核心特性"><a href="#核心特性" class="headerlink" title="核心特性"></a>核心特性</h3><ul>
+<li>WSL 与 Windows 共用同一 IP，局域网设备可直接访问</li>
+<li>端口共享：同端口不可同时占用</li>
+<li>访问方式：<code>Windows_IP:端口</code> 直接访问 WSL 服务</li>
+</ul>
+<hr>
+<h2 id="六、Ubuntu-系统基础配置"><a href="#六、Ubuntu-系统基础配置" class="headerlink" title="六、Ubuntu 系统基础配置"></a>六、Ubuntu 系统基础配置</h2><h3 id="1-更换清华软件源"><a href="#1-更换清华软件源" class="headerlink" title="1. 更换清华软件源"></a>1. 更换清华软件源</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">cp</span> /etc/apt/sources.list /etc/apt/sources.list.bak<br><span class="hljs-built_in">sudo</span> nano /etc/apt/sources.list<br></code></pre></td></tr></table></figure>
+<p>替换为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble main restricted universe multiverse<br>deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble-updates main restricted universe multiverse<br>deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble-backports main restricted universe multiverse<br>deb https://security.ubuntu.com/ubuntu/ noble-security main restricted universe multiverse<br></code></pre></td></tr></table></figure>
+
+<p>更新源缓存：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> apt update<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-APT-独立代理（仅-apt-走代理，不污染系统）"><a href="#2-APT-独立代理（仅-apt-走代理，不污染系统）" class="headerlink" title="2. APT 独立代理（仅 apt 走代理，不污染系统）"></a>2. APT 独立代理（仅 apt 走代理，不污染系统）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> nano /etc/apt/apt.conf.d/99proxy<br></code></pre></td></tr></table></figure>
+<p>写入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">Acquire::http::Proxy <span class="hljs-string">&quot;http://192.168.1.1:10808&quot;</span>;<br>Acquire::https::Proxy <span class="hljs-string">&quot;http://192.168.1.1:10808&quot;</span>;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="七、pip-配置（清华源-独立代理）"><a href="#七、pip-配置（清华源-独立代理）" class="headerlink" title="七、pip 配置（清华源 + 独立代理）"></a>七、pip 配置（清华源 + 独立代理）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p ~/.config/pip<br>vi ~/.config/pip/pip.conf<br></code></pre></td></tr></table></figure>
+
+<p>写入配置：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[global]</span><br><span class="hljs-attr">index-url</span>=https://pypi.tuna.tsinghua.edu.cn/simple<br><span class="hljs-attr">proxy</span> = http://<span class="hljs-number">192.168</span>.<span class="hljs-number">1.1</span>:<span class="hljs-number">10808</span><br><br><span class="hljs-section">[install]</span><br><span class="hljs-attr">trusted-host</span>=pypi.tuna.tsinghua.edu.cn<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="八、Node-js-npm-完整配置（含全局免-sudo）"><a href="#八、Node-js-npm-完整配置（含全局免-sudo）" class="headerlink" title="八、Node.js + npm 完整配置（含全局免 sudo）"></a>八、Node.js + npm 完整配置（含全局免 sudo）</h2><h3 id="1-安装-Node-js-LTS"><a href="#1-安装-Node-js-LTS" class="headerlink" title="1. 安装 Node.js LTS"></a>1. 安装 Node.js LTS</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl -fsSL https://deb.nodesource.com/setup_lts.x | <span class="hljs-built_in">sudo</span> -E bash -<br><span class="hljs-built_in">sudo</span> apt install nodejs -y<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-npm-国内镜像-独立代理"><a href="#2-npm-国内镜像-独立代理" class="headerlink" title="2. npm 国内镜像 + 独立代理"></a>2. npm 国内镜像 + 独立代理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm config <span class="hljs-built_in">set</span> registry https://registry.npmmirror.com<br>npm config <span class="hljs-built_in">set</span> proxy http://192.168.1.1:10808<br>npm config <span class="hljs-built_in">set</span> https-proxy http://192.168.1.1:10808<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-npm-全局目录（免-sudo-安装全局包）"><a href="#3-npm-全局目录（免-sudo-安装全局包）" class="headerlink" title="3. npm 全局目录（免 sudo 安装全局包）"></a>3. npm 全局目录（免 sudo 安装全局包）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p ~/.npm-global<br>npm config <span class="hljs-built_in">set</span> prefix <span class="hljs-string">&#x27;~/.npm-global&#x27;</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;export PATH=&quot;$HOME/.npm-global/bin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.bashrc<br><span class="hljs-built_in">source</span> ~/.bashrc<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="九、Claude-Code-安装-独立代理（仅它生效，不污染系统）"><a href="#九、Claude-Code-安装-独立代理（仅它生效，不污染系统）" class="headerlink" title="九、Claude Code 安装 + 独立代理（仅它生效，不污染系统）"></a>九、Claude Code 安装 + 独立代理（仅它生效，不污染系统）</h2><h3 id="1-安装-Claude"><a href="#1-安装-Claude" class="headerlink" title="1. 安装 Claude"></a>1. 安装 Claude</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> https_proxy=http://192.168.1.1:10808<br><span class="hljs-comment"># curl -fsSL https://claude.ai/install.sh | bash</span><br>npm install -g @anthropic-ai/claude-code<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;export PATH=&quot;$HOME/.local/bin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.bashrc &amp;&amp; <span class="hljs-built_in">source</span> ~/.bashrc<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-创建独立代理包装脚本"><a href="#2-创建独立代理包装脚本" class="headerlink" title="2. 创建独立代理包装脚本"></a>2. 创建独立代理包装脚本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 重命名真实二进制</span><br><span class="hljs-built_in">mv</span> ~/.local/bin/claude ~/.local/bin/claude-real<br><br><span class="hljs-comment"># 创建代理脚本</span><br><span class="hljs-built_in">cat</span> &gt; ~/.local/bin/claude &lt;&lt; <span class="hljs-string">&#x27;EOF&#x27;</span><br><span class="hljs-comment">#!/bin/bash</span><br><span class="hljs-built_in">export</span> HTTPS_PROXY=http://192.168.1.1:10808<br><span class="hljs-built_in">export</span> https_proxy=http://192.168.1.1:10808<br><span class="hljs-built_in">export</span> NO_PROXY=localhost,127.0.0.1<br><span class="hljs-built_in">export</span> no_proxy=localhost,127.0.0.1<br><span class="hljs-built_in">exec</span> <span class="hljs-string">&quot;<span class="hljs-subst">$(dirname <span class="hljs-string">&quot;<span class="hljs-variable">$0</span>&quot;</span>)</span>/claude-real&quot;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$@</span>&quot;</span><br>EOF<br><br><span class="hljs-comment"># 添加执行权限</span><br><span class="hljs-built_in">chmod</span> +x ~/.local/bin/claude<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-Claude-升级恢复脚本（升级后一键重建代理）"><a href="#3-Claude-升级恢复脚本（升级后一键重建代理）" class="headerlink" title="3. Claude 升级恢复脚本（升级后一键重建代理）"></a>3. Claude 升级恢复脚本（升级后一键重建代理）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> &gt; ~/reinstall-claude-wrapper.sh &lt;&lt; <span class="hljs-string">&#x27;EOF&#x27;</span><br><span class="hljs-comment">#!/bin/bash</span><br><span class="hljs-built_in">mv</span> ~/.local/bin/claude ~/.local/bin/claude-real<br><span class="hljs-built_in">cat</span> &gt; ~/.local/bin/claude &lt;&lt; <span class="hljs-string">&#x27;WRAPPER&#x27;</span><br><span class="hljs-comment">#!/bin/bash</span><br><span class="hljs-built_in">export</span> HTTPS_PROXY=http://192.168.1.1:10808<br><span class="hljs-built_in">export</span> https_proxy=http://192.168.1.1:10808<br><span class="hljs-built_in">export</span> NO_PROXY=localhost,127.0.0.1<br><span class="hljs-built_in">export</span> no_proxy=localhost,127.0.0.1<br><span class="hljs-built_in">exec</span> <span class="hljs-string">&quot;<span class="hljs-subst">$(dirname <span class="hljs-string">&quot;<span class="hljs-variable">$0</span>&quot;</span>)</span>/claude-real&quot;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$@</span>&quot;</span><br>WRAPPER<br><span class="hljs-built_in">chmod</span> +x ~/.local/bin/claude<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;✅ Claude 代理包装脚本已恢复&quot;</span><br>EOF<br><br><span class="hljs-built_in">chmod</span> +x ~/reinstall-claude-wrapper.sh<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="十、Claude-Code-第三方-API-接入配置（智谱-第三方兼容）"><a href="#十、Claude-Code-第三方-API-接入配置（智谱-第三方兼容）" class="headerlink" title="十、Claude Code 第三方 API 接入配置（智谱&#x2F;第三方兼容）"></a>十、Claude Code 第三方 API 接入配置（智谱&#x2F;第三方兼容）</h2><h3 id="1-创建-Claude-配置目录"><a href="#1-创建-Claude-配置目录" class="headerlink" title="1. 创建 Claude 配置目录"></a>1. 创建 Claude 配置目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p ~/.claude<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-配置环境变量与模型映射"><a href="#2-配置环境变量与模型映射" class="headerlink" title="2. 配置环境变量与模型映射"></a>2. 配置环境变量与模型映射</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vi ~/.claude/settings.json<br></code></pre></td></tr></table></figure>
+<p>写入：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;env&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;ANTHROPIC_AUTH_TOKEN&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;your_api_key&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;ANTHROPIC_BASE_URL&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;https://open.bigmodel.cn/api/anthropic&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;API_TIMEOUT_MS&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;3000000&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;ANTHROPIC_DEFAULT_HAIKU_MODEL&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;glm-4.7&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;ANTHROPIC_DEFAULT_SONNET_MODEL&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;glm-5-turbo&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;ANTHROPIC_DEFAULT_OPUS_MODEL&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;glm-5.1&quot;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="3-配置-MCP-服务（联网能力-插件）"><a href="#3-配置-MCP-服务（联网能力-插件）" class="headerlink" title="3. 配置 MCP 服务（联网能力&#x2F;插件）"></a>3. 配置 MCP 服务（联网能力&#x2F;插件）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vi ~/.claude.json<br></code></pre></td></tr></table></figure>
+<p>写入：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;hasCompletedOnboarding&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;mcpServers&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;zai-mcp-server&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;stdio&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;command&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;npx&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;args&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-string">&quot;-y&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;@z_ai/mcp-server&quot;</span><br>      <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;env&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;Z_AI_API_KEY&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;your_api_key&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;Z_AI_MODE&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;ZHIPU&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;web-search-prime&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;http&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;https://open.bigmodel.cn/api/mcp/web_search_prime/mcp&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;headers&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;Authorization&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;your_api_key&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;web-reader&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;http&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;https://open.bigmodel.cn/api/mcp/web_reader/mcp&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;headers&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;Authorization&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;your_api_key&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;zread&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;http&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;https://open.bigmodel.cn/api/mcp/zread/mcp&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;headers&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;Authorization&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;your_api_key&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="十一、共享-Windows-SSH-密钥（Git-免密互通）"><a href="#十一、共享-Windows-SSH-密钥（Git-免密互通）" class="headerlink" title="十一、共享 Windows SSH 密钥（Git 免密互通）"></a>十一、共享 Windows SSH 密钥（Git 免密互通）</h2><p>直接复用 Windows SSH 凭证，WSL&#x2F;Windows 共用一套 Git 身份</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 创建目录</span><br><span class="hljs-built_in">mkdir</span> -p ~/.ssh<br><br><span class="hljs-comment"># 复制 Windows 密钥到 WSL</span><br><span class="hljs-built_in">cp</span> -r /mnt/c/Users/jxh/.ssh/* ~/.ssh/<br><br><span class="hljs-comment"># 修复 Linux 必需权限（必须执行）</span><br><span class="hljs-built_in">chmod</span> 700 ~/.ssh<br><span class="hljs-built_in">chmod</span> 600 ~/.ssh/id_rsa<br><span class="hljs-built_in">chmod</span> 644 ~/.ssh/id_rsa.pub<br></code></pre></td></tr></table></figure>
+
+<p>可选 Git 全局配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global user.name <span class="hljs-string">&quot;你的名字&quot;</span><br>git config --global user.email <span class="hljs-string">&quot;你的邮箱&quot;</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="十二、常用验证-维护命令"><a href="#十二、常用验证-维护命令" class="headerlink" title="十二、常用验证 &amp; 维护命令"></a>十二、常用验证 &amp; 维护命令</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-comment"># WSL 管理</span><br>wsl <span class="hljs-literal">--shutdown</span><br>wsl<br>wsl <span class="hljs-literal">-l</span> <span class="hljs-literal">-v</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 工具验证</span><br>claude --version<br>node -v<br>npm -v<br>git --version<br><br><span class="hljs-comment"># 查看全局代理（必须为空，无系统污染）</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$HTTPS_PROXY</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="整套配置核心优势"><a href="#整套配置核心优势" class="headerlink" title="整套配置核心优势"></a>整套配置核心优势</h2><ul>
+<li>适配<strong>内网代理</strong>开发场景，所有工具均配置独立代理</li>
+<li>WSL 完整安装到 D 盘，不占用 C 盘</li>
+<li>镜像网络：局域网直接访问 WSL 服务</li>
+<li><strong>APT &#x2F; pip &#x2F; npm &#x2F; Claude 全部独立代理</strong>，互不干扰</li>
+<li>无全局环境变量污染，开发环境纯净</li>
+<li>与 Windows 共享 SSH，Git 直接免密操作</li>
+<li>Claude Code 支持第三方 API（智谱）接入，内网可用</li>
+<li>工具升级后可一键恢复代理，维护成本极低</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件安装配置</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/WSL/" class="print-no-link">#WSL</a>
+      
+        <a href="/tags/claude-code/" class="print-no-link">#claude code</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>WSL 开发环境完整配置笔记（Ubuntu 24.04 + D盘部署 + 内网代理适配）</div>
+      <div>https://xinhaojin.github.io/2024/11/22/WSL 开发环境完整配置笔记（Ubuntu 24.04 + D盘部署 + 内网代理适配）/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>xinhaojin</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年11月22日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/11/22/ACL%E5%86%99%E6%B3%95(%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA)/" title="ACL写法(思科+华为)">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">ACL写法(思科+华为)</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/11/22/RIP+OSPF+BGP%E9%85%8D%E7%BD%AE(%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA)/" title="RIP+OSPF+BGP配置(思科+华为)">
+                        <span class="hidden-mobile">RIP+OSPF+BGP配置(思科+华为)</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/gitalk/1.8.0/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"Ov23lifvhsymyganMHro","clientSecret":"cdd38ac0c65a95027749446001ebdff7ca7d4ec2","repo":"xinhaojin.github.io","owner":"xinhaojin","admin":"xinhaojin","language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
+          {
+            id: '74e5773b4b956bce7f710f2d6a3d1ac2'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+        次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+        次
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

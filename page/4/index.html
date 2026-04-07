@@ -431,6 +431,69 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/11/22/WSL%20%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%AE%8C%E6%95%B4%E9%85%8D%E7%BD%AE%E7%AC%94%E8%AE%B0%EF%BC%88Ubuntu%2024.04%20+%20D%E7%9B%98%E9%83%A8%E7%BD%B2%20+%20%E5%86%85%E7%BD%91%E4%BB%A3%E7%90%86%E9%80%82%E9%85%8D%EF%BC%89/" target="_self">
+          WSL 开发环境完整配置笔记（Ubuntu 24.04 + D盘部署 + 内网代理适配）
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/11/22/WSL%20%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%AE%8C%E6%95%B4%E9%85%8D%E7%BD%AE%E7%AC%94%E8%AE%B0%EF%BC%88Ubuntu%2024.04%20+%20D%E7%9B%98%E9%83%A8%E7%BD%B2%20+%20%E5%86%85%E7%BD%91%E4%BB%A3%E7%90%86%E9%80%82%E9%85%8D%EF%BC%89/" target="_self">
+        <div>
+          WSL 开发环境完整配置笔记（Ubuntu 24.04 + D盘部署 + 内网代理适配）聚焦内网代理开发场景、工具独立代理、无全局污染、一键可执行  一、Windows 前置开启（管理员 PowerShell）12345# 启用 WSL 功能dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-11-22 15:56" pubdate>
+              2024-11-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件安装配置</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/WSL/">#WSL</a>
+            
+              <a href="/tags/claude-code/">#claude code</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/11/22/RIP+OSPF+BGP%E9%85%8D%E7%BD%AE(%E6%80%9D%E7%A7%91+%E5%8D%8E%E4%B8%BA)/" target="_self">
           RIP+OSPF+BGP配置(思科+华为)
         </a>
@@ -793,67 +856,6 @@
               <a href="/tags/DHCP/">#DHCP</a>
             
               <a href="/tags/linux/">#linux</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/10/02/%E6%9C%AC%E5%9C%B0%E5%8F%AF%E9%81%93%E4%BA%91%E9%80%9A%E8%BF%87Alist%E6%8C%82%E8%BD%BD%E5%A4%B8%E5%85%8B%E4%BA%91%E7%9B%98%EF%BC%8C%E5%AE%9E%E7%8E%B0%E7%BD%91%E7%9B%98%E7%BB%9F%E4%B8%80%E5%85%A5%E5%8F%A3%E7%AE%A1%E7%90%86/" target="_self">
-          本地可道云通过Alist挂载夸克云盘，实现网盘统一入口管理
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/10/02/%E6%9C%AC%E5%9C%B0%E5%8F%AF%E9%81%93%E4%BA%91%E9%80%9A%E8%BF%87Alist%E6%8C%82%E8%BD%BD%E5%A4%B8%E5%85%8B%E4%BA%91%E7%9B%98%EF%BC%8C%E5%AE%9E%E7%8E%B0%E7%BD%91%E7%9B%98%E7%BB%9F%E4%B8%80%E5%85%A5%E5%8F%A3%E7%AE%A1%E7%90%86/" target="_self">
-        <div>
-          前言目前在mini主机上部署了可道云服务，可以在公网通过网页访问，速度很快，也很方便，看到他有个功能是网络挂载，于是就想着能不能把夸克云盘挂载上去实现统一管理，这样就省去了夸克网盘客户端。搜了一下没有能直接挂载夸克网盘到可道云的方法，倒是有很多把Alist挂载到可道云的方案，而Alist本身就是一种可以挂载各种云盘的管理神器，于是就有了曲线救国方案：先把夸克网盘挂载到Alist上，再把Alist挂
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-10-02 22:55" pubdate>
-              2024-10-02
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件安装配置</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E4%BA%91%E7%9B%98/">#云盘</a>
             
           </div>
         
