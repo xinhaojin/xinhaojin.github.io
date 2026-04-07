@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2021/04/image-7.png">
 <meta property="article:published_time" content="2021-04-12T13:28:16.000Z">
-<meta property="article:modified_time" content="2025-04-27T12:29:45.671Z">
+<meta property="article:modified_time" content="2025-04-27T12:29:45.000Z">
 <meta property="article:author" content="xinhaojin">
 <meta property="article:tag" content="目标检测">
 <meta name="twitter:card" content="summary_large_image">
@@ -318,7 +318,7 @@
 <p>pip install -r requirements.txt</p>
 <p>或者，你可以直接查看requirement.txt内的版本要求，实际测试中发现略低于这些版本也可使用，以下版本已经是我略降低后的标准</p>
 <p># pip install -r requirements.txt</p>
-<pre><code># base ----------------------------------------
+<pre><code class="hljs"># base ----------------------------------------
 matplotlib&gt;=3.2.2
 numpy&gt;=1.18.5
 opencv-python&gt;=4.1.2
@@ -347,15 +347,15 @@ thop  # FLOPS computation
 pycocotools&gt;=2.0  # COCO mAP
 </code></pre>
 <p>安装步骤看起来简单，装起来是真的不容易，由于网络问题，最好先将pip换源，我自己使用清华源时经常出错，阿里云镜像源好像更加稳定一些，如安装xxx依赖包，可使用以下命令从阿里云镜像源加速下载</p>
-<pre><code>pip install xxx -i http://mirrors.aliyun.com/pypi/simple
+<pre><code class="hljs">pip install xxx -i http://mirrors.aliyun.com/pypi/simple
 </code></pre>
 <p>在win10上安装还好说一点，我的最终应用平台是树莓派，装起来更加艰难，印象中比较难安装的是opencv、torch、matplotlib，如果在线安装失败，建议直接选择下载包到本地手动安装，其中最难的是torch1.7以上版本的安装，我发现在Debian10系统下，pip install torch只支持到torch0.4的版本，在官网又找不到树莓派支持的版本，下载了好几个都说平台不支持，最后在网上找到了树莓派可用的版本**<a target="_blank" rel="noopener" href="https://gitee.com/jin_xin_hao/pytorch-armv7l">pytorch-armv7l</a>**，写本文的时候突然上不去GitHub，此链接是克隆在码云上的项目</p>
 <h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><p>这么复杂的环境，装完总要验证一下才放心。运行detect.py，source参数改为0，即调用摄像头</p>
-<pre><code>python detect.py --source=0 --weights=&quot;weights/yolov5s.pt&quot;
+<pre><code class="hljs">python detect.py --source=0 --weights=&quot;weights/yolov5s.pt&quot;
 </code></pre>
 <p>其中pt文件是权重文件，源码中没有自带，需要自行下载</p>
 <p>在weights文件夹中，有一个download_weights.sh文件，内容如下，写明了权重文件的下载方式，默认是会自动下载，但往往也因为网络问题很难一次下载成功</p>
-<pre><code>#!/bin/bash
+<pre><code class="hljs">#!/bin/bash
 # Download latest models from https://github.com/ultralytics/yolov5/releases
 # Usage:
 #    $ bash weights/download_weights.sh

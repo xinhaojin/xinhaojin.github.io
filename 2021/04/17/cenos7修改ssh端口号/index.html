@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2021/04/QQ%E6%88%AA%E5%9B%BE20210417012556.png">
 <meta property="article:published_time" content="2021-04-17T02:19:15.000Z">
-<meta property="article:modified_time" content="2025-04-27T12:29:45.659Z">
+<meta property="article:modified_time" content="2025-04-27T12:29:45.000Z">
 <meta property="article:author" content="xinhaojin">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="ssh">
@@ -317,14 +317,14 @@
 <p><img src="https://xinhaojin.github.io/imgs-host/past/2021/04/QQ%E6%88%AA%E5%9B%BE20210417012556.png" srcset="/img/loading.gif" lazyload></p>
 <p>我看了下，从4月13号开始，连续攻击了4天，滚犊子玩意儿，nmd，改端口！</p>
 <p>打开ssh配置文件</p>
-<pre><code>vim /etc/ssh/sshd_config
+<pre><code class="hljs">vim /etc/ssh/sshd_config
 </code></pre>
 <p>找到port，取消注释，改为自定义端口</p>
 <p>重启ssh服务</p>
-<pre><code>/etc/init.d/sshd restart
+<pre><code class="hljs">/etc/init.d/sshd restart
 </code></pre>
 <p>添加防火墙放行规则，如修改ssh端口为xxx,则</p>
-<pre><code>iptables -I INPUT  -p tcp --dport xxx -j ACCEPT
+<pre><code class="hljs">iptables -I INPUT  -p tcp --dport xxx -j ACCEPT
 </code></pre>
 <p>有宝塔面板的记得在安全组中放行对应端口，有云服务器供应商提供的控制台的也在安全组中放行对应端口，顺便把默认22端口禁了</p>
 <p>Done.</p>

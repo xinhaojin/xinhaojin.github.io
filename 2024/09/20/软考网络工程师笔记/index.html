@@ -71,7 +71,7 @@
 <meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20240920/image.6t72wjvqck.jpg">
 <meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20240920/image.1vym2ph4qj.jpg">
 <meta property="article:published_time" content="2024-09-20T02:35:00.000Z">
-<meta property="article:modified_time" content="2025-04-27T12:29:45.675Z">
+<meta property="article:modified_time" content="2025-04-27T12:29:45.000Z">
 <meta property="article:author" content="xinhaojin">
 <meta property="article:tag" content="计算机网络">
 <meta name="twitter:card" content="summary_large_image">
@@ -2046,17 +2046,17 @@
 <li><strong>VLAN划分配置</strong><ul>
 <li><strong>静态划分VLAN</strong><ul>
 <li>手动配置交换机接口加入特定VLAN</li>
-<li>配置示例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[Huawei] vlan 10 // 创建VLAN 10</span><br><span class="line">[Huawei-vlan10] quit // 退出</span><br><span class="line">[Huawei] interface GigabitEthernet0/0/1 // 进入接口</span><br><span class="line">[Huawei-GigabitEthernet0/0/1] port link-type access // 设置接口为access类型</span><br><span class="line">[Huawei-GigabitEthernet0/0/1] port default vlan 10 // 将接口加入VLAN 10</span><br></pre></td></tr></table></figure></li>
+<li>配置示例：<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs gradle">[Huawei] vlan <span class="hljs-number">10</span> <span class="hljs-comment">// 创建VLAN 10</span><br>[Huawei-vlan10] quit <span class="hljs-comment">// 退出</span><br>[Huawei] <span class="hljs-keyword">interface</span> GigabitEthernet0<span class="hljs-regexp">/0/</span><span class="hljs-number">1</span> <span class="hljs-comment">// 进入接口</span><br>[Huawei-GigabitEthernet0<span class="hljs-regexp">/0/</span><span class="hljs-number">1</span>] port link-type access <span class="hljs-comment">// 设置接口为access类型</span><br>[Huawei-GigabitEthernet0<span class="hljs-regexp">/0/</span><span class="hljs-number">1</span>] port <span class="hljs-keyword">default</span> vlan <span class="hljs-number">10</span> <span class="hljs-comment">// 将接口加入VLAN 10</span><br></code></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><strong>动态划分VLAN</strong><ul>
 <li>根据MAC地址、网络层地址、网络层协议、IP广播域或管理策略自动划分</li>
 <li><strong>基于MAC地址划分</strong><ul>
-<li>配置示例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[Huawei] vlan 20 // 创建VLAN 20</span><br><span class="line">[Huawei-vlan20] mac-vlan mac-address 5489-98FC-5825 // 将指定MAC地址终端加入VLAN 20</span><br></pre></td></tr></table></figure></li>
+<li>配置示例：<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-selector-attr">[Huawei]</span> vlan <span class="hljs-number">20</span> <span class="hljs-comment">// 创建VLAN 20</span><br><span class="hljs-selector-attr">[Huawei-vlan20]</span> mac-vlan mac-<span class="hljs-selector-tag">address</span> <span class="hljs-number">5489</span>-<span class="hljs-number">98</span>FC-<span class="hljs-number">5825</span> <span class="hljs-comment">// 将指定MAC地址终端加入VLAN 20</span><br></code></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><strong>基于策略划分</strong><ul>
-<li>配置示例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[Huawei] vlan 20 // 创建VLAN 20</span><br><span class="line">[Huawei-vlan20] policy-vlan mac-address 0-1-1 ip 10.1.1.1 priority 7</span><br><span class="line">// 基于策略划分VLAN，将指定MAC地址和IP地址的主机加入VLAN 20，并设置802.1p优先级为7</span><br></pre></td></tr></table></figure></li>
+<li>配置示例：<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-selector-attr">[Huawei]</span> vlan <span class="hljs-number">20</span> <span class="hljs-comment">// 创建VLAN 20</span><br><span class="hljs-selector-attr">[Huawei-vlan20]</span> policy-vlan mac-<span class="hljs-selector-tag">address</span> <span class="hljs-number">0</span>-<span class="hljs-number">1</span>-<span class="hljs-number">1</span> ip <span class="hljs-number">10.1</span>.<span class="hljs-number">1.1</span> priority <span class="hljs-number">7</span><br><span class="hljs-comment">// 基于策略划分VLAN，将指定MAC地址和IP地址的主机加入VLAN 20，并设置802.1p优先级为7</span><br></code></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
@@ -4261,7 +4261,7 @@
 <ul>
 <li>包含了<strong>主机的域名搜索顺序和DNS服务器地址</strong>。</li>
 <li>命令查看内容：<code>cat /etc/resolv.conf</code></li>
-<li>示例内容：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Generated by Network Manager</span><br><span class="line">nameserver 8.8.8.8    # Google主DNS服务器</span><br><span class="line">nameserver 8.8.4.4    # Google备用DNS服务器</span><br></pre></td></tr></table></figure></li>
+<li>示例内容：<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-comment"># Generated by Network Manager</span><br><span class="hljs-attribute">nameserver</span> <span class="hljs-number">8.8.8.8</span>    <span class="hljs-comment"># Google主DNS服务器</span><br>nameserver <span class="hljs-number">8.8.4.4</span>    <span class="hljs-comment"># Google备用DNS服务器</span><br></code></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p><strong>&#x2F;etc&#x2F;named.conf</strong>: <strong>DNS主配置文件</strong></p>
@@ -4273,13 +4273,13 @@
 <ul>
 <li>包含IP地址、主机名。</li>
 <li>Windows系统中位于：<code>C:\Windows\System32\drivers\etc\hosts</code></li>
-<li>示例内容：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 102.54.94.97 rhino.acme.com</span><br><span class="line"># 38.25.63.10 x.acme.com</span><br></pre></td></tr></table></figure></li>
+<li>示例内容：<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs 1c"><span class="hljs-meta"># 102.54.94.97 rhino.acme.com</span><br><span class="hljs-meta"># 38.25.63.10 x.acme.com</span><br></code></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p><strong>&#x2F;etc&#x2F;host.conf</strong>: 解析器查询顺序配置文件</p>
 <ul>
 <li>命令查看内容：<code>vi /etc/host.conf</code></li>
-<li>示例配置：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">order hosts, bind</span><br><span class="line"># 表示先查询本地hosts文件,如果没有结果,再尝试查找BIND DNS服务器。</span><br></pre></td></tr></table></figure></li>
+<li>示例配置：<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs crmsh"><span class="hljs-keyword">order</span> <span class="hljs-title">hosts</span>, bind<br><span class="hljs-comment"># 表示先查询本地hosts文件,如果没有结果,再尝试查找BIND DNS服务器。</span><br></code></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ol>

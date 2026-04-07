@@ -27,7 +27,7 @@
 <meta property="og:description" content="第一步curl --silent --location https:&#x2F;&#x2F;rpm.nodesource.com&#x2F;setup_10.x  sudo bash  curl --silent --location https:&#x2F;&#x2F;rpm.nodesource.com&#x2F;setup_10.x  sudo bash  Installing the NodeSource Node.js 10.x repo…Ins">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-07-05T01:25:10.000Z">
-<meta property="article:modified_time" content="2025-04-27T12:29:45.663Z">
+<meta property="article:modified_time" content="2025-04-27T12:29:45.000Z">
 <meta property="article:author" content="xinhaojin">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary_large_image">
@@ -310,7 +310,7 @@
             
               <div class="markdown-body">
                 
-                <h4 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h4><pre><code>curl --silent --location https://rpm.nodesource.com/setup_10.x  sudo bash
+                <h4 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h4><pre><code class="hljs">curl --silent --location https://rpm.nodesource.com/setup_10.x  sudo bash
 
 curl --silent --location https://rpm.nodesource.com/setup_10.x  sudo bash
 </code></pre>
@@ -334,20 +334,20 @@ curl --silent --location https://rpm.nodesource.com/setup_10.x  sudo bash
 <h2 id="Checking-for-existing-installations…"><a href="#Checking-for-existing-installations…" class="headerlink" title="Checking for existing installations…"></a>Checking for existing installations…</h2><ul>
 <li>rpm -qa ‘nodenpm’  grep -v nodesource</li>
 </ul>
-<h2 id="Run-sudo-yum-install-y-nodejs-to-install-Node-js-10-x-and-npm"><a href="#Run-sudo-yum-install-y-nodejs-to-install-Node-js-10-x-and-npm" class="headerlink" title="Run `sudo yum install -y nodejs` to install Node.js 10.x and npm."></a>Run `sudo yum install -y nodejs` to install Node.js 10.x and npm.</h2><h2 id="You-may-also-need-development-tools-to-build-native-addons"><a href="#You-may-also-need-development-tools-to-build-native-addons" class="headerlink" title="You may also need development tools to build native addons:"></a>You may also need development tools to build native addons:</h2><pre><code>sudo yum install gcc-c++ make
+<h2 id="Run-sudo-yum-install-y-nodejs-to-install-Node-js-10-x-and-npm"><a href="#Run-sudo-yum-install-y-nodejs-to-install-Node-js-10-x-and-npm" class="headerlink" title="Run `sudo yum install -y nodejs` to install Node.js 10.x and npm."></a>Run `sudo yum install -y nodejs` to install Node.js 10.x and npm.</h2><h2 id="You-may-also-need-development-tools-to-build-native-addons"><a href="#You-may-also-need-development-tools-to-build-native-addons" class="headerlink" title="You may also need development tools to build native addons:"></a>You may also need development tools to build native addons:</h2><pre><code class="hljs">sudo yum install gcc-c++ make
 </code></pre>
-<h2 id="To-install-the-Yarn-package-manager-run"><a href="#To-install-the-Yarn-package-manager-run" class="headerlink" title="To install the Yarn package manager, run:"></a>To install the Yarn package manager, run:</h2><pre><code>curl -sL https://dl.yarnpkg.com/rpm/yarn.repo  sudo tee /etc/yum.repos.d/yarn.repo
+<h2 id="To-install-the-Yarn-package-manager-run"><a href="#To-install-the-Yarn-package-manager-run" class="headerlink" title="To install the Yarn package manager, run:"></a>To install the Yarn package manager, run:</h2><pre><code class="hljs">curl -sL https://dl.yarnpkg.com/rpm/yarn.repo  sudo tee /etc/yum.repos.d/yarn.repo
  sudo yum install yarn
 </code></pre>
-<h4 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h4><pre><code>sudo yum -y install nodejs
+<h4 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h4><pre><code class="hljs">sudo yum -y install nodejs
 
 node -v查看版本
 </code></pre>
 <p>如果以上步骤不能安装，执行以下命令后再执行第二步：</p>
-<pre><code>sudo yum clean all
+<pre><code class="hljs">sudo yum clean all
 </code></pre>
 <p>如果存在多个 nodesoucre，执行以下命令删除，然后重新执行第一第二步：</p>
-<pre><code>sudo rm -fv /etc/yum.repos.d/nodesource*
+<pre><code class="hljs">sudo rm -fv /etc/yum.repos.d/nodesource*
 </code></pre>
 
                 

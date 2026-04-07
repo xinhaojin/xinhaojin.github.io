@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2021/05/image-30.png">
 <meta property="article:published_time" content="2021-05-21T07:13:56.000Z">
-<meta property="article:modified_time" content="2025-04-27T12:29:45.679Z">
+<meta property="article:modified_time" content="2025-04-27T12:29:45.000Z">
 <meta property="article:author" content="xinhaojin">
 <meta property="article:tag" content="软件安装配置">
 <meta property="article:tag" content="wget">
@@ -317,26 +317,26 @@
 <h4 id="windows下安装wget"><a href="#windows下安装wget" class="headerlink" title="windows下安装wget"></a>windows下安装wget</h4><p>下载地址-&gt;<a target="_blank" rel="noopener" href="https://jaist.dl.sourceforge.net/project/gnuwin32/wget/1.11.4-1/">这里</a></p>
 <p>安装时记住安装目录，这玩意儿压根不占空间，随他默认即可</p>
 <p>在高级系统设置-环境变量-系统变量中添加一个字段</p>
-<pre><code>GNU_HOME=C:\\Program Files (x86)\\GnuWin32
+<pre><code class="hljs">GNU_HOME=C:\\Program Files (x86)\\GnuWin32
 </code></pre>
 <p>在系统变量Path中添加;%GNU_HOME%\bin（win7注意前面有分号）</p>
 <p><img src="https://xinhaojin.github.io/imgs-host/past/2021/05/image-30.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h4><p><strong>直接下载单个文件</strong> wget url</p>
-<pre><code>wget https://down.qq.com/qqweb/PCQQ/PCQQ_EXE/PCQQ2021.exe
+<pre><code class="hljs">wget https://down.qq.com/qqweb/PCQQ/PCQQ_EXE/PCQQ2021.exe
 </code></pre>
 <p><strong>自定义文件名</strong> wget -O name url</p>
 <p>wget默认会以最后一个符合”&#x2F;”的后面的字符来命令，对于动态链接的下载通常文件名会不正确。 </p>
 <p>下面的例子会下载一个文件并以名称download.php?id&#x3D;1080保存 </p>
-<pre><code>wget http://www.xxxx.xxx/download?id=1080
+<pre><code class="hljs">wget http://www.xxxx.xxx/download?id=1080
 </code></pre>
 <p>即使下载的文件是zip格式，它仍然以download.php?id&#x3D;1080命名</p>
 <p>为了解决这个问题，我们可以使用参数-O来指定一个文件名</p>
-<pre><code>wget -O abc.zip http://www.xxxx.xxx/download.php?id=1080
+<pre><code class="hljs">wget -O abc.zip http://www.xxxx.xxx/download.php?id=1080
 </code></pre>
 <p><strong>断点续传</strong> wget -c</p>
 <p>对于大文件下载时间较长，过程中可能会出现网络中断，这时使用wget -c url便可以续传</p>
 <p><strong>后台下载</strong> wget -b</p>
-<pre><code>wget -b url
+<pre><code class="hljs">wget -b url
 </code></pre>
 <p>查看进度可以使用wget-log</p>
 

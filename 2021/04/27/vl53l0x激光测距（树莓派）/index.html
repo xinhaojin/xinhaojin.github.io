@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2021/04/image-32.png">
 <meta property="article:published_time" content="2021-04-27T10:35:07.000Z">
-<meta property="article:modified_time" content="2025-04-27T12:29:45.655Z">
+<meta property="article:modified_time" content="2025-04-27T12:29:45.000Z">
 <meta property="article:author" content="xinhaojin">
 <meta property="article:tag" content="树莓派">
 <meta property="article:tag" content="激光测距">
@@ -319,17 +319,17 @@
 <p><img src="https://xinhaojin.github.io/imgs-host/past/2021/04/image-32.png" srcset="/img/loading.gif" lazyload></p>
 <p>那么怎么判断接线是否正确呢？可以查看I2C设备地址，如果接线后I2C设备多了一个，那就基本没错了</p>
 <p>开启I2C</p>
-<pre><code>sudo raspi-config #依次选择Interfacing Options---I2C---Enabled
+<pre><code class="hljs">sudo raspi-config #依次选择Interfacing Options---I2C---Enabled
 </code></pre>
 <p>查看I2C设备地址</p>
-<pre><code>sudo i2cdetect -y 1
+<pre><code class="hljs">sudo i2cdetect -y 1
 </code></pre>
 <h4 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h4><p>VL53L0X是有一个专门的包的，可以通过pip安装</p>
 <p>但我尝试pip安装后提示没有可用的版本,查看pypi后发现仅支持到python3.5，而我用的是python3.7</p>
 <p><img src="https://xinhaojin.github.io/imgs-host/past/2021/04/image-31-1024x535.png" srcset="/img/loading.gif" lazyload></p>
 <p>抱着侥幸的心理下载3.5的包，本地安装时把包名改成3.7的，安装成功，但是跑了样例代码还是不对，判断下来是安装的问题，于是又把这个包卸载了</p>
 <h4 id="正确方法"><a href="#正确方法" class="headerlink" title="正确方法"></a>正确方法</h4><p>换个安装方法，上<a target="_blank" rel="noopener" href="https://github.com/pimoroni/VL53L0X-python">GitHub</a>一搜，果然有源码安装方法</p>
-<pre><code>sudo apt-get install build-essential python-dev#前置条件
+<pre><code class="hljs">sudo apt-get install build-essential python-dev#前置条件
 pip install git+https://github.com/pimoroni/VL53L0X-python.git
 cd your_directory#选择你的目录
 git clone https://github.com/pimoroni/VL53L0X_rasp_python.git

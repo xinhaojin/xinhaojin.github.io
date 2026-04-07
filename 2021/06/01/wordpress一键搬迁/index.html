@@ -34,7 +34,7 @@
 <meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2021/06/image-5-1024x455.png">
 <meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2021/06/QQ%E6%88%AA%E5%9B%BE20210601193705-1024x435.png">
 <meta property="article:published_time" content="2021-06-01T12:21:29.000Z">
-<meta property="article:modified_time" content="2025-04-27T12:29:45.675Z">
+<meta property="article:modified_time" content="2025-04-27T12:29:45.000Z">
 <meta property="article:author" content="xinhaojin">
 <meta property="article:tag" content="blog">
 <meta property="article:tag" content="wordpress">
@@ -330,14 +330,14 @@
 <h5 id="上传-wpress"><a href="#上传-wpress" class="headerlink" title="上传.wpress"></a>上传.wpress</h5><p>启用插件后，通过FTP工具把之前下载的.wpress文件上传到服务器这个文件夹中（网站根目录下的wp-content&#x2F;ai1wm-backups）</p>
 <p><img src="https://xinhaojin.github.io/imgs-host/past/2021/06/image-2.png" srcset="/img/loading.gif" lazyload></p>
 <h5 id="提高文件上传上限"><a href="#提高文件上传上限" class="headerlink" title="提高文件上传上限"></a>提高文件上传上限</h5><p>查找php.ini</p>
-<pre><code>php -i  grep &#39;php.ini&#39;
+<pre><code class="hljs">php -i  grep &#39;php.ini&#39;
 </code></pre>
 <p><img src="https://xinhaojin.github.io/imgs-host/past/2021/06/image-3.png" srcset="/img/loading.gif" lazyload></p>
 <p>打开php.ini</p>
-<pre><code>vim /www/server/php/70/etc/php.ini
+<pre><code class="hljs">vim /www/server/php/70/etc/php.ini
 </code></pre>
 <p>修改以下几个参数，由于我的.wpress大概780M，所以我把filesize改成了1024M，其他参数也可以根据需求调很大</p>
-<pre><code>upload_max_filesize 128M
+<pre><code class="hljs">upload_max_filesize 128M
 post_max_size 128M
 memory_limit 256M
 max_execution_time 300

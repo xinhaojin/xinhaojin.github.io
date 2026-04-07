@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20230704/image.5xjeaa9urio0.webp">
 <meta property="og:image" content="https://xinhaojin.github.io/imgs-host/20230704/image.7jei1ok5yo40.webp">
 <meta property="article:published_time" content="2023-07-04T05:30:00.000Z">
-<meta property="article:modified_time" content="2025-04-27T12:29:45.671Z">
+<meta property="article:modified_time" content="2025-04-27T12:29:45.000Z">
 <meta property="article:author" content="xinhaojin">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="docker">
@@ -315,15 +315,15 @@
               <div class="markdown-body">
                 
                 <h2 id="Ubuntu22宝塔面板安装docker"><a href="#Ubuntu22宝塔面板安装docker" class="headerlink" title="Ubuntu22宝塔面板安装docker"></a>Ubuntu22宝塔面板安装docker</h2><p>官网<a target="_blank" rel="noopener" href="https://www.bt.cn/new/download.html">宝塔面板下载，免费全能的服务器运维软件 (bt.cn)</a></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O install.sh https://download.bt.cn/install/install-ubuntu_6.0.sh &amp;&amp; sudo bash install.sh ed8484bec</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget -O install.sh https://download.bt.cn/install/install-ubuntu_6.0.sh &amp;&amp; sudo bash install.sh ed8484bec<br></code></pre></td></tr></table></figure>
 
 <p>复制保存初始化用户密码</p>
 <p><img src="https://xinhaojin.github.io/imgs-host/20230704/image.5xjeaa9urio0.webp" srcset="/img/loading.gif" lazyload></p>
 <p>放行端口</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow 23252/tcp</span><br><span class="line">sudo ufw allow 23252/udp</span><br><span class="line">sudo ufw enable</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo ufw allow 23252/tcp<br>sudo ufw allow 23252/udp<br>sudo ufw enable<br></code></pre></td></tr></table></figure>
 
 <p>有可能还是无法访问，需要重启宝塔面板，或重启服务器</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl status bt</span><br><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart bt</span><br></pre></td></tr></table></figure>
+<figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nsis"><span class="hljs-params">system</span>ctl status bt<br><span class="hljs-params">system</span>ctl daemon-reload<br><span class="hljs-params">system</span>ctl restart bt<br></code></pre></td></tr></table></figure>
 
 <p><img src="https://xinhaojin.github.io/imgs-host/20230704/image.7jei1ok5yo40.webp" srcset="/img/loading.gif" lazyload></p>
 <p>使用初始化用户密码登录进去之后，在面板设置中修改用户名和密码</p>

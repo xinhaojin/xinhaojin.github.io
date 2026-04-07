@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20240919/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240919103106.3k7yyi4n1m.jpg">
 <meta property="og:image" content="https://xinhaojin.github.io/picx-images-hosting/20240919/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240919103319.969pcd61vc.jpg">
 <meta property="article:published_time" content="2024-09-19T02:47:59.000Z">
-<meta property="article:modified_time" content="2025-04-27T12:29:45.663Z">
+<meta property="article:modified_time" content="2025-04-27T12:29:45.000Z">
 <meta property="article:author" content="xinhaojin">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="虚拟机">
@@ -317,7 +317,7 @@
                 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>VMware装了个银河麒麟系统的虚拟机，需要和主机互传文件</p>
 <h2 id="虚拟机设置"><a href="#虚拟机设置" class="headerlink" title="虚拟机设置"></a>虚拟机设置</h2><p>在虚拟机关机状态下，虚拟机设置-选项-共享文件夹-添加<br><img src="https://xinhaojin.github.io/picx-images-hosting/20240919/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240919103106.3k7yyi4n1m.jpg" srcset="/img/loading.gif" lazyload alt="微信截图_20240919103106"></p>
 <h2 id="挂载目录"><a href="#挂载目录" class="headerlink" title="挂载目录"></a>挂载目录</h2><p>虚拟机开机后，挂载目录</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mount -t fuse.vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo mount -t fuse.vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other<br></code></pre></td></tr></table></figure>
 
 <p>如果没有 <code>/mnt/hgfs</code>这个文件夹就手动新建一个</p>
 <p>如果命令行看不到就在图像界面打开看看<br><img src="https://xinhaojin.github.io/picx-images-hosting/20240919/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240919103319.969pcd61vc.jpg" srcset="/img/loading.gif" lazyload alt="微信截图_20240919103319"></p>

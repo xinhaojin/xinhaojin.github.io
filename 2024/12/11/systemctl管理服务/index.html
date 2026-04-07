@@ -27,7 +27,7 @@
 <meta property="og:description" content="需求eg.netmon 用户，在名为‘py12’的 conda 虚拟环境中，在&#x2F;home&#x2F;netmon&#x2F;projects&#x2F;iotdev&#x2F;iotdev_flask 目录下，运行 flask 程序 flask_app.py 创建服务1sudo vi &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;iot_flask.service  1234567891011">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-12-11T02:56:38.000Z">
-<meta property="article:modified_time" content="2025-04-27T12:29:45.679Z">
+<meta property="article:modified_time" content="2025-04-27T12:29:45.000Z">
 <meta property="article:author" content="xinhaojin">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -310,9 +310,9 @@
               <div class="markdown-body">
                 
                 <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>eg.netmon 用户，在名为‘py12’的 conda 虚拟环境中，在&#x2F;home&#x2F;netmon&#x2F;projects&#x2F;iotdev&#x2F;iotdev_flask 目录下，运行 flask 程序 flask_app.py</p>
-<h2 id="创建服务"><a href="#创建服务" class="headerlink" title="创建服务"></a>创建服务</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/systemd/system/iot_flask.service</span><br></pre></td></tr></table></figure>
+<h2 id="创建服务"><a href="#创建服务" class="headerlink" title="创建服务"></a>创建服务</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo vi /etc/systemd/system/iot_flask.service<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Gunicorn instance to serve Flask App</span><br><span class="line">After=network.target </span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">User=netmon</span><br><span class="line">Group=netmon</span><br><span class="line">WorkingDirectory=/home/netmon/projects/iotdev/iotdev_flask</span><br><span class="line">Environment=&quot;PATH=/home/netmon/.conda/envs/py12/bin&quot;</span><br><span class="line">ExecStart=/home/netmon/.conda/envs/py12/bin/python flask_app.py</span><br><span class="line">Restart=always</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs shell">[Unit]<br>Description=Gunicorn instance to serve Flask App<br>After=network.target <br><br>[Service]<br>User=netmon<br>Group=netmon<br>WorkingDirectory=/home/netmon/projects/iotdev/iotdev_flask<br>Environment=&quot;PATH=/home/netmon/.conda/envs/py12/bin&quot;<br>ExecStart=/home/netmon/.conda/envs/py12/bin/python flask_app.py<br>Restart=always<br><br>[Install]<br>WantedBy=multi-user.target<br></code></pre></td></tr></table></figure>
 
 <p>下面是每部分的意义：</p>
 <ul>
@@ -337,14 +337,14 @@
 </ul>
 </li>
 </ul>
-<h2 id="加载服务"><a href="#加载服务" class="headerlink" title="加载服务"></a>加载服务</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br></pre></td></tr></table></figure>
-<h2 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start iot_flask.service</span><br></pre></td></tr></table></figure>
+<h2 id="加载服务"><a href="#加载服务" class="headerlink" title="加载服务"></a>加载服务</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo systemctl daemon-reload<br></code></pre></td></tr></table></figure>
+<h2 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo systemctl start iot_flask.service<br></code></pre></td></tr></table></figure>
 
-<h2 id="设置开机自启动"><a href="#设置开机自启动" class="headerlink" title="设置开机自启动"></a>设置开机自启动</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable iot_flask.service</span><br></pre></td></tr></table></figure>
+<h2 id="设置开机自启动"><a href="#设置开机自启动" class="headerlink" title="设置开机自启动"></a>设置开机自启动</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo systemctl enable iot_flask.service<br></code></pre></td></tr></table></figure>
 
-<h2 id="查看运行状态"><a href="#查看运行状态" class="headerlink" title="查看运行状态"></a>查看运行状态</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl status iot_flask.service</span><br></pre></td></tr></table></figure>
+<h2 id="查看运行状态"><a href="#查看运行状态" class="headerlink" title="查看运行状态"></a>查看运行状态</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo systemctl status iot_flask.service<br></code></pre></td></tr></table></figure>
 
-<h2 id="关闭服务"><a href="#关闭服务" class="headerlink" title="关闭服务"></a>关闭服务</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl stop iot_flask.service</span><br></pre></td></tr></table></figure>
+<h2 id="关闭服务"><a href="#关闭服务" class="headerlink" title="关闭服务"></a>关闭服务</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo systemctl stop iot_flask.service<br></code></pre></td></tr></table></figure>
 
 <p>如果要使用普通用户来管理服务，可以在 <code>~/.config/systemd/user</code> ​下面注册服务，注意不可以在配置文件中指定 user 和 group，管理命令是 <code>systemctl --user xxx</code>​</p>
 <p>相对于使用 rc.local 来实现开机自启动，systemctl 有以下几个优势：</p>
