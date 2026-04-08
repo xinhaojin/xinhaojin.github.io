@@ -1,0 +1,838 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  <link rel="icon" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xinhaojin">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="💄 把CMD打造成现代化终端：Windows Terminal + Clink + Oh My Posh 配置指南原生Windows CMD的体验一直被诟病——单调的黑窗口、简陋的输入补全、光秃秃的提示符……但通过「Windows Terminal + Clink + Oh My Posh」的组合，我们能把CMD改造成兼具颜值和实用性的现代化终端，三者分工明确、各司其职，完美适配！ 🧩 核心组">
+<meta property="og:type" content="article">
+<meta property="og:title" content="把CMD打造成现代化终端：Windows Terminal+Clink+Oh My Posh配置指南">
+<meta property="og:url" content="https://xinhaojin.github.io/2026/02/09/%E6%8A%8ACMD%E6%89%93%E9%80%A0%E6%88%90%E7%8E%B0%E4%BB%A3%E5%8C%96%E7%BB%88%E7%AB%AF%EF%BC%9AWindows%20Terminal+Clink+Oh%20My%20Posh%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/index.html">
+<meta property="og:site_name" content="xinhaojin&#39;s blog">
+<meta property="og:description" content="💄 把CMD打造成现代化终端：Windows Terminal + Clink + Oh My Posh 配置指南原生Windows CMD的体验一直被诟病——单调的黑窗口、简陋的输入补全、光秃秃的提示符……但通过「Windows Terminal + Clink + Oh My Posh」的组合，我们能把CMD改造成兼具颜值和实用性的现代化终端，三者分工明确、各司其职，完美适配！ 🧩 核心组">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-02-08T16:04:05.000Z">
+<meta property="article:modified_time" content="2026-04-08T00:55:52.945Z">
+<meta property="article:author" content="xinhaojin">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>把CMD打造成现代化终端：Windows Terminal+Clink+Oh My Posh配置指南 - xinhaojin&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xinhaojin.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?596b73bb5b70c262b123e997b6686f49";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xinhaojin&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="把CMD打造成现代化终端：Windows Terminal+Clink+Oh My Posh配置指南"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-02-09 00:04" pubdate>
+          2026年2月9日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          7 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">把CMD打造成现代化终端：Windows Terminal+Clink+Oh My Posh配置指南</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2026年4月8日 早上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="💄-把CMD打造成现代化终端：Windows-Terminal-Clink-Oh-My-Posh-配置指南"><a href="#💄-把CMD打造成现代化终端：Windows-Terminal-Clink-Oh-My-Posh-配置指南" class="headerlink" title="💄 把CMD打造成现代化终端：Windows Terminal + Clink + Oh My Posh 配置指南"></a>💄 把CMD打造成现代化终端：Windows Terminal + Clink + Oh My Posh 配置指南</h1><p>原生Windows CMD的体验一直被诟病——单调的黑窗口、简陋的输入补全、光秃秃的提示符……但通过「Windows Terminal + Clink + Oh My Posh」的组合，我们能把CMD改造成兼具颜值和实用性的现代化终端，三者分工明确、各司其职，完美适配！</p>
+<h2 id="🧩-核心组件分工：像团队一样协作"><a href="#🧩-核心组件分工：像团队一样协作" class="headerlink" title="🧩 核心组件分工：像团队一样协作"></a>🧩 核心组件分工：像团队一样协作</h2><table>
+<thead>
+<tr>
+<th>组件</th>
+<th>核心分工</th>
+<th>核心价值（为什么需要它）</th>
+<th>形象化角色</th>
+<th>可替换性（常见替代）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Windows Terminal</td>
+<td>终端窗口的「外壳&#x2F;渲染层」：<br>• 标签页、多窗口、分屏<br>• 透明&#x2F;亚克力&#x2F;背景图定制<br>• 内置配色方案（Campbell等）<br>• Nerd Font字体支持（图标显示）<br>• ANSI&#x2F;VT颜色解析（彩色输出）<br>• 系统默认终端集成</td>
+<td>取代原生CMD丑陋的黑框，提供现代UI和完整的颜色渲染能力；没有它，后续美化只能在老旧黑框里运行</td>
+<td>「房子&#x2F;画布&#x2F;显示器」</td>
+<td>ConEmu、Tabby、WezTerm（但Windows Terminal是微软官方出品，和系统集成最无缝）</td>
+</tr>
+<tr>
+<td>Clink</td>
+<td>CMD.exe的「增强插件&#x2F;注入器」：<br>• 注入到cmd.exe进程中<br>• 提供Readline风格输入编辑（智能补全、Ctrl+R历史搜索等）<br>• 自定义提示符Hook能力<br>• Lua脚本加载（为Oh My Posh铺路）<br>• 别名&#x2F;宏&#x2F;自动补全增强</td>
+<td>解决CMD原生输入体验差的问题，让CMD拥有类Bash的操作体验；同时作为Oh My Posh和CMD的「桥梁」（Oh My Posh原生不支持CMD）</td>
+<td>「输入法&#x2F;补全引擎&#x2F;桥梁」</td>
+<td>几乎无平替（Clink是目前CMD最强的增强工具）</td>
+</tr>
+<tr>
+<td>Oh My Posh</td>
+<td>提示符「美化引擎」：<br>• 生成ANSI格式的彩色提示符（含图标、Git状态、路径、时间等）<br>• 支持数百款预设主题<br>• 动态段（Git分支、Node版本、退出码等）<br>• 跨Shell兼容输出</td>
+<td>把单调的<code>C:&gt;</code>提示符变成高颜值、信息丰富的现代风格；没有它，Clink仅能提升功能性，界面仍朴素</td>
+<td>「化妆师&#x2F;主题设计师」</td>
+<td>Starship（更轻量、跨平台，但配置灵活性不如Oh My Posh）</td>
+</tr>
+</tbody></table>
+<h2 id="🛠️-安装步骤"><a href="#🛠️-安装步骤" class="headerlink" title="🛠️ 安装步骤"></a>🛠️ 安装步骤</h2><h3 id="1-安装Winget（必备包管理器）"><a href="#1-安装Winget（必备包管理器）" class="headerlink" title="1. 安装Winget（必备包管理器）"></a>1. 安装Winget（必备包管理器）</h3><p>Oh My Posh通过Winget安装，先确保系统有Winget：</p>
+<ul>
+<li><strong>Windows 11 22H2+</strong>：默认自带，可打开微软商店搜索「App Installer」更新到最新版；</li>
+<li><strong>Windows 10&#x2F;旧版Win11</strong>：<ol>
+<li>微软商店安装：打开微软商店 → 搜索「App Installer」→ 安装&#x2F;更新；</li>
+<li>手动安装：访问 <a target="_blank" rel="noopener" href="https://github.com/microsoft/winget-cli/releases">Winget CLI Releases</a> → 下载对应架构的<code>Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle</code> → 双击安装。</li>
+</ol>
+</li>
+</ul>
+<p>验证安装：打开CMD，输入<code>winget -v</code>，能显示版本即成功。</p>
+<h3 id="2-安装Clink"><a href="#2-安装Clink" class="headerlink" title="2. 安装Clink"></a>2. 安装Clink</h3><p>Clink是CMD的增强核心，下载安装：</p>
+<ol>
+<li>访问 <a target="_blank" rel="noopener" href="https://github.com/chrisant996/clink">Clink官方仓库</a> → 进入Releases页面；</li>
+<li>下载对应系统架构的安装包（如<code>clink-v1.4.28.x64_setup.exe</code>）；</li>
+<li>双击安装，一路默认下一步即可（Clink会自动注入到CMD中）。</li>
+</ol>
+<p>验证安装：打开CMD，按<code>Tab</code>键能触发智能补全、按<code>Ctrl+R</code>能搜索历史命令，即安装成功。</p>
+<h3 id="3-安装Nerd-Font字体（图标显示必备）"><a href="#3-安装Nerd-Font字体（图标显示必备）" class="headerlink" title="3. 安装Nerd Font字体（图标显示必备）"></a>3. 安装Nerd Font字体（图标显示必备）</h3><p>推荐使用微软官方的Cascadia Code Nerd Font，支持图标渲染：</p>
+<ol>
+<li>访问 <a target="_blank" rel="noopener" href="https://github.com/microsoft/cascadia-code">Cascadia Code仓库</a> → 下载「全量字体包」；</li>
+<li>解压后找到<code>CascadiaCodeNF.ttf</code> → 右键「安装」（或批量安装所有Nerd Font变体）。</li>
+</ol>
+<h3 id="4-安装Windows-Terminal（可选，Win11自带）"><a href="#4-安装Windows-Terminal（可选，Win11自带）" class="headerlink" title="4. 安装Windows Terminal（可选，Win11自带）"></a>4. 安装Windows Terminal（可选，Win11自带）</h3><ul>
+<li>Win11：系统默认预装，微软商店更新到最新版即可；</li>
+<li>Win10：微软商店搜索「Windows Terminal」→ 安装，或访问 <a target="_blank" rel="noopener" href="https://github.com/microsoft/terminal/releases">Windows Terminal Releases</a> 手动下载。</li>
+</ul>
+<h3 id="5-安装Oh-My-Posh"><a href="#5-安装Oh-My-Posh" class="headerlink" title="5. 安装Oh My Posh"></a>5. 安装Oh My Posh</h3><p>打开CMD，执行Winget安装命令：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">winget install JanDeDobbeleer.OhMyPosh -s winget<br></code></pre></td></tr></table></figure>
+
+<p>验证安装：输入<code>oh-my-posh -v</code>，显示版本即成功。</p>
+<h2 id="⚙️-配置步骤"><a href="#⚙️-配置步骤" class="headerlink" title="⚙️ 配置步骤"></a>⚙️ 配置步骤</h2><h3 id="1-配置Windows-Terminal（字体-默认终端）"><a href="#1-配置Windows-Terminal（字体-默认终端）" class="headerlink" title="1. 配置Windows Terminal（字体+默认终端）"></a>1. 配置Windows Terminal（字体+默认终端）</h3><ol>
+<li>打开Windows Terminal → 点击顶部下拉箭头 → 「设置」；</li>
+<li>左侧选择「命令提示符」（CMD）→ 右侧「外观」；</li>
+<li>「字体」选择「Cascadia Code NF」（确保已安装）；</li>
+<li>（可选）设置「默认终端应用」为Windows Terminal：系统设置 → 应用 → 终端 → 「默认终端应用」选择Windows Terminal。</li>
+</ol>
+<h3 id="2-配置Clink加载Oh-My-Posh"><a href="#2-配置Clink加载Oh-My-Posh" class="headerlink" title="2. 配置Clink加载Oh My Posh"></a>2. 配置Clink加载Oh My Posh</h3><p>Clink通过Lua脚本加载Oh My Posh，步骤如下：</p>
+<ol>
+<li>打开路径：<code>C:\Users\你的用户名\AppData\Local\clink</code>（替换「你的用户名」，如<code>C:\Users\张三\AppData\Local\clink</code>）；</li>
+<li>新建文件：<code>oh-my-posh.lua</code>（注意后缀是<code>.lua</code>）；</li>
+<li>写入以下内容（指定主题为<code>amro</code>，可替换为自己喜欢的主题）：</li>
+</ol>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-built_in">load</span>(<span class="hljs-built_in">io</span>.<span class="hljs-built_in">popen</span>(<span class="hljs-string">&#x27;oh-my-posh init cmd --config &quot;amro&quot;&#x27;</span>):<span class="hljs-built_in">read</span>(<span class="hljs-string">&quot;*a&quot;</span>))()<br></code></pre></td></tr></table></figure>
+<ol start="4">
+<li>保存文件，重启CMD&#x2F;Windows Terminal，即可看到美化后的提示符。</li>
+</ol>
+<h2 id="🎨-自定义Oh-My-Posh主题"><a href="#🎨-自定义Oh-My-Posh主题" class="headerlink" title="🎨 自定义Oh My Posh主题"></a>🎨 自定义Oh My Posh主题</h2><ol>
+<li>查看所有预设主题：访问 <a target="_blank" rel="noopener" href="https://ohmyposh.dev/docs/themes">Oh My Posh主题库</a>，挑选喜欢的主题名（如<code>paradox</code>、<code>jandedobbeleer</code>、<code>powerlevel10k_lean</code>）；</li>
+<li>修改<code>oh-my-posh.lua</code>中的主题名：</li>
+</ol>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-comment">-- 示例：使用paradox主题</span><br><span class="hljs-built_in">load</span>(<span class="hljs-built_in">io</span>.<span class="hljs-built_in">popen</span>(<span class="hljs-string">&#x27;oh-my-posh init cmd --config &quot;paradox&quot;&#x27;</span>):<span class="hljs-built_in">read</span>(<span class="hljs-string">&quot;*a&quot;</span>))()<br></code></pre></td></tr></table></figure>
+<ol start="3">
+<li>进阶：自定义主题配置文件，可参考 <a target="_blank" rel="noopener" href="https://ohmyposh.dev/docs/configuration">Oh My Posh配置文档</a> 调整提示符的颜色、段、图标等。</li>
+</ol>
+<h2 id="💡-小贴士"><a href="#💡-小贴士" class="headerlink" title="💡 小贴士"></a>💡 小贴士</h2><ol>
+<li>Clink的快捷键：按<code>Alt+H</code>可查看所有Clink支持的快捷键（如<code>Ctrl+Z</code>撤销、<code>Ctrl+Alt+U</code>快速<code>cd ..</code>）；</li>
+<li>主题不生效？检查字体是否选对（必须是Nerd Font）、Clink脚本路径是否正确；</li>
+<li>Windows Terminal透明&#x2F;亚克力效果：设置 → 外观 → 「透明度」「亚克力效果」开启即可。</li>
+</ol>
+<h2 id="📝-总结"><a href="#📝-总结" class="headerlink" title="📝 总结"></a>📝 总结</h2><p>通过「Windows Terminal（渲染）+ Clink（功能增强）+ Oh My Posh（美化）」的组合，我们既保留了CMD的兼容性，又获得了类Linux终端的颜值和体验。三者分工明确，几乎无替代方案能做到如此无缝的适配——如果你是Windows开发者&#x2F;运维，这套配置能显著提升终端使用体验！</p>
+<p>如果有配置问题，可参考：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/chrisant996/clink/blob/master/docs/clink.md">Clink官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://ohmyposh.dev/docs/">Oh My Posh官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/terminal/">Windows Terminal官方文档</a></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件安装配置</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>把CMD打造成现代化终端：Windows Terminal+Clink+Oh My Posh配置指南</div>
+      <div>https://xinhaojin.github.io/2026/02/09/把CMD打造成现代化终端：Windows Terminal+Clink+Oh My Posh配置指南/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>xinhaojin</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年2月9日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/04/07/WSL%20%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%AE%8C%E6%95%B4%E9%85%8D%E7%BD%AE%E7%AC%94%E8%AE%B0%EF%BC%88Ubuntu%2024.04%20+%20D%E7%9B%98%E9%83%A8%E7%BD%B2%20+%20%E5%86%85%E7%BD%91%E4%BB%A3%E7%90%86%E9%80%82%E9%85%8D%EF%BC%89/" title="WSL 开发环境完整配置笔记（Ubuntu 24.04 + D盘部署 + 内网代理适配）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">WSL 开发环境完整配置笔记（Ubuntu 24.04 + D盘部署 + 内网代理适配）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/02/08/%E4%BD%BF%E7%94%A81Panel+DockerCompose%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2PanSou%E7%BD%91%E7%9B%98%E8%B5%84%E6%BA%90%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/" title="使用1Panel+DockerCompose一键部署PanSou网盘资源搜索引擎">
+                        <span class="hidden-mobile">使用1Panel+DockerCompose一键部署PanSou网盘资源搜索引擎</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/gitalk/1.8.0/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"Ov23lifvhsymyganMHro","clientSecret":"cdd38ac0c65a95027749446001ebdff7ca7d4ec2","repo":"xinhaojin.github.io","owner":"xinhaojin","admin":"xinhaojin","language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
+          {
+            id: 'c043890e89d9d9afdc8342e35b18dfa7'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+        次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+        次
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

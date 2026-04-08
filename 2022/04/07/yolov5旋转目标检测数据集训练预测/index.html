@@ -1,0 +1,836 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  <link rel="icon" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xinhaojin">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="前言目标检测模型一般都是用无角度的矩形框标注的，但有些时候我们的目标在图像中是有角度的，我们希望框出来的目标矩形框也是有角度的贴合目标的，比如下面这种情况 （虽然训练结果不好，可能是数据集数量少，或者对这种类型的数据集效果不理想之类的，但还是记录一下过程）  yolov5本身是一个轻量级的目标检测模型。不支持旋转目标矩形框。 此次用到的是牛人改写的yolov5-obb hukaixuan19970">
+<meta property="og:type" content="article">
+<meta property="og:title" content="yolov5旋转目标检测(数据集,训练,预测)">
+<meta property="og:url" content="https://xinhaojin.github.io/2022/04/07/yolov5%E6%97%8B%E8%BD%AC%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E6%95%B0%E6%8D%AE%E9%9B%86%E8%AE%AD%E7%BB%83%E9%A2%84%E6%B5%8B/index.html">
+<meta property="og:site_name" content="xinhaojin&#39;s blog">
+<meta property="og:description" content="前言目标检测模型一般都是用无角度的矩形框标注的，但有些时候我们的目标在图像中是有角度的，我们希望框出来的目标矩形框也是有角度的贴合目标的，比如下面这种情况 （虽然训练结果不好，可能是数据集数量少，或者对这种类型的数据集效果不理想之类的，但还是记录一下过程）  yolov5本身是一个轻量级的目标检测模型。不支持旋转目标矩形框。 此次用到的是牛人改写的yolov5-obb hukaixuan19970">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/04/image-4.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/04/image-5.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/04/image-6.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/04/image-7.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/04/image-8-1024x569.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/04/image-9.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/04/image-4.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/04/image-10.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/04/image-11.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/04/image-12.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/04/image-13-1024x296.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/04/image-14.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/04/image-15-1024x310.png">
+<meta property="og:image" content="https://xinhaojin.github.io/imgs-host/past/2022/04/image-17.png">
+<meta property="article:published_time" content="2022-04-07T08:54:24.000Z">
+<meta property="article:modified_time" content="2026-04-08T00:55:52.930Z">
+<meta property="article:author" content="xinhaojin">
+<meta property="article:tag" content="数据集">
+<meta property="article:tag" content="目标检测">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://xinhaojin.github.io/imgs-host/past/2022/04/image-4.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>yolov5旋转目标检测(数据集,训练,预测) - xinhaojin&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xinhaojin.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?596b73bb5b70c262b123e997b6686f49";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xinhaojin&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="yolov5旋转目标检测(数据集,训练,预测)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-04-07 16:54" pubdate>
+          2022年4月7日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          8 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">yolov5旋转目标检测(数据集,训练,预测)</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2026年4月8日 早上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>目标检测模型一般都是用无角度的矩形框标注的，但有些时候我们的目标在图像中是有角度的，我们希望框出来的目标矩形框也是有角度的贴合目标的，比如下面这种情况</p>
+<p>（虽然训练结果不好，可能是数据集数量少，或者对这种类型的数据集效果不理想之类的，但还是记录一下过程）</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/04/image-4.png" srcset="/img/loading.gif" lazyload></p>
+<p>yolov5本身是一个轻量级的目标检测模型。不支持旋转目标矩形框。</p>
+<p>此次用到的是牛人改写的yolov5-obb</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/hukaixuan19970627/yolov5_obb">hukaixuan19970627&#x2F;yolov5_obb: yolov5 + csl_label.(Oriented Object Detection)（Rotation Detection）（Rotated BBox）基于yolov5的旋转目标检测 (github.com)</a></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/04/image-5.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="项目环境准备"><a href="#项目环境准备" class="headerlink" title="项目环境准备"></a>项目环境准备</h2><p>git clone <a target="_blank" rel="noopener" href="https://github.com/hukaixuan19970627/yolov5_obb.git">https://github.com/hukaixuan19970627/yolov5_obb.git</a><br>cd yolov5_obb<br>pip install -r requirements.txt<br>cd utils&#x2F;nms_rotated<br>python setup.py develop  #or “pip install -v -e .”</p>
+<p>其中最后一步可能会出错，属于CUDA环境问题，如果torch.cuda.is_available()&#x3D;&#x3D;True的话，那应该是cuda toolkit的问题，CUDA_HOME环境变量之类的问题</p>
+<h2 id="数据集格式"><a href="#数据集格式" class="headerlink" title="数据集格式"></a>数据集格式</h2><p>看一下dataset&#x2F;datasetdemo下的示例</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/04/image-6.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/04/image-7.png" srcset="/img/loading.gif" lazyload></p>
+<p>结合介绍看一下</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/04/image-8-1024x569.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以看出，图片标签的格式是倾斜矩形框的四个点，类别名，是否difficult</p>
+<h2 id="用rolabelimg给图片打标签"><a href="#用rolabelimg给图片打标签" class="headerlink" title="用rolabelimg给图片打标签"></a>用rolabelimg给图片打标签</h2><p><a href="https://xinhaojin.github.io/2022/04/05/%e6%97%8b%e8%bd%ac%e7%9b%ae%e6%a0%87%e6%a3%80%e6%b5%8b%e6%95%b0%e6%8d%ae%e9%9b%86%e5%88%b6%e4%bd%9c-rolabelimg%e7%9a%84%e5%ae%89%e8%a3%85%e5%92%8c%e4%bd%bf%e7%94%a8/">旋转目标检测数据集制作-rolabelimg的安装和使用 – Xinhao Jin</a></p>
+<p>标注完之后得到的是xml格式的标注文件</p>
+<p>需要转换为上述格式的txt文件（4个点1个类别1个difficult）</p>
+<p>找了一下好像项目中没有用于数据集转换的代码，可能作者觉得这很简单。。。</p>
+<h2 id="转换数据集格式"><a href="#转换数据集格式" class="headerlink" title="转换数据集格式"></a>转换数据集格式</h2><p>想想应该也不是很难，自己动手，丰衣足食，首先把xml中的robndbox标签内容读出来，这时候才发现，怎么不是四个点的坐标？</p>
+<p>而是中心点坐标，髋，高，旋转角度？？</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/04/image-9.png" srcset="/img/loading.gif" lazyload></p>
+<p>坐标转换函数如下</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">rotate</span>(<span class="hljs-params">cx, cy, w, h, angle</span>):<br>    <span class="hljs-comment"># 用于常规坐标时，angle是顺时针旋转角度</span><br>    <span class="hljs-comment"># 用于图像坐标时，angle是逆时针旋转角度</span><br>    <span class="hljs-comment"># math.cos(angle)这里的angle单位是rad</span><br>    <span class="hljs-comment"># angle = angle/180*math.pi  单位转换</span><br>    angle=-angle<span class="hljs-comment">#这里是图像坐标</span><br>    points = [[cx-w/<span class="hljs-number">2</span>, cy-h/<span class="hljs-number">2</span>], [cx+w/<span class="hljs-number">2</span>, cy-h/<span class="hljs-number">2</span>],<br>              [cx+w/<span class="hljs-number">2</span>, cy+h/<span class="hljs-number">2</span>], [cx-w/<span class="hljs-number">2</span>, cy+h/<span class="hljs-number">2</span>]]<br>    newpoints = []<br>    <span class="hljs-keyword">if</span> angle &lt; <span class="hljs-number">0</span>:  <span class="hljs-comment"># 逆时针</span><br>        angle = -angle<br>        <span class="hljs-keyword">for</span> point <span class="hljs-keyword">in</span> points:<br>            x, y = point<br>            newx = <span class="hljs-built_in">round</span>((x-cx)*math.cos(angle) - (y-cy)*math.sin(angle) + cx,<span class="hljs-number">1</span>)<br>            newy = <span class="hljs-built_in">round</span>((x-cx)*math.sin(angle) + (y-cy)*math.cos(angle) + cy,<span class="hljs-number">1</span>)<br>            newpoints.append([newx, newy])<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">for</span> point <span class="hljs-keyword">in</span> points:<br>            x, y = point<br>            newx = <span class="hljs-built_in">round</span>((x-cx)*math.cos(angle) + (y-cy)*math.sin(angle) + cx,<span class="hljs-number">1</span>)<br>            newy = <span class="hljs-built_in">round</span>((y-cy)*math.cos(angle) - (x-cx)*math.sin(angle) + cy,<span class="hljs-number">1</span>)<br>            newpoints.append([newx, newy])<br>    <span class="hljs-keyword">return</span> newpoints<br></code></pre></td></tr></table></figure>
+
+<p>从xml到目标txt，完整代码如下：</p>
+<p>首先把xml放在一个单独的文件夹里，然后执行程序会在xml同级目录生成txt文件夹</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> math<br><span class="hljs-keyword">import</span> xml.etree.ElementTree <span class="hljs-keyword">as</span> ET<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> cv2<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">rotate</span>(<span class="hljs-params">cx, cy, w, h, angle</span>):<br>    <span class="hljs-comment"># 用于常规坐标时，angle是顺时针旋转角度</span><br>    <span class="hljs-comment"># 用于图像坐标时，angle是逆时针旋转角度</span><br>    <span class="hljs-comment"># math.cos(angle)这里的angle单位是rad</span><br>    <span class="hljs-comment"># angle = angle/180*math.pi  单位转换</span><br>    angle=-angle<span class="hljs-comment">#这里是图像坐标</span><br>    points = [[cx-w/<span class="hljs-number">2</span>, cy-h/<span class="hljs-number">2</span>], [cx+w/<span class="hljs-number">2</span>, cy-h/<span class="hljs-number">2</span>],<br>              [cx+w/<span class="hljs-number">2</span>, cy+h/<span class="hljs-number">2</span>], [cx-w/<span class="hljs-number">2</span>, cy+h/<span class="hljs-number">2</span>]]<br>    newpoints = []<br>    <span class="hljs-keyword">if</span> angle &lt; <span class="hljs-number">0</span>:  <span class="hljs-comment"># 逆时针</span><br>        angle = -angle<br>        <span class="hljs-keyword">for</span> point <span class="hljs-keyword">in</span> points:<br>            x, y = point<br>            newx = <span class="hljs-built_in">round</span>((x-cx)*math.cos(angle) - (y-cy)*math.sin(angle) + cx,<span class="hljs-number">1</span>)<br>            newy = <span class="hljs-built_in">round</span>((x-cx)*math.sin(angle) + (y-cy)*math.cos(angle) + cy,<span class="hljs-number">1</span>)<br>            newpoints.append([newx, newy])<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">for</span> point <span class="hljs-keyword">in</span> points:<br>            x, y = point<br>            newx = <span class="hljs-built_in">round</span>((x-cx)*math.cos(angle) + (y-cy)*math.sin(angle) + cx,<span class="hljs-number">1</span>)<br>            newy = <span class="hljs-built_in">round</span>((y-cy)*math.cos(angle) - (x-cx)*math.sin(angle) + cy,<span class="hljs-number">1</span>)<br>            newpoints.append([newx, newy])<br>    <span class="hljs-keyword">return</span> newpoints<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">roxml2txt</span>(<span class="hljs-params"><span class="hljs-built_in">dir</span></span>):<br>    <span class="hljs-comment">#dir是xml文件目录</span><br>    files = os.listdir(<span class="hljs-built_in">dir</span>)<br>    parentdir,dirname = os.path.split(<span class="hljs-built_in">dir</span>)<br>    txtdir=os.path.join(parentdir,<span class="hljs-string">&#x27;txt&#x27;</span>)<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(txtdir):<br>        os.mkdir(txtdir)<br>    <span class="hljs-keyword">for</span> f <span class="hljs-keyword">in</span> files:<br>        xml = ET.parse(os.path.join(<span class="hljs-built_in">dir</span>,f))<br>        root = xml.getroot()<br>        boxes = root.<span class="hljs-built_in">iter</span>(<span class="hljs-string">&#x27;robndbox&#x27;</span>)<br>        <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(os.path.join(txtdir,f.split(<span class="hljs-string">&#x27;.&#x27;</span>)[<span class="hljs-number">0</span>]+<span class="hljs-string">&#x27;.txt&#x27;</span>),<span class="hljs-string">&#x27;w+&#x27;</span>) <span class="hljs-keyword">as</span> t:<br>            <span class="hljs-keyword">for</span> box <span class="hljs-keyword">in</span> boxes:<br>                cx = <span class="hljs-built_in">float</span>(box.find(<span class="hljs-string">&#x27;cx&#x27;</span>).text)<br>                cy = <span class="hljs-built_in">float</span>(box.find(<span class="hljs-string">&#x27;cy&#x27;</span>).text)<br>                w = <span class="hljs-built_in">float</span>(box.find(<span class="hljs-string">&#x27;w&#x27;</span>).text)<br>                h = <span class="hljs-built_in">float</span>(box.find(<span class="hljs-string">&#x27;h&#x27;</span>).text)<br>                angle = <span class="hljs-built_in">float</span>(box.find(<span class="hljs-string">&#x27;angle&#x27;</span>).text)<br>                newpoints = rotate(cx, cy, w, h, angle)<span class="hljs-comment">#计算旋转后的4个点坐标</span><br>                <span class="hljs-comment"># 用于查看坐标转换是否正确，在原图上画矩形框，自行修改图片路径</span><br>                newpoints=np.array(newpoints)<br>                newpoints= newpoints.astype(<span class="hljs-built_in">int</span>)<br>                img=cv2.imread(os.path.join(<span class="hljs-string">&#x27;test&#x27;</span>,<span class="hljs-string">&#x27;images&#x27;</span>,f.split(<span class="hljs-string">&#x27;.&#x27;</span>)[<span class="hljs-number">0</span>]+<span class="hljs-string">&#x27;.png&#x27;</span>))<br>                img=cv2.polylines(img,[newpoints],isClosed=<span class="hljs-literal">True</span>,color=(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">255</span>))<br>                cv2.imshow(<span class="hljs-string">&#x27;pic&#x27;</span>,img)<br>                cv2.waitKey()<br>                <span class="hljs-comment">##########################################</span><br>                line=<span class="hljs-string">&#x27;&#x27;</span><br>                <span class="hljs-keyword">for</span> point <span class="hljs-keyword">in</span> newpoints:<br>                    line+=<span class="hljs-built_in">str</span>(point[<span class="hljs-number">0</span>])+<span class="hljs-string">&#x27; &#x27;</span>+<span class="hljs-built_in">str</span>(point[<span class="hljs-number">1</span>])+<span class="hljs-string">&#x27; &#x27;</span><br>                line+=<span class="hljs-string">&#x27;word 0\n&#x27;</span><br>                t.write(line)<br>                <span class="hljs-built_in">print</span>(line)<br>            t.close()<br><br>roxml2txt(<span class="hljs-string">&#x27;test/xml&#x27;</span>)<span class="hljs-comment">#路径最后不能加/</span><br></code></pre></td></tr></table></figure>
+
+<p>为了检验坐标转换是否正确，加入了一段画图代码</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs py">newpoints=np.array(newpoints)<br>newpoints= newpoints.astype(<span class="hljs-built_in">int</span>)<br>img=cv2.imread(os.path.join(<span class="hljs-string">&#x27;test&#x27;</span>,<span class="hljs-string">&#x27;images&#x27;</span>,f.split(<span class="hljs-string">&#x27;.&#x27;</span>)[<span class="hljs-number">0</span>]+<span class="hljs-string">&#x27;.png&#x27;</span>))<br>img=cv2.polylines(img,[newpoints],isClosed=<span class="hljs-literal">True</span>,color=(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">255</span>))<br>cv2.imshow(<span class="hljs-string">&#x27;pic&#x27;</span>,img)<br>cv2.waitKey()<br></code></pre></td></tr></table></figure>
+
+<p>效果如下，说明是正确的</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/04/image-4.png" srcset="/img/loading.gif" lazyload alt="此图片的alt属性为空；文件名为image-4.png"></p>
+<h2 id="数据集放进项目目录"><a href="#数据集放进项目目录" class="headerlink" title="数据集放进项目目录"></a>数据集放进项目目录</h2><p>然后把图片文件夹改名为images，把txt文件夹改名为labelTxt（不改也行，这样显得规范）</p>
+<p>在dataset目录下新建一个文件夹，存放images和labelTxt</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/04/image-10.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h2><p>首先要下载预训练模型，应该在github上的yolov5项目里，下载yolov5s.pt即可</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ultralytics/yolov5">ultralytics&#x2F;yolov5: YOLOv5 🚀 in PyTorch &gt; ONNX &gt; CoreML &gt; TFLite (github.com)</a></p>
+<p>如果是linux，直接使用作者提供的脚本</p>
+<pre><code class="hljs">pwd=yolov5_obb/ 执行
+
+bash data/scripts/download_weights.sh
+</code></pre>
+<p>会自动下载权重文件到yolov5_obb&#x2F;，为了好看一点还是新建一个weights文件夹来存放</p>
+<h3 id="修改yolov5-obb-DOTA-devkit-dota-utils-py"><a href="#修改yolov5-obb-DOTA-devkit-dota-utils-py" class="headerlink" title="修改yolov5_obb&#x2F;DOTA_devkit&#x2F;dota_utils.py"></a>修改yolov5_obb&#x2F;DOTA_devkit&#x2F;dota_utils.py</h3><p>classnames改为自己的类别</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/04/image-11.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="修改yolov5-obb-data-dotav15-poly-yaml"><a href="#修改yolov5-obb-data-dotav15-poly-yaml" class="headerlink" title="修改yolov5_obb&#x2F;data&#x2F;dotav15_poly.yaml"></a>修改yolov5_obb&#x2F;data&#x2F;dotav15_poly.yaml</h3><p>修改数据集的目录</p>
+<p>train,val,test都是与path间的相对路径，我这里图方便设为同一个了</p>
+<p>然后修改nc类别数和names类别名即可</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/04/image-12.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="修改yolov5-obb-train-py"><a href="#修改yolov5-obb-train-py" class="headerlink" title="修改yolov5_obb&#x2F;train.py"></a>修改yolov5_obb&#x2F;train.py</h3><p>修改参数</p>
+<pre><code class="hljs">weights:/weights/yolov5s.pt，下载的预训练模型路径
+data:/data/dotav15_poly.yaml，刚刚修改的配置文件路径
+epochs:100，训练次数
+batch-size:8，一批的数量
+imgsz:300，图片大小
+device:0，显卡索引，没有的话写cpu
+workers:8,线程数，出错的话就不断减小
+</code></pre>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/04/image-13-1024x296.png" srcset="/img/loading.gif" lazyload></p>
+<p>执行python train.py即可训练</p>
+<p>结果保存在runs&#x2F;train&#x2F;exp…&#x2F;</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/04/image-14.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="预测"><a href="#预测" class="headerlink" title="预测"></a>预测</h2><p>修改yolov5_obb&#x2F;detect.py</p>
+<p>weights路径改为上面训练完生成的权重文件</p>
+<p>source是用于预测的图片路径</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/04/image-15-1024x310.png" srcset="/img/loading.gif" lazyload></p>
+<p>预测结果保存在runs&#x2F;detect&#x2F;exp..&#x2F;下</p>
+<p><img src="https://xinhaojin.github.io/imgs-host/past/2022/04/image-17.png" srcset="/img/loading.gif" lazyload></p>
+<p>这是35张图片300次训练的结果，可以扩大数据集并且把训练集验证集分离，应该会有好的效果</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" class="category-chain-item">目标检测</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86/" class="print-no-link">#数据集</a>
+      
+        <a href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" class="print-no-link">#目标检测</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>yolov5旋转目标检测(数据集,训练,预测)</div>
+      <div>https://xinhaojin.github.io/2022/04/07/yolov5旋转目标检测数据集训练预测/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>xinhaojin</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年4月7日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/13/win10-11%E5%AE%89%E8%A3%85pycocotools/" title="win10/11安装pycocotools">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">win10/11安装pycocotools</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/05/selenium-edge%E5%90%8E%E5%8F%B0%E9%9D%99%E9%BB%98%E8%BF%90%E8%A1%8C/" title="selenium Edge后台静默运行">
+                        <span class="hidden-mobile">selenium Edge后台静默运行</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/gitalk/1.8.0/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"Ov23lifvhsymyganMHro","clientSecret":"cdd38ac0c65a95027749446001ebdff7ca7d4ec2","repo":"xinhaojin.github.io","owner":"xinhaojin","admin":"xinhaojin","language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
+          {
+            id: 'cc60f3e8ec58e5d30bb9e9ef93656c29'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+        次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+        次
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

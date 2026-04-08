@@ -1,0 +1,820 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  <link rel="icon" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xinhaojin">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Windows 强制为任意 EXE 设置代理的通用方案背景与适用场景某些程序（尤其是 Node.js 打包的 CLI 工具）不走系统代理，也不读 VSCode 等宿主程序的代理设置，导致在内网环境中无法联网。 常见场景：  VSCode 插件内置的 CLI 工具（如 kilocode、claude code等） Node.js 打包的命令行工具 任何启动时需要特定环境变量但自身不提供配置项的 EX">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows 强制为任意 EXE 设置代理的通用方案">
+<meta property="og:url" content="https://xinhaojin.github.io/2026/04/08/Windows%20%E5%BC%BA%E5%88%B6%E4%B8%BA%E4%BB%BB%E6%84%8F%20EXE%20%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86%E7%9A%84%E9%80%9A%E7%94%A8%E6%96%B9%E6%A1%88/index.html">
+<meta property="og:site_name" content="xinhaojin&#39;s blog">
+<meta property="og:description" content="Windows 强制为任意 EXE 设置代理的通用方案背景与适用场景某些程序（尤其是 Node.js 打包的 CLI 工具）不走系统代理，也不读 VSCode 等宿主程序的代理设置，导致在内网环境中无法联网。 常见场景：  VSCode 插件内置的 CLI 工具（如 kilocode、claude code等） Node.js 打包的命令行工具 任何启动时需要特定环境变量但自身不提供配置项的 EX">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-04-08T01:15:00.000Z">
+<meta property="article:modified_time" content="2026-04-08T01:15:01.072Z">
+<meta property="article:author" content="xinhaojin">
+<meta property="article:tag" content="代理">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Windows 强制为任意 EXE 设置代理的通用方案 - xinhaojin&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xinhaojin.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?596b73bb5b70c262b123e997b6686f49";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xinhaojin&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Windows 强制为任意 EXE 设置代理的通用方案"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-04-08 09:15" pubdate>
+          2026年4月8日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          8 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Windows 强制为任意 EXE 设置代理的通用方案</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2026年4月8日 上午
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Windows-强制为任意-EXE-设置代理的通用方案"><a href="#Windows-强制为任意-EXE-设置代理的通用方案" class="headerlink" title="Windows 强制为任意 EXE 设置代理的通用方案"></a>Windows 强制为任意 EXE 设置代理的通用方案</h1><h2 id="背景与适用场景"><a href="#背景与适用场景" class="headerlink" title="背景与适用场景"></a>背景与适用场景</h2><p>某些程序（尤其是 Node.js 打包的 CLI 工具）不走系统代理，也不读 VSCode 等宿主程序的代理设置，导致在内网环境中无法联网。</p>
+<p>常见场景：</p>
+<ul>
+<li>VSCode 插件内置的 CLI 工具（如 kilocode、claude code等）</li>
+<li>Node.js 打包的命令行工具</li>
+<li>任何启动时需要特定环境变量但自身不提供配置项的 EXE</li>
+</ul>
+<p><strong>解决思路</strong>：用一个 Go 编译的轻量 EXE 作为「代理启动器」，在启动真实程序前注入代理环境变量，并处理好有无控制台窗口的问题。</p>
+<hr>
+<h2 id="核心问题与解法"><a href="#核心问题与解法" class="headerlink" title="核心问题与解法"></a>核心问题与解法</h2><h3 id="为什么不用-bat-cmd-包装？"><a href="#为什么不用-bat-cmd-包装？" class="headerlink" title="为什么不用 bat&#x2F;cmd 包装？"></a>为什么不用 bat&#x2F;cmd 包装？</h3><p>bat 转成的 exe 本质上还是启动一个 <code>cmd.exe</code> 子进程，存在以下问题：</p>
+<ul>
+<li><code>argv[0]</code> 不正确，部分程序会用它来推断自己的安装路径，导致报错</li>
+<li>无法控制子进程的控制台窗口创建行为，必然弹出黑框</li>
+</ul>
+<h3 id="为什么用-Go？"><a href="#为什么用-Go？" class="headerlink" title="为什么用 Go？"></a>为什么用 Go？</h3><ul>
+<li>编译产物是真正的原生 EXE，行为与正常程序无异</li>
+<li>可以精确控制子进程的启动标志（<code>CREATE_NO_WINDOW</code>）</li>
+<li>可以通过 <code>AttachConsole</code> 判断当前是否处于交互式终端环境</li>
+<li>无运行时依赖，单文件分发</li>
+</ul>
+<hr>
+<h2 id="通用模板代码"><a href="#通用模板代码" class="headerlink" title="通用模板代码"></a>通用模板代码</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br>	<span class="hljs-string">&quot;os&quot;</span><br>	<span class="hljs-string">&quot;os/exec&quot;</span><br>	<span class="hljs-string">&quot;path/filepath&quot;</span><br>	<span class="hljs-string">&quot;syscall&quot;</span><br>)<br><br><span class="hljs-keyword">var</span> (<br>	kernel32      = syscall.NewLazyDLL(<span class="hljs-string">&quot;kernel32.dll&quot;</span>)<br>	attachConsole = kernel32.NewProc(<span class="hljs-string">&quot;AttachConsole&quot;</span>)<br>	freeConsole   = kernel32.NewProc(<span class="hljs-string">&quot;FreeConsole&quot;</span>)<br>)<br><br><span class="hljs-keyword">const</span> (<br>	ATTACH_PARENT_PROCESS = ^<span class="hljs-type">uintptr</span>(<span class="hljs-number">0</span>) <span class="hljs-comment">// -1，表示父进程</span><br>	CREATE_NO_WINDOW      = <span class="hljs-number">0x08000000</span><br>)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	<span class="hljs-comment">// 释放当前控制台（GUI 模式编译后默认没有），</span><br>	<span class="hljs-comment">// 再尝试 attach 到父进程的控制台</span><br>	freeConsole.Call()<br>	r, _, _ := attachConsole.Call(ATTACH_PARENT_PROCESS)<br>	isCLI := r != <span class="hljs-number">0</span><br>	<span class="hljs-comment">// isCLI == true  → 从终端手动启动，父进程有控制台</span><br>	<span class="hljs-comment">// isCLI == false → 被 GUI 程序（如 VSCode）调用，父进程无控制台</span><br><br>	<span class="hljs-comment">// ── 修改这里：真实程序的路径 ──────────────────────────────────</span><br>	<span class="hljs-comment">// 方案 A：真实程序与本 EXE 同目录（改名为 xxx_real.exe）</span><br>	exePath, _ := os.Executable()<br>	dir := filepath.Dir(exePath)<br>	<span class="hljs-built_in">real</span> := filepath.Join(dir, <span class="hljs-string">&quot;target_real.exe&quot;</span>) <span class="hljs-comment">// ← 改成实际文件名</span><br><br>	<span class="hljs-comment">// 方案 B：固定路径</span><br>	<span class="hljs-comment">// real := `C:\path\to\target.exe`</span><br>	<span class="hljs-comment">// ──────────────────────────────────────────────────────────────</span><br><br>	<span class="hljs-comment">// ── 修改这里：注入的环境变量 ───────────────────────────────────</span><br>	env := os.Environ()<br>	env = <span class="hljs-built_in">append</span>(env, <span class="hljs-string">&quot;HTTP_PROXY=http://192.168.1.1:10808&quot;</span>)<br>	env = <span class="hljs-built_in">append</span>(env, <span class="hljs-string">&quot;HTTPS_PROXY=http://192.168.1.1:10808&quot;</span>)<br>	env = <span class="hljs-built_in">append</span>(env, <span class="hljs-string">&quot;http_proxy=http://192.168.1.1:10808&quot;</span>)   <span class="hljs-comment">// Node.js 兼容</span><br>	env = <span class="hljs-built_in">append</span>(env, <span class="hljs-string">&quot;https_proxy=http://192.168.1.1:10808&quot;</span>)  <span class="hljs-comment">// Node.js 兼容</span><br>	env = <span class="hljs-built_in">append</span>(env, <span class="hljs-string">&quot;NODE_TLS_REJECT_UNAUTHORIZED=0&quot;</span>)        <span class="hljs-comment">// 忽略内网证书错误</span><br>	<span class="hljs-comment">// env = append(env, &quot;ANY_OTHER_VAR=value&quot;)                // 可继续追加任意变量</span><br>	<span class="hljs-comment">// ──────────────────────────────────────────────────────────────</span><br>	<span class="hljs-comment">// 注意：重复的 key Windows 取最后一个，所以 append 会覆盖系统中已有的同名变量</span><br><br>	cmd := exec.Command(<span class="hljs-built_in">real</span>, os.Args[<span class="hljs-number">1</span>:]...) <span class="hljs-comment">// 完整透传所有参数</span><br>	cmd.Env = env<br><br>	<span class="hljs-keyword">if</span> isCLI &#123;<br>		<span class="hljs-comment">// 手动终端调用：重新打开控制台句柄传给子进程，保证交互正常</span><br>		conin, _ := os.OpenFile(<span class="hljs-string">&quot;CONIN$&quot;</span>, os.O_RDWR, <span class="hljs-number">0</span>)<br>		conout, _ := os.OpenFile(<span class="hljs-string">&quot;CONOUT$&quot;</span>, os.O_RDWR, <span class="hljs-number">0</span>)<br>		cmd.Stdin = conin<br>		cmd.Stdout = conout<br>		cmd.Stderr = conout<br>		cmd.SysProcAttr = &amp;syscall.SysProcAttr&#123;&#125;<br>		<span class="hljs-keyword">defer</span> conin.Close()<br>		<span class="hljs-keyword">defer</span> conout.Close()<br>	&#125; <span class="hljs-keyword">else</span> &#123;<br>		<span class="hljs-comment">// GUI 宿主调用：透传 pipe，禁止子进程创建控制台窗口（防止弹黑框）</span><br>		cmd.Stdin = os.Stdin<br>		cmd.Stdout = os.Stdout<br>		cmd.Stderr = os.Stderr<br>		cmd.SysProcAttr = &amp;syscall.SysProcAttr&#123;<br>			CreationFlags: CREATE_NO_WINDOW,<br>		&#125;<br>	&#125;<br><br>	<span class="hljs-keyword">if</span> err := cmd.Run(); err != <span class="hljs-literal">nil</span> &#123;<br>		<span class="hljs-keyword">if</span> exitErr, ok := err.(*exec.ExitError); ok &#123;<br>			os.Exit(exitErr.ExitCode())<br>		&#125;<br>		os.Exit(<span class="hljs-number">1</span>)<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h2><h3 id="1-准备文件"><a href="#1-准备文件" class="headerlink" title="1. 准备文件"></a>1. 准备文件</h3><p>将上面的代码保存为 <code>wrapper.go</code>，修改两处标注了「修改这里」的地方：</p>
+<ul>
+<li><code>target_real.exe</code>：改为真实程序的文件名</li>
+<li>代理地址：改为你的实际代理地址</li>
+</ul>
+<h3 id="2-编译"><a href="#2-编译" class="headerlink" title="2. 编译"></a>2. 编译</h3><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bat">go build -ldflags=&quot;-H=windowsgui&quot; -o target.exe wrapper.go<br></code></pre></td></tr></table></figure>
+
+<p><code>-H=windowsgui</code> 是关键，让包装器本身不创建控制台窗口。</p>
+<h3 id="3-部署（以同目录替换为例）"><a href="#3-部署（以同目录替换为例）" class="headerlink" title="3. 部署（以同目录替换为例）"></a>3. 部署（以同目录替换为例）</h3><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bat"><span class="hljs-comment">REM 把原程序改名</span><br><span class="hljs-built_in">rename</span> &quot;C:\<span class="hljs-built_in">path</span>\to\target.exe&quot; target_real.exe<br><span class="hljs-comment"></span><br><span class="hljs-comment">REM 把编译好的包装器放进去</span><br><span class="hljs-built_in">copy</span> &quot;wrapper_build\target.exe&quot; &quot;C:\<span class="hljs-built_in">path</span>\to\target.exe&quot;<br></code></pre></td></tr></table></figure>
+
+<h3 id="4-验证"><a href="#4-验证" class="headerlink" title="4. 验证"></a>4. 验证</h3><figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bat"><span class="hljs-comment">REM 手动调用测试（应正常显示交互界面）</span><br>target.exe<br><span class="hljs-comment"></span><br><span class="hljs-comment">REM 检查代理是否生效（看程序能否正常联网）</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="实际案例：kilocode-VSCode-插件"><a href="#实际案例：kilocode-VSCode-插件" class="headerlink" title="实际案例：kilocode VSCode 插件"></a>实际案例：kilocode VSCode 插件</h2><p>kilocode 插件会在 VSCode 内部调用其内置的 <code>kilo.exe</code> CLI，该程序基于 Node.js 打包，不读取 VSCode 的代理设置。</p>
+<p><strong>目标路径</strong>：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml">C:\Users\<span class="hljs-tag">&lt;<span class="hljs-name">用户名</span>&gt;</span>\.vscode\extensions\kilocode.kilo-code-<span class="hljs-tag">&lt;<span class="hljs-name">版本</span>&gt;</span>-win32-x64\bin\<br></code></pre></td></tr></table></figure>
+
+<p><strong>部署</strong>：</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bat"><span class="hljs-built_in">cd</span> C:\Users\jxh\.vscode\extensions\kilocode.kilo-code-<span class="hljs-number">7</span>.<span class="hljs-number">1</span>.<span class="hljs-number">20</span>-win32-x64\bin<br><span class="hljs-comment"></span><br><span class="hljs-comment">REM 备份原始程序</span><br><span class="hljs-built_in">rename</span> kilo.exe kilo_real.exe<br><span class="hljs-comment"></span><br><span class="hljs-comment">REM 放入包装器（wrapper.go 中 real 指向 kilo_real.exe）</span><br><span class="hljs-built_in">copy</span> &quot;C:\kilo_wrapper\kilo.exe&quot; kilo.exe<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>⚠️ 插件更新后会覆盖 <code>kilo.exe</code>，需重新部署。建议将部署命令保存为 <code>deploy.bat</code>。</p>
+</blockquote>
+<hr>
+<h2 id="工作原理说明"><a href="#工作原理说明" class="headerlink" title="工作原理说明"></a>工作原理说明</h2><h3 id="CLI-模式-vs-宿主调用模式的判断"><a href="#CLI-模式-vs-宿主调用模式的判断" class="headerlink" title="CLI 模式 vs 宿主调用模式的判断"></a>CLI 模式 vs 宿主调用模式的判断</h3><p>通过 <code>AttachConsole(-1)</code> 尝试附加到父进程的控制台：</p>
+<table>
+<thead>
+<tr>
+<th>调用方式</th>
+<th>父进程</th>
+<th><code>AttachConsole</code> 结果</th>
+<th>行为</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>用户在 cmd&#x2F;PowerShell 中手动运行</td>
+<td>cmd.exe（有控制台）</td>
+<td>✅ 成功</td>
+<td>绑定控制台，正常交互</td>
+</tr>
+<tr>
+<td>VSCode 插件内部调用</td>
+<td>VSCode（Electron GUI，无控制台）</td>
+<td>❌ 失败</td>
+<td>静默运行，不弹黑框</td>
+</tr>
+</tbody></table>
+<h3 id="环境变量覆盖机制"><a href="#环境变量覆盖机制" class="headerlink" title="环境变量覆盖机制"></a>环境变量覆盖机制</h3><p><code>os.Environ()</code> 获取当前所有环境变量后，<code>append</code> 追加新值。Windows 在存在重复 key 时取列表中最后一个，因此 <code>append</code> 的值会可靠地覆盖系统中已有的同名变量。</p>
+<h3 id="CREATE-NO-WINDOW-的作用"><a href="#CREATE-NO-WINDOW-的作用" class="headerlink" title="CREATE_NO_WINDOW 的作用"></a><code>CREATE_NO_WINDOW</code> 的作用</h3><p>这是 Windows <code>CreateProcess</code> 的一个标志位，告诉操作系统在启动子进程时不要为其创建控制台窗口。如果不加这个标志，即使包装器本身是 GUI 模式，子进程（控制台程序）启动时 Windows 也会自动给它弹出一个新的黑框。</p>
+<hr>
+<h2 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h2><ul>
+<li><strong>仅适用于读取环境变量代理的程序</strong>。少数程序完全忽略环境变量，走系统 WinINet 代理或硬编码网络层，此方案无效，需要改用透明代理工具（如 Proxifier、Clash TUN 模式）。</li>
+<li><strong>插件更新会覆盖包装器</strong>，需要重新部署。</li>
+<li><strong>仅限 Windows</strong>，Linux&#x2F;macOS 下可用 shell 脚本 + <code>exec &quot;$@&quot;</code> 实现类似效果，无需 Go。</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件安装配置</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E4%BB%A3%E7%90%86/" class="print-no-link">#代理</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Windows 强制为任意 EXE 设置代理的通用方案</div>
+      <div>https://xinhaojin.github.io/2026/04/08/Windows 强制为任意 EXE 设置代理的通用方案/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>xinhaojin</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年4月8日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/04/07/WSL%20%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%AE%8C%E6%95%B4%E9%85%8D%E7%BD%AE%E7%AC%94%E8%AE%B0%EF%BC%88Ubuntu%2024.04%20+%20D%E7%9B%98%E9%83%A8%E7%BD%B2%20+%20%E5%86%85%E7%BD%91%E4%BB%A3%E7%90%86%E9%80%82%E9%85%8D%EF%BC%89/" title="WSL 开发环境完整配置笔记（Ubuntu 24.04 + D盘部署 + 内网代理适配）">
+                        <span class="hidden-mobile">WSL 开发环境完整配置笔记（Ubuntu 24.04 + D盘部署 + 内网代理适配）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/gitalk/1.8.0/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"Ov23lifvhsymyganMHro","clientSecret":"cdd38ac0c65a95027749446001ebdff7ca7d4ec2","repo":"xinhaojin.github.io","owner":"xinhaojin","admin":"xinhaojin","language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
+          {
+            id: '0a8205a3b4272144a2cd0b9c46fb0124'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+        次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+        次
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
