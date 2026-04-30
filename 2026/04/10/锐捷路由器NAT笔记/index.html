@@ -1,0 +1,1773 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  <link rel="icon" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xinhaojin">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="锐捷路由器 NAT 转换配置笔记 一、NAT 概述NAT（Network Address Translation，网络地址转换） 是一种在 IP 数据包经过路由器时，动态或静态地修改其 IP 地址（及端口）的技术。其核心目的是解决 IPv4 地址不足的问题，同时实现内网与公网之间的受控互访。 NAT 在网络层（Layer 3）运行，通过在接口上维护一张会话转换表，记录每个连接的地址映射关系。路由器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="锐捷路由器 NAT 转换配置笔记">
+<meta property="og:url" content="https://xinhaojin.github.io/2026/04/10/%E9%94%90%E6%8D%B7%E8%B7%AF%E7%94%B1%E5%99%A8NAT%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="xinhaojin&#39;s blog">
+<meta property="og:description" content="锐捷路由器 NAT 转换配置笔记 一、NAT 概述NAT（Network Address Translation，网络地址转换） 是一种在 IP 数据包经过路由器时，动态或静态地修改其 IP 地址（及端口）的技术。其核心目的是解决 IPv4 地址不足的问题，同时实现内网与公网之间的受控互访。 NAT 在网络层（Layer 3）运行，通过在接口上维护一张会话转换表，记录每个连接的地址映射关系。路由器">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-04-10T02:30:30.000Z">
+<meta property="article:modified_time" content="2026-04-30T13:55:31.808Z">
+<meta property="article:author" content="xinhaojin">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>锐捷路由器 NAT 转换配置笔记 - xinhaojin&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xinhaojin.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?596b73bb5b70c262b123e997b6686f49";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xinhaojin&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="锐捷路由器 NAT 转换配置笔记"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-04-10 10:30" pubdate>
+          2026年4月10日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          9.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          47 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">锐捷路由器 NAT 转换配置笔记</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2026年4月30日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="锐捷路由器-NAT-转换配置笔记"><a href="#锐捷路由器-NAT-转换配置笔记" class="headerlink" title="锐捷路由器 NAT 转换配置笔记"></a>锐捷路由器 NAT 转换配置笔记</h1><hr>
+<h2 id="一、NAT-概述"><a href="#一、NAT-概述" class="headerlink" title="一、NAT 概述"></a>一、NAT 概述</h2><p><strong>NAT（Network Address Translation，网络地址转换）</strong> 是一种在 IP 数据包经过路由器时，动态或静态地修改其 IP 地址（及端口）的技术。其核心目的是解决 IPv4 地址不足的问题，同时实现内网与公网之间的受控互访。</p>
+<p>NAT 在网络层（Layer 3）运行，通过在接口上维护一张会话转换表，记录每个连接的地址映射关系。路由器根据报文的来源接口和 NAT 规则，在转发时自动替换源地址或目的地址，回程流量则通过查询会话表自动完成反向还原。</p>
+<p>NAT 在工程实践中主要解决两类需求：</p>
+<table>
+<thead>
+<tr>
+<th>需求</th>
+<th>技术手段</th>
+<th>对应命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>内网访问公网</strong>（SNAT &#x2F; PAT）</td>
+<td>出站时将源地址从私网 IP 替换为公网 IP，回程自动还原；多个内网主机通过端口复用共享少数公网 IP</td>
+<td><code>ip nat inside source list ... overload</code></td>
+</tr>
+<tr>
+<td><strong>公网访问内网服务</strong>（DNAT）</td>
+<td>入站时将目的地址从公网 IP 还原为内网 IP，回程自动还原；支持端口级映射和 1:1 暴露</td>
+<td><code>ip nat inside source static tcp ...</code></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>NAT 本身不是安全机制。它隐藏了内网拓扑，但不提供认证或加密能力。网络安全应由防火墙、ACL 等独立手段保障。</p>
+</blockquote>
+<hr>
+<h2 id="二、NAT-核心概念"><a href="#二、NAT-核心概念" class="headerlink" title="二、NAT 核心概念"></a>二、NAT 核心概念</h2><h3 id="2-1-两个前提：接口角色标记"><a href="#2-1-两个前提：接口角色标记" class="headerlink" title="2.1 两个前提：接口角色标记"></a>2.1 两个前提：接口角色标记</h3><p>所有 NAT 规则在生效前，<strong>必须先告诉路由器哪个接口是”内侧”、哪个是”外侧”</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">interface GigabitEthernet 0/1<br> description To-Inside-Network<br> ip nat inside              ! 内网侧接口<br><br>interface GigabitEthernet 0/2<br> description To-Outside-Network<br> ip nat outside             ! 外网侧接口<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>ip nat inside</code>：接内网的接口（连接私网地址）</li>
+<li><code>ip nat outside</code>：接外网的接口（连接公网 &#x2F; 上游网络）</li>
+</ul>
+<h3 id="2-2-四元地址模型"><a href="#2-2-四元地址模型" class="headerlink" title="2.2 四元地址模型"></a>2.2 四元地址模型</h3><p>NAT 转换过程中涉及四个地址角色，理解它们是读懂 NAT 表和排错的基础：</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs scss">                  ┌──────────────┐<br> Inside Local     │              │     Inside Global<br> (内网真实地址)    │    路由器     │     (内网对外的公网身份)<br>─────────────────►│   NAT 引擎   │◄─────────────────<br>                  │              │<br> Outside Local    │              │     Outside Global<br> (外网地址在      │              │     (外网的真实地址)<br>  内网眼中的样子)  │              │<br>─────────────────►│              │◄─────────────────<br>                  └──────────────┘<br>     内网侧                            公网侧<br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>角色</th>
+<th>含义</th>
+<th>通俗理解</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Inside Local</strong></td>
+<td>内网设备的真实 IP 地址</td>
+<td>你的”身份证上的名字”</td>
+</tr>
+<tr>
+<td><strong>Inside Global</strong></td>
+<td>内网设备对外呈现的公网 IP</td>
+<td>你对外出示的”名片”</td>
+</tr>
+<tr>
+<td><strong>Outside Global</strong></td>
+<td>外网设备的真实 IP 地址</td>
+<td>对方的”身份证上的名字”</td>
+</tr>
+<tr>
+<td><strong>Outside Local</strong></td>
+<td>外网设备在内网侧被看到的地址</td>
+<td>对方在你眼中的”化名”（仅在 outside source NAT 中非空）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>初学者最容易搞混的点</strong>：</p>
+<ul>
+<li><code>Inside Local</code> 和 <code>Inside Global</code> 指的是<strong>同一个内网设备</strong>，只是”在家”和”出门”用了不同身份。</li>
+<li><code>Outside Local</code> 和 <code>Outside Global</code> 指的是<strong>同一个外网设备</strong>，同理。</li>
+<li>在最常见的 PAT 场景（上网）中，<code>Outside Local == Outside Global</code>（外网地址不需要伪装），所以 NAT 表中这两列看起来一样，这是正常的。</li>
+</ul>
+</blockquote>
+<h3 id="2-3-NAT-的本质：建立映射，双向自动生效"><a href="#2-3-NAT-的本质：建立映射，双向自动生效" class="headerlink" title="2.3 NAT 的本质：建立映射，双向自动生效"></a>2.3 NAT 的本质：建立映射，双向自动生效</h3><p>NAT 配置做的所有事情可以归结为一件事：<strong>在四元地址模型中建立映射关系</strong>。映射一旦建立，路由器根据报文的来向自动决定如何应用：</p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dns">配置: ip nat inside source static <span class="hljs-number">192.168.1.100</span> <span class="hljs-number">100.1.1.1</span><br><br>映射: <span class="hljs-number">192.168.1.100</span>  ←──映射──→  <span class="hljs-number">100.1.1.1</span><br>      (内网服务器)                  (公网身份)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs routeros">━━━ 报文从内网来（内→外）━━━<br><br>  PC 发出:    <span class="hljs-attribute">src</span>=192.168.1.100    <span class="hljs-attribute">dst</span>=8.8.8.8<br>              ↓ 查映射，改源地址<br>  路由器转发: <span class="hljs-attribute">src</span>=100.1.1.1        <span class="hljs-attribute">dst</span>=8.8.8.8<br><br>  表现: 源地址转换（SNAT）—— 内网主机对外展示公网身份<br><br><br>━━━ 报文从外网来（外→内）━━━<br><br>  外网发出:    <span class="hljs-attribute">src</span>=8.8.8.8          <span class="hljs-attribute">dst</span>=100.1.1.1<br>              ↓ 查映射，改目的地址<br>  路由器转发: <span class="hljs-attribute">src</span>=8.8.8.8          <span class="hljs-attribute">dst</span>=192.168.1.100<br><br>  表现: 目的地址转换（DNAT）—— 外网流量被引导到内网服务器<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>关键理解</strong>：SNAT 和 DNAT 不是两种不同的技术，是<strong>同一个映射在两个方向上的自动表现</strong>。你不需要配两条规则，也不需要告诉路由器”这是 SNAT 还是 DNAT”——你只管建映射，路由器根据报文从哪个接口进来自动判断该改源还是改目的。</p>
+</blockquote>
+<p>这也是为什么”端口映射”（发布内网 Web 服务）用的也是 <code>ip nat inside source static tcp</code>——你配的是映射，路由器自动处理双向：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">! 配置的是映射: 100.1.1.1:80 ↔ 192.168.1.100:80<br>ip nat inside <span class="hljs-built_in">source</span> static tcp 192.168.1.100 80 100.1.1.1 80<br><br>! 外→内: dst=100.1.1.1:80 → dst=192.168.1.100:80（把流量送到内网）<br>! 内→外: src=192.168.1.100:80 → src=100.1.1.1:80（回包时还原源地址）<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>但存在一个区别</strong>：映射何时建立？</p>
+<ul>
+<li><strong>静态 NAT</strong>（如 <code>inside source static</code>）：映射提前写好，永久存在，外网可以随时主动发起访问。</li>
+<li><strong>动态 NAT</strong>（如 <code>inside source list ... overload</code>）：映射在流量触发时才临时创建，用完释放。外网无法主动发起——因为还没有表项可匹配。</li>
+</ul>
+</blockquote>
+<h3 id="2-4-NAT-的三种基础类型"><a href="#2-4-NAT-的三种基础类型" class="headerlink" title="2.4 NAT 的三种基础类型"></a>2.4 NAT 的三种基础类型</h3><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>映射关系</th>
+<th>特点</th>
+<th>典型场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Static NAT</strong></td>
+<td>固定 1:1</td>
+<td>一个内网 IP 永久绑定一个公网 IP</td>
+<td>服务器需要固定公网身份</td>
+</tr>
+<tr>
+<td><strong>Dynamic NAT</strong></td>
+<td>动态 n:1（不复用端口）</td>
+<td>从地址池中临时分配，会话结束释放</td>
+<td>很少使用</td>
+</tr>
+<tr>
+<td><strong>PAT（Port Address Translation）</strong></td>
+<td>动态 n:1（复用端口）</td>
+<td>多个内网 IP 共享一个公网 IP，靠端口区分</td>
+<td><strong>内网用户上网（最常用）</strong></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="三、NAT-命令分类体系"><a href="#三、NAT-命令分类体系" class="headerlink" title="三、NAT 命令分类体系"></a>三、NAT 命令分类体系</h2><h3 id="3-1-命令结构解析"><a href="#3-1-命令结构解析" class="headerlink" title="3.1 命令结构解析"></a>3.1 命令结构解析</h3><p>所有 <code>ip nat</code> 命令由以下部分组成：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs css">ip nat  <span class="hljs-selector-attr">[地址对]</span>   <span class="hljs-selector-attr">[锚点]</span>      <span class="hljs-selector-attr">[映射类型]</span>    <span class="hljs-selector-attr">[映射参数]</span><br>         │          │            │              │<br>         │          │            │              └── 具体的内外地址、ACL、地址池等<br>         │          │            └── static / list ... overload / list ... pool<br>         │          └── <span class="hljs-selector-tag">source</span> / destination<br>         └── inside / outside<br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>组成部分</th>
+<th>含义</th>
+<th>取值</th>
+<th>通俗理解</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>地址对</strong></td>
+<td>映射作用于哪一侧的地址对</td>
+<td><code>inside</code> &#x2F; <code>outside</code></td>
+<td>“你要定义的是内网设备的身份，还是外网设备的身份？”</td>
+</tr>
+<tr>
+<td><strong>锚点</strong></td>
+<td>映射以报文的哪个字段为依据建立</td>
+<td><code>source</code> &#x2F; <code>destination</code></td>
+<td>“这条映射绑定的是’谁发起的’，还是’去哪的’？”</td>
+</tr>
+<tr>
+<td><strong>映射类型</strong></td>
+<td>映射是永久的还是临时分配的</td>
+<td><code>static</code> &#x2F; <code>list ... overload</code> &#x2F; <code>list ... pool</code></td>
+<td>“这个身份是固定的还是临时分配的？”</td>
+</tr>
+<tr>
+<td><strong>映射参数</strong></td>
+<td>映射的具体地址值</td>
+<td>IP 地址、端口、ACL、地址池名</td>
+<td>“具体是谁映射到谁？”</td>
+</tr>
+</tbody></table>
+<h4 id="inside-outside：操作哪对地址"><a href="#inside-outside：操作哪对地址" class="headerlink" title="inside &#x2F; outside：操作哪对地址"></a><code>inside</code> &#x2F; <code>outside</code>：操作哪对地址</h4><p>回到 2.2 节的四元地址模型，NAT 涉及两对地址：</p>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lasso">Inside <span class="hljs-built_in">Local</span>  ←──映射──→  Inside <span class="hljs-built_in">Global</span>     ← ip nat inside <span class="hljs-params">...</span> 操作这对<br>Outside <span class="hljs-built_in">Local</span> ←──映射──→  Outside <span class="hljs-built_in">Global</span>    ← ip nat outside <span class="hljs-params">...</span> 操作这对<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>inside</code> &#x3D; 操作 <strong>Inside 地址对</strong>（Inside Local ↔ Inside Global）</li>
+<li><code>outside</code> &#x3D; 操作 <strong>Outside 地址对</strong>（Outside Global ↔ Outside Local）</li>
+</ul>
+<blockquote>
+<p><strong><code>inside</code> &#x2F; <code>outside</code> 不是流量方向</strong>，而是告诉路由器”你要操作的是哪对地址”。命令里写 <code>inside</code> 还是 <code>outside</code>，取决于你想建立映射的那两个地址分别属于内网侧还是外网侧。</p>
+</blockquote>
+<h4 id="source-destination：以什么为锚点建立映射"><a href="#source-destination：以什么为锚点建立映射" class="headerlink" title="source &#x2F; destination：以什么为锚点建立映射"></a><code>source</code> &#x2F; <code>destination</code>：以什么为锚点建立映射</h4><p>“锚点”决定了路由器用报文的<strong>哪个字段</strong>去查找&#x2F;匹配映射：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs routeros">同一个外→内报文: <span class="hljs-attribute">src</span>=8.8.8.8  <span class="hljs-attribute">dst</span>=100.1.1.1<br><br>以 source 为锚点: 用 src 查映射表 → 匹配后改源地址 → 隐藏外网来者身份<br>以 destination 为锚点: 用 dst 查映射表 → 匹配后改目的地址 → 把流量引导到内网服务器<br></code></pre></td></tr></table></figure>
+
+<p>路由器不可能猜你要以哪个字段为依据，所以必须显式指定。</p>
+<blockquote>
+<p><strong>但要注意</strong>：如 2.3 节所述，<code>ip nat inside source static</code> 建立的映射是双向的——内→外方向以源地址为锚点做源地址转换（SNAT），外→内方向自动以目的地址为锚点做目的地址转换（DNAT），不需要你分别指定。<code>source</code> &#x2F; <code>destination</code> 在这里更多是语义标签，标明”这个映射定义的是谁的身份”，而不是限定只能改某个方向。</p>
+</blockquote>
+<h3 id="3-2-四类-NAT-行为（按场景分类）"><a href="#3-2-四类-NAT-行为（按场景分类）" class="headerlink" title="3.2 四类 NAT 行为（按场景分类）"></a>3.2 四类 NAT 行为（按场景分类）</h3><p>从<strong>实际使用场景</strong>出发，所有 NAT 行为可以归为四类。注意：有些命令是双向的，会同时出现在两类中。</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs scss">           ┌──────────────┬──────────────┐<br>           │   源地址转换   │  目标地址转换   │<br>┌──────────┼──────────────┼──────────────┤<br>│ 内→外    │  ① SNAT      │  ③ 目的重定向   │<br>│ (出站)   │  隐藏内网身份  │  改写访问目标   │<br>├──────────┼──────────────┼──────────────┤<br>│ 外→内    │  ② 源地址伪装  │  ④ DNAT       │<br>│ (入站)   │  隐藏外网身份  │  发布内网服务   │<br>└──────────┴──────────────┴──────────────┘<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="①-内→外-源地址转换（SNAT）：隐藏内网身份"><a href="#①-内→外-源地址转换（SNAT）：隐藏内网身份" class="headerlink" title="① 内→外 源地址转换（SNAT）：隐藏内网身份"></a>① 内→外 源地址转换（SNAT）：隐藏内网身份</h4><p><strong>场景</strong>：内网主机访问外网时，把源地址从私网 IP 改为公网 IP，让回包能路由回来。这是最常见的 NAT 类型。</p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>命令</th>
+<th>频率</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>动态 PAT（接口 IP）</strong></td>
+<td><code>ip nat inside source list &#123;ACL&#125; interface &#123;出接口&#125; overload</code></td>
+<td>★★★★★</td>
+<td>多用户共享出接口公网 IP 上网，靠端口区分不同主机</td>
+</tr>
+<tr>
+<td><strong>动态 PAT（地址池）</strong></td>
+<td><code>ip nat inside source list &#123;ACL&#125; pool &#123;池名&#125; overload</code></td>
+<td>★★★★☆</td>
+<td>拥有多个公网 IP 时，从地址池中选 IP 做端口复用</td>
+</tr>
+<tr>
+<td><strong>静态 1:1</strong></td>
+<td><code>ip nat inside source static &#123;内IP&#125; &#123;公IP&#125;</code></td>
+<td>★★★★☆</td>
+<td>内网 IP 永久绑定一个公网 IP</td>
+</tr>
+<tr>
+<td><strong>可扩展静态</strong></td>
+<td><code>ip nat inside source static &#123;内IP&#125; &#123;公IP&#125; extendable</code></td>
+<td>★★☆☆☆</td>
+<td>同一内网 IP 映射多个公网 IP 或多个端口组合</td>
+</tr>
+</tbody></table>
+<p><strong>配置示例</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">! 最常用：多用户共享公网 IP 上网<br>ip access-list extended NAT_INSIDE<br> 10 permit ip 192.168.1.0 0.0.0.255 any<br>ip nat inside <span class="hljs-built_in">source</span> list NAT_INSIDE interface GigabitEthernet 0/2 overload<br><br>! 固定公网身份<br>ip nat inside <span class="hljs-built_in">source</span> static 192.168.1.100 100.1.1.10<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="②-外→内-源地址转换：隐藏外网来者身份"><a href="#②-外→内-源地址转换：隐藏外网来者身份" class="headerlink" title="② 外→内 源地址转换：隐藏外网来者身份"></a>② 外→内 源地址转换：隐藏外网来者身份</h4><p><strong>场景</strong>：外网流量进入内网时，把源地址改掉，让内网服务器看到的是一个”假地址”而不是对方的真实 IP。</p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>命令</th>
+<th>频率</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>静态</strong></td>
+<td><code>ip nat outside source static &#123;外真IP&#125; &#123;外假IP&#125;</code></td>
+<td>★★★☆☆</td>
+<td>外网真实 IP 固定映射为一个内网可达的假地址</td>
+</tr>
+<tr>
+<td><strong>动态</strong></td>
+<td><code>ip nat outside source list &#123;ACL&#125; pool &#123;池名&#125;</code></td>
+<td>★☆☆☆☆</td>
+<td>从地址池动态分配假地址，极罕见</td>
+</tr>
+</tbody></table>
+<p><strong>配置示例</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">! 外单位真实 IP 100.1.1.1 访问内网时，被伪装为 172.16.10.168<br>ip nat outside <span class="hljs-built_in">source</span> static 100.1.1.1 172.16.10.168<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>这条命令为什么让人困惑？</strong> 命令名是 <code>outside source</code>（”外网源”），容易理解为”外→内方向改源地址”，这没错。但它其实也是双向的：</p>
+<ul>
+<li><strong>外→内方向</strong>：入包源地址 <code>100.1.1.1</code> → <code>172.16.10.168</code>（内网服务器看到的是假地址）</li>
+<li><strong>内→外方向</strong>：内网主机访问 <code>172.16.10.168</code> 时，目的地址被改为 <code>100.1.1.1</code> 转发出去</li>
+</ul>
+<p>所以它同时属于<strong>② 外→内 源地址转换</strong>和<strong>③ 内→外 目标地址转换</strong>，是一条命令的两种表现。</p>
+</blockquote>
+<hr>
+<h4 id="③-内→外-目标地址转换：改写内网用户的访问目标"><a href="#③-内→外-目标地址转换：改写内网用户的访问目标" class="headerlink" title="③ 内→外 目标地址转换：改写内网用户的访问目标"></a>③ 内→外 目标地址转换：改写内网用户的访问目标</h4><p><strong>场景</strong>：内网主机访问某个地址时，路由器把目的地址改为另一个地址——内网用户无感知，以为在访问原始目标。</p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>命令</th>
+<th>频率</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>outside source static（双向表现）</strong></td>
+<td><code>ip nat outside source static &#123;外真IP&#125; &#123;外假IP&#125;</code></td>
+<td>★★★☆☆</td>
+<td>内网访问假地址 → 路由器改为真地址转发（详见②的说明）</td>
+</tr>
+<tr>
+<td><strong>outside source 动态</strong></td>
+<td><code>ip nat outside source list &#123;ACL&#125; pool &#123;池名&#125;</code></td>
+<td>★☆☆☆☆</td>
+<td>动态版本，极罕见</td>
+</tr>
+<tr>
+<td><strong>策略式重定向</strong></td>
+<td><code>ip nat application source list &#123;ACL&#125; destination &#123;原始IP&#125; dest-change &#123;新IP&#125;</code></td>
+<td>★★☆☆☆</td>
+<td>基于 ACL + 目标 IP 的透明重定向（NAT 特殊应用，非标准 NAT）</td>
+</tr>
+</tbody></table>
+<p><strong>配置示例</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">! 方式一：outside <span class="hljs-built_in">source</span> static（内网访问 172.16.10.168 → 实际访问 100.1.1.1）<br>ip nat outside <span class="hljs-built_in">source</span> static 100.1.1.1 172.16.10.168<br>! 内网主机需要配置路由：去往 172.16.10.168 的流量指向本路由器<br><br>! 方式二：策略式重定向（所有内网用户访问 202.100.1.1 → 被转向 192.168.100.10）<br>access-list 1 permit 192.168.1.0 0.0.0.255<br>ip nat application <span class="hljs-built_in">source</span> list 1 destination 202.100.1.1 dest-change 192.168.100.10<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>方式一 vs 方式二的区别</strong>：</p>
+<ul>
+<li><code>outside source static</code>：在 NAT 四元地址模型中建立 Outside Global ↔ Outside Local 的映射，双向生效，会影响 NAT 表</li>
+<li><code>dest-change</code>：只做 IP 头部的目的地址替换，是策略性的单次改写，不建立 NAT 映射关系</li>
+</ul>
+<p>简单场景用 <code>outside source static</code>，需要 ACL 精细匹配时用 <code>dest-change</code>。</p>
+</blockquote>
+<hr>
+<h4 id="④-外→内-目标地址转换（DNAT）：发布内网服务"><a href="#④-外→内-目标地址转换（DNAT）：发布内网服务" class="headerlink" title="④ 外→内 目标地址转换（DNAT）：发布内网服务"></a>④ 外→内 目标地址转换（DNAT）：发布内网服务</h4><p><strong>场景</strong>：公网用户访问公网 IP 的某端口时，路由器把目的地址改为内网服务器的地址，将流量引导到内网。</p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>命令</th>
+<th>频率</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>端口映射</strong></td>
+<td><code>ip nat inside source static tcp/udp &#123;内IP&#125; &#123;端口&#125; &#123;公IP&#125; &#123;公端口&#125; [permit-inside]</code></td>
+<td>★★★★★</td>
+<td>最常用：把公网 IP 的指定端口映射到内网服务器的指定端口</td>
+</tr>
+<tr>
+<td><strong>静态 1:1</strong></td>
+<td><code>ip nat inside source static &#123;内IP&#125; &#123;公IP&#125;</code></td>
+<td>★★★★☆</td>
+<td>整台服务器所有端口暴露（⚠ 安全风险高）</td>
+</tr>
+<tr>
+<td><strong>负载均衡（轮询）</strong></td>
+<td><code>ip nat inside destination list &#123;ACL&#125; pool &#123;池名&#125; type rotary</code></td>
+<td>★★☆☆☆</td>
+<td>一个公网 IP 轮询分发到多台内网服务器</td>
+</tr>
+</tbody></table>
+<p><strong>配置示例</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">! 端口映射：公网 100.1.1.1:80 → 内网 192.168.1.100:80<br>ip nat inside <span class="hljs-built_in">source</span> static tcp 192.168.1.100 80 100.1.1.1 80 permit-inside<br><br>! 端口映射（端口不同）：公网 100.1.1.1:8080 → 内网 192.168.1.100:80<br>ip nat inside <span class="hljs-built_in">source</span> static tcp 192.168.1.100 80 100.1.1.1 8080 permit-inside<br><br>! 负载均衡：访问 100.1.1.1:80 轮询到 3 台 Web 服务器<br>ip access-list extended LB_ACL<br> 10 permit tcp any host 100.1.1.1 eq 80<br>ip nat pool WEB_POOL 192.168.1.10 192.168.1.12 netmask 255.255.255.0 <span class="hljs-built_in">type</span> rotary<br>ip nat inside destination list LB_ACL pool WEB_POOL<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>关于 <code>permit-inside</code>（Hairpin NAT）</strong>：</p>
+<p>端口映射默认只处理从外网（outside 接口）进来的流量。如果内网用户也想通过公网 IP <code>100.1.1.1:80</code> 访问自己的服务器：</p>
+<ul>
+<li><strong>不加 <code>permit-inside</code></strong>：流量走路由查表 → <code>100.1.1.1</code> 是本设备公网 IP，路由可能指向外网 → 绕一圈回来，或者直接失败</li>
+<li><strong>加了 <code>permit-inside</code></strong>：路由器发现”这个公网 IP 映射的就是内网自己”，直接在内部完成目的地址转换，把流量转到 <code>192.168.1.100:80</code>，不绕外网</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>为什么端口映射用的也是 <code>inside source static</code>？</strong></p>
+<p>因为 <code>inside source static</code> 建立的是一条<strong>静态的、永久的映射关系</strong>，它天然双向生效：</p>
+<ul>
+<li>内→外方向表现：源地址转换（SNAT）→ 归入第①类</li>
+<li>外→内方向表现：目的地址转换（DNAT）→ 归入第④类</li>
+</ul>
+<p>命令名里的 <code>source</code> 指的是”定义的是 inside source（内网源地址）的映射”，不是说它只改源地址。一条命令，两个场景，这是 NAT 命令体系最容易让人绕进去的地方。</p>
+</blockquote>
+<hr>
+<h4 id="命令交叉关系总览"><a href="#命令交叉关系总览" class="headerlink" title="命令交叉关系总览"></a>命令交叉关系总览</h4><p>由于 NAT 的双向性，部分命令同时服务于多个场景类别：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th align="center">① SNAT<br>(内→外源)</th>
+<th align="center">② 源伪装<br>(外→内源)</th>
+<th align="center">③ 目标重定向<br>(内→外目的)</th>
+<th align="center">④ DNAT<br>(外→内目的)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ip nat inside source static &#123;内IP&#125; &#123;公IP&#125;</code></td>
+<td align="center"><strong>主场景</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><strong>双向</strong></td>
+</tr>
+<tr>
+<td><code>ip nat inside source static tcp ...</code></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><strong>主场景</strong></td>
+</tr>
+<tr>
+<td><code>ip nat inside source list ... overload</code></td>
+<td align="center"><strong>主场景</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td><code>ip nat outside source static</code></td>
+<td align="center"></td>
+<td align="center"><strong>主场景</strong></td>
+<td align="center"><strong>双向</strong></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td><code>ip nat outside source list ... pool</code></td>
+<td align="center"></td>
+<td align="center"><strong>主场景</strong></td>
+<td align="center"><strong>双向</strong></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td><code>ip nat inside destination list ... pool</code></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><strong>主场景</strong></td>
+</tr>
+<tr>
+<td><code>ip nat application ... dest-change</code></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><strong>主场景</strong></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>使用建议</strong>：实际配置时，先问自己两个问题——“流量从哪来？”、”要改源还是目的？”——然后直接定位到对应类别查找命令。不需要先理解命令语法，按场景查表即可。</p>
+</blockquote>
+<h3 id="3-3-按需求速查命令"><a href="#3-3-按需求速查命令" class="headerlink" title="3.3 按需求速查命令"></a>3.3 按需求速查命令</h3><table>
+<thead>
+<tr>
+<th>我要做什么</th>
+<th>对应类别</th>
+<th>用什么命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>多个内网用户共享公网 IP 上网</td>
+<td>① SNAT</td>
+<td><code>ip nat inside source list &#123;ACL&#125; interface &#123;出接口&#125; overload</code></td>
+</tr>
+<tr>
+<td>多公网 IP 做端口复用</td>
+<td>① SNAT</td>
+<td><code>ip nat inside source list &#123;ACL&#125; pool &#123;池名&#125; overload</code></td>
+</tr>
+<tr>
+<td>给一台内网设备固定公网身份</td>
+<td>① SNAT</td>
+<td><code>ip nat inside source static &#123;内IP&#125; &#123;公IP&#125;</code></td>
+</tr>
+<tr>
+<td>同一内网 IP 映射多个公网 IP&#x2F;端口</td>
+<td>① SNAT</td>
+<td><code>ip nat inside source static &#123;内IP&#125; &#123;公IP&#125; extendable</code></td>
+</tr>
+<tr>
+<td>外网访问时隐藏对方真实 IP</td>
+<td>② 源伪装</td>
+<td><code>ip nat outside source static &#123;外真IP&#125; &#123;外假IP&#125;</code></td>
+</tr>
+<tr>
+<td>内网访问假地址→实际访问真地址</td>
+<td>③ 目标重定向</td>
+<td><code>ip nat outside source static &#123;外真IP&#125; &#123;外假IP&#125;</code></td>
+</tr>
+<tr>
+<td>透明重定向（ACL 精细匹配）</td>
+<td>③ 目标重定向</td>
+<td><code>ip nat application source list &#123;ACL&#125; destination &#123;原始IP&#125; dest-change &#123;新IP&#125;</code></td>
+</tr>
+<tr>
+<td>发布内网服务的某个端口</td>
+<td>④ DNAT</td>
+<td><code>ip nat inside source static tcp &#123;内IP&#125; &#123;内端口&#125; &#123;公IP&#125; &#123;公端口&#125; permit-inside</code></td>
+</tr>
+<tr>
+<td>整台服务器公网暴露</td>
+<td>④ DNAT</td>
+<td><code>ip nat inside source static &#123;内IP&#125; &#123;公IP&#125;</code></td>
+</tr>
+<tr>
+<td>多台服务器轮询负载均衡</td>
+<td>④ DNAT</td>
+<td><code>ip nat inside destination list &#123;ACL&#125; pool &#123;池名&#125; type rotary</code></td>
+</tr>
+</tbody></table>
+<h2 id="四、NAT-执行流程"><a href="#四、NAT-执行流程" class="headerlink" title="四、NAT 执行流程"></a>四、NAT 执行流程</h2><h3 id="4-1-Inside-→-Outside（内网访问外网）"><a href="#4-1-Inside-→-Outside（内网访问外网）" class="headerlink" title="4.1 Inside → Outside（内网访问外网）"></a>4.1 Inside → Outside（内网访问外网）</h3><p>以 PAT 为例：内网主机 <code>192.168.1.100:50000</code> 访问 <code>8.8.8.8:80</code>。</p>
+<p><strong>① 报文进入 inside 接口</strong>。路由器收到报文，源地址 <code>192.168.1.100:50000</code>，目的地址 <code>8.8.8.8:80</code>。</p>
+<p><strong>② 匹配 NAT ACL</strong>。路由器检查该报文是否命中 NAT 规则关联的 ACL。未命中则正常路由转发，不做转换；命中则继续下一步。ACL 决定”哪些流量要做 NAT”，与出接口无关。</p>
+<p><strong>③ 查路由表，确定出接口</strong>。此时目的地址仍是原始的 <code>8.8.8.8</code>，路由器根据目的地址查路由表，确定报文应从哪个 outside 接口发出。</p>
+<p><strong>④ 在出接口执行 NAT 转换（路由后 NAT）</strong>。源地址 <code>192.168.1.100:50000</code> 被替换为出接口的公网 IP <code>100.1.1.1:20001</code>（PAT 自动分配端口），目的地址不变。</p>
+<p><strong>⑤ 写入 NAT 表，转发报文</strong>。映射关系写入 NAT 表（双向），报文以 <code>src=100.1.1.1:20001 dst=8.8.8.8:80</code> 转发至外网。</p>
+<blockquote>
+<p><strong>关键</strong>：NAT 发生在路由之后（post-routing）——先确定出接口，再在出接口上做源地址转换。出接口决定”用哪个公网 IP”，ACL 决定”哪些流量做 NAT”。</p>
+</blockquote>
+<h3 id="4-2-Outside-→-Inside（外网访问内网）"><a href="#4-2-Outside-→-Inside（外网访问内网）" class="headerlink" title="4.2 Outside → Inside（外网访问内网）"></a>4.2 Outside → Inside（外网访问内网）</h3><p>以端口映射为例：外网主机 <code>8.8.8.8:40000</code> 访问公网 IP <code>100.1.1.1:80</code>，映射到内网 <code>192.168.1.100:80</code>。</p>
+<p><strong>① 报文进入 outside 接口</strong>。路由器收到报文，源地址 <code>8.8.8.8:40000</code>，目的地址 <code>100.1.1.1:80</code>。</p>
+<p><strong>② 查 NAT 表</strong>。路由器检查是否存在匹配的会话表项或静态映射。命中已有会话则直接按表项反向转换；未命中则检查静态 NAT 规则（如 <code>inside source static</code>）；均未命中则丢弃或按路由正常转发。</p>
+<p><strong>③ 执行 NAT 转换，还原目的地址（路由前 NAT）</strong>。目的地址 <code>100.1.1.1:80</code> 被替换为 <code>192.168.1.100:80</code>。必须先做这一步——因为 <code>100.1.1.1</code> 是公网映射地址，本地路由表中通常没有到它的路由条目，只有还原为内网真实 IP 后才能查表转发。</p>
+<p><strong>④ 查路由表，确定内网出接口</strong>。此时目的地址已变为 <code>192.168.1.100</code>，路由器根据该地址查路由表，确定应从哪个 inside 接口转发。</p>
+<p><strong>⑤ 转发至内网服务器</strong>。报文以 <code>src=8.8.8.8:40000 dst=192.168.1.100:80</code> 从 inside 接口发出，到达内网服务器。</p>
+<blockquote>
+<p><strong>关键</strong>：NAT 发生在路由之前（pre-routing）——必须先还原目的地址，才能根据内网真实 IP 查路由表。静态 NAT 的表项永久存在，外网可随时主动发起；动态 NAT 的表项仅在内部主动发起的会话期间存在，外网无法主动发起。</p>
+</blockquote>
+<h3 id="4-3-两个方向的执行时机对比"><a href="#4-3-两个方向的执行时机对比" class="headerlink" title="4.3 两个方向的执行时机对比"></a>4.3 两个方向的执行时机对比</h3><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>Inside → Outside</th>
+<th>Outside → Inside</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NAT 时机</td>
+<td><strong>路由后</strong>（post-routing）</td>
+<td><strong>路由前</strong>（pre-routing）</td>
+</tr>
+<tr>
+<td>修改内容</td>
+<td>源地址（<code>inside local</code> → <code>inside global</code>）</td>
+<td>目的地址（<code>inside global</code> → <code>inside local</code>）</td>
+</tr>
+<tr>
+<td>匹配依据</td>
+<td>ACL 规则</td>
+<td>NAT 表（会话表 &#x2F; 静态表）</td>
+</tr>
+<tr>
+<td>回程处理</td>
+<td>查 NAT 表自动反向转换</td>
+<td>查 NAT 表自动反向转换</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>记忆口诀</strong>：<strong>出站先路由后改源，入站先改目的后路由</strong>。</p>
+</blockquote>
+<hr>
+<h2 id="五、标准配置模板"><a href="#五、标准配置模板" class="headerlink" title="五、标准配置模板"></a>五、标准配置模板</h2><h3 id="5-1-接口角色定义（所有-NAT-的前提）"><a href="#5-1-接口角色定义（所有-NAT-的前提）" class="headerlink" title="5.1 接口角色定义（所有 NAT 的前提）"></a>5.1 接口角色定义（所有 NAT 的前提）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">! 这是所有 NAT 配置的基础，漏掉这一步一切都不生效<br>interface GigabitEthernet 0/1<br> description To-Inside-Network<br> ip nat inside<br><br>interface GigabitEthernet 0/2<br> description To-Outside-Network<br> ip nat outside<br></code></pre></td></tr></table></figure>
+
+<h3 id="5-2-内→外-PAT：多用户共享公网-IP-上网（最常用）"><a href="#5-2-内→外-PAT：多用户共享公网-IP-上网（最常用）" class="headerlink" title="5.2 内→外 PAT：多用户共享公网 IP 上网（最常用）"></a>5.2 内→外 PAT：多用户共享公网 IP 上网（最常用）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">! 第一步：定义 ACL，匹配需要做 NAT 的内网流量<br>ip access-list extended NAT_INSIDE<br> 10 permit ip 192.168.1.0 0.0.0.255 any<br><br>! 第二步：配置 PAT 规则，使用出接口的公网 IP 做 overload<br>ip nat inside <span class="hljs-built_in">source</span> list NAT_INSIDE interface GigabitEthernet 0/2 overload<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>工作原理</strong>：所有 <code>192.168.1.0/24</code> 的主机发出的流量，源地址被替换为 <code>GigabitEthernet 0/2</code> 接口的公网 IP，不同主机靠端口号区分。路由器自动管理端口分配和 NAT 表。</p>
+</blockquote>
+<h3 id="5-3-内→外-PAT：使用地址池（多公网-IP）"><a href="#5-3-内→外-PAT：使用地址池（多公网-IP）" class="headerlink" title="5.3 内→外 PAT：使用地址池（多公网 IP）"></a>5.3 内→外 PAT：使用地址池（多公网 IP）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">! 第一步：定义公网地址池<br>ip nat pool PUBLIC_POOL 100.1.1.10 100.1.1.20 netmask 255.255.255.0<br><br>! 第二步：用地址池做 PAT<br>ip nat inside <span class="hljs-built_in">source</span> list NAT_INSIDE pool PUBLIC_POOL overload<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>与 5.2 的区别</strong>：5.2 只用一个接口 IP，5.3 从地址池中选 IP 做端口复用。适合拥有多个公网 IP 的场景。</p>
+</blockquote>
+<h3 id="5-4-外→内-端口映射：发布内网-Web-服务"><a href="#5-4-外→内-端口映射：发布内网-Web-服务" class="headerlink" title="5.4 外→内 端口映射：发布内网 Web 服务"></a>5.4 外→内 端口映射：发布内网 Web 服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">! 把公网 IP 100.1.1.1 的 80 端口映射到内网 192.168.1.100 的 80 端口<br>ip nat inside <span class="hljs-built_in">source</span> static tcp 192.168.1.100 80 100.1.1.1 80 permit-inside<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>为什么端口映射也用 <code>inside source static</code>？</strong> 因为它建立的是静态映射，天然双向生效——原理见 2.3 节和 3.2④ 节。</p>
+</blockquote>
+<h3 id="5-5-外→内-静态-1-1：整台服务器暴露"><a href="#5-5-外→内-静态-1-1：整台服务器暴露" class="headerlink" title="5.5 外→内 静态 1:1：整台服务器暴露"></a>5.5 外→内 静态 1:1：整台服务器暴露</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">! ⚠ 慎用：所有端口全部暴露，安全风险高<br>ip nat inside <span class="hljs-built_in">source</span> static 192.168.1.100 100.1.1.1<br></code></pre></td></tr></table></figure>
+
+<h3 id="5-6-外→内-源地址伪装：隐藏外网设备的真实-IP"><a href="#5-6-外→内-源地址伪装：隐藏外网设备的真实-IP" class="headerlink" title="5.6 外→内 源地址伪装：隐藏外网设备的真实 IP"></a>5.6 外→内 源地址伪装：隐藏外网设备的真实 IP</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">! 效果：内网主机访问 172.16.10.168 时，实际访问的是 100.1.1.1<br>! 从内网视角看，外网服务器 100.1.1.1 被<span class="hljs-string">&quot;伪装&quot;</span>成了 172.16.10.168<br>ip nat outside <span class="hljs-built_in">source</span> static 100.1.1.1 172.16.10.168<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>注意</strong>：配置 <code>outside source</code> 后，内网主机要访问 <code>172.16.10.168</code>（假地址），而不是 <code>100.1.1.1</code>（真地址）。路由器会自动把目的地址 <code>172.16.10.168</code> 翻译为 <code>100.1.1.1</code> 转发出去。同时还需要确保路由可达——内网要有到达 <code>172.16.10.168</code> 的路由（通常指向本路由器）。</p>
+</blockquote>
+<h3 id="5-7-负载均衡：轮询分发到多台服务器"><a href="#5-7-负载均衡：轮询分发到多台服务器" class="headerlink" title="5.7 负载均衡：轮询分发到多台服务器"></a>5.7 负载均衡：轮询分发到多台服务器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">! 第一步：ACL 匹配需要负载均衡的流量<br>ip access-list extended LB_ACL<br> 10 permit tcp any host 100.1.1.1 eq 80<br><br>! 第二步：定义内网服务器池（<span class="hljs-built_in">type</span> rotary 启用轮询）<br>ip nat pool WEB_POOL 192.168.1.10 192.168.1.12 netmask 255.255.255.0 <span class="hljs-built_in">type</span> rotary<br><br>! 第三步：配置目的地址转换<br>ip nat inside destination list LB_ACL pool WEB_POOL<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>工作原理</strong>：所有访问 <code>100.1.1.1:80</code> 的流量，路由器按轮询方式分发到 <code>192.168.1.10</code>、<code>192.168.1.11</code>、<code>192.168.1.12</code>。</p>
+</blockquote>
+<h3 id="5-8-扩展-ACL-编写规范"><a href="#5-8-扩展-ACL-编写规范" class="headerlink" title="5.8 扩展 ACL 编写规范"></a>5.8 扩展 ACL 编写规范</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">! 扩展 ACL 可以精确控制哪些流量做 NAT<br>ip access-list extended NAT_WEB_ONLY<br> 10 permit tcp 192.168.1.0 0.0.0.255 any eq 80       ! 只允许 HTTP<br> 20 permit tcp 192.168.1.0 0.0.0.255 any eq 443      ! 只允许 HTTPS<br> 30 permit udp 192.168.1.0 0.0.0.255 any eq 53       ! 只允许 DNS<br> ! 其他流量不匹配 ACL，不做 NAT，也就无法上网<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>关于 ACL 序号</strong>：</p>
+<ul>
+<li>扩展 ACL（无论命名型还是编号型）的每条规则<strong>都建议显式指定序号</strong>（如 <code>10</code>、<code>20</code>、<code>30</code>）。</li>
+<li>序号决定匹配顺序——<strong>从小到大依次匹配，命中即停</strong>。</li>
+<li>默认步长是 10，方便中间插入新规则（如插入 <code>15 permit ...</code>）。</li>
+<li>如果不写序号，设备会自动分配（通常从 10 开始），但<strong>可读性差，不推荐</strong>。</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="六、NAT-表解读"><a href="#六、NAT-表解读" class="headerlink" title="六、NAT 表解读"></a>六、NAT 表解读</h2><h3 id="6-1-查看命令"><a href="#6-1-查看命令" class="headerlink" title="6.1 查看命令"></a>6.1 查看命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">! 基本查看（建议加过滤，避免设备输出过载）<br>show ip nat translations | include 100.1.1.1<br><br>! RSR77 系列分布式设备需指定槽位<br>show ip nat translations slot 2/1 | include 100.1.1.1<br><br>! 清空 NAT 表（排错时使用，⚠ 会中断所有现有 NAT 会话）<br>clear ip nat translation *<br></code></pre></td></tr></table></figure>
+
+<h3 id="6-2-输出示例与字段含义"><a href="#6-2-输出示例与字段含义" class="headerlink" title="6.2 输出示例与字段含义"></a>6.2 输出示例与字段含义</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">Pro</span>   Inside global      Inside local       Outside local      Outside global<br>tcp   <span class="hljs-number">100.1.1.1:20001</span>    <span class="hljs-number">192.168.1.2:50000</span>  <span class="hljs-number">8.8.8.8:80</span>         <span class="hljs-number">8.8.8.8:80</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>在”内→外 PAT 上网”场景中，每列的含义</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+<th>在本例中的值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Inside local</code></td>
+<td>内网主机的真实地址+端口</td>
+<td><code>192.168.1.2:50000</code></td>
+<td>这是数据包的原始源地址</td>
+</tr>
+<tr>
+<td><code>Inside global</code></td>
+<td>路由器替换后的公网地址+端口</td>
+<td><code>100.1.1.1:20001</code></td>
+<td>源地址被改成了这个</td>
+</tr>
+<tr>
+<td><code>Outside global</code></td>
+<td>外网目标的真实地址+端口</td>
+<td><code>8.8.8.8:80</code></td>
+<td>这是原始目的地址，没变</td>
+</tr>
+<tr>
+<td><code>Outside local</code></td>
+<td>外网目标在内网侧的地址</td>
+<td><code>8.8.8.8:80</code></td>
+<td>普通 PAT 中 &#x3D; Outside global</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>为什么 Outside local &#x3D;&#x3D; Outside global？</strong> 因为普通上网场景不需要修改外网地址。只有配置了 <code>outside source</code> NAT 时，这两列才会不同。</p>
+</blockquote>
+<h3 id="6-3-不同场景下-NAT-表的特征"><a href="#6-3-不同场景下-NAT-表的特征" class="headerlink" title="6.3 不同场景下 NAT 表的特征"></a>6.3 不同场景下 NAT 表的特征</h3><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>NAT 表特征</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PAT 上网</td>
+<td>Inside global 列出现公网 IP + 递增端口号；Outside 两列相同</td>
+</tr>
+<tr>
+<td>静态 1:1</td>
+<td>Inside local ↔ Inside global 固定对应，无端口（或端口不变）</td>
+</tr>
+<tr>
+<td>端口映射</td>
+<td>表项中公网 IP 的端口与内网 IP 的端口可能不同（如 <code>80</code> → <code>8080</code>）</td>
+</tr>
+<tr>
+<td>outside source</td>
+<td>Outside local ≠ Outside global（外网地址被伪装）</td>
+</tr>
+</tbody></table>
+<h3 id="6-4-NAT-表能说明什么、不能说明什么"><a href="#6-4-NAT-表能说明什么、不能说明什么" class="headerlink" title="6.4 NAT 表能说明什么、不能说明什么"></a>6.4 NAT 表能说明什么、不能说明什么</h3><table>
+<thead>
+<tr>
+<th>NAT 表 <strong>能</strong> 告诉你</th>
+<th>NAT 表 <strong>不能</strong> 告诉你</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>已有流量成功建立了 NAT 会话</td>
+<td>NAT 规则配置是否完全正确</td>
+</tr>
+<tr>
+<td>当前每个会话的地址映射关系</td>
+<td>新来的流量能否被正确匹配</td>
+</tr>
+<tr>
+<td>会话使用的协议和端口</td>
+<td>回程路由是否存在</td>
+</tr>
+<tr>
+<td>会话何时建立（有助于判断时序）</td>
+<td>防火墙 &#x2F; ACL 是否在其他环节拦截了流量</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>核心认知</strong>：NAT 表是”会话记录本”，不是”规则检查报告”。</p>
+<ul>
+<li><strong>有表项</strong> ≠ 配置没问题（可能是恰好匹配了一条错误的规则）</li>
+<li><strong>无表项</strong> ≠ 配置有问题（可能是还没有流量触发，或者 ACL 不匹配，或者接口角色没配）</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="七、排障与常见问题"><a href="#七、排障与常见问题" class="headerlink" title="七、排障与常见问题"></a>七、排障与常见问题</h2><h3 id="7-1-标准排障流程"><a href="#7-1-标准排障流程" class="headerlink" title="7.1 标准排障流程"></a>7.1 标准排障流程</h3><pre><code class=" mermaid">flowchart TD
+    Start[&quot;通信异常&quot;] --&gt; S1&#123;&quot;① 查 NAT 表&lt;br&gt;show ip nat translations&quot;&#125;
+    S1 --&gt;|&quot;有相关表项&quot;| S2&#123;&quot;② 查路由表&lt;br&gt;show ip route&quot;&#125;
+    S1 --&gt;|&quot;无表项&quot;| F1[&quot;检查：&lt;br&gt;1. ACL 是否匹配该流量&lt;br&gt;2. 接口 ip nat inside/outside 是否正确&lt;br&gt;3. 是否有流量经过（触发条件满足了吗）&lt;br&gt;4. ACL 命中计数是否增长&quot;]
+
+    S2 --&gt;|&quot;路由正确&quot;| S3&#123;&quot;③ 抓包分析&lt;br&gt;（确认报文实际内容）&quot;&#125;
+    S2 --&gt;|&quot;路由缺失/错误&quot;| F2[&quot;添加正确路由&lt;br&gt;确保：内网→inside local 有路&lt;br&gt;上游网络→inside global 有回程路由&quot;]
+
+    S3 --&gt; F3[&quot;检查应用层 / 防火墙 / ALG&quot;]
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>命令</th>
+<th>判断要点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>① 查 NAT 表</td>
+<td><code>show ip nat translations | include &lt;IP&gt;</code></td>
+<td>有表项→转换已发生，转查路由；无表项→检查 ACL &#x2F; 接口角色 &#x2F; 流量</td>
+</tr>
+<tr>
+<td>② 查路由表</td>
+<td><code>show ip route &lt;目的地址&gt;</code></td>
+<td>确保 <code>inside local</code>（内网地址）和 <code>outside global</code>（上游可达）都有路由</td>
+</tr>
+<tr>
+<td>③ 查接口角色</td>
+<td><code>show run interface X</code></td>
+<td>确认 <code>ip nat inside</code> &#x2F; <code>ip nat outside</code> 在正确接口上</td>
+</tr>
+<tr>
+<td>④ 查 ACL 命中</td>
+<td><code>show access-lists &lt;ACL名&gt;</code></td>
+<td>匹配计数是否增长——没增长说明流量根本没进 ACL</td>
+</tr>
+<tr>
+<td>⑤ 抓包</td>
+<td><code>debug ip nat</code> 或端口镜像</td>
+<td><strong>生产环境慎用 debug</strong>，建议用端口镜像</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>关于 debug 的安全使用</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">terminal monitor                    ! 先开启终端显示（SSH/Telnet 必需）<br>debug ip nat                        ! 开启 NAT 调试<br>! ... 观察输出 ...<br>undebug all                         ! 用完立即关闭，不要留在后台<br></code></pre></td></tr></table></figure>
+<p>生产环境建议用 <code>terminal length 0</code> + 限时观察后立即 <code>undebug all</code>，避免大量输出导致设备 CPU 过载。</p>
+</blockquote>
+<h3 id="7-2-常见易错点"><a href="#7-2-常见易错点" class="headerlink" title="7.2 常见易错点"></a>7.2 常见易错点</h3><table>
+<thead>
+<tr>
+<th>易错点</th>
+<th>表现</th>
+<th>原因与正确做法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>接口 inside&#x2F;outside 写反</strong></td>
+<td>NAT 完全不生效</td>
+<td><code>ip nat inside</code> 必须配在接内网的接口，<code>ip nat outside</code> 必须配在接外网的接口</td>
+</tr>
+<tr>
+<td><strong><code>permit-inside</code> 缺失</strong></td>
+<td>内网用户无法通过公网 IP 访问自己的服务器</td>
+<td>加上 <code>permit-inside</code> 启用 Hairpin NAT，让内网到公网 IP 的流量在内部直接转换</td>
+</tr>
+<tr>
+<td><strong>为 <code>inside global</code> 添加了本地路由</strong></td>
+<td>多了一条无用路由</td>
+<td><code>inside global</code> 是 NAT 转换后的身份，本地不需要到它的路由；<strong>但必须确保上游网络有回程路由指向本设备</strong></td>
+</tr>
+<tr>
+<td><strong>ACL 没匹配上</strong></td>
+<td>NAT 表无表项</td>
+<td>用 <code>show access-lists</code> 查看命中计数；常见原因：ACL 源&#x2F;目的写反、掩码用错了通配符格式、序号跳跃导致规则被截断</td>
+</tr>
+<tr>
+<td><strong>扩展 ACL 未写序号</strong></td>
+<td>规则顺序混乱</td>
+<td>每条规则以序号开头（<code>10 permit ...</code>），设备按序号从小到大匹配</td>
+</tr>
+<tr>
+<td><strong>多出口 NAT 未绑定接口</strong></td>
+<td>流量从错误出口返回，通信失败</td>
+<td>多出口时用不同 ACL 或 route-map 将 NAT 规则与特定出口绑定，并配合策略路由（PBR）保证去程回程走同一路径</td>
+</tr>
+</tbody></table>
+<h3 id="7-3-ALG（应用层网关）"><a href="#7-3-ALG（应用层网关）" class="headerlink" title="7.3 ALG（应用层网关）"></a>7.3 ALG（应用层网关）</h3><h4 id="7-3-1-什么是-ALG？"><a href="#7-3-1-什么是-ALG？" class="headerlink" title="7.3.1 什么是 ALG？"></a>7.3.1 什么是 ALG？</h4><p>NAT 只改 IP 头部，但某些协议会在<strong>应用层数据中嵌入 IP 地址和端口</strong>，NAT 改了头部但没改载荷，协议就坏了。</p>
+<p>以 FTP 主动模式为例，客户端与服务器的交互分为两条连接：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs">控制连接（TCP 21）：客户端 ←→ 服务器，传输 FTP 命令<br>数据连接（动态端口）：客户端 ←→ 服务器，传输文件内容<br></code></pre></td></tr></table></figure>
+
+<p>问题出在第二步——客户端通过 <code>PORT</code> 命令把自己的内网 IP 和端口告诉服务器，服务器按这个地址回连数据通道。但 NAT 已经把客户端的源地址改成了公网 IP，<code>PORT</code> 命令里还是旧的私网 IP，服务器当然连不上。</p>
+<p>ALG（Application Layer Gateway）就是干这个的：<strong>深度检测应用层载荷，把里面嵌套的 IP&#x2F;端口一并修正</strong>。</p>
+<table>
+<thead>
+<tr>
+<th>协议</th>
+<th>问题载荷</th>
+<th>ALG 修正内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FTP（主动模式）</td>
+<td><code>PORT</code> 命令包含内网 IP + 端口</td>
+<td>替换为 NAT 后的公网 IP + 端口</td>
+</tr>
+<tr>
+<td>FTP（被动模式）</td>
+<td><code>227</code> 响应包含服务器内网 IP + 端口</td>
+<td>替换为 NAT 后的公网 IP + 端口</td>
+</tr>
+<tr>
+<td>SIP</td>
+<td>SDP 消息体中携带媒体流地址</td>
+<td>替换媒体流 IP 和端口</td>
+</tr>
+<tr>
+<td>RTSP</td>
+<td>控制信令中嵌套传输地址</td>
+<td>替换传输地址</td>
+</tr>
+</tbody></table>
+<h4 id="7-3-2-ALG-配置体系"><a href="#7-3-2-ALG-配置体系" class="headerlink" title="7.3.2 ALG 配置体系"></a>7.3.2 ALG 配置体系</h4><p>锐捷的 ALG 相关命令分散在两个家族下，功能不同：</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs armasm">┌─────────────────────────────────────────────────────────────┐<br>│  <span class="hljs-built_in">ip</span> nat application &#123;协议&#125;            → ALG 功能开关        │<br>│  <span class="hljs-built_in">ip</span> nat translation &#123;协议&#125; [port 端口] → ALG 端口绑定       │<br>└─────────────────────────────────────────────────────────────┘<br></code></pre></td></tr></table></figure>
+
+<p><strong>功能开关</strong>——控制某种协议的 ALG 是否启用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">! 开启 / 关闭特定协议的 ALG<br>ip nat application ftp<br>ip nat application sip<br>no ip nat application ftp       ! 关闭 FTP ALG<br></code></pre></td></tr></table></figure>
+
+<p><strong>端口绑定</strong>——告诉 ALG 去哪个端口上监听协议特征：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">! 默认行为：FTP ALG 只监听标准 TCP 21<br>ip nat translation ftp                  ! 默认开启，等效于 port 21<br>ip nat translation ftp port 2121        ! 指定非标端口（FTP 服务跑在 2121 时）<br>ip nat translation dns                  ! DNS ALG<br>ip nat translation sip                  ! SIP ALG<br>ip nat translation h323                 ! H323 ALG（视频会议）<br>ip nat translation pptp                 ! PPTP ALG（VPN）<br>no ip nat translation ftp               ! 关闭<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>为什么要分两个命令？</strong></p>
+<p><code>ip nat application ftp</code> 是”总开关”——决定了设备是否具备处理 FTP 载荷的能力。<code>ip nat translation ftp port 2121</code> 是”端口绑定”——告诉这个能力应该作用在哪个端口上。两个配合使用：先确认开关打开，再指定监听端口。如果只开开关不绑端口，ALG 只对标准端口（如 FTP 的 21）生效。</p>
+</blockquote>
+<h4 id="7-3-3-非标端口场景"><a href="#7-3-3-非标端口场景" class="headerlink" title="7.3.3 非标端口场景"></a>7.3.3 非标端口场景</h4><p>当服务使用非标准端口时，仅开启 ALG 开关是不够的——路由器不知道该在哪个端口上检测协议特征。<strong>必须额外用 <code>ip nat translation</code> 指定端口</strong>。</p>
+<p>以 FTP 跑在 TCP 2121 为例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">! 第一步：开启 FTP ALG 功能<br>ip nat application ftp<br><br>! 第二步：告诉 ALG 去 2121 端口上监听 FTP 协议特征<br>! 不做这一步，ALG 仍然只看 TCP 21，2121 上的 FTP 载荷不会被修正<br>ip nat translation ftp port 2121<br></code></pre></td></tr></table></figure>
+
+<p><strong>完整工作流程</strong>（非标端口 FTP 经过 NAT）：</p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs dns">① 客户端 → 服务器（TCP <span class="hljs-number">2121</span> 控制连接）<br>   路由器：发现是 TCP <span class="hljs-number">2121</span>，且已绑定 FTP ALG → 开始检测载荷<br><br>② 客户端发送 PORT 命令，载荷中包含 &quot;<span class="hljs-number">192.168.1.100</span>,<span class="hljs-number">50000</span>&quot;<br>   路由器 ALG：识别到 PORT 命令 → 把 <span class="hljs-number">192.168.1.100</span> 替换为 <span class="hljs-number">100.1.1.1</span><br>   → 载荷变为 &quot;<span class="hljs-number">100.1.1.1</span>,<span class="hljs-number">20001</span>&quot;，同时为数据通道预分配 NAT 表项<br><br>③ 服务器按修正后的地址 <span class="hljs-number">100.1.1.1</span>:<span class="hljs-number">20001</span> 回连数据通道<br>   路由器：命中预分配的 NAT 表项 → 反向转换 → 数据到达客户端<br><br>④ 如果没有 ALG（或端口未绑定）：<br>   服务器按原始载荷中的 <span class="hljs-number">192.168.1.100</span>:<span class="hljs-number">50000</span> 回连 → 公网不可达 → 数据传输失败<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>排障提示</strong>：如果 FTP 数据通道始终建立失败，但控制通道正常，先检查两件事：</p>
+<ol>
+<li>FTP 服务是否跑在非标端口？如果是，有没有配 <code>ip nat translation ftp port &lt;端口&gt;</code>？</li>
+<li>是否有其他设备（如防火墙）也开启了 FTP ALG？两层 ALG 可能重复修改载荷，反而把地址改错。</li>
+</ol>
+</blockquote>
+<h4 id="7-3-4-使用建议"><a href="#7-3-4-使用建议" class="headerlink" title="7.3.4 使用建议"></a>7.3.4 使用建议</h4><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>建议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>普通 Web 上网</td>
+<td>不需要 ALG</td>
+</tr>
+<tr>
+<td>FTP 主动模式</td>
+<td>需要 ALG（或改用被动模式更省心）</td>
+</tr>
+<tr>
+<td>FTP 被动模式</td>
+<td>通常也需要 ALG（服务端 <code>227</code> 响应中的地址同样可能需要修正）</td>
+</tr>
+<tr>
+<td>SIP 语音</td>
+<td>需要 ALG（或使用 SBC 边界控制器）</td>
+</tr>
+<tr>
+<td>现代企业网络</td>
+<td><strong>谨慎开启</strong>——ALG 常与防火墙的 ALG 功能冲突，两层修改载荷可能导致协议异常。建议优先在应用层解决（如 FTP 改被动模式）</td>
+</tr>
+</tbody></table>
+<h3 id="7-4-策略式地址重定向（dest-change-src-change）"><a href="#7-4-策略式地址重定向（dest-change-src-change）" class="headerlink" title="7.4 策略式地址重定向（dest-change &#x2F; src-change）"></a>7.4 策略式地址重定向（dest-change &#x2F; src-change）</h3><blockquote>
+<p><strong>注意</strong>：<code>dest-change</code> &#x2F; <code>src-change</code> 和 ALG 是不同的功能，只是命令前缀恰好都是 <code>ip nat application</code>。这里修改的是 <strong>IP 头部地址</strong>，不是应用层载荷。</p>
+</blockquote>
+<p><code>ip nat application</code> 还支持基于 ACL 的策略式地址修改：</p>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="language-xml">ip nat application source list </span><span class="hljs-template-variable">&#123;ACL&#125;</span><span class="language-xml"> destination </span><span class="hljs-template-variable">&#123;原始目的IP&#125;</span><span class="language-xml"> </span><span class="hljs-template-variable">&#123; dest-change &#123;新IP&#125;</span><span class="language-xml"> | src-change </span><span class="hljs-template-variable">&#123;新IP&#125;</span><span class="language-xml"> &#125;</span><br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>修改对象</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>dest-change</code></td>
+<td><strong>目的地址</strong></td>
+<td>匹配的流量目的地址从 <code>原始目的IP</code> 改为 <code>新IP</code>（透明重定向）</td>
+</tr>
+<tr>
+<td><code>src-change</code></td>
+<td><strong>源地址</strong></td>
+<td>匹配的流量源地址改为 <code>新IP</code>（策略性 SNAT）</td>
+</tr>
+</tbody></table>
+<h4 id="与标准-NAT-命令的本质区别"><a href="#与标准-NAT-命令的本质区别" class="headerlink" title="与标准 NAT 命令的本质区别"></a>与标准 NAT 命令的本质区别</h4><p><code>dest-change</code> &#x2F; <code>src-change</code> 看起来功能灵活，但它和 <code>ip nat inside/outside source</code> 等标准命令在技术原理上截然不同：</p>
+<table>
+<thead>
+<tr>
+<th>对比维度</th>
+<th>标准 NAT（如 <code>inside source</code>）</th>
+<th><code>dest-change</code> &#x2F; <code>src-change</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>工作模式</strong></td>
+<td><strong>状态化</strong>：建立并维护 NAT 会话表，记录每个连接的转换状态</td>
+<td><strong>无状态</strong>：对每个匹配的数据包独立执行地址修改，不记录会话状态</td>
+</tr>
+<tr>
+<td><strong>回程流量</strong></td>
+<td><strong>自动处理</strong>：通过查 NAT 会话表自动反向转换，无需额外配置</td>
+<td><strong>需要手动配置</strong>：必须为回程流量单独配置反向规则，否则通信失败</td>
+</tr>
+<tr>
+<td><strong>端口复用（PAT）</strong></td>
+<td><strong>支持</strong>：通过 <code>overload</code> 实现多内网 IP 共享公网 IP</td>
+<td><strong>不支持</strong>：无法做端口转换，每个内网地址需要独立的公网地址</td>
+</tr>
+</tbody></table>
+<p>这意味着 <code>dest-change</code> <strong>无法替代标准 NAT</strong> 来处理日常场景：</p>
+<table>
+<thead>
+<tr>
+<th>网络需求</th>
+<th>标准 NAT</th>
+<th><code>dest-change</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>内网用户共享公网 IP 上网</td>
+<td>完美支持（<code>overload</code> 端口复用）</td>
+<td>无法实现（不支持端口复用，回程也无法自动返回）</td>
+</tr>
+<tr>
+<td>端口映射发布内网服务</td>
+<td>完美支持（静态映射，自动双向）</td>
+<td>可实现但复杂（需手动配双向规则）</td>
+</tr>
+<tr>
+<td>外网访问者源地址伪装</td>
+<td>完美支持（<code>outside source</code>）</td>
+<td>功能等价但效率低（需两条镜像规则）</td>
+</tr>
+<tr>
+<td><strong>特定 IP 的透明重定向</strong></td>
+<td>难以精细控制</td>
+<td><strong>这就是它的优势</strong>（ACL + 目标 IP 精确匹配）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>一句话定位</strong>：标准 NAT 是”自动挡”（状态化，自动处理回程，覆盖 99% 场景）；<code>dest-change</code> 是”手动挡”（无状态，完全手动控制，只用于需要 ACL 精细匹配的特殊场景）。</p>
+</blockquote>
+<h4 id="配置示例"><a href="#配置示例" class="headerlink" title="配置示例"></a>配置示例</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">! ACL 匹配内网用户<br>access-list 1 permit 192.168.1.0 0.0.0.255<br><br>! 内网用户访问 202.100.1.1 时，目的地址被透明改为 192.168.100.10<br>! 客户端无感知，以为在访问 202.100.1.1<br>ip nat application <span class="hljs-built_in">source</span> list 1 destination 202.100.1.1 dest-change 192.168.100.10<br></code></pre></td></tr></table></figure>
+
+<p><strong>适用场景</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>服务器迁移过渡</td>
+<td>旧 IP 自动映射到新 IP，无需逐台修改客户端配置</td>
+</tr>
+<tr>
+<td>DNS 重定向</td>
+<td>将访问某个 IP 的流量引导到本地服务器（常见于校园网&#x2F;酒店网络）</td>
+</tr>
+<tr>
+<td>透明代理</td>
+<td>内网用户访问外网特定地址时，被重定向到本地代理服务器</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>前提条件</strong>：必须已配置 <code>ip nat inside</code> &#x2F; <code>ip nat outside</code> 接口角色，否则此功能不生效。</p>
+</blockquote>
+<h3 id="7-5-NAT-会话老化"><a href="#7-5-NAT-会话老化" class="headerlink" title="7.5 NAT 会话老化"></a>7.5 NAT 会话老化</h3><table>
+<thead>
+<tr>
+<th>协议</th>
+<th>老化行为</th>
+<th>潜在问题</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TCP</td>
+<td>跟随连接状态（FIN&#x2F;RST 后快速老化）</td>
+<td>长连接空闲可能被中断</td>
+</tr>
+<tr>
+<td>UDP</td>
+<td>超时老化（锐捷默认 <strong>300 秒</strong>）</td>
+<td>应用层若无保活机制，会话超时后回包无法匹配，表现为”突然断了”</td>
+</tr>
+<tr>
+<td>ICMP</td>
+<td>超时极短（通常 5~10 秒）</td>
+<td>Ping 大包测试可能因老化出现”丢包假象”</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>排查技巧</strong>：如果出现”一开始正常，过一会断了”的现象，检查 UDP &#x2F; ICMP 会话是否因超时被清除。解决方法是让应用层定期发送保活报文，或调整 NAT 超时参数（需查阅具体型号命令）。</p>
+</blockquote>
+<h3 id="7-6-多出口-NAT"><a href="#7-6-多出口-NAT" class="headerlink" title="7.6 多出口 NAT"></a>7.6 多出口 NAT</h3><p>当路由器有多个公网出口时，NAT 配置需要额外注意：</p>
+<p><strong>1. 不同出口必须对应不同的 NAT 规则</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">! 出口 1（电信）的 ACL<br>ip access-list extended NAT_CT<br> 10 permit ip 192.168.1.0 0.0.0.255 any<br><br>! 出口 2（联通）的 ACL<br>ip access-list extended NAT_CU<br> 10 permit ip 192.168.1.0 0.0.0.255 any<br><br>! 分别绑定不同接口<br>ip nat inside <span class="hljs-built_in">source</span> list NAT_CT interface GigabitEthernet 0/2 overload<br>ip nat inside <span class="hljs-built_in">source</span> list NAT_CU interface GigabitEthernet 0/3 overload<br></code></pre></td></tr></table></figure>
+
+<p><strong>2. 必须配合策略路由（PBR）</strong></p>
+<p>确保同一会话的去程和回程经过<strong>同一个出口</strong>，否则：</p>
+<ul>
+<li>去程从电信出口出去（源地址被改为电信公网 IP）</li>
+<li>回程从联通出口回来（联通公网 IP 的回包到不了电信出口的 NAT 表）</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">! 策略路由示例：让特定源地址的流量走电信出口<br>route-map PBR_CT permit 10<br> match ip address NAT_CT<br> <span class="hljs-built_in">set</span> ip next-hop 电信网关IP<br><br>! 在入接口上应用策略路由<br>interface GigabitEthernet 0/1<br> ip policy route-map PBR_CT<br></code></pre></td></tr></table></figure>
+
+<p><strong>3. 公网地址池需与运营商协商</strong></p>
+<p>确保每个出口对应的公网 IP 的<strong>回程路由</strong>正确指向本设备。</p>
+<hr>
+<h2 id="八、运维命令速查"><a href="#八、运维命令速查" class="headerlink" title="八、运维命令速查"></a>八、运维命令速查</h2><blockquote>
+<p>NAT 配置命令按需求查表见 <a href="#33-%E6%8C%89%E9%9C%80%E6%B1%82%E9%80%9F%E6%9F%A5%E5%91%BD%E4%BB%A4">3.3 节</a>。本节仅列出日常运维操作命令。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>需求</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>查看 NAT 表</td>
+<td><code>show ip nat translations | include &#123;IP&#125;</code></td>
+</tr>
+<tr>
+<td>查看 ACL 命中计数</td>
+<td><code>show access-lists &#123;ACL名&#125;</code></td>
+</tr>
+<tr>
+<td>查看路由</td>
+<td><code>show ip route &#123;IP&#125;</code></td>
+</tr>
+<tr>
+<td>查看接口 NAT 角色</td>
+<td><code>show run interface X</code></td>
+</tr>
+<tr>
+<td>清空 NAT 表（⚠ 中断所有会话）</td>
+<td><code>clear ip nat translation *</code></td>
+</tr>
+<tr>
+<td>清空指定条目</td>
+<td>&#96;clear ip nat translation {Inside-Local} {Outside-Local</td>
+</tr>
+<tr>
+<td>NAT 调试（⚠ 生产环境慎用）</td>
+<td><code>debug ip nat</code> &#x2F; <code>undebug all</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="九、核心心法"><a href="#九、核心心法" class="headerlink" title="九、核心心法"></a>九、核心心法</h2><ol>
+<li><strong>NAT 是有状态的双向转换系统</strong>，不是简单的改 IP 头。一条规则建表项，回程自动反向转换，不需要配反向规则。</li>
+<li><strong>路由决定可达性，NAT 决定身份映射</strong>——两者独立但缺一不可。排障时先看 NAT 表，再看路由表。</li>
+<li><strong><code>inside global</code> 不需要本地路由</strong>，但必须确保上游网络有回程路由指向本设备。</li>
+<li><strong>出站先路由后改源，入站先改目的后路由</strong>——理解这个时序，很多”为什么 NAT 不生效”的问题就迎刃而解。</li>
+<li><strong>排障三板斧</strong>：① 查 NAT 表有没有表项 → ② 查 ACL 命中计数 → ③ 查路由表可达性。</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E5%B7%A5/" class="category-chain-item">网工</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>锐捷路由器 NAT 转换配置笔记</div>
+      <div>https://xinhaojin.github.io/2026/04/10/锐捷路由器NAT笔记/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>xinhaojin</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年4月10日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/04/30/Windows%20Git%20Bash%20Conda%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/" title="Windows Git Bash Conda配置指南">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Windows Git Bash Conda配置指南</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/04/08/Windows%20%E5%BC%BA%E5%88%B6%E4%B8%BA%E4%BB%BB%E6%84%8F%20EXE%20%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86%E7%9A%84%E9%80%9A%E7%94%A8%E6%96%B9%E6%A1%88/" title="Windows 强制为任意 EXE 设置代理的通用方案">
+                        <span class="hidden-mobile">Windows 强制为任意 EXE 设置代理的通用方案</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/gitalk/1.8.0/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"Ov23lifvhsymyganMHro","clientSecret":"cdd38ac0c65a95027749446001ebdff7ca7d4ec2","repo":"xinhaojin.github.io","owner":"xinhaojin","admin":"xinhaojin","language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
+          {
+            id: '74461db2e9182fbccb46ffbc7cfe8bcb'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+        次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+        次
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
