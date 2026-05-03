@@ -1,0 +1,911 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  <link rel="icon" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xinhaojin">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Wireshark 过滤器笔记1. 核心概念：捕获过滤器 vs 显示过滤器   过滤器类型 作用时机 语法体系 核心用途 关键注意事项    捕获过滤器 抓包开始前预先设置 BPF 伯克利包过滤语法 直接丢弃无关流量，缩减抓包文件体积、节省系统内存与磁盘开销 语法与显示过滤器完全不互通，不可直接照搬复用   显示过滤器 抓包过程中或抓包结束后使用 Wireshark 专属增强语法 仅在界面隐藏无关">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Wireshark 过滤器笔记">
+<meta property="og:url" content="https://xinhaojin.github.io/2026/05/03/Wireshark%20%E8%BF%87%E6%BB%A4%E5%99%A8%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="xinhaojin&#39;s blog">
+<meta property="og:description" content="Wireshark 过滤器笔记1. 核心概念：捕获过滤器 vs 显示过滤器   过滤器类型 作用时机 语法体系 核心用途 关键注意事项    捕获过滤器 抓包开始前预先设置 BPF 伯克利包过滤语法 直接丢弃无关流量，缩减抓包文件体积、节省系统内存与磁盘开销 语法与显示过滤器完全不互通，不可直接照搬复用   显示过滤器 抓包过程中或抓包结束后使用 Wireshark 专属增强语法 仅在界面隐藏无关">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-05-03T06:52:00.000Z">
+<meta property="article:modified_time" content="2026-05-03T06:51:28.056Z">
+<meta property="article:author" content="xinhaojin">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Wireshark 过滤器笔记 - xinhaojin&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xinhaojin.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?596b73bb5b70c262b123e997b6686f49";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xinhaojin&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Wireshark 过滤器笔记"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-05-03 14:52" pubdate>
+          2026年5月3日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          8 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Wireshark 过滤器笔记</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2026年5月3日 下午
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Wireshark-过滤器笔记"><a href="#Wireshark-过滤器笔记" class="headerlink" title="Wireshark 过滤器笔记"></a>Wireshark 过滤器笔记</h1><h2 id="1-核心概念：捕获过滤器-vs-显示过滤器"><a href="#1-核心概念：捕获过滤器-vs-显示过滤器" class="headerlink" title="1. 核心概念：捕获过滤器 vs 显示过滤器"></a>1. 核心概念：捕获过滤器 vs 显示过滤器</h2><table>
+<thead>
+<tr>
+<th align="left">过滤器类型</th>
+<th align="left">作用时机</th>
+<th align="left">语法体系</th>
+<th align="left">核心用途</th>
+<th align="left">关键注意事项</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>捕获过滤器</strong></td>
+<td align="left">抓包开始前预先设置</td>
+<td align="left"><strong>BPF 伯克利包过滤语法</strong></td>
+<td align="left">直接丢弃无关流量，缩减抓包文件体积、节省系统内存与磁盘开销</td>
+<td align="left">语法与显示过滤器完全不互通，不可直接照搬复用</td>
+</tr>
+<tr>
+<td align="left"><strong>显示过滤器</strong></td>
+<td align="left">抓包过程中或抓包结束后使用</td>
+<td align="left">Wireshark 专属增强语法</td>
+<td align="left">仅在界面隐藏无关报文，原始流量完整保留，适用于精细化二次筛选与协议分析</td>
+<td align="left">支持字段匹配、正则匹配、多条件逻辑组合，功能远强于捕获过滤器</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>经典语法对照（通用必记）</p>
+<ul>
+<li>显示过滤器：<code>tcp.port == 80</code></li>
+<li>捕获过滤器：<code>tcp port 80</code></li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="2-显示过滤器（协议分析最常用）"><a href="#2-显示过滤器（协议分析最常用）" class="headerlink" title="2. 显示过滤器（协议分析最常用）"></a>2. 显示过滤器（协议分析最常用）</h2><h3 id="2-1-语法基础"><a href="#2-1-语法基础" class="headerlink" title="2.1 语法基础"></a>2.1 语法基础</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">协议.字段 比较运算符 值 <span class="hljs-selector-attr">[逻辑运算符 拼接其他条件]</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>输入框颜色校验规则：<ul>
+<li>绿色：语法格式完全正确</li>
+<li>红色：存在语法错误，无法生效</li>
+<li>黄色：语法合法但逻辑存在歧义，可能不符合预期匹配效果</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-2-比较运算符"><a href="#2-2-比较运算符" class="headerlink" title="2.2 比较运算符"></a>2.2 比较运算符</h3><table>
+<thead>
+<tr>
+<th align="left">符号写法</th>
+<th align="left">英文关键字</th>
+<th align="left">含义说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>==</code></td>
+<td align="left"><code>eq</code></td>
+<td align="left">等于</td>
+</tr>
+<tr>
+<td align="left"><code>!=</code></td>
+<td align="left"><code>ne</code></td>
+<td align="left">不等于</td>
+</tr>
+<tr>
+<td align="left"><code>&gt;</code></td>
+<td align="left"><code>gt</code></td>
+<td align="left">大于</td>
+</tr>
+<tr>
+<td align="left"><code>&lt;</code></td>
+<td align="left"><code>lt</code></td>
+<td align="left">小于</td>
+</tr>
+<tr>
+<td align="left"><code>&gt;=</code></td>
+<td align="left"><code>ge</code></td>
+<td align="left">大于等于</td>
+</tr>
+<tr>
+<td align="left"><code>&lt;=</code></td>
+<td align="left"><code>le</code></td>
+<td align="left">小于等于</td>
+</tr>
+<tr>
+<td align="left">—</td>
+<td align="left"><code>contains</code></td>
+<td align="left">字段或载荷包含指定字符串，多用于HTTP域名、报文内容筛选</td>
+</tr>
+<tr>
+<td align="left">—</td>
+<td align="left"><code>matches</code></td>
+<td align="left">支持正则表达式模糊匹配</td>
+</tr>
+<tr>
+<td align="left">—</td>
+<td align="left"><code>in</code></td>
+<td align="left">匹配指定集合内的多个值</td>
+</tr>
+</tbody></table>
+<h3 id="2-3-逻辑运算符"><a href="#2-3-逻辑运算符" class="headerlink" title="2.3 逻辑运算符"></a>2.3 逻辑运算符</h3><ul>
+<li><code>&amp;&amp;</code> &#x2F; <code>and</code>：逻辑与</li>
+<li><code>||</code> &#x2F; <code>or</code>：逻辑或</li>
+<li><code>!</code> &#x2F; <code>not</code>：逻辑非</li>
+<li>运算优先级：<code>not</code> &gt; <code>and</code> &gt; <code>or</code></li>
+<li>规范建议：复杂组合表达式需用英文小括号 <code>()</code> 划分逻辑层级，避免优先级歧义</li>
+</ul>
+<h3 id="2-4-常用过滤示例（整合TCP-HTTP-ICMP协议知识点）"><a href="#2-4-常用过滤示例（整合TCP-HTTP-ICMP协议知识点）" class="headerlink" title="2.4 常用过滤示例（整合TCP&#x2F;HTTP&#x2F;ICMP协议知识点）"></a>2.4 常用过滤示例（整合TCP&#x2F;HTTP&#x2F;ICMP协议知识点）</h3><h4 id="按-IP-地址筛选"><a href="#按-IP-地址筛选" class="headerlink" title="按 IP 地址筛选"></a>按 IP 地址筛选</h4><figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dns">ip.src == <span class="hljs-number">192.168.1.53</span><br>ip.dst == <span class="hljs-number">220.181.38.148</span><br>ip.addr == <span class="hljs-number">192.168.1.100</span><br>!(ip.addr == <span class="hljs-number">10.0.0.0</span>/<span class="hljs-number">24</span>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="按基础协议筛选"><a href="#按基础协议筛选" class="headerlink" title="按基础协议筛选"></a>按基础协议筛选</h4><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">tcp</span><br><span class="hljs-attribute">udp</span><br><span class="hljs-attribute">http</span><br><span class="hljs-attribute">icmp</span><br><span class="hljs-attribute">arp</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="按端口筛选"><a href="#按端口筛选" class="headerlink" title="按端口筛选"></a>按端口筛选</h4><figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs elm"><span class="hljs-title">tcp</span>.<span class="hljs-keyword">port</span> == 80<br><span class="hljs-title">tcp</span>.<span class="hljs-keyword">port</span> == 443<br><span class="hljs-title">tcp</span>.dst<span class="hljs-keyword">port</span> == 443<br><span class="hljs-title">tcp</span>.<span class="hljs-keyword">port</span> in &#123;80 443 8080&#125;<br><span class="hljs-title">udp</span>.<span class="hljs-keyword">port</span> == 53<br></code></pre></td></tr></table></figure>
+
+<h4 id="按-HTTP-业务特征筛选"><a href="#按-HTTP-业务特征筛选" class="headerlink" title="按 HTTP 业务特征筛选"></a>按 HTTP 业务特征筛选</h4><p>适配curl请求、网页交互等应用层场景：</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs accesslog">http.request.method == <span class="hljs-string">&quot;<span class="hljs-keyword">GET</span>&quot;</span><br>http.request.method == <span class="hljs-string">&quot;<span class="hljs-keyword">HEAD</span>&quot;</span><br>http.response.code == <span class="hljs-number">200</span><br>http.host contains <span class="hljs-string">&quot;baidu.com&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="按-TCP-标志位筛选（整合三次握手、四次挥手、PSH、ACK核心知识点）"><a href="#按-TCP-标志位筛选（整合三次握手、四次挥手、PSH、ACK核心知识点）" class="headerlink" title="按 TCP 标志位筛选（整合三次握手、四次挥手、PSH、ACK核心知识点）"></a>按 TCP 标志位筛选（整合三次握手、四次挥手、PSH、ACK核心知识点）</h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 筛选纯SYN报文（三次握手第一次）</span><br><span class="hljs-attribute">tcp</span>.flags.syn == <span class="hljs-number">1</span> &amp;&amp; tcp.flags.ack == <span class="hljs-number">0</span><br><br><span class="hljs-comment"># 筛选SYN+ACK报文（三次握手第二次）</span><br><span class="hljs-attribute">tcp</span>.flags.syn == <span class="hljs-number">1</span> &amp;&amp; tcp.flags.ack == <span class="hljs-number">1</span><br><br><span class="hljs-comment"># 筛选FIN关闭报文（四次挥手流程报文）</span><br><span class="hljs-attribute">tcp</span>.flags.fin == <span class="hljs-number">1</span><br><br><span class="hljs-comment"># 筛选PSH=1报文（完整业务数据、强制内核推送至应用层）</span><br><span class="hljs-attribute">tcp</span>.flags.push == <span class="hljs-number">1</span><br><br><span class="hljs-comment"># 筛选纯空ACK报文（无业务数据，延迟确认单独ACK包）</span><br><span class="hljs-attribute">tcp</span>.flags.ack == <span class="hljs-number">1</span> &amp;&amp; tcp.len == <span class="hljs-number">0</span><br><br><span class="hljs-comment"># 筛选RST重置报文（连接断开后资源清理报文）</span><br><span class="hljs-attribute">tcp</span>.flags.reset == <span class="hljs-number">1</span><br><br><span class="hljs-comment"># 筛选TCP重传异常报文</span><br><span class="hljs-attribute">tcp</span>.analysis.retransmission<br></code></pre></td></tr></table></figure>
+<p>补充说明：</p>
+<ol>
+<li><code>tcp.len == 0</code> 标识无应用层载荷，仅为TCP内核确认报文；</li>
+<li><code>tcp.flags.push == 1</code> 对应协议栈PSH标志位，用于标记完整逻辑业务数据。</li>
+</ol>
+<h4 id="按MAC地址、包长度、DNS筛选"><a href="#按MAC地址、包长度、DNS筛选" class="headerlink" title="按MAC地址、包长度、DNS筛选"></a>按MAC地址、包长度、DNS筛选</h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">eth</span>.addr == <span class="hljs-number">00</span>:<span class="hljs-number">0</span>c:<span class="hljs-number">29</span>:c6:<span class="hljs-number">27</span>:<span class="hljs-number">59</span><br><span class="hljs-attribute">eth</span>.src == <span class="hljs-number">00</span>:<span class="hljs-number">0</span>c:<span class="hljs-number">29</span>:c6:<span class="hljs-number">27</span>:<span class="hljs-number">59</span><br><span class="hljs-attribute">frame</span>.len &gt; <span class="hljs-number">1000</span><br><span class="hljs-attribute">dns</span>.qry.name contains <span class="hljs-string">&quot;baidu&quot;</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="3-捕获过滤器（BPF语法，抓包前流量限流）"><a href="#3-捕获过滤器（BPF语法，抓包前流量限流）" class="headerlink" title="3. 捕获过滤器（BPF语法，抓包前流量限流）"></a>3. 捕获过滤器（BPF语法，抓包前流量限流）</h2><h3 id="3-1-语法结构"><a href="#3-1-语法结构" class="headerlink" title="3.1 语法结构"></a>3.1 语法结构</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">协议 方向 主机/网络 端口 逻辑运算<br></code></pre></td></tr></table></figure>
+<ul>
+<li>方向关键字：<code>src</code> 源地址、<code>dst</code> 目的地址、<code>src or dst</code> 默认可省略，匹配双向流量</li>
+<li>匹配类型：<code>host</code> 单主机IP、<code>net</code> 网段、<code>port</code> 单一端口、<code>portrange</code> 端口区间</li>
+</ul>
+<h3 id="3-2-常用捕获过滤器示例"><a href="#3-2-常用捕获过滤器示例" class="headerlink" title="3.2 常用捕获过滤器示例"></a>3.2 常用捕获过滤器示例</h3><table>
+<thead>
+<tr>
+<th align="left">过滤目的</th>
+<th align="left">BPF 表达式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">抓取单主机全部流量</td>
+<td align="left"><code>host 192.168.1.100</code></td>
+</tr>
+<tr>
+<td align="left">抓取指定网段流量</td>
+<td align="left"><code>net 192.168.1.0 mask 255.255.255.0</code></td>
+</tr>
+<tr>
+<td align="left">仅抓取HTTP 80端口流量</td>
+<td align="left"><code>tcp port 80</code></td>
+</tr>
+<tr>
+<td align="left">限定源主机访问目标443端口</td>
+<td align="left"><code>src host 192.168.1.53 and dst port 443</code></td>
+</tr>
+<tr>
+<td align="left">过滤排除ARP冗余报文</td>
+<td align="left"><code>not arp</code></td>
+</tr>
+<tr>
+<td align="left">抓取网段内TCP&#x2F;UDP 1-1024端口流量</td>
+<td align="left"><code>(tcp or udp) and net 192.168.1.0/24 and portrange 1-1024</code></td>
+</tr>
+</tbody></table>
+<p>易错规范：捕获过滤器不支持 <code>==</code>、<code>contains</code>、正则匹配等语法，仅适用于简单流量粗筛，精细化协议分析需使用显示过滤器。</p>
+<hr>
+<h2 id="4-实用操作技巧"><a href="#4-实用操作技巧" class="headerlink" title="4. 实用操作技巧"></a>4. 实用操作技巧</h2><ol>
+<li><strong>右键快速生成过滤器</strong><br>选中报文任意协议字段，右键选择「作为过滤器应用」「准备为过滤器」，可自动生成标准过滤表达式，无需手动编写。</li>
+<li><strong>图形化表达式构建工具</strong><br>通过菜单栏「分析 → 显示过滤器表达式」，可视化浏览所有协议层级与字段，可视化组合生成过滤规则。</li>
+<li><strong>输入自动补全功能</strong><br>过滤器输入框支持协议名、字段名自动补全，降低记忆成本。</li>
+<li><strong>常用过滤器保存管理</strong><br>在「分析 → 显示过滤器」中，可自定义保存TCP握手、四次挥手、PSH报文、HTTP、ICMP等常用规则，便于后续快速调用。</li>
+<li><strong>协议分析适配用法</strong><br>可通过标志位过滤器单独筛选三次握手、四次挥手报文；利用 <code>tcp.len</code> 区分空ACK与带数据PSH报文；通过ICMP过滤器分析ping报文TTL，辅助初步判别远端操作系统类型。</li>
+</ol>
+<hr>
+<h2 id="5-常用协议速查表（网络分层整理）"><a href="#5-常用协议速查表（网络分层整理）" class="headerlink" title="5. 常用协议速查表（网络分层整理）"></a>5. 常用协议速查表（网络分层整理）</h2><h3 id="链路层"><a href="#链路层" class="headerlink" title="链路层"></a>链路层</h3><p><code>arp</code> <code>stp</code> <code>eth</code></p>
+<h3 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h3><p><code>ip</code> <code>ipv6</code> <code>icmp</code> <code>icmpv6</code> <code>igmp</code></p>
+<h3 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h3><p><code>tcp</code>（涵盖握手、挥手、PSH、ACK、重传异常分析）<br><code>udp</code>（适用于DNS、DHCP等无连接业务）</p>
+<h3 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h3><ul>
+<li>网页加密类：<code>http</code> <code>http2</code> <code>tls</code>&#x2F;<code>ssl</code> <code>dns</code></li>
+<li>运维基础类：<code>dhcp</code> <code>ntp</code> <code>snmp</code> <code>lldp</code></li>
+<li>文件共享类：<code>ftp</code> <code>smb</code>&#x2F;<code>smb2</code></li>
+<li>其他业务类：<code>ssdp</code> <code>rtp</code> <code>modbus</code></li>
+</ul>
+<hr>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E5%B7%A5/" class="category-chain-item">网工</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Wireshark 过滤器笔记</div>
+      <div>https://xinhaojin.github.io/2026/05/03/Wireshark 过滤器笔记/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>xinhaojin</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年5月3日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/04/30/Windows%20Git%20Bash%20Conda%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/" title="Windows Git Bash Conda配置指南">
+                        <span class="hidden-mobile">Windows Git Bash Conda配置指南</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/gitalk/1.8.0/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"Ov23lifvhsymyganMHro","clientSecret":"cdd38ac0c65a95027749446001ebdff7ca7d4ec2","repo":"xinhaojin.github.io","owner":"xinhaojin","admin":"xinhaojin","language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
+          {
+            id: 'e8f8e845ef2399a92a47e93aefa62f45'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+        次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+        次
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
