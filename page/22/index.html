@@ -255,6 +255,69 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2020/07/03/centos-debian%E8%AE%BE%E7%BD%AEroot%E7%94%A8%E6%88%B7%E4%BB%A5%E5%8F%8A%E5%85%81%E8%AE%B8%E7%AC%AC%E4%B8%89%E6%96%B9ssh%E7%99%BB%E5%BD%95/" target="_self">
+          Linux设置ROOT用户以及允许第三方SSH登录
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2020/07/03/centos-debian%E8%AE%BE%E7%BD%AEroot%E7%94%A8%E6%88%B7%E4%BB%A5%E5%8F%8A%E5%85%81%E8%AE%B8%E7%AC%AC%E4%B8%89%E6%96%B9ssh%E7%99%BB%E5%BD%95/" target="_self">
+        <div>
+          切换到root帐号sudo -i  设置root密码passwd  然后会要求输入新密码，然后再重复一次密码，输入密码的时候不会显示出来，所以直接输入密码，然后回车，再然后重复输入密码回车 开启SSH权限vim /etc/ssh/sshd_config #打开 ssh 配置文件 PermitRootLogin yes #默认为no，需要开启root用户访问改为yes PasswordAuthent
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-07-03 17:54" pubdate>
+              2020-07-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%9D%82/" class="category-chain-item">杂</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/linux/">#linux</a>
+            
+              <a href="/tags/ssh/">#ssh</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2020/07/01/centos%E4%B8%8Bngnix%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/" target="_self">
           CentOS下Nginx静态资源代理配置
         </a>
@@ -825,67 +888,6 @@
               <a href="/tags/c/">#c++</a>
             
               <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">#编译原理</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2020/04/14/android%E6%8D%A2%E6%BA%90/" target="_self">
-          Android Stdio换源（阿里云镜像源）
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2020/04/14/android%E6%8D%A2%E6%BA%90/" target="_self">
-        <div>
-          最近在学安卓开发，好不容易兴致上来要开始写了，结果项目build一直转圈…真是搞得兴致全无。 说白了就是下载依赖资源包巨慢，经常连接超时。我寻思着我也没被墙啊，真是不太明白… 好在万能的阿里云有镜像源，可配置阿里云镜像，加速下载。 特此记录。 配置方法： 1. 对特定项目生效，在项目中的build.gradle修改内容 1234567891011121314buildscript &#123;
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-14 15:31" pubdate>
-              2020-04-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%AE%89%E5%8D%93/" class="category-chain-item">安卓</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%AE%89%E5%8D%93/">#安卓</a>
             
           </div>
         

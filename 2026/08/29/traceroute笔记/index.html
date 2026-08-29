@@ -1,0 +1,985 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  <link rel="icon" href="https://xinhaojin.github.io/imgs-host/20220927/微信图片_20220927182507.4ay763op1fc0.jpg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xinhaojin">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Traceroute 核心定义traceroute 是用于逐跳探测数据包从本机到目标 IP 完整三层转发路径的诊断工具。 核心目的：  定位丢包节点 定位延迟突增节点 判断路由转发路径 判断中间防火墙&#x2F;ACL&#x2F;ICMP 管控策略  底层机制：TTL 逐跳递减TTL 转发规则（所有三层设备通用） IP 报文每经过一台三层设备（路由器&#x2F;防火墙三层口），TTL 自动 -1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="traceroute笔记">
+<meta property="og:url" content="https://xinhaojin.github.io/2026/08/29/traceroute%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="xinhaojin&#39;s blog">
+<meta property="og:description" content="Traceroute 核心定义traceroute 是用于逐跳探测数据包从本机到目标 IP 完整三层转发路径的诊断工具。 核心目的：  定位丢包节点 定位延迟突增节点 判断路由转发路径 判断中间防火墙&#x2F;ACL&#x2F;ICMP 管控策略  底层机制：TTL 逐跳递减TTL 转发规则（所有三层设备通用） IP 报文每经过一台三层设备（路由器&#x2F;防火墙三层口），TTL 自动 -1">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-08-29T05:40:06.000Z">
+<meta property="article:modified_time" content="2026-08-29T05:53:51.568Z">
+<meta property="article:author" content="xinhaojin">
+<meta property="article:tag" content="网工">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>traceroute笔记 - xinhaojin&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xinhaojin.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"596b73bb5b70c262b123e997b6686f49","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2020-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?596b73bb5b70c262b123e997b6686f49";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xinhaojin&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="traceroute笔记"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-08-29 13:40" pubdate>
+          2026年8月29日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          12 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">traceroute笔记</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2026年8月29日 下午
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="Traceroute-核心定义"><a href="#Traceroute-核心定义" class="headerlink" title="Traceroute 核心定义"></a>Traceroute 核心定义</h2><p><code>traceroute</code> 是用于逐跳探测数据包从本机到目标 IP 完整三层转发路径的诊断工具。</p>
+<p>核心目的：</p>
+<ul>
+<li>定位丢包节点</li>
+<li>定位延迟突增节点</li>
+<li>判断路由转发路径</li>
+<li>判断中间防火墙&#x2F;ACL&#x2F;ICMP 管控策略</li>
+</ul>
+<h2 id="底层机制：TTL-逐跳递减"><a href="#底层机制：TTL-逐跳递减" class="headerlink" title="底层机制：TTL 逐跳递减"></a>底层机制：TTL 逐跳递减</h2><h3 id="TTL-转发规则（所有三层设备通用）"><a href="#TTL-转发规则（所有三层设备通用）" class="headerlink" title="TTL 转发规则（所有三层设备通用）"></a>TTL 转发规则（所有三层设备通用）</h3><ol>
+<li>IP 报文每经过一台三层设备（路由器&#x2F;防火墙三层口），TTL 自动 -1</li>
+<li>若 TTL 减完 &gt; 0：正常查路由继续转发</li>
+<li>若 TTL 减完 &#x3D; 0：直接丢弃报文，并回复 ICMP 超时（Time Exceeded）</li>
+</ol>
+<p><code>traceroute</code> 就是利用「TTL 超时 ICMP 回包」拿到每一跳设备 IP。</p>
+<h3 id="标准探测流程（通用逻辑）"><a href="#标准探测流程（通用逻辑）" class="headerlink" title="标准探测流程（通用逻辑）"></a>标准探测流程（通用逻辑）</h3><ol>
+<li>第一组包：TTL&#x3D;1 → 第一跳设备 TTL 归 0 → 回 ICMP 超时 → 记录第一跳 IP</li>
+<li>第二组包：TTL&#x3D;2 → 第二跳设备 TTL 归 0 → 回 ICMP 超时 → 记录第二跳 IP</li>
+<li>持续 TTL+1 递增探测</li>
+<li>直到抵达目标主机并收到终点合法回包 → 终止探测</li>
+<li>若达到最大跳数上限仍无终点回包 → 强制终止</li>
+</ol>
+<h2 id="关键-ICMP-报文类型"><a href="#关键-ICMP-报文类型" class="headerlink" title="关键 ICMP 报文类型"></a>关键 ICMP 报文类型</h2><p>ICMP 报文头部只有 Type 和 Code 两个数字字段，「超时」「端口不可达」是 Type+Code 组合的名字，不是报文里的文字内容。<code>traceroute</code> 全程依赖三种关键报文：</p>
+<table>
+<thead>
+<tr>
+<th>报文</th>
+<th>Type</th>
+<th>Code</th>
+<th>发出者</th>
+<th>触发时机</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>超时 Time Exceeded</td>
+<td>11</td>
+<td>0</td>
+<td>中间三层设备</td>
+<td>TTL 减为 0，丢弃报文时</td>
+</tr>
+<tr>
+<td>端口不可达 Port Unreachable</td>
+<td>3</td>
+<td>3</td>
+<td>目标主机传输层</td>
+<td>UDP 报文到达无进程监听的端口时</td>
+</tr>
+<tr>
+<td>回显应答 Echo Reply</td>
+<td>0</td>
+<td>—</td>
+<td>被 ping 的目标主机</td>
+<td>收到 Echo Request 时</td>
+</tr>
+</tbody></table>
+<p>「端口不可达」的含义：目标主机传输层收到 UDP 报文后查找监听端口，发现没有任何程序监听，协议栈就回一个 Type 3 &#x2F; Code 3 的 ICMP 差错报文，意思是「报文送到了，但你指定的端口没人接收」。</p>
+<p>另一个关键细节：ICMP 差错报文的数据部分会附带「引发差错的原始 IP 头 + 原始报文前 8 字节」（对 UDP 探测包来说正好是完整 UDP 头部：源端口+目的端口+长度+校验和）。<code>traceroute</code> 就是靠这段附带的原始报文，把每个 ICMP 回包和自己的探测包一一对应起来。</p>
+<h2 id="每一跳显示的-IP-到底是什么（高频误区）"><a href="#每一跳显示的-IP-到底是什么（高频误区）" class="headerlink" title="每一跳显示的 IP 到底是什么（高频误区）"></a>每一跳显示的 IP 到底是什么（高频误区）</h2><p>所有跳数展示的 IP，都是该设备的「入三层接口 IP」：</p>
+<ul>
+<li>是数据包进入设备的接口 IP</li>
+<li>不是出接口 IP</li>
+</ul>
+<p>意义：</p>
+<ul>
+<li>同一台路由器多链路组网时，不同路径探测会显示不同 IP</li>
+<li>可以精准判断流量从哪个接口进入上行设备</li>
+</ul>
+<h2 id="探测模式：UDP、TCP-与-ICMP"><a href="#探测模式：UDP、TCP-与-ICMP" class="headerlink" title="探测模式：UDP、TCP 与 ICMP"></a>探测模式：UDP、TCP 与 ICMP</h2><h3 id="UDP-模式（Linux-默认）"><a href="#UDP-模式（Linux-默认）" class="headerlink" title="UDP 模式（Linux 默认）"></a>UDP 模式（Linux 默认）</h3><p>探测特征：</p>
+<ul>
+<li>探测包：UDP 报文</li>
+<li>目标端口：从 33434 开始逐包递增</li>
+</ul>
+<p>完整收尾逻辑：</p>
+<ol>
+<li>中间路径：TTL 不足 → 设备回 ICMP 超时</li>
+<li>当 TTL 足够大，报文成功抵达目标主机传输层</li>
+<li>33434~33534 区间端口系统默认无程序监听</li>
+<li>目标主机返回 ICMP 端口不可达</li>
+<li><code>traceroute</code> 识别到这是终点主机发来的报错 → 判定抵达终点 → 终止探测</li>
+</ol>
+<p>UDP 模式终止标志：<strong>收到目标主机的 ICMP 端口不可达</strong>。</p>
+<p>核心总结：UDP 靠「目标端口必然不通」的特性，用端口不可达包告诉程序：你已经走到头了。</p>
+<h3 id="TCP-模式（生产排障最实用）"><a href="#TCP-模式（生产排障最实用）" class="headerlink" title="TCP 模式（生产排障最实用）"></a>TCP 模式（生产排障最实用）</h3><p>命令示例（需要 root 权限）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">traceroute -T -p 443 目标地址<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>-T</code>：使用 TCP SYN 探测</li>
+<li><code>-p</code>：指定目标端口，可任意指定业务端口（80、443、22）</li>
+</ul>
+<p>探测特征：</p>
+<ul>
+<li>探测包：TCP SYN 包</li>
+<li>可手动指定任意端口（80、443、22）</li>
+</ul>
+<p>两种终点收尾逻辑：</p>
+<ol>
+<li>目标端口开放<ul>
+<li>目标主机回复 SYN+ACK</li>
+<li>工具识别成功握手包 → 判断抵达终点 → 终止</li>
+</ul>
+</li>
+<li>目标端口关闭<ul>
+<li>目标主机回复 RST</li>
+<li>同样判定抵达终点 → 终止</li>
+</ul>
+</li>
+</ol>
+<p>TCP 模式优势：企业网、防火墙普遍拦截 UDP 探测、拦截 ICMP 超时，但不会拦截业务 TCP 端口，所以生产排障优先 TCP traceroute。</p>
+<h3 id="ICMP-模式（Windows-tracert-默认）"><a href="#ICMP-模式（Windows-tracert-默认）" class="headerlink" title="ICMP 模式（Windows tracert 默认）"></a>ICMP 模式（Windows tracert 默认）</h3><p>探测特征：</p>
+<ul>
+<li>探测包：ICMP Echo Request（就是 ping 包）</li>
+<li>Linux 下用 <code>traceroute -I</code>，需要 root 权限；Windows 的 <code>tracert</code> 默认就是这种模式</li>
+</ul>
+<p>收尾逻辑：</p>
+<ol>
+<li>中间路径：TTL 不足 → 设备回 ICMP 超时</li>
+<li>报文抵达目标主机 → 目标主机回复 Echo Reply（回显应答，即 ping 的正常应答）</li>
+<li>收到 Echo Reply → 判定抵达终点 → 终止探测</li>
+</ol>
+<p>ICMP 模式终止标志：<strong>收到目标主机的 Echo Reply</strong>。注意和 UDP&#x2F;TCP 模式不同，它靠的是「正常应答」而不是「差错报文」。</p>
+<p>弱点：ICMP 报文在公网被拦截最普遍，很多防火墙直接整体丢弃 ICMP，所以 tracert 的星号往往比 UDP&#x2F;TCP 探测更多。</p>
+<p>Windows tracert 常用用法：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">tracert www.baidu.com         # 默认：ICMP Echo Request，最大 30 跳，每跳发 3 个探测包<br>tracert -d www.baidu.com      # 不做反向域名解析，每跳只显示 IP，速度更快<br>tracert -h 15 www.baidu.com   # 最大跳数改为 15（默认 30）<br>tracert -w 1000 www.baidu.com # 每个回包的超时改为 1000ms（默认 4000ms）<br></code></pre></td></tr></table></figure>
+
+<p>其他探测方式：现代 traceroute 还支持一些冷门变体（如 UDP-Lite <code>-UL</code>、<code>-M tcpconn</code>、<code>-P</code> 指定其他 IP 协议），衍生工具有 <code>mtr</code>（traceroute+ping 实时刷新）、<code>tcptraceroute</code>（老牌 TCP 探测工具）。日常排障掌握 UDP&#x2F;TCP&#x2F;ICMP 三种即可。</p>
+<h2 id="TTL-0-抵达目标主机的特殊场景"><a href="#TTL-0-抵达目标主机的特殊场景" class="headerlink" title="TTL&#x3D;0 抵达目标主机的特殊场景"></a>TTL&#x3D;0 抵达目标主机的特殊场景</h2><p>严格区分两种完全不同的情况：</p>
+<p><strong>情况 A：包到达目标主机时，TTL 刚好减为 0</strong></p>
+<ul>
+<li>目标主机直接丢包</li>
+<li>返回 ICMP 超时</li>
+<li><code>traceroute</code> 不认为到达终点！继续 TTL+1 探测</li>
+</ul>
+<p><strong>情况 B：包到达目标主机时，TTL ≥ 1</strong></p>
+<ul>
+<li>报文正常进入传输层</li>
+<li>UDP：返回 ICMP 端口不可达；TCP：返回 SYN+ACK 或 RST；ICMP：返回 Echo Reply</li>
+<li>判定终点，探测结束</li>
+</ul>
+<p>一句话核心真理：</p>
+<ul>
+<li>ICMP 超时 &#x3D; 中途设备&#x2F;终点 TTL 耗尽（不算到终点）</li>
+<li>ICMP 端口不可达 &#x2F; TCP 握手包 &#x2F; Echo Reply &#x3D; 真正抵达终点</li>
+</ul>
+<h2 id="星号-的常见原因"><a href="#星号-的常见原因" class="headerlink" title="星号 * * * 的常见原因"></a>星号 <code>* * *</code> 的常见原因</h2><p>当某一跳显示 <code>* * *</code>，代表：本跳 TTL 对应的 ICMP 回包，本机没有收到。</p>
+<p>常见原因：</p>
+<ol>
+<li>中间设备禁止发送 ICMP Time-Exceeded 超时报文（运营商&#x2F;防火墙默认策略）</li>
+<li>中间防火墙策略拦截 ICMP 回包</li>
+<li>回程链路拥塞、丢包</li>
+<li>设备 CPU 负载高，丢弃低优先级 ICMP</li>
+</ol>
+<p>关键特性：出现 <code>* * *</code> 不会终止探测！程序继续 TTL+1 往后探测，直到终点或跳数上限。</p>
+<h2 id="NAT-场景异常：多跳显示同一个-IP"><a href="#NAT-场景异常：多跳显示同一个-IP" class="headerlink" title="NAT 场景异常：多跳显示同一个 IP"></a>NAT 场景异常：多跳显示同一个 IP</h2><p>现象：经过防火墙&#x2F;出口 NAT 设备后，第 8、9、10 跳……全部显示同一个 IP。</p>
+<p>原因：</p>
+<ol>
+<li>状态化防火墙&#x2F;NAT 设备对 TTL 超时的探测包统一以自身接口 IP 代答回应（如 Cisco ASA 的典型行为）</li>
+<li>ICMP 超时回包经过 NAT 时，源 IP 被统一转换为设备公网&#x2F;出口 IP</li>
+<li>导致 <code>traceroute</code> 无法识别后续真实设备 IP</li>
+</ol>
+<p>排障判断技巧（非常实用）——看跳数，不看 IP：</p>
+<ul>
+<li>IP 重复，但跳数一直在递增</li>
+<li>说明：流量已经走出内网，进入 NAT 后的公网链路</li>
+<li>故障点大概率在：该 NAT 设备之后的链路</li>
+</ul>
+<p>这是企业网、专线、金融专网排障的高频判断手段。</p>
+<h2 id="Traceroute-的终止条件（核心考点）"><a href="#Traceroute-的终止条件（核心考点）" class="headerlink" title="Traceroute 的终止条件（核心考点）"></a>Traceroute 的终止条件（核心考点）</h2><p>只有两种合法终止条件。</p>
+<p><strong>条件 1：正常终止（探测成功）</strong>，收到目标主机返回的任意一种：</p>
+<ul>
+<li>UDP 模式：ICMP 端口不可达</li>
+<li>TCP 模式：SYN+ACK &#x2F; RST</li>
+<li>ICMP 模式：Echo Reply</li>
+</ul>
+<p><strong>条件 2：异常终止（探测失败）</strong>：跳数递增至工具上限（默认最大 30 跳），全程未收到终点响应，自动结束。</p>
+<p>误区纠正：目标主机返回的 ICMP 超时，不做终止条件！只会继续探测。</p>
+<h2 id="三种探测模式对比表"><a href="#三种探测模式对比表" class="headerlink" title="三种探测模式对比表"></a>三种探测模式对比表</h2><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>UDP Traceroute</th>
+<th>TCP Traceroute</th>
+<th>ICMP Traceroute（tracert）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>探测报文</td>
+<td>UDP</td>
+<td>TCP SYN</td>
+<td>ICMP Echo Request</td>
+</tr>
+<tr>
+<td>默认端口</td>
+<td>33434 起逐包递增</td>
+<td>自定义业务端口</td>
+<td>无端口概念</td>
+</tr>
+<tr>
+<td>中间回包</td>
+<td>ICMP 超时</td>
+<td>ICMP 超时</td>
+<td>ICMP 超时</td>
+</tr>
+<tr>
+<td>终点成功标识</td>
+<td>ICMP 端口不可达</td>
+<td>SYN+ACK（端口开放）&#x2F; RST（端口关闭）</td>
+<td>Echo Reply</td>
+</tr>
+<tr>
+<td>Linux 权限</td>
+<td>普通用户</td>
+<td>root</td>
+<td>root</td>
+</tr>
+<tr>
+<td>穿透防火墙</td>
+<td>差</td>
+<td>极强</td>
+<td>最差（ICMP 常被整体拦截）</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>公网通用测试</td>
+<td>企业内网、防火墙环境</td>
+<td>Windows 环境、快速验证连通性</td>
+</tr>
+</tbody></table>
+<h2 id="易错点汇总"><a href="#易错点汇总" class="headerlink" title="易错点汇总"></a>易错点汇总</h2><ol>
+<li>不是所有 ICMP 包都代表终点，只有终点主机发出的端口不可达（UDP）、Echo Reply（ICMP 模式）或 SYN+ACK&#x2F;RST（TCP）才算终点</li>
+<li>TTL&#x3D;0 落在目标主机，只会超时，不会结束探测</li>
+<li>星号不中断探测，TTL 持续往后走</li>
+<li>展示 IP 永远是入接口 IP，不是出接口</li>
+<li>NAT 后多跳同 IP 是正常现象，靠跳数判断故障位置</li>
+<li>UDP 靠端口不通收尾，TCP 靠握手包或 RST 收尾</li>
+<li>中间路由器只回 ICMP 超时，永远不会回端口不可达 &#x2F; Echo Reply &#x2F; SYN+ACK</li>
+<li>端口不可达只有「目标主机传输层」能发出，本质是 Type 3 &#x2F; Code 3 的编码组合，不是报文文字内容</li>
+</ol>
+<h2 id="生产排障最佳实践"><a href="#生产排障最佳实践" class="headerlink" title="生产排障最佳实践"></a>生产排障最佳实践</h2><ol>
+<li>公网普通测试：默认 UDP（Windows 下用 tracert，即 ICMP 模式）</li>
+<li>企业内网、有防火墙、有 ACL：必用 TCP traceroute</li>
+<li>出现大量星号：直接换 TCP 指定 80&#x2F;443</li>
+<li>出现连续同 IP：锁定 NAT 出口后故障</li>
+<li>超时多但端口可达：链路质量问题</li>
+<li>全程星号：链路拦截 ICMP 严重，网络安全策略严格</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BD%91%E5%B7%A5/" class="category-chain-item">网工</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%BD%91%E5%B7%A5/" class="print-no-link">#网工</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>traceroute笔记</div>
+      <div>https://xinhaojin.github.io/2026/08/29/traceroute笔记/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>xinhaojin</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年8月29日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/05/03/Wireshark%20%E8%BF%87%E6%BB%A4%E5%99%A8%E7%AC%94%E8%AE%B0/" title="Wireshark 过滤器笔记">
+                        <span class="hidden-mobile">Wireshark 过滤器笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/gitalk/1.8.0/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"Ov23lifvhsymyganMHro","clientSecret":"cdd38ac0c65a95027749446001ebdff7ca7d4ec2","repo":"xinhaojin.github.io","owner":"xinhaojin","admin":"xinhaojin","language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
+          {
+            id: '734170314ea4b0d4bbcaf6f9bafae83f'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+        次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+        次
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
